@@ -1,3 +1,11 @@
+## 0.1.6-alpha — przełączanie map
+- Mapa świata zastępuje mapę lokacji w tym samym obszarze ekranu, zamiast pojawiać się poniżej.
+- Klawisz M otwiera mapę strategiczną; Esc ją zamyka w regionie Pogranicza.
+- Wyjście poza granicę mapy Pogranicza otwiera mapę świata; nie działa we wnętrzach.
+- Podczas oglądania mapy świata ruch bohatera po mapie lokacji jest zablokowany.
+- Powrót do mapy lokacji możliwy przez przycisk, gdy bohater jest w Pograniczu.
+- Testy kodu statyczne; test przeglądarkowy wymagany.
+
 ## 0.1.5-alpha — mapa świata
 - Dodano oddzielną mapę strategiczną (12 × 8 pól), niezależną od mapy lokacji 64 × 44.
 - Region startowy Pogranicze oraz cztery sąsiednie/połączone regiony: Puszcza Cieni, Kamienna Przełęcz, Zielone Doliny, Kraina Jezior.
