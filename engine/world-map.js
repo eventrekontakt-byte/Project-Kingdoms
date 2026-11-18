@@ -1,36 +1,46 @@
-// Strategic map (world scale), distinct from the 64x44 tactical location.
-export const WORLD_WIDTH=12,WORLD_HEIGHT=8;
-export const REGIONS=[
- {id:"pogranicze",name:"Pogranicze",x:5,y:4,terrain:"plains",location:"overworld",entry:{x:12,y:17},description:"Warownia, karczma, dom i magazyn."},
- {id:"puszcza",name:"Puszcza Cieni",x:4,y:4,terrain:"forest",location:"puszcza",description:"Nieodkryte leśne ostępy."},
- {id:"przelecz",name:"Kamienna Przełęcz",x:6,y:3,terrain:"mountain",location:"przelecz",description:"Szlak wśród wysokich gór."},
- {id:"doliny",name:"Zielone Doliny",x:6,y:4,terrain:"plains",location:"doliny",description:"Żyzne ziemie i osady."},
- {id:"jeziora",name:"Kraina Jezior",x:5,y:5,terrain:"water",location:"jeziora",description:"Jeziora i przeprawy."}
+// Persistent strategic geography. All coordinates are tile coordinates.
+export const WORLD_WIDTH=120,WORLD_HEIGHT=84;
+export const SITES=[
+{id:"miasto-krolewskie",name:"Kamienogród",type:"city",faction:"Korona Północy",x:35,y:36,map:"overworld",description:"Miasto stołeczne z warownią, karczmą i magazynem."},
+{id:"miasto-poludniowe",name:"Słoneczny Port",type:"city",faction:"Liga Południa",x:88,y:58,map:"site-port",description:"Miasto handlowe nad zatoką."},
+{id:"zamek-polnocny",name:"Zamek Kruczy",type:"castle",faction:"Korona Północy",x:53,y:15,map:"site-kruczy",description:"Twierdza strzegąca przełęczy."},
+{id:"zamek-poludniowy",name:"Zamek Strażnica",type:"castle",faction:"Liga Południa",x:91,y:36,map:"site-straznica",description:"Forteca na południowym trakcie."},
+{id:"wies-brzozowa",name:"Brzozowa",type:"village",faction:"Korona Północy",x:17,y:27,map:"site-brzozowa",description:"Wieś drwali na skraju puszczy."},
+{id:"wies-mlinska",name:"Młyńska Dolina",type:"village",faction:"Korona Północy",x:47,y:52,map:"site-mlynska",description:"Osada rolnicza z młynem."},
+{id:"wies-rybacka",name:"Rybaki",type:"village",faction:"Liga Południa",x:70,y:70,map:"site-rybaki",description:"Wioska rybacka."},
+{id:"wies-kamienna",name:"Kamienna Wieś",type:"village",faction:"Liga Południa",x:105,y:24,map:"site-kamienna",description:"Osada górników i kamieniarzy."},
+{id:"kryjowka-lesna",name:"Leśna Kryjówka",type:"hideout",faction:"Niezależni",x:10,y:49,map:"site-lesna",description:"Ukryty obóz bandytów."},
+{id:"kryjowka-skalna",name:"Skalne Schronienie",type:"hideout",faction:"Niezależni",x:107,y:48,map:"site-skalna",description:"Bandyci w skalnych jaskiniach."},
+{id:"ruiny",name:"Stare Ruiny",type:"landmark",faction:"Niezależni",x:29,y:67,map:"site-ruiny",description:"Pozostałości zapomnianej cywilizacji."},
+{id:"kopalnia",name:"Kopalnia Żelaza",type:"landmark",faction:"Korona Północy",x:67,y:23,map:"site-kopalnia",description:"Wyrobiska i górnicze sztolnie."},
+{id:"swiatynia",name:"Opuszczona Świątynia",type:"landmark",faction:"Niezależni",x:76,y:11,map:"site-swiatynia",description:"Starożytna świątynia."},
+{id:"przystan",name:"Przystań Trzech Rzek",type:"landmark",faction:"Liga Południa",x:64,y:48,map:"site-przystan",description:"Przeprawa i punkt handlowy."}
 ];
-export const WORLD_COLORS={plains:"#65894f",forest:"#315d45",mountain:"#747a79",water:"#356a93",unknown:"#394756"};
-export function regionAt(x,y){return REGIONS.find(r=>r.x===x&&r.y===y)||null;}
-export function regionById(id){return REGIONS.find(r=>r.id===id)||null;}
-export function canTravel(fromId,toId){
- const a=regionById(fromId),b=regionById(toId);
- return Boolean(a&&b&&a.id!==b.id&&Math.abs(a.x-b.x)+Math.abs(a.y-b.y)===1);
-}
+export const WORLD_START={x:35,y:38};
+export const SITE_BY_MAP=Object.fromEntries(SITES.map(s=>[s.map,s]));
+export const SITE_COLORS={city:"#f4ca78",castle:"#d7a9fa",village:"#e7e2bb",hideout:"#e17d79",landmark:"#8fd8d3"};
+export function siteAt(x,y){return SITES.find(s=>s.x===x&&s.y===y)||null;}
+export function siteById(id){return SITES.find(s=>s.id===id)||null;}
+export function siteForMap(map){return SITE_BY_MAP[map]||null;}
 export function worldTile(x,y){
- if(x<0||y<0||x>=WORLD_WIDTH||y>=WORLD_HEIGHT)return "unknown";
- const r=regionAt(x,y);if(r)return r.terrain;
- const v=(x*17+y*31+x*y*11)%17;
- return v<3?"water":v<7?"forest":v<10?"mountain":"plains";
+ if(x<0||y<0||x>=WORLD_WIDTH||y>=WORLD_HEIGHT)return "void";
+ const ridge=Math.sin(x*.115)+Math.cos(y*.13)+Math.sin((x+y)*.052);
+ const lake=((x-73)**2/155+(y-61)**2/85<1)||((x-15)**2/130+(y-70)**2/75<1);
+ if(lake)return "water";
+ if(ridge>1.7&&x>50)return "mountain";
+ const noise=(x*17+y*31+x*y*11)%23;
+ if(noise<6&&x<55)return "forest";
+ return y>49?"meadow":"plains";
 }
-
-export const REGION_MAPS=Object.fromEntries(REGIONS.map(r=>[r.location,r.id]));
-export function regionForMap(map){return REGION_MAPS[map]||null;}
-export function adjacentRegion(id,direction){
- const current=regionById(id);if(!current)return null;
- const offsets={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]};
- const [dx,dy]=offsets[direction]||[0,0];
- return REGIONS.find(r=>r.x===current.x+dx&&r.y===current.y+dy)||null;
+export function roadAt(x,y){
+ // Connected roads joining cities, villages, castles and key landmarks.
+ const edges=[[0,4],[0,5],[0,2],[0,11],[0,13],[13,1],[13,3],[1,6],[1,7],[3,7],[0,10],[4,8],[7,9],[2,12]];
+ return edges.some(([a,b])=>{
+  const p=SITES[a],q=SITES[b],dx=q.x-p.x,dy=q.y-p.y;
+  const t=Math.max(0,Math.min(1,((x-p.x)*dx+(y-p.y)*dy)/(dx*dx+dy*dy)));
+  return Math.hypot(x-(p.x+t*dx),y-(p.y+t*dy))<.85;
+ });
 }
-export function travelEntry(mapWidth,mapHeight,direction,coordinate){
- const x=Math.max(1,Math.min(mapWidth-2,coordinate?.x??Math.floor(mapWidth/2)));
- const y=Math.max(1,Math.min(mapHeight-2,coordinate?.y??Math.floor(mapHeight/2)));
- return direction==="up"?{x,y:mapHeight-2}:direction==="down"?{x,y:1}:direction==="left"?{x:mapWidth-2,y}:direction==="right"?{x:1,y}:{x,y};
-}
+export function walkableWorld(x,y){return worldTile(x,y)!=="void";}
+// World travel is open-world; difficult terrain is slower but not impassable at this prototype stage.
+export function terrainCost(x,y){const t=worldTile(x,y);return t==="mountain"?5:t==="forest"?3:t==="water"?4:roadAt(x,y)?1:2;}
