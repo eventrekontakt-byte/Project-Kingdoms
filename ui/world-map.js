@@ -23,6 +23,7 @@ export function setupWorldMap({getState,onTravel,onEnter}){
   desc.textContent=(region?.description||"")+ (selected===current?" • Obecny region.":"");
   travel.disabled=state.player.map!=="overworld"||!canTravel(current,selected);
   travel.textContent=travel.disabled?"Podróż niedostępna":"Podróżuj (2 godziny)";
+  document.getElementById("closeWorldMap").disabled=current!=="pogranicze";
   enter.disabled=current!=="pogranicze";
   enter.textContent=current==="pogranicze"?"Wróć do mapy lokacji":"Mapa lokacji jeszcze niedostępna";
  }
@@ -33,7 +34,7 @@ export function setupWorldMap({getState,onTravel,onEnter}){
  travel.addEventListener("click",()=>{if(onTravel(selected)){render();}});
  enter.addEventListener("click",()=>{if(getState().worldRegion==="pogranicze"){overlay.hidden=true;onEnter();}});
  document.getElementById("openWorldMap").addEventListener("click",()=>{selected=getState().worldRegion||"pogranicze";overlay.hidden=false;render();});
- document.getElementById("closeWorldMap").addEventListener("click",()=>{overlay.hidden=true;});
- overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.hidden=true;});
+ document.getElementById("closeWorldMap").addEventListener("click",()=>{if(getState().worldRegion==="pogranicze")overlay.hidden=true;});
+ overlay.addEventListener("click",e=>{if(e.target===overlay&&getState().worldRegion==="pogranicze")overlay.hidden=true;});
  return {render};
 }
