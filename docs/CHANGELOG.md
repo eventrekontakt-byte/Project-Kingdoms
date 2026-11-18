@@ -1,3 +1,11 @@
+## 0.1.4-alpha — eksploracja i nawigacja
+- Zastąpiono wyszukiwanie tras BFS algorytmem A* w osobnym module engine/pathfinding.js.
+- Trasa uwzględnia przeszkody oraz stan drzwi: przez zamknięte lub zamknięte na klucz nie prowadzi.
+- Kliknięcie skrzyni lub zamkniętych drzwi kieruje postać do sąsiedniego, dostępnego pola.
+- Dodano przycisk „Zbadaj” bezpośrednio na ekranie dla urządzeń dotykowych.
+- Zaktualizowano wersję aplikacji i cache offline.
+- Testy statyczne: składnia modułów poprawna; scenariusze wyznaczania tras poprawne. Testy przeglądarkowe i mobilne wymagają weryfikacji.
+
 # Project Kingdoms — dziennik zmian
 
 ## 0.1.3-alpha — generowanie wejść i stan drzwi (2026-11-18)
