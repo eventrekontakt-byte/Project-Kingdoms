@@ -16,12 +16,12 @@ export const OBJECTS={
 const PORTALS=[
  ["overworld",0,24,20,"keep",0,8,11],
  ["keep",0,8,12,"overworld",0,24,21],
- ["overworld",0,38,14,"house",0,5,7],
- ["house",0,5,8,"overworld",0,38,15],
- ["overworld",0,42,25,"inn",0,7,9],
- ["inn",0,7,10,"overworld",0,42,26],
- ["overworld",0,14,33,"warehouse",0,6,7],
- ["warehouse",0,6,8,"overworld",0,14,34]
+ ["overworld",0,35,12,"house",0,5,7],
+ ["house",0,5,8,"overworld",0,34,12],
+ ["overworld",0,39,23,"inn",0,7,9],
+ ["inn",0,7,10,"overworld",0,38,23],
+ ["overworld",0,11,31,"warehouse",0,6,7],
+ ["warehouse",0,6,8,"overworld",0,10,31]
 ];
 for(const [map,floor,x,y,target,targetFloor,tx,ty] of [...PORTALS]){
  // All entry/exit portals are explicitly paired in the table.
@@ -42,7 +42,7 @@ export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.i
 export function mapSize(map){const l=LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
 export function objectAt(map,floor,x,y){return OBJECTS[portalKey(map,floor,x,y)]||null;}
 export function transitionAt(map,floor,x,y){return portalIndex.get(portalKey(map,floor,x,y))||null;}
-const entrances=[[24,20],[38,14],[42,25],[14,33]];
+const entrances=[[24,20],[35,12],[39,23],[11,31]];
 export function tileAt(map,floor,x,y){
  if(!validLocation(map,floor))return "void";
  const {w,h}=mapSize(map);
@@ -54,7 +54,7 @@ export function tileAt(map,floor,x,y){
   if(structures.some(([x1,y1,x2,y2])=>x>=x1&&x<=x2&&y>=y1&&y<=y2))return "wall";
   if((x===5&&y>=4&&y<=30)||(y===39&&x>=5&&x<=54))return "water";
   if((x*17+y*31+x*y*7)%47===0&&!entrances.some(([ex,ey])=>Math.abs(ex-x)+Math.abs(ey-y)<=2))return "tree";
-  if((y===21&&x>=10&&x<=47)||(x===38&&y>=14&&y<=25)||(x===14&&y>=21&&y<=34))return "road";
+  if((y===21&&x>=10&&x<=47)||(x===34&&y>=12&&y<=21)||(x===38&&y>=21&&y<=26)||(x===10&&y>=21&&y<=34))return "road";
   return "grass";
  }
  if(x===0||y===0||x===w-1||y===h-1)return "wall";
