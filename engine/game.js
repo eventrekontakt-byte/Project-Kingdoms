@@ -47,7 +47,7 @@ function draw(){
 }
 function follow(){state.camera.x=state.player.x+.5;state.camera.y=state.player.y+.5;}
 function move(dir,fromPath=false){
- if(strategic?.active()){const ok=strategic.move(dir);if(ok){updateClock(1);hud();}return ok;}
+ if(strategic?.active())return strategic.move(dir);
  if(!fromPath)path=[];
  const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[dir];if(!d)return false;
  const p=state.player,nx=p.x+d[0],ny=p.y+d[1];
@@ -117,7 +117,8 @@ const strategic=setupWorldMap({
   state.worldPosition={x:site.x,y:site.y};path=[];follow();draw();
   notify("Wejście: "+site.name);
  },
- onExit:()=>{follow();draw();}
+ onExit:()=>{follow();draw();},
+ onStep:minutes=>{updateClock(minutes);hud();}
 });
 $("worldMapMobile").addEventListener("click",()=>$("openWorldMap").click());
 const controls=setupControls(dir=>move(dir),mode=>{state.controlMode=mode;});
