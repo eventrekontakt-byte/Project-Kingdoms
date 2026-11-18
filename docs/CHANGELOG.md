@@ -1,3 +1,13 @@
+## 0.1.7-alpha — kierunkowe podróże i mapy regionów
+- Każdy z pięciu regionów ma odrębną grywalną mapę taktyczną 64×44.
+- Puszcza Cieni: gęsty las; Kamienna Przełęcz: skały i przeszkody; Zielone Doliny: łąki; Kraina Jezior: zbiorniki wodne i brzegi.
+- Przekroczenie granicy lokacji otwiera mapę świata z automatycznie zaznaczonym sąsiednim regionem w kierunku wyjścia.
+- Podróż przez mapę świata przenosi postać na przeciwległą krawędź mapy docelowej; po podróży otwiera się jej mapa lokacji.
+- M nadal otwiera mapę świata w dowolnym momencie; podróż jest dostępna tylko z mapy zewnętrznej.
+- Zachowano czas podróży 2 godziny oraz zapisywanie regionu i położenia.
+- Stare zapisy strategiczne są uzgadniane z faktyczną mapą postaci.
+- Kontrole statyczne i testy punktów wejścia przeprowadzone; testy interfejsu na telefonie wymagają potwierdzenia.
+
 ## 0.1.6-alpha — przełączanie map
 - Mapa świata zastępuje mapę lokacji w tym samym obszarze ekranu, zamiast pojawiać się poniżej.
 - Klawisz M otwiera mapę strategiczną; Esc ją zamyka w regionie Pogranicza.
