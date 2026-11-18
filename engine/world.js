@@ -53,8 +53,8 @@ export function tileAt(map,floor,x,y){
   const structures=[[20,12,28,20],[35,10,41,14],[39,21,47,25],[11,29,18,33]];
   if(structures.some(([x1,y1,x2,y2])=>x>=x1&&x<=x2&&y>=y1&&y<=y2))return "wall";
   if((x===5&&y>=4&&y<=30)||(y===39&&x>=5&&x<=54))return "water";
-  if((x*17+y*31+x*y*7)%47===0&&!entrances.some(([ex,ey])=>Math.abs(ex-x)+Math.abs(ey-y)<=2))return "tree";
   if((y===21&&x>=10&&x<=47)||(x===34&&y>=12&&y<=21)||(x===38&&y>=21&&y<=26)||(x===10&&y>=21&&y<=34))return "road";
+  if((x*17+y*31+x*y*7)%47===0&&!entrances.some(([ex,ey])=>Math.abs(ex-x)+Math.abs(ey-y)<=2))return "tree";
   return "grass";
  }
  if(x===0||y===0||x===w-1||y===h-1)return "wall";
