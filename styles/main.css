@@ -5,3 +5,13 @@
 #interactMobile{display:none;position:absolute;right:22px;bottom:26px;z-index:3;background:#254b67e8;border:2px solid #8db7d4;min-height:54px;min-width:106px;font-weight:600;touch-action:manipulation}
 @media(pointer:coarse){#interactMobile{display:block}}
 @media(max-width:820px){#interactMobile{right:14px;bottom:24px}}
+
+#worldMapOverlay{position:fixed;inset:0;background:#050c15ed;z-index:20;display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto}
+.world-map-panel{width:min(920px,100%);max-height:95dvh;overflow:auto;background:#152638;border:1px solid #57718b;border-radius:14px;padding:16px}
+.world-map-heading,.world-map-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.world-map-heading h2{margin:0;font-size:1.25rem}
+#strategicMap{width:100%;max-height:65dvh;aspect-ratio:3/2;object-fit:contain;background:#0c1622;border-radius:8px;touch-action:manipulation}
+.world-map-actions h3{margin:8px 0 2px}.world-map-actions p{margin:0;color:#bed1df}
+#worldMapMobile{display:none;position:absolute;right:22px;bottom:92px;z-index:3;background:#254b67e8;border:2px solid #8db7d4;min-height:50px;touch-action:manipulation}
+@media(pointer:coarse){#worldMapMobile{display:block}}
+@media(max-width:820px){#worldMapMobile{right:14px;bottom:88px}.world-map-panel{padding:10px}.world-map-actions button{flex:1}}
