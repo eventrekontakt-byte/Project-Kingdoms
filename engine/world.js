@@ -45,6 +45,18 @@ export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.i
 export function mapSize(map){const l=LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
 export function objectAt(map,floor,x,y){return OBJECTS[portalKey(map,floor,x,y)]||null;}
 export function transitionAt(map,floor,x,y){return portalIndex.get(portalKey(map,floor,x,y))||null;}
+export const DOORS={
+ "overworld:0:24:20":{id:"keep-main",name:"Brama warowni",initial:"open"},
+ "keep:0:8:12":{id:"keep-main",name:"Brama warowni",initial:"open"},
+ "overworld:0:35:12":{id:"house-main",name:"Drzwi domu",initial:"closed"},
+ "house:0:0:4":{id:"house-main",name:"Drzwi domu",initial:"closed"},
+ "overworld:0:39:23":{id:"inn-main",name:"Drzwi karczmy",initial:"open"},
+ "inn:0:0:5":{id:"inn-main",name:"Drzwi karczmy",initial:"open"},
+ "overworld:0:11:31":{id:"warehouse-main",name:"Drzwi magazynu",initial:"locked"},
+ "warehouse:0:0:4":{id:"warehouse-main",name:"Drzwi magazynu",initial:"locked"}
+};
+export function doorAt(map,floor,x,y){return DOORS[portalKey(map,floor,x,y)]||null;}
+export function defaultDoors(){return Object.fromEntries(Object.values(DOORS).map(d=>[d.id,d.initial]));}
 const entrances=BUILDINGS.map(b=>[BUILDING_ENTRIES[b.id].x,BUILDING_ENTRIES[b.id].y]);
 export function tileAt(map,floor,x,y){
  if(!validLocation(map,floor))return "void";
