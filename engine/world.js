@@ -1,8 +1,10 @@
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
+import {SITE_LAYOUTS,siteTile} from "./sites.js";
 import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
 export const START={map:"overworld",floor:0,x:12,y:17};
 export const LOCATIONS={
+ ...Object.fromEntries(Object.entries(SITE_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
  ...Object.fromEntries(Object.entries(REGION_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
  overworld:{name:"Pogranicze",width:64,height:44,floors:1},
  keep:{name:"Warownia",width:17,height:13,floors:3,base:"stone"},
@@ -66,6 +68,7 @@ export function tileAt(map,floor,x,y){
  if(x<0||y<0||x>=w||y>=h)return "void";
  const portal=transitionAt(map,floor,x,y);
  if(portal)return portal.map===map?(portal.floor>floor?"stairs-up":"stairs-down"):"door";
+ if(SITE_LAYOUTS[map])return siteTile(map,x,y);
  if(REGION_LAYOUTS[map])return regionTile(map,x,y);
  if(map==="overworld"){
   if(BUILDINGS.some(({bounds:[x1,y1,x2,y2]})=>x>=x1&&x<=x2&&y>=y1&&y<=y2))return "wall";
