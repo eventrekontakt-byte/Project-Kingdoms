@@ -44,3 +44,21 @@ export function roadAt(x,y){
 export function walkableWorld(x,y){return worldTile(x,y)!=="void";}
 // World travel is open-world; difficult terrain is slower but not impassable at this prototype stage.
 export function terrainCost(x,y){const t=worldTile(x,y);return t==="mountain"?5:t==="forest"?3:t==="water"?4:roadAt(x,y)?1:2;}
+
+export const FACTIONS=[
+ {id:"north",name:"Korona Północy",capital:"miasto-krolewskie",color:"#6d9dc8"},
+ {id:"south",name:"Liga Południa",capital:"miasto-poludniowe",color:"#d6a468"}
+];
+export function factionAt(x,y){
+ if(x<0||y<0||x>=WORLD_WIDTH||y>=WORLD_HEIGHT)return null;
+ const northern=SITES.filter(s=>s.faction==="Korona Północy");
+ const southern=SITES.filter(s=>s.faction==="Liga Południa");
+ const distance=sites=>Math.min(...sites.map(s=>Math.hypot((x-s.x)*1.0,(y-s.y)*1.25)));
+ const a=distance(northern),b=distance(southern);
+ if(Math.min(a,b)>28||Math.abs(a-b)<3)return null;
+ return a<b?"north":"south";
+}
+export function borderAt(x,y){
+ const faction=factionAt(x,y);if(!faction)return false;
+ return [[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>factionAt(x+dx,y+dy)!==faction);
+}
