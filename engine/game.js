@@ -3,8 +3,9 @@ import {defaultObjects,interact,interactionNear} from "../systems/interactions.j
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js";
+import {setupWorldMap} from "../ui/world-map.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
-const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors()};
+const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze"};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 function notify(message){const el=$("toast");el.textContent=message;el.classList.add("visible");clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove("visible"),2300);}
 function updateClock(minutes){let total=state.clock.minute+state.clock.hour*60+(state.clock.day-1)*1440+minutes;
@@ -81,16 +82,16 @@ $("zoomIn").addEventListener("click",()=>zoom(1));$("zoomOut").addEventListener(
 $("saveBtn").addEventListener("click",()=>{const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
- Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.doors=data.doors||defaultDoors();
+ Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.doors=data.doors||defaultDoors();state.worldRegion=data.worldRegion||"pogranicze";
  state.camera.zoom=Number.isFinite(data.camera?.zoom)?Math.max(.25,Math.min(3,data.camera.zoom)):1;
  state.controlMode=data.controlMode==="joystick"?"joystick":"dpad";state.paused=Boolean(data.paused);
- follow();controls.setMode(state.controlMode);path=[];draw();notify("Wczytano kampanię");
+ follow();controls.setMode(state.controlMode);path=[];draw();if(state.worldRegion!=="pogranicze"){$("openWorldMap").click();}notify("Wczytano kampanię");
 }
 $("loadBtn").addEventListener("click",restore);
 $("pauseBtn").addEventListener("click",()=>{state.paused=!state.paused;draw();});
 $("newBtn").addEventListener("click",()=>{$("confirmNew").showModal();});
 $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="confirm")return;
- Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.doors=defaultDoors();state.paused=false;path=[];follow();draw();notify("Rozpoczęto nową kampanię");
+ Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.doors=defaultDoors();state.worldRegion="pogranicze";state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];follow();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
 const visitPoints={keep:{x:24,y:21},house:{x:34,y:12},inn:{x:38,y:23},warehouse:{x:10,y:31}};
@@ -102,8 +103,15 @@ document.querySelectorAll("[data-visit]").forEach(button=>button.addEventListene
 function performInteraction(){notify(interact(state));path=[];draw();}
 $("interactBtn").addEventListener("click",performInteraction);
 $("interactMobile").addEventListener("click",performInteraction);
+const strategic=setupWorldMap({
+ getState:()=>state,
+ onTravel:target=>{if(state.player.map!=="overworld")return false;state.worldRegion=target;updateClock(120);hud();notify("Podróż zakończona. Region: "+target);return true;},
+ onEnter:()=>{follow();draw();}
+});
+$("worldMapMobile").addEventListener("click",()=>$("openWorldMap").click());
 const controls=setupControls(dir=>move(dir),mode=>{state.controlMode=mode;});
 window.addEventListener("keydown",e=>{
+ if(e.code==="KeyM"&&!e.repeat&&!e.target?.matches("input,select,textarea")){e.preventDefault();$("openWorldMap").click();return;}
  if(e.code==="KeyE"&&!e.repeat&&!e.target?.matches("input,select,textarea")){e.preventDefault();performInteraction();return;}
  const dir={ArrowUp:"up",KeyW:"up",ArrowDown:"down",KeyS:"down",ArrowLeft:"left",KeyA:"left",ArrowRight:"right",KeyD:"right"}[e.code];
  if(!dir||e.target?.matches("input,select,textarea"))return;e.preventDefault();
