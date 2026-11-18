@@ -10,8 +10,8 @@ export const LOCATIONS={
 };
 export const OBJECTS={
  "keep:0:7:4":{id:"keep-chest",name:"Skrzynia warowni",kind:"chest",description:"Stara skrzynia z zapasami."},
- "house:0:5:4":{id:"house-table",name:"Stół mieszkańca",kind:"inspect",description:"Prosty drewniany stół."},
- "inn:0:7:5":{id:"inn-counter",name:"Lada karczmy",kind:"inspect",description:"Na ladzie leży księga gości."},
+ "house:0:7:4":{id:"house-table",name:"Stół mieszkańca",kind:"inspect",description:"Prosty drewniany stół."},
+ "inn:0:9:4":{id:"inn-counter",name:"Lada karczmy",kind:"inspect",description:"Na ladzie leży księga gości."},
  "warehouse:0:6:4":{id:"warehouse-chest",name:"Skrzynia magazynowa",kind:"chest",description:"W środku leżą narzędzia."}
 };
 const PORTALS=[
