@@ -2,7 +2,7 @@
 export const WORLD_WIDTH=12,WORLD_HEIGHT=8;
 export const REGIONS=[
  {id:"pogranicze",name:"Pogranicze",x:5,y:4,terrain:"plains",location:"overworld",entry:{x:12,y:17},description:"Warownia, karczma, dom i magazyn."},
- {id:"puszcza",name:"Puszcza Cieni",x:4,y:3,terrain:"forest",description:"Nieodkryte leśne ostępy."},
+ {id:"puszcza",name:"Puszcza Cieni",x:4,y:4,terrain:"forest",description:"Nieodkryte leśne ostępy."},
  {id:"przelecz",name:"Kamienna Przełęcz",x:6,y:3,terrain:"mountain",description:"Szlak wśród wysokich gór."},
  {id:"doliny",name:"Zielone Doliny",x:6,y:4,terrain:"plains",description:"Żyzne ziemie i osady."},
  {id:"jeziora",name:"Kraina Jezior",x:5,y:5,terrain:"water",description:"Jeziora i przeprawy."}
