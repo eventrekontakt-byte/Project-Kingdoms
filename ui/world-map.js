@@ -21,7 +21,7 @@ export function setupWorldMap({getState,onTravel,onEnter}){
   const region=regionById(selected);
   title.textContent=region?.name||"Nieznany obszar";
   desc.textContent=(region?.description||"")+ (selected===current?" • Obecny region.":"");
-  travel.disabled=!canTravel(current,selected);
+  travel.disabled=state.player.map!=="overworld"||!canTravel(current,selected);
   travel.textContent=travel.disabled?"Podróż niedostępna":"Podróżuj (2 godziny)";
   enter.disabled=current!=="pogranicze";
   enter.textContent=current==="pogranicze"?"Wróć do mapy lokacji":"Mapa lokacji jeszcze niedostępna";
