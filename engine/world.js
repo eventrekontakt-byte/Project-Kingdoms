@@ -1,3 +1,4 @@
+import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
 export const START={map:"overworld",floor:0,x:12,y:17};
 export const LOCATIONS={
@@ -34,12 +35,17 @@ for(const map of ["keep","inn"]){
  }
 }
 const portalKey=(m,f,x,y)=>`${m}:${f}:${x}:${y}`;
+for(const building of BUILDINGS){
+ const actual=BUILDING_ENTRIES[building.id];
+ const matching=PORTALS.find(([map,floor,x,y,target])=>map==="overworld"&&target===building.id);
+ if(!matching||matching[2]!==actual.x||matching[3]!==actual.y)throw Error("Building entrance does not face road: "+building.id);
+}
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
 export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
 export function mapSize(map){const l=LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
 export function objectAt(map,floor,x,y){return OBJECTS[portalKey(map,floor,x,y)]||null;}
 export function transitionAt(map,floor,x,y){return portalIndex.get(portalKey(map,floor,x,y))||null;}
-const entrances=[[24,20],[35,12],[39,23],[11,31]];
+const entrances=BUILDINGS.map(b=>[BUILDING_ENTRIES[b.id].x,BUILDING_ENTRIES[b.id].y]);
 export function tileAt(map,floor,x,y){
  if(!validLocation(map,floor))return "void";
  const {w,h}=mapSize(map);
@@ -47,15 +53,14 @@ export function tileAt(map,floor,x,y){
  const portal=transitionAt(map,floor,x,y);
  if(portal)return portal.map===map?(portal.floor>floor?"stairs-up":"stairs-down"):"door";
  if(map==="overworld"){
-  const structures=[[20,12,28,20],[35,10,41,14],[39,21,47,25],[11,29,18,33]];
-  if(structures.some(([x1,y1,x2,y2])=>x>=x1&&x<=x2&&y>=y1&&y<=y2))return "wall";
+  if(BUILDINGS.some(({bounds:[x1,y1,x2,y2]})=>x>=x1&&x<=x2&&y>=y1&&y<=y2))return "wall";
   if((x===5&&y>=4&&y<=30)||(y===39&&x>=5&&x<=54))return "water";
   if((y===21&&x>=10&&x<=47)||(x===34&&y>=12&&y<=21)||(x===38&&y>=21&&y<=26)||(x===10&&y>=21&&y<=34))return "road";
   if((x*17+y*31+x*y*7)%47===0&&!entrances.some(([ex,ey])=>Math.abs(ex-x)+Math.abs(ey-y)<=2))return "tree";
   return "grass";
  }
  if(x===0||y===0||x===w-1||y===h-1)return "wall";
- if(map==="keep"&&y===6&&x>=5&&x<=11&&x!==8)return "wall";
+ if(roomWall(map,floor,x,y,w,h))return "wall";
  if(objectAt(map,floor,x,y))return "object";
  return LOCATIONS[map].base==="wood"?"wood":floor===2?"marble":"stone";
 }
