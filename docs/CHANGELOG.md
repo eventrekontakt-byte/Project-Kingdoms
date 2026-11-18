@@ -1,5 +1,15 @@
 # Project Kingdoms — dziennik zmian
 
+## 0.1.3-alpha — generowanie wejść i stan drzwi (2026-11-18)
+- Dodano engine/buildings.js: reguły wyznaczania wejścia na ścianie najbliższej drodze oraz reguły ścian działowych.
+- Weryfikacja wejść w rejestrze lokacji przy uruchamianiu gry.
+- Wnętrza domu, karczmy i magazynu otrzymały ściany działowe z przejściami.
+- Drzwi mają wspólne identyfikatory wewnątrz i na zewnątrz oraz stany: otwarte, zamknięte, na klucz.
+- E / Zbadaj pozwala otwierać i zamykać drzwi, poza zamkniętymi na klucz.
+- Zapis schematu 3 przechowuje stan drzwi; zgodność z zapisami schematu 1 i 2.
+- Dodano warianty terenu: pagórki i łąki.
+- Wykonano statyczną kontrolę składni oraz testy logiczne rejestru przejść; testy manualne w przeglądarce pozostają do wykonania.
+
 ## 0.1-alpha — lokacje i interakcje (2026-11-18)
 - Dodano rejestr pięciu lokacji: Pogranicze, Warownia, Dom mieszkańca, Karczma i Magazyn.
 - Dodano osobne wnętrza, piętra, identyfikowane przejścia i pary schodów.
