@@ -7,12 +7,13 @@
 <link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
-<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.1 • lokacje i interakcje</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
+<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.1.2 • lokacje i interakcje</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
 <main id="gameShell">
 <section id="viewport" aria-label="Mapa świata"><canvas id="world" aria-label="Mapa gry"></canvas><div id="toast" role="status"></div></section>
 <aside id="sidePanel">
 <div class="panel"><h2 id="location">Pogranicze</h2><p id="coordinates"></p><p id="clock"></p><p class="hint">Wejdź na drzwi, aby wejść do budynku. Schody przenoszą między piętrami. Dotknij pola, aby wyznaczyć trasę.</p></div>
 <div class="panel"><h3>Widok</h3><div class="row"><button id="zoomOut">−</button><span id="zoomLabel">100%</span><button id="zoomIn">+</button><button id="centerCamera">⌖</button></div><label>Tryb sterowania <select id="controlMode"><option value="dpad">Przyciski</option><option value="joystick">Joystick</option></select></label></div>
+<div class="panel"><h3>Odwiedź lokację testową</h3><div class="row wrap"><button data-visit="keep">Warownia</button><button data-visit="house">Dom</button><button data-visit="inn">Karczma</button><button data-visit="warehouse">Magazyn</button></div><p class="hint">Przyciski testowe przenoszą przed wejście do budynku.</p></div>
 <div class="panel"><h3>Interakcje</h3><button id="interactBtn">Zbadaj / Otwórz (E)</button><p class="hint">Podejdź do skrzyni lub innego obiektu i użyj przycisku.</p></div>
 <div class="panel"><h3>Gra</h3><div class="row wrap"><button id="saveBtn">Zapisz</button><button id="loadBtn">Wczytaj</button><button id="pauseBtn">Pauza</button><button id="newBtn">Nowa gra</button></div><p class="hint" id="saveStatus">Stan lokalny tej przeglądarki</p></div>
 <div class="panel"><h3>Legenda</h3><p class="hint">🟦 bohater • 🟨 drzwi • 🟪 schody • ⬛ ściana • 🟩 trawa</p></div>
@@ -20,5 +21,5 @@
 <div id="touchControls" aria-label="Sterowanie dotykowe"><div id="dpad"><button data-dir="up">▲</button><div class="row"><button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button></div></div><div id="joystick" hidden><div id="stickBase"><div id="stickKnob"></div></div></div></div>
 </main>
 <dialog id="confirmNew"><form method="dialog"><h3>Nowa kampania?</h3><p>Obecny niezapisany postęp zostanie utracony.</p><div class="row"><button value="cancel">Anuluj</button><button value="confirm">Rozpocznij</button></div></form></dialog>
-<script type="module" src="./engine/game.js"></script>
+<script type="module" src="./engine/game.js?v=0.1.2"></script>
 </body></html>
