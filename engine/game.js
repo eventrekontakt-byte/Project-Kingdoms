@@ -50,6 +50,10 @@ function move(dir,fromPath=false){
  const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[dir];if(!d)return false;
  const p=state.player,nx=p.x+d[0],ny=p.y+d[1];
  const door=doorAt(p.map,p.floor,nx,ny);if(door&&(state.doors[door.id]||door.initial)!=="open"){if(!fromPath)notify(door.name+": użyj Zbadaj / Otwórz (E)");path=[];draw();return false;}
+ const bounds=mapSize(p.map);
+ if(p.map==="overworld"&&(nx<0||ny<0||nx>=bounds.w||ny>=bounds.h)){
+  path=[];strategic.open();notify("Opuszczono lokację — mapa świata");return true;
+ }
  if(blocked(p.map,p.floor,nx,ny)){if(!fromPath)notify("Droga zablokowana");draw();return false;}
  p.x=nx;p.y=ny;
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
@@ -105,12 +109,13 @@ $("interactBtn").addEventListener("click",performInteraction);
 $("interactMobile").addEventListener("click",performInteraction);
 const strategic=setupWorldMap({
  getState:()=>state,
- onTravel:target=>{if(state.player.map!=="overworld")return false;state.worldRegion=target;updateClock(120);hud();notify("Podróż zakończona. Region: "+target);return true;},
+ onTravel:target=>{state.worldRegion=target;updateClock(120);hud();notify("Podróż zakończona. Region: "+target);return true;},
  onEnter:()=>{follow();draw();}
 });
 $("worldMapMobile").addEventListener("click",()=>$("openWorldMap").click());
 const controls=setupControls(dir=>move(dir),mode=>{state.controlMode=mode;});
 window.addEventListener("keydown",e=>{
+ if(e.code==="Escape"&&!e.repeat&&!$("worldMapOverlay").hidden){e.preventDefault();strategic.close();return;}
  if(e.code==="KeyM"&&!e.repeat&&!e.target?.matches("input,select,textarea")){e.preventDefault();$("openWorldMap").click();return;}
  if(e.code==="KeyE"&&!e.repeat&&!e.target?.matches("input,select,textarea")){e.preventDefault();performInteraction();return;}
  const dir={ArrowUp:"up",KeyW:"up",ArrowDown:"down",KeyS:"down",ArrowLeft:"left",KeyA:"left",ArrowRight:"right",KeyD:"right"}[e.code];
