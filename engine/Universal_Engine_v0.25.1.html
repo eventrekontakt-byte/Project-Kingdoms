@@ -1,0 +1,1317 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827"><title>Universal Engine 0.23.2 — Interfejs Spaceru 2D</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101827;color:#eef3fb;font:15px system-ui,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#192a42;padding:12px 16px;border-bottom:1px solid #405472}
+header strong{letter-spacing:.05em}small,.muted{color:#aabbd1}
+nav{display:flex;overflow:auto;gap:5px;background:#142238;padding:8px;position:sticky;top:58px;z-index:4}
+button,input,select{font:inherit}button{color:white;background:#28466c;border:1px solid #53739b;border-radius:9px;padding:10px 12px;min-height:43px;cursor:pointer}
+button:disabled{opacity:.35;cursor:not-allowed}button.active,.primary{background:#2368ad}
+main{max-width:900px;margin:auto;padding:14px 14px 60px}
+.card{background:#19283e;border:1px solid #354b69;border-radius:12px;padding:15px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:9px}
+.stat{background:#101c30;padding:11px;border-radius:8px}.stat b{display:block;font-size:1.3rem}
+h2{font-size:1.12rem;margin:0 0 12px}h3{font-size:1rem;margin:14px 0 7px}
+.actions{display:flex;gap:6px;flex-wrap:wrap}.item{border-top:1px solid #40516a;padding:11px 0}
+label{display:block;margin:12px 0}input,select{background:#0f1c2e;border:1px solid #536d8d;color:white;border-radius:8px;padding:9px;max-width:100%}
+.note{font-size:.85rem;color:#aabbd1}.pill{font-size:.75rem;border:1px solid #6483a9;border-radius:30px;padding:3px 8px}
+.walkpad{display:grid;grid-template-columns:repeat(3,minmax(65px,95px));gap:7px;justify-content:center;margin:14px auto}.walkpad button{min-height:56px;touch-action:manipulation;user-select:none}.base-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;max-width:640px;margin:16px auto}.base-cell{padding:0;min-width:0;min-height:36px;aspect-ratio:1;border-radius:4px;font-weight:bold;font-size:clamp(12px,3vw,23px);touch-action:manipulation}.base-cell.empty{background:#20324a;color:#7793b4}.base-cell.floor{background:#64776b}.base-cell.wall{background:#566074}.base-cell.door{background:#ae7c43}.base-cell.bed{background:#417ca0}.base-cell.storage{background:#90714b}.base-cell.generator{background:#a08d37}.build-viewport{width:100%;max-width:640px;overflow:auto;margin:12px 0;border:1px solid #425a79;border-radius:8px}.build-viewport canvas{height:auto;aspect-ratio:auto}
+/* Mobile-first immersive exploration */
+body.walk-active{overflow:hidden}
+body.walk-active>header,body.walk-active>nav{display:none}
+body.walk-active main{padding:0;margin:0;max-width:none}
+.walk-screen{position:fixed;inset:0;inset:0 0 env(safe-area-inset-bottom) 0;z-index:30;background:#0b1520;display:flex;flex-direction:column;overflow:hidden;color:#edf4ff}
+.walk-top{position:absolute;top:env(safe-area-inset-top);left:0;right:0;z-index:8;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:10px 12px;background:linear-gradient(#08131de8,#08131d00);pointer-events:none}
+.walk-top>*{pointer-events:auto}.walk-title{font-weight:750;font-size:1rem}.walk-meta{font-size:.72rem;color:#b9cce2;margin-top:3px}
+.walk-top-actions{display:flex;gap:6px}.walk-icon{min-height:42px;min-width:42px;padding:8px;border-radius:12px;background:#1c3249eb;border:1px solid #58758c;font-size:1.05rem}
+.walk-world{position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#101f27}
+.walk-world .build-viewport{width:100%;max-width:none;height:100%;margin:0;border:0;border-radius:0;overflow:auto;display:flex;align-items:center;justify-content:center;scrollbar-width:none;overscroll-behavior:contain}
+.walk-world .build-viewport::-webkit-scrollbar{display:none}
+.walk-world canvas{flex-shrink:0;max-width:none;image-rendering:pixelated;touch-action:manipulation;border:0!important;border-radius:0!important}
+.walk-bottom{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 82px);left:12px;right:12px;display:flex;justify-content:space-between;align-items:end;pointer-events:none;z-index:7}
+.walk-bottom>*{pointer-events:auto}.walk-dpad{display:grid;grid-template-columns:repeat(3,49px);grid-template-rows:repeat(3,49px);gap:3px;user-select:none}.walk-dpad button{padding:0;min-height:49px;background:#172d43d9;border:1px solid #7d9ab0;border-radius:13px;font-size:1.4rem;touch-action:manipulation}.walk-dpad .blank{visibility:hidden}.walk-dpad .center{font-size:1rem;opacity:.6}
+.walk-interact{border-radius:50%;width:68px;height:68px;min-height:68px;background:#276b9eec;border:2px solid #aad3f1;font-size:.75rem;font-weight:bold}
+.walk-modes{position:absolute;bottom:env(safe-area-inset-bottom);left:0;right:0;z-index:9;display:flex;gap:6px;padding:9px 12px;background:#0c1a29f2;border-top:1px solid #3c5369}
+.walk-modes button{flex:1;min-width:0;padding:8px 3px;font-size:.82rem;min-height:52px;background:#243b53}.walk-modes button.active{background:#2769a6;border-color:#8ac9ff}
+.walk-toast{position:absolute;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 145px);z-index:8;padding:8px 12px;background:#102338db;border:1px solid #4a6c86;border-radius:10px;font-size:.8rem;pointer-events:none;max-height:72px;overflow:auto;opacity:0;visibility:hidden;transform:translateY(9px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease}.walk-toast.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.walk-panel{position:absolute;z-index:12;left:8px;right:8px;bottom:calc(env(safe-area-inset-bottom) + 73px);max-height:min(65vh,560px);overflow:auto;background:#172b40f7;border:1px solid #6887a3;border-radius:16px;padding:14px;box-shadow:0 8px 45px #0009}
+.walk-panel h3{margin:0 0 10px}.walk-panel .actions button{font-size:.8rem}.walk-panel label{margin:8px 0}.walk-panel .note{line-height:1.45}
+.walk-panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.walk-panel-head button{min-width:40px}
+.walk-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:6px}.walk-tools button{padding:8px 5px;font-size:.78rem;min-height:44px}
+@media(min-width:850px){.walk-bottom{bottom:100px}.walk-dpad{grid-template-columns:repeat(3,56px);grid-template-rows:repeat(3,56px)}.walk-dpad button{min-height:56px}.walk-panel{max-width:600px;left:auto;right:18px}.walk-modes{justify-content:center}.walk-modes button{flex:0 1 200px}}
+</style></head><body>
+<header><strong>UNIVERSAL ENGINE</strong> <span class="pill">v0.23.2 DEV</span><div id="clock" class="note"></div></header>
+<nav id="nav"></nav><main id="app"></main>
+<script>
+"use strict";
+const VERSION="0.25.1-dev",KEY="universal-engine-save-v0241";
+const MODS={economy:"Ekonomia",construction:"Budownictwo",population:"Mieszkańcy",world:"Mapa",walk:"Spacer 2D",base:"Edytor bazy",combat:"Walka",inventory:"Ekwipunek",rpg:"Postać",companions:"Towarzysze",quests:"Zadania",story:"Fabuła",diplomacy:"Dyplomacja",territory:"Terytoria",research:"Technologie",vehicles:"Pojazdy",events:"Wydarzenia",automation:"Automatyzacja",log:"Dziennik"};
+const BUILDINGS={
+ lumber:{name:"Tartak",cost:{gold:120,wood:15},days:2,production:{wood:6},workers:2},
+ farm:{name:"Farma",cost:{gold:100,wood:10},days:2,production:{food:9},workers:2},
+ market:{name:"Targowisko",cost:{gold:180,wood:20},days:3,production:{gold:24},workers:1}
+};
+const FRESH=()=>({schema:25,version:VERSION,day:1,hour:8,resources:{gold:1200,wood:25,food:40},reputation:0,place:"Twierdza",ruins:false,map:{discovered:["Twierdza","Las"],visited:["Twierdza"],scouted:[],zoom:1},walk:{positions:{},interacted:[],doors:{},room:"outdoor",dialogs:[],questFlags:[],baseLevel:0,interiorId:"magazyn",interiorLevel:0,returnPos:null},sites:{},buildMode:false,buildZoom:1,buildPreview:null,buildBrush:false,buildCamera:{x:0,y:0},worldSizes:{},cameraFollow:true,worldConfig:{biomeMode:"regional",terrainDensity:50},base:{tiles:{},tool:"floor",level:0,assignments:{},maxLevel:2,npcTick:0},combat:null,defeated:[],searched:[],technology:{points:0,unlocked:[],progress:null},fleet:[],activeVehicle:null,events:{pending:null,history:[],nextDay:3},automation:{autoSave:false,autoTrade:false,foodReserve:20},politics:{relations:{merchants:0,wardens:-20,nomads:10},treaties:{},territories:{Twierdza:"player",Las:"neutral",Ruiny:"neutral"},cooldowns:{},turns:0},story:{chapter:"arrival",choices:{},eventsSeen:[],ending:null},quests:{supplies:"active",ruins:"locked"},population:{total:12,happiness:65,residents:[]},buildings:[],inventory:[{id:"sword",name:"Miecz",qty:1,slot:"weapon",attack:3},{id:"coat",name:"Skórzana kurtka",qty:1,slot:"armor",defense:2},{id:"potion",name:"Mikstura leczenia",qty:2,heal:25}],hero:{name:"Bohater",level:1,xp:0,hp:100,maxHp:100,stats:{strength:5,agility:5,intellect:5},equipment:{weapon:null,armor:null},points:0},companions:[{id:"mira",name:"Mira",role:"Zwiadowczyni",recruited:false,affinity:0},{id:"borin",name:"Borin",role:"Wojownik",recruited:false,affinity:0}],log:["Rozpoczęto kampanię demonstracyjną."],modules:Object.fromEntries(Object.keys(MODS).map(k=>[k,true])),settings:{title:"Kraina demonstracyjna",difficulty:"normal",genre:"fantasy",seed:1}});
+let s=FRESH(),tab="home";
+let campaignDraft=null;
+let devEnabled=false,devAmount=100,devMessage="",devNpcs=[];
+const el=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const labels={gold:"Złoto",wood:"Drewno",food:"Żywność"};
+const fmtCost=c=>Object.entries(c).map(([k,v])=>v+" "+(labels[k]||k)).join(", ");
+let walkToastTimer=null;
+function showWalkToast(message,duration=3200){
+ const info=el("walkInfo");if(!info)return;
+ clearTimeout(walkToastTimer);
+ info.textContent=message;
+ info.classList.add("visible");
+ walkToastTimer=setTimeout(()=>{info.classList.remove("visible");},duration);
+}
+function note(t){s.log.unshift("Dzień "+s.day+": "+t);s.log=s.log.slice(0,120)}
+function has(cost){return Object.entries(cost).every(([k,v])=>s.resources[k]>=v)}
+function spend(cost){if(!has(cost))return false;Object.entries(cost).forEach(([k,v])=>s.resources[k]-=v);return true}
+function gain(values){Object.entries(values).forEach(([k,v])=>s.resources[k]=(s.resources[k]||0)+v)}
+function workersUsed(){return s.buildings.filter(b=>b.remaining===0).reduce((n,b)=>n+BUILDINGS[b.id].workers,0)}
+function freeWorkers(){return Math.max(0,s.population.total-workersUsed())}
+function xp(amount){s.hero.xp+=amount;while(s.hero.xp>=s.hero.level*100){s.hero.xp-=s.hero.level*100;s.hero.level++;s.hero.points+=2;s.hero.maxHp+=10;s.hero.hp=s.hero.maxHp;note("Awans! Poziom "+s.hero.level+"; +2 punkty cech.")}}
+function completeQuests(){
+ if(s.quests.supplies==="active"&&s.resources.wood>=40){s.quests.supplies="done";s.quests.ruins="active";gain({gold:100});xp(50);s.reputation++;note("Zadanie Dostawy ukończone: +100 złota, +1 reputacji.")}
+ if(s.quests.ruins==="active"&&s.ruins){s.quests.ruins="done";s.reputation+=2;xp(80);note("Zadanie Odkryj ruiny ukończone: +2 reputacji.")}
+}
+const LOCATIONS={
+ "Twierdza":{neighbors:["Las","Wioska"],cost:2,hours:3,x:105,y:180,kind:"osada",description:"Centrum administracyjne i gospodarcze."},
+ "Las":{neighbors:["Twierdza","Ruiny","Jezioro"],cost:2,hours:3,x:225,y:100,kind:"natura",description:"Szlak leśny, w którym można odnaleźć ruiny."},
+ "Ruiny":{neighbors:["Las","Kopalnia"],cost:3,hours:4,x:365,y:65,kind:"ruiny",description:"Pozostałości dawnej cywilizacji."},
+ "Wioska":{neighbors:["Twierdza","Jezioro"],cost:2,hours:2,x:110,y:300,kind:"osada",description:"Mała osada na południu."},
+ "Jezioro":{neighbors:["Wioska","Las","Kopalnia"],cost:2,hours:3,x:265,y:265,kind:"natura",description:"Wody i mokradła."},
+ "Kopalnia":{neighbors:["Ruiny","Jezioro"],cost:3,hours:4,x:405,y:220,kind:"surowce",description:"Złoża surowców."}
+};
+const MAP_SCOUT={Wioska:{gold:25},Jezioro:{food:12},Kopalnia:{wood:18}};
+function revealNeighbors(place){
+ for(const id of LOCATIONS[place].neighbors)if(!s.map.discovered.includes(id))s.map.discovered.push(id);
+}
+
+// Local tile maps: # wall, . ground, O object, E exit, ~ water.
+const WALK_MAPS={
+ "Twierdza":["############","#..........#","#..##......#","#..##..O...#","#..........#","#.....###..#","#..........#","#..O.......#","#..........#","#####EE#####"],
+ "Las":["############","#..O.......#","#..###.....#","#..........#","#....~~~...#","#....~~~...#","#..........#","#..O....##.#","#..........#","#####EE#####"],
+ "Ruiny":["############","#..##......#","#..##..O...#","#..........#","#.###......#","#..........#","#.....##...#","#..O..##...#","#..........#","#####EE#####"],
+ "Wioska":["############","#..........#","#..OO......#","#..........#","#....###...#","#....###...#","#..........#","#..........#","#..........#","#####EE#####"],
+ "Jezioro":["############","#..........#","#.~~~~.....#","#.~~~~.....#","#..........#","#.....~~~~.#","#.....~~~~.#","#..........#","#..........#","#####EE#####"],
+ "Kopalnia":["############","#...###....#","#...###.O..#","#..........#","#..####....#","#..........#","#..O.......#","#......##..#","#..........#","#####EE#####"]
+};
+// Większe mapy 22×18: zachowujemy oryginalne współrzędne NPC i wyjść.
+const WALK_W=22,WALK_H=18,TILE=32;
+for(const [place,original] of Object.entries(WALK_MAPS)){
+ const expanded=Array.from({length:WALK_H},(_,y)=>Array.from({length:WALK_W},(_,x)=>{
+  if(x===0||x===WALK_W-1||y===0||y===WALK_H-1)return "#";
+  if(y<original.length&&x<original[0].length){
+   const old=original[y][x];
+   if((x===original[0].length-1||y===original.length-1)&&old==="#")return ".";
+   return old;
+  }
+  const seed=x*37+y*71+place.length*13;
+  if(x>12&&y>10&&seed%31===0)return "O";
+  return ".";
+ }));
+ // Drugie wyjście na nowej, południowej krawędzi.
+ expanded[WALK_H-1][Math.floor(WALK_W/2)]="E";
+ WALK_MAPS[place]=expanded.map(row=>row.join(""));
+}
+
+
+// Dziedziniec v0.24.1: mapa zaprojektowana od zera, bez starych struktur.
+// Każde wejście to D w ZEWNĘTRZNEJ ścianie budynku; podejście od południa jest wolne.
+const CASTLE_LAYOUT=[
+ {id:"gatehouse",room:"brama",name:"Brama główna",x:31,y:8,w:9,h:7},
+ {id:"armory",room:"zbrojownia",name:"Zbrojownia",x:13,y:19,w:10,h:8},
+ {id:"barracks",room:"koszary",name:"Koszary",x:26,y:19,w:12,h:9},
+ {id:"infirmary",room:"lecznica",name:"Lecznica",x:42,y:19,w:11,h:8},
+ {id:"stable",room:"stajnia",name:"Stajnia",x:57,y:19,w:12,h:8},
+ {id:"workshop",room:"warsztat",name:"Warsztat",x:13,y:34,w:11,h:9},
+ {id:"storage",room:"magazyn",name:"Magazyn",x:28,y:34,w:11,h:9},
+ {id:"council",room:"sala",name:"Sala rady",x:43,y:34,w:13,h:10},
+ {id:"kitchen",room:"kuchnia",name:"Kuchnia",x:60,y:34,w:10,h:9},
+ {id:"cellar",room:"piwnica",name:"Piwnica",x:13,y:51,w:11,h:9},
+ {id:"library",room:"biblioteka",name:"Biblioteka",x:28,y:51,w:12,h:9},
+ {id:"chapel",room:"kaplica",name:"Kaplica",x:44,y:51,w:11,h:9},
+ {id:"tower",room:"wieza",name:"Wieża strażnicza",x:60,y:51,w:10,h:9}
+];
+const CASTLE_PORTALS=CASTLE_LAYOUT.map(b=>({id:b.id,x:b.x+Math.floor(b.w/2),y:b.y+b.h-1,room:b.room,name:b.name}));
+const castleTerrain=new Map();
+function castlePut(x,y,t){castleTerrain.set(x+","+y,t);}
+for(let y=5;y<=75;y++)for(let x=8;x<=75;x++)castlePut(x,y,".");
+// Mury obwodowe i trzy przechodnie bramy; wszystkie obiekty stoją wewnątrz.
+for(let x=8;x<=75;x++){castlePut(x,5,"#");castlePut(x,75,"#");}
+for(let y=5;y<=75;y++){castlePut(8,y,"#");castlePut(75,y,"#");}
+for(const x of [35,36,37,38])castlePut(x,75,"E");
+for(const y of [37,38])castlePut(8,y,"E");
+for(const y of [37,38])castlePut(75,y,"E");
+// Ścieżki, ogrody i studnia; nie blokują dostępu do drzwi.
+for(let y=15;y<=72;y++)for(let x=35;x<=37;x++)if(!castleTerrain.has(x+","+y)||castleTerrain.get(x+","+y)===".")castlePut(x,y,".");
+for(const b of CASTLE_LAYOUT){
+ for(let y=b.y;y<b.y+b.h;y++)for(let x=b.x;x<b.x+b.w;x++){
+  const wall=x===b.x||x===b.x+b.w-1||y===b.y||y===b.y+b.h-1;
+  castlePut(x,y,wall?"#":".");
+ }
+ castlePut(b.x+Math.floor(b.w/2),b.y+b.h-1,"D");
+}
+for(const [x,y] of [[20,14],[53,13],[68,13],[19,47],[52,47],[66,47],[18,66],[51,66],[66,66]])castlePut(x,y,"O");
+// Studnia i pomnik jako obiekty interaktywne, a nie nieprzechodnie mury.
+castlePut(41,30,"O");castlePut(41,65,"O");
+// World map v0.22: deterministic terrain calculated only for requested tiles.
+const WORLD_SIZES=[32,64,128,256,512,1024],VIEW_W=17,VIEW_H=13;
+function viewportTiles(){const zoom=Math.max(.25,Math.min(3,Number(s.buildZoom)||1));return {w:Math.max(6,Math.round(VIEW_W/zoom)),h:Math.max(5,Math.round(VIEW_H/zoom))};}
+function setWalkZoom(z){s.buildZoom=Math.max(.25,Math.min(3,Math.round(z*100)/100));s.buildPreview=null;drawWalk();const label=el("buildZoomLabel");if(label)label.textContent=Math.round(s.buildZoom*100)+"%";}
+
+function worldSize(place=s.place){return WORLD_SIZES.includes(s.worldSizes?.[place])?s.worldSizes[place]:128;}
+function outdoor(){return s.walk.room==="outdoor";}
+function tileHash(x,y,seed){let n=Math.imul(x,374761393)+Math.imul(y,668265263)+Math.imul(seed,1442695041);n=Math.imul(n^(n>>>13),1274126177);return (n^(n>>>16))>>>0;}
+// Sektory 32x32: generacja deterministyczna; cache LRU ograniczony do 12 sektorów.
+const SECTOR_SIZE=32,SECTOR_CACHE_LIMIT=12;
+const sectorCache=new Map();
+const BIOMES={grass:{name:"Łąki",color:"#72916b"},forest:{name:"Las",color:"#3c7950"},desert:{name:"Pustynia",color:"#c4a96c"},marsh:{name:"Bagna",color:"#658477"},rock:{name:"Skały",color:"#85827d"},water:{name:"Wody",color:"#4386a5"}};
+function biomeAt(x,y,place=s.place){
+ const seed=String(place).split("").reduce((n,c)=>n+c.charCodeAt(0),s.settings.seed||1);
+ const bx=Math.floor(x/24),by=Math.floor(y/24),v=tileHash(bx,by,seed+201)%100;
+ const primary=place==="Las"?"forest":place==="Jezioro"?"marsh":place==="Kopalnia"||place==="Ruiny"?"rock":"grass";
+ if(v<54)return primary;
+ if(v<69)return "grass";
+ if(v<81)return "forest";
+ if(v<89)return "rock";
+ if(v<96)return "marsh";
+ return "desert";
+}
+function rawWorldTile(x,y,place=s.place){
+ const size=worldSize(place);if(x<0||y<0||x>=size||y>=size)return "#";
+ if(place==="Twierdza"){return castleTerrain.get(x+","+y)??(x===0||y===0||x===size-1||y===size-1?"#":".");}
+ const old=WALK_MAPS[place];if(y<old.length&&x<old[0].length)return old[y][x];
+ if(x===0||y===0||x===size-1||y===size-1)return "#";
+ const seed=String(place).split("").reduce((n,c)=>n+c.charCodeAt(0),s.settings.seed||1);
+ const biome=biomeAt(x,y,place),noise=tileHash(x,y,seed+19)%100;
+ const density=Math.max(0,Math.min(100,s.worldConfig?.terrainDensity??50));
+ const limit=Math.floor(density/7);
+ if(biome==="marsh"&&noise<16+limit)return "~";
+ if(biome==="forest"&&noise<15+limit)return "O";
+ if(biome==="rock"&&noise<9+limit)return "#";
+ if(biome==="desert"&&noise<3+Math.floor(limit/2))return "O";
+ if(noise<Math.floor(limit/2))return "O";
+ return ".";
+}
+function worldSector(sx,sy,place=s.place){
+ const key=[place,worldSize(place),s.settings.seed,s.worldConfig?.terrainDensity??50,sx,sy].join("|");
+ if(sectorCache.has(key)){const found=sectorCache.get(key);sectorCache.delete(key);sectorCache.set(key,found);return found;}
+ const tiles=Array.from({length:SECTOR_SIZE},(_,ly)=>Array.from({length:SECTOR_SIZE},(_,lx)=>rawWorldTile(sx*SECTOR_SIZE+lx,sy*SECTOR_SIZE+ly,place)));
+ sectorCache.set(key,tiles);
+ if(sectorCache.size>SECTOR_CACHE_LIMIT)sectorCache.delete(sectorCache.keys().next().value);
+ return tiles;
+}
+function worldTile(x,y){
+ if(x<0||y<0||x>=worldSize()||y>=worldSize())return "#";
+ return worldSector(Math.floor(x/SECTOR_SIZE),Math.floor(y/SECTOR_SIZE))[y%SECTOR_SIZE][x%SECTOR_SIZE];
+}
+function worldSectorStats(){return {cached:sectorCache.size,total:Math.ceil(worldSize()/SECTOR_SIZE)**2};}
+function setTerrainDensity(value){s.worldConfig.terrainDensity=Math.max(0,Math.min(100,Math.round(Number(value)||0)));sectorCache.clear();s.buildPreview=null;render();}
+function visibleCamera(){
+ const size=outdoor()?worldSize():roomMap()[0].length;
+ const height=outdoor()?size:roomMap().length;
+ const pos=position(),vp=viewportTiles();
+ const x=!outdoor()?0:s.cameraFollow?pos.x-Math.floor(vp.w/2):s.buildCamera.x;
+ const y=!outdoor()?0:s.cameraFollow?pos.y-Math.floor(vp.h/2):s.buildCamera.y;
+ const cam={x:Math.max(0,Math.min(Math.max(0,size-vp.w),Math.floor(x))),y:Math.max(0,Math.min(Math.max(0,height-vp.h),Math.floor(y)))};
+ s.buildCamera=cam;return cam;
+}
+function cameraMove(dx,dy){const cam=visibleCamera();s.cameraFollow=false;const [w,h]=buildDims(),vp=viewportTiles();s.buildCamera={x:Math.max(0,Math.min(w-vp.w,cam.x+dx)),y:Math.max(0,Math.min(h-vp.h,cam.y+dy))};drawWalk();}
+function cameraCenter(){s.cameraFollow=true;drawWalk();}
+function setWorldSize(n){if(!WORLD_SIZES.includes(n))return;s.worldSizes[s.place]=n;sectorCache.clear();s.buildPreview=null;s.cameraFollow=true;const pos=position();if(pos.x>=n||pos.y>=n)s.walk.positions[s.place+":outdoor"]={x:5,y:8};render();}
+// 0.24: odrębne wnętrza zamku; E oznacza przejście powrotne.
+const CASTLE_ROOMS={
+ magazyn:{name:"Magazyn",map:["##############","#............#","#..O....O....#","#............#","#......##....#","#......##....#","#............#","#...O........#","#............#","#............#","######EE######"],spawn:{x:6,y:8},npc:{id:"keeper",x:3,y:5,name:"Magazynier",dialog:["Zapasy są pod kontrolą.","Skrzynie są przygotowane do transportu."]}},
+ koszary:{name:"Koszary",map:["################","#..............#","#.O..O..O..O..#","#..............#","#..............#","#...####.......#","#..............#","#.O..O..O..O..#","#..............#","#..............#","#######EE#######"],spawn:{x:7,y:8},npc:{id:"captain",x:4,y:4,name:"Kapitan straży",dialog:["Patrole zabezpieczają mury.","Potrzebujemy lepszego wyposażenia."]}},
+ warsztat:{name:"Warsztat",map:["##############","#............#","#.OO...OO....#","#............#","#......##....#","#............#","#.OO.........#","#............#","#............#","######EE######"],spawn:{x:6,y:7},npc:{id:"smith",x:3,y:5,name:"Rzemieślnik",dialog:["Tu naprawiamy narzędzia.","Z czasem uruchomimy produkcję."]}},
+ sala:{name:"Sala rady",map:["##################","#................#","#................#","#......OO........#","#......OO........#","#................#","#...O............#","#................#","#................#","########EE########"],spawn:{x:8,y:7},npc:{id:"advisor",x:4,y:6,name:"Doradca",dialog:["Rada oczekuje decyzji zarządcy.","Twierdza rozwija się z każdym dniem."]}},
+ piwnica:{name:"Piwnica",map:["##############","#............#","#.O..O..O....#","#............#","#..####......#","#............#","#.O.....O....#","#............#","#............#","######EE######"],spawn:{x:6,y:7},npc:{id:"cellar",x:3,y:3,name:"Opiekun piwnicy",dialog:["Podziemia są chłodne i bezpieczne.","Trzeba pilnować zapasów."]}},
+ wieza:{name:"Wieża strażnicza",map:["##########","#........#","#..O.....#","#........#","#........#","#.....O..#","#........#","####EE####"],spawn:{x:4,y:5},npc:{id:"watcher",x:3,y:3,name:"Strażnik wieży",dialog:["Z wieży widać cały dziedziniec.","Na razie nie widać zagrożenia."]}}
+};
+for(const [id,name,npcName] of [
+ ["brama","Brama główna","Odźwierny"],["zbrojownia","Zbrojownia","Zbrojmistrz"],
+ ["lecznica","Lecznica","Medyk"],["stajnia","Stajnia","Stajenny"],
+ ["kuchnia","Kuchnia","Kucharz"],["biblioteka","Biblioteka","Bibliotekarz"],
+ ["kaplica","Kaplica","Kapelan"]]){
+ CASTLE_ROOMS[id]={name,map:["################","#..............#","#..O.......O...#","#..............#","#..............#","#......OO......#","#..............#","#..............#","#..............#","#######EE#######"],spawn:{x:7,y:8},npc:{id:"npc_"+id,x:4,y:4,name:npcName,dialog:["Witaj w miejscu: "+name+".","Twierdza wymaga dalszej odbudowy."]}};
+}
+// 0.24.3: independent interior floors and stairs; no outdoor overlays.
+const CASTLE_FLOORS={
+ wieza:[
+  {name:"Parter wieży",map:["##########","#........#","#..O.....#","#........#","#.....S..#","#........#","#........#","####EE####"],spawn:{x:4,y:5}},
+  {name:"Strażnica — piętro 1",map:["##########","#........#","#...O....#","#........#","#..T..S..#","#........#","#........#","##########"],spawn:{x:3,y:5}},
+  {name:"Punkt obserwacyjny — piętro 2",map:["##########","#........#","#........#","#..O.....#","#.....T..#","#........#","#........#","##########"],spawn:{x:6,y:5}}
+ ],
+ biblioteka:[
+  {name:"Biblioteka — parter",map:["################","#..............#","#..O.......O...#","#..............#","#..............#","#......OO......#","#............S.#","#..............#","#..............#","#######EE#######"],spawn:{x:7,y:8}},
+  {name:"Archiwum — piętro 1",map:["################","#..............#","#..O..O..O.....#","#..............#","#..............#","#..O..O..O.....#","#............T.#","#..............#","#..............#","################"],spawn:{x:13,y:7}}
+ ],
+ koszary:[
+  {name:"Koszary — parter",map:["################","#..............#","#.O..O..O..O..#","#..............#","#..............#","#...####.......#","#............S.#","#.O..O..O..O..#","#..............#","#..............#","#######EE#######"],spawn:{x:7,y:8}},
+  {name:"Sypialnia straży — piętro 1",map:["################","#..............#","#.O..O..O..O..#","#..............#","#..............#","#..............#","#............T.#","#.O..O..O..O..#","#..............#","#..............#","################"],spawn:{x:13,y:7}}
+ ],
+ piwnica:[
+  {name:"Piwnica — poziom -1",map:["##############","#............#","#.O..O..O....#","#............#","#..####......#","#............#","#.O.....O..S.#","#............#","#............#","######EE######"],spawn:{x:6,y:7}},
+  {name:"Krypta — poziom -2",map:["##############","#............#","#...O...O....#","#............#","#............#","#............#","#..........T.#","#............#","#............#","##############"],spawn:{x:11,y:7}}
+ ]
+};
+function interiorFloors(){return CASTLE_FLOORS[s.walk.interiorId]||[{...CASTLE_ROOMS[s.walk.interiorId]}];}
+function interiorFloor(){return interiorFloors()[s.walk.interiorLevel||0]||interiorFloors()[0];}
+function interiorPosKey(){return s.place+":interior:"+s.walk.interiorId+":"+(s.walk.interiorLevel||0);}
+function interiorStairAt(x,y){return (interiorFloor().map[y]||"")[x];}
+function interiorChangeFloor(delta){
+ if(s.walk.room!=="interior")return;
+ const next=(s.walk.interiorLevel||0)+delta,levels=interiorFloors(),pos=position();
+ if(next<0||next>=levels.length){showWalkToast("Nie ma kolejnego poziomu.");return;}
+ const marker=interiorStairAt(pos.x,pos.y);
+ if(delta>0&&marker!=="S"||delta<0&&marker!=="T"){showWalkToast("Podejdź do schodów oznaczonych strzałką.");return;}
+ const target=levels[next].map,need=delta>0?"T":"S";let landing=null;
+ for(let y=0;y<target.length;y++)for(let x=0;x<target[y].length;x++)if(target[y][x]===need)landing={x,y};
+ if(!landing){showWalkToast("Błąd schodów: na docelowym piętrze brakuje zejścia.",4500);return;}
+ s.walk.interiorLevel=next;s.walk.positions[interiorPosKey()]=landing;
+ s.cameraFollow=true;s.buildPreview=null;
+ showWalkToast("Przechodzisz: "+levels[next].name+" • S = w górę, T = w dół",4000);render();
+}
+function currentInterior(){return CASTLE_ROOMS[s.walk.interiorId]||CASTLE_ROOMS.magazyn;}
+function enterCastleRoom(id){
+ const room=CASTLE_ROOMS[id];if(!room||s.place!=="Twierdza")return;
+ s.walk.returnPos={...position()};s.walk.interiorId=id;s.walk.interiorLevel=0;s.walk.room="interior";
+ s.walk.positions[interiorPosKey()]??={...(interiorFloor().spawn||room.spawn)};
+ s.buildMode=false;s.buildPreview=null;s.cameraFollow=true;walkPanel="";
+ showWalkToast("Wchodzisz: "+room.name);render();
+}
+function leaveCastleRoom(){
+ const back=s.walk.returnPos;
+ s.walk.room="outdoor";s.walk.interiorLevel=0;if(back)s.walk.positions[s.place+":outdoor"]={x:back.x,y:back.y+1};
+ s.buildMode=false;s.buildPreview=null;s.cameraFollow=true;walkPanel="";
+ showWalkToast("Wracasz na dziedziniec");render();
+}
+const WALK_ENTITIES={
+ "Twierdza":[{id:"elder",x:36,y:69,type:"npc",name:"Zarządca",dialog:["Twierdza potrzebuje dostaw drewna.","Rozmawiaj z mieszkańcami, aby poznać ich potrzeby."]},
+ ...CASTLE_PORTALS.map(p=>({id:p.id,x:p.x,y:p.y,type:"door",name:p.name,room:p.room})),
+ {id:"well",x:41,y:30,type:"npc",name:"Studnia",dialog:["Studnia dostarcza wodę mieszkańcom.","Woda jest czysta."]},
+ {id:"monument",x:41,y:65,type:"npc",name:"Pomnik",dialog:["Pomnik dawnych obrońców twierdzy.","Pamięć o obrońcach trwa."]}],
+ "Las":[{id:"ranger",x:9,y:3,type:"npc",name:"Strażniczka",dialog:["W ruinach można znaleźć cenne materiały.","Uważaj na bandytów."]}],
+ "Wioska":[{id:"trader",x:7,y:4,type:"npc",name:"Kupiec",dialog:["Witaj, podróżniku!","Handel rozwija osadę."]}],
+ "Ruiny":[{id:"tablet",x:8,y:4,type:"quest",name:"Stara tablica"}]
+};
+function roomMap(){return s.walk.room==="base"?baseWalkMap():s.walk.room==="interior"?interiorFloor().map:WALK_MAPS[s.place];}
+function baseWalkMap(){return Array.from({length:BASE_H},(_,y)=>Array.from({length:BASE_W},(_,x)=>{const t=baseTileAt(s.walk.baseLevel,x,y);return t.structure==="wall"?"#":t.structure==="door"?"D":t.floor?(t.furniture?"O":"."):"#";}).join(""));}
+function enterBase(){if(s.place!=="Twierdza")return alert("Baza znajduje się w Twierdzy.");const p=baseEntry(s.base.level);if(!p)return alert("Zbuduj przynajmniej jedno wolne pole podłogi.");s.walk.room="base";s.walk.baseLevel=s.base.level;s.walk.positions["Twierdza:base:"+s.walk.baseLevel]??=p;tab="walk";render();}
+function baseEntry(level){for(let y=0;y<BASE_H;y++)for(let x=0;x<BASE_W;x++){const t=baseTileAt(level,x,y);if(t.floor&&!t.structure&&!t.furniture)return {x,y};}return null;}
+function baseLiftAt(level,x,y){return baseTileAt(level,x,y).furniture==="lift";}
+function baseLiftChange(delta){
+ const p=position(),target=s.walk.baseLevel+delta;
+ if(target<0||target>2)return;
+ if(!baseLiftAt(s.walk.baseLevel,p.x,p.y)||!baseLiftAt(target,p.x,p.y))return alert("Winda musi znajdować się na tym samym polu obu kondygnacji.");
+ s.walk.baseLevel=target;s.base.level=target;s.walk.positions["Twierdza:base:"+target]={...p};render();
+}
+function baseFloorChange(delta){const level=s.walk.baseLevel+delta;if(level<0||level>2)return;const p=baseEntry(level);if(!p)return alert("Na docelowym poziomie nie ma wolnej podłogi.");s.walk.baseLevel=level;s.base.level=level;s.walk.positions["Twierdza:base:"+level]??=p;render();}
+function baseNpcPositions(){
+ const ops=baseOperations();return ops.rooms.filter(r=>r.enclosed&&r.workers>0&&r.id.startsWith(s.walk.baseLevel+":")).flatMap(r=>{
+  const cells=r.cells.filter(([x,y])=>baseWalkMap()[y][x]===".");
+  return Array.from({length:Math.min(r.workers,3)},(_,i)=>cells.length?{x:cells[(s.base.npcTick+i*2)%cells.length][0],y:cells[(s.base.npcTick+i*2)%cells.length][1],name:"Pracownik "+(i+1)}:null).filter(Boolean);
+ });
+}
+function localEntities(){const original=s.walk.room==="base"?[]:s.walk.room==="interior"?(s.walk.interiorLevel===0?[{...currentInterior().npc,type:"npc"}]:[]):WALK_ENTITIES[s.place]||[];return original.concat(devNpcs.filter(n=>n.place===s.place&&n.room===s.walk.room&&n.level===(s.walk.room==="base"?s.walk.baseLevel:0)));}
+function localKey(id){return s.place+":"+s.walk.room+":"+(s.walk.room==="interior"?s.walk.interiorId+":"+(s.walk.interiorLevel||0)+":" : "")+id;}
+function near(a,b){return Math.abs(a.x-b.x)+Math.abs(a.y-b.y)<=1;}
+function position(){const key=s.walk.room==="base"?"Twierdza:base:"+s.walk.baseLevel:s.place+":"+s.walk.room+(s.walk.room==="interior"?":"+s.walk.interiorId+":"+(s.walk.interiorLevel||0):"");const x=s.walk.positions[key];return x&&Number.isInteger(x.x)&&Number.isInteger(x.y)?x:s.walk.room==="base"?(baseEntry(s.walk.baseLevel)||{x:0,y:0}):s.walk.room==="interior"?{...interiorFloor().spawn}:(s.place==="Twierdza"?{x:36,y:69}:{x:5,y:8});}
+// 0.25: jedna reguła kolizji dla ruchu i diagnostyki; nie tworzy całej mapy w pamięci.
+function collisionReason(x,y){
+ const map=roomMap();
+ if(!Number.isInteger(x)||!Number.isInteger(y))return "Nieprawidłowe współrzędne";
+ if(x<0||y<0||x>=(outdoor()?worldSize():map[0].length)||y>=(outdoor()?worldSize():map.length))return "Granica mapy";
+ const tile=outdoor()?worldTile(x,y):(map[y]||"")[x];
+ if(tile==="#")return "Ściana lub skała";
+ if(tile==="~")return "Woda lub bagno";
+ if(tile==="O")return "Przeszkoda terenowa lub wyposażenie";
+ if(!".EDST".includes(tile))return "Nieprzechodnie pole";
+ if(s.walk.room==="outdoor"){
+  const built=s.sites[siteKey(x,y)]||{};
+  if(built.structure==="wall")return "Wybudowana ściana";
+  if(built.furniture&&!(["cable","lift"].includes(built.furniture)))return "Wyposażenie blokuje drogę";
+  if(s.place==="Twierdza"&&CASTLE_LAYOUT.some(b=>x>b.x&&x<b.x+b.w-1&&y>b.y&&y<b.y+b.h-1))return "Wnętrze budynku — skorzystaj z drzwi";
+ }
+ if(localEntities().some(e=>e.x===x&&e.y===y&&e.type==="npc"))return "Postać blokuje przejście";
+ return "";
+}
+function passable(place,x,y){return !collisionReason(x,y);}
+let lastCollisionNotice=0;
+function notifyCollision(reason){
+ const now=Date.now();if(now-lastCollisionNotice<1100)return;
+ lastCollisionNotice=now;showWalkToast("⛔ "+reason,1400);
+}
+// BFS po aktualnej mapie: diagnozuje osiągalność wejść bez automatycznego poruszania.
+function castleAccessReport(){
+ const start={x:36,y:69},queue=[start],seen=new Set([start.x+","+start.y]);
+ for(let i=0;i<queue.length;i++){
+  const p=queue[i];for(const [dx,dy] of [[0,1],[0,-1],[1,0],[-1,0]]){
+   const x=p.x+dx,y=p.y+dy,key=x+","+y;
+   if(x<8||x>75||y<5||y>75||seen.has(key))continue;
+   const tile=castleTerrain.get(key)||".";
+   if(tile==="#"||tile==="O")continue;
+   if(CASTLE_LAYOUT.some(b=>x>b.x&&x<b.x+b.w-1&&y>b.y&&y<b.y+b.h-1))continue;
+   seen.add(key);queue.push({x,y});
+  }
+ }
+ const inaccessible=CASTLE_PORTALS.filter(p=>!seen.has(p.x+","+p.y));
+ const wrongDoors=CASTLE_PORTALS.filter(p=>castleTerrain.get(p.x+","+p.y)!=="D");
+ const stairs=[];
+ for(const [id,floors] of Object.entries(CASTLE_FLOORS))for(let i=0;i<floors.length-1;i++){
+  if(!floors[i].map.some(r=>r.includes("S"))||!floors[i+1].map.some(r=>r.includes("T")))stairs.push(id+" "+i+"→"+(i+1));
+ }
+ return {checked:CASTLE_PORTALS.length,reachable:CASTLE_PORTALS.length-inaccessible.length,inaccessible:inaccessible.map(p=>p.name),wrongDoors:wrongDoors.map(p=>p.name),stairs,tiles:seen.size};
+}
+// 0.25.1: A* po aktualnej lokacji, limit ekspansji chroni telefon na wielkich mapach.
+let autoWalkTimer=null,autoWalkPath=[],autoWalkRoom="";
+function navigationRoomKey(){return s.place+":"+s.walk.room+":"+(s.walk.interiorId||"")+":"+(s.walk.interiorLevel||0)+":"+(s.walk.baseLevel||0);}
+function stopAutoWalk(silent=true){if(autoWalkTimer!==null)clearInterval(autoWalkTimer);autoWalkTimer=null;autoWalkPath=[];autoWalkRoom="";if(!silent)showWalkToast("Automatyczny marsz zatrzymany.",1600);}
+function findWalkPath(goalX,goalY){
+ const start=position(),goal={x:goalX,y:goalY};
+ if(collisionReason(goal.x,goal.y))return {path:[],error:"Cel jest zablokowany: "+collisionReason(goal.x,goal.y)};
+ if(start.x===goal.x&&start.y===goal.y)return {path:[],error:"Już jesteś w tym miejscu."};
+ const distance=(x,y)=>Math.abs(x-goal.x)+Math.abs(y-goal.y);
+ // Ograniczenie do 6000 pól oraz maksymalnie 120 kroków od startu.
+ if(distance(start.x,start.y)>120)return {path:[],error:"Cel zbyt daleko. Wskaż bliższy punkt."};
+ const key=(x,y)=>x+","+y, startKey=key(start.x,start.y),endKey=key(goal.x,goal.y);
+ const open=[{x:start.x,y:start.y,g:0,f:distance(start.x,start.y)}],best=new Map([[startKey,0]]),parent=new Map(),closed=new Set();
+ let expanded=0;
+ while(open.length&&expanded<6000){
+  let at=0;for(let i=1;i<open.length;i++)if(open[i].f<open[at].f)at=i;
+  const cur=open.splice(at,1)[0],ck=key(cur.x,cur.y);if(closed.has(ck))continue;closed.add(ck);expanded++;
+  if(ck===endKey){const path=[];let k=ck;while(k!==startKey){const [x,y]=k.split(",").map(Number);path.push({x,y});k=parent.get(k);if(!k)return {path:[],error:"Błąd odtwarzania trasy."};}path.reverse();return {path,error:""};}
+  for(const [dx,dy] of [[0,-1],[1,0],[0,1],[-1,0]]){
+   const x=cur.x+dx,y=cur.y+dy,nk=key(x,y),g=cur.g+1;
+   if(g>180||closed.has(nk)||g>=(best.get(nk)??Infinity)||collisionReason(x,y))continue;
+   best.set(nk,g);parent.set(nk,ck);open.push({x,y,g,f:g+distance(x,y)});
+  }
+ }
+ return {path:[],error:expanded>=6000?"Trasa zbyt złożona. Wybierz bliższy punkt.":"Nie znaleziono przejścia do celu."};
+}
+function startAutoWalk(x,y){
+ stopAutoWalk();if(s.buildMode)return;
+ const result=findWalkPath(x,y);if(result.error){showWalkToast("🧭 "+result.error,3000);return;}
+ autoWalkPath=result.path;autoWalkRoom=navigationRoomKey();
+ showWalkToast("🧭 Trasa: "+autoWalkPath.length+" pól. Dotknij strzałki, aby przerwać.",2400);drawWalk();
+ autoWalkTimer=setInterval(()=>{
+  if(tab!=="walk"||s.buildMode||autoWalkRoom!==navigationRoomKey()||!autoWalkPath.length){stopAutoWalk();drawWalk();return;}
+  const next=autoWalkPath[0],pos=position();
+  if(Math.abs(next.x-pos.x)+Math.abs(next.y-pos.y)!==1||collisionReason(next.x,next.y)){stopAutoWalk();showWalkToast("🧭 Trasa zablokowana.",2200);drawWalk();return;}
+  autoWalkPath.shift();moveWalk(next.x-pos.x,next.y-pos.y,true);
+  if(autoWalkRoom!==navigationRoomKey()||!autoWalkPath.length){stopAutoWalk();drawWalk();}
+ },155);
+}
+function walkCanvasTarget(event){
+ const c=el("walkCanvas");if(!c)return;
+ const rect=c.getBoundingClientRect(),cam=visibleCamera();
+ const x=Math.floor((event.clientX-rect.left)*c.width/rect.width/TILE)+cam.x;
+ const y=Math.floor((event.clientY-rect.top)*c.height/rect.height/TILE)+cam.y;
+ startAutoWalk(x,y);
+}
+function moveWalk(dx,dy,fromAuto=false){
+ if(!fromAuto&&autoWalkTimer!==null)stopAutoWalk();
+ if(s.buildMode)return;
+ if(s.combat)return alert("Najpierw zakończ walkę.");
+ const pos=position(),x=pos.x+dx,y=pos.y+dy;
+ const blocked=collisionReason(x,y);if(blocked){notifyCollision(blocked);return;}
+ if(s.walk.room==="interior"){
+  const mark=interiorStairAt(x,y);
+  if(mark==="S"||mark==="T"){
+   s.walk.positions[interiorPosKey()]={x,y};interiorChangeFloor(mark==="S"?1:-1);return;
+  }
+  if(mark==="E"){leaveCastleRoom();return;}
+ }
+ if(s.walk.room==="outdoor"&&s.place==="Twierdza"){const portal=CASTLE_PORTALS.find(p=>p.x===x&&p.y===y);if(portal){s.walk.positions["Twierdza:outdoor"]={x,y};enterCastleRoom(portal.room);return;}}
+ s.walk.positions[s.walk.room==="base"?"Twierdza:base:"+s.walk.baseLevel:s.place+":"+s.walk.room+(s.walk.room==="interior"?":"+s.walk.interiorId+":"+(s.walk.interiorLevel||0):"")]={x,y};
+ if(s.walk.room==="base")s.base.npcTick++;
+ drawWalk();
+}
+function interactWalk(){
+ const pos=position(),map=roomMap();
+ if(s.walk.room==="base"){
+  const nearTiles=[[0,0],[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy])=>({x:pos.x+dx,y:pos.y+dy})).filter(p=>p.x>=0&&p.y>=0&&p.x<BASE_W&&p.y<BASE_H);
+  const worker=baseNpcPositions().find(p=>near(p,pos));if(worker){showWalkToast(worker.name+": Wykonuję przydzielone zadania.");return;}
+  const item=nearTiles.map(p=>({p,t:baseTileAt(s.walk.baseLevel,p.x,p.y)})).find(o=>o.t.furniture);
+  if(item){const name=BASE_TOOLS[item.t.furniture]?.name||"Wyposażenie";showWalkToast(name+" — element bazy, poziom "+s.walk.baseLevel);return;}
+  showWalkToast("Brak wyposażenia w pobliżu. Zmień poziom przyciskami poniżej.");return;
+ }
+ const entity=localEntities().find(e=>near(pos,e));
+ if(entity){
+  if(entity.type==="npc"){const key=localKey(entity.id),visited=s.walk.dialogs.includes(key);if(!visited)s.walk.dialogs.push(key);showWalkToast(entity.name+": "+entity.dialog[visited?1:0]);return;}
+  if(entity.type==="door"){s.walk.doors[localKey(entity.id)]=true;enterCastleRoom(entity.room||"magazyn");return;}
+  if(entity.type==="quest"){const key=localKey(entity.id);if(s.walk.questFlags.includes(key)){showWalkToast("Tablica została już odczytana.");return;}s.walk.questFlags.push(key);s.reputation+=1;gain({gold:25});note("Odczytano starą tablicę: +25 złota i +1 reputacji.");showWalkToast("Odczytano tablicę: +25 złota i +1 reputacji.");return;}
+ }
+ const tile=[[0,0],[0,1],[0,-1],[1,0],[-1,0]].map(([dx,dy])=>({x:pos.x+dx,y:pos.y+dy})).find(({x,y})=>x>=0&&y>=0&&x<buildDims()[0]&&y<buildDims()[1]&&"OEST".includes(outdoor()?worldTile(x,y):map[y][x]));
+ if(!tile){showWalkToast("Brak obiektu w pobliżu.");return;}
+ if(s.walk.room==="interior"&&"ST".includes(interiorStairAt(tile.x,tile.y))){s.walk.positions[interiorPosKey()]={x:tile.x,y:tile.y};interiorChangeFloor(interiorStairAt(tile.x,tile.y)==="S"?1:-1);return;}
+ if((outdoor()?worldTile(tile.x,tile.y):map[tile.y][tile.x])==="E"){
+  if(s.walk.room==="interior"){leaveCastleRoom();return;}
+  tab="world";render();return;
+ }
+ const key=localKey("chest:"+tile.x+":"+tile.y);
+ if(s.walk.interacted.includes(key)){showWalkToast("Skrzynia jest pusta.");return;}
+ s.walk.interacted.push(key);gain({gold:10});note("Przeszukano skrzynię: +10 złota.");
+ showWalkToast("Znaleziono 10 złota!");
+}
+let walkPanel="";
+function toggleWalkPanel(name){walkPanel=walkPanel===name?"":name;render();}
+function walkPanelView(){
+ if(!walkPanel)return "";
+ let body="",title="";
+ if(walkPanel==="build"){
+  title="Narzędzia budowania";
+  body='<p class="note">Wybierz element. Pierwsze dotknięcie pola pokazuje podgląd i koszt, drugie zatwierdza. Zmiana narzędzia usuwa zaznaczenie.</p><div class="walk-tools">'+Object.entries(BASE_TOOLS).map(([k,v])=>'<button data-base-tool="'+k+'" class="'+(s.base.tool===k?'active':'')+'">'+esc(v.name)+'</button>').join("")+'</div>';
+ }else if(walkPanel==="camera"){
+  title="Kamera i widok";
+  body='<div class="actions">'+button('−','buildZoom','-0.25')+'<span class="pill" id="buildZoomLabel">'+Math.round(s.buildZoom*100)+'%</span>'+button('+','buildZoom','0.25')+button('Śledź postać','cameraCenter')+'</div><div class="actions">'+button('◀','cameraMove','-4,0')+button('▲','cameraMove','0,-4')+button('▼','cameraMove','0,4')+button('▶','cameraMove','4,0')+'</div><p class="note">Dwa palce: zmiana skali terenu bez zmniejszania okna. Kamera może podążać za postacią lub być przesuwana ręcznie.</p>';
+ }else if(walkPanel==="map"){
+  title="Mapa i teren";
+  body=(outdoor()?'<label>Rozmiar mapy <select id="worldSizeSelect">'+WORLD_SIZES.map(n=>'<option value="'+n+'" '+(worldSize()===n?'selected':'')+'>'+n+' × '+n+'</option>').join('')+'</select></label><label>Zagęszczenie przeszkód <select id="terrainDensitySelect">'+[0,25,50,75,100].map(n=>'<option value="'+n+'" '+(s.worldConfig.terrainDensity===n?'selected':'')+'>'+n+'%</option>').join('')+'</select></label>':'<p class="note">Rozmiar wnętrza jest stały.</p>')+'<p class="note">Sektory 32 × 32 • biomy: łąka, las, pustynia, bagno, skały</p>';
+ }else if(walkPanel==="menu"){
+  title="Menu eksploracji";
+  body='<div class="actions">'+button('Mapa świata','walkGoTab','world')+button('Ekwipunek','walkGoTab','inventory')+button('Postać','walkGoTab','rpg')+button('Panel DEV','walkGoTab','dev',!devEnabled)+button('Zamknij spacer','walkGoTab','home')+(s.walk.room==='interior'?button('Wyjdź na dziedziniec','leaveInterior'):'')+'</div>'+(s.walk.room==='interior'&&interiorFloors().length>1?'<p class="note">Schody: wejdź na pole ↑ lub ↓. Poziom '+(s.walk.interiorLevel+1)+'/'+interiorFloors().length+'</p>':'')+(s.walk.room==='base'?'<div class="actions">'+button('Winda ↓','baseLiftLevel','-1',s.walk.baseLevel<=0)+button('Winda ↑','baseLiftLevel','1',s.walk.baseLevel>=2)+button('Wyjdź z bazy','leaveBase')+'</div>':'');
+ }
+ return '<section class="walk-panel" role="dialog" aria-label="'+title+'"><div class="walk-panel-head"><h3>'+title+'</h3><button data-action="walkClosePanel" aria-label="Zamknij panel">✕</button></div>'+body+'</section>';
+}
+function walkView(){
+ const room=s.walk.room==='base'?'Baza — poziom '+s.walk.baseLevel:s.walk.room==='interior'?interiorFloor().name:s.place;
+ const p=position();
+ return '<section class="walk-screen" aria-label="Eksploracja 2D">'+
+ '<div class="walk-world"><div class="build-viewport"><canvas id="walkCanvas" width="384" height="320" aria-label="Mapa lokacji — dotknij celu, aby rozpocząć marsz" style="display:block;width:100%;height:auto;image-rendering:pixelated;background:#152538"></canvas></div></div>'+
+ '<div class="walk-top"><div><div class="walk-title">'+esc(room)+'</div><div class="walk-meta">Dzień '+s.day+' • '+String(s.hour).padStart(2,'0')+':00 • <span id="walkCoords">X: '+p.x+' Y: '+p.y+'</span></div></div><div class="walk-top-actions"><button class="walk-icon" data-action="walkPanel" data-id="map" aria-label="Mapa i teren">▦</button><button class="walk-icon" data-action="walkPanel" data-id="camera" aria-label="Kamera">⌖</button><button class="walk-icon" data-action="walkPanel" data-id="menu" aria-label="Menu">☰</button></div></div>'+
+ '<div class="walk-bottom"><div class="walk-dpad" style="'+(s.buildMode?'visibility:hidden':'')+'"><span class="blank"></span><button data-walk="0,-1" aria-label="Góra">▲</button><span class="blank"></span><button data-walk="-1,0" aria-label="Lewo">◀</button><button class="center" data-action="cameraCenter" aria-label="Wycentruj kamerę">◎</button><button data-walk="1,0" aria-label="Prawo">▶</button><span class="blank"></span><button data-walk="0,1" aria-label="Dół">▼</button><span class="blank"></span></div><button class="walk-interact" data-action="interactWalk" '+(s.buildMode?'disabled':'')+'>AKCJA</button></div>'+
+ '<div id="walkInfo" class="walk-toast" aria-live="polite" role="status"></div>'+
+ '<div class="walk-modes"><button data-action="walkExplore" class="'+(!s.buildMode?'active':'')+'">🚶 Eksploracja</button><button data-action="walkBuild" class="'+(s.buildMode?'active':'')+'">⚒ Budowanie</button><button data-action="walkPanel" data-id="menu">☰ Więcej</button></div>'+walkPanelView()+'</section>';
+}
+function drawWalk(){
+ const canvas=el("walkCanvas");if(!canvas||!canvas.getContext)return;
+ const ctx=canvas.getContext("2d");if(!ctx)return;
+ const map=roomMap(),pos=position(),cam=visibleCamera();
+ const vp=viewportTiles(),width=outdoor()?vp.w:Math.min(vp.w,map[0].length),height=outdoor()?vp.h:Math.min(vp.h,map.length);
+ canvas.width=width*TILE;canvas.height=height*TILE;
+ const colors={"#":"#46546b",".":"#72916b","O":"#a36c3e","E":"#e9c35e","~":"#4386a5","D":"#d1a160","S":"#9cd8ff","T":"#d8aaff"};
+ for(let vy=0;vy<height;vy++)for(let vx=0;vx<width;vx++){
+  const x=vx+cam.x,y=vy+cam.y,tile=outdoor()?worldTile(x,y):(map[y]||"")[x]||"#",px=vx*TILE,py=vy*TILE;
+  const biome=outdoor()?biomeAt(x,y):"grass";
+  ctx.fillStyle=tile==="."?(BIOMES[biome]?.color||colors["."]):(colors[tile]||colors["."]);ctx.fillRect(px,py,TILE,TILE);
+  ctx.strokeStyle="rgba(15,28,35,.24)";ctx.strokeRect(px,py,TILE,TILE);
+  if(tile==="O"){ctx.fillStyle="#d7ad6c";ctx.fillRect(px+8,py+9,16,14);}
+  if(tile==="S"||tile==="T"){ctx.fillStyle="#203f5b";ctx.fillRect(px+3,py+3,26,26);ctx.fillStyle="#ffffff";ctx.font="bold 20px sans-serif";ctx.fillText(tile==="S"?"↑":"↓",px+9,py+23);}
+  if(tile==="E"){ctx.fillStyle="#5c4721";ctx.fillRect(px+11,py+3,10,26);}
+  if(s.walk.room!=="interior"){
+   const t=buildTile(x,y);
+   if(t.floor){ctx.fillStyle="rgba(174,159,116,.58)";ctx.fillRect(px+2,py+2,TILE-4,TILE-4);}
+   if(t.structure){ctx.fillStyle=t.structure==="wall"?"#9da5af":"#e0a35e";ctx.fillRect(px+3,py+3,TILE-6,TILE-6);}
+   if(t.furniture){ctx.fillStyle="#c4a35e";ctx.fillRect(px+9,py+9,14,14);}
+  }
+ }
+ if(autoWalkPath.length&&!s.buildMode){
+  ctx.fillStyle="rgba(95,212,255,.32)";ctx.strokeStyle="rgba(110,238,255,.7)";
+  for(const step of autoWalkPath){const vx=step.x-cam.x,vy=step.y-cam.y;if(vx<0||vy<0||vx>=width||vy>=height)continue;ctx.fillRect(vx*TILE+10,vy*TILE+10,TILE-20,TILE-20);ctx.strokeRect(vx*TILE+10,vy*TILE+10,TILE-20,TILE-20);}
+ }
+ if(s.buildMode&&s.buildPreview){
+  const {x,y}=s.buildPreview,valid=buildAllowed(x,y),vx=x-cam.x,vy=y-cam.y;
+  if(vx>=0&&vy>=0&&vx<width&&vy<height){ctx.fillStyle=valid.ok?"rgba(42,220,93,.52)":"rgba(240,57,57,.57)";ctx.fillRect(vx*TILE,vy*TILE,TILE,TILE);ctx.strokeStyle=valid.ok?"#63ff83":"#ff6464";ctx.lineWidth=3;ctx.strokeRect(vx*TILE+1.5,vy*TILE+1.5,TILE-3,TILE-3);ctx.lineWidth=1;}
+ }
+ if(s.walk.room==="base")for(const npc of baseNpcPositions()){const x=npc.x-cam.x,y=npc.y-cam.y;ctx.fillStyle="#b882e8";ctx.fillRect(x*TILE+9,y*TILE+9,14,14);}
+ for(const e of localEntities()){const x=e.x-cam.x,y=e.y-cam.y;if(x<0||y<0||x>=width||y>=height)continue;ctx.fillStyle=e.type==="npc"?"#b882e8":e.type==="door"?"#e6a45b":"#f5dd72";ctx.fillRect(x*TILE+6,y*TILE+6,20,20);}
+ const px=(pos.x-cam.x)*TILE,py=(pos.y-cam.y)*TILE;
+ if(px>=0&&py>=0&&px<canvas.width&&py<canvas.height){ctx.fillStyle="#3479e5";ctx.beginPath();ctx.arc(px+16,py+16,11,0,Math.PI*2);ctx.fill();ctx.fillStyle="#eaf5ff";ctx.fillRect(px+12,py+9,3,3);ctx.fillRect(px+18,py+9,3,3);}
+ const coords=el("walkCoords");if(coords)coords.textContent="X: "+pos.x+" Y: "+pos.y;
+ const label=el("cameraInfo");if(label)label.textContent="Pozycja: "+pos.x+", "+pos.y+" • Widok: "+cam.x+", "+cam.y+" • Mapa: "+buildDims().join(" × ")+" • sektor: "+Math.floor(pos.x/32)+", "+Math.floor(pos.y/32)+(outdoor()?" • biom: "+BIOMES[biomeAt(pos.x,pos.y)].name+" • cache: "+worldSectorStats().cached+"/"+SECTOR_CACHE_LIMIT:"");
+}
+
+// Construction editor: a persistent 10x8 grid, with separate structural and furnishing layers.
+const BASE_W=10,BASE_H=8;
+const BASE_TOOLS={floor:{name:"Podłoga",cost:{wood:1,gold:2},layer:"floor",symbol:"·"},wall:{name:"Ściana",cost:{wood:2,gold:5},layer:"structure",symbol:"▣"},door:{name:"Drzwi",cost:{wood:3,gold:8},layer:"structure",symbol:"▤"},bed:{name:"Łóżko",cost:{wood:4,gold:12},layer:"furniture",symbol:"▥"},storage:{name:"Magazyn",cost:{wood:5,gold:15},layer:"furniture",symbol:"▦"},generator:{name:"Generator",cost:{wood:8,gold:40},layer:"furniture",symbol:"⚡"},cable:{name:"Przewód",cost:{wood:1,gold:4},layer:"furniture",symbol:"⌁"},lift:{name:"Winda",cost:{wood:12,gold:70},layer:"furniture",symbol:"↕"},erase:{name:"Rozbierz",cost:{},layer:"erase",symbol:"×"}};
+function baseKey(x,y,level=s.base.level){return level+":"+x+":"+y;}
+
+function buildArea(){return s.walk.room==="base"?"base":s.walk.room==="interior"?"interior":"outdoor";}
+function buildDims(){if(outdoor())return [worldSize(),worldSize()];const map=roomMap();return [map[0].length,map.length];}
+function siteKey(x,y){return s.place+":"+s.walk.room+":"+x+":"+y;}
+function buildTile(x,y){
+ return buildArea()==="base"?baseTileAt(s.walk.baseLevel,x,y):buildArea()==="interior"?{}:(s.sites[siteKey(x,y)]||{});
+}
+function buildAllowed(x,y){
+ const [w,h]=buildDims(),tool=s.base.tool;
+ if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x>=w||y>=h)return {ok:false,why:"Poza mapą"};
+ if(s.combat||s.events.pending)return {ok:false,why:"Trwa walka lub wydarzenie"};
+ const t=buildTile(x,y),def=BASE_TOOLS[tool];
+ if(!def)return {ok:false,why:"Nieznany element"};
+ if(buildArea()==="interior")return {ok:false,why:"Budowanie w tym pomieszczeniu jest niedostępne"};
+ if(buildArea()==="outdoor"){
+  const natural=worldTile(x,y);
+  if(natural!==".")return {ok:false,why:"Teren niedostępny"};
+  if(localEntities().some(e=>e.x===x&&e.y===y))return {ok:false,why:"Pole zajęte przez NPC"};
+ }
+ if(s.walk.room==="outdoor"&&s.walk.positions[s.place+":outdoor"]?.x===x&&s.walk.positions[s.place+":outdoor"]?.y===y&&tool!=="floor"&&tool!=="erase")return {ok:false,why:"Bohater stoi na polu"};
+ if(tool==="erase")return {ok:!!(t.floor||t.structure||t.furniture),why:(t.floor||t.structure||t.furniture)?"Można rozebrać":"Brak konstrukcji"};
+ if(t[def.layer])return {ok:false,why:"Pole tej warstwy jest zajęte — najpierw rozbierz element"};
+ if(def.layer!=="floor"&&!t.floor)return {ok:false,why:"Najpierw postaw podłogę"};
+ if(def.layer==="furniture"&&t.structure)return {ok:false,why:"Pole zajęte przez ścianę lub drzwi"};
+ if(def.layer==="structure"&&t.furniture)return {ok:false,why:"Najpierw usuń wyposażenie"};
+ if(!has(def.cost)){const missing=Object.entries(def.cost).filter(([k,v])=>s.resources[k]<v).map(([k,v])=>(labels[k]||k)+": masz "+s.resources[k]+", potrzeba "+v);return {ok:false,why:"Brak surowców — "+missing.join("; ")};}
+ return {ok:true,why:"Można budować"};
+}
+function buildAt(x,y){
+ const result=buildAllowed(x,y);
+ if(!result.ok){showBuildReason(x,y);return false;}
+ if(buildArea()==="base"){
+  const key=baseKey(x,y,s.walk.baseLevel),t={...buildTile(x,y)},tool=s.base.tool,def=BASE_TOOLS[tool];
+  if(tool==="erase"){if(t.furniture)delete t.furniture;else if(t.structure)delete t.structure;else delete t.floor;}
+  else{if(!spend(def.cost)){showBuildReason(x,y);return false;}t[def.layer]=tool;}
+  if(Object.keys(t).length)s.base.tiles[key]=t;else delete s.base.tiles[key];
+  note("Budowa na poziomie "+s.walk.baseLevel+": "+def.name+" ("+(x+1)+","+(y+1)+").");
+ }
+ else{
+  const key=siteKey(x,y),t={...buildTile(x,y)},tool=s.base.tool,def=BASE_TOOLS[tool];
+  if(tool==="erase"){if(t.furniture)delete t.furniture;else if(t.structure)delete t.structure;else delete t.floor;}
+  else{if(!spend(def.cost)){showBuildReason(x,y);return false;}t[def.layer]=tool;}
+  if(Object.keys(t).length)s.sites[key]=t;else delete s.sites[key];
+  note("Budowa w "+s.place+": "+def.name+" ("+(x+1)+","+(y+1)+").");
+ }
+ return true;
+}
+function buildBrushToggle(){s.buildBrush=false;s.buildPreview=null;render();}
+function buildToggle(){
+ s.buildBrush=false;
+ if(s.walk.room==="interior")return alert("Budowanie dostępne na zewnątrz i w bazie.");
+ if(s.combat||s.events.pending)return alert("Zakończ walkę lub wydarzenie.");
+ s.buildMode=!s.buildMode;s.buildPreview=null;render();
+}
+function buildZoom(delta){setWalkZoom(s.buildZoom+delta);}
+function buildPointer(event,commit=false){
+ if(tab!=="walk"||!s.buildMode)return;
+ const c=el("walkCanvas");if(!c)return;
+ const rect=c.getBoundingClientRect(),cam=visibleCamera();
+ const x=Math.floor((event.clientX-rect.left)*c.width/rect.width/TILE)+cam.x,y=Math.floor((event.clientY-rect.top)*c.height/rect.height/TILE)+cam.y;
+ const [w,h]=buildDims();if(x<0||y<0||x>=w||y>=h)return;
+ if(commit){
+   if(!s.buildPreview||s.buildPreview.x!==x||s.buildPreview.y!==y){s.buildPreview={x,y};showBuildReason(x,y);drawWalk();return;}
+  if(buildAt(x,y)){s.buildPreview=null;showBuildReason(x,y);drawWalk();}else{showBuildReason(x,y);drawWalk();}
+ }else{s.buildPreview={x,y};drawWalk();}
+}
+function showBuildReason(x,y){const result=buildAllowed(x,y);const def=BASE_TOOLS[s.base.tool];showWalkToast((result.ok?"🟢 ":"🔴 ")+result.why+(def&&s.base.tool!=="erase"?" • Koszt: "+fmtCost(def.cost):""),4000);}
+function baseTileAt(level,x,y){return s.base.tiles[baseKey(x,y,level)]||{};}
+function baseTile(x,y){return baseTileAt(s.base.level,x,y);}
+function baseEdit(x,y){
+ if(s.combat||s.events.pending)return alert("Zakończ walkę lub wydarzenie.");
+ if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x>=BASE_W||y>=BASE_H)return;
+ if(s.place!=="Twierdza")return alert("Budować można obecnie tylko w Twierdzy.");
+ const t=s.base.tool,def=BASE_TOOLS[t],tile={...baseTile(x,y)};
+ if(t==="erase"){
+  if(tile.furniture)delete tile.furniture;
+  else if(tile.structure)delete tile.structure;
+  else if(tile.floor)delete tile.floor;
+  else return;
+  if(!Object.keys(tile).length)delete s.base.tiles[baseKey(x,y)];else s.base.tiles[baseKey(x,y)]=tile;
+  note("Rozebrano element bazy na polu "+(x+1)+","+(y+1)+".");render();return;
+ }
+ if(tile[def.layer]===t)return;
+ if(def.layer!=="floor"&&!tile.floor)return alert("Najpierw zbuduj podłogę.");
+ if(def.layer==="furniture"&&tile.structure)return alert("Wyposażenia nie można umieścić na ścianie ani drzwiach.");
+ if(def.layer==="structure"&&tile.furniture)return alert("Usuń wyposażenie przed postawieniem ściany lub drzwi.");
+ if(!spend(def.cost))return alert("Brakuje zasobów: "+fmtCost(def.cost));
+ tile[def.layer]=t;s.base.tiles[baseKey(x,y)]=tile;
+ note("Zbudowano: "+def.name+" ("+(x+1)+","+(y+1)+").");render();
+}
+// A room is a connected floor region whose perimeter is fully enclosed by walls/doors.
+function baseRooms(level=s.base.level){
+ const seen=new Set(),rooms=[];
+ for(let y=0;y<BASE_H;y++)for(let x=0;x<BASE_W;x++){
+  const first=baseKey(x,y,level),tile=baseTileAt(level,x,y);
+  if(seen.has(first)||!tile.floor||tile.structure)continue;
+  const queue=[[x,y]],cells=[],fixtures=[],doors=new Set();let enclosed=true;
+  seen.add(first);
+  for(let i=0;i<queue.length;i++){
+   const [cx,cy]=queue[i];cells.push([cx,cy]);
+   const current=baseTileAt(level,cx,cy);if(current.furniture)fixtures.push({x:cx,y:cy,type:current.furniture});
+   for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+    const nx=cx+dx,ny=cy+dy;
+    if(nx<0||ny<0||nx>=BASE_W||ny>=BASE_H){enclosed=false;continue;}
+    const neighbor=baseTileAt(level,nx,ny);
+    if(neighbor.structure){if(neighbor.structure==="door")doors.add(baseKey(nx,ny,level));continue;}
+    if(!neighbor.floor){enclosed=false;continue;}
+    const key=baseKey(nx,ny,level);if(!seen.has(key)){seen.add(key);queue.push([nx,ny]);}
+   }
+  }
+  rooms.push({id:cells.map(([a,b])=>baseKey(a,b,level)).sort()[0],cells,fixtures,doors:doors.size,enclosed});
+ }
+ return rooms;
+}
+function basePowerNetwork(){
+ // Przewody łączą się ortogonalnie z generatorami i magazynami; osobno na każdej kondygnacji.
+ const networks=[];
+ for(let level=0;level<=2;level++){
+  const visited=new Set();
+  for(let y=0;y<BASE_H;y++)for(let x=0;x<BASE_W;x++){
+   const tile=baseTileAt(level,x,y),key=baseKey(x,y,level);
+   if(!["generator","cable","storage"].includes(tile.furniture)||visited.has(key))continue;
+   const queue=[[x,y]],members=[];visited.add(key);
+   for(let i=0;i<queue.length;i++){
+    const [cx,cy]=queue[i],t=baseTileAt(level,cx,cy);members.push({x:cx,y:cy,type:t.furniture});
+    for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+     const nx=cx+dx,ny=cy+dy,k=baseKey(nx,ny,level);
+     if(nx<0||ny<0||nx>=BASE_W||ny>=BASE_H||visited.has(k))continue;
+     if(["generator","cable","storage"].includes(baseTileAt(level,nx,ny).furniture)){visited.add(k);queue.push([nx,ny]);}
+    }
+   }
+   networks.push({level,members,capacity:members.filter(m=>m.type==="generator").length*4});
+  }
+ }
+ return networks;
+}
+const RESIDENT_NAMES=["Alicja","Borys","Celina","Damian","Eliza","Filip","Gabriela","Hubert","Iga","Jan","Klara","Leon","Marta","Norbert","Ola","Piotr"];
+function ensureResidents(){
+ if(!Array.isArray(s.population.residents))s.population.residents=[];
+ const r=s.population.residents;
+ while(r.length<s.population.total){const n=r.length;r.push({id:"r"+(n+1),name:RESIDENT_NAMES[n%RESIDENT_NAMES.length]+" "+(Math.floor(n/RESIDENT_NAMES.length)+1),job:"none",room:null,shift:"day",hunger:80,energy:85,morale:70,location:"home"});}
+ if(r.length>s.population.total)r.length=s.population.total;
+ return r;
+}
+function residentStatus(r,hour=s.hour){
+ const work=r.shift==="night"?(hour>=22||hour<6):(hour>=8&&hour<16);
+ if(r.energy<20)return "odpoczynek";
+ if(r.hunger<25)return "posiłek";
+ return r.job!=="none"&&work?"praca":(hour>=22||hour<6?"sen":"czas wolny");
+}
+function residentRooms(){return [0,1,2].flatMap(level=>baseRooms(level)).filter(r=>r.enclosed).map(r=>({id:r.id,level:r.level}));}
+function assignResident(id,job,room){
+ const r=ensureResidents().find(x=>x.id===id);if(!r)return;
+ if(!["none","warehouse","builder","guard"].includes(job))return;
+ if(job==="warehouse"&&room&&!residentRooms().some(x=>x.id===room))return;
+ r.job=job;r.room=job==="warehouse"?room:null;
+ syncResidentAssignments();note("Przydział: "+r.name+" — "+job);render();
+}
+function syncResidentAssignments(){
+ const count={};for(const r of ensureResidents())if(r.job==="warehouse"&&r.room&&r.hunger>20&&r.energy>15)count[r.room]=(count[r.room]||0)+1;
+ if(ensureResidents().some(r=>r.job==="warehouse"))s.base.assignments=count;
+}
+function residentDay(){
+ for(const r of ensureResidents()){
+  const wasWorking=r.job!=="none";
+  r.hunger=Math.max(0,r.hunger-(wasWorking?20:14));
+  r.energy=Math.max(0,Math.min(100,r.energy+(r.shift==="night"?9:14)-(wasWorking?17:5)));
+  if(s.resources.food>0&&r.hunger<65)r.hunger=Math.min(100,r.hunger+24);
+  r.morale=Math.max(0,Math.min(100,r.morale+(r.hunger<25?-8:2)+(r.energy<25?-6:0)));
+ }
+ syncResidentAssignments();
+ const residents=s.population.residents;
+ if(residents.length)s.population.happiness=Math.max(0,Math.min(100,Math.round(residents.reduce((n,r)=>n+r.morale,0)/residents.length)));
+}
+function residentView(){
+ const rs=ensureResidents(),rooms=residentRooms();
+ return '<div class="card"><h2>Mieszkańcy — indywidualne zarządzanie</h2><p class="note">Zmiana zawodu i zmiany roboczej nie wymaga czasu. Praca magazynowa działa w zamkniętych pomieszczeniach w godzinach zmiany, pod warunkiem zaspokojenia potrzeb.</p>'+stats()+
+ '<p>Populacja: '+rs.length+' • Średnie morale: '+s.population.happiness+'%</p>'+
+ rs.map(r=>'<div class="item"><b>'+esc(r.name)+'</b> <span class="note">('+esc(r.id)+')</span><p>Stan: '+residentStatus(r)+' • Głód: '+r.hunger+'/100 • Energia: '+r.energy+'/100 • Morale: '+r.morale+'/100</p>'+
+ '<label>Zawód <select data-resident-job="'+r.id+'">'+[["none","Bez przydziału"],["warehouse","Magazynier"],["builder","Budowniczy"],["guard","Strażnik"]].map(([k,v])=>'<option value="'+k+'" '+(r.job===k?'selected':'')+'>'+v+'</option>').join('')+'</select></label>'+
+ '<label>Zmiana <select data-resident-shift="'+r.id+'"><option value="day" '+(r.shift==='day'?'selected':'')+'>Dzienna 08–16</option><option value="night" '+(r.shift==='night'?'selected':'')+'>Nocna 22–06</option></select></label>'+
+ (r.job==='warehouse'?'<label>Pomieszczenie <select data-resident-room="'+r.id+'"><option value="">Wybierz pomieszczenie</option>'+rooms.map(x=>'<option value="'+esc(x.id)+'" '+(r.room===x.id?'selected':'')+'>'+esc(x.id)+'</option>').join('')+'</select></label>':'')+'</div>').join('')+'</div>';
+}
+function baseOperations(){
+ const rooms=[0,1,2].flatMap(level=>baseRooms(level));
+ const networks=basePowerNetwork();
+ const available=Math.max(0,s.population.total-workersUsed());let free=available;
+ const results=rooms.map(r=>{
+  const beds=r.fixtures.filter(f=>f.type==="bed").length;
+  const stores=r.fixtures.filter(f=>f.type==="storage").length;
+  const generatorsHere=r.fixtures.filter(f=>f.type==="generator").length;
+  const desired=Math.max(0,Math.min(10,Number(s.base.assignments[r.id])||0));
+  const workers=r.enclosed?Math.min(desired,free):0;free-=workers;
+  let powered=0;
+  if(r.enclosed)for(const f of r.fixtures.filter(f=>f.type==="storage")){
+   const network=networks.find(n=>n.members.some(m=>m.x===f.x&&m.y===f.y&&r.id.startsWith(n.level+":")));
+   if(network&&network.capacity>0){network.capacity--;powered++;}
+  }
+  return {...r,beds,stores,generators:generatorsHere,workers,powered,desired,production:{food:Math.min(workers,powered)*2,gold:Math.min(workers,powered)*3}};
+ });
+ const capacity=networks.reduce((sum,n)=>sum+n.members.filter(m=>m.type==="generator").length*4,0);
+ return {rooms:results,capacity,used:results.reduce((sum,r)=>sum+r.powered,0),available,free,networks:networks.length};
+}
+function baseAssign(roomId,delta){
+ const r=[0,1,2].flatMap(level=>baseRooms(level)).find(x=>x.id===roomId);if(!r||!r.enclosed)return;
+ const current=Number(s.base.assignments[roomId])||0;
+ s.base.assignments[roomId]=Math.max(0,Math.min(10,current+delta));render();
+}
+function baseLevelSet(level){if(!Number.isInteger(level)||level<0||level>2)return;s.base.level=level;render();}
+function baseView(){
+ const ops=baseOperations();
+ const stats={floor:0,wall:0,door:0,bed:0,storage:0,generator:0,cable:0,lift:0};
+ for(const [key,t] of Object.entries(s.base.tiles))if(key.startsWith(s.base.level+":"))for(const v of Object.values(t))if(Object.hasOwn(stats,v))stats[v]++;
+ return '<div class="card"><h2>Edytor bazy — Twierdza</h2><p class="note">Wybierz element, następnie dotknij pola na siatce. Każdy element kosztuje zasoby. Rozbiórka nie zwraca materiałów. Dostępne są trzy kondygnacje (0, 1, 2).</p>'+statsHtml()+
+ '<h3>Kondygnacja '+s.base.level+'</h3><div class="actions">'+[0,1,2].map(l=>button('Poziom '+l,'baseLevel',String(l),l===s.base.level)).join('')+button('Wejdź do bazy 2D','enterBase','',!baseEntry(s.base.level))+'</div><h3>Elementy konstrukcyjne</h3><div class="actions">'+Object.entries(BASE_TOOLS).map(([id,d])=>'<button data-base-tool="'+id+'" class="'+(s.base.tool===id?'active':'')+'">'+d.name+(id==='erase'?'':' ('+fmtCost(d.cost)+')')+'</button>').join('')+'</div>'+
+ '<div class="base-grid" role="group" aria-label="Siatka budowy 10 na 8">'+Array.from({length:BASE_H},(_,y)=>Array.from({length:BASE_W},(_,x)=>{const tile=baseTile(x,y),t=tile.furniture||tile.structure||tile.floor||'',symbol=BASE_TOOLS[t]?.symbol||'+';return '<button class="base-cell '+(t||'empty')+'" data-base-x="'+x+'" data-base-y="'+y+'" aria-label="Pole '+(x+1)+','+(y+1)+': '+(BASE_TOOLS[t]?.name||'puste')+'">'+symbol+'</button>'}).join('')).join('')+'</div>'+
+ '<p class="note">Podłogi: '+stats.floor+' • Ściany: '+stats.wall+' • Drzwi: '+stats.door+' • Łóżka: '+stats.bed+' • Magazyny: '+stats.storage+' • Generatory: '+stats.generator+'</p>'+
+ '<h3>Pomieszczenia i gospodarka</h3><p class="note">Generator dostarcza 4 jednostki energii w swojej sieci przewodów. Magazyn musi być połączony z generatorem bezpośrednio lub przez przewody. Każdy zasilony magazyn z przydzielonym pracownikiem produkuje 2 żywności i 3 złota dziennie. Łóżka zwiększają pojemność mieszkalną (na razie informacyjnie).</p>'+
+ '<p>Energia: '+ops.used+' / '+ops.capacity+' • Sieci: '+ops.networks+' • Dostępni pracownicy: '+ops.available+' • Wolni: '+ops.free+'</p>'+
+ (ops.rooms.filter(r=>r.id.startsWith(s.base.level+":")).length?ops.rooms.filter(r=>r.id.startsWith(s.base.level+":")).map((r,i)=>'<div class="card"><b>Obszar '+(i+1)+'</b> — '+(r.enclosed?'zamknięty pokój':'otwarta przestrzeń')+' ('+r.cells.length+' pól)'+
+ '<p>Drzwi: '+r.doors+' • Łóżka: '+r.beds+' • Magazyny: '+r.stores+' • Generatory: '+r.generators+'</p>'+
+ '<p>Pracownicy: '+r.workers+' / '+r.desired+' • Zasilone magazyny: '+r.powered+' • Dziennie: +'+r.production.food+' żywności, +'+r.production.gold+' złota</p>'+
+ (r.enclosed?'<div class="actions"><button data-base-assign="'+r.id+'" data-base-delta="-1">− pracownik</button><button data-base-assign="'+r.id+'" data-base-delta="1">+ pracownik</button></div>':'<p class="note">Aby uruchomić produkcję, zamknij pomieszczenie ścianami lub drzwiami.</p>')+'</div>').join(''):'<p class="note">Zbuduj podłogę, by rozpocząć wyznaczanie pomieszczeń.</p>')+'</div>';
+}
+function statsHtml(){return '<div class="grid"><div class="stat">Złoto<b>'+s.resources.gold+'</b></div><div class="stat">Drewno<b>'+s.resources.wood+'</b></div></div>';}
+
+function mapView(){
+ const seen=id=>s.map.discovered.includes(id),visited=id=>s.map.visited.includes(id);
+ const lines=Object.entries(LOCATIONS).flatMap(([id,l])=>l.neighbors.filter(n=>id<n&&seen(id)&&seen(n)).map(n=>'<line x1="'+l.x+'" y1="'+l.y+'" x2="'+LOCATIONS[n].x+'" y2="'+LOCATIONS[n].y+'" stroke="#6686a6" stroke-width="4" stroke-dasharray="7 6"/>')).join("");
+ const nodes=Object.entries(LOCATIONS).filter(([id])=>seen(id)).map(([id,l])=>{
+  const here=s.place===id,color=here?"#53dfad":visited(id)?"#72a8f0":"#c2b184";
+  return '<g data-map="'+id+'" tabindex="0" role="button" aria-label="Pokaż lokację '+id+'" style="cursor:pointer"><circle cx="'+l.x+'" cy="'+l.y+'" r="'+(here?21:17)+'" fill="'+color+'" stroke="#f4f8ff" stroke-width="'+(here?3:1.5)+'"/><text x="'+l.x+'" y="'+(l.y+35)+'" text-anchor="middle" fill="#fff" stroke="#101827" stroke-width="3" paint-order="stroke" font-size="14">'+id+'</text></g>';
+ }).join("");
+ const selected=seen(s.map.selected)?s.map.selected:s.place,loc=LOCATIONS[selected];
+ const accessible=Object.keys(LOCATIONS).filter(seen).map(id=>button(id+(id===s.place?" • tutaj":""),"selectMap",id)).join("");
+ const canGo=LOCATIONS[s.place].neighbors.includes(selected)&&selected!==s.place&&(selected!=="Ruiny"||s.ruins);
+ const foodCost=Math.max(0,loc.cost-(unlocked("logistics")?1:0));
+ return '<div class="card"><h2>Interaktywna mapa świata</h2><p class="note">Dotknij punktu na mapie lub wybierz nazwę poniżej. Zielony punkt oznacza bieżącą lokację. Odkryte, lecz nieodwiedzone miejsca mają złoty kolor.</p>'+
+ '<svg id="worldMap" viewBox="0 0 510 370" role="img" aria-label="Mapa lokacji i połączeń" style="width:100%;background:radial-gradient(ellipse at center,#263e52,#111e2d);border:1px solid #405674;border-radius:12px;touch-action:manipulation">'+lines+nodes+'</svg>'+
+ '<div class="actions">'+accessible+'</div><h3>'+esc(selected)+'</h3><p>'+esc(loc.description)+'</p><p class="note">Typ: '+esc(loc.kind)+' • '+(visited(selected)?"odwiedzona":"nieodwiedzona")+'</p>'+
+ (selected===s.place?'<p>Znajdujesz się tutaj.</p>':button("Podróż: "+selected+" ("+loc.hours+"h, "+foodCost+" żywności)","go",selected,!canGo||!has({food:foodCost})))+
+ '<h3>Działania w lokacji</h3>'+
+ button("Odkryj ruiny w lesie (4h)","explore","",s.place!=="Las"||s.ruins)+
+ button("Przeszukaj ruiny (3h)","search","",s.place!=="Ruiny"||s.searched.includes("Ruiny"))+
+ button("Zbadaj okolicę (2h)","scout",s.place,!MAP_SCOUT[s.place]||s.map.scouted.includes(s.place))+
+ '<p class="note">Odwiedzono: '+s.map.visited.length+' / '+Object.keys(LOCATIONS).length+' • Odkryto: '+s.map.discovered.length+' / '+Object.keys(LOCATIONS).length+'</p></div>';
+}
+const ENEMIES={
+ wolf:{name:"Wilk",hp:26,attack:7,defense:1,xp:35,gold:12,loot:"hide"},
+ raider:{name:"Bandyta",hp:42,attack:10,defense:2,xp:55,gold:28,loot:"potion"}
+};
+const LOOT={
+ hide:{id:"hide",name:"Skóra",qty:1},
+ potion:{id:"potion",name:"Mikstura leczenia",qty:1,heal:25}
+};
+function addItem(item){const found=s.inventory.find(x=>x.id===item.id);if(found)found.qty+=item.qty;else s.inventory.push({...item})}
+function heroAttack(){const w=s.inventory.find(x=>x.id===s.hero.equipment.weapon);return 5+s.hero.stats.strength+(w?.attack||0)}
+function heroDefense(){const a=s.inventory.find(x=>x.id===s.hero.equipment.armor);return Math.floor(s.hero.stats.agility/2)+(a?.defense||0)}
+function startFight(kind){if(s.combat)return alert("Walka już trwa.");const def=ENEMIES[kind];if(!def)return;s.combat={kind,hp:def.hp,guard:false,turn:1};note("Rozpoczęto walkę: "+def.name);render()}
+function enemyTurn(){
+ const c=s.combat;if(!c)return;
+ const e=ENEMIES[c.kind],damage=Math.max(1,e.attack-heroDefense()-(c.guard?4:0));
+ c.guard=false;s.hero.hp=Math.max(0,s.hero.hp-damage);note(e.name+" zadaje "+damage+" obrażeń.");
+ if(s.hero.hp<=0){note("Bohater poległ. Powrót do twierdzy, utrata 50 złota.");s.resources.gold=Math.max(0,s.resources.gold-50);s.hero.hp=Math.max(1,Math.floor(s.hero.maxHp/2));s.place="Twierdza";s.combat=null;}
+}
+function fightMove(move){
+ const c=s.combat;if(!c)return;const enemy=ENEMIES[c.kind];
+ if(move==="attack"){const damage=Math.max(1,heroAttack()-enemy.defense);c.hp=Math.max(0,c.hp-damage);note("Zadano "+damage+" obrażeń.");}
+ if(move==="guard"){c.guard=true;note("Przyjęto postawę obronną.");}
+ if(move==="potion"){const potion=s.inventory.find(x=>x.id==="potion"&&x.qty>0);if(!potion)return alert("Brak mikstury.");potion.qty--;s.hero.hp=Math.min(s.hero.maxHp,s.hero.hp+25);note("Wypito miksturę.");}
+ if(c.hp<=0){note("Zwycięstwo: "+enemy.name+". +"+enemy.gold+" złota, +"+enemy.xp+" XP.");gain({gold:enemy.gold});xp(enemy.xp);addItem(LOOT[enemy.loot]);s.defeated.push(c.kind);s.combat=null;}
+ else{enemyTurn();if(s.combat)s.combat.turn++;}
+ advance(1);
+}
+
+const STORY_EVENTS=[
+ {id:"arrival",title:"Nieznajomy przy bramie",text:"Wędrowiec prosi o schronienie. Oferuje wiedzę o ruinach, ale mieszkańcy mu nie ufają.",
+  options:[{label:"Przyjmij wędrowca (10 żywności)",cost:{food:10},effect:{reputation:2},flag:"guest",next:"rumors",result:"Wędrowiec dołączył do osady."},
+  {label:"Odmów schronienia",effect:{reputation:-1},flag:"refused",next:"rumors",result:"Wędrowiec odszedł."}]},
+ {id:"rumors",title:"Wieści z pogranicza",text:"Zwiadowcy donoszą o bandytach. Jak przygotujesz osadę?",
+  options:[{label:"Sfinansuj straż (100 złota)",cost:{gold:100},effect:{reputation:1},flag:"guard",next:"final",result:"Strażnicy otrzymali wyposażenie."},
+  {label:"Zaufaj mieszkańcom",effect:{wood:10},flag:"volunteers",next:"final",result:"Ochotnicy przygotowali umocnienia."}]},
+ {id:"final",title:"Rada osady",text:"Nadszedł czas podjąć decyzję o przyszłości osady.",
+  options:[{label:"Postaw na współpracę",flag:"cooperation",ending:"alliance",result:"Osada zawarła porozumienie z sąsiadami."},
+  {label:"Ogłoś niezależność",flag:"independence",ending:"independent",result:"Osada obrała niezależną drogę."}]}
+];
+const STORY_BY_ID=Object.fromEntries(STORY_EVENTS.map(e=>[e.id,e]));
+function chooseStory(index){
+ if(s.combat)return alert("Najpierw zakończ walkę.");
+ const event=STORY_BY_ID[s.story.chapter];
+ if(!event||s.story.ending)return;
+ const option=event.options[index];
+ if(!option)return;
+ if(option.cost&&!spend(option.cost))return alert("Brak wymaganych zasobów.");
+ if(option.effect){for(const [k,v] of Object.entries(option.effect)){
+  if(k==="reputation")s.reputation+=v;
+  else s.resources[k]=Math.max(0,(s.resources[k]||0)+v);
+ }}
+ s.story.choices[event.id]=option.flag;
+ s.story.eventsSeen.push(event.id);
+ note(event.title+": "+option.result);
+ if(option.ending){s.story.ending=option.ending;s.story.chapter="end";note("Zakończenie kampanii: "+option.ending);}
+ else s.story.chapter=option.next;
+ advance(1);
+}
+function storyView(){
+ if(s.story.ending)return '<div class="card"><h2>Zakończenie kampanii</h2><p>'+ (s.story.ending==="alliance"?"Porozumienie i współpraca":"Niezależność osady")+'</p><p>Twoje decyzje zostały zapisane w stanie świata.</p></div>';
+ const e=STORY_BY_ID[s.story.chapter];
+ if(!e)return '<div class="card">Brak aktywnego wydarzenia.</div>';
+ return '<div class="card"><h2>'+esc(e.title)+'</h2><p>'+esc(e.text)+'</p><div class="actions">'+e.options.map((o,i)=>button(o.label,"story",String(i),!!o.cost&&!has(o.cost))).join("")+'</div><h3>Podjęte decyzje</h3>'+Object.entries(s.story.choices).map(([k,v])=>'<p>'+esc(k)+": "+esc(v)+'</p>').join("")+'</div>';
+}
+
+const FACTIONS={
+ merchants:{name:"Liga Kupców",description:"Handel i dostawy",bonus:"Dochód +8 złota/dzień"},
+ wardens:{name:"Straż Pogranicza",description:"Bezpieczeństwo granic",bonus:"Ochrona +1 reputacji co 3 dni"},
+ nomads:{name:"Wolne Klany",description:"Wędrowne społeczności",bonus:"Żywność +3/dzień"}
+};
+function relation(id){return s.politics.relations[id]||0}
+function changeRelation(id,delta){s.politics.relations[id]=Math.max(-100,Math.min(100,relation(id)+delta))}
+function politicsAction(type,id){
+ const p=s.politics,day=s.day;
+ if(type==="envoy"){
+  if((p.cooldowns[id]||0)>day)return alert("Wysłannik może wrócić później.");
+  if(!spend({gold:30}))return alert("Potrzeba 30 złota.");
+  changeRelation(id,15);p.cooldowns[id]=day+3;note("Misja dyplomatyczna: "+FACTIONS[id].name+" (+15 relacji).");advance(2);
+ }else if(type==="treaty"){
+  if(relation(id)<40)return alert("Wymagane relacje: 40.");
+  if(!spend({gold:80}))return alert("Potrzeba 80 złota.");
+  p.treaties[id]=true;note("Zawarto porozumienie z "+FACTIONS[id].name+".");advance(1);
+ }else if(type==="break"){
+  delete p.treaties[id];changeRelation(id,-25);note("Zerwano porozumienie z "+FACTIONS[id].name+".");advance(1);
+ }else if(type==="claim"){
+  if(s.place!==id)return alert("Musisz przebywać w tej lokacji.");
+  if(id==="Ruiny"&&!s.searched.includes("Ruiny"))return alert("Najpierw przeszukaj ruiny.");
+  if(!spend({gold:100,wood:10}))return alert("Potrzeba 100 złota i 10 drewna.");
+  p.territories[id]="player";s.reputation++;note("Przejęto terytorium: "+id+".");advance(4);
+ }else if(type==="secure"){
+  if(p.territories[id]!=="player")return;
+  if(!spend({gold:50,wood:5}))return alert("Potrzeba 50 złota i 5 drewna.");
+  p.territories[id]="secured";note("Zabezpieczono terytorium: "+id+".");advance(3);
+ }
+}
+function diplomacyView(){
+ return '<div class="card"><h2>Dyplomacja</h2><p class="note">Relacje: -100 (wrogość) do +100 (przyjaźń). Wysłannik: 30 złota, +15 relacji, 3 dni przerwy. Traktat: relacje co najmniej 40 i 80 złota.</p>'+
+ Object.entries(FACTIONS).map(([id,f])=>'<div class="item"><b>'+f.name+'</b><p>'+f.description+' • Relacje: '+relation(id)+' • Traktat: '+(s.politics.treaties[id]?'aktywny':'brak')+'</p><p class="note">'+f.bonus+'</p>'+
+ button("Wyślij posła","envoy",id,(s.politics.cooldowns[id]||0)>s.day||!has({gold:30}))+
+ (s.politics.treaties[id]?button("Zerwij traktat","break",id):button("Zawrzyj traktat","treaty",id,relation(id)<40||!has({gold:80})))+'</div>').join("")+'</div>';
+}
+function territoryView(){
+ return '<div class="card"><h2>Kontrola terytoriów</h2><p class="note">Przejęcie wymaga obecności w lokacji, 100 złota i 10 drewna. Ruiny trzeba wcześniej przeszukać. Zabezpieczenie: 50 złota i 5 drewna.</p>'+
+ Object.entries(s.politics.territories).map(([id,owner])=>'<div class="item"><b>'+esc(id)+'</b> — '+(owner==="neutral"?"neutralne":owner==="secured"?"zabezpieczone":"kontrolowane")+'<div>'+
+ (owner==="neutral"?button("Przejmij","claim",id,s.place!==id||id==="Ruiny"&&!s.searched.includes("Ruiny")||!has({gold:100,wood:10})):owner==="player"?button("Zabezpiecz","secure",id,!has({gold:50,wood:5})):"")+'</div></div>').join("")+'</div>';
+}
+
+const TECHS={
+ tools:{name:"Lepsze narzędzia",cost:3,requires:[],gold:80,days:2,description:"Zbieranie drewna: +3"},
+ wheels:{name:"Koło i mechanika",cost:4,requires:["tools"],gold:120,days:3,description:"Odblokowuje wóz"},
+ engines:{name:"Silniki",cost:6,requires:["wheels"],gold:220,days:4,description:"Odblokowuje samochód"},
+ logistics:{name:"Logistyka",cost:5,requires:["wheels"],gold:160,days:3,description:"Podróże zużywają o 1 żywności mniej"}
+};
+const VEHICLES={
+ cart:{name:"Wóz",requires:"wheels",cost:{gold:160,wood:25},upkeep:{wood:1},hoursFactor:.7,description:"Podróże trwają 30% krócej"},
+ car:{name:"Samochód",requires:"engines",cost:{gold:450,wood:30},upkeep:{gold:6},hoursFactor:.45,description:"Podróże trwają 55% krócej"}
+};
+function unlocked(id){return s.technology.unlocked.includes(id)}
+function researchAction(type,id){
+ if(type==="study"){
+  if(s.technology.progress)return alert("Badania już trwają.");
+  if(!spend({gold:40}))return alert("Potrzeba 40 złota.");
+  s.technology.points+=2;note("Przeprowadzono studia: +2 punkty badań.");advance(4);
+ }else if(type==="research"){
+  const d=TECHS[id];if(!d||unlocked(id)||s.technology.progress)return;
+  if(!d.requires.every(unlocked))return alert("Brak technologii wymaganych.");
+  if(s.technology.points<d.cost||!has({gold:d.gold}))return alert("Brak punktów badań lub złota.");
+  s.technology.points-=d.cost;spend({gold:d.gold});s.technology.progress={id,remaining:d.days};note("Rozpoczęto badania: "+d.name);render();
+ }else if(type==="craftVehicle"){
+  const d=VEHICLES[id];if(!d||!unlocked(d.requires))return;
+  if(!spend(d.cost))return alert("Brak zasobów.");
+  s.fleet.push({id,condition:100});note("Zbudowano pojazd: "+d.name);render();
+ }else if(type==="vehicle"){
+  if(id!=="none"&&!s.fleet.some(v=>v.id===id&&v.condition>0))return;
+  s.activeVehicle=id==="none"?null:id;note("Środek transportu: "+(id==="none"?"pieszo":VEHICLES[id].name));render();
+ }else if(type==="repair"){
+  const v=s.fleet.find(v=>v.id===id&&v.condition<100);if(!v)return;
+  if(!spend({gold:25,wood:5}))return alert("Potrzeba 25 złota i 5 drewna.");
+  v.condition=100;note("Naprawiono pojazd: "+VEHICLES[id].name);advance(2);
+ }
+}
+function researchView(){
+ return '<div class="card"><h2>Technologie i badania</h2><p>Punkty badań: <b>'+s.technology.points+'</b></p>'+button("Prowadź badania (+2 pkt, 40 złota, 4h)","study","",!has({gold:40}))+
+ (s.technology.progress?'<p>Trwające badania: '+TECHS[s.technology.progress.id].name+' — '+s.technology.progress.remaining+' dni</p>':'')+
+ Object.entries(TECHS).map(([id,d])=>'<div class="item"><b>'+d.name+'</b><p class="note">'+d.description+' • '+d.cost+' pkt, '+d.gold+' złota, '+d.days+' dni • wymagane: '+(d.requires.map(k=>TECHS[k].name).join(', ')||'brak')+'</p><p>'+(unlocked(id)?'Odkryto':'Nieodkryto')+'</p>'+(!unlocked(id)?button("Rozpocznij badania","research",id,!!s.technology.progress||!d.requires.every(unlocked)||s.technology.points<d.cost||!has({gold:d.gold})):"")+'</div>').join('')+'</div>';
+}
+function vehiclesView(){
+ return '<div class="card"><h2>Transport i pojazdy</h2><p>Aktywny transport: '+(s.activeVehicle?VEHICLES[s.activeVehicle].name:'pieszo')+'</p>'+button("Podróżuj pieszo","vehicle","none",!s.activeVehicle)+
+ Object.entries(VEHICLES).map(([id,d])=>'<div class="item"><b>'+d.name+'</b><p class="note">'+d.description+' • koszt: '+fmtCost(d.cost)+' • utrzymanie dzienne: '+fmtCost(d.upkeep)+'</p>'+button("Zbuduj","craftVehicle",id,!unlocked(d.requires)||!has(d.cost))+
+ s.fleet.filter(v=>v.id===id).map(v=>'<p>Stan: '+v.condition+'% '+button("Wybierz","vehicle",id,s.activeVehicle===id||v.condition<=0)+button("Napraw (25 złota, 5 drewna)","repair",id,v.condition===100||!has({gold:25,wood:5}))+'</p>').join('')+'</div>').join('')+'</div>';
+}
+const EVENT_POOL=[
+ {id:"caravan",title:"Karawana kupiecka",description:"Kupcy oferują towary. Czy skorzystasz?",options:[{text:"Kup żywność (40 złota)",cost:{gold:40},gain:{food:16},rep:1},{text:"Odmów",gain:{},rep:0}]},
+ {id:"storm",title:"Gwałtowna burza",description:"Burza uszkodziła zapasy. Jak zareagujesz?",options:[{text:"Zabezpiecz magazyn (20 drewna)",cost:{wood:20},gain:{food:5},rep:1},{text:"Przeczekaj",gain:{food:-8},rep:0}]},
+ {id:"travelers",title:"Przybysze u bram",description:"Podróżni proszą o żywność.",options:[{text:"Pomóż (8 żywności)",cost:{food:8},gain:{},rep:2},{text:"Odmów",gain:{},rep:-1}]}
+];
+function triggerEvent(){
+ if(s.events.pending||s.combat)return;
+ const pool=EVENT_POOL.filter(e=>!s.events.history.slice(-2).includes(e.id));
+ const e=pool[Math.floor(Math.random()*pool.length)]||EVENT_POOL[0];
+ s.events.pending=e.id;note("Wydarzenie: "+e.title);}
+function resolveEvent(index){
+ const event=EVENT_POOL.find(e=>e.id===s.events.pending);if(!event)return;
+ const choice=event.options[index];if(!choice)return;
+ if(choice.cost&&!spend(choice.cost))return alert("Brak wymaganych zasobów.");
+ for(const [k,v] of Object.entries(choice.gain||{}))s.resources[k]=Math.max(0,(s.resources[k]||0)+v);
+ s.reputation+=choice.rep||0;s.events.history.push(event.id);s.events.pending=null;
+ s.events.nextDay=s.day+3;note(event.title+": "+choice.text);render();}
+function eventView(){
+ const e=EVENT_POOL.find(e=>e.id===s.events.pending);
+ return '<div class="card"><h2>Wydarzenia losowe</h2>'+(e?'<h3>'+esc(e.title)+'</h3><p>'+esc(e.description)+'</p>'+e.options.map((o,i)=>button(o.text,"eventChoice",String(i),!!o.cost&&!has(o.cost))).join(''):'<p>Brak aktywnego wydarzenia. Następne możliwe od dnia '+s.events.nextDay+'.</p>')+'<h3>Historia</h3>'+(s.events.history.map(id=>'<p>'+esc(EVENT_POOL.find(e=>e.id===id)?.title||id)+'</p>').join('')||'<p>Brak wydarzeń.</p>')+'</div>';}
+function automationView(){return '<div class="card"><h2>Automatyzacja</h2><p class="note">Opcje dotyczą tylko bieżącej kampanii.</p><label><input type="checkbox" data-auto="autoSave" '+(s.automation.autoSave?'checked':'')+'> Automatyczny zapis po zakończeniu dnia</label><label><input type="checkbox" data-auto="autoTrade" '+(s.automation.autoTrade?'checked':'')+'> Automatyczny zakup żywności, gdy zapasy spadną poniżej rezerwy</label><label>Minimalna rezerwa żywności <input id="foodReserve" type="number" min="0" max="1000" value="'+s.automation.foodReserve+'"></label><p class="note">Zakup: 10 żywności za 30 złota; najwyżej jeden zakup dziennie.</p></div>';}
+
+const CAMPAIGN_PRESETS={
+ fantasy:{label:"Fantasy / twierdza",resources:{gold:1200,wood:25,food:40},population:12},
+ survival:{label:"Survival / osada",resources:{gold:450,wood:35,food:65},population:8},
+ scifi:{label:"Sci-fi / kolonia",resources:{gold:2000,wood:20,food:55},population:15}
+};
+function campaignView(){
+ if(!campaignDraft)campaignDraft={title:"Nowa kampania",genre:"fantasy",difficulty:"normal",gold:1200,wood:25,food:40,population:12,modules:Object.fromEntries(Object.keys(MODS).map(k=>[k,true]))};
+ const d=campaignDraft;
+ return '<div class="card"><h2>Konfigurator nowej kampanii</h2><p class="note">Każdy parametr możesz ustawić niezależnie. Presety to punkty wyjścia, nie osobne światy.</p>'+
+ '<label>Nazwa świata <input data-campaign="title" value="'+esc(d.title)+'"></label>'+
+ '<label>Preset <select data-campaign="genre">'+Object.entries(CAMPAIGN_PRESETS).map(([k,v])=>'<option value="'+k+'" '+(d.genre===k?'selected':'')+'>'+v.label+'</option>').join("")+'</select></label>'+
+ '<label>Trudność <select data-campaign="difficulty">'+["easy","normal","hard"].map(k=>'<option value="'+k+'" '+(d.difficulty===k?'selected':'')+'>'+({easy:"Łatwa",normal:"Normalna",hard:"Trudna"}[k])+'</option>').join("")+'</select></label>'+
+ '<h3>Zasoby początkowe</h3>'+[["gold","Złoto"],["wood","Drewno"],["food","Żywność"],["population","Mieszkańcy"]].map(([k,n])=>'<label>'+n+' <input type="number" min="0" max="100000" data-campaign="'+k+'" value="'+d[k]+'"></label>').join("")+
+ '<h3>Widoczne moduły</h3>'+Object.entries(MODS).map(([k,v])=>'<label><input type="checkbox" data-campaign-module="'+k+'" '+(d.modules[k]?'checked':'')+'> '+v+'</label>').join("")+
+ '<p class="note">Ukrycie modułu nie wyłącza jeszcze jego wpływu na pozostałe systemy.</p>'+
+ button("Rozpocznij kampanię","startCampaign")+'</div>';
+}
+function startCampaign(){
+ if(!campaignDraft)return;
+ if(!confirm("Nowa kampania zastąpi aktualny stan w pamięci. Kontynuować?"))return;
+ const d=campaignDraft;s=FRESH();devNpcs=[];
+ s.settings={title:d.title.trim()||"Nowa kampania",genre:d.genre,difficulty:d.difficulty,seed:1};
+ for(const k of ["gold","wood","food"])s.resources[k]=d[k];
+ s.population.total=d.population;s.modules={...d.modules};
+ note("Nowa kampania: "+s.settings.title+" ("+d.genre+").");
+ campaignDraft=null;tab="home";render();
+}
+function migrate(x){
+ if(x?.schema===24&&x?.walk?.positions){delete x.walk.positions["Twierdza:outdoor"];}
+ if(!x||typeof x!=="object"||!Number.isInteger(x.schema))throw Error("Nieprawidłowy zapis.");
+ if(x.schema>=5&&x.schema<=13){
+  const oldSchema=x.schema;
+  if(oldSchema===5||oldSchema===6){
+   if(oldSchema===5){x.politics=FRESH().politics;x.modules.diplomacy=true;x.modules.territory=true;}
+   x.technology={points:0,unlocked:[],progress:null};x.fleet=[];x.activeVehicle=null;x.modules.research=true;x.modules.vehicles=true;
+  }
+  if(oldSchema<=7){x.events={pending:null,history:[],nextDay:x.day+3};x.automation={autoSave:false,autoTrade:false,foodReserve:20};x.modules.events=true;x.modules.automation=true;}
+  x.schema=11;
+ }
+ if(x.schema<11||x.schema>25)throw Error("Obsługiwane zapisy: v0.5–v2.0.");
+ if(!x.map)x.map={discovered:["Twierdza","Las"],visited:["Twierdza"],scouted:[],zoom:1};
+ if(!Array.isArray(x.map.discovered)||!Array.isArray(x.map.visited)||!Array.isArray(x.map.scouted))throw Error("Nieprawidłowy stan mapy");
+ if(LOCATIONS[x.place]&&!x.map.discovered.includes(x.place))x.map.discovered.push(x.place);
+ if(LOCATIONS[x.place]&&!x.map.visited.includes(x.place))x.map.visited.push(x.place);
+ if(x.ruins&&!x.map.discovered.includes("Ruiny"))x.map.discovered.push("Ruiny");
+ if(x.schema===11)x.schema=12;
+ if(!x.walk)x.walk={positions:{},interacted:[]};
+ if(!x.walk.positions||!Array.isArray(x.walk.interacted))throw Error("Nieprawidłowy zapis lokacji 2D.");
+ if(x.schema===12){
+  const positions={};for(const [place,pos] of Object.entries(x.walk.positions))positions[place+":outdoor"]=pos;
+  x.walk.positions=positions;
+  x.walk.interacted=x.walk.interacted.map(k=>k.replace(/^([^:]+):/, "$1:outdoor:"));
+  x.schema=13;
+ }
+ x.walk.doors??={};x.walk.room??="outdoor";x.walk.dialogs??=[];x.walk.questFlags??=[];
+ if(x.schema===13)x.schema=14;
+ if(!x.base)x.base={tiles:{},tool:"floor",level:0};
+ if(x.schema===14)x.schema=15;
+ if(x.schema===15)x.schema=16;
+ x.base.assignments??={};x.base.maxLevel=2;x.walk.baseLevel??=0;x.base.npcTick??=0;if(x.schema===16)x.schema=17;
+ if(typeof x.base.assignments!=="object"||Array.isArray(x.base.assignments))throw Error("Nieprawidłowe przydziały pracowników.");
+ if(!x.base.tiles||typeof x.base.tiles!=="object"||Array.isArray(x.base.tiles))throw Error("Nieprawidłowa baza.");
+ if(!Object.hasOwn(BASE_TOOLS,x.base.tool))x.base.tool="floor";
+ if(!["outdoor","interior","base"].includes(x.walk.room)||!Array.isArray(x.walk.dialogs)||!Array.isArray(x.walk.questFlags))throw Error("Nieprawidłowy zapis interakcji.");
+ if(x.schema===17)x.schema=18;
+ x.population.residents??=[];
+ if(!Array.isArray(x.population.residents))throw Error("Nieprawidłowa lista mieszkańców.");
+ if(x.schema===18)x.schema=19;
+ if(x.schema===19)x.schema=20;
+ x.sites??={};x.buildMode=false;x.buildZoom=Math.max(.75,Math.min(2.5,Number(x.buildZoom)||1));x.buildPreview=null;x.buildBrush=false;x.buildCamera??={x:0,y:0};
+ if(x.schema===20){const migrated={};for(const [k,v] of Object.entries(x.sites||{})){const m=k.match(/^([^:]+):(\d+):(\d+)$/);migrated[m?m[1]+":outdoor:"+m[2]+":"+m[3]:k]=v;}x.sites=migrated;x.schema=21;}
+ x.buildBrush=false;x.buildPreview=null;
+ x.worldSizes??={};x.cameraFollow??=true;if(x.schema===21)x.schema=22;
+ x.worldConfig??={biomeMode:"regional",terrainDensity:50};if(x.schema===22)x.schema=23;
+ x.walk.interiorId??="magazyn";x.walk.returnPos??=null;if(x.schema===23)x.schema=24;
+ x.walk.interiorLevel??=0;if(x.schema===24)x.schema=25;
+ x.version=VERSION;
+ x.settings={...FRESH().settings,...x.settings};
+ x.modules={...FRESH().modules,...x.modules};
+ return x;
+}
+function newDay(){
+ s.day++;
+ if(s.technology.progress){s.technology.progress.remaining--;if(s.technology.progress.remaining<=0){const tech=s.technology.progress.id;s.technology.unlocked.push(tech);s.technology.progress=null;note("Ukończono badania: "+TECHS[tech].name);}}
+ for(const v of s.fleet){if(v.condition<=0)continue;const d=VEHICLES[v.id];if(!has(d.upkeep)){v.condition=Math.max(0,v.condition-15);note("Brak zasobów na utrzymanie: "+d.name);}else spend(d.upkeep);}
+ if(s.activeVehicle&&!s.fleet.some(v=>v.id===s.activeVehicle&&v.condition>0)){s.activeVehicle=null;note("Pojazd niezdolny do jazdy — podróż pieszo.");}
+ const p=s.politics;
+ if(p.treaties.merchants)gain({gold:8});
+ if(p.treaties.nomads)gain({food:3});
+ if(p.treaties.wardens&&s.day%3===0)s.reputation++;
+ if(p.territories.Las==="secured")gain({wood:2});
+ if(p.territories.Ruiny==="secured")gain({gold:5});
+ for(const b of s.buildings){if(b.remaining>0){b.remaining--;if(b.remaining===0)note("Ukończono budowę: "+BUILDINGS[b.id].name)}}
+ let available=s.population.total;
+ for(const b of s.buildings.filter(x=>x.remaining===0)){
+  const def=BUILDINGS[b.id];
+  if(available>=def.workers){gain(def.production);available-=def.workers}
+ }
+ const consumption=Math.ceil(s.population.total/6);
+ s.resources.food=Math.max(0,s.resources.food-consumption);
+ if(s.resources.food===0){s.population.happiness=Math.max(0,s.population.happiness-8);note("Brak żywności: spadek zadowolenia.")}
+ else s.population.happiness=Math.min(100,s.population.happiness+1);
+ residentDay();
+ const operations=baseOperations();
+ for(const room of operations.rooms){if(room.enclosed&&(room.production.food||room.production.gold))gain(room.production);}
+ if(s.automation.autoTrade&&s.resources.food<s.automation.foodReserve&&has({gold:30})){spend({gold:30});gain({food:10});note("Automatyczny zakup: 10 żywności za 30 złota.");}
+ if(s.day>=s.events.nextDay&&!s.events.pending)triggerEvent();
+ note("Nowy dzień. Zużycie żywności: "+consumption+". Produkcja ukończonych budynków została rozliczona.");
+ if(s.automation.autoSave){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){note("Automatyczny zapis nieudany.")}}
+ completeQuests();
+}
+function advance(h){s.hour+=h;while(s.hour>=24){s.hour-=24;newDay()}completeQuests();render()}
+
+function devBaseReport(){
+ const ops=baseOperations(),networks=basePowerNetwork();
+ const rooms=ops.rooms.map(r=>({id:r.id,enclosed:r.enclosed,workers:r.workers,desired:r.desired,powered:r.powered,production:r.production}));
+ return {levels:[0,1,2].map(level=>({level,tiles:Object.keys(s.base.tiles).filter(k=>k.startsWith(level+":")).length,rooms:rooms.filter(r=>r.id.startsWith(level+":" )).length})),networks:networks.map(n=>({level:n.level,devices:n.members.length,capacity:n.capacity})),capacity:ops.capacity,used:ops.used,available:ops.available,free:ops.free,rooms};
+}
+function devSpawnNpc(){
+ const p=position(),map=roomMap();let target=null;
+ for(let radius=1;radius<=5&&!target;radius++)for(let dy=-radius;dy<=radius&&!target;dy++)for(let dx=-radius;dx<=radius&&!target;dx++){
+  const x=p.x+dx,y=p.y+dy;
+  if(Math.abs(dx)+Math.abs(dy)!==radius||x<0||y<0||x>=WALK_W||y>=WALK_H||map[y][x]!==".")continue;
+  if(localEntities().some(n=>n.x===x&&n.y===y))continue;
+  target={x,y};
+ }
+ if(!target){devMessage="Brak wolnego pola obok postaci. Przejdź do innego miejsca.";return;}
+ const number=devNpcs.length+1;
+ devNpcs.push({id:"dev-npc-"+number,name:"Testowy NPC "+number,type:"npc",place:s.place,room:s.walk.room,level:s.walk.room==="base"?s.walk.baseLevel:0,...target,dialog:["Test dialogu: witaj!","Test dialogu: ponowna rozmowa."]});
+ devMessage="Dodano NPC #"+number+" w "+s.place+" ("+target.x+","+target.y+").";
+}
+function devCheck(){const errors=[];for(const k of ["gold","wood","food"])if(!Number.isFinite(s.resources[k])||s.resources[k]<0)errors.push("Błędne zasoby: "+k);if(!Number.isFinite(s.hero.hp)||s.hero.hp<0||s.hero.hp>s.hero.maxHp)errors.push("Błędne HP");if(!LOCATIONS[s.place])errors.push("Nieznana lokacja");if(!s.base||!s.walk||!s.map)errors.push("Brak struktury mapy/bazy");return errors;}
+function devAction(type,id){
+ if(!devEnabled)return;
+ if(type==="devSpawnNpc")devSpawnNpc();
+ else if(type==="devClearNpcs"){devNpcs=[];devMessage="Usunięto testowe NPC.";}
+ else if(type==="devStartFight"){
+  if(!Object.hasOwn(ENEMIES,id)){devMessage="Nieznany przeciwnik.";return;}
+  s.combat=null;s.events.pending=null;startFight(id);devMessage="Uruchomiono walkę: "+ENEMIES[id].name+".";
+ }
+ else if(type==="devTriggerEvent"){
+  const e=EVENT_POOL.find(e=>e.id===id);
+  if(!e){devMessage="Nieznane wydarzenie.";return;}
+  s.combat=null;s.events.pending=e.id;devMessage="Uruchomiono wydarzenie: "+e.title+".";
+ }
+ else if(type==="devBaseReport"){const report=devBaseReport();devMessage="Baza: "+report.levels.map(l=>"P"+l.level+": "+l.tiles+" elementów, "+l.rooms+" pomieszczeń").join(" | ")+"; sieci: "+report.networks.length+"; energia: "+report.used+"/"+report.capacity+"; pracownicy: "+report.available+" (wolni "+report.free+").";}
+ else if(type==="devResources"){for(const k of ["gold","wood","food"])s.resources[k]=Math.min(1000000,s.resources[k]+devAmount);devMessage="Dodano zasoby: +"+devAmount;}
+ else if(type==="devHeal"){s.hero.hp=s.hero.maxHp;devMessage="Uleczono bohatera.";}
+ else if(type==="devXp"){xp(devAmount);devMessage="Dodano XP: "+devAmount;}
+ else if(type==="devResearch"){s.technology.points+=devAmount;devMessage="Dodano punkty badań: "+devAmount;}
+ else if(type==="devBuild"){for(const k of ["gold","wood","food"])s.resources[k]=Math.max(s.resources[k],10000);devMessage="Zasoby budowlane uzupełnione.";}
+ else if(type==="devTime"){advance(Number(id));devMessage="Przesunięto czas o "+id+" godzin.";}
+ else if(type==="devUnlock"){s.ruins=true;s.map.discovered=Object.keys(LOCATIONS);devMessage="Odkryto mapę.";}
+ else if(type==="devTeleport"){if(!LOCATIONS[id])return;s.place=id;s.walk.room="outdoor";s.map.selected=id;if(!s.map.discovered.includes(id))s.map.discovered.push(id);if(!s.map.visited.includes(id))s.map.visited.push(id);devMessage="Teleportacja: "+id;}
+ else if(type==="devStopCombat"){s.combat=null;devMessage="Zakończono walkę.";}
+ else if(type==="devClearEvent"){s.events.pending=null;devMessage="Usunięto wydarzenie.";}
+ else if(type==="devCastlePaths"){const r=castleAccessReport();devMessage="Zamek: "+r.reachable+"/"+r.checked+" wejść osiągalnych, "+r.tiles+" pól dostępnych. "+(r.inaccessible.length?"Niedostępne: "+r.inaccessible.join(", ")+". ":"")+(r.wrongDoors.length?"Błędne drzwi: "+r.wrongDoors.join(", ")+". ":"")+(r.stairs.length?"Błędy schodów: "+r.stairs.join(", "):"Schody: OK");}
+ else if(type==="devDiagnose"){const errors=devCheck();devMessage=errors.length?errors.join(" | "):"OK: podstawowe dane są spójne.";}
+ else if(type==="devReset"){if(!confirm("Zresetować kampanię testową?"))return;s=FRESH();devNpcs=[];devMessage="Zresetowano kampanię.";}
+ if(type!=="devDiagnose"&&type!=="devBaseReport")note("[DEV] "+devMessage);render();
+}
+function devView(){
+ if(!devEnabled)return '<div class="card"><h2>Tryb DEV jest wyłączony.</h2></div>';
+ return '<div class="card"><h2>DEV — panel testów</h2><p class="note">Przed testami wyeksportuj zapis JSON. Zmiany testowe wpływają na aktualną kampanię.</p>'+
+ '<label>Wielkość premii <input id="devAmount" type="number" min="1" max="100000" value="'+devAmount+'"></label>'+
+ '<h3>Zasoby i bohater</h3><div class="actions">'+button("Dodaj zasoby","devResources")+button("Ulecz bohatera","devHeal")+button("Dodaj XP","devXp")+button("Punkty badań","devResearch")+button("Zasoby budowlane","devBuild")+'</div>'+
+ '<h3>Czas i świat</h3><div class="actions">'+button("+1 godzina","devTime","1")+button("+24 godziny","devTime","24")+button("+7 dni","devTime","168")+button("Odkryj mapę","devUnlock")+'</div>'+
+ '<label>Teleportacja <select id="devDestination">'+Object.keys(LOCATIONS).map(k=>'<option value="'+esc(k)+'" '+(k===s.place?'selected':'')+'>'+esc(k)+'</option>').join("")+'</select></label><button id="devTeleportBtn" data-action="devTeleport" data-id="'+esc(s.place)+'">Teleportuj</button>'+
+ '<h3>Generator NPC</h3><p class="note">Przejdź do zakładki Spacer 2D i wróć tutaj, aby dodać NPC w aktualnej lokacji. Testowe NPC nie są częścią zapisu kampanii.</p><div class="actions">'+button("Dodaj NPC obok bohatera","devSpawnNpc")+button("Usuń testowe NPC ("+devNpcs.length+")","devClearNpcs")+'</div>'+ 
+ '<h3>Testowanie walki</h3><label>Przeciwnik <select id="devEnemy">'+Object.entries(ENEMIES).map(([k,e])=>'<option value="'+esc(k)+'">'+esc(e.name)+'</option>').join('')+'</select></label><button id="devFightBtn" data-action="devStartFight" data-id="wolf">Uruchom walkę</button>'+ 
+ '<h3>Wydarzenia losowe</h3><label>Wydarzenie <select id="devEvent">'+EVENT_POOL.map(e=>'<option value="'+esc(e.id)+'">'+esc(e.title)+'</option>').join('')+'</select></label><button id="devEventBtn" data-action="devTriggerEvent" data-id="'+esc(EVENT_POOL[0].id)+'">Uruchom wydarzenie</button>'+ 
+ '<h3>Diagnostyka bazy</h3><div class="actions">'+button("Raport energii i pracowników","devBaseReport")+'</div>'+ 
+ '<h3>Diagnostyka</h3><div class="actions">' +button("Przerwij walkę","devStopCombat")+button("Usuń wydarzenie","devClearEvent")+button("Sprawdź stan","devDiagnose")+button("Sprawdź dostępność zamku","devCastlePaths")+button("Reset kampanii","devReset")+'</div>'+
+ '<p class="note">Dzień '+s.day+' • '+s.hour+':00 • '+esc(s.place)+' • HP '+s.hero.hp+'/'+s.hero.maxHp+'</p><p aria-live="polite">'+esc(devMessage)+'</p></div>';
+}
+function action(type,id){
+ if(type==="walkPanel"){toggleWalkPanel(id);return;}
+ if(type==="walkClosePanel"){walkPanel="";render();return;}
+ if(type==="walkExplore"){if(s.buildMode)buildToggle();else {walkPanel="";render();}return;}
+ if(type==="walkBuild"){if(!s.buildMode)buildToggle();walkPanel="build";render();return;}
+ if(type==="walkGoTab"){if(id==="dev"&&!devEnabled)return;walkPanel="";tab=id;render();return;}
+ if(type.startsWith("dev"))return devAction(type,id);
+ if(type==="residentJob"){const [resident,job]=id.split("|");return assignResident(resident,job,null);}
+ if(type==="residentRoom"){const [resident,room]=id.split("|");return assignResident(resident,"warehouse",room);}
+ if(type==="residentShift"){const [resident,shift]=id.split("|");const r=ensureResidents().find(x=>x.id===resident);if(r&&["day","night"].includes(shift)){r.shift=shift;syncResidentAssignments();render();}return;}
+ if(type==="eventChoice")return resolveEvent(Number(id));
+ if(s.events.pending&&!['save','export'].includes(type))return alert("Najpierw rozstrzygnij wydarzenie w zakładce Wydarzenia.");
+ if(s.combat && !["fightAttack","fightGuard","fightPotion","save","export"].includes(type))return alert("Najpierw zakończ walkę.");
+ if(type==="buildToggle")return buildToggle();
+ if(type==="buildBrushToggle")return buildBrushToggle();
+ if(type==="buildZoom")return buildZoom(Number(id));
+ if(type==="cameraMove"){const [dx,dy]=id.split(",").map(Number);return cameraMove(dx,dy);}
+ if(type==="cameraCenter")return cameraCenter();
+ if(type==="worldSize")return setWorldSize(Number(id));
+ if(type==="interactWalk")return interactWalk();
+ if(type==="baseLevel")return baseLevelSet(Number(id));
+ if(type==="enterBase")return enterBase();
+ if(type==="baseWalkLevel")return baseFloorChange(Number(id));
+ if(type==="baseLiftLevel")return baseLiftChange(Number(id));
+ if(type==="leaveInterior")return leaveCastleRoom();
+ if(type==="interiorFloor")return interiorChangeFloor(Number(id));
+ if(type==="leaveBase"){s.walk.room="outdoor";render();return;}
+ if(type==="baseAssign"){const [room,delta]=id.split("|");return baseAssign(room,Number(delta));}
+ if(type==="baseTool"){if(Object.hasOwn(BASE_TOOLS,id)){s.base.tool=id;s.buildPreview=null;render();}return;}
+ if(type==="baseEdit"){const [x,y]=id.split(",").map(Number);return baseEdit(x,y);}
+ if(type==="selectMap"){if(s.map.discovered.includes(id)){s.map.selected=id;render();}return;}
+ if(type==="scout"){if(!MAP_SCOUT[s.place]||s.map.scouted.includes(s.place))return;s.map.scouted.push(s.place);gain(MAP_SCOUT[s.place]);note("Zbadano okolicę: "+s.place);return advance(2);}
+ if(type==="startCampaign")return startCampaign();
+ if(type==="story")return chooseStory(Number(id));
+ if(["study","research","craftVehicle","vehicle","repair"].includes(type))return researchAction(type,id);
+ if(["envoy","treaty","break","claim","secure"].includes(type))return politicsAction(type,id);
+ if(type==="fightAttack")return fightMove("attack");
+ if(type==="fightGuard")return fightMove("guard");
+ if(type==="fightPotion")return fightMove("potion");
+ if(type==="fightWolf")return startFight("wolf");
+ if(type==="fightRaider")return startFight("raider");
+ if(type==="search"){if(s.place!=="Ruiny")return alert("Dotrzyj do ruin.");if(s.searched.includes("Ruiny"))return alert("Lokacja została już przeszukana.");s.searched.push("Ruiny");gain({gold:65,wood:8});addItem(LOOT.potion);note("Przeszukano ruiny: +65 złota, +8 drewna, mikstura.");return advance(3);}
+ if(type==="go"){const dest=id;if(!LOCATIONS[s.place]?.neighbors.includes(dest)||dest==="Ruiny"&&!s.ruins)return alert("Trasa niedostępna.");const d=LOCATIONS[dest];const foodCost=Math.max(0,d.cost-(unlocked("logistics")?1:0));if(!spend({food:foodCost}))return alert("Brak żywności.");
+ const vehicle=s.activeVehicle&&s.fleet.find(v=>v.id===s.activeVehicle&&v.condition>0);const hours=vehicle?Math.max(1,Math.ceil(d.hours*VEHICLES[vehicle.id].hoursFactor)):d.hours;
+ if(vehicle){vehicle.condition=Math.max(0,vehicle.condition-5);if(vehicle.condition===0){s.activeVehicle=null;note("Pojazd wymaga naprawy.");}}
+ s.place=dest;s.walk.room="outdoor";if(!s.map.visited.includes(dest))s.map.visited.push(dest);revealNeighbors(dest);s.map.selected=dest;note("Podróż do "+dest+" ("+hours+"h, "+foodCost+" żywności).");return advance(hours);}
+
+ if(type==="gather"){const amount=unlocked("tools")?8:5;gain({wood:amount});xp(5);note("Zebrano "+amount+" drewna.");advance(2)}
+ else if(type==="sell"){if(!spend({wood:5}))return alert("Brak drewna.");gain({gold:35});note("Sprzedano 5 drewna.");advance(1)}
+ else if(type==="buy"){if(!spend({gold:30}))return alert("Brak złota.");gain({food:10});note("Kupiono 10 żywności.");advance(1)}
+ else if(type==="rest"){note("Odpoczynek.");advance(8)}
+ else if(type==="legacyTravel"){if(!spend({food:2}))return alert("Potrzeba 2 żywności.");s.place=s.place==="Las"?"Twierdza":"Las";note("Podróż: "+s.place);advance(3)}
+ else if(type==="explore"){if(s.place!=="Las")return alert("Najpierw przejdź do lasu.");if(s.ruins)return alert("Ruiny zostały już odkryte.");s.ruins=true;if(!s.map.discovered.includes("Ruiny"))s.map.discovered.push("Ruiny");gain({gold:80});xp(30);note("Odkryto ruiny: +80 złota.");advance(4)}
+ else if(type==="build"){
+  const def=BUILDINGS[id];if(!def)return;
+  if(!spend(def.cost))return alert("Brak zasobów.");
+  s.buildings.push({id,remaining:def.days});note("Rozpoczęto budowę: "+def.name);render();
+ }
+ else if(type==="equip"){
+  const item=s.inventory.find(x=>x.id===id);if(!item||!item.slot)return;
+  s.hero.equipment[item.slot]=item.id;note("Wyposażono: "+item.name);render();
+ }
+ else if(type==="heal"){
+  const item=s.inventory.find(x=>x.id===id);if(!item||item.qty<=0||!item.heal)return;
+  if(s.hero.hp===s.hero.maxHp)return alert("Zdrowie jest pełne.");
+  item.qty--;s.hero.hp=Math.min(s.hero.maxHp,s.hero.hp+item.heal);note("Użyto: "+item.name);render();
+ }
+ else if(type==="stat"){
+  if(s.hero.points<=0||!Object.hasOwn(s.hero.stats,id))return;
+  s.hero.points--;s.hero.stats[id]++;note("Rozwinięto cechę: "+id);render();
+ }
+ else if(type==="recruit"){
+  const c=s.companions.find(x=>x.id===id);if(!c||c.recruited)return;
+  if(!spend({gold:100}))return alert("Potrzeba 100 złota.");
+  c.recruited=true;note("Dołączył towarzysz: "+c.name);render();
+ }
+ else if(type==="talk"){
+  const c=s.companions.find(x=>x.id===id);if(!c||!c.recruited)return;
+  c.affinity=Math.min(100,c.affinity+5);note("Rozmowa z "+c.name+": relacja +5.");advance(1);
+ }
+ else if(type==="save")save();
+ else if(type==="load")load();
+ else if(type==="export")exportSave();
+ else if(type==="reset"){if(confirm("Rozpocząć nową kampanię?")){s=FRESH();render()}}
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(s));render()}catch(e){alert("Nie udało się zapisać: "+e.message)}}
+function validate(input){
+ const x=migrate(structuredClone(input));
+ if(!x.events||!x.automation||!x.technology||!Array.isArray(x.fleet)||!x.politics||!x.story||!Array.isArray(x.story.eventsSeen)||!Array.isArray(x.searched)||!Array.isArray(x.defeated)||!x.hero||!Array.isArray(x.companions)||!x.resources||!x.population||!Array.isArray(x.buildings)||!Array.isArray(x.log)||!x.modules||!x.settings)throw Error("Niekompletny zapis");
+ for(const k of ["gold","wood","food"]){if(!Number.isFinite(x.resources[k])||x.resources[k]<0)throw Error("Nieprawidłowe zasoby");}
+ if(!LOCATIONS[x.place])throw Error("Nieznana lokacja");
+ return x;
+}
+function load(){try{const x=localStorage.getItem(KEY);if(!x)throw Error("Brak zapisu");s=validate(JSON.parse(x));devNpcs=[];note("Wczytano zapis.");render()}catch(e){alert(e.message)}}
+function exportSave(){const u=URL.createObjectURL(new Blob([JSON.stringify(s,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=u;a.download="universal-engine-v0243-save.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)}
+function importSave(file){if(!file)return;const r=new FileReader();r.onload=()=>{try{s=validate(JSON.parse(r.result));devNpcs=[];render()}catch(e){alert("Import nieudany: "+e.message)}};r.readAsText(file)}
+function button(text,action,id="",disabled=false){return '<button data-action="'+action+'" data-id="'+esc(id)+'" '+(disabled?"disabled":"")+'>'+esc(text)+'</button>'}
+function stats(){return '<div class="grid">'+Object.entries(s.resources).map(([k,v])=>'<div class="stat">'+labels[k]+'<b>'+v+'</b></div>').join("")+'<div class="stat">Reputacja<b>'+s.reputation+'</b></div></div>'}
+function view(){
+ if(tab==="dev")return devView();
+ if(tab==="campaign")return campaignView();
+ if(tab==="home")return '<div class="card"><h2>'+esc(s.settings.title)+'</h2><p>Aktualna lokacja: '+esc(s.place)+'</p>'+stats()+'</div><div class="card"><h2>Akcje</h2>'+button("Zbierz drewno (2h)","gather")+button("Odpocznij (8h)","rest")+'</div>';
+ if(tab==="economy")return '<div class="card"><h2>Gospodarka</h2>'+stats()+'<h3>Handel</h3>'+button("Sprzedaj 5 drewna za 35 złota","sell","",!has({wood:5}))+button("Kup 10 żywności za 30 złota","buy","",!has({gold:30}))+'</div>';
+ if(tab==="construction")return '<div class="card"><h2>Budownictwo</h2><p class="note">Budowa trwa określoną liczbę dni. Produkcja działa po ukończeniu budynku, gdy dostępni są pracownicy.</p>'+Object.entries(BUILDINGS).map(([id,d])=>'<div class="item"><b>'+d.name+'</b><div class="note">Koszt: '+fmtCost(d.cost)+' • '+d.days+' dni • pracownicy: '+d.workers+' • produkcja/dzień: '+fmtCost(d.production)+'</div>'+button("Buduj","build",id,!has(d.cost))+'</div>').join("")+'<h3>Wzniesione i budowane</h3>'+(s.buildings.map(b=>'<p>'+BUILDINGS[b.id].name+' — '+(b.remaining?"pozostało "+b.remaining+" dni":"gotowe")+'</p>').join("")||'<p>Brak budynków.</p>')+'</div>';
+ if(tab==="population")return residentView();
+ if(tab==="world")return mapView();
+ if(tab==="walk")return walkView();
+ if(tab==="base")return baseView();
+ if(tab==="combat")return '<div class="card"><h2>Walka turowa</h2>'+(s.combat?'<p><b>'+ENEMIES[s.combat.kind].name+'</b>: '+s.combat.hp+'/'+ENEMIES[s.combat.kind].hp+' HP</p><p>Bohater: '+s.hero.hp+'/'+s.hero.maxHp+' HP • Tura '+s.combat.turn+'</p>'+button("Atak ("+heroAttack()+")","fightAttack")+button("Obrona (-4 obrażenia)","fightGuard")+button("Mikstura +25 HP","fightPotion"):'<p>Brak aktywnej walki.</p><p>Siła ataku bohatera: '+heroAttack()+' • Obrona: '+heroDefense()+'</p>'+button("Walcz z wilkiem","fightWolf")+button("Walcz z bandytą","fightRaider"))+'<p class="note">Walka odbywa się w turach; przeciwnik kontratakuje po akcji bohatera. Pokonanie przeciwnika daje XP, złoto i łup.</p></div>';
+ if(tab==="inventory")return '<div class="card"><h2>Ekwipunek i wyposażenie</h2><p>Broń: '+esc(s.hero.equipment.weapon||"brak")+' • Pancerz: '+esc(s.hero.equipment.armor||"brak")+'</p>'+s.inventory.map(x=>'<div class="item"><b>'+esc(x.name)+'</b> × '+x.qty+(x.attack?' • Atak +'+x.attack:'')+(x.defense?' • Obrona +'+x.defense:'')+'<div>'+ (x.slot?button("Wyposaż","equip",x.id):x.heal?button("Użyj (+"+x.heal+" HP)","heal",x.id,x.qty<=0):'')+'</div></div>').join("")+'</div>';
+ if(tab==="rpg")return '<div class="card"><h2>Postać: '+esc(s.hero.name)+'</h2><div class="grid"><div class="stat">Poziom<b>'+s.hero.level+'</b></div><div class="stat">Doświadczenie<b>'+s.hero.xp+'/'+(s.hero.level*100)+'</b></div><div class="stat">Zdrowie<b>'+s.hero.hp+'/'+s.hero.maxHp+'</b></div><div class="stat">Punkty cech<b>'+s.hero.points+'</b></div></div><h3>Cechy</h3>'+Object.entries(s.hero.stats).map(([k,v])=>'<div class="item">'+esc(k)+': '+v+' '+button("+1","stat",k,s.hero.points<=0)+'</div>').join('')+'</div>';
+ if(tab==="companions")return '<div class="card"><h2>Towarzysze</h2>'+s.companions.map(c=>'<div class="item"><b>'+esc(c.name)+'</b> — '+esc(c.role)+'<p>Stan: '+(c.recruited?'w drużynie':'niezrekrutowany')+' • Relacja: '+c.affinity+'/100</p>'+(c.recruited?button("Porozmawiaj (1h)","talk",c.id):button("Zrekrutuj (100 złota)","recruit",c.id,!has({gold:100})))+'</div>').join('')+'</div>';
+ if(tab==="story")return storyView();
+ if(tab==="events")return eventView();
+ if(tab==="automation")return automationView();
+ if(tab==="research")return researchView();
+ if(tab==="vehicles")return vehiclesView();
+ if(tab==="diplomacy")return diplomacyView();
+ if(tab==="territory")return territoryView();
+ if(tab==="quests")return '<div class="card"><h2>Zadania</h2><p>Dostawy: zgromadź 40 drewna — '+s.quests.supplies+'</p><p>Odkryj ruiny — '+s.quests.ruins+'</p></div>';
+ if(tab==="log")return '<div class="card"><h2>Dziennik</h2>'+s.log.map(x=>'<div class="item">'+esc(x)+'</div>').join("")+'</div>';
+ return '<div class="card"><h2>Engine Control</h2><label>Nazwa świata <input id="titleInput" value="'+esc(s.settings.title)+'"></label><label>Trudność (parametr do rozbudowy) <select id="difficulty"><option value="easy">Łatwa</option><option value="normal">Normalna</option><option value="hard">Trudna</option></select></label><h3>Widoczność modułów</h3><p class="note">Przełączniki ukrywają zakładki; nie wyłączają jeszcze zależności ekonomicznych.</p>'+Object.entries(MODS).map(([k,v])=>'<label><input type="checkbox" data-module="'+k+'" '+(s.modules[k]?"checked":"")+'> '+v+'</label>').join("")+'<h3>Testowanie</h3><label><input type="checkbox" id="devToggle" '+(devEnabled?'checked':'')+'> Włącz tryb DEV</label><p class="note">Tryb DEV działa tylko w bieżącej sesji. Modyfikacje kampanii mogą zostać zapisane.</p><h3>Zapisy</h3><div class="actions">'+button("Zapisz","save")+button("Wczytaj","load")+button("Eksportuj JSON","export")+button("Nowa kampania","reset")+'</div><label>Import JSON <input type="file" id="import" accept=".json,application/json"></label><p class="note">Format v23. Import zapisów v0.5–v2.1 jest migrowany do v0.22.</p></div>';
+}
+const TABS=[["home","Start"],["campaign","Nowa gra"],["economy","Ekonomia"],["construction","Budynki"],["population","Ludność"],["world","Mapa"],["walk","Spacer 2D"],["base","Edytor bazy"],["combat","Walka"],["inventory","Ekwipunek"],["rpg","Postać"],["companions","Towarzysze"],["quests","Zadania"],["story","Fabuła"],["diplomacy","Dyplomacja"],["territory","Terytoria"],["research","Technologie"],["vehicles","Pojazdy"],["events","Wydarzenia"],["automation","Automatyzacja"],["log","Dziennik"],["control","Engine Control"],["dev","DEV"]];
+function render(){
+ document.body.classList.toggle("walk-active",tab==="walk");
+ if(tab!=="home"&&tab!=="campaign"&&tab!=="control"&&tab!=="dev"&&!s.modules[tab])tab="home";
+ el("clock").textContent="Dzień "+s.day+" • "+String(s.hour).padStart(2,"0")+":00 • "+s.place;
+ el("nav").innerHTML=TABS.filter(([k])=>k==="home"||k==="campaign"||k==="control"||(k==="dev"&&devEnabled)||s.modules[k]).map(([k,t])=>'<button data-tab="'+k+'" class="'+(tab===k?"active":"")+'">'+t+'</button>').join("");
+ el("app").innerHTML=view();
+ if(tab==="control")el("difficulty").value=s.settings.difficulty;
+ if(tab==="walk"){drawWalk();const c=el("walkCanvas");if(c)c.style.width="100%";}
+}
+let painting=false,lastPaint="",suppressCanvasClick=false;
+const activeTouches=new Map();let pinchStart=0,pinchZoom=1;
+function pointerDistance(){const a=[...activeTouches.values()];return a.length<2?0:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);}
+
+let walkHoldTimer=null,walkHoldButton=null,walkHoldRepeated=false;
+function stopWalkHold(){if(walkHoldTimer!==null){clearInterval(walkHoldTimer);walkHoldTimer=null;}walkHoldButton=null;}
+document.addEventListener("pointerdown",e=>{const b=e.target.closest?.("[data-walk]");if(!b||tab!=="walk"||s.buildMode)return;
+ stopWalkHold();walkHoldButton=b;walkHoldRepeated=false;const [dx,dy]=b.dataset.walk.split(",").map(Number);
+ walkHoldTimer=setInterval(()=>{if(!walkHoldButton||tab!=="walk"||s.buildMode){stopWalkHold();return;}walkHoldRepeated=true;moveWalk(dx,dy);},145);
+});
+document.addEventListener("pointerup",e=>{if(walkHoldButton&&e.target.closest?.("[data-walk]")===walkHoldButton){/* click handles a short tap */}stopWalkHold();});
+document.addEventListener("pointercancel",stopWalkHold);
+document.addEventListener("visibilitychange",()=>{if(document.hidden)stopWalkHold();});
+document.addEventListener("pointerdown",e=>{if(e.target.id!=="walkCanvas")return;
+ if(e.pointerType==="touch"){activeTouches.set(e.pointerId,{x:e.clientX,y:e.clientY});if(activeTouches.size===2){suppressCanvasClick=true;pinchStart=pointerDistance();pinchZoom=s.buildZoom;}}
+});
+document.addEventListener("pointermove",e=>{if(e.target.id!=="walkCanvas")return;
+ if(e.pointerType==="touch"&&activeTouches.has(e.pointerId)){
+  activeTouches.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(activeTouches.size>=2&&pinchStart>0){s.buildZoom=Math.max(.25,Math.min(3,Math.round(pinchZoom*pointerDistance()/pinchStart*100)/100));drawWalk();const z=el("buildZoomLabel");if(z)z.textContent=Math.round(s.buildZoom*100)+"%";return;}
+ }
+ // Hover nie zmienia zaznaczonego pola: drugie kliknięcie musi zatwierdzić ten sam kafelek.
+});
+document.addEventListener("pointerup",e=>{activeTouches.delete(e.pointerId);if(activeTouches.size<2)pinchStart=0;});
+document.addEventListener("pointercancel",e=>{activeTouches.delete(e.pointerId);suppressCanvasClick=true;if(activeTouches.size<2)pinchStart=0;});
+document.addEventListener("click",e=>{if(e.target.id==="walkCanvas"){if(suppressCanvasClick){suppressCanvasClick=false;return;}if(s.buildMode)buildPointer(e,true);else walkCanvasTarget(e);return;}const baseCell=e.target.closest("[data-base-x]");if(baseCell){action("baseEdit",baseCell.dataset.baseX+","+baseCell.dataset.baseY);return;}const assignment=e.target.closest("[data-base-assign]");if(assignment){action("baseAssign",assignment.dataset.baseAssign+"|"+assignment.dataset.baseDelta);return;}const baseTool=e.target.closest("[data-base-tool]");if(baseTool){action("baseTool",baseTool.dataset.baseTool);return;}const walk=e.target.closest("[data-walk]");if(walk){if(walkHoldRepeated){walkHoldRepeated=false;return;}const [dx,dy]=walk.dataset.walk.split(",").map(Number);moveWalk(dx,dy);return;}const mapNode=e.target.closest("[data-map]");if(mapNode){action("selectMap",mapNode.dataset.map);return;}const b=e.target.closest("button");if(!b)return;if(b.dataset.tab){tab=b.dataset.tab;walkPanel="";render()}else if(b.dataset.action)action(b.dataset.action,b.dataset.id)});
+document.addEventListener("keydown",e=>{if(tab==="walk"&&!s.buildMode&&!["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName)){const dir={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[e.key];if(dir){e.preventDefault();moveWalk(...dir);return;}if(e.key==="e"||e.key==="Enter"){e.preventDefault();interactWalk();return;}}const n=e.target.closest("[data-map]");if(n&&(e.key==="Enter"||e.key===" ")){e.preventDefault();action("selectMap",n.dataset.map);}});
+document.addEventListener("change",e=>{
+ if(e.target.dataset.residentJob){action("residentJob",e.target.dataset.residentJob+"|"+e.target.value);return;}
+ if(e.target.dataset.residentRoom){action("residentRoom",e.target.dataset.residentRoom+"|"+e.target.value);return;}
+ if(e.target.dataset.residentShift){action("residentShift",e.target.dataset.residentShift+"|"+e.target.value);return;}
+ if(e.target.id==="worldSizeSelect"){setWorldSize(Number(e.target.value));return;}
+ if(e.target.id==="terrainDensitySelect"){setTerrainDensity(e.target.value);return;}
+ if(e.target.id==="devToggle"){devEnabled=e.target.checked;if(!devEnabled){devNpcs=[];if(tab==="dev")tab="control";}render();}
+ else if(e.target.id==="devAmount"){devAmount=Math.max(1,Math.min(100000,Math.floor(Number(e.target.value)||1)));render();}
+ else if(e.target.id==="devEnemy"){const b=el("devFightBtn");if(b)b.dataset.id=e.target.value;}
+ else if(e.target.id==="devEvent"){const b=el("devEventBtn");if(b)b.dataset.id=e.target.value;}
+ else if(e.target.id==="devDestination"){const b=el("devTeleportBtn");if(b)b.dataset.id=e.target.value;}
+ else if(e.target.id==="titleInput"){s.settings.title=e.target.value;render()}
+ else if(e.target.id==="difficulty")s.settings.difficulty=e.target.value;
+ else if(e.target.dataset.campaignModule){if(!campaignDraft)campaignView();campaignDraft.modules[e.target.dataset.campaignModule]=e.target.checked;}
+ else if(e.target.dataset.campaign){
+  if(!campaignDraft)campaignView();
+  const k=e.target.dataset.campaign,v=e.target.value;
+  if(k==="genre"){const p=CAMPAIGN_PRESETS[v];campaignDraft.genre=v;for(const key of ["gold","wood","food"])campaignDraft[key]=p.resources[key];campaignDraft.population=p.population;render();}
+  else if(["gold","wood","food","population"].includes(k)){campaignDraft[k]=Math.max(0,Math.min(100000,Math.floor(Number(v)||0)));}
+  else campaignDraft[k]=v;
+ }
+ else if(e.target.dataset.auto){s.automation[e.target.dataset.auto]=e.target.checked;render()}
+ else if(e.target.id==="foodReserve"){s.automation.foodReserve=Math.max(0,Math.min(1000,Number(e.target.value)||0));render()}
+ else if(e.target.dataset.module){s.modules[e.target.dataset.module]=e.target.checked;render()}
+ else if(e.target.id==="import")importSave(e.target.files[0]);
+});
+ensureResidents();render();
+</script></body></html>
