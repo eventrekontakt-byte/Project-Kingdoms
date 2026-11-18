@@ -4,6 +4,7 @@ import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
+import {regionById,regionForMap,travelEntry,canTravel} from "./world-map.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze"};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -13,7 +14,7 @@ function updateClock(minutes){let total=state.clock.minute+state.clock.hour*60+(
 }
 function hud(){
  const p=state.player;$("location").textContent=mapName(p.map,p.floor);
- $("coordinates").textContent=`Pozycja: ${p.x}, ${p.y} • ${p.map==="overworld"?"Świat":"Wnętrze"}`;
+ $("coordinates").textContent=`Pozycja: ${p.x}, ${p.y} • ${regionForMap(p.map)?"Lokacja":"Wnętrze"}`;
  $("clock").textContent=`Dzień ${state.clock.day} • ${String(state.clock.hour).padStart(2,"0")}:${String(state.clock.minute).padStart(2,"0")}${state.paused?" • PAUZA":""}`;
  $("zoomLabel").textContent=Math.round(state.camera.zoom*100)+"%";
  $("pauseBtn").textContent=state.paused?"Wznów":"Pauza";
@@ -52,8 +53,8 @@ function move(dir,fromPath=false){
  const p=state.player,nx=p.x+d[0],ny=p.y+d[1];
  const door=doorAt(p.map,p.floor,nx,ny);if(door&&(state.doors[door.id]||door.initial)!=="open"){if(!fromPath)notify(door.name+": użyj Zbadaj / Otwórz (E)");path=[];draw();return false;}
  const bounds=mapSize(p.map);
- if(p.map==="overworld"&&(nx<0||ny<0||nx>=bounds.w||ny>=bounds.h)){
-  path=[];strategic.open();notify("Opuszczono lokację — mapa świata");return true;
+ if(regionForMap(p.map)&&(nx<0||ny<0||nx>=bounds.w||ny>=bounds.h)){
+  path=[];strategic.open(dir);notify("Granica lokacji — wybierz region na mapie świata");return true;
  }
  if(blocked(p.map,p.floor,nx,ny)){if(!fromPath)notify("Droga zablokowana");draw();return false;}
  p.x=nx;p.y=ny;
@@ -91,7 +92,7 @@ function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu"
  Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.doors=data.doors||defaultDoors();state.worldRegion=data.worldRegion||"pogranicze";
  state.camera.zoom=Number.isFinite(data.camera?.zoom)?Math.max(.25,Math.min(3,data.camera.zoom)):1;
  state.controlMode=data.controlMode==="joystick"?"joystick":"dpad";state.paused=Boolean(data.paused);
- follow();controls.setMode(state.controlMode);path=[];draw();if(state.worldRegion!=="pogranicze"){$("openWorldMap").click();}notify("Wczytano kampanię");
+ follow();controls.setMode(state.controlMode);path=[];draw();if(!regionForMap(state.player.map)&&state.worldRegion!=="pogranicze"){$("openWorldMap").click();}notify("Wczytano kampanię");
 }
 $("loadBtn").addEventListener("click",restore);
 $("pauseBtn").addEventListener("click",()=>{state.paused=!state.paused;draw();});
@@ -111,7 +112,20 @@ $("interactBtn").addEventListener("click",performInteraction);
 $("interactMobile").addEventListener("click",performInteraction);
 const strategic=setupWorldMap({
  getState:()=>state,
- onTravel:target=>{state.worldRegion=target;updateClock(120);hud();notify("Podróż zakończona. Region: "+target);return true;},
+ onTravel:target=>{
+  if(!regionForMap(state.player.map)||!canTravel(state.worldRegion,target))return false;
+  const from=regionById(state.worldRegion),to=regionById(target);
+  const direction=to.x>from.x?"right":to.x<from.x?"left":to.y>from.y?"down":"up";
+  const targetMap=to.location,sourceSize=mapSize(state.player.map),destSize=mapSize(targetMap);
+  const coordinate={
+   x:Math.round(state.player.x/Math.max(1,sourceSize.w-1)*(destSize.w-1)),
+   y:Math.round(state.player.y/Math.max(1,sourceSize.h-1)*(destSize.h-1))
+  };
+  const entry=travelEntry(destSize.w,destSize.h,direction,coordinate);
+  Object.assign(state.player,{map:targetMap,floor:0,...entry});
+  state.worldRegion=target;path=[];updateClock(120);follow();draw();
+  notify("Dotarto do regionu: "+to.name);return true;
+ },
  onEnter:()=>{follow();draw();}
 });
 $("worldMapMobile").addEventListener("click",()=>$("openWorldMap").click());
