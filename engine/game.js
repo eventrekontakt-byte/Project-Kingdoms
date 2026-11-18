@@ -2,6 +2,7 @@ import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt
 import {defaultObjects,interact,interactionNear} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
+import {findRoute} from "./pathfinding.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors()};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -55,17 +56,9 @@ function move(dir,fromPath=false){
  follow();draw();return true;
 }
 function findPath(goal){
- const p=state.player,{w,h}=mapSize(p.map);
- if(goal.x<0||goal.y<0||goal.x>=w||goal.y>=h||blocked(p.map,p.floor,goal.x,goal.y))return [];
- const start=p.x+","+p.y,target=goal.x+","+goal.y,queue=[[p.x,p.y]],seen=new Set([start]),parent=new Map();
- for(let i=0;i<queue.length&&i<4000;i++){
-  const [x,y]=queue[i],key=x+","+y;if(key===target){
-   const result=[];let cur=key;while(cur!==start){const [xx,yy]=cur.split(",").map(Number);result.push({x:xx,y:yy});cur=parent.get(cur);}return result.reverse();
-  }
-  for(const [dx,dy] of [[0,-1],[1,0],[0,1],[-1,0]]){const nx=x+dx,ny=y+dy,k=nx+","+ny;
-   if(!seen.has(k)&&!blocked(p.map,p.floor,nx,ny)){seen.add(k);parent.set(k,key);queue.push([nx,ny]);}
-  }
- }return [];
+ const result=findRoute(state.player,goal,state.doors);
+ if(result.reason)notify(result.reason);
+ return result.path;
 }
 function toTile(e){const rect=canvas.getBoundingClientRect(),{size}=geometry();return {
  x:Math.floor(state.camera.x+(e.clientX-rect.left-rect.width/2)/size),
@@ -78,7 +71,7 @@ canvas.addEventListener("pointermove",e=>{if(!drag||drag.id!==e.pointerId)return
  drag.x=e.clientX;drag.y=e.clientY;
 });
 canvas.addEventListener("pointerup",e=>{if(!drag||drag.id!==e.pointerId)return;
- if(!drag.moved){const goal=toTile(e);path=findPath(goal);notify(path.length?`Wyznaczono trasę: ${path.length} pól`:"Brak dostępnej trasy");draw();}
+ if(!drag.moved){const goal=toTile(e);path=findPath(goal);if(path.length)notify(`Wyznaczono trasę: ${path.length} pól`);draw();}
  drag=null;
 });
 canvas.addEventListener("pointercancel",()=>drag=null);
@@ -106,10 +99,12 @@ document.querySelectorAll("[data-visit]").forEach(button=>button.addEventListene
  Object.assign(state.player,{map:"overworld",floor:0,...point});path=[];follow();draw();
  $("sidePanel").classList.remove("open");notify("Podejdź do żółtych drzwi, aby wejść.");
 }));
-$("interactBtn").addEventListener("click",()=>{notify(interact(state));draw();});
+function performInteraction(){notify(interact(state));path=[];draw();}
+$("interactBtn").addEventListener("click",performInteraction);
+$("interactMobile").addEventListener("click",performInteraction);
 const controls=setupControls(dir=>move(dir),mode=>{state.controlMode=mode;});
 window.addEventListener("keydown",e=>{
- if(e.code==="KeyE"&&!e.repeat&&!e.target?.matches("input,select,textarea")){e.preventDefault();notify(interact(state));draw();return;}
+ if(e.code==="KeyE"&&!e.repeat&&!e.target?.matches("input,select,textarea")){e.preventDefault();performInteraction();return;}
  const dir={ArrowUp:"up",KeyW:"up",ArrowDown:"down",KeyS:"down",ArrowLeft:"left",KeyA:"left",ArrowRight:"right",KeyD:"right"}[e.code];
  if(!dir||e.target?.matches("input,select,textarea"))return;e.preventDefault();
  if(keyboardDirection===dir)return;keyboardDirection=dir;clearInterval(keyboardTimer);move(dir);keyboardTimer=setInterval(()=>move(dir),125);
