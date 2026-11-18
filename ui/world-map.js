@@ -3,6 +3,9 @@ export function setupWorldMap({getState,onTravel,onEnter}){
  const overlay=document.getElementById("worldMapOverlay"),canvas=document.getElementById("strategicMap"),ctx=canvas.getContext("2d");
  const title=document.getElementById("worldRegionTitle"),desc=document.getElementById("worldRegionDescription"),travel=document.getElementById("worldTravelBtn"),enter=document.getElementById("worldEnterBtn");
  let selected="pogranicze";
+ document.getElementById("viewport").appendChild(overlay);
+ function open(){selected=getState().worldRegion||"pogranicze";overlay.hidden=false;render();}
+ function close(){if(getState().worldRegion==="pogranicze")overlay.hidden=true;}
  function render(){
   const state=getState(),current=state.worldRegion||"pogranicze";
   canvas.width=720;canvas.height=480;const size=52,ox=48,oy=32;
@@ -21,7 +24,7 @@ export function setupWorldMap({getState,onTravel,onEnter}){
   const region=regionById(selected);
   title.textContent=region?.name||"Nieznany obszar";
   desc.textContent=(region?.description||"")+ (selected===current?" • Obecny region.":"");
-  travel.disabled=state.player.map!=="overworld"||!canTravel(current,selected);
+  travel.disabled=!canTravel(current,selected);
   travel.textContent=travel.disabled?"Podróż niedostępna":"Podróżuj (2 godziny)";
   document.getElementById("closeWorldMap").disabled=current!=="pogranicze";
   enter.disabled=current!=="pogranicze";
@@ -33,8 +36,8 @@ export function setupWorldMap({getState,onTravel,onEnter}){
  });
  travel.addEventListener("click",()=>{if(onTravel(selected)){render();}});
  enter.addEventListener("click",()=>{if(getState().worldRegion==="pogranicze"){overlay.hidden=true;onEnter();}});
- document.getElementById("openWorldMap").addEventListener("click",()=>{selected=getState().worldRegion||"pogranicze";overlay.hidden=false;render();});
- document.getElementById("closeWorldMap").addEventListener("click",()=>{if(getState().worldRegion==="pogranicze")overlay.hidden=true;});
+ document.getElementById("openWorldMap").addEventListener("click",open);
+ document.getElementById("closeWorldMap").addEventListener("click",close);
  overlay.addEventListener("click",e=>{if(e.target===overlay&&getState().worldRegion==="pogranicze")overlay.hidden=true;});
- return {render};
+ return {render,open,close};
 }
