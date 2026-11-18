@@ -1,5 +1,5 @@
 import {WORLD_WIDTH,WORLD_HEIGHT,SITES,WORLD_START,SITE_COLORS,siteAt,worldTile,roadAt,walkableWorld,terrainCost} from "../engine/world-map.js";
-export function setupWorldMap({getState,onEnter,onExit}){
+export function setupWorldMap({getState,onEnter,onExit,onStep}){
  const overlay=document.getElementById("worldMapOverlay"),canvas=document.getElementById("strategicMap"),ctx=canvas.getContext("2d");
  document.getElementById("viewport").appendChild(overlay);
  const title=document.getElementById("worldRegionTitle"),desc=document.getElementById("worldRegionDescription");
@@ -15,7 +15,7 @@ export function setupWorldMap({getState,onEnter,onExit}){
   const p=getState().worldPosition,nx=p.x+d[0],ny=p.y+d[1];
   if(!walkableWorld(nx,ny))return false;
   p.x=nx;p.y=ny;camera={...p};selected=siteAt(nx,ny);
-  getState().worldTravelMinutes=(getState().worldTravelMinutes||0)+terrainCost(nx,ny);
+  const minutes=terrainCost(nx,ny);getState().worldTravelMinutes=(getState().worldTravelMinutes||0)+minutes;onStep(minutes);
   render();return true;
  }
  function render(){
