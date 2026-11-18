@@ -1,5 +1,10 @@
 # Project Kingdoms — dziennik zmian
 
+## 0.1-alpha — poprawka zegara (2026-11-18)
+- Usunięto naliczanie dodatkowej minuty przy każdym kroku postaci.
+- Zegar działa teraz tylko w centralnym interwale: 1 minuta gry na sekundę rzeczywistą, niezależnie od ruchu.
+- Pauza zatrzymuje zegar; odświeżono wersję cache offline.
+
 ## 0.1-alpha (pierwszy etap, 2026-11-18)
 - Utworzono oddzielny, modułowy szkielet gry, bez modyfikowania archiwalnego Universal Engine v0.25.1.
 - Dodano testową mapę świata i trzykondygnacyjną warownię.
