@@ -48,7 +48,6 @@ function move(dir,fromPath=false){
  p.x=nx;p.y=ny;
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
  if(dest){Object.assign(p,dest);path=[];notify(mapName(p.map,p.floor));}
- if(!state.paused)updateClock(1);
  follow();draw();return true;
 }
 function findPath(goal){
