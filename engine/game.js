@@ -46,6 +46,7 @@ function draw(){
 }
 function follow(){state.camera.x=state.player.x+.5;state.camera.y=state.player.y+.5;}
 function move(dir,fromPath=false){
+ if(!$("worldMapOverlay").hidden)return false;
  if(!fromPath)path=[];
  const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[dir];if(!d)return false;
  const p=state.player,nx=p.x+d[0],ny=p.y+d[1];
@@ -61,6 +62,7 @@ function move(dir,fromPath=false){
  follow();draw();return true;
 }
 function findPath(goal){
+ if(!$("worldMapOverlay").hidden)return [];
  const result=findRoute(state.player,goal,state.doors);
  if(result.reason)notify(result.reason);
  return result.path;
