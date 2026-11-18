@@ -113,4 +113,15 @@ setInterval(()=>{if(path.length){const step=path.shift(),p=state.player,dx=step.
 setInterval(()=>{if(!state.paused){updateClock(1);hud();}},1000);
 new ResizeObserver(resize).observe(canvas);
 follow();resize();
-if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+if("serviceWorker" in navigator){
+ let reloadedForUpdate=false;
+ navigator.serviceWorker.addEventListener("controllerchange",()=>{
+  if(!reloadedForUpdate){reloadedForUpdate=true;window.location.reload();}
+ });
+ window.addEventListener("load",async()=>{
+  try{
+   const registration=await navigator.serviceWorker.register("./service-worker.js",{updateViaCache:"none"});
+   await registration.update();
+  }catch(error){console.warn("Aktualizacja offline niedostępna",error);}
+ });
+}
