@@ -1,11 +1,11 @@
-import {WORLD_WIDTH,WORLD_HEIGHT,WORLD_COLORS,worldTile,REGIONS,regionById,canTravel} from "../engine/world-map.js";
+import {WORLD_WIDTH,WORLD_HEIGHT,WORLD_COLORS,worldTile,REGIONS,regionById,canTravel,adjacentRegion} from "../engine/world-map.js";
 export function setupWorldMap({getState,onTravel,onEnter}){
  const overlay=document.getElementById("worldMapOverlay"),canvas=document.getElementById("strategicMap"),ctx=canvas.getContext("2d");
  const title=document.getElementById("worldRegionTitle"),desc=document.getElementById("worldRegionDescription"),travel=document.getElementById("worldTravelBtn"),enter=document.getElementById("worldEnterBtn");
  let selected="pogranicze";
  document.getElementById("viewport").appendChild(overlay);
- function open(){selected=getState().worldRegion||"pogranicze";overlay.hidden=false;render();}
- function close(){if(getState().worldRegion==="pogranicze")overlay.hidden=true;}
+ function open(direction=null){const current=getState().worldRegion||"pogranicze";selected=direction?(adjacentRegion(current,direction)?.id||current):current;overlay.hidden=false;render();}
+ function close(){overlay.hidden=true;}
  function render(){
   const state=getState(),current=state.worldRegion||"pogranicze";
   canvas.width=720;canvas.height=480;const size=52,ox=48,oy=32;
@@ -24,20 +24,20 @@ export function setupWorldMap({getState,onTravel,onEnter}){
   const region=regionById(selected);
   title.textContent=region?.name||"Nieznany obszar";
   desc.textContent=(region?.description||"")+ (selected===current?" • Obecny region.":"");
-  travel.disabled=!canTravel(current,selected);
+  travel.disabled=!canTravel(current,selected)||!getState().player.map||!["overworld","puszcza","przelecz","doliny","jeziora"].includes(getState().player.map);
   travel.textContent=travel.disabled?"Podróż niedostępna":"Podróżuj (2 godziny)";
-  document.getElementById("closeWorldMap").disabled=current!=="pogranicze";
-  enter.disabled=current!=="pogranicze";
-  enter.textContent=current==="pogranicze"?"Wróć do mapy lokacji":"Mapa lokacji jeszcze niedostępna";
+  document.getElementById("closeWorldMap").disabled=false;
+  enter.disabled=false;
+  enter.textContent="Wróć do lokacji: "+(regionById(current)?.name||current);
  }
  canvas.addEventListener("click",e=>{
   const box=canvas.getBoundingClientRect(),x=Math.floor(((e.clientX-box.left)*canvas.width/box.width-48)/52),y=Math.floor(((e.clientY-box.top)*canvas.height/box.height-32)/52);
   const r=REGIONS.find(r=>r.x===x&&r.y===y);if(r){selected=r.id;render();}
  });
- travel.addEventListener("click",()=>{if(onTravel(selected)){render();}});
- enter.addEventListener("click",()=>{if(getState().worldRegion==="pogranicze"){overlay.hidden=true;onEnter();}});
- document.getElementById("openWorldMap").addEventListener("click",open);
+ travel.addEventListener("click",()=>{if(onTravel(selected)){overlay.hidden=true;onEnter();}});
+ enter.addEventListener("click",()=>{overlay.hidden=true;onEnter();});
+ document.getElementById("openWorldMap").addEventListener("click",()=>open());
  document.getElementById("closeWorldMap").addEventListener("click",close);
- overlay.addEventListener("click",e=>{if(e.target===overlay&&getState().worldRegion==="pogranicze")overlay.hidden=true;});
+ overlay.addEventListener("click",e=>{if(e.target===overlay)close();});
  return {render,open,close};
 }
