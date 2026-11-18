@@ -16,16 +16,13 @@ export const OBJECTS={
 const PORTALS=[
  ["overworld",0,24,20,"keep",0,8,11],
  ["keep",0,8,12,"overworld",0,24,21],
- ["overworld",0,35,12,"house",0,5,7],
- ["house",0,5,8,"overworld",0,34,12],
- ["overworld",0,39,23,"inn",0,7,9],
- ["inn",0,7,10,"overworld",0,38,23],
- ["overworld",0,11,31,"warehouse",0,6,7],
- ["warehouse",0,6,8,"overworld",0,10,31]
+ ["overworld",0,35,12,"house",0,1,4],
+ ["house",0,0,4,"overworld",0,34,12],
+ ["overworld",0,39,23,"inn",0,1,5],
+ ["inn",0,0,5,"overworld",0,38,23],
+ ["overworld",0,11,31,"warehouse",0,1,4],
+ ["warehouse",0,0,4,"overworld",0,10,31]
 ];
-for(const [map,floor,x,y,target,targetFloor,tx,ty] of [...PORTALS]){
- // All entry/exit portals are explicitly paired in the table.
-}
 for(const map of ["keep","inn"]){
  const max=LOCATIONS[map].floors;
  for(let floor=0;floor<max-1;floor++){
