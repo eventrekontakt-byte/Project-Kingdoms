@@ -1,3 +1,12 @@
+## 0.1.5-alpha — mapa świata
+- Dodano oddzielną mapę strategiczną (12 × 8 pól), niezależną od mapy lokacji 64 × 44.
+- Region startowy Pogranicze oraz cztery sąsiednie/połączone regiony: Puszcza Cieni, Kamienna Przełęcz, Zielone Doliny, Kraina Jezior.
+- Otwieranie mapy świata z menu, klawiszem M oraz przyciskiem mobilnym.
+- Wybieranie regionów i podróże wyłącznie pomiędzy sąsiednimi regionami; 2 godziny czasu gry na przejście.
+- Zapis i odczyt regionu świata (schemat 4, migracja starszych zapisów).
+- Mapa szczegółowa pozostaje dostępna tylko dla Pogranicza. Po wyjeździe do innych regionów gracz pozostaje na mapie strategicznej, aż wróci do Pogranicza. To celowe ograniczenie prototypu.
+- Kontrola składni modułów i testy sąsiedztwa regionów zakończone pomyślnie; testy w przeglądarce i na telefonie nadal wymagane.
+
 ## 0.1.4-alpha — eksploracja i nawigacja
 - Zastąpiono wyszukiwanie tras BFS algorytmem A* w osobnym module engine/pathfinding.js.
 - Trasa uwzględnia przeszkody oraz stan drzwi: przez zamknięte lub zamknięte na klucz nie prowadzi.
