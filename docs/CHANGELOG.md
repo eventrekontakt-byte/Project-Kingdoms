@@ -1,3 +1,15 @@
+## 0.1.8-alpha — otwarty świat i osady
+- Mapa świata 120×84 pól, z kamerą śledzącą postać, ruchem strzałkami/WASD/dotykowym oraz trasami A* po kliknięciu.
+- 14 lokacji zgodnych z GDD: 2 miasta, 2 zamki, 4 wsie, 2 kryjówki bandytów i 4 inne lokacje. Dwa państwa reprezentowane wstępną przynależnością lokacji.
+- Każda lokacja posiada osobną wstępną mapę 64×44. Kamienogród zachowuje dotychczasową mapę z warownią, domem, karczmą i magazynem.
+- Aby wejść do lokacji, należy stanąć na jej znaczniku na mapie świata i nacisnąć E (lub użyć przycisku).
+- Wyjście poza granicę mapy lokacji wraca do świata. Klawisz M przełącza oba widoki.
+- Różnorodne tereny i drogi między ważniejszymi punktami. Koszt czasu ruchu zależy od terenu.
+- Schemat zapisu 5 obejmuje pozycję i aktywny widok mapy świata.
+- Testy statyczne: składnia modułów poprawna; wszystkie 14 lokacji mają grywalne mapy i niezablokowane pola startowe. Testy urządzeń wymagane.
+- Nazwy miejscowości i państw są robocze; GDD określa liczby, nie nazwy.
+- Nie wdrożono jeszcze systemów gospodarki, NPC, granic politycznych, walki ani wnętrz wszystkich nowych budynków.
+
 ## 0.1.7-alpha — kierunkowe podróże i mapy regionów
 - Każdy z pięciu regionów ma odrębną grywalną mapę taktyczną 64×44.
 - Puszcza Cieni: gęsty las; Kamienna Przełęcz: skały i przeszkody; Zielone Doliny: łąki; Kraina Jezior: zbiorniki wodne i brzegi.
