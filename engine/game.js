@@ -98,7 +98,7 @@ $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="
  Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.paused=false;path=[];follow();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
-const visitPoints={keep:{x:24,y:21},house:{x:38,y:15},inn:{x:42,y:26},warehouse:{x:14,y:34}};
+const visitPoints={keep:{x:24,y:21},house:{x:34,y:12},inn:{x:38,y:23},warehouse:{x:10,y:31}};
 document.querySelectorAll("[data-visit]").forEach(button=>button.addEventListener("click",()=>{
  const point=visitPoints[button.dataset.visit];if(!point)return;
  Object.assign(state.player,{map:"overworld",floor:0,...point});path=[];follow();draw();
