@@ -1,4 +1,4 @@
-import {WORLD_WIDTH,WORLD_HEIGHT,SITES,WORLD_START,SITE_COLORS,siteAt,worldTile,roadAt,walkableWorld,terrainCost} from "../engine/world-map.js";
+import {WORLD_WIDTH,WORLD_HEIGHT,SITES,WORLD_START,SITE_COLORS,siteAt,worldTile,roadAt,walkableWorld,terrainCost,factionAt,borderAt,FACTIONS} from "../engine/world-map.js";
 export function setupWorldMap({getState,onEnter,onExit,onStep}){
  const overlay=document.getElementById("worldMapOverlay"),canvas=document.getElementById("strategicMap"),ctx=canvas.getContext("2d");
  document.getElementById("viewport").appendChild(overlay);
@@ -32,7 +32,8 @@ export function setupWorldMap({getState,onEnter,onExit,onStep}){
    const sx=(x-camera.x)*size+w/2,sy=(y-camera.y)*size+h/2;
    ctx.fillStyle=roadAt(x,y)?"#a78c66":colors[worldTile(x,y)]||"#1b2832";
    ctx.fillRect(sx,sy,size+.5,size+.5);
-   if(size>=12&&((x<61&&y<58)||(x>=61&&y>=20))){ctx.fillStyle=x<61&&y<58?"#6fa1db15":"#f3bc6b13";ctx.fillRect(sx,sy,size+.5,size+.5);}
+   const faction=factionAt(x,y);if(faction){ctx.fillStyle=faction==="north"?"#6d9dc824":"#d6a46824";ctx.fillRect(sx,sy,size+.5,size+.5);}
+   if(borderAt(x,y)&&size>=5){ctx.strokeStyle="#e8d7a38a";ctx.lineWidth=Math.max(1,size*.08);ctx.strokeRect(sx+1,sy+1,size-2,size-2);}
   }
   for(const s of SITES){
    const sx=(s.x-camera.x+.5)*size+w/2,sy=(s.y-camera.y+.5)*size+h/2;
@@ -45,7 +46,8 @@ export function setupWorldMap({getState,onEnter,onExit,onStep}){
   ctx.fillStyle="#58d5ff";ctx.strokeStyle="#ffffff";ctx.lineWidth=2;ctx.beginPath();ctx.arc(px,py,Math.max(5,size*.32),0,Math.PI*2);ctx.fill();ctx.stroke();
   ctx.strokeStyle="#f5df9c";ctx.lineWidth=2;ctx.beginPath();route.forEach((step,i)=>{const sx=(step.x-camera.x+.5)*size+w/2,sy=(step.y-camera.y+.5)*size+h/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);});ctx.stroke();
   const here=siteAt(p.x,p.y);title.textContent=here?here.name:"Mapa świata — podróż";
-  desc.textContent=here?here.description+" • Naciśnij E, aby wejść.":selected?"Cel: "+selected.name+" — podejdź do znacznika.":"Poruszaj się strzałkami lub WASD. Wejście do lokacji: E.";
+  const faction=factionAt(p.x,p.y);const territory=faction?FACTIONS.find(f=>f.id===faction)?.name:"Ziemie neutralne";
+  desc.textContent=(here?here.description+" • Naciśnij E, aby wejść.":selected?"Cel: "+selected.name+" — podejdź do znacznika.":"Poruszaj się strzałkami lub WASD. Wejście do lokacji: E.")+" • Terytorium: "+territory;
   enter.disabled=!here;enter.textContent=here?"Wejdź: "+here.name+" (E)":"Stań na polu lokacji";
   travel.disabled=true;travel.hidden=true;
  }
