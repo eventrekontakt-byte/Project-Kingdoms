@@ -1,6 +1,6 @@
 // Project Kingdoms 0.1-alpha: network-first for updates, cache fallback for offline play.
-const CACHE_VERSION="kingdoms-alpha-015-v1";
-const ASSETS=["./","./index.html","./manifest.json","./styles/main.css","./engine/game.js?v=0.1.5","./engine/world.js","./engine/buildings.js","./engine/pathfinding.js","./engine/world-map.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js"];
+const CACHE_VERSION="kingdoms-alpha-016-v1";
+const ASSETS=["./","./index.html","./manifest.json","./styles/main.css","./engine/game.js?v=0.1.6","./engine/world.js","./engine/buildings.js","./engine/pathfinding.js","./engine/world-map.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js"];
 self.addEventListener("install",event=>{
  event.waitUntil(caches.open(CACHE_VERSION).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
 });
