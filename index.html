@@ -7,12 +7,13 @@
 <link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
-<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.1 • fundamenty</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
+<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.1 • fundamenty</span><button id="interactBtnMobile" hidden aria-hidden="true">Zbadaj</button><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
 <main id="gameShell">
 <section id="viewport" aria-label="Mapa świata"><canvas id="world" aria-label="Mapa gry"></canvas><div id="toast" role="status"></div></section>
 <aside id="sidePanel">
 <div class="panel"><h2 id="location">Pogranicze</h2><p id="coordinates"></p><p id="clock"></p><p class="hint">Wejdź na drzwi, aby wejść do budynku. Schody przenoszą między piętrami. Dotknij pola, aby wyznaczyć trasę.</p></div>
 <div class="panel"><h3>Widok</h3><div class="row"><button id="zoomOut">−</button><span id="zoomLabel">100%</span><button id="zoomIn">+</button><button id="centerCamera">⌖</button></div><label>Tryb sterowania <select id="controlMode"><option value="dpad">Przyciski</option><option value="joystick">Joystick</option></select></label></div>
+<div class="panel"><h3>Interakcje</h3><button id="interactBtn">Zbadaj / Otwórz (E)</button><p class="hint">Podejdź do skrzyni lub innego obiektu i użyj przycisku.</p></div>
 <div class="panel"><h3>Gra</h3><div class="row wrap"><button id="saveBtn">Zapisz</button><button id="loadBtn">Wczytaj</button><button id="pauseBtn">Pauza</button><button id="newBtn">Nowa gra</button></div><p class="hint" id="saveStatus">Stan lokalny tej przeglądarki</p></div>
 <div class="panel"><h3>Legenda</h3><p class="hint">🟦 bohater • 🟨 drzwi • 🟪 schody • ⬛ ściana • 🟩 trawa</p></div>
 </aside>
