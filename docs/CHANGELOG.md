@@ -1,3 +1,14 @@
+## 0.1.9-alpha — kamera mapy świata i terytoria państw
+- Przesuwanie mapy świata myszą i przeciąganiem palcem, niezależnie od położenia postaci.
+- Przybliżanie i oddalanie kółkiem myszy, gestem dwóch palców oraz przyciskami +/−.
+- Przycisk ⌖ centruje kamerę na postaci; kliknięcie celu przywraca śledzenie bohatera podczas marszu.
+- Zachowano ruch klawiszami WASD/strzałkami, wyznaczanie trasy kliknięciem oraz wejście do lokacji przez E.
+- Wprowadzono wstępne terytoria Korony Północy i Ligi Południa, neutralne pogranicze oraz widoczne granice na mapie świata.
+- Informacja o terytorium, na którym stoi postać, pojawia się w opisie mapy.
+- Wstępne ulepszenia planów osad: przejścia w zabudowie, tereny uprawne i dostęp do nabrzeży.
+- Weryfikacja statyczna: poprawna składnia siedmiu modułów; wszystkie 14 lokacji zachowało grywalne mapy i dostępne punkty startowe; granice obydwu państw występują na mapie.
+- Brak jeszcze faktycznej polityki, straży granicznej, NPC i funkcjonalnych wnętrz nowych budynków. Testy przeglądarkowe i dotykowe pozostają do potwierdzenia.
+
 ## 0.1.8-alpha — otwarty świat i osady
 - Mapa świata 120×84 pól, z kamerą śledzącą postać, ruchem strzałkami/WASD/dotykowym oraz trasami A* po kliknięciu.
 - 14 lokacji zgodnych z GDD: 2 miasta, 2 zamki, 4 wsie, 2 kryjówki bandytów i 4 inne lokacje. Dwa państwa reprezentowane wstępną przynależnością lokacji.
