@@ -1,7 +1,9 @@
+import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
 export const START={map:"overworld",floor:0,x:12,y:17};
 export const LOCATIONS={
+ ...Object.fromEntries(Object.entries(REGION_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
  overworld:{name:"Pogranicze",width:64,height:44,floors:1},
  keep:{name:"Warownia",width:17,height:13,floors:3,base:"stone"},
  house:{name:"Dom mieszkańca",width:11,height:9,floors:1,base:"wood"},
@@ -64,6 +66,7 @@ export function tileAt(map,floor,x,y){
  if(x<0||y<0||x>=w||y>=h)return "void";
  const portal=transitionAt(map,floor,x,y);
  if(portal)return portal.map===map?(portal.floor>floor?"stairs-up":"stairs-down"):"door";
+ if(REGION_LAYOUTS[map])return regionTile(map,x,y);
  if(map==="overworld"){
   if(BUILDINGS.some(({bounds:[x1,y1,x2,y2]})=>x>=x1&&x<=x2&&y>=y1&&y<=y2))return "wall";
   if((x===5&&y>=4&&y<=30)||(y===39&&x>=5&&x<=54))return "water";
@@ -80,4 +83,4 @@ export function tileAt(map,floor,x,y){
 }
 export function blocked(map,floor,x,y){return ["void","wall","tree","water","object"].includes(tileAt(map,floor,x,y));}
 export function mapName(map,floor){const l=LOCATIONS[map];return l?`${l.name}${l.floors>1?` — piętro ${floor}`:""}`:"Nieznana lokacja";}
-export const COLORS={void:"#050a0e",wall:"#36404a",tree:"#285b34",water:"#225d8c",road:"#8a7a60",grass:"#416f45",hill:"#5b7750",meadow:"#689257",stone:"#777a78",wood:"#927b56",marble:"#8d9ba3",door:"#e4b64c","stairs-up":"#ad87dd","stairs-down":"#8863c0",object:"#b68b53"};
+export const COLORS={void:"#050a0e",wall:"#36404a",tree:"#285b34",water:"#225d8c",road:"#8a7a60",grass:"#416f45","forest-floor":"#365b3a",rock:"#79786c",hill:"#5b7750",meadow:"#689257",stone:"#777a78",wood:"#927b56",marble:"#8d9ba3",door:"#e4b64c","stairs-up":"#ad87dd","stairs-down":"#8863c0",object:"#b68b53"};
