@@ -4,11 +4,12 @@ export function setupWorldMap({getState,onEnter,onExit}){
  document.getElementById("viewport").appendChild(overlay);
  const title=document.getElementById("worldRegionTitle"),desc=document.getElementById("worldRegionDescription");
  const enter=document.getElementById("worldEnterBtn"),travel=document.getElementById("worldTravelBtn");
- let camera={x:WORLD_START.x,y:WORLD_START.y},selected=null,zoom=1.2;
+ let camera={x:WORLD_START.x,y:WORLD_START.y},selected=null,zoom=1.2,route=[];
  function active(){return !overlay.hidden;}
- function open(){overlay.hidden=false;camera={...getState().worldPosition};render();}
- function close(){overlay.hidden=true;onExit();}
- function move(dir){
+ function open(){overlay.hidden=false;route=[];camera={...getState().worldPosition};render();}
+ function close(){overlay.hidden=true;route=[];onExit();}
+ function move(dir,auto=false){
+  if(!auto)route=[];
   if(!active())return false;
   const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[dir];if(!d)return false;
   const p=getState().worldPosition,nx=p.x+d[0],ny=p.y+d[1];
@@ -41,6 +42,7 @@ export function setupWorldMap({getState,onEnter,onExit}){
   }
   const px=(p.x-camera.x+.5)*size+w/2,py=(p.y-camera.y+.5)*size+h/2;
   ctx.fillStyle="#58d5ff";ctx.strokeStyle="#ffffff";ctx.lineWidth=2;ctx.beginPath();ctx.arc(px,py,Math.max(5,size*.32),0,Math.PI*2);ctx.fill();ctx.stroke();
+  ctx.strokeStyle="#f5df9c";ctx.lineWidth=2;ctx.beginPath();route.forEach((step,i)=>{const sx=(step.x-camera.x+.5)*size+w/2,sy=(step.y-camera.y+.5)*size+h/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);});ctx.stroke();
   const here=siteAt(p.x,p.y);title.textContent=here?here.name:"Mapa świata — podróż";
   desc.textContent=here?here.description+" • Naciśnij E, aby wejść.":selected?"Cel: "+selected.name+" — podejdź do znacznika.":"Poruszaj się strzałkami lub WASD. Wejście do lokacji: E.";
   enter.disabled=!here;enter.textContent=here?"Wejdź: "+here.name+" (E)":"Stań na polu lokacji";
@@ -50,7 +52,7 @@ export function setupWorldMap({getState,onEnter,onExit}){
  canvas.addEventListener("click",e=>{
   const rect=canvas.getBoundingClientRect(),size=18*zoom;
   const x=Math.floor(camera.x+(e.clientX-rect.left-rect.width/2)/size),y=Math.floor(camera.y+(e.clientY-rect.top-rect.height/2)/size);
-  selected=siteAt(x,y);render();
+  selected=siteAt(x,y);if(walkableWorld(x,y))route=findWorldPath(getState().worldPosition,{x,y});render();
  });
  canvas.addEventListener("wheel",e=>{e.preventDefault();zoom=Math.max(.6,Math.min(2.5,zoom+(e.deltaY<0?.15:-.15)));render();},{passive:false});
  document.getElementById("openWorldMap").addEventListener("click",open);
@@ -58,5 +60,23 @@ export function setupWorldMap({getState,onEnter,onExit}){
  enter.addEventListener("click",interact);
  document.getElementById("worldTravelBtn").hidden=true;
  new ResizeObserver(()=>{if(active())render();}).observe(canvas);
+ setInterval(()=>{if(!active()||!route.length)return;const next=route.shift(),p=getState().worldPosition;const dir=next.x>p.x?"right":next.x<p.x?"left":next.y>p.y?"down":"up";if(!move(dir,true))route=[];},115);
  return {open,close,move,interact,render,active};
+}
+
+function findWorldPath(start,goal){
+ const key=(x,y)=>x+","+y,open=[{...start,g:0,f:0}],best=new Map([[key(start.x,start.y),0]]),parent=new Map();
+ const heuristic=(x,y)=>Math.abs(goal.x-x)+Math.abs(goal.y-y);
+ for(let i=0;open.length&&i<15000;i++){
+  open.sort((a,b)=>a.f-b.f);const p=open.shift(),k=key(p.x,p.y);
+  if(p.g!==best.get(k))continue;
+  if(p.x===goal.x&&p.y===goal.y){const path=[];let at=k;while(at!==key(start.x,start.y)){const [x,y]=at.split(",").map(Number);path.push({x,y});at=parent.get(at);}return path.reverse();}
+  for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+   const x=p.x+dx,y=p.y+dy;if(!walkableWorld(x,y))continue;
+   const nkey=key(x,y),g=p.g+terrainCost(x,y);
+   if(g>=(best.get(nkey)??Infinity))continue;
+   best.set(nkey,g);parent.set(nkey,k);open.push({x,y,g,f:g+heuristic(x,y)});
+  }
+ }
+ return [];
 }
