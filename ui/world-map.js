@@ -4,9 +4,9 @@ export function setupWorldMap({getState,onEnter,onExit,onStep}){
  document.getElementById("viewport").appendChild(overlay);
  const title=document.getElementById("worldRegionTitle"),desc=document.getElementById("worldRegionDescription");
  const enter=document.getElementById("worldEnterBtn"),travel=document.getElementById("worldTravelBtn");
- let camera={x:WORLD_START.x,y:WORLD_START.y},selected=null,zoom=1.2,route=[];
+ let camera={x:WORLD_START.x,y:WORLD_START.y},selected=null,zoom=1.2,route=[],drag=null,pointers=new Map(),pinchDistance=0,followPlayer=true;
  function active(){return !overlay.hidden;}
- function open(){overlay.hidden=false;route=[];camera={...getState().worldPosition};render();}
+ function open(){overlay.hidden=false;route=[];camera={...getState().worldPosition};followPlayer=true;render();}
  function close(){overlay.hidden=true;route=[];onExit();}
  function move(dir,auto=false){
   if(!auto)route=[];
@@ -14,7 +14,7 @@ export function setupWorldMap({getState,onEnter,onExit,onStep}){
   const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[dir];if(!d)return false;
   const p=getState().worldPosition,nx=p.x+d[0],ny=p.y+d[1];
   if(!walkableWorld(nx,ny))return false;
-  p.x=nx;p.y=ny;camera={...p};selected=siteAt(nx,ny);
+  p.x=nx;p.y=ny;if(followPlayer)camera={...p};selected=siteAt(nx,ny);
   const minutes=terrainCost(nx,ny);getState().worldTravelMinutes=(getState().worldTravelMinutes||0)+minutes;onStep(minutes);
   render();return true;
  }
@@ -32,6 +32,7 @@ export function setupWorldMap({getState,onEnter,onExit,onStep}){
    const sx=(x-camera.x)*size+w/2,sy=(y-camera.y)*size+h/2;
    ctx.fillStyle=roadAt(x,y)?"#a78c66":colors[worldTile(x,y)]||"#1b2832";
    ctx.fillRect(sx,sy,size+.5,size+.5);
+   if(size>=12&&((x<61&&y<58)||(x>=61&&y>=20))){ctx.fillStyle=x<61&&y<58?"#6fa1db15":"#f3bc6b13";ctx.fillRect(sx,sy,size+.5,size+.5);}
   }
   for(const s of SITES){
    const sx=(s.x-camera.x+.5)*size+w/2,sy=(s.y-camera.y+.5)*size+h/2;
@@ -49,19 +50,46 @@ export function setupWorldMap({getState,onEnter,onExit,onStep}){
   travel.disabled=true;travel.hidden=true;
  }
  function interact(){const p=getState().worldPosition,s=siteAt(p.x,p.y);if(!s)return false;close();onEnter(s);return true;}
- canvas.addEventListener("click",e=>{
-  const rect=canvas.getBoundingClientRect(),size=18*zoom;
-  const x=Math.floor(camera.x+(e.clientX-rect.left-rect.width/2)/size),y=Math.floor(camera.y+(e.clientY-rect.top-rect.height/2)/size);
-  selected=siteAt(x,y);if(walkableWorld(x,y))route=findWorldPath(getState().worldPosition,{x,y});render();
+ function zoomBy(delta){zoom=Math.max(.35,Math.min(3.5,Math.round((zoom+delta)*100)/100));render();}
+ function center(){camera={...getState().worldPosition};followPlayer=true;render();}
+ function screenToTile(clientX,clientY){const rect=canvas.getBoundingClientRect(),size=18*zoom;return {x:Math.floor(camera.x+(clientX-rect.left-rect.width/2)/size),y:Math.floor(camera.y+(clientY-rect.top-rect.height/2)/size)};}
+ canvas.addEventListener("pointerdown",e=>{
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  drag={id:e.pointerId,x:e.clientX,y:e.clientY,moved:false};
+  if(pointers.size>1){drag.moved=true;const p=[...pointers.values()];pinchDistance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}
+  canvas.setPointerCapture(e.pointerId);
  });
- canvas.addEventListener("wheel",e=>{e.preventDefault();zoom=Math.max(.6,Math.min(2.5,zoom+(e.deltaY<0?.15:-.15)));render();},{passive:false});
+ canvas.addEventListener("pointermove",e=>{
+  if(!pointers.has(e.pointerId))return;
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pointers.size>=2){const p=[...pointers.values()],distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);if(pinchDistance>0)zoomBy((distance-pinchDistance)/250);pinchDistance=distance;if(drag)drag.moved=true;return;}
+  if(!drag||drag.id!==e.pointerId)return;
+  const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+  if(Math.abs(dx)+Math.abs(dy)>3){drag.moved=true;followPlayer=false;camera.x=Math.max(0,Math.min(WORLD_WIDTH-1,camera.x-dx/(18*zoom)));camera.y=Math.max(0,Math.min(WORLD_HEIGHT-1,camera.y-dy/(18*zoom)));render();}
+  drag.x=e.clientX;drag.y=e.clientY;
+ });
+ canvas.addEventListener("pointerup",e=>{
+  const wasSingle=pointers.size===1;
+  pointers.delete(e.pointerId);
+  if(wasSingle&&drag&&!drag.moved){
+   const {x,y}=screenToTile(e.clientX,e.clientY);selected=siteAt(x,y);
+   if(walkableWorld(x,y)){route=findWorldPath(getState().worldPosition,{x,y});followPlayer=true;}
+   render();
+  }
+  drag=null;if(pointers.size<2)pinchDistance=0;
+ });
+ canvas.addEventListener("pointercancel",e=>{pointers.delete(e.pointerId);drag=null;pinchDistance=0;});
+ canvas.addEventListener("wheel",e=>{e.preventDefault();zoomBy(e.deltaY<0?.15:-.15);},{passive:false});
+ document.getElementById("worldZoomIn").addEventListener("click",()=>zoomBy(.2));
+ document.getElementById("worldZoomOut").addEventListener("click",()=>zoomBy(-.2));
+ document.getElementById("worldCenter").addEventListener("click",center);
  document.getElementById("openWorldMap").addEventListener("click",open);
  document.getElementById("closeWorldMap").addEventListener("click",close);
  enter.addEventListener("click",interact);
  document.getElementById("worldTravelBtn").hidden=true;
  new ResizeObserver(()=>{if(active())render();}).observe(canvas);
  setInterval(()=>{if(!active()||!route.length)return;const next=route.shift(),p=getState().worldPosition;const dir=next.x>p.x?"right":next.x<p.x?"left":next.y>p.y?"down":"up";if(!move(dir,true))route=[];},115);
- return {open,close,move,interact,render,active};
+ return {open,close,move,interact,render,active,zoomBy,center};
 }
 
 function findWorldPath(start,goal){
