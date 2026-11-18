@@ -69,6 +69,8 @@ export function tileAt(map,floor,x,y){
   if((x===5&&y>=4&&y<=30)||(y===39&&x>=5&&x<=54))return "water";
   if((y===21&&x>=10&&x<=47)||(x===34&&y>=12&&y<=21)||(x===38&&y>=21&&y<=26)||(x===10&&y>=21&&y<=34))return "road";
   if((x*17+y*31+x*y*7)%47===0&&!entrances.some(([ex,ey])=>Math.abs(ex-x)+Math.abs(ey-y)<=2))return "tree";
+  if(x>47&&y<19&&((x*11+y*7)%9)<3)return "hill";
+  if(y>31&&x>26&&((x*13+y*5)%8)<3)return "meadow";
   return "grass";
  }
  if(x===0||y===0||x===w-1||y===h-1)return "wall";
@@ -78,4 +80,4 @@ export function tileAt(map,floor,x,y){
 }
 export function blocked(map,floor,x,y){return ["void","wall","tree","water","object"].includes(tileAt(map,floor,x,y));}
 export function mapName(map,floor){const l=LOCATIONS[map];return l?`${l.name}${l.floors>1?` — piętro ${floor}`:""}`:"Nieznana lokacja";}
-export const COLORS={void:"#050a0e",wall:"#36404a",tree:"#285b34",water:"#225d8c",road:"#8a7a60",grass:"#416f45",stone:"#777a78",wood:"#927b56",marble:"#8d9ba3",door:"#e4b64c","stairs-up":"#ad87dd","stairs-down":"#8863c0",object:"#b68b53"};
+export const COLORS={void:"#050a0e",wall:"#36404a",tree:"#285b34",water:"#225d8c",road:"#8a7a60",grass:"#416f45",hill:"#5b7750",meadow:"#689257",stone:"#777a78",wood:"#927b56",marble:"#8d9ba3",door:"#e4b64c","stairs-up":"#ad87dd","stairs-down":"#8863c0",object:"#b68b53"};
