@@ -1,5 +1,12 @@
 # Project Kingdoms — dziennik zmian
 
+## 0.1-alpha — lokacje i interakcje (2026-11-18)
+- Dodano rejestr pięciu lokacji: Pogranicze, Warownia, Dom mieszkańca, Karczma i Magazyn.
+- Dodano osobne wnętrza, piętra, identyfikowane przejścia i pary schodów.
+- Dodano interakcje E / przycisk Zbadaj: badanie obiektów i otwieranie skrzyń.
+- Zapis schematu 2 obejmuje stan obiektów, z migracją zapisu schematu 1.
+- Rozszerzono cache offline o moduł interakcji.
+
 ## 0.1-alpha — poprawka zegara (2026-11-18)
 - Usunięto naliczanie dodatkowej minuty przy każdym kroku postaci.
 - Zegar działa teraz tylko w centralnym interwale: 1 minuta gry na sekundę rzeczywistą, niezależnie od ruchu.
