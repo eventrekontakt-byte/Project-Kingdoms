@@ -64,8 +64,8 @@ export function cityTile(x,y){
  // Door approaches connect to the nearest lane with a clear walkable corridor.
  for(const building of CITY_BUILDINGS){
   const d=building.door;
-  if(d.x===x&&(Math.abs(y-d.y)<=4)&&((building.facing==="N"&&y<d.y)||(building.facing==="S"&&y>d.y)))return "road";
-  if(d.y===y&&(Math.abs(x-d.x)<=4)&&((building.facing==="W"&&x<d.x)||(building.facing==="E"&&x>d.x)))return "road";
+  if(d.x===x&&(Math.abs(y-d.y)<=8)&&((building.facing==="N"&&y<d.y)||(building.facing==="S"&&y>d.y)))return "road";
+  if(d.y===y&&(Math.abs(x-d.x)<=8)&&((building.facing==="W"&&x<d.x)||(building.facing==="E"&&x>d.x)))return "road";
  }
  if(x>=20&&x<=91&&y>=8&&y<=78){
   const n=(x*31+y*17+x*y*7)%101;
