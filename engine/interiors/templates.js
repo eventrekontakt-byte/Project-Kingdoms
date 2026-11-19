@@ -56,6 +56,15 @@ object(0,"pantry","Skrzynia z zapasami","container",26,9,2,1,{style:"chest",loot
 object(0,"barrel","Beczka piwa","inspect",20,4,1,1,{style:"barrel"});
 object(0,"supplies","Skrzynia na zapleczu","container",26,19,2,1,{style:"chest",loot:["Monety: 8","Sznur","Świeca"]});
 object(0,"shelf","Regał kuchenny","inspect",20,9,1,3,{style:"shelf"});
+// Extra furnishings make rooms lived-in without closing their entrances.
+object(0,"extra-bench","Drewniana ława","sit",2,11,2,1,{style:"bench",owner:"publiczny"});
+object(0,"extra-bench2","Drewniana ława","sit",14,12,2,1,{style:"bench",owner:"publiczny"});
+object(0,"cask-2","Beczka z winem","inspect",27,3,1,1,{style:"barrel"});
+object(0,"cupboard","Kredens kuchenny","container",27,1,1,2,{style:"wardrobe",loot:["Miska","Kubek"]});
+object(0,"herbs","Donica z ziołami","inspect",16,2,1,1,{style:"plant",owner:"publiczny"});
+object(0,"plant-hall","Roślina doniczkowa","inspect",16,13,1,1,{style:"plant",owner:"publiczny"});
+object(0,"plant-store","Roślina doniczkowa","inspect",27,13,1,1,{style:"plant",owner:"publiczny"});
+object(0,"barrel-store","Beczka zapasowa","inspect",20,19,1,1,{style:"barrel"});
 // Guest beds are anchored against walls; wardrobes and chests sit at the perimeter.
 object(1,"bed1","Łóżko gościnne","rest",2,2,2,3,{style:"bed",owner:"publiczny"});
 object(1,"bed2","Łóżko gościnne","rest",12,2,2,3,{style:"bed",owner:"publiczny"});
@@ -65,6 +74,30 @@ object(1,"guest-chest","Kufer podróżnego","container",7,2,2,1,{style:"chest",o
 object(1,"wardrobe","Szafa karczmarza","container",27,16,1,3,{style:"wardrobe",loot:["Klucz","Płaszcz"]});
 object(1,"letter","List karczmarza","read",22,13,1,1,{style:"book",description:"List dotyczący dostawy zboża."});
 object(1,"dresser","Komoda","container",2,18,2,1,{style:"dresser",loot:["Świeca"]});
+
+// Walkable interior decorations: rugs, stair footprints and ambient light fixtures.
+// Stairs have a 3×3 visual footprint, while the portal remains one exact tile.
+export const TAVERN_DECOR=[
+ {floor:0,style:"rug",x:7,y:9,w:3,h:2,tone:"red"},
+ {floor:0,style:"rug",x:2,y:17,w:3,h:3,tone:"red"},
+ {floor:0,style:"rug",x:12,y:16,w:3,h:2,tone:"blue"},
+ {floor:0,style:"rug",x:22,y:13,w:3,h:2,tone:"red"},
+ {floor:1,style:"rug",x:5,y:6,w:3,h:2,tone:"blue"},
+ {floor:1,style:"rug",x:14,y:6,w:3,h:2,tone:"red"},
+ {floor:1,style:"rug",x:24,y:6,w:3,h:2,tone:"blue"},
+ {floor:1,style:"rug",x:5,y:14,w:3,h:2,tone:"red"},
+ {floor:1,style:"rug",x:14,y:14,w:3,h:2,tone:"blue"},
+ {floor:1,style:"rug",x:23,y:13,w:3,h:2,tone:"red"},
+ ...[0,1].map(f=>({floor:f,style:"staircase",x:3,y:17,w:3,h:3})),
+ ...[[0,8,2],[0,15,9],[0,23,4],[0,27,16],[1,8,5],[1,18,5],[1,27,12],[1,8,18]].map(([floor,x,y])=>({floor,style:"sconce",x,y,w:1,h:1}))
+];
+export function tavernDecor(f){return TAVERN_DECOR.filter(o=>o.floor===f);}
+object(1,"dresser-guest1","Komoda gościnna","container",5,2,2,1,{style:"dresser",owner:"publiczny",loot:["Świeca"]});
+object(1,"dresser-guest2","Komoda gościnna","container",15,2,2,1,{style:"dresser",owner:"publiczny",loot:["Kartka"]});
+object(1,"dresser-guest3","Komoda gościnna","container",25,2,2,1,{style:"dresser",owner:"publiczny"});
+object(1,"plant-guest","Roślina w donicy","inspect",8,8,1,1,{style:"plant",owner:"publiczny"});
+object(1,"plant-landing","Roślina w donicy","inspect",18,18,1,1,{style:"plant",owner:"publiczny"});
+object(1,"bench-landing","Ława na korytarzu","sit",12,18,2,1,{style:"bench",owner:"publiczny"});
 export function tavernFurniture(f){return furniture.filter(item=>item.floor===f);}
 export function tavernTile(f,x,y){
  if(f<0||f>1||x<0||y<0||x>=30||y>=22)return "void";
