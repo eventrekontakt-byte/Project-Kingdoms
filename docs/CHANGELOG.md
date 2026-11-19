@@ -1,3 +1,8 @@
+## 0.2.8.3-alpha — naprawa kolizji po przesuwaniu mebli
+- Przebudowa mapy zajętości od zera z ostatecznych współrzędnych mebli, bez pozostałości po ich dawnych pozycjach.
+- Walidacja całego układu i przejść po każdej próbie ustawienia mebla; odrzucanie nakładających się obiektów.
+- Test kodu: 42 meble, 106 zajętych kafelków, 0 błędnych przylegań do ściany, obie kondygnacje przechodnie.
+
 ## 0.2.8.2-alpha — ściany i cache
 - Meble wymagające ściany przylegają do niej całą tylną krawędzi; łóżka wezgłowiem, nie przypadkowym bokiem.
 - Wymuszone odświeżenie modułów IGS i szablonu karczmy przez wersjonowane adresy importów, nowa wersja cache Service Workera.
