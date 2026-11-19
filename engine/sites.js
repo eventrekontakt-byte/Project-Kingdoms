@@ -1,5 +1,5 @@
 import {SITES} from "./world-map.js";
-export const SITE_LAYOUTS=Object.fromEntries(SITES.filter(s=>s.map!=="overworld").map(s=>[s.map,{name:s.name,width:64,height:44,floors:1,site:s}]));
+export const SITE_LAYOUTS=Object.fromEntries(SITES.filter(s=>s.map!=="overworld"&&s.map!=="site-city1").map(s=>[s.map,{name:s.name,width:64,height:44,floors:1,site:s}]));
 function hash(x,y,seed){return ((x*73856093^y*19349663^seed*83492791)>>>0)%100;}
 export function siteTile(map,x,y){
  const l=SITE_LAYOUTS[map];if(!l)return "void";
