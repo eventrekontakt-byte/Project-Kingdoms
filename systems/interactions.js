@@ -23,3 +23,35 @@ export function interact(state){
  }
  return `${object.name}: ${object.description}`;
 }
+
+export function objectActions(object,state){
+ const rec=state.objects[object.id]||{};
+ const actions=[{id:"inspect",label:"Zbadaj"}];
+ if(object.kind==="container")actions.push({id:"open",label:rec.opened?"Zamknij":"Otwórz"});
+ if(object.kind==="container"&&rec.opened&&(rec.loot||object.loot||[]).length)actions.push({id:"take",label:"Zabierz zawartość"});
+ if(object.kind==="read")actions.push({id:"read",label:"Przeczytaj"});
+ if(object.kind==="rest")actions.push({id:"rest",label:"Odpocznij"});
+ if(object.kind==="sit")actions.push({id:"sit",label:"Usiądź"});
+ if(object.kind==="fireplace")actions.push({id:"light",label:rec.lit?"Zgaś":"Rozpal"});
+ return actions;
+}
+export function useObject(state,object,action){
+ const rec=state.objects[object.id]||(state.objects[object.id]={opened:false,inspected:false});
+ const owned=object.owner&&object.owner!=="publiczny"&&object.owner!=="gracz";
+ if(action==="inspect"){rec.inspected=true;return object.name+": "+object.description;}
+ if(action==="open"){rec.opened=!rec.opened;return object.name+(rec.opened?": otwarto.":": zamknięto.");}
+ if(action==="read"){rec.inspected=true;return object.description;}
+ if(action==="take"){
+  if(!rec.opened)return "Najpierw otwórz pojemnik.";
+  const loot=rec.loot||object.loot||[];
+  if(!loot.length)return "Pojemnik jest pusty.";
+  state.inventory=state.inventory||[];state.inventory.push(...loot);
+  rec.loot=[];rec.taken=true;
+  if(owned){state.crimes=(state.crimes||0)+1;state.reputation=(state.reputation||0)-2;}
+  return "Zabrano: "+loot.join(", ")+(owned?". Kradzież! Reputacja -2.":"");
+ }
+ if(action==="rest"){state.clock.hour=(state.clock.hour+8)%24;if(state.clock.hour<8)state.clock.day++;return "Odpoczęto 8 godzin.";}
+ if(action==="sit")return "Siadasz na chwilę.";
+ if(action==="light"){rec.lit=!rec.lit;return rec.lit?"Rozpalono kominek.":"Zgaszono kominek.";}
+ return "Nieznana czynność.";
+}
