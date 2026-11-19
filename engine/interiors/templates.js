@@ -94,8 +94,7 @@ object(1,"dresser-guest3","Komoda gościnna","container",25,2,2,1,{style:"dresse
 object(1,"plant-guest","Roślina w donicy","inspect",8,8,1,1,{style:"plant",owner:"publiczny"});
 object(1,"plant-landing","Roślina w donicy","inspect",18,18,1,1,{style:"plant",owner:"publiczny"});
 object(1,"bench-landing","Ława na korytarzu","sit",12,18,2,1,{style:"bench",owner:"publiczny"});
-// Repair legacy placements against room geometry before generating seating.
-// Keep furniture inside its original functional room and preserve stable object IDs.
+// Rebuild every occupancy tile from the final furniture list. Never retain stale tiles.
 const ROOM_ZONES=[
  {f:0,x1:1,y1:1,x2:17,y2:14},{f:0,x1:1,y1:16,x2:17,y2:20},
  {f:0,x1:19,y1:1,x2:28,y2:7},{f:0,x1:19,y1:9,x2:28,y2:20},
@@ -103,73 +102,69 @@ const ROOM_ZONES=[
  {f:1,x1:21,y1:1,x2:28,y2:9},{f:1,x1:1,y1:11,x2:9,y2:20},
  {f:1,x1:11,y1:11,x2:19,y2:20},{f:1,x1:21,y1:11,x2:28,y2:20}
 ];
-function roomFor(o){return ROOM_ZONES.find(z=>z.f===o.floor&&o.x>=z.x1&&o.x<=z.x2&&o.y>=z.y1&&o.y<=z.y2);}
-// A wall contact must support the furniture's BACK, not merely touch a side.
-// Beds: headboard (short end); cupboards/dressers: rear long edge.
-function wallContact(o){
- const backSides=o.style==="bed"?[
-  Array.from({length:o.w},(_,i)=>[o.x+i,o.y-1]),
-  Array.from({length:o.w},(_,i)=>[o.x+i,o.y+o.h])
- ]:[
+const WALL_STYLES=new Set(["bed","wardrobe","dresser","shelf","chest","plant","barrel","counter","fireplace"]);
+function footprint(o){const a=[];for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)a.push([x,y]);return a;}
+function rebuildOccupancy(){
+ items.clear();
+ for(const o of furniture)for(const [x,y] of footprint(o)){
+  const k=key(o.floor,x,y);
+  if(items.has(k)||walls.has(k))throw Error("IGS overlap: "+o.id+" "+k);
+  items.set(k,o);
+ }
+}
+function contact(o){
+ const sides=[
   Array.from({length:o.w},(_,i)=>[o.x+i,o.y-1]),
   Array.from({length:o.w},(_,i)=>[o.x+i,o.y+o.h]),
   Array.from({length:o.h},(_,i)=>[o.x-1,o.y+i]),
   Array.from({length:o.h},(_,i)=>[o.x+o.w,o.y+i])
  ];
- return backSides.some(side=>side.every(([x,y])=>walls.has(key(o.floor,x,y))));
+ return sides.filter(side=>side.every(([x,y])=>walls.has(key(o.floor,x,y)))).length;
 }
-function cornerScore(o){
- let n=0;
- for(const [dx,dy] of [[-1,0],[1,0],[0,-1],[0,1]])if(walls.has(key(o.floor,o.x+dx,o.y+dy)))n++;
- return n;
+function walkable(f,x,y){
+ return x>=1&&y>=1&&x<29&&y<21&&!walls.has(key(f,x,y))&&!items.has(key(f,x,y));
 }
-function openFurnitureTiles(o){for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)items.delete(key(o.floor,x,y));}
-function closeFurnitureTiles(o){for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)items.set(key(o.floor,x,y),o);}
-function freeFootprint(o,x,y){
- for(let yy=y;yy<y+o.h;yy++)for(let xx=x;xx<x+o.w;xx++){
-  if(xx<1||yy<1||xx>=29||yy>=21||walls.has(key(o.floor,xx,yy))||items.has(key(o.floor,xx,yy))||portals.some(p=>p.from[0]===o.floor&&p.from[1]===xx&&p.from[2]===yy))return false;
-  // The stairs occupy a large 3×3 visual footprint.
-  if(xx>=3&&xx<=5&&yy>=17&&yy<=19)return false;
- }
- return true;
+function accessible(o){
+ return footprint(o).some(([x,y])=>[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>walkable(o.floor,x+dx,y+dy)));
 }
-function freeAccess(o){
- for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)
-  for(const [dx,dy] of [[-1,0],[1,0],[0,-1],[0,1]]){
-   const xx=x+dx,yy=y+dy;
-   if(xx>=1&&yy>=1&&xx<29&&yy<21&&!walls.has(key(o.floor,xx,yy))&&!items.has(key(o.floor,xx,yy))&&!(xx>=3&&xx<=5&&yy>=17&&yy<=19))return true;
-  }
- return false;
-}
-function connectedFloor(f){
- const reserved=f===0?[[14,19],[4,18],[5,18],[18,10],[18,11],[18,17],[24,8],[25,8],[8,15],[9,15]]:[[4,18],[5,18],[6,10],[15,10],[24,10],[10,6],[20,6],[10,16],[20,16]];
- const points=reserved.filter(([x,y])=>!walls.has(key(f,x,y))&&!items.has(key(f,x,y)));
- if(!points.length)return true;
+function reachable(f){
+ const points=(f===0?[[14,19],[4,18],[18,10],[18,17],[24,8],[8,15]]:[[4,18],[6,10],[15,10],[24,10],[10,6],[20,6],[10,16],[20,16]]);
+ if(points.some(([x,y])=>!walkable(f,x,y)))return false;
  const queue=[points[0]],seen=new Set([key(f,...points[0])]);
- for(let i=0;i<queue.length;i++){const [x,y]=queue[i];for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const xx=x+dx,yy=y+dy,k=key(f,xx,yy);if(xx<1||yy<1||xx>=29||yy>=21||walls.has(k)||items.has(k)||seen.has(k))continue;seen.add(k);queue.push([xx,yy]);}}
+ for(let i=0;i<queue.length;i++){const [x,y]=queue[i];for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,ny=y+dy,k=key(f,nx,ny);if(!seen.has(k)&&walkable(f,nx,ny)){seen.add(k);queue.push([nx,ny]);}}}
  return points.every(([x,y])=>seen.has(key(f,x,y)));
 }
-function repairWallFurniture(){
- const needsWall=new Set(["bed","wardrobe","dresser","shelf","chest","plant","barrel"]);
- const ordered=furniture.filter(o=>needsWall.has(o.style));
- for(const o of ordered){
-  const zone=roomFor(o);if(!zone)continue;
-  openFurnitureTiles(o);
-  const original={x:o.x,y:o.y},choices=[];
-  for(let y=zone.y1;y<=zone.y2-o.h+1;y++)for(let x=zone.x1;x<=zone.x2-o.w+1;x++){
-   if(!freeFootprint(o,x,y))continue;
-   o.x=x;o.y=y;
-   if(!wallContact(o)||!freeAccess(o))continue;
-   const score=(o.style==="plant"?cornerScore(o)*100:0)-Math.abs(x-original.x)*3-Math.abs(y-original.y)*3;
-   choices.push({x,y,score});
-  }
-  choices.sort((a,b)=>b.score-a.score||a.y-b.y||a.x-b.x);
-  let placed=false;
-  for(const c of choices){o.x=c.x;o.y=c.y;closeFurnitureTiles(o);if(connectedFloor(o.floor)){placed=true;break;}openFurnitureTiles(o);}
-  if(!placed){o.x=original.x;o.y=original.y;closeFurnitureTiles(o);}
- }
+function validFurniture(){
+ rebuildOccupancy();
+ return [0,1].every(reachable)&&furniture.every(o=>accessible(o));
 }
-repairWallFurniture();
+function arrangeFurniture(){
+ // Build occupancy from scratch after each candidate, rather than mutating a stale map.
+ const movable=furniture.filter(o=>WALL_STYLES.has(o.style));
+ for(const o of movable){
+  const zone=ROOM_ZONES.find(z=>z.f===o.floor&&o.x>=z.x1&&o.x<=z.x2&&o.y>=z.y1&&o.y<=z.y2);
+  if(!zone)continue;
+  const original={x:o.x,y:o.y};
+  const candidates=[];
+  for(let y=zone.y1;y<=zone.y2-o.h+1;y++)for(let x=zone.x1;x<=zone.x2-o.w+1;x++){
+   o.x=x;o.y=y;
+   if(!contact(o))continue;
+   const corners=o.style==="plant"?contact(o)*120:0;
+   const score=corners-Math.abs(x-original.x)*2-Math.abs(y-original.y)*2;
+   candidates.push({x,y,score});
+  }
+  candidates.sort((a,b)=>b.score-a.score||a.y-b.y||a.x-b.x);
+  o.x=original.x;o.y=original.y;
+  let placed=false;
+  for(const c of candidates){
+   o.x=c.x;o.y=c.y;
+   try{if(validFurniture()){placed=true;break;}}catch{}
+  }
+  if(!placed){o.x=original.x;o.y=original.y;rebuildOccupancy();}
+ }
+ rebuildOccupancy();
+}
+arrangeFurniture();
 // IGS 1.0 pilot: seats are generated deterministically around their tables.
 // The architecture and functional room assignments stay fixed.
 const IGS_TILE=(f,x,y)=>f<0||f>1||x<0||y<0||x>=30||y>=22?"void":walls.has(key(f,x,y))?"wall":"wood";
