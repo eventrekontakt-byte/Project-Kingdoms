@@ -17,10 +17,10 @@ const B=[
 ["switynia","Świątynia","⛪",48,60,59,69,"N"],
 ["straznica","Strażnica","🗼",66,60,76,69,"N"],
 ["magazyn","Magazyn","📦",81,59,89,68,"N"],
-["dom1","Dom 1","⌂",18,29,24,35,"E"],
+["dom1","Dom 1","⌂",23,29,29,35,"S"],
 ["dom2","Dom 2","⌂",80,72,88,77,"N"],
-["dom3","Dom 3","⌂",90,30,96,37,"W"],
-["dom4","Dom 4","⌂",90,44,96,50,"W"],
+["dom3","Dom 3","⌂",94,30,100,37,"W"],
+["dom4","Dom 4","⌂",94,44,100,50,"W"],
 ["mlyn","Młyn","🌾",9,12,18,20,"S"],
 ["farma1","Farma 1","🌱",7,28,17,37,"S"],
 ["farma2","Farma 2","🌱",6,49,16,59,"E"],
@@ -32,9 +32,12 @@ export const CITY_BUILDINGS=B.map(([id,name,icon,x1,y1,x2,y2,facing])=>{
  const door=facing==="N"?{x:Math.floor((x1+x2)/2),y:y1}:facing==="S"?{x:Math.floor((x1+x2)/2),y:y2}:facing==="W"?{x:x1,y:Math.floor((y1+y2)/2)}:{x:x2,y:Math.floor((y1+y2)/2)};
  return {id:"city1-"+id,name,icon,bounds:[x1,y1,x2,y2],facing,door,external:x1<20||x2>92,decorative:false};
 }).concat(DECOR.map(([id,name,x1,y1,x2,y2])=>({id:"city1-"+id,name,bounds:[x1,y1,x2,y2],decorative:true,external:x1<20||x2>92,door:null})));
+export const CITY_STAIRS=[{x:21,y:69},{x:90,y:69}];
 export const CITY_GATES=[{x:55,y:8},{x:55,y:78},{x:20,y:43},{x:91,y:43}];
 const inside=(x,y,[x1,y1,x2,y2])=>x>=x1&&x<=x2&&y>=y1&&y<=y2;
 const isRoad=(x,y)=>(
+ (x>=53&&x<=57&&y>=0&&y<=87)||
+ (y>=41&&y<=44&&x>=0&&x<=111)||
  (x>=53&&x<=58&&y>=8&&y<=78)||
  (y>=40&&y<=43&&x>=19&&x<=92)||
  (y>=26&&y<=28&&x>=20&&x<=92)||
@@ -60,8 +63,9 @@ export function cityTile(x,y){
  const boundary=(x===20||x===91)&&(y>=8&&y<=78)||(y===8||y===78)&&(x>=20&&x<=91);
  if(boundary){
   if(CITY_GATES.some(g=>Math.abs(x-g.x)<=2&&y===g.y||Math.abs(y-g.y)<=2&&x===g.x))return "road";
-  return "wall";
+  return "rampart";
  }
+ if(CITY_STAIRS.some(p=>p.x===x&&p.y===y))return "stairs-up";
  if(isRoad(x,y))return "road";
  // Market square, well, planted courtyards and small lanes.
  if(x>=45&&x<=52&&y>=39&&y<=43)return "road";
