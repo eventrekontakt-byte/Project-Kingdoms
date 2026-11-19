@@ -1,3 +1,9 @@
+## 0.2.5.2 — naprawa pozycji gracza w karczmie
+- Gracz pojawia się dwie kratki wewnątrz wejścia, a nie przy samej krawędzi.
+- Dodano automatyczne przywracanie poprawnej pozycji przy wykryciu błędnych współrzędnych we wnętrzu.
+- Przy wejściu do karczmy przywracany jest czytelny poziom powiększenia.
+- Zmieniono wersję zasobów offline; konieczny test na Androidzie.
+
 ## 0.2.5.1 — naprawa karczmy
 - Usunięto nadpisywanie mapy karczmy przez ogólną definicję wnętrz Miasta 1. Wymiary 30×22 i dwie kondygnacje są teraz poprawnie rejestrowane.
 - Poprawiono odświeżanie wersji i pamięci offline.
