@@ -5,6 +5,7 @@ import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
+import {CITY_BUILDINGS,cityDoorAt} from "./city-one.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -38,12 +39,29 @@ function draw(){
   if(t==="door"){const door=doorAt(p.map,p.floor,x,y);const status=door?(state.doors[door.id]||door.initial):"open";ctx.fillStyle=status==="locked"?"#a63b3b":status==="closed"?"#bc7c36":"#e4b64c";ctx.fillRect(sx+size*.1,sy+size*.1,size*.8,size*.8);}
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
+ if(p.map==="site-city1")drawCityLabels(cx,cy,w,h,size);
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(p.x-cx)*size+w/2+size/2,py=(p.y-cy)*size+h/2+size/2;
  ctx.fillStyle="#6dd4fc";ctx.beginPath();ctx.arc(px,py,Math.max(5,size*.32),0,Math.PI*2);ctx.fill();
  ctx.strokeStyle="#e9fbff";ctx.lineWidth=2;ctx.stroke();
  hud();
+}
+function drawCityLabels(cx,cy,w,h,size){
+ for(const b of CITY_BUILDINGS){
+  const [x1,y1,x2,y2]=b.bounds;
+  const sx=((x1+x2+1)/2-cx)*size+w/2,sy=((y1+y2+1)/2-cy)*size+h/2;
+  if(sx<-100||sx>w+100||sy<-50||sy>h+50)continue;
+  const iconSize=Math.max(12,Math.min(28,size*.78));
+  ctx.textAlign="center";ctx.textBaseline="middle";ctx.font=`${iconSize}px system-ui`;
+  ctx.fillText(b.icon,sx,sy-iconSize*.25);
+  if(size>=10){const font=Math.max(10,Math.min(15,size*.44));ctx.font=`bold ${font}px system-ui`;
+   const tw=ctx.measureText(b.name).width;ctx.fillStyle="#10202ce8";ctx.fillRect(sx-tw/2-4,sy+iconSize*.35,tw+8,font+5);
+   ctx.fillStyle="#fff4d5";ctx.fillText(b.name,sx,sy+iconSize*.35+(font+5)/2);
+  }
+  const dx=(b.door.x-cx+.5)*size+w/2,dy=(b.door.y-cy+.5)*size+h/2;
+  if(size>=12){ctx.fillStyle="#f9c45a";ctx.fillRect(dx-size*.27,dy-size*.27,size*.54,size*.54);}
+ }
 }
 function follow(){state.camera.x=state.player.x+.5;state.camera.y=state.player.y+.5;}
 function move(dir,fromPath=false){
@@ -107,13 +125,18 @@ document.querySelectorAll("[data-visit]").forEach(button=>button.addEventListene
  Object.assign(state.player,{map:"overworld",floor:0,...point});path=[];follow();draw();
  $("sidePanel").classList.remove("open");notify("Podejdź do żółtych drzwi, aby wejść.");
 }));
-function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}notify(interact(state));path=[];draw();}
+function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
+ if(state.player.map==="site-city1"){
+  const p=state.player,building=CITY_BUILDINGS.find(b=>Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
+  if(building){notify(building.name+" — wejście oznaczone; wnętrze w przygotowaniu.");return;}
+ }
+ notify(interact(state));path=[];draw();}
 $("interactBtn").addEventListener("click",performInteraction);
 $("interactMobile").addEventListener("click",performInteraction);
 const strategic=setupWorldMap({
  getState:()=>state,
  onEnter:site=>{
-  Object.assign(state.player,{map:site.map,floor:0,x:32,y:22});
+  Object.assign(state.player,{map:site.map,floor:0,x:site.map==="site-city1"?55:32,y:site.map==="site-city1"?76:22});
   state.worldPosition={x:site.x,y:site.y};path=[];follow();draw();
   notify("Wejście: "+site.name);
  },
