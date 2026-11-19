@@ -1,3 +1,10 @@
+## 0.2.8-alpha — fundament IGS 1.0 / przyszły edytor budynków
+- Nowy moduł engine/igs/core.js: modele budynków, deterministyczne seed, katalog zasad mebli, ocena położeń, kontrola kolizji, dostępności i tras.
+- Karczma korzysta z modelu IGS; krzesła przy stołach są generowane na podstawie identyfikatora budynku, bez blokowania wskazanych przejść.
+- Przygotowano warstwę zmian gracza (przesuwanie/dodawanie/usuwanie obiektów i osobne zmiany kafelków), z zachowaniem pierwotnego szablonu.
+- Schemat zapisu 7 przechowuje buildingEdits; wcześniejsze zapisy pozostają kompatybilne.
+- Pełny edytor, przebudowa ścian i generowanie pozostałych mebli zostają na dalsze etapy.
+
 ## 0.2.7-alpha — bogatsze wnętrza karczmy
 - 38 mebli i przedmiotów na dwóch kondygnacjach, w tym ławy, kredens, komody, beczki i rośliny.
 - Duże schody 3×3 pola z drewnianymi stopniami i balustradą; logika przejścia zachowana na wspólnym polu obu kondygnacji.
