@@ -27,10 +27,11 @@ const B=[
 ["tartak","Tartak","🪵",91,10,104,20,"S"],
 ["farma3","Farma 3","🌱",94,57,105,67,"W"]
 ];
+const DECOR=[["kamienica1","Kamienica",34,76,39,77],["kamienica2","Kamienica",61,74,66,77],["szopa1","Szopa",2,14,6,19],["szopa2","Szopa",103,33,108,39],["spichlerz","Spichlerz",2,69,9,76],["dom5","Dom",102,72,108,78],["dom6","Dom",2,2,9,8],["warsztat","Warsztat",99,80,106,85]];
 export const CITY_BUILDINGS=B.map(([id,name,icon,x1,y1,x2,y2,facing])=>{
  const door=facing==="N"?{x:Math.floor((x1+x2)/2),y:y1}:facing==="S"?{x:Math.floor((x1+x2)/2),y:y2}:facing==="W"?{x:x1,y:Math.floor((y1+y2)/2)}:{x:x2,y:Math.floor((y1+y2)/2)};
- return {id:"city1-"+id,name,icon,bounds:[x1,y1,x2,y2],facing,door,external:x1<20||x2>92};
-});
+ return {id:"city1-"+id,name,icon,bounds:[x1,y1,x2,y2],facing,door,external:x1<20||x2>92,decorative:false};
+}).concat(DECOR.map(([id,name,x1,y1,x2,y2])=>({id:"city1-"+id,name,bounds:[x1,y1,x2,y2],decorative:true,external:x1<20||x2>92,door:null})));
 export const CITY_GATES=[{x:55,y:8},{x:55,y:78},{x:20,y:43},{x:91,y:43}];
 const inside=(x,y,[x1,y1,x2,y2])=>x>=x1&&x<=x2&&y>=y1&&y<=y2;
 const isRoad=(x,y)=>(
@@ -46,11 +47,11 @@ const isRoad=(x,y)=>(
  (x>=76&&x<=78&&y>=24&&y<=72)
 );
 export function cityBuildingAt(x,y){return CITY_BUILDINGS.find(b=>inside(x,y,b.bounds))||null;}
-export function cityDoorAt(x,y){return CITY_BUILDINGS.find(b=>b.door.x===x&&b.door.y===y)||null;}
+export function cityDoorAt(x,y){return CITY_BUILDINGS.find(b=>b.door&&b.door.x===x&&b.door.y===y)||null;}
 export function cityTile(x,y){
  if(x<0||y<0||x>=CITY_WIDTH||y>=CITY_HEIGHT)return "void";
  const b=cityBuildingAt(x,y);
- if(b){if(b.door.x===x&&b.door.y===y)return "door";
+ if(b){if(b.door&&b.door.x===x&&b.door.y===y)return "door";
   const [x1,y1,x2,y2]=b.bounds;
   return x===x1||x===x2||y===y1||y===y2?"wall":"wood";
  }
@@ -63,7 +64,7 @@ export function cityTile(x,y){
  if(isRoad(x,y))return "road";
  // Door approaches connect to the nearest lane with a clear walkable corridor.
  for(const building of CITY_BUILDINGS){
-  const d=building.door;
+  const d=building.door;if(!d)continue;
   if(d.x===x&&(Math.abs(y-d.y)<=8)&&((building.facing==="N"&&y<d.y)||(building.facing==="S"&&y>d.y)))return "road";
   if(d.y===y&&(Math.abs(x-d.x)<=8)&&((building.facing==="W"&&x<d.x)||(building.facing==="E"&&x>d.x)))return "road";
  }
