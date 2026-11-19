@@ -1,12 +1,14 @@
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {SITE_LAYOUTS,siteTile} from "./sites.js";
+import {CITY_WIDTH,CITY_HEIGHT,cityTile,cityDoorAt} from "./city-one.js";
 import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
-export const START={map:"overworld",floor:0,x:12,y:17};
+export const START={map:"site-city1",floor:0,x:55,y:76};
 export const LOCATIONS={
+ "site-city1":{name:"Miasto 1",width:CITY_WIDTH,height:CITY_HEIGHT,floors:1},
  ...Object.fromEntries(Object.entries(SITE_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
  ...Object.fromEntries(Object.entries(REGION_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
- overworld:{name:"Pogranicze",width:64,height:44,floors:1},
+ overworld:{name:"Stara lokacja testowa",width:64,height:44,floors:1},
  keep:{name:"Warownia",width:17,height:13,floors:3,base:"stone"},
  house:{name:"Dom mieszkańca",width:11,height:9,floors:1,base:"wood"},
  inn:{name:"Karczma",width:15,height:11,floors:2,base:"wood"},
@@ -68,6 +70,7 @@ export function tileAt(map,floor,x,y){
  if(x<0||y<0||x>=w||y>=h)return "void";
  const portal=transitionAt(map,floor,x,y);
  if(portal)return portal.map===map?(portal.floor>floor?"stairs-up":"stairs-down"):"door";
+ if(map==="site-city1")return cityTile(x,y);
  if(SITE_LAYOUTS[map])return siteTile(map,x,y);
  if(REGION_LAYOUTS[map])return regionTile(map,x,y);
  if(map==="overworld"){
