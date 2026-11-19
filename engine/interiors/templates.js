@@ -73,13 +73,12 @@ object(1,"bed4","Łóżko karczmarza","rest",23,17,2,3,{style:"bed"});
 object(1,"guest-chest","Kufer podróżnego","container",7,2,2,1,{style:"chest",owner:"gość",loot:["Monety: 4","List"]});
 object(1,"wardrobe","Szafa karczmarza","container",27,16,1,3,{style:"wardrobe",loot:["Klucz","Płaszcz"]});
 object(1,"letter","List karczmarza","read",22,13,1,1,{style:"book",description:"List dotyczący dostawy zboża."});
-object(1,"dresser","Komoda","container",2,18,2,1,{style:"dresser",loot:["Świeca"]});
+object(1,"dresser","Komoda","container",2,12,2,1,{style:"dresser",loot:["Świeca"]});
 
 // Walkable interior decorations: rugs, stair footprints and ambient light fixtures.
 // Stairs have a 3×3 visual footprint, while the portal remains one exact tile.
 export const TAVERN_DECOR=[
  {floor:0,style:"rug",x:7,y:9,w:3,h:2,tone:"red"},
- {floor:0,style:"rug",x:2,y:17,w:3,h:3,tone:"red"},
  {floor:0,style:"rug",x:12,y:16,w:3,h:2,tone:"blue"},
  {floor:0,style:"rug",x:22,y:13,w:3,h:2,tone:"red"},
  {floor:1,style:"rug",x:5,y:6,w:3,h:2,tone:"blue"},
