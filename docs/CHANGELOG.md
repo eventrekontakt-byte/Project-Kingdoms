@@ -1,3 +1,14 @@
+## 0.2.1-alpha — Miasto 1: budynki i wnętrza
+- 24 oddzielne, powiększone wnętrza budynków użytkowych (30×22 lub 22×17 pól), z wyposażeniem, przegrodami i działającymi portalami wejścia/wyjścia.
+- Wejście do budynku przez drzwi lub klawisz E z sąsiedniego pola; powrót do właściwych drzwi miasta.
+- 8 dodatkowych budynków dekoracyjnych bez wejść: kamienice, szopy, spichlerz, domy i warsztat.
+- Tekstowe nazwy budynków bez emotikon, czytelne oznaczenia drzwi.
+- Ulepszone rysowanie nawierzchni ulic, ścian, dachów, trawy; dodatkowe place i dziedzińce.
+- Wnętrza są celowo większe od brył budynków na mapie lokacji.
+- Testy statyczne: 24/24 wnętrza posiadają powrotne portale, 24/24 drzwi dostępne pieszo z głównej bramy, składnia modułów poprawna.
+- Obecne wnętrza to grywalne prototypy bez odrębnych NPC i specjalistycznych interakcji; grafika nadal proceduralna 2D, nie render 3D.
+- Pozostałe miasta i wsie pozostają bez zmian.
+
 ## 0.2.0-alpha — Miasto 1 (pierwsza rozbudowana lokacja)
 - Zmieniono nazwy 14 lokacji świata na robocze: Miasto 1/2, Zamek 1/2, Wieś 1–4, Kryjówka 1/2, Ruiny 1, Kopalnia 1, Świątynia 1, Przystań 1. Państwa otrzymały tymczasowe nazwy Państwo 1/2.
 - Miasto 1 ma nową, ręcznie rozplanowaną mapę 112×88 pól z murami, czterema bramami, drogami, twierdzą i zabudową usługową.
