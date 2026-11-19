@@ -1,10 +1,12 @@
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {SITE_LAYOUTS,siteTile} from "./sites.js";
-import {CITY_WIDTH,CITY_HEIGHT,cityTile,cityDoorAt} from "./city-one.js";
+import {CITY_WIDTH,CITY_HEIGHT,CITY_BUILDINGS,cityTile,cityDoorAt} from "./city-one.js";
+import {CITY_INTERIORS,interiorTile,interiorMapFor,interiorEntrance} from "./city-interiors.js";
 import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
 export const START={map:"site-city1",floor:0,x:55,y:76};
 export const LOCATIONS={
+ ...Object.fromEntries(Object.entries(CITY_INTERIORS).map(([id,l])=>[id,{name:"Miasto 1 — "+l.name,width:l.width,height:l.height,floors:1,base:"wood"}])),
  "site-city1":{name:"Miasto 1",width:CITY_WIDTH,height:CITY_HEIGHT,floors:1},
  ...Object.fromEntries(Object.entries(SITE_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
  ...Object.fromEntries(Object.entries(REGION_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
@@ -46,6 +48,11 @@ for(const building of BUILDINGS){
  const matching=PORTALS.find(([map,floor,x,y,target])=>map==="overworld"&&target===building.id);
  if(!matching||matching[2]!==actual.x||matching[3]!==actual.y)throw Error("Building entrance does not face road: "+building.id);
 }
+for(const b of CITY_BUILDINGS.filter(b=>!b.decorative)){
+ const id=interiorMapFor(b),entry=interiorEntrance(id);
+ PORTALS.push(["site-city1",0,b.door.x,b.door.y,id,0,entry.x,entry.y-1]);
+ PORTALS.push([id,0,entry.x,entry.y,"site-city1",0,b.door.x,b.door.y]);
+}
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
 export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
 export function mapSize(map){const l=LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
@@ -71,6 +78,7 @@ export function tileAt(map,floor,x,y){
  const portal=transitionAt(map,floor,x,y);
  if(portal)return portal.map===map?(portal.floor>floor?"stairs-up":"stairs-down"):"door";
  if(map==="site-city1")return cityTile(x,y);
+ if(CITY_INTERIORS[map])return interiorTile(map,x,y);
  if(SITE_LAYOUTS[map])return siteTile(map,x,y);
  if(REGION_LAYOUTS[map])return regionTile(map,x,y);
  if(map==="overworld"){
