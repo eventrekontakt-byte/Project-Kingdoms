@@ -8,7 +8,7 @@ import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
-const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],crimes:0,reputation:0};
+const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 function notify(message){const el=$("toast");el.textContent=message;el.classList.add("visible");clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove("visible"),2300);}
 function updateClock(minutes){let total=state.clock.minute+state.clock.hour*60+(state.clock.day-1)*1440+minutes;
