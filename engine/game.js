@@ -5,7 +5,7 @@ import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
-import {CITY_BUILDINGS,cityDoorAt} from "./city-one.js";
+import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt} from "./city-one.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -78,6 +78,15 @@ function drawCityTerrain(ctx,t,x,y,sx,sy,size){
   ctx.beginPath();ctx.moveTo(sx,sy+size*.2);ctx.lineTo(sx+size,sy+size*.2);ctx.moveTo(sx,sy+size*.8);ctx.lineTo(sx+size,sy+size*.8);ctx.stroke();
  }
  if(t==="wall"){
+  const building=cityBuildingAt(x,y);
+  if(building){
+   const [x1,y1,x2,y2]=building.bounds;
+   const edge=x===x1||x===x2||y===y1||y===y2;
+   ctx.fillStyle=edge?"#77726c":building.external?"#826a52":"#946957";ctx.fillRect(sx,sy,size,size);
+   ctx.strokeStyle=edge?"#c1b6a4":"#b99179";ctx.lineWidth=Math.max(.6,size*.035);
+   ctx.beginPath();ctx.moveTo(sx,sy+size*.2);ctx.lineTo(sx+size,sy+size*.2);ctx.moveTo(sx,sy+size*.7);ctx.lineTo(sx+size,sy+size*.7);ctx.stroke();
+   return;
+  }
   ctx.fillStyle="#85837c";ctx.fillRect(sx,sy,size,size);
   ctx.strokeStyle="#575851";ctx.lineWidth=Math.max(.7,size*.04);
   ctx.strokeRect(sx+size*.07,sy+size*.12,size*.86,size*.75);
