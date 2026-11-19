@@ -49,19 +49,21 @@ function draw(){
  hud();
 }
 function drawCityLabels(cx,cy,w,h,size){
+ const font=Math.max(10,Math.min(16,size*.48));
+ ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold "+font+"px system-ui";
  for(const b of CITY_BUILDINGS){
   const [x1,y1,x2,y2]=b.bounds;
   const sx=((x1+x2+1)/2-cx)*size+w/2,sy=((y1+y2+1)/2-cy)*size+h/2;
-  if(sx<-100||sx>w+100||sy<-50||sy>h+50)continue;
-  const iconSize=Math.max(12,Math.min(28,size*.78));
-  ctx.textAlign="center";ctx.textBaseline="middle";
-  if(size>=11){const font=Math.max(10,Math.min(15,size*.44));ctx.font=`bold ${font}px system-ui`;
-   const tw=ctx.measureText(b.name).width;ctx.fillStyle="#10202ce8";ctx.fillRect(sx-tw/2-4,sy,tw+8,font+5);
-   ctx.fillStyle="#fff4d5";ctx.fillText(b.name,sx,sy+iconSize*.35+(font+5)/2);
-  }
+  if(sx<-130||sx>w+130||sy<-50||sy>h+50)continue;
+  const tw=ctx.measureText(b.name).width,pad=5,boxHeight=font+8;
+  ctx.fillStyle=b.decorative?"#26303bd9":"#101b28eb";
+  ctx.fillRect(sx-tw/2-pad,sy-boxHeight/2,tw+pad*2,boxHeight);
+  ctx.fillStyle=b.decorative?"#d1d1ce":"#fff3d2";
+  ctx.fillText(b.name,sx,sy);
   if(!b.door)continue;
   const dx=(b.door.x-cx+.5)*size+w/2,dy=(b.door.y-cy+.5)*size+h/2;
-  if(size>=12){ctx.fillStyle="#f9c45a";ctx.fillRect(dx-size*.27,dy-size*.27,size*.54,size*.54);}
+  ctx.fillStyle="#f9c45a";
+  ctx.fillRect(dx-Math.max(2,size*.25),dy-Math.max(2,size*.25),Math.max(4,size*.5),Math.max(4,size*.5));
  }
 }
 function drawCityTerrain(ctx,t,x,y,sx,sy,size){
@@ -76,6 +78,10 @@ function drawCityTerrain(ctx,t,x,y,sx,sy,size){
   ctx.fillStyle=seed%3===0?"#72524a":"#8d6353";ctx.fillRect(sx,sy,size,size);
   ctx.strokeStyle="#c79a78";ctx.lineWidth=Math.max(.6,size*.035);
   ctx.beginPath();ctx.moveTo(sx,sy+size*.2);ctx.lineTo(sx+size,sy+size*.2);ctx.moveTo(sx,sy+size*.8);ctx.lineTo(sx+size,sy+size*.8);ctx.stroke();
+ }
+ if(t==="rampart"){
+  ctx.fillStyle="#a7a59c";ctx.fillRect(sx,sy,size,size);
+  ctx.strokeStyle="#555c59";ctx.lineWidth=Math.max(.7,size*.08);ctx.strokeRect(sx+size*.1,sy+size*.1,size*.8,size*.8);
  }
  if(t==="wall"){
   const building=cityBuildingAt(x,y);
