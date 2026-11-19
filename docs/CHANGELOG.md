@@ -1,3 +1,9 @@
+## 0.2.8.1-alpha — poprawa rozmieszczenia mebli
+- Wykrywanie ścian i granic funkcjonalnych pomieszczeń; łóżka, szafy, komody, regały, skrzynie, beczki i rośliny ustawiane przy ścianach.
+- Rośliny preferują narożniki, duże meble zachowują dostęp i nie nachodzą na schody.
+- Walidacja przejść po każdym przestawieniu mebla na obu kondygnacjach.
+- Test modułowy: 42 obiekty, 0 mebli ściennych bez kontaktu ze ścianą, obie kondygnacje zachowują połączone główne przejścia.
+
 ## 0.2.8-alpha — fundament IGS 1.0 / przyszły edytor budynków
 - Nowy moduł engine/igs/core.js: modele budynków, deterministyczne seed, katalog zasad mebli, ocena położeń, kontrola kolizji, dostępności i tras.
 - Karczma korzysta z modelu IGS; krzesła przy stołach są generowane na podstawie identyfikatora budynku, bez blokowania wskazanych przejść.
