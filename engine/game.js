@@ -36,7 +36,8 @@ function ensureValidPosition(){
 function draw(){
  ensureValidPosition();
  const {w,h,size}=geometry();if(!w||!h)return;ctx.clearRect(0,0,w,h);
- const {x:cx,y:cy}=state.camera,p=state.player,{w:mw,h:mh}=mapSize(p.map);
+ const p=state.player;if(p.map==="interior-city1-karczma"){state.camera.x=p.x+.5;state.camera.y=p.y+.5;}
+ const {x:cx,y:cy}=state.camera,{w:mw,h:mh}=mapSize(p.map);
  const left=Math.max(0,Math.floor(cx-w/(2*size))-1),right=Math.min(mw-1,Math.ceil(cx+w/(2*size))+1);
  const top=Math.max(0,Math.floor(cy-h/(2*size))-1),bottom=Math.min(mh-1,Math.ceil(cy+h/(2*size))+1);
  for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++){
