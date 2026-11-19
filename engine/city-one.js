@@ -51,7 +51,7 @@ const isRoad=(x,y)=>(
 );
 export function cityBuildingAt(x,y){return CITY_BUILDINGS.find(b=>inside(x,y,b.bounds))||null;}
 export function cityDoorAt(x,y){return CITY_BUILDINGS.find(b=>b.door&&b.door.x===x&&b.door.y===y)||null;}
-export function cityTile(x,y){
+function baseCityTile(x,y){
  if(x<0||y<0||x>=CITY_WIDTH||y>=CITY_HEIGHT)return "void";
  const b=cityBuildingAt(x,y);
  if(b){if(b.door&&b.door.x===x&&b.door.y===y)return "door";
@@ -86,4 +86,41 @@ export function cityTile(x,y){
  }
  if((x*13+y*23)%29===0)return "tree";
  return y>67?"meadow":"grass";
+}
+
+// Connect every road fragment to the primary street network without cutting through buildings or city walls.
+const EXTRA_ROADS=new Set();
+const k=(x,y)=>x+","+y;
+const originalRoads=new Set();
+for(let y=0;y<CITY_HEIGHT;y++)for(let x=0;x<CITY_WIDTH;x++)if(baseCityTile(x,y)==="road")originalRoads.add(k(x,y));
+const mainRoad=new Set(),queue=[k(55,76)];mainRoad.add(queue[0]);
+for(let i=0;i<queue.length;i++){
+ const [x,y]=queue[i].split(",").map(Number);
+ for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+  const xx=x+dx,yy=y+dy,key=k(xx,yy);
+  if(originalRoads.has(key)&&!mainRoad.has(key)){mainRoad.add(key);queue.push(key);}
+ }
+}
+const seen=new Set(mainRoad),parents=new Map(),search=[...mainRoad];
+for(let i=0;i<search.length;i++){
+ const [x,y]=search[i].split(",").map(Number);
+ for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+  const xx=x+dx,yy=y+dy,key=k(xx,yy);
+  if(xx<0||yy<0||xx>=CITY_WIDTH||yy>=CITY_HEIGHT||seen.has(key))continue;
+  const t=baseCityTile(xx,yy);
+  if(["wall","rampart","void","water","door"].includes(t))continue;
+  seen.add(key);parents.set(key,k(x,y));search.push(key);
+ }
+}
+for(const point of originalRoads){
+ if(mainRoad.has(point)||!seen.has(point))continue;
+ let at=point;
+ while(at&&!mainRoad.has(at)){
+  EXTRA_ROADS.add(at);
+  at=parents.get(at);
+ }
+}
+export function cityTile(x,y){
+ const tile=baseCityTile(x,y);
+ return EXTRA_ROADS.has(k(x,y))&&tile!=="wall"&&tile!=="rampart"&&tile!=="door"?"road":tile;
 }
