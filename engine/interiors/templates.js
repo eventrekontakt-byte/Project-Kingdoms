@@ -1,4 +1,4 @@
-import {createBuildingModel,generateSeating,seedFromId,validateRoutes} from "../igs/core.js";
+import {createBuildingModel,generateSeating,seedFromId,validateRoutes} from "../igs/core.js?v=0.2.8.2";
 // Reusable interior template: tavern, with deterministic furniture and persistent instances.
 export const TAVERN_MAP="interior-city1-karczma";
 export const TAVERN_SIZE={width:30,height:22,floors:2};
