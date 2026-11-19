@@ -53,7 +53,8 @@ export function cityTile(x,y){
  const b=cityBuildingAt(x,y);
  if(b){if(b.door&&b.door.x===x&&b.door.y===y)return "door";
   const [x1,y1,x2,y2]=b.bounds;
-  return x===x1||x===x2||y===y1||y===y2?"wall":"wood";
+  // Exterior roofs are solid; entering is only possible via the designated portal.
+  return "wall";
  }
  // Walled inner town, four aligned gates, outer farms and sawmill.
  const boundary=(x===20||x===91)&&(y>=8&&y<=78)||(y===8||y===78)&&(x>=20&&x<=91);
