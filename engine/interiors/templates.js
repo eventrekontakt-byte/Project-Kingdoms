@@ -1,4 +1,4 @@
-import {createBuildingModel,generateSeating,seedFromId,validateRoutes} from "../igs/core.js?v=0.2.8.3";
+import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.2.9";
 // Reusable interior template: tavern, with deterministic furniture and persistent instances.
 export const TAVERN_MAP="interior-city1-karczma";
 export const TAVERN_SIZE={width:30,height:22,floors:2};
@@ -87,100 +87,29 @@ export const TAVERN_DECOR=[
  ...[0,1].map(f=>({floor:f,style:"staircase",x:3,y:17,w:3,h:3})),
  ...[[0,8,2],[0,15,9],[0,23,4],[0,27,16],[1,8,5],[1,18,5],[1,27,12],[1,8,18]].map(([floor,x,y])=>({floor,style:"sconce",x,y,w:1,h:1}))
 ];
-export function tavernDecor(f){return TAVERN_DECOR.filter(o=>o.floor===f);}
+export function tavernDecor(f){return TAVERN_INSTANCE?TAVERN_INSTANCE.decorations.filter(o=>o.floor===f):TAVERN_DECOR.filter(o=>o.floor===f);}
 object(1,"dresser-guest1","Komoda gościnna","container",5,2,2,1,{style:"dresser",owner:"publiczny",loot:["Świeca"]});
 object(1,"dresser-guest2","Komoda gościnna","container",15,2,2,1,{style:"dresser",owner:"publiczny",loot:["Kartka"]});
 object(1,"dresser-guest3","Komoda gościnna","container",25,2,2,1,{style:"dresser",owner:"publiczny"});
 object(1,"plant-guest","Roślina w donicy","inspect",8,8,1,1,{style:"plant",owner:"publiczny"});
 object(1,"plant-landing","Roślina w donicy","inspect",18,18,1,1,{style:"plant",owner:"publiczny"});
 object(1,"bench-landing","Ława na korytarzu","sit",12,18,2,1,{style:"bench",owner:"publiczny"});
-// Rebuild every occupancy tile from the final furniture list. Never retain stale tiles.
-const ROOM_ZONES=[
- {f:0,x1:1,y1:1,x2:17,y2:14},{f:0,x1:1,y1:16,x2:17,y2:20},
- {f:0,x1:19,y1:1,x2:28,y2:7},{f:0,x1:19,y1:9,x2:28,y2:20},
- {f:1,x1:1,y1:1,x2:9,y2:9},{f:1,x1:11,y1:1,x2:19,y2:9},
- {f:1,x1:21,y1:1,x2:28,y2:9},{f:1,x1:1,y1:11,x2:9,y2:20},
- {f:1,x1:11,y1:11,x2:19,y2:20},{f:1,x1:21,y1:11,x2:28,y2:20}
-];
-const WALL_STYLES=new Set(["bed","wardrobe","dresser","shelf","chest","plant","barrel","counter","fireplace"]);
-function footprint(o){const a=[];for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)a.push([x,y]);return a;}
-function rebuildOccupancy(){
- items.clear();
- for(const o of furniture)for(const [x,y] of footprint(o)){
-  const k=key(o.floor,x,y);
-  if(items.has(k)||walls.has(k))throw Error("IGS overlap: "+o.id+" "+k);
-  items.set(k,o);
- }
-}
-function contact(o){
- const sides=[
-  Array.from({length:o.w},(_,i)=>[o.x+i,o.y-1]),
-  Array.from({length:o.w},(_,i)=>[o.x+i,o.y+o.h]),
-  Array.from({length:o.h},(_,i)=>[o.x-1,o.y+i]),
-  Array.from({length:o.h},(_,i)=>[o.x+o.w,o.y+i])
- ];
- return sides.filter(side=>side.every(([x,y])=>walls.has(key(o.floor,x,y)))).length;
-}
-function walkable(f,x,y){
- return x>=1&&y>=1&&x<29&&y<21&&!walls.has(key(f,x,y))&&!items.has(key(f,x,y));
-}
-function accessible(o){
- return footprint(o).some(([x,y])=>[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>walkable(o.floor,x+dx,y+dy)));
-}
-function reachable(f){
- const points=(f===0?[[14,19],[4,18],[18,10],[18,17],[24,8],[8,15]]:[[4,18],[6,10],[15,10],[24,10],[10,6],[20,6],[10,16],[20,16]]);
- if(points.some(([x,y])=>!walkable(f,x,y)))return false;
- const queue=[points[0]],seen=new Set([key(f,...points[0])]);
- for(let i=0;i<queue.length;i++){const [x,y]=queue[i];for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,ny=y+dy,k=key(f,nx,ny);if(!seen.has(k)&&walkable(f,nx,ny)){seen.add(k);queue.push([nx,ny]);}}}
- return points.every(([x,y])=>seen.has(key(f,x,y)));
-}
-function validFurniture(){
- rebuildOccupancy();
- return [0,1].every(reachable)&&furniture.every(o=>accessible(o));
-}
-function arrangeFurniture(){
- // Build occupancy from scratch after each candidate, rather than mutating a stale map.
- const movable=furniture.filter(o=>WALL_STYLES.has(o.style));
- for(const o of movable){
-  const zone=ROOM_ZONES.find(z=>z.f===o.floor&&o.x>=z.x1&&o.x<=z.x2&&o.y>=z.y1&&o.y<=z.y2);
-  if(!zone)continue;
-  const original={x:o.x,y:o.y};
-  const candidates=[];
-  for(let y=zone.y1;y<=zone.y2-o.h+1;y++)for(let x=zone.x1;x<=zone.x2-o.w+1;x++){
-   o.x=x;o.y=y;
-   if(!contact(o))continue;
-   const corners=o.style==="plant"?contact(o)*120:0;
-   const score=corners-Math.abs(x-original.x)*2-Math.abs(y-original.y)*2;
-   candidates.push({x,y,score});
-  }
-  candidates.sort((a,b)=>b.score-a.score||a.y-b.y||a.x-b.x);
-  o.x=original.x;o.y=original.y;
-  let placed=false;
-  for(const c of candidates){
-   o.x=c.x;o.y=c.y;
-   try{if(validFurniture()){placed=true;break;}}catch{}
-  }
-  if(!placed){o.x=original.x;o.y=original.y;rebuildOccupancy();}
- }
- rebuildOccupancy();
-}
-arrangeFurniture();
-// IGS 1.0 pilot: seats are generated deterministically around their tables.
-// The architecture and functional room assignments stay fixed.
-const IGS_TILE=(f,x,y)=>f<0||f>1||x<0||y<0||x>=30||y>=22?"void":walls.has(key(f,x,y))?"wall":"wood";
-export const TAVERN_BUILDING_MODEL=createBuildingModel({
- id:TAVERN_MAP,width:30,height:22,floors:2,
- architecture:{walls:[...walls],portals:portals.map(p=>({...p}))},
- rooms:[{floor:0,type:"dining",bounds:[1,1,17,14]},{floor:0,type:"kitchen",bounds:[19,1,28,7]},{floor:0,type:"storage",bounds:[19,9,28,20]},{floor:1,type:"guest",bounds:[1,1,28,20]}],
- furniture,decor:TAVERN_DECOR
+// TBI: fixed authored layout. No runtime furniture relocation or seat generation.
+export const TAVERN_TEMPLATE=defineTemplate({
+ id:"tavern-urban-01",size:TAVERN_SIZE,walls,portals,
+ rooms:[{floor:0,type:"dining"},{floor:0,type:"kitchen"},{floor:0,type:"storage"},{floor:1,type:"guest"}],
+ furniture,decor:TAVERN_DECOR,
+ slots:[{id:"plant-corner",floor:0,x:16,y:13,choices:[null,{style:"rug",tone:"red"}]}]
 });
-const seatingModel={...TAVERN_BUILDING_MODEL,required:[[0,14,19],[0,4,18],[0,5,18],[0,18,10],[0,18,11],[0,18,17],[0,24,8],[0,25,8],[0,8,15],[0,9,15]]};
-for(const table of furniture.filter(o=>o.floor===0&&o.style==="table"&&o.owner==="publiczny")){
- const seats=generateSeating(table,seatingModel,IGS_TILE,{min:2,max:table.w*table.h>=6?6:4});
- for(const seat of seats){furniture.push(seat);seatingModel.furniture=furniture;items.set(key(seat.floor,seat.x,seat.y),seat);}
-}
-TAVERN_BUILDING_MODEL.furniture=furniture;
-export const TAVERN_IGS_SEED=seedFromId(TAVERN_MAP);
+export const TAVERN_INSTANCE=resolveInstance(TAVERN_TEMPLATE,{id:TAVERN_MAP,owner:"karczmarz"});
+const tbiCheck=validateTemplate(TAVERN_INSTANCE,TAVERN_SIZE);
+if(!tbiCheck.ok)throw Error("TBI tavern invalid: "+tbiCheck.errors.join("; "));
+const occupancy=buildOccupancy(TAVERN_INSTANCE);
+items.clear();
+for(const [k,o] of occupancy.occupied)items.set(k,o);
+furniture.length=0;
+furniture.push(...TAVERN_INSTANCE.objects);
+export const TAVERN_BUILDING_MODEL=TAVERN_INSTANCE;
 export function tavernFurniture(f){return furniture.filter(item=>item.floor===f);}
 export function tavernTile(f,x,y){
  if(f<0||f>1||x<0||y<0||x>=30||y>=22)return "void";
