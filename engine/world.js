@@ -1,3 +1,4 @@
+import {TAVERN_MAP,TAVERN_SIZE,tavernTile,tavernObject,tavernPortals} from "./interiors/templates.js";
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {SITE_LAYOUTS,siteTile} from "./sites.js";
 import {CITY_WIDTH,CITY_HEIGHT,CITY_BUILDINGS,cityTile,cityDoorAt} from "./city-one.js";
@@ -6,6 +7,7 @@ import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
 export const START={map:"site-city1",floor:0,x:55,y:76};
 export const LOCATIONS={
+ [TAVERN_MAP]:{name:"Miasto 1 — Karczma",...TAVERN_SIZE,base:"wood"},
  ...Object.fromEntries(Object.entries(CITY_INTERIORS).map(([id,l])=>[id,{name:"Miasto 1 — "+l.name,width:l.width,height:l.height,floors:1,base:"wood"}])),
  "site-city1":{name:"Miasto 1",width:CITY_WIDTH,height:CITY_HEIGHT,floors:1},
  ...Object.fromEntries(Object.entries(SITE_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
@@ -49,15 +51,21 @@ for(const building of BUILDINGS){
  if(!matching||matching[2]!==actual.x||matching[3]!==actual.y)throw Error("Building entrance does not face road: "+building.id);
 }
 for(const b of CITY_BUILDINGS.filter(b=>!b.decorative)){
+ if(b.id==="city1-karczma")continue;
  const id=interiorMapFor(b),entry=interiorEntrance(id);
  const offset={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing];
  PORTALS.push(["site-city1",0,b.door.x,b.door.y,id,0,entry.inside.x,entry.inside.y]);
  PORTALS.push([id,0,entry.door.x,entry.door.y,"site-city1",0,b.door.x+offset[0],b.door.y+offset[1]]);
 }
+const tavernBuilding=CITY_BUILDINGS.find(b=>b.id==="city1-karczma");
+const tavernExterior=[tavernBuilding.door.x,tavernBuilding.door.y+1];
+PORTALS.push(["site-city1",0,tavernBuilding.door.x,tavernBuilding.door.y,TAVERN_MAP,0,14,20]);
+PORTALS.push([TAVERN_MAP,0,14,21,"site-city1",0,...tavernExterior]);
+for(const p of tavernPortals())if(p.to)PORTALS.push([TAVERN_MAP,...p.from,TAVERN_MAP,...p.to]);
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
 export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
 export function mapSize(map){const l=LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
-export function objectAt(map,floor,x,y){return OBJECTS[portalKey(map,floor,x,y)]||null;}
+export function objectAt(map,floor,x,y){return map===TAVERN_MAP?tavernObject(floor,x,y):OBJECTS[portalKey(map,floor,x,y)]||null;}
 export function transitionAt(map,floor,x,y){return portalIndex.get(portalKey(map,floor,x,y))||null;}
 export const DOORS={
  "overworld:0:24:20":{id:"keep-main",name:"Brama warowni",initial:"open"},
@@ -79,6 +87,7 @@ export function tileAt(map,floor,x,y){
  const portal=transitionAt(map,floor,x,y);
  if(portal)return portal.map===map?(portal.floor>floor?"stairs-up":"stairs-down"):"door";
  if(map==="site-city1")return cityTile(x,y);
+ if(map===TAVERN_MAP)return tavernTile(floor,x,y);
  if(CITY_INTERIORS[map])return interiorTile(map,x,y);
  if(SITE_LAYOUTS[map])return siteTile(map,x,y);
  if(REGION_LAYOUTS[map])return regionTile(map,x,y);
