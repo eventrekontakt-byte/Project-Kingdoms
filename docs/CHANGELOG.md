@@ -1,3 +1,7 @@
+## 0.2.5.1 — naprawa karczmy
+- Usunięto nadpisywanie mapy karczmy przez ogólną definicję wnętrz Miasta 1. Wymiary 30×22 i dwie kondygnacje są teraz poprawnie rejestrowane.
+- Poprawiono odświeżanie wersji i pamięci offline.
+
 ## 0.2.5-alpha — pierwsza karczma modułowa
 - Dwupoziomowa karczma w Mieście 1 (30×22 pól na poziom), schody i pomieszczenia.
 - 19 obiektów wyposażenia; menu interakcji mobilnych, pojemniki, czytanie, odpoczynek.
