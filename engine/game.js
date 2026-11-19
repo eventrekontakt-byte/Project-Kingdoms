@@ -82,12 +82,14 @@ function drawCityTerrain(ctx,t,x,y,sx,sy,size){
  if(t==="rampart"){
   // Three-tile-wide walkable curtain wall, with crenellations on the outer rim.
   const outer=(x===20||x===91||y===8||y===78);
+  const inner=(x===22||x===89||y===10||y===76);
   const corner=(x>=20&&x<=22||x>=89&&x<=91)&&(y>=8&&y<=10||y>=76&&y<=78);
-  ctx.fillStyle=corner?"#747b7c":outer?"#8c908e":"#b5b0a4";
+  ctx.fillStyle=corner?"#747b7c":outer?"#707875":inner?"#9b9e96":"#b5b0a4";
   ctx.fillRect(sx,sy,size,size);
   ctx.strokeStyle="#656965";ctx.lineWidth=Math.max(.6,size*.035);
   ctx.beginPath();ctx.moveTo(sx,sy+size*.5);ctx.lineTo(sx+size,sy+size*.5);
   ctx.moveTo(sx+size*(seed%2?.25:.7),sy);ctx.lineTo(sx+size*(seed%2?.25:.7),sy+size*.5);ctx.stroke();
+  if(inner){ctx.fillStyle="#d4d0c2";ctx.fillRect(sx,sy,size*.13,size);}
   if(outer&&((x+y)%2===0)){
    ctx.fillStyle="#d6d1c4";ctx.fillRect(sx+size*.1,sy+size*.1,size*.8,size*.8);
    ctx.strokeStyle="#555c59";ctx.strokeRect(sx+size*.1,sy+size*.1,size*.8,size*.8);
