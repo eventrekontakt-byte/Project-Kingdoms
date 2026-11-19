@@ -1,3 +1,14 @@
+## 0.2.0-alpha — Miasto 1 (pierwsza rozbudowana lokacja)
+- Zmieniono nazwy 14 lokacji świata na robocze: Miasto 1/2, Zamek 1/2, Wieś 1–4, Kryjówka 1/2, Ruiny 1, Kopalnia 1, Świątynia 1, Przystań 1. Państwa otrzymały tymczasowe nazwy Państwo 1/2.
+- Miasto 1 ma nową, ręcznie rozplanowaną mapę 112×88 pól z murami, czterema bramami, drogami, twierdzą i zabudową usługową.
+- 24 indywidualnie nazwane obiekty, w tym karczma, kuźnia, stajnia, kasyno, zbrojownia, piekarnia, młyn, arena, biblioteka, koszary, strażnica, domy, farmy i tartak.
+- Każdy obiekt ma unikalne ID, nazwę, ikonę i drzwi po stronie dojścia; nazwy i ikony są wyświetlane na mapie lokacji.
+- Wejścia oznaczono na złoto; E przy wejściu identyfikuje budynek. Nowe wnętrza nie są jeszcze zaimplementowane.
+- Nowa kampania rozpoczyna się w Mieście 1. Dawna mapa testowa z funkcjonalnymi wnętrzami pozostaje dostępna przez menu testowe i w starych zapisach.
+- Automatyczny test spójności wykazał 24/24 wejścia dostępne pieszo z głównej bramy; wszystkie pliki źródłowe zweryfikowano pod kątem składni.
+- Pozostałe mapy lokacji nie zostały jeszcze przebudowane zgodnie z życzeniem użytkownika.
+- Weryfikacja w rzeczywistej przeglądarce i na urządzeniu mobilnym pozostaje do wykonania.
+
 ## 0.1.9-alpha — kamera mapy świata i terytoria państw
 - Przesuwanie mapy świata myszą i przeciąganiem palcem, niezależnie od położenia postaci.
 - Przybliżanie i oddalanie kółkiem myszy, gestem dwóch palców oraz przyciskami +/−.
