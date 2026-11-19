@@ -1,3 +1,12 @@
+## 0.2.2-alpha — orientacja drzwi, drogi i mury obronne
+- Naprawiono wszystkie portale 24 wnętrz: położenie drzwi w środku odpowiada kierunkowi wejścia z zewnątrz (N/S/E/W).
+- Wyjście z budynku ustawia postać na zewnętrznym polu przed tymi samymi drzwiami, bez ponownego automatycznego wejścia.
+- Poprawiono zabudowę nachodzącą na obwarowania; połączono izolowane fragmenty dróg z główną siecią, nie przecinając murów ani budynków.
+- Korona murów obronnych jest teraz przechodnia; dwa wejścia po schodach po południowej stronie miasta. Ruch i A* blokują wspinanie się na mury bez schodów.
+- Podpisy budynków wyśrodkowane pionowo na ciemnym tle; minimalna wielkość czcionki utrzymuje ich widoczność przy oddaleniu.
+- Weryfikacja statyczna: 24/24 portale i powroty poprawne, 2514 pól dróg w jednej spójnej sieci, składnia dziewięciu modułów poprawna.
+- Testy mobilne i przeglądarkowe pozostają do przeprowadzenia.
+
 ## 0.2.1-alpha — Miasto 1: budynki i wnętrza
 - 24 oddzielne, powiększone wnętrza budynków użytkowych (30×22 lub 22×17 pól), z wyposażeniem, przegrodami i działającymi portalami wejścia/wyjścia.
 - Wejście do budynku przez drzwi lub klawisz E z sąsiedniego pola; powrót do właściwych drzwi miasta.
