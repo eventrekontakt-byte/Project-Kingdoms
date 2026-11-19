@@ -54,6 +54,14 @@ export function validateLayout(model,tile,required=[]){
  }
  return {ok:issues.length===0,issues};
 }
+export function validateRoutes(model,tile,required=[]){
+ const occupied=new Set(model.furniture.flatMap(occupiedTiles).map(p=>key(...p)));
+ const starts=required.filter(p=>!occupied.has(key(...p)));
+ if(!starts.length)return true;
+ const queue=[starts[0]],seen=new Set([key(...starts[0])]);
+ for(let i=0;i<queue.length;i++){const [f,x,y]=queue[i];for(const [dx,dy] of dirs){const nx=x+dx,ny=y+dy,k=key(f,nx,ny);if(nx<0||ny<0||nx>=model.width||ny>=model.height||seen.has(k)||occupied.has(k)||["wall","void"].includes(tile(f,nx,ny)))continue;seen.add(k);queue.push([f,nx,ny]);}}
+ return starts.every(p=>seen.has(key(...p)));
+}
 export function generateSeating(table,model,tile,{min=2,max=6}={}){
  const rng=randomFromSeed(seedFromId(model.id+":"+table.id)),slots=[];
  for(let x=table.x;x<table.x+table.w;x++){slots.push([x,table.y-1],[x,table.y+table.h]);}
@@ -64,7 +72,7 @@ export function generateSeating(table,model,tile,{min=2,max=6}={}){
   if(result.length>=target)break;
   const o={id:table.id+"-seat-"+result.length,style:"chair",name:"Krzesło",kind:"sit",floor:table.floor,x,y,w:1,h:1,owner:"publiczny"};
   const trial={...model,furniture:[...model.furniture,...result,o]};
-  if(validateLayout(trial,tile,model.required||[]).ok)result.push(o);
+  if(!model.furniture.concat(result).some(other=>occupiedTiles(other).some(([f,ox,oy])=>f===o.floor&&ox===x&&oy===y)) && tile(o.floor,x,y)!=="wall" && tile(o.floor,x,y)!=="void" && !((model.required||[]).some(([f,rx,ry])=>f===o.floor&&rx===x&&ry===y)) && validateRoutes(trial,tile,model.required||[]))result.push(o);
  }
  return result;
 }
