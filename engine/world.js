@@ -7,8 +7,8 @@ import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
 export const START={map:"site-city1",floor:0,x:55,y:76};
 export const LOCATIONS={
+ ...Object.fromEntries(Object.entries(CITY_INTERIORS).filter(([id])=>id!==TAVERN_MAP).map(([id,l])=>[id,{name:"Miasto 1 — "+l.name,width:l.width,height:l.height,floors:1,base:"wood"}])),
  [TAVERN_MAP]:{name:"Miasto 1 — Karczma",...TAVERN_SIZE,base:"wood"},
- ...Object.fromEntries(Object.entries(CITY_INTERIORS).map(([id,l])=>[id,{name:"Miasto 1 — "+l.name,width:l.width,height:l.height,floors:1,base:"wood"}])),
  "site-city1":{name:"Miasto 1",width:CITY_WIDTH,height:CITY_HEIGHT,floors:1},
  ...Object.fromEntries(Object.entries(SITE_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
  ...Object.fromEntries(Object.entries(REGION_LAYOUTS).map(([id,l])=>[id,{name:l.name,width:l.width,height:l.height,floors:1}])),
