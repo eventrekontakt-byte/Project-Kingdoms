@@ -62,6 +62,13 @@ export function cityTile(x,y){
   return "wall";
  }
  if(isRoad(x,y))return "road";
+ // Market square, well, planted courtyards and small lanes.
+ if(x>=45&&x<=52&&y>=39&&y<=43)return "road";
+ if(x>=57&&x<=65&&y>=39&&y<=43)return "road";
+ if(x>=46&&x<=51&&y>=53&&y<=55)return "road";
+ if(x>=57&&x<=63&&y>=53&&y<=55)return "road";
+ if((x===47||x===48)&&y===41)return "water";
+ if(x>=10&&x<=15&&y>=39&&y<=46)return "meadow";
  // Door approaches connect to the nearest lane with a clear walkable corridor.
  for(const building of CITY_BUILDINGS){
   const d=building.door;if(!d)continue;
