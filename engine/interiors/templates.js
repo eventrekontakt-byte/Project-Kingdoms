@@ -1,3 +1,4 @@
+import {createBuildingModel,generateSeating,seedFromId,validateRoutes} from "../igs/core.js";
 // Reusable interior template: tavern, with deterministic furniture and persistent instances.
 export const TAVERN_MAP="interior-city1-karczma";
 export const TAVERN_SIZE={width:30,height:22,floors:2};
@@ -46,10 +47,6 @@ object(0,"fireplace","Kominek","fireplace",13,1,2,1,{style:"fireplace",descripti
 object(0,"table-1","Duży stół gościnny","inspect",3,6,3,2,{style:"table",owner:"publiczny"});
 object(0,"table-2","Duży stół gościnny","inspect",11,6,3,2,{style:"table",owner:"publiczny"});
 object(0,"table-3","Stół gościnny","inspect",10,11,2,3,{style:"table",owner:"publiczny"});
-object(0,"chair-1","Krzesło","sit",3,5,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-2","Krzesło","sit",6,7,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-3","Krzesło","sit",14,7,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-4","Krzesło","sit",9,12,1,1,{style:"chair",owner:"publiczny"});
 object(0,"stove","Piec kuchenny","inspect",21,1,3,2,{style:"stove",description:"Piec do wypiekania chleba i gotowania."});
 object(0,"kitchen-table","Stół roboczy","inspect",24,4,3,2,{style:"table"});
 object(0,"pantry","Skrzynia z zapasami","container",26,9,2,1,{style:"chest",loot:["Chleb","Suszone mięso","Jabłko"]});
@@ -97,6 +94,22 @@ object(1,"dresser-guest3","Komoda gościnna","container",25,2,2,1,{style:"dresse
 object(1,"plant-guest","Roślina w donicy","inspect",8,8,1,1,{style:"plant",owner:"publiczny"});
 object(1,"plant-landing","Roślina w donicy","inspect",18,18,1,1,{style:"plant",owner:"publiczny"});
 object(1,"bench-landing","Ława na korytarzu","sit",12,18,2,1,{style:"bench",owner:"publiczny"});
+// IGS 1.0 pilot: seats are generated deterministically around their tables.
+// The architecture and functional room assignments stay fixed.
+const IGS_TILE=(f,x,y)=>f<0||f>1||x<0||y<0||x>=30||y>=22?"void":walls.has(key(f,x,y))?"wall":"wood";
+export const TAVERN_BUILDING_MODEL=createBuildingModel({
+ id:TAVERN_MAP,width:30,height:22,floors:2,
+ architecture:{walls:[...walls],portals:portals.map(p=>({...p}))},
+ rooms:[{floor:0,type:"dining",bounds:[1,1,17,14]},{floor:0,type:"kitchen",bounds:[19,1,28,7]},{floor:0,type:"storage",bounds:[19,9,28,20]},{floor:1,type:"guest",bounds:[1,1,28,20]}],
+ furniture,decor:TAVERN_DECOR
+});
+const seatingModel={...TAVERN_BUILDING_MODEL,required:[[0,14,19],[0,4,18],[0,5,18],[0,18,10],[0,18,11],[0,18,17],[0,24,8],[0,25,8],[0,8,15],[0,9,15]]};
+for(const table of furniture.filter(o=>o.floor===0&&o.style==="table"&&o.owner==="publiczny")){
+ const seats=generateSeating(table,seatingModel,IGS_TILE,{min:2,max:table.w*table.h>=6?6:4});
+ for(const seat of seats){furniture.push(seat);seatingModel.furniture=furniture;items.set(key(seat.floor,seat.x,seat.y),seat);}
+}
+TAVERN_BUILDING_MODEL.furniture=furniture;
+export const TAVERN_IGS_SEED=seedFromId(TAVERN_MAP);
 export function tavernFurniture(f){return furniture.filter(item=>item.floor===f);}
 export function tavernTile(f,x,y){
  if(f<0||f>1||x<0||y<0||x>=30||y>=22)return "void";
