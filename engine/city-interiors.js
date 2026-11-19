@@ -12,7 +12,7 @@ export function interiorTile(map,x,y){
  const l=CITY_INTERIORS[map];if(!l)return "void";
  const {width:w,height:h,seed}=l,mid=Math.floor(w/2);
  if(x<0||y<0||x>=w||y>=h)return "void";
- if(y===h-1&&x===mid)return "door";
+ if(y===h-2&&x===mid)return "door";
  if(x===0||y===0||x===w-1||y===h-1)return "wall";
  // Central aisle, furnished workstations and side rooms; interiors may exceed external footprint.
  if(x===mid||x===mid-1||y===h-3)return "wood";
