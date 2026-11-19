@@ -1,4 +1,4 @@
-import {TAVERN_MAP,tavernFurniture} from "./interiors/templates.js";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
@@ -52,7 +52,7 @@ function draw(){
   if(t==="door"){const door=doorAt(p.map,p.floor,x,y);const status=door?(state.doors[door.id]||door.initial):"open";ctx.fillStyle=status==="locked"?"#a63b3b":status==="closed"?"#bc7c36":"#e4b64c";ctx.fillRect(sx+size*.1,sy+size*.1,size*.8,size*.8);}
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
- if(p.map===TAVERN_MAP)drawTavernFurniture(p.floor,cx,cy,w,h,size);
+ if(p.map===TAVERN_MAP){drawTavernDecor(p.floor,cx,cy,w,h,size);drawTavernFurniture(p.floor,cx,cy,w,h,size);}
  if(p.map==="site-city1")drawCityLabels(cx,cy,w,h,size);
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
@@ -60,6 +60,41 @@ function draw(){
  ctx.fillStyle="#6dd4fc";ctx.beginPath();ctx.arc(px,py,Math.max(5,size*.32),0,Math.PI*2);ctx.fill();
  ctx.strokeStyle="#e9fbff";ctx.lineWidth=2;ctx.stroke();
  hud();
+}
+// Decorations are rendered behind furniture; rugs and stairs do not block movement.
+function drawTavernDecor(floor,cx,cy,w,h,size){
+ for(const d of tavernDecor(floor)){
+  const x=(d.x-cx)*size+w/2,y=(d.y-cy)*size+h/2,dw=d.w*size,dh=d.h*size;
+  if(x+dw<0||y+dh<0||x>w||y>h)continue;
+  ctx.save();
+  if(d.style==="rug"){
+   ctx.fillStyle=d.tone==="blue"?"#355a70":"#813e3b";
+   ctx.fillRect(x+size*.12,y+size*.12,dw-size*.24,dh-size*.24);
+   ctx.strokeStyle="#d2a869";ctx.lineWidth=Math.max(1,size*.09);
+   ctx.strokeRect(x+size*.23,y+size*.23,dw-size*.46,dh-size*.46);
+   ctx.strokeStyle="#d8c294";ctx.lineWidth=Math.max(1,size*.035);
+   for(let i=0;i<d.w;i++){ctx.beginPath();ctx.moveTo(x+(i+.5)*size,y+size*.12);ctx.lineTo(x+(i+.5)*size,y+size*.28);ctx.moveTo(x+(i+.5)*size,y+dh-size*.12);ctx.lineTo(x+(i+.5)*size,y+dh-size*.28);ctx.stroke();}
+  }else if(d.style==="staircase"){
+   ctx.fillStyle="#5a4434";ctx.fillRect(x+size*.07,y+size*.07,dw-size*.14,dh-size*.14);
+   ctx.fillStyle="#2e2726";ctx.fillRect(x+size*.25,y+size*.2,dw-size*.5,dh-size*.4);
+   for(let i=0;i<7;i++){
+    const yy=y+size*.18+i*(dh-size*.38)/7;
+    ctx.fillStyle=i%2?"#94714e":"#b38a5c";
+    ctx.fillRect(x+size*.3,yy,dw-size*.6,(dh-size*.38)/7-1);
+    ctx.fillStyle="#d0aa75";ctx.fillRect(x+size*.3,yy,dw-size*.6,Math.max(1,size*.045));
+   }
+   ctx.fillStyle="#d8c29c";ctx.font=`bold ${Math.max(9,size*.35)}px system-ui`;
+   ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(floor===0?"↑":"↓",x+dw/2,y+dh-size*.35);
+  }else if(d.style==="sconce"){
+   ctx.fillStyle="#7a6550";ctx.fillRect(x+size*.35,y+size*.14,size*.3,size*.5);
+   ctx.fillStyle="#f3d9a1";ctx.fillRect(x+size*.43,y+size*.25,size*.14,size*.28);
+   ctx.fillStyle="#ffd77d";ctx.beginPath();ctx.arc(x+size*.5,y+size*.18,Math.max(2,size*.13),0,Math.PI*2);ctx.fill();
+   const glow=ctx.createRadialGradient(x+size*.5,y+size*.2,0,x+size*.5,y+size*.2,size*1.7);
+   glow.addColorStop(0,"#ffdb7645");glow.addColorStop(1,"#ffdb7600");
+   ctx.fillStyle=glow;ctx.fillRect(x-size,y-size,dw+2*size,dh+2*size);
+  }
+  ctx.restore();
+ }
 }
 // Vector furniture tiles: crisp at every zoom, no image downloads required.
 function drawTavernFurniture(floor,cx,cy,w,h,size){
@@ -101,6 +136,10 @@ function drawTavernFurniture(floor,cx,cy,w,h,size){
    rect(x+fw*.14,y+fh*.08,fw*.72,fh*.84,"#82502c");
    rect(x+fw*.12,y+fh*.25,fw*.76,fh*.1,"#9ca09a");
    rect(x+fw*.12,y+fh*.67,fw*.76,fh*.1,"#9ca09a");
+  }else if(style==="bench"){
+   rect(x+fw*.07,y+fh*.22,fw*.86,fh*.56,"#92613c");rect(x+fw*.08,y+fh*.08,fw*.84,fh*.18,"#b48652");
+  }else if(style==="plant"){
+   rect(x+fw*.25,y+fh*.56,fw*.5,fh*.35,"#b06d48");ctx.fillStyle="#4b8050";for(const [dx,dy] of [[.34,.4],[.57,.32],[.7,.47],[.45,.17]]){ctx.beginPath();ctx.arc(x+fw*dx,y+fh*dy,size*.18,0,Math.PI*2);ctx.fill();}
   }else if(style==="chair"){
    rect(x+fw*.18,y+fh*.18,fw*.64,fh*.64,"#865934");
    rect(x+fw*.18,y+fh*.14,fw*.64,fh*.18,"#b48652");
