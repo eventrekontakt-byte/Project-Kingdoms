@@ -1,4 +1,4 @@
-import {TAVERN_MAP,TAVERN_SIZE,tavernTile,tavernObject,tavernPortals} from "./interiors/templates.js";
+import {TAVERN_MAP,TAVERN_SIZE,tavernTile,tavernObject,tavernPortals} from "./interiors/templates.js?v=0.2.9";
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {SITE_LAYOUTS,siteTile} from "./sites.js";
 import {CITY_WIDTH,CITY_HEIGHT,CITY_BUILDINGS,cityTile,cityDoorAt} from "./city-one.js";
