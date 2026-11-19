@@ -25,7 +25,16 @@ function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.d
  ctx.setTransform(dpr,0,0,dpr,0,0);draw();
 }
 function geometry(){return {w:canvas.clientWidth,h:canvas.clientHeight,size:32*state.camera.zoom};}
+function ensureValidPosition(){
+ const p=state.player,{w,h}=mapSize(p.map);
+ if(p.map==="interior-city1-karczma"&&(p.floor<0||p.floor>1||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
+  Object.assign(p,{floor:0,x:14,y:19});
+  state.camera.x=p.x+.5;state.camera.y=p.y+.5;path=[];
+  notify("Poprawiono pozycję bohatera w karczmie.");
+ }
+}
 function draw(){
+ ensureValidPosition();
  const {w,h,size}=geometry();if(!w||!h)return;ctx.clearRect(0,0,w,h);
  const {x:cx,y:cy}=state.camera,p=state.player,{w:mw,h:mh}=mapSize(p.map);
  const left=Math.max(0,Math.floor(cx-w/(2*size))-1),right=Math.min(mw-1,Math.ceil(cx+w/(2*size))+1);
@@ -130,7 +139,7 @@ function move(dir,fromPath=false){
  if((p.map==="site-city1"&&!cityStepAllowed(p.x,p.y,nx,ny))||blocked(p.map,p.floor,nx,ny)){if(!fromPath)notify("Droga zablokowana");draw();return false;}
  p.x=nx;p.y=ny;
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
- if(dest){Object.assign(p,dest);path=[];notify(mapName(p.map,p.floor));}
+ if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=14;p.y=19;state.camera.zoom=Math.max(0.75,state.camera.zoom);}notify(mapName(p.map,p.floor));}
  follow();draw();return true;
 }
 function findPath(goal){
@@ -193,7 +202,7 @@ function showObjectPanel(object){
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
  if(state.player.map==="site-city1"){
   const p=state.player,building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
-  if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];follow();draw();notify("Wejście: "+building.name);return;}}
+  if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=14;p.y=19;state.camera.zoom=Math.max(.75,state.camera.zoom);}follow();draw();notify("Wejście: "+building.name);return;}}
  }
  const obj=interactionNear(state.player);if(obj&&state.player.map==="interior-city1-karczma"){showObjectPanel(obj);path=[];draw();return;}
  notify(interact(state));path=[];draw();}
