@@ -18,6 +18,7 @@ function hud(){
  $("coordinates").textContent=strategic?.active()?`Świat: ${state.worldPosition.x}, ${state.worldPosition.y}`:`Pozycja: ${p.x}, ${p.y} • ${siteForMap(p.map)?"Lokacja":"Wnętrze"}`;
  $("clock").textContent=`Dzień ${state.clock.day} • ${String(state.clock.hour).padStart(2,"0")}:${String(state.clock.minute).padStart(2,"0")}${state.paused?" • PAUZA":""}`;
  $("zoomLabel").textContent=Math.round(state.camera.zoom*100)+"%";
+ if(p.map==="interior-city1-karczma")$("coordinates").textContent=`Karczma: ${p.x},${p.y} • piętro ${p.floor} • mapa ${mapSize(p.map).w}×${mapSize(p.map).h}`;
  $("pauseBtn").textContent=state.paused?"Wznów":"Pauza";
 }
 function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
@@ -27,7 +28,7 @@ function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.d
 function geometry(){return {w:canvas.clientWidth,h:canvas.clientHeight,size:32*state.camera.zoom};}
 function ensureValidPosition(){
  const p=state.player,{w,h}=mapSize(p.map);
- if(p.map==="interior-city1-karczma"&&(p.floor<0||p.floor>1||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
+ if(p.map==="interior-city1-karczma"&&(p.floor<0||p.floor>1||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
   Object.assign(p,{floor:0,x:14,y:19});
   state.camera.x=p.x+.5;state.camera.y=p.y+.5;path=[];
   notify("Poprawiono pozycję bohatera w karczmie.");
