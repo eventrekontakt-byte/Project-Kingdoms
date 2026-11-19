@@ -1,3 +1,10 @@
+## 0.2.6-alpha — schody i meble karczmy
+- Naprawiono przejścia schodów: wspólne współrzędne schodów na obu piętrach, lądowanie obok schodów, bez resetowania pozycji po przejściu.
+- Nowy system wyposażenia wielokratkowego z kolizją całego obiektu (stoły 3×2 i 2×3, łóżka 2×3, skrzynie 2×1, szafy 1×3).
+- Meble rozmieszczono przy ścianach lub w funkcjonalnych grupach, pozostawiając korytarze.
+- Indywidualne rysowane grafiki: stoły, lady, łóżka, skrzynie, szafy, komody, piece, kominki, beczki, regały, książki, krzesła.
+- Test logiki: obie kondygnacje osiągalne, wszystkie 24 obiekty dostępne z sąsiednich pól, brak kolizji mebli ze ścianami i schodami.
+
 ## 0.2.5.3 — diagnostyka karczmy
 - Kamera karczmy synchronizowana z pozycją gracza podczas każdego renderowania.
 - Widoczne współrzędne bohatera, kondygnacja i rozmiar mapy w interfejsie.
