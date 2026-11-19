@@ -1,3 +1,9 @@
+## 0.2.5.3 — diagnostyka karczmy
+- Kamera karczmy synchronizowana z pozycją gracza podczas każdego renderowania.
+- Widoczne współrzędne bohatera, kondygnacja i rozmiar mapy w interfejsie.
+- Zabezpieczenie przed nieprawidłowymi współrzędnymi, również nieliczbowymi.
+- Wymaga potwierdzenia testem na telefonie.
+
 ## 0.2.5.2 — naprawa pozycji gracza w karczmie
 - Gracz pojawia się dwie kratki wewnątrz wejścia, a nie przy samej krawędzi.
 - Dodano automatyczne przywracanie poprawnej pozycji przy wykryciu błędnych współrzędnych we wnętrzu.
