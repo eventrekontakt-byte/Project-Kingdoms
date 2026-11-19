@@ -1,3 +1,11 @@
+## 0.2.5-alpha — pierwsza karczma modułowa
+- Dwupoziomowa karczma w Mieście 1 (30×22 pól na poziom), schody i pomieszczenia.
+- 19 obiektów wyposażenia; menu interakcji mobilnych, pojemniki, czytanie, odpoczynek.
+- Przedmioty mają właścicieli; zabranie cudzych rzeczy zmniejsza reputację i zapisuje wykroczenie.
+- Ekwipunek i stan obiektów w zapisie gry (schemat 6, kompatybilny z wcześniejszymi).
+- Test logiki: wszystkie 19 obiektów dostępne, wejście i schody osiągalne.
+- Reakcje NPC, system świadków i pełna kontrolowana losowość są zaplanowane na dalsze wersje.
+
 ## 0.2.3-alpha — fortyfikacje Miasta 1
 - Mury obronne mają 3 kratki szerokości; korona murów jest przechodnia.
 - Cztery dojścia po schodach od strony miasta oraz przejścia przez bramy dla patroli.
