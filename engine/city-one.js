@@ -124,3 +124,11 @@ export function cityTile(x,y){
  const tile=baseCityTile(x,y);
  return EXTRA_ROADS.has(k(x,y))&&tile!=="wall"&&tile!=="rampart"&&tile!=="door"?"road":tile;
 }
+
+export function cityStepAllowed(x1,y1,x2,y2){
+ const a=cityTile(x1,y1),b=cityTile(x2,y2);
+ if(a==="rampart"||b==="rampart"){
+  return a==="rampart"&&b==="rampart"||a==="stairs-up"&&b==="rampart"||b==="stairs-up"&&a==="rampart";
+ }
+ return true;
+}
