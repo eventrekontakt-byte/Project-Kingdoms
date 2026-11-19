@@ -59,7 +59,7 @@ for(const b of CITY_BUILDINGS.filter(b=>!b.decorative)){
 }
 const tavernBuilding=CITY_BUILDINGS.find(b=>b.id==="city1-karczma");
 const tavernExterior=[tavernBuilding.door.x,tavernBuilding.door.y+1];
-PORTALS.push(["site-city1",0,tavernBuilding.door.x,tavernBuilding.door.y,TAVERN_MAP,0,14,20]);
+PORTALS.push(["site-city1",0,tavernBuilding.door.x,tavernBuilding.door.y,TAVERN_MAP,0,14,19]);
 PORTALS.push([TAVERN_MAP,0,14,21,"site-city1",0,...tavernExterior]);
 for(const p of tavernPortals())if(p.to)PORTALS.push([TAVERN_MAP,...p.from,TAVERN_MAP,...p.to]);
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
