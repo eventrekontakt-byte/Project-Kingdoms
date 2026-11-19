@@ -1,3 +1,9 @@
+## 0.2.7-alpha — bogatsze wnętrza karczmy
+- 38 mebli i przedmiotów na dwóch kondygnacjach, w tym ławy, kredens, komody, beczki i rośliny.
+- Duże schody 3×3 pola z drewnianymi stopniami i balustradą; logika przejścia zachowana na wspólnym polu obu kondygnacji.
+- Dywany z obramowaniem, ścienne świeczniki ze świetlną poświatą, rośliny w donicach.
+- Dekoracje nie blokują przejść; położenie mebli sprawdzane pod kątem kolizji.
+
 ## 0.2.6-alpha — schody i meble karczmy
 - Naprawiono przejścia schodów: wspólne współrzędne schodów na obu piętrach, lądowanie obok schodów, bez resetowania pozycji po przejściu.
 - Nowy system wyposażenia wielokratkowego z kolizją całego obiektu (stoły 3×2 i 2×3, łóżka 2×3, skrzynie 2×1, szafy 1×3).
