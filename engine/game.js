@@ -1,3 +1,4 @@
+import {TAVERN_MAP,tavernFurniture} from "./interiors/templates.js";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
@@ -47,10 +48,11 @@ function draw(){
   ctx.strokeStyle="#0a182b38";ctx.strokeRect(sx,sy,size,size);
   if(p.map==="site-city1")drawCityTerrain(ctx,t,x,y,sx,sy,size);
   if(t==="tree"){ctx.fillStyle="#1d4229";ctx.beginPath();ctx.arc(sx+size/2,sy+size/2,size*.29,0,Math.PI*2);ctx.fill();}
-  if(t==="object"){const object=objectAt(p.map,p.floor,x,y);const opened=state.objects[object?.id]?.opened;ctx.fillStyle=opened?"#5b4b38":"#d8a45a";ctx.fillRect(sx+size*.2,sy+size*.2,size*.6,size*.6);}
+  if(t==="object"&&p.map!==TAVERN_MAP){const object=objectAt(p.map,p.floor,x,y);const opened=state.objects[object?.id]?.opened;ctx.fillStyle=opened?"#5b4b38":"#d8a45a";ctx.fillRect(sx+size*.2,sy+size*.2,size*.6,size*.6);}
   if(t==="door"){const door=doorAt(p.map,p.floor,x,y);const status=door?(state.doors[door.id]||door.initial):"open";ctx.fillStyle=status==="locked"?"#a63b3b":status==="closed"?"#bc7c36":"#e4b64c";ctx.fillRect(sx+size*.1,sy+size*.1,size*.8,size*.8);}
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
+ if(p.map===TAVERN_MAP)drawTavernFurniture(p.floor,cx,cy,w,h,size);
  if(p.map==="site-city1")drawCityLabels(cx,cy,w,h,size);
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
@@ -58,6 +60,57 @@ function draw(){
  ctx.fillStyle="#6dd4fc";ctx.beginPath();ctx.arc(px,py,Math.max(5,size*.32),0,Math.PI*2);ctx.fill();
  ctx.strokeStyle="#e9fbff";ctx.lineWidth=2;ctx.stroke();
  hud();
+}
+// Vector furniture tiles: crisp at every zoom, no image downloads required.
+function drawTavernFurniture(floor,cx,cy,w,h,size){
+ for(const o of tavernFurniture(floor)){
+  const x=(o.x-cx)*size+w/2,y=(o.y-cy)*size+h/2,fw=o.w*size,fh=o.h*size;
+  if(x+fw<0||y+fh<0||x>w||y>h)continue;
+  const inset=Math.max(1,size*.07),round=Math.min(5,size*.13);
+  const rect=(rx,ry,rw,rh,fill,stroke="#2d211a")=>{
+   ctx.fillStyle=fill;ctx.fillRect(rx,ry,rw,rh);
+   ctx.strokeStyle=stroke;ctx.lineWidth=Math.max(.8,size*.045);ctx.strokeRect(rx,ry,rw,rh);
+  };
+  ctx.save();
+  const style=o.style||"chest";
+  if(style==="table"||style==="counter"||style==="dresser"){
+   rect(x+inset,y+inset,fw-2*inset,fh-2*inset,style==="counter"?"#7b4728":"#956139","#4b2c1c");
+   ctx.strokeStyle="#c4935c";ctx.lineWidth=Math.max(1,size*.05);
+   for(let i=1;i<o.w;i++){let line=x+i*size;ctx.beginPath();ctx.moveTo(line,y+inset*2);ctx.lineTo(line,y+fh-inset*2);ctx.stroke();}
+   if(style==="dresser"){for(let i=0;i<o.w;i++)rect(x+i*size+size*.18,y+fh*.35,size*.64,size*.3,"#704528","#c4935c");}
+  }else if(style==="bed"){
+   rect(x+inset,y+inset,fw-2*inset,fh-2*inset,"#68432e");
+   rect(x+fw*.13,y+fh*.12,fw*.74,fh*.22,"#e6d6b3","#b7a888");
+   rect(x+fw*.1,y+fh*.4,fw*.8,fh*.48,"#54788a","#a5b5a8");
+   rect(x+fw*.16,y+fh*.52,fw*.68,fh*.07,"#7495a0","#54788a");
+  }else if(style==="chest"){
+   rect(x+inset,y+inset,fw-2*inset,fh-2*inset,"#86532f");
+   rect(x+fw*.12,y+fh*.12,fw*.76,fh*.76,"#a56d37","#4c2e1b");
+   rect(x+fw*.45,y+fh*.14,fw*.1,fh*.7,"#d1ad63");
+   rect(x+fw*.44,y+fh*.42,fw*.12,fh*.15,"#49331f");
+  }else if(style==="wardrobe"||style==="shelf"){
+   rect(x+inset,y+inset,fw-2*inset,fh-2*inset,"#69432d");
+   if(style==="wardrobe"){rect(x+fw*.15,y+fh*.08,fw*.7,fh*.84,"#95663d");rect(x+fw*.69,y+fh*.45,fw*.08,fh*.08,"#ddbc77");}
+   else for(let i=1;i<o.h;i++)rect(x+inset,y+i*size-size*.12,fw-2*inset,size*.2,"#b0814c");
+  }else if(style==="fireplace"||style==="stove"){
+   rect(x+inset,y+inset,fw-2*inset,fh-2*inset,"#696a68");
+   rect(x+fw*.22,y+fh*.18,fw*.56,fh*.64,"#342b27");
+   ctx.fillStyle=style==="fireplace"?"#ed853a":"#b54c2f";
+   ctx.beginPath();ctx.ellipse(x+fw*.5,y+fh*.57,fw*.19,fh*.23,0,0,Math.PI*2);ctx.fill();
+  }else if(style==="barrel"){
+   rect(x+fw*.14,y+fh*.08,fw*.72,fh*.84,"#82502c");
+   rect(x+fw*.12,y+fh*.25,fw*.76,fh*.1,"#9ca09a");
+   rect(x+fw*.12,y+fh*.67,fw*.76,fh*.1,"#9ca09a");
+  }else if(style==="chair"){
+   rect(x+fw*.18,y+fh*.18,fw*.64,fh*.64,"#865934");
+   rect(x+fw*.18,y+fh*.14,fw*.64,fh*.18,"#b48652");
+  }else if(style==="book"){
+   rect(x+fw*.12,y+fh*.15,fw*.76,fh*.7,"#5c4437");
+   rect(x+fw*.2,y+fh*.2,fw*.6,fh*.58,"#e4d1a0");
+   ctx.strokeStyle="#967c56";ctx.beginPath();ctx.moveTo(x+fw*.5,y+fh*.2);ctx.lineTo(x+fw*.5,y+fh*.78);ctx.stroke();
+  }
+  ctx.restore();
+ }
 }
 function drawCityLabels(cx,cy,w,h,size){
  const font=Math.max(10,Math.min(16,size*.48));
@@ -141,7 +194,7 @@ function move(dir,fromPath=false){
  if((p.map==="site-city1"&&!cityStepAllowed(p.x,p.y,nx,ny))||blocked(p.map,p.floor,nx,ny)){if(!fromPath)notify("Droga zablokowana");draw();return false;}
  p.x=nx;p.y=ny;
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
- if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=14;p.y=19;state.camera.zoom=Math.max(0.75,state.camera.zoom);}notify(mapName(p.map,p.floor));}
+ if(dest){Object.assign(p,dest);path=[];if(p.map===TAVERN_MAP){state.camera.zoom=Math.max(0.75,state.camera.zoom);}notify(mapName(p.map,p.floor));}
  follow();draw();return true;
 }
 function findPath(goal){
