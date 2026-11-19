@@ -34,6 +34,7 @@ function draw(){
   const t=tileAt(p.map,p.floor,x,y),sx=Math.floor((x-cx)*size+w/2),sy=Math.floor((y-cy)*size+h/2);
   ctx.fillStyle=COLORS[t]||"#333";ctx.fillRect(sx,sy,Math.ceil(size)+1,Math.ceil(size)+1);
   ctx.strokeStyle="#0a182b38";ctx.strokeRect(sx,sy,size,size);
+  if(p.map==="site-city1")drawCityTerrain(ctx,t,x,y,sx,sy,size);
   if(t==="tree"){ctx.fillStyle="#1d4229";ctx.beginPath();ctx.arc(sx+size/2,sy+size/2,size*.29,0,Math.PI*2);ctx.fill();}
   if(t==="object"){const object=objectAt(p.map,p.floor,x,y);const opened=state.objects[object?.id]?.opened;ctx.fillStyle=opened?"#5b4b38":"#d8a45a";ctx.fillRect(sx+size*.2,sy+size*.2,size*.6,size*.6);}
   if(t==="door"){const door=doorAt(p.map,p.floor,x,y);const status=door?(state.doors[door.id]||door.initial):"open";ctx.fillStyle=status==="locked"?"#a63b3b":status==="closed"?"#bc7c36":"#e4b64c";ctx.fillRect(sx+size*.1,sy+size*.1,size*.8,size*.8);}
@@ -53,14 +54,38 @@ function drawCityLabels(cx,cy,w,h,size){
   const sx=((x1+x2+1)/2-cx)*size+w/2,sy=((y1+y2+1)/2-cy)*size+h/2;
   if(sx<-100||sx>w+100||sy<-50||sy>h+50)continue;
   const iconSize=Math.max(12,Math.min(28,size*.78));
-  ctx.textAlign="center";ctx.textBaseline="middle";ctx.font=`${iconSize}px system-ui`;
-  ctx.fillText(b.icon,sx,sy-iconSize*.25);
-  if(size>=10){const font=Math.max(10,Math.min(15,size*.44));ctx.font=`bold ${font}px system-ui`;
-   const tw=ctx.measureText(b.name).width;ctx.fillStyle="#10202ce8";ctx.fillRect(sx-tw/2-4,sy+iconSize*.35,tw+8,font+5);
+  ctx.textAlign="center";ctx.textBaseline="middle";
+  if(size>=11){const font=Math.max(10,Math.min(15,size*.44));ctx.font=`bold ${font}px system-ui`;
+   const tw=ctx.measureText(b.name).width;ctx.fillStyle="#10202ce8";ctx.fillRect(sx-tw/2-4,sy,tw+8,font+5);
    ctx.fillStyle="#fff4d5";ctx.fillText(b.name,sx,sy+iconSize*.35+(font+5)/2);
   }
+  if(!b.door)continue;
   const dx=(b.door.x-cx+.5)*size+w/2,dy=(b.door.y-cy+.5)*size+h/2;
   if(size>=12){ctx.fillStyle="#f9c45a";ctx.fillRect(dx-size*.27,dy-size*.27,size*.54,size*.54);}
+ }
+}
+function drawCityTerrain(ctx,t,x,y,sx,sy,size){
+ const seed=(x*37+y*19+x*y*7)%13;
+ if(t==="road"){
+  ctx.fillStyle=seed%3===0?"#b7a18a":"#a9947d";ctx.fillRect(sx,sy,size,size);
+  ctx.strokeStyle="#756b61";ctx.lineWidth=Math.max(.5,size*.025);
+  ctx.beginPath();ctx.moveTo(sx,sy+size*.5);ctx.lineTo(sx+size,sy+size*.5);
+  ctx.moveTo(sx+size*(seed%2?.3:.65),sy);ctx.lineTo(sx+size*(seed%2?.3:.65),sy+size*.5);ctx.stroke();
+ }
+ if(t==="wood"){
+  ctx.fillStyle=seed%3===0?"#72524a":"#8d6353";ctx.fillRect(sx,sy,size,size);
+  ctx.strokeStyle="#c79a78";ctx.lineWidth=Math.max(.6,size*.035);
+  ctx.beginPath();ctx.moveTo(sx,sy+size*.2);ctx.lineTo(sx+size,sy+size*.2);ctx.moveTo(sx,sy+size*.8);ctx.lineTo(sx+size,sy+size*.8);ctx.stroke();
+ }
+ if(t==="wall"){
+  ctx.fillStyle="#85837c";ctx.fillRect(sx,sy,size,size);
+  ctx.strokeStyle="#575851";ctx.lineWidth=Math.max(.7,size*.04);
+  ctx.strokeRect(sx+size*.07,sy+size*.12,size*.86,size*.75);
+  ctx.beginPath();ctx.moveTo(sx,sy+size*.5);ctx.lineTo(sx+size,sy+size*.5);ctx.stroke();
+ }
+ if(t==="grass"||t==="meadow"){
+  ctx.fillStyle=seed<5?"#628350":"#577949";ctx.fillRect(sx,sy,size,size);
+  if(size>=12){ctx.strokeStyle="#8da368";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sx+size*.4,sy+size*.6);ctx.lineTo(sx+size*.5,sy+size*.38);ctx.stroke();}
  }
 }
 function follow(){state.camera.x=state.player.x+.5;state.camera.y=state.player.y+.5;}
@@ -127,8 +152,8 @@ document.querySelectorAll("[data-visit]").forEach(button=>button.addEventListene
 }));
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
  if(state.player.map==="site-city1"){
-  const p=state.player,building=CITY_BUILDINGS.find(b=>Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
-  if(building){notify(building.name+" — wejście oznaczone; wnętrze w przygotowaniu.");return;}
+  const p=state.player,building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
+  if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];follow();draw();notify("Wejście: "+building.name);return;}}
  }
  notify(interact(state));path=[];draw();}
 $("interactBtn").addEventListener("click",performInteraction);
