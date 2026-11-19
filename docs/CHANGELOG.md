@@ -1,3 +1,8 @@
+## 0.2.8.2-alpha — ściany i cache
+- Meble wymagające ściany przylegają do niej całą tylną krawędzi; łóżka wezgłowiem, nie przypadkowym bokiem.
+- Wymuszone odświeżenie modułów IGS i szablonu karczmy przez wersjonowane adresy importów, nowa wersja cache Service Workera.
+- Testy logiki: 42 obiekty, brak błędnego przylegania mebli ściennych, połączenia przejść na obu piętrach.
+
 ## 0.2.8.1-alpha — poprawa rozmieszczenia mebli
 - Wykrywanie ścian i granic funkcjonalnych pomieszczeń; łóżka, szafy, komody, regały, skrzynie, beczki i rośliny ustawiane przy ścianach.
 - Rośliny preferują narożniki, duże meble zachowują dostęp i nie nachodzą na schody.
