@@ -1,3 +1,10 @@
+## 0.2.3-alpha — fortyfikacje Miasta 1
+- Mury obronne mają 3 kratki szerokości; korona murów jest przechodnia.
+- Cztery dojścia po schodach od strony miasta oraz przejścia przez bramy dla patroli.
+- Nowa grafika kamiennych chodników, blanków i wzmocnionych narożnych baszt.
+- Przesunięto budynki i dekoracje kolidujące z pogrubionym murem, zachowując 24 dostępne wnętrza.
+- Testy statyczne: ciągłość ulic, dojścia do drzwi i poprawność szerokości murów; test na telefonie pozostaje do wykonania.
+
 ## 0.2.2-alpha — orientacja drzwi, drogi i mury obronne
 - Naprawiono wszystkie portale 24 wnętrz: położenie drzwi w środku odpowiada kierunkowi wejścia z zewnątrz (N/S/E/W).
 - Wyjście z budynku ustawia postać na zewnętrznym polu przed tymi samymi drzwiami, bez ponownego automatycznego wejścia.
