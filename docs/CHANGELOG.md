@@ -1,3 +1,10 @@
+## 0.2.9-alpha — TBI 1.0, etap I
+- Wprowadzono niezmienny wzorzec tavern-urban-01 i indywidualną instancję budynku.
+- Wyłączono automatyczne przestawianie mebli oraz generowanie krzeseł w istniejącej karczmie.
+- Renderowanie i kolizje korzystają z tej samej rozstrzygniętej listy obiektów; mapa zajętości budowana jednorazowo od zera.
+- TBI obsługuje nakładki zmian obiektów, dekoracyjne sloty wariantów i walidację kolizji.
+- To etap migracji, nie nowy ręcznie zaprojektowany układ karczmy (planowany w 0.3.0).
+
 ## 0.2.8.3-alpha — naprawa kolizji po przesuwaniu mebli
 - Przebudowa mapy zajętości od zera z ostatecznych współrzędnych mebli, bez pozostałości po ich dawnych pozycjach.
 - Walidacja całego układu i przejść po każdej próbie ustawienia mebla; odrzucanie nakładających się obiektów.
