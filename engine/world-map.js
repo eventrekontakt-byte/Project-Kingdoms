@@ -1,20 +1,20 @@
 // Persistent strategic geography. All coordinates are tile coordinates.
 export const WORLD_WIDTH=120,WORLD_HEIGHT=84;
 export const SITES=[
-{id:"miasto-krolewskie",name:"Kamienogród",type:"city",faction:"Korona Północy",x:35,y:36,map:"overworld",description:"Miasto stołeczne z warownią, karczmą i magazynem."},
-{id:"miasto-poludniowe",name:"Słoneczny Port",type:"city",faction:"Liga Południa",x:88,y:58,map:"site-port",description:"Miasto handlowe nad zatoką."},
-{id:"zamek-polnocny",name:"Zamek Kruczy",type:"castle",faction:"Korona Północy",x:53,y:15,map:"site-kruczy",description:"Twierdza strzegąca przełęczy."},
-{id:"zamek-poludniowy",name:"Zamek Strażnica",type:"castle",faction:"Liga Południa",x:91,y:36,map:"site-straznica",description:"Forteca na południowym trakcie."},
-{id:"wies-brzozowa",name:"Brzozowa",type:"village",faction:"Korona Północy",x:17,y:27,map:"site-brzozowa",description:"Wieś drwali na skraju puszczy."},
-{id:"wies-mlinska",name:"Młyńska Dolina",type:"village",faction:"Korona Północy",x:47,y:52,map:"site-mlynska",description:"Osada rolnicza z młynem."},
-{id:"wies-rybacka",name:"Rybaki",type:"village",faction:"Liga Południa",x:70,y:70,map:"site-rybaki",description:"Wioska rybacka."},
-{id:"wies-kamienna",name:"Kamienna Wieś",type:"village",faction:"Liga Południa",x:105,y:24,map:"site-kamienna",description:"Osada górników i kamieniarzy."},
-{id:"kryjowka-lesna",name:"Leśna Kryjówka",type:"hideout",faction:"Niezależni",x:10,y:49,map:"site-lesna",description:"Ukryty obóz bandytów."},
-{id:"kryjowka-skalna",name:"Skalne Schronienie",type:"hideout",faction:"Niezależni",x:107,y:48,map:"site-skalna",description:"Bandyci w skalnych jaskiniach."},
-{id:"ruiny",name:"Stare Ruiny",type:"landmark",faction:"Niezależni",x:29,y:67,map:"site-ruiny",description:"Pozostałości zapomnianej cywilizacji."},
-{id:"kopalnia",name:"Kopalnia Żelaza",type:"landmark",faction:"Korona Północy",x:67,y:23,map:"site-kopalnia",description:"Wyrobiska i górnicze sztolnie."},
-{id:"swiatynia",name:"Opuszczona Świątynia",type:"landmark",faction:"Niezależni",x:76,y:11,map:"site-swiatynia",description:"Starożytna świątynia."},
-{id:"przystan",name:"Przystań Trzech Rzek",type:"landmark",faction:"Liga Południa",x:64,y:48,map:"site-przystan",description:"Przeprawa i punkt handlowy."}
+{id:"miasto-krolewskie",name:"Miasto 1",type:"city",faction:"Państwo 1",x:35,y:36,map:"site-city1",description:"Rozbudowane miasto z murami, twierdzą, targiem, warsztatami i farmami."},
+{id:"miasto-poludniowe",name:"Miasto 2",type:"city",faction:"Państwo 2",x:88,y:58,map:"site-port",description:"Miasto handlowe nad zatoką."},
+{id:"zamek-polnocny",name:"Zamek 1",type:"castle",faction:"Państwo 1",x:53,y:15,map:"site-kruczy",description:"Twierdza strzegąca przełęczy."},
+{id:"zamek-poludniowy",name:"Zamek 2",type:"castle",faction:"Państwo 2",x:91,y:36,map:"site-straznica",description:"Forteca na południowym trakcie."},
+{id:"wies-brzozowa",name:"Wieś 1",type:"village",faction:"Państwo 1",x:17,y:27,map:"site-brzozowa",description:"Wieś drwali na skraju puszczy."},
+{id:"wies-mlinska",name:"Wieś 2",type:"village",faction:"Państwo 1",x:47,y:52,map:"site-mlynska",description:"Osada rolnicza z młynem."},
+{id:"wies-rybacka",name:"Wieś 3",type:"village",faction:"Państwo 2",x:70,y:70,map:"site-rybaki",description:"Wioska rybacka."},
+{id:"wies-kamienna",name:"Wieś 4",type:"village",faction:"Państwo 2",x:105,y:24,map:"site-kamienna",description:"Osada górników i kamieniarzy."},
+{id:"kryjowka-lesna",name:"Kryjówka 1",type:"hideout",faction:"Niezależni",x:10,y:49,map:"site-lesna",description:"Ukryty obóz bandytów."},
+{id:"kryjowka-skalna",name:"Kryjówka 2",type:"hideout",faction:"Niezależni",x:107,y:48,map:"site-skalna",description:"Bandyci w skalnych jaskiniach."},
+{id:"ruiny",name:"Ruiny 1",type:"landmark",faction:"Niezależni",x:29,y:67,map:"site-ruiny",description:"Pozostałości zapomnianej cywilizacji."},
+{id:"kopalnia",name:"Kopalnia 1",type:"landmark",faction:"Państwo 1",x:67,y:23,map:"site-kopalnia",description:"Wyrobiska i górnicze sztolnie."},
+{id:"swiatynia",name:"Świątynia 1",type:"landmark",faction:"Niezależni",x:76,y:11,map:"site-swiatynia",description:"Starożytna świątynia."},
+{id:"przystan",name:"Przystań 1",type:"landmark",faction:"Państwo 2",x:64,y:48,map:"site-przystan",description:"Przeprawa i punkt handlowy."}
 ];
 export const WORLD_START={x:35,y:38};
 export const SITE_BY_MAP=Object.fromEntries(SITES.map(s=>[s.map,s]));
@@ -46,13 +46,13 @@ export function walkableWorld(x,y){return worldTile(x,y)!=="void";}
 export function terrainCost(x,y){const t=worldTile(x,y);return t==="mountain"?5:t==="forest"?3:t==="water"?4:roadAt(x,y)?1:2;}
 
 export const FACTIONS=[
- {id:"north",name:"Korona Północy",capital:"miasto-krolewskie",color:"#6d9dc8"},
- {id:"south",name:"Liga Południa",capital:"miasto-poludniowe",color:"#d6a468"}
+ {id:"north",name:"Państwo 1",capital:"miasto-krolewskie",color:"#6d9dc8"},
+ {id:"south",name:"Państwo 2",capital:"miasto-poludniowe",color:"#d6a468"}
 ];
 export function factionAt(x,y){
  if(x<0||y<0||x>=WORLD_WIDTH||y>=WORLD_HEIGHT)return null;
- const northern=SITES.filter(s=>s.faction==="Korona Północy");
- const southern=SITES.filter(s=>s.faction==="Liga Południa");
+ const northern=SITES.filter(s=>s.faction==="Państwo 1");
+ const southern=SITES.filter(s=>s.faction==="Państwo 2");
  const distance=sites=>Math.min(...sites.map(s=>Math.hypot((x-s.x)*1.0,(y-s.y)*1.25)));
  const a=distance(northern),b=distance(southern);
  if(Math.min(a,b)>28||Math.abs(a-b)<3)return null;
