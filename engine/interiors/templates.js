@@ -104,10 +104,19 @@ const ROOM_ZONES=[
  {f:1,x1:11,y1:11,x2:19,y2:20},{f:1,x1:21,y1:11,x2:28,y2:20}
 ];
 function roomFor(o){return ROOM_ZONES.find(z=>z.f===o.floor&&o.x>=z.x1&&o.x<=z.x2&&o.y>=z.y1&&o.y<=z.y2);}
+// A wall contact must support the furniture's BACK, not merely touch a side.
+// Beds: headboard (short end); cupboards/dressers: rear long edge.
 function wallContact(o){
- for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++){
-  if(walls.has(key(o.floor,x-1,y))||walls.has(key(o.floor,x+1,y))||walls.has(key(o.floor,x,y-1))||walls.has(key(o.floor,x,y+1)))return true;
- }return false;
+ const backSides=o.style==="bed"?[
+  Array.from({length:o.w},(_,i)=>[o.x+i,o.y-1]),
+  Array.from({length:o.w},(_,i)=>[o.x+i,o.y+o.h])
+ ]:[
+  Array.from({length:o.w},(_,i)=>[o.x+i,o.y-1]),
+  Array.from({length:o.w},(_,i)=>[o.x+i,o.y+o.h]),
+  Array.from({length:o.h},(_,i)=>[o.x-1,o.y+i]),
+  Array.from({length:o.h},(_,i)=>[o.x+o.w,o.y+i])
+ ];
+ return backSides.some(side=>side.every(([x,y])=>walls.has(key(o.floor,x,y))));
 }
 function cornerScore(o){
  let n=0;
