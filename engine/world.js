@@ -50,8 +50,9 @@ for(const building of BUILDINGS){
 }
 for(const b of CITY_BUILDINGS.filter(b=>!b.decorative)){
  const id=interiorMapFor(b),entry=interiorEntrance(id);
- PORTALS.push(["site-city1",0,b.door.x,b.door.y,id,0,entry.x,entry.y-1]);
- PORTALS.push([id,0,entry.x,entry.y,"site-city1",0,b.door.x,b.door.y]);
+ const offset={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing];
+ PORTALS.push(["site-city1",0,b.door.x,b.door.y,id,0,entry.inside.x,entry.inside.y]);
+ PORTALS.push([id,0,entry.door.x,entry.door.y,"site-city1",0,b.door.x+offset[0],b.door.y+offset[1]]);
 }
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
 export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
@@ -97,4 +98,4 @@ export function tileAt(map,floor,x,y){
 }
 export function blocked(map,floor,x,y){return ["void","wall","tree","water","object"].includes(tileAt(map,floor,x,y));}
 export function mapName(map,floor){const l=LOCATIONS[map];return l?`${l.name}${l.floors>1?` — piętro ${floor}`:""}`:"Nieznana lokacja";}
-export const COLORS={void:"#050a0e",wall:"#36404a",tree:"#285b34",water:"#225d8c",road:"#8a7a60",grass:"#416f45","forest-floor":"#365b3a",rock:"#79786c",hill:"#5b7750",meadow:"#689257",stone:"#777a78",wood:"#927b56",marble:"#8d9ba3",door:"#e4b64c","stairs-up":"#ad87dd","stairs-down":"#8863c0",object:"#b68b53"};
+export const COLORS={void:"#050a0e",wall:"#36404a",tree:"#285b34",water:"#225d8c",road:"#8a7a60",rampart:"#a6a7a0",grass:"#416f45","forest-floor":"#365b3a",rock:"#79786c",hill:"#5b7750",meadow:"#689257",stone:"#777a78",wood:"#927b56",marble:"#8d9ba3",door:"#e4b64c","stairs-up":"#ad87dd","stairs-down":"#8863c0",object:"#b68b53"};
