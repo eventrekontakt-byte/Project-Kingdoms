@@ -128,7 +128,7 @@ export function cityTile(x,y){
 export function cityStepAllowed(x1,y1,x2,y2){
  const a=cityTile(x1,y1),b=cityTile(x2,y2);
  if(a==="rampart"||b==="rampart"){
-  const gatehouse=(x,y)=>CITY_GATES.some(g=>Math.abs(x-g.x)<=2&&Math.abs(y-g.y)<=2);
+  const gatehouse=(x,y)=>CITY_GATES.some(g=>Math.abs(x-g.x)<=3&&Math.abs(y-g.y)<=3);
   return a==="rampart"&&b==="rampart"||a==="stairs-up"&&b==="rampart"||b==="stairs-up"&&a==="rampart"||gatehouse(x1,y1)&&gatehouse(x2,y2)&&(a==="road"||b==="road");
  }
  return true;
