@@ -1,3 +1,13 @@
+## 0.3.4-alpha — PLOT 1.0 i reorganizacja działek Miasta 1
+- Miasto 1 podzielono na 39 działek: 32 istniejące zabudowane oraz 7 nowych pustych terenów pod przyszłe budowy.
+- Nowe działki automatycznie wybierane w wolnych fragmentach miasta, nie kolidują z budynkami, drogami i murami; mają co najmniej jedną kratkę bufora.
+- Teren pustych działek jest oczyszczany z losowych drzew i wizualnie wyrównywany do łąki; istniejące budynki, ich drzwi, wnętrza i przejścia pozostają nienaruszone.
+- Rejestr działek ma stabilne identyfikatory, obrysy, właściciela, status, powiązanie z budynkiem i walidację przyszłych parceli.
+- Nowy tryb zarządzania w menu: widoczne tylko wtedy granice działek, wybór dotykiem, informacje o działce i rezerwacja/zwolnienie wolnej działki.
+- Rezerwacje zapisują się w kampanii (schemat zapisu 8); stare zapisy nadal są odczytywane.
+- Istniejące działki są oznaczone jako legacy: ich historyczny układ nie musi spełniać nowego bufora. Nowe działki muszą spełniać wymóg.
+- Budowa, przebudowa i wyburzanie są przygotowane strukturalnie, lecz nie są jeszcze aktywnymi mechanikami.
+
 ## 0.3.3-alpha — BIS 1.0
 - Wymiary wnętrz Miasta 1 wynikają z wymiarów budynku na mapie: 1 kratka elewacji = 3 kratki wnętrza w obu osiach.
 - Nowy moduł engine/bis.js: maski obrysu, drzwi zgodne z fasadą, obsługa kształtów L i T oraz pełnych prostokątów.
