@@ -1,4 +1,4 @@
-import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.3.0";
+import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.3.1";
 export const TAVERN_MAP="interior-city1-karczma";
 export const TAVERN_SIZE={width:36,height:28,floors:3};
 const walls=new Set(),furniture=[],decor=[],portals=[];
