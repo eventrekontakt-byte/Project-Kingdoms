@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101b28"><meta name="apple-mobile-web-app-capable" content="yes">
-<title>Project Kingdoms — Alpha 0.3.2</title>
-<link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css?v=0.3.2">
+<title>Project Kingdoms — Alpha 0.3.3</title>
+<link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css?v=0.3.3">
 </head>
 <body>
-<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.2 • VIS 1.0 — płynny ruch i kamera</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
+<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.3 • BIS 1.0 — skala wnętrz 1:3</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
 <main id="gameShell">
 <section id="viewport" aria-label="Mapa świata"><canvas id="world" aria-label="Mapa gry"></canvas><div id="toast" role="status"></div></section>
 <aside id="sidePanel">
@@ -25,5 +25,5 @@
 </main>
 <section id="worldMapOverlay" hidden role="dialog" aria-modal="true" aria-label="Mapa świata"><div class="world-map-panel"><div class="world-map-heading"><h2>Mapa świata</h2><div class="row"><button id="worldZoomOut" aria-label="Oddal mapę świata">−</button><button id="worldZoomIn" aria-label="Przybliż mapę świata">+</button><button id="worldCenter" aria-label="Wyśrodkuj na bohaterze">⌖</button><button id="closeWorldMap">Zamknij</button></div></div><p class="hint">Otwarty świat: 2 miasta, 2 zamki, 4 wsie, 2 kryjówki i 4 inne lokacje. Nazwy lokacji są robocze. Przeciągnij mapę, przybliż kółkiem myszy lub gestem dwóch palców. Kliknij cel, aby podróżować. Stań na znaczniku i naciśnij E, by wejść. Kolorowe obszary oznaczają dwa państwa.</p><canvas id="strategicMap" width="720" height="480" aria-label="Strategiczna mapa regionów"></canvas><div class="world-map-actions"><div><h3 id="worldRegionTitle">Pogranicze</h3><p id="worldRegionDescription"></p></div><button id="worldTravelBtn">Podróżuj</button><button id="worldEnterBtn">Wejdź do lokacji (E)</button></div></div></section>
 <dialog id="confirmNew"><form method="dialog"><h3>Nowa kampania?</h3><p>Obecny niezapisany postęp zostanie utracony.</p><div class="row"><button value="cancel">Anuluj</button><button value="confirm">Rozpocznij</button></div></form></dialog>
-<script type="module" src="./engine/game.js?v=0.3.2"></script>
+<script type="module" src="./engine/game.js?v=0.3.3"></script>
 </body></html>
