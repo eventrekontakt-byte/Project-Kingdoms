@@ -14,7 +14,7 @@ let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=nul
 const visual={x:START.x+.5,y:START.y+.5,map:START.map,floor:START.floor,
  fromX:START.x+.5,fromY:START.y+.5,toX:START.x+.5,toY:START.y+.5,
  started:0,duration:150,active:false,cameraTargetX:START.x+.5,cameraTargetY:START.y+.5,
- manualPan:false,lastFrame:0};
+ manualPan:false,lastFrame:0,lastPaint:0};
 const VIS={stepMs:150,cameraResponse:10,deadZoneX:.9,deadZoneY:.65};
 function snapVisual(){
  const p=state.player;visual.map=p.map;visual.floor=p.floor;
@@ -51,7 +51,9 @@ function animateVisual(now){
   state.camera.x+=(visual.cameraTargetX-state.camera.x)*a;
   state.camera.y+=(visual.cameraTargetY-state.camera.y)*a;
  }
- draw();
+ // Do not redraw an idle map 60 times per second on mobile.
+ const cameraMoving=Math.abs(visual.cameraTargetX-state.camera.x)+Math.abs(visual.cameraTargetY-state.camera.y)>.002;
+ if((visual.active||cameraMoving)&&now-visual.lastPaint>=30){draw();visual.lastPaint=now;}
  requestAnimationFrame(animateVisual);
 }
 function notify(message){const el=$("toast");el.textContent=message;el.classList.add("visible");clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove("visible"),2300);}
