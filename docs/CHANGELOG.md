@@ -1,3 +1,10 @@
+## 0.3.2-alpha — VIS 1.0: płynne poruszanie i kamera
+- Współrzędne logiczne gracza nadal są kafelkowe, ale pozycja na ekranie jest interpolowana przez 150 ms (smoothstep).
+- Kamera ma wygładzone podążanie i martwą strefę 0,9 × 0,65 kratki; nie przeskakuje już automatycznie po każdym kroku.
+- Przesuwanie mapy palcem zachowuje ręczną kontrolę nad kamerą do następnego kroku lub wycentrowania.
+- Teleportacje, wczytanie zapisu, zmiana mapy i kondygnacji resetują interpolację bez przesuwania postaci przez obce lokacje.
+- Zatwierdzono kontekstową widoczność PLOT, BIS 1.0 i VIS 1.0; BIS/PLOT będą wdrażane w kolejnych wersjach.
+
 ## 0.3.1-alpha — naprawa teleportacji do karczmy
 - Naprawiono rozjazd wersji: moduł game.js ładuje world.js z numerem wydania, world.js ładuje szablon karczmy z tym samym numerem.
 - Offline fallback nie ignoruje już parametrów wersji adresu modułu, co zapobiega podstawianiu starej mapy 30×22 do nowej 36×28.
