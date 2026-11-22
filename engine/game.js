@@ -1,4 +1,4 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.2.9.1";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.0";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
@@ -29,8 +29,8 @@ function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.d
 function geometry(){return {w:canvas.clientWidth,h:canvas.clientHeight,size:32*state.camera.zoom};}
 function ensureValidPosition(){
  const p=state.player,{w,h}=mapSize(p.map);
- if(p.map==="interior-city1-karczma"&&(p.floor<0||p.floor>1||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
-  Object.assign(p,{floor:0,x:14,y:19});
+ if(p.map==="interior-city1-karczma"&&(p.floor<0||p.floor>2||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
+  Object.assign(p,{floor:0,x:18,y:26});
   state.camera.x=p.x+.5;state.camera.y=p.y+.5;path=[];
   notify("Poprawiono pozycję bohatera w karczmie.");
  }
@@ -275,6 +275,12 @@ $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="
  Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];follow();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
+$("fastTravelTavern").addEventListener("click",()=>{
+ Object.assign(state.player,{map:TAVERN_MAP,floor:0,x:18,y:26});
+ path=[];state.camera.x=18.5;state.camera.y=26.5;state.camera.zoom=Math.max(.75,state.camera.zoom);
+ if(!$("worldMapOverlay").hidden)strategic.close();
+ $("sidePanel").classList.remove("open");follow();draw();notify("Szybka podróż: Karczma 01");
+});
 const visitPoints={keep:{x:24,y:21},house:{x:34,y:12},inn:{x:38,y:23},warehouse:{x:10,y:31}};
 document.querySelectorAll("[data-visit]").forEach(button=>button.addEventListener("click",()=>{
  const point=visitPoints[button.dataset.visit];if(!point)return;
@@ -296,7 +302,7 @@ function showObjectPanel(object){
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
  if(state.player.map==="site-city1"){
   const p=state.player,building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
-  if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=14;p.y=19;state.camera.zoom=Math.max(.75,state.camera.zoom);}follow();draw();notify("Wejście: "+building.name);return;}}
+  if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=18;p.y=26;state.camera.zoom=Math.max(.75,state.camera.zoom);}follow();draw();notify("Wejście: "+building.name);return;}}
  }
  const obj=interactionNear(state.player);if(obj&&state.player.map==="interior-city1-karczma"){showObjectPanel(obj);path=[];draw();return;}
  notify(interact(state));path=[];draw();}
