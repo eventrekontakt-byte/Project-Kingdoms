@@ -1,5 +1,5 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.4";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.4";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.5";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.5";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
@@ -7,7 +7,7 @@ import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.4";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.5";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -100,7 +100,7 @@ function draw(){
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
  if(p.map===TAVERN_MAP){drawTavernDecor(p.floor,cx,cy,w,h,size);drawTavernFurniture(p.floor,cx,cy,w,h,size);}
- if(p.map==="site-city1"){if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
+ if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -231,6 +231,54 @@ function refreshPlotPanel(){
  panel.textContent=`${info.name} • ${x2-x1+1}×${y2-y1+1} • ${info.status==="occupied"?"zabudowana":info.status==="reserved"?"zarezerwowana":"wolna"} • właściciel: ${info.owner}`;
  $("plotReserveBtn").hidden=plot.status!=="vacant";
  $("plotReserveBtn").textContent=info.status==="reserved"?"Zwolnij rezerwację":"Zarezerwuj działkę";
+}
+// VIS 1.1: deterministic height illusion; purely visual, never changes collisions.
+const CITY_HEIGHTS=Object.fromEntries(CITY_BUILDINGS.map(b=>{
+ const id=b.id;
+ const floors=/twierdza|koszary|biblioteka|kasyno|straznica|kamienica/.test(id)?3:
+ /karczma|zbrojownia|apteka|magazyn|dom|spichlerz|warsztat/.test(id)?2:1;
+ return [id,floors];
+}));
+function drawCityElevation(cx,cy,w,h,size){
+ const p=state.player;
+ const playerOnWall=tileAt(p.map,p.floor,p.x,p.y)==="rampart";
+ // Height is projected upward in screen space. Collision geometry stays unchanged.
+ for(const b of CITY_BUILDINGS){
+  const [x1,y1,x2,y2]=b.bounds;
+  const x=(x1-cx)*size+w/2,y=(y1-cy)*size+h/2;
+  const bw=(x2-x1+1)*size,bh=(y2-y1+1)*size;
+  if(x>w+size||x+bw<-size||y>h+size*5||y+bh<-size*5)continue;
+  const floors=CITY_HEIGHTS[b.id]||1;
+  const rise=Math.min(size*2.4,Math.max(size*.24,(floors-1)*size*.52));
+  const roofTop=y+Math.min(size*.85,bh*.18);
+  const roofBottom=y+Math.min(size*2.0,bh*.42);
+  const left=x+size*.12,right=x+bw-size*.12;
+  ctx.save();
+  // Narrow facade and roof accents avoid covering the ground-level entrance.
+  ctx.fillStyle="#15151d48";
+  ctx.beginPath();ctx.moveTo(right,roofBottom);ctx.lineTo(right+rise*.42,roofBottom-rise*.7);
+  ctx.lineTo(right+rise*.42,roofTop-rise*.7);ctx.lineTo(right,roofTop);ctx.closePath();ctx.fill();
+  ctx.fillStyle=b.external?"#5b534f":"#705b52";
+  ctx.beginPath();ctx.moveTo(left,roofTop);ctx.lineTo(right,roofTop);
+  ctx.lineTo(right+rise*.42,roofTop-rise*.7);ctx.lineTo(left+rise*.42,roofTop-rise*.7);
+  ctx.closePath();ctx.fill();
+  ctx.strokeStyle="#b99d81";ctx.lineWidth=Math.max(1,size*.06);
+  ctx.beginPath();ctx.moveTo(left,roofTop);ctx.lineTo(right,roofTop);
+  ctx.lineTo(right+rise*.42,roofTop-rise*.7);ctx.lineTo(left+rise*.42,roofTop-rise*.7);ctx.closePath();ctx.stroke();
+  if(floors>1){
+   ctx.fillStyle="#c8a17b";ctx.font="bold "+Math.max(9,Math.min(13,size*.32))+"px system-ui";
+   ctx.textAlign="left";ctx.textBaseline="middle";
+   ctx.fillText(floors+" p.",left+size*.24,roofTop-rise*.28);
+  }
+  ctx.restore();
+ }
+ // The elevated rampart casts a visible edge shadow on the lower ground.
+ if(playerOnWall){
+  const sx=(visual.x-cx)*size+w/2,sy=(visual.y-cy)*size+h/2;
+  ctx.save();ctx.strokeStyle="#e9dbb4aa";ctx.lineWidth=Math.max(1,size*.07);
+  ctx.beginPath();ctx.arc(sx,sy,Math.max(7,size*.53),Math.PI,Math.PI*2);ctx.stroke();
+  ctx.restore();
+ }
 }
 function drawCityLabels(cx,cy,w,h,size){
  const font=Math.max(10,Math.min(16,size*.48));
