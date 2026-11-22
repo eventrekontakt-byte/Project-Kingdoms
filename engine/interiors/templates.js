@@ -1,137 +1,94 @@
-import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.2.9.1";
-// Reusable interior template: tavern, with deterministic furniture and persistent instances.
+import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.3.0";
 export const TAVERN_MAP="interior-city1-karczma";
-export const TAVERN_SIZE={width:30,height:22,floors:2};
-const key=(f,x,y)=>f+":"+x+":"+y;
-const walls=new Set(),items=new Map(),portals=[],furniture=[];
-const wall=(f,x,y)=>walls.add(key(f,x,y));
-const partition=(f,x1,y1,x2,y2,doors=[])=>{
- for(let y=y1;y<=y2;y++)for(let x=x1;x<=x2;x++)if(!doors.some(([dx,dy])=>dx===x&&dy===y))wall(f,x,y);
-};
-for(let f=0;f<2;f++){
- for(let x=0;x<30;x++){wall(f,x,0);wall(f,x,21);}
- for(let y=0;y<22;y++){wall(f,0,y);wall(f,29,y);}
-}
-// Ground floor: dining room, kitchen, pantry and utility room.
-partition(0,18,1,18,20,[[18,10],[18,11],[18,17]]);
-partition(0,19,8,28,8,[[24,8],[25,8]]);
-partition(0,1,15,17,15,[[8,15],[9,15]]);
-// Upper floor: three guest rooms, owner's quarters and an open stair landing.
-partition(1,1,10,28,10,[[6,10],[15,10],[24,10]]);
-partition(1,10,1,10,9,[[10,6]]);
-partition(1,20,1,20,9,[[20,6]]);
-partition(1,10,11,10,20,[[10,16]]);
-partition(1,20,11,20,20,[[20,16]]);
-walls.delete(key(0,14,21));
-// Each stair landing is a single physical coordinate on both floors.
-// On arrival the player stands beside the stairs, preventing immediate return.
-const STAIRS={x:4,y:18};
-portals.push({from:[0,14,21],to:null,exit:true});
-portals.push({from:[0,STAIRS.x,STAIRS.y],to:[1,STAIRS.x+1,STAIRS.y]});
-portals.push({from:[1,STAIRS.x,STAIRS.y],to:[0,STAIRS.x+1,STAIRS.y]});
+export const TAVERN_SIZE={width:36,height:28,floors:3};
+const walls=new Set(),furniture=[],decor=[],portals=[];
+const k=(f,x,y)=>f+":"+x+":"+y;
+function wall(f,x,y){walls.add(k(f,x,y));}
+function line(f,x1,y1,x2,y2,doors=[]){for(let y=y1;y<=y2;y++)for(let x=x1;x<=x2;x++)if(!doors.some(([dx,dy])=>dx===x&&dy===y))wall(f,x,y);}
+for(let f=0;f<3;f++){for(let x=0;x<36;x++){wall(f,x,0);wall(f,x,27);}for(let y=0;y<28;y++){wall(f,0,y);wall(f,35,y);}}
+walls.delete(k(0,18,27));
+// Ground: tavern hall, kitchen, pantry, service room, southern lobby.
+line(0,23,1,23,23,[[23,8],[23,9],[23,19]]);
+line(0,24,12,34,12,[[29,12]]);
+line(0,24,18,34,18,[[29,18]]);
+line(0,1,23,34,23,[[17,23],[18,23],[29,23]]);
+line(0,11,24,11,26,[[11,25]]);
+// First floor: five guest rooms and owner quarters around a corridor.
+line(1,1,12,34,12,[[6,12],[17,12],[29,12]]);
+line(1,1,16,34,16,[[6,16],[17,16],[29,16]]);
+line(1,12,1,12,11,[[12,6]]);
+line(1,24,1,24,11,[[24,6]]);
+line(1,12,17,12,26,[[12,21]]);
+line(1,24,17,24,26,[[24,21]]);
+// Cellar: storage, food cellar and locked strongroom.
+line(2,20,1,20,26,[[20,8],[20,20]]);
+line(2,21,14,34,14,[[27,14]]);
+line(2,1,17,19,17,[[10,17]]);
+// Matching 3x3 staircase footprints. Arrival one tile beside each portal.
+const STAIRS={x:5,y:24},CELLAR_STAIRS={x:29,y:24};
+portals.push({from:[0,18,27],to:null,exit:true});
+portals.push({from:[0,5,24],to:[1,6,24]},{from:[1,5,24],to:[0,6,24]});
+portals.push({from:[0,29,24],to:[2,30,24]},{from:[2,29,24],to:[0,30,24]});
 export const TAVERN_STAIRS=STAIRS;
-function object(f,id,name,kind,x,y,w=1,h=1,extra={}){
- const entry={id:"city1-tavern-"+id,name,kind,x,y,w,h,floor:f,description:extra.description||name,owner:extra.owner??"karczmarz",loot:extra.loot||[],...extra};
- for(let yy=y;yy<y+h;yy++)for(let xx=x;xx<x+w;xx++){
-  const k=key(f,xx,yy);
-  if(xx<1||yy<1||xx>=29||yy>=21||walls.has(k)||items.has(k)||portals.some(p=>p.from[0]===f&&p.from[1]===xx&&p.from[2]===yy))
-   throw Error("Furniture collision: "+id+" at "+k);
-  items.set(k,entry);
- }
- furniture.push(entry);
+function item(f,id,name,kind,x,y,w=1,h=1,extra={}){
+ const o={id:"city1-tavern-"+id,name,kind,x,y,w,h,floor:f,description:extra.description||name,owner:extra.owner??"karczmarz",loot:extra.loot||[],...extra};
+ for(let yy=y;yy<y+h;yy++)for(let xx=x;xx<x+w;xx++)if(xx<1||xx>=35||yy<1||yy>=27||walls.has(k(f,xx,yy))||furniture.some(p=>p.floor===f&&xx>=p.x&&xx<p.x+p.w&&yy>=p.y&&yy<p.y+p.h)||portals.some(p=>p.from[0]===f&&p.from[1]===xx&&p.from[2]===yy))throw Error("TBI authored overlap "+id+" "+k(f,xx,yy));
+ furniture.push(o);
 }
-// Furniture placement respects walls, circulation and functional room layout.
-object(0,"counter","Lada karczmarza","inspect",2,1,4,1,{style:"counter",description:"Solidna drewniana lada z miejscem do obsługi gości."});
-object(0,"ledger","Księga gości","read",7,2,1,1,{style:"book",description:"Rejestr przyjezdnych i rachunków."});
-object(0,"fireplace","Kominek","fireplace",13,1,2,1,{style:"fireplace",description:"Kamienny kominek ogrzewający salę."});
-object(0,"table-1","Duży stół gościnny","inspect",3,6,3,2,{style:"table",owner:"publiczny"});
-object(0,"table-2","Duży stół gościnny","inspect",11,6,3,2,{style:"table",owner:"publiczny"});
-object(0,"table-3","Stół gościnny","inspect",10,11,2,3,{style:"table",owner:"publiczny"});
-object(0,"stove","Piec kuchenny","inspect",21,1,3,2,{style:"stove",description:"Piec do wypiekania chleba i gotowania."});
-object(0,"kitchen-table","Stół roboczy","inspect",24,4,3,2,{style:"table"});
-object(0,"pantry","Skrzynia z zapasami","container",26,9,2,1,{style:"chest",loot:["Chleb","Suszone mięso","Jabłko"]});
-object(0,"barrel","Beczka piwa","inspect",19,4,1,1,{style:"barrel"});
-object(0,"supplies","Skrzynia na zapleczu","container",26,20,2,1,{style:"chest",loot:["Monety: 8","Sznur","Świeca"]});
-object(0,"shelf","Regał kuchenny","inspect",20,9,1,3,{style:"shelf"});
-// Extra furnishings make rooms lived-in without closing their entrances.
-object(0,"extra-bench","Drewniana ława","sit",2,11,2,1,{style:"bench",owner:"publiczny"});
-object(0,"extra-bench2","Drewniana ława","sit",14,12,2,1,{style:"bench",owner:"publiczny"});
-object(0,"cask-2","Beczka z winem","inspect",28,3,1,1,{style:"barrel"});
-object(0,"cupboard","Kredens kuchenny","container",28,1,1,2,{style:"wardrobe",loot:["Miska","Kubek"]});
-object(0,"herbs","Donica z ziołami","inspect",16,1,1,1,{style:"plant",owner:"publiczny"});
-object(0,"plant-hall","Roślina doniczkowa","inspect",17,13,1,1,{style:"plant",owner:"publiczny"});
-object(0,"plant-store","Roślina doniczkowa","inspect",28,13,1,1,{style:"plant",owner:"publiczny"});
-object(0,"barrel-store","Beczka zapasowa","inspect",19,19,1,1,{style:"barrel"});
-// Guest beds are anchored against walls; wardrobes and chests sit at the perimeter.
-object(1,"bed1","Łóżko gościnne","rest",2,1,2,3,{style:"bed",owner:"publiczny"});
-object(1,"bed2","Łóżko gościnne","rest",12,1,2,3,{style:"bed",owner:"publiczny"});
-object(1,"bed3","Łóżko gościnne","rest",22,1,2,3,{style:"bed",owner:"publiczny"});
-object(1,"bed4","Łóżko karczmarza","rest",23,18,2,3,{style:"bed"});
-object(1,"guest-chest","Kufer podróżnego","container",7,1,2,1,{style:"chest",owner:"gość",loot:["Monety: 4","List"]});
-object(1,"wardrobe","Szafa karczmarza","container",28,16,1,3,{style:"wardrobe",loot:["Klucz","Płaszcz"]});
-object(1,"letter","List karczmarza","read",22,13,1,1,{style:"book",description:"List dotyczący dostawy zboża."});
-object(1,"dresser","Komoda","container",2,11,2,1,{style:"dresser",loot:["Świeca"]});
-
-// Walkable interior decorations: rugs, stair footprints and ambient light fixtures.
-// Stairs have a 3×3 visual footprint, while the portal remains one exact tile.
-export const TAVERN_DECOR=[
- {floor:0,style:"rug",x:7,y:9,w:3,h:2,tone:"red"},
- {floor:0,style:"rug",x:12,y:16,w:3,h:2,tone:"blue"},
- {floor:0,style:"rug",x:22,y:13,w:3,h:2,tone:"red"},
- {floor:1,style:"rug",x:5,y:6,w:3,h:2,tone:"blue"},
- {floor:1,style:"rug",x:14,y:6,w:3,h:2,tone:"red"},
- {floor:1,style:"rug",x:24,y:6,w:3,h:2,tone:"blue"},
- {floor:1,style:"rug",x:5,y:14,w:3,h:2,tone:"red"},
- {floor:1,style:"rug",x:14,y:14,w:3,h:2,tone:"blue"},
- {floor:1,style:"rug",x:23,y:13,w:3,h:2,tone:"red"},
- ...[0,1].map(f=>({floor:f,style:"staircase",x:3,y:17,w:3,h:3})),
- ...[[0,8,2],[0,15,9],[0,23,4],[0,27,16],[1,8,5],[1,18,5],[1,27,12],[1,8,18]].map(([floor,x,y])=>({floor,style:"sconce",x,y,w:1,h:1}))
-];
-export function tavernDecor(f){return TAVERN_INSTANCE?TAVERN_INSTANCE.decorations.filter(o=>o.floor===f):TAVERN_DECOR.filter(o=>o.floor===f);}
-object(1,"dresser-guest1","Komoda gościnna","container",5,1,2,1,{style:"dresser",owner:"publiczny",loot:["Świeca"]});
-object(1,"dresser-guest2","Komoda gościnna","container",15,1,2,1,{style:"dresser",owner:"publiczny",loot:["Kartka"]});
-object(1,"dresser-guest3","Komoda gościnna","container",25,1,2,1,{style:"dresser",owner:"publiczny"});
-object(1,"plant-guest","Roślina w donicy","inspect",9,8,1,1,{style:"plant",owner:"publiczny"});
-object(1,"plant-landing","Roślina w donicy","inspect",19,18,1,1,{style:"plant",owner:"publiczny"});
-object(1,"bench-landing","Ława na korytarzu","sit",12,18,2,1,{style:"bench",owner:"publiczny"});
-// Hand-authored chairs; each occupies exactly one collision tile.
-object(0,"chair-1","Krzesło","sit",3,5,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-2","Krzesło","sit",5,5,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-3","Krzesło","sit",3,8,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-4","Krzesło","sit",5,8,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-5","Krzesło","sit",11,5,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-6","Krzesło","sit",13,5,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-7","Krzesło","sit",11,8,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-8","Krzesło","sit",13,8,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-9","Krzesło","sit",9,11,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-10","Krzesło","sit",12,11,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-11","Krzesło","sit",9,13,1,1,{style:"chair",owner:"publiczny"});
-object(0,"chair-12","Krzesło","sit",12,13,1,1,{style:"chair",owner:"publiczny"});
-// TBI: fixed authored layout. No runtime furniture relocation or seat generation.
-export const TAVERN_TEMPLATE=defineTemplate({
- id:"tavern-urban-01-revised",size:TAVERN_SIZE,walls,portals,
- rooms:[{floor:0,type:"dining"},{floor:0,type:"kitchen"},{floor:0,type:"storage"},{floor:1,type:"guest"}],
- furniture,decor:TAVERN_DECOR,
- slots:[]
-});
+function rug(f,x,y,w,h,tone="red"){decor.push({floor:f,style:"rug",x,y,w,h,tone});}
+function stair(f,x,y){decor.push({floor:f,style:"staircase",x:x-1,y:y-1,w:3,h:3});}
+function lamp(f,x,y){decor.push({floor:f,style:"sconce",x,y,w:1,h:1});}
+// Ground floor: fixed hand-authored tables and matching chairs.
+item(0,"bar","Lada karczmarza","inspect",2,1,6,1,{style:"counter"});
+item(0,"ledger","Księga gości","read",9,2,1,1,{style:"book"});
+item(0,"hearth","Duży kominek","fireplace",17,1,3,1,{style:"fireplace"});
+const tables=[[4,6,3,2],[13,6,3,2],[4,14,3,2],[13,14,3,2],[9,19,4,2]];
+tables.forEach(([x,y,w,h],i)=>{item(0,"table-"+i,"Stół biesiadny","inspect",x,y,w,h,{style:"table",owner:"publiczny"});const chairs=[[x-1,y],[x+w,y],[x-1,y+h-1],[x+w,y+h-1]];chairs.forEach(([cx,cy],j)=>item(0,"chair-"+i+"-"+j,"Krzesło","sit",cx,cy,1,1,{style:"chair",owner:"publiczny"}));});
+item(0,"kitchen-stove","Piec kuchenny","inspect",27,1,3,2,{style:"stove"});
+item(0,"kitchen-table","Stół roboczy","inspect",27,5,4,2,{style:"table"});
+item(0,"kitchen-cupboard","Kredens","container",34,2,1,3,{style:"wardrobe",loot:["Miska","Kubek"]});
+item(0,"kitchen-barrel","Beczka","inspect",24,2,1,1,{style:"barrel"});
+item(0,"pantry-chest","Skrzynia żywności","container",32,13,2,1,{style:"chest",loot:["Chleb","Ser"]});
+item(0,"pantry-shelf","Regał","inspect",24,13,1,3,{style:"shelf"});
+item(0,"service-chest","Skrzynia zapasów","container",32,19,2,1,{style:"chest",loot:["Świeca","Sznur"]});
+item(0,"service-barrel","Beczka wina","inspect",24,20,1,1,{style:"barrel"});
+item(0,"plant-a","Roślina","inspect",22,2,1,1,{style:"plant"});
+item(0,"plant-b","Roślina","inspect",1,21,1,1,{style:"plant"});
+rug(0,9,10,4,3);rug(0,14,18,3,3,"blue");
+for(const [x,y] of [[9,1],[21,1],[25,1],[33,1],[1,10],[22,15],[34,21]])lamp(0,x,y);
+// Upper floor: six separate furnished rooms, all wall anchored.
+const beds=[[1,2],[14,2],[26,2],[1,19],[14,19],[26,19]];
+beds.forEach(([x,y],i)=>{item(1,"bed-"+i,i===5?"Łóżko karczmarza":"Łóżko gościnne","rest",x+1,y-1,2,3,{style:"bed",owner:i===5?"karczmarz":"publiczny"});item(1,"chest-"+i,"Kufer","container",x+6,y-1,2,1,{style:"chest",loot:i===5?["Dokumenty"]:["Ubrania"]});rug(1,x+3,y+5,3,2,i%2?"blue":"red");});
+item(1,"wardrobe-1","Szafa","container",34,20,1,3,{style:"wardrobe"});
+item(1,"wardrobe-2","Szafa","container",11,3,1,3,{style:"wardrobe"});
+item(1,"dresser-1","Komoda","container",15,1,2,1,{style:"dresser"});
+item(1,"dresser-2","Komoda","container",2,26,2,1,{style:"dresser"});
+for(const [x,y] of [[5,1],[17,1],[29,1],[5,26],[17,26],[29,26]])lamp(1,x,y);
+// Cellar: stockrooms and treasury.
+for(const [id,x,y] of [["beer",2,2],["wine",5,2],["ale",8,2],["cider",11,2],["water",14,2]])item(2,id,"Beczka "+id,"inspect",x,y,1,1,{style:"barrel"});
+item(2,"store-table","Stół magazynowy","inspect",7,8,4,2,{style:"table"});
+item(2,"supply-1","Skrzynia zapasów","container",2,18,2,1,{style:"chest",loot:["Ziarno"]});
+item(2,"supply-2","Skrzynia zapasów","container",5,18,2,1,{style:"chest",loot:["Suszone mięso"]});
+item(2,"cellar-shelf","Regał piwniczny","inspect",21,1,1,4,{style:"shelf"});
+item(2,"vault-chest","Zamknięty kufer","container",32,15,2,1,{style:"chest",owner:"karczmarz",loot:["Monety"]});
+for(let f=0;f<2;f++)stair(f,5,24);
+for(const f of [0,2])stair(f,29,24);
+for(const [x,y] of [[1,6],[19,6],[22,6],[34,6],[1,20],[34,20]])lamp(2,x,y);
+export const TAVERN_DECOR=decor;
+export const TAVERN_TEMPLATE=defineTemplate({id:"tavern-urban-01",size:TAVERN_SIZE,walls,portals,rooms:[{floor:0,type:"dining"},{floor:0,type:"kitchen"},{floor:0,type:"pantry"},{floor:0,type:"service"},{floor:1,type:"guest"},{floor:2,type:"cellar"}],furniture,decor,slots:[]});
 export const TAVERN_INSTANCE=resolveInstance(TAVERN_TEMPLATE,{id:TAVERN_MAP,owner:"karczmarz"});
-const tbiCheck=validateTemplate(TAVERN_INSTANCE,TAVERN_SIZE);
-if(!tbiCheck.ok)throw Error("TBI tavern invalid: "+tbiCheck.errors.join("; "));
-const occupancy=buildOccupancy(TAVERN_INSTANCE);
-items.clear();
-for(const [k,o] of occupancy.occupied)items.set(k,o);
-furniture.length=0;
-furniture.push(...TAVERN_INSTANCE.objects);
+const check=validateTemplate(TAVERN_INSTANCE,TAVERN_SIZE);
+if(!check.ok)throw Error("TBI invalid: "+check.errors.join("; "));
+const occupancy=buildOccupancy(TAVERN_INSTANCE).occupied;
 export const TAVERN_BUILDING_MODEL=TAVERN_INSTANCE;
-export function tavernFurniture(f){return furniture.filter(item=>item.floor===f);}
+export function tavernFurniture(f){return TAVERN_INSTANCE.objects.filter(o=>o.floor===f);}
+export function tavernDecor(f){return TAVERN_INSTANCE.decorations.filter(o=>o.floor===f);}
+export function tavernObject(f,x,y){return occupancy.get(k(f,x,y))||null;}
+export function tavernPortals(){return portals;}
 export function tavernTile(f,x,y){
- if(f<0||f>1||x<0||y<0||x>=30||y>=22)return "void";
- if(portals.some(p=>p.from[0]===f&&p.from[1]===x&&p.from[2]===y))return f===0&&y===21?"door":f===0?"stairs-up":"stairs-down";
- if(walls.has(key(f,x,y)))return "wall";
- if(items.has(key(f,x,y)))return "object";
+ if(f<0||f>=3||x<0||x>=36||y<0||y>=28)return "void";
+ if(portals.some(p=>p.from[0]===f&&p.from[1]===x&&p.from[2]===y))return f===0&&y===27?"door":f===1?"stairs-down":f===2?"stairs-up":x===5?"stairs-up":"stairs-down";
+ if(walls.has(k(f,x,y)))return "wall";
+ if(occupancy.has(k(f,x,y)))return "object";
  return "wood";
 }
-export function tavernObject(f,x,y){return items.get(key(f,x,y))||null;}
-export function tavernPortals(){return portals;}
-export function tavernObjects(){return [...items.values()];}
-export const INTERIOR_TEMPLATES={tavernA:{id:"tavernA",size:TAVERN_SIZE,rooms:["sala gościnna","kuchnia","spiżarnia","zaplecze","pokoje gościnne","pokój karczmarza"],instance:TAVERN_MAP}};
