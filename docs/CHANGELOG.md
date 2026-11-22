@@ -1,3 +1,8 @@
+## 0.3.1-alpha — naprawa teleportacji do karczmy
+- Naprawiono rozjazd wersji: moduł game.js ładuje world.js z numerem wydania, world.js ładuje szablon karczmy z tym samym numerem.
+- Offline fallback nie ignoruje już parametrów wersji adresu modułu, co zapobiega podstawianiu starej mapy 30×22 do nowej 36×28.
+- Przy wejściu do karczmy używane są współrzędne nowego holu (18,26).
+
 ## 0.3.0-alpha — Karczma 01 i szybka podróż
 - Ręcznie zaprojektowane 36×28, trzy kondygnacje: sala, kuchnia i zaplecze; pokoje; piwnica.
 - 64 obiekty, w tym 20 krzeseł, stałe pozycje i kolizje TBI.
