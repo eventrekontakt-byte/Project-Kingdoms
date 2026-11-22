@@ -1,5 +1,5 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.8";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.8";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.9";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.9";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
@@ -7,10 +7,10 @@ import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.8";
-import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS} from "./elevation.js";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.9";
+import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep,isBridgeDeck,isBridgeStair,CITY_BRIDGE} from "./elevation.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
-const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
+const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 // VIS 1.0: authoritative tile coordinates stay integer; visual coordinates interpolate.
 const visual={x:START.x+.5,y:START.y+.5,map:START.map,floor:START.floor,
@@ -21,7 +21,7 @@ const VIS={stepMs:150,cameraResponse:10,deadZoneX:.9,deadZoneY:.65};
 function snapVisual(){
  const p=state.player;visual.map=p.map;visual.floor=p.floor;
  visual.x=visual.fromX=visual.toX=p.x+.5;visual.y=visual.fromY=visual.toY=p.y+.5;
- visual.z=visual.fromZ=visual.toZ=elevationAt(p.map,p.x,p.y,p.floor);
+ visual.z=visual.fromZ=visual.toZ=Number.isInteger(p.z)?p.z:elevationAt(p.map,p.x,p.y,p.floor);
  visual.active=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;
  visual.manualPan=false;state.camera.x=visual.x;state.camera.y=visual.y;
 }
@@ -30,8 +30,8 @@ function startVisualStep(previous,now=performance.now()){
  if(previous.map!==p.map||previous.floor!==p.floor){snapVisual();return;}
  // Use current rendered position as the start of a new step; rapid input never teleports.
  visual.fromX=visual.x;visual.fromY=visual.y;
- visual.fromZ=Number.isFinite(visual.z)?visual.z:elevationAt(previous.map,previous.x,previous.y,previous.floor);
- visual.toZ=elevationAt(p.map,p.x,p.y,p.floor);
+ visual.fromZ=Number.isFinite(visual.z)?visual.z:(previous.z??elevationAt(previous.map,previous.x,previous.y,previous.floor));
+ visual.toZ=Number.isInteger(p.z)?p.z:elevationAt(p.map,p.x,p.y,p.floor);
  visual.toX=p.x+.5;visual.toY=p.y+.5;
  visual.started=now;visual.duration=VIS.stepMs;visual.active=true;
  visual.manualPan=false;
@@ -69,7 +69,7 @@ function updateClock(minutes){let total=state.clock.minute+state.clock.hour*60+(
 function hud(){
  const p=state.player;$("location").textContent=mapName(p.map,p.floor);
  $("coordinates").textContent=strategic?.active()?`Świat: ${state.worldPosition.x}, ${state.worldPosition.y}`:`Pozycja: ${p.x}, ${p.y} • ${siteForMap(p.map)?"Lokacja":"Wnętrze"}`;
- if(p.map==="site-city1")$("coordinates").textContent+=` • poziom Z=${elevationAt(p.map,p.x,p.y,p.floor)} (${(elevationAt(p.map,p.x,p.y,p.floor)*ELEVATION_UNIT_METERS).toFixed(1)} m)`;
+ if(p.map==="site-city1")$("coordinates").textContent+=` • poziom Z=${(p.z??elevationAt(p.map,p.x,p.y,p.floor))} (${((p.z??elevationAt(p.map,p.x,p.y,p.floor))*ELEVATION_UNIT_METERS).toFixed(1)} m)`;
  $("clock").textContent=`Dzień ${state.clock.day} • ${String(state.clock.hour).padStart(2,"0")}:${String(state.clock.minute).padStart(2,"0")}${state.paused?" • PAUZA":""}`;
  $("zoomLabel").textContent=Math.round(state.camera.zoom*100)+"%";
  if(p.map==="interior-city1-karczma")$("coordinates").textContent=`Karczma: ${p.x},${p.y} • piętro ${p.floor} • mapa ${mapSize(p.map).w}×${mapSize(p.map).h}`;
@@ -90,6 +90,7 @@ function ensureValidPosition(){
 }
 function draw(){
  ensureValidPosition();
+ if(!Number.isInteger(state.player.z))state.player.z=elevationAt(state.player.map,state.player.x,state.player.y,state.player.floor);
  const {w,h,size}=geometry();if(!w||!h)return;ctx.clearRect(0,0,w,h);
  const p=state.player;
  const {x:cx,y:cy}=state.camera,{w:mw,h:mh}=mapSize(p.map);
@@ -106,11 +107,11 @@ function draw(){
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
  if(p.map===TAVERN_MAP){drawTavernDecor(p.floor,cx,cy,w,h,size);drawTavernFurniture(p.floor,cx,cy,w,h,size);}
- if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
+ if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawBridgeDeck(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
- const visualZ=Number.isFinite(visual.z)?visual.z:elevationAt(p.map,p.x,p.y,p.floor);
+ const visualZ=Number.isFinite(visual.z)?visual.z:(p.z??elevationAt(p.map,p.x,p.y,p.floor));
  const elevated=p.map==="site-city1"&&visualZ>0;
  if(elevated){
   // Ground-level shadow displaced from the player: visual height, no halo.
@@ -388,6 +389,34 @@ function drawRampartDetails(cx,cy,w,h,size){
  }
  ctx.restore();
 }
+function drawBridgeDeck(cx,cy,w,h,size){
+ const b=CITY_BRIDGE;
+ const x=(b.x-cx)*size+w/2,y=(b.y1-cy)*size+h/2;
+ const height=(b.y2-b.y1+1)*size;
+ if(x>w+size||x+size<0||y>h+size||y+height<-size)return;
+ const p=state.player;
+ // When the character is under the bridge, the deck is translucent so
+ // the street-level player remains visible; on top it is fully opaque.
+ const under=isBridgeDeck(p.map,p.x,p.y)&&(p.z??0)===0;
+ ctx.save();ctx.globalAlpha=under?.48:1;
+ ctx.fillStyle="#1e2730aa";ctx.fillRect(x+size*.15,y+size*.2,size*.98,height+size*.12);
+ ctx.fillStyle="#a18b6b";ctx.fillRect(x,y,size,height);
+ ctx.fillStyle="#7e6850";ctx.fillRect(x,y,size*.13,height);
+ ctx.fillRect(x+size*.87,y,size*.13,height);
+ ctx.strokeStyle="#584a3a";ctx.lineWidth=Math.max(1,size*.04);
+ for(let j=1;j<b.y2-b.y1+1;j++){
+  ctx.beginPath();ctx.moveTo(x+size*.13,y+j*size);ctx.lineTo(x+size*.87,y+j*size);ctx.stroke();
+ }
+ ctx.restore();
+ for(const stair of b.stairs){
+  const sx=(stair.x-cx)*size+w/2,sy=(stair.y-cy)*size+h/2;
+  ctx.fillStyle="#89745b";ctx.fillRect(sx,sy,size,size);
+  for(let j=0;j<5;j++){
+   ctx.fillStyle=j%2?"#b7a080":"#d0b18b";
+   ctx.fillRect(sx,sy+j*size/5,size,size/5*.7);
+  }
+ }
+}
 function drawCityLabels(cx,cy,w,h,size){
  const font=Math.max(10,Math.min(16,size*.48));
  ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold "+font+"px system-ui";
@@ -468,13 +497,14 @@ function move(dir,fromPath=false){
   path=[];strategic.open();notify("Opuszczono lokację — mapa świata");return true;
  }
  if((p.map==="site-city1"&&!cityStepAllowed(p.x,p.y,nx,ny))||blocked(p.map,p.floor,nx,ny)){if(!fromPath)notify("Droga zablokowana");draw();return false;}
- const previous={map:p.map,floor:p.floor,x:p.x,y:p.y};
- const heightChange=p.map==="site-city1"?elevationTransition(p.map,p,{x:nx,y:ny},p.floor):null;
- p.x=nx;p.y=ny;
- if(heightChange?.climbing&&heightChange.toZ===2&&!fromPath)notify("Wejście na chodnik obronny");
- if(heightChange?.descending&&heightChange.toZ===0&&!fromPath)notify("Zejście z podwyższenia");
+ const previous={map:p.map,floor:p.floor,x:p.x,y:p.y,z:p.z};
+ const heightChange=p.map==="site-city1"?resolveSurfaceStep(p.map,p,{x:nx,y:ny},p.floor):null;
+ if(heightChange&&!heightChange.allowed){if(!fromPath)notify("Potrzebne schody lub przejście na właściwym poziomie");path=[];return false;}
+ p.x=nx;p.y=ny;p.z=heightChange?heightChange.z:elevationAt(p.map,nx,ny,p.floor);
+ if(heightChange&&heightChange.z===2&&previous.z!==2&&!fromPath)notify("Wejście na chodnik obronny");
+ if(heightChange&&heightChange.z===0&&previous.z>0&&!fromPath)notify("Zejście z podwyższenia");
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
- if(dest){Object.assign(p,dest);path=[];if(p.map===TAVERN_MAP){state.camera.zoom=Math.max(0.75,state.camera.zoom);}notify(mapName(p.map,p.floor));}
+ if(dest){Object.assign(p,dest);p.z=elevationAt(p.map,p.x,p.y,p.floor);path=[];if(p.map===TAVERN_MAP){state.camera.zoom=Math.max(0.75,state.camera.zoom);}notify(mapName(p.map,p.floor));}
  startVisualStep(previous);draw();return true;
 }
 function findPath(goal){
