@@ -1,6 +1,6 @@
 // Project Kingdoms 0.1-alpha: network-first for updates, cache fallback for offline play.
-const CACHE_VERSION="kingdoms-alpha-029-v1";
-const ASSETS=["./","./index.html","./manifest.json","./styles/main.css?v=0.2.9","./engine/game.js?v=0.2.9","./engine/world.js?v=0.2.9","./engine/city-one.js","./engine/city-interiors.js","./engine/interiors/templates.js?v=0.2.9","./engine/interiors/tbi.js?v=0.2.9","./engine/buildings.js","./engine/pathfinding.js","./engine/world-map.js","./engine/regions.js","./engine/sites.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js"];
+const CACHE_VERSION="kingdoms-alpha-0291-v1";
+const ASSETS=["./","./index.html","./manifest.json","./styles/main.css?v=0.2.9.1","./engine/game.js?v=0.2.9.1","./engine/world.js?v=0.2.9.1","./engine/city-one.js","./engine/city-interiors.js","./engine/interiors/templates.js?v=0.2.9.1","./engine/interiors/tbi.js?v=0.2.9.1","./engine/buildings.js","./engine/pathfinding.js","./engine/world-map.js","./engine/regions.js","./engine/sites.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js"];
 self.addEventListener("install",event=>{
  event.waitUntil(caches.open(CACHE_VERSION).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
 });
