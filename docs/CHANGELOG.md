@@ -1,3 +1,10 @@
+## 0.3.7-alpha — VIS 1.3: podwyższone mury i schody
+- Chodnik murów obronnych otrzymał pionową, ciemniejszą krawędź muru od strony miasta i cień padający na niższy teren.
+- Blanki zewnętrzne mają kamienną fakturę i obrys, nie są powiązane z pozycją postaci.
+- Schody na mury są przedstawione jako pięć stopni z gradientem wysokości, zamiast pojedynczej fioletowej strzałki.
+- Bohater na murze otrzymał subtelnie przesunięty cień na podłożu, bez otoczki wokół postaci.
+- Bez zmian w kolizjach, trasach, zapisach i działkach.
+
 ## 0.3.6-alpha — VIS 1.2: dachy i mury obronne
 - Zastąpiono wąskie, unoszące się paski nad budynkami pełnymi dachami dwuspadowymi z kalenicą, rozróżnieniem połaci, rysunkiem dachówek i pasem elewacji.
 - Usunięto sztuczną obwódkę wokół postaci na murach.
