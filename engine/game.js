@@ -1,5 +1,5 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.3";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.3";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.4";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.4";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
@@ -7,8 +7,9 @@ import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.4";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
-const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},crimes:0,reputation:0};
+const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 // VIS 1.0: authoritative tile coordinates stay integer; visual coordinates interpolate.
 const visual={x:START.x+.5,y:START.y+.5,map:START.map,floor:START.floor,
@@ -99,7 +100,7 @@ function draw(){
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
  if(p.map===TAVERN_MAP){drawTavernDecor(p.floor,cx,cy,w,h,size);drawTavernFurniture(p.floor,cx,cy,w,h,size);}
- if(p.map==="site-city1")drawCityLabels(cx,cy,w,h,size);
+ if(p.map==="site-city1"){if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -196,6 +197,40 @@ function drawTavernFurniture(floor,cx,cy,w,h,size){
   }
   ctx.restore();
  }
+}
+function drawPlotOverlay(cx,cy,w,h,size){
+ for(const plot of CITY_PLOTS){
+  const [x1,y1,x2,y2]=plot.bounds;
+  const sx=(x1-cx)*size+w/2,sy=(y1-cy)*size+h/2;
+  const pw=(x2-x1+1)*size,ph=(y2-y1+1)*size;
+  if(sx>w||sy>h||sx+pw<0||sy+ph<0)continue;
+  const status=plotStatus(plot,state.plotEdits).status;
+  const selected=state.selectedPlot===plot.id;
+  ctx.fillStyle=status==="vacant"?"#28c78424":status==="reserved"?"#ffcc4430":"#4c99f51a";
+  ctx.fillRect(sx,sy,pw,ph);
+  ctx.strokeStyle=selected?"#fff5a4":status==="vacant"?"#58d7a2":status==="reserved"?"#f6c15b":"#72a9f0";
+  ctx.lineWidth=selected?Math.max(2,size*.13):Math.max(1,size*.065);
+  ctx.setLineDash(selected?[]:[Math.max(3,size*.3),Math.max(2,size*.2)]);
+  ctx.strokeRect(sx+1,sy+1,pw-2,ph-2);ctx.setLineDash([]);
+  if(status!=="occupied"&&size>=9){
+   ctx.fillStyle="#0b1d2bc9";ctx.fillRect(sx+pw/2-13,sy+ph/2-10,26,20);
+   ctx.font="bold 12px system-ui";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle="#ffffff";
+   ctx.fillText(String(plot.id.match(/(\d+)$/)?.[1]||"P"),sx+pw/2,sy+ph/2);
+  }
+ }
+}
+function refreshPlotPanel(){
+ const panel=$("plotInfo");if(!panel)return;
+ const summary=parcelSummary(state.plotEdits);
+ $("plotModeBtn").textContent=state.plotMode?"Wyłącz widok działek":"Włącz widok działek";
+ $("plotStats").textContent=`Działki: ${summary.total} • zabudowane: ${summary.occupied||0} • wolne: ${summary.vacant||0} • zarezerwowane: ${summary.reserved||0}`;
+ const plot=CITY_PLOTS.find(p=>p.id===state.selectedPlot);
+ if(!plot){panel.textContent="Włącz tryb zarządzania i dotknij działki na mapie."; $("plotReserveBtn").hidden=true;return;}
+ const info=plotStatus(plot,state.plotEdits);
+ const [x1,y1,x2,y2]=plot.bounds;
+ panel.textContent=`${info.name} • ${x2-x1+1}×${y2-y1+1} • ${info.status==="occupied"?"zabudowana":info.status==="reserved"?"zarezerwowana":"wolna"} • właściciel: ${info.owner}`;
+ $("plotReserveBtn").hidden=plot.status!=="vacant";
+ $("plotReserveBtn").textContent=info.status==="reserved"?"Zwolnij rezerwację":"Zarezerwuj działkę";
 }
 function drawCityLabels(cx,cy,w,h,size){
  const font=Math.max(10,Math.min(16,size*.48));
@@ -300,17 +335,35 @@ canvas.addEventListener("pointermove",e=>{if(!drag||drag.id!==e.pointerId)return
  drag.x=e.clientX;drag.y=e.clientY;
 });
 canvas.addEventListener("pointerup",e=>{if(!drag||drag.id!==e.pointerId)return;
- if(!drag.moved){const goal=toTile(e);path=findPath(goal);if(path.length)notify(`Wyznaczono trasę: ${path.length} pól`);draw();}
+ if(!drag.moved){
+  const goal=toTile(e);
+  if(state.plotMode&&state.player.map==="site-city1"){
+   const plot=plotAt(goal.x,goal.y);state.selectedPlot=plot?.id||null;
+   refreshPlotPanel();if(plot)notify(plot.name);draw();
+  }else{path=findPath(goal);if(path.length)notify(`Wyznaczono trasę: ${path.length} pól`);draw();}
+ }
  drag=null;
 });
 canvas.addEventListener("pointercancel",()=>drag=null);
 canvas.addEventListener("wheel",e=>{e.preventDefault();zoom(e.deltaY<0?1:-1);},{passive:false});
 function zoom(delta){state.camera.zoom=Math.max(.25,Math.min(3,Math.round((state.camera.zoom+delta*.25)*100)/100));draw();}
+$("plotModeBtn").addEventListener("click",()=>{
+ if(state.player.map!=="site-city1"){notify("Zarządzanie działkami jest dostępne w Mieście 1");return;}
+ state.plotMode=!state.plotMode;state.selectedPlot=null;path=[];refreshPlotPanel();draw();
+});
+$("plotReserveBtn").addEventListener("click",()=>{
+ const plot=CITY_PLOTS.find(p=>p.id===state.selectedPlot);
+ if(!plot||plot.status!=="vacant")return;
+ const current=plotStatus(plot,state.plotEdits).status;
+ if(current==="reserved")delete state.plotEdits[plot.id];
+ else state.plotEdits[plot.id]={status:"reserved"};
+ refreshPlotPanel();draw();notify(current==="reserved"?"Zwolniono działkę":"Zarezerwowano działkę");
+});
 $("zoomIn").addEventListener("click",()=>zoom(1));$("zoomOut").addEventListener("click",()=>zoom(-1));$("centerCamera").addEventListener("click",()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();});
 $("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
- Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
+ Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
  state.camera.zoom=Number.isFinite(data.camera?.zoom)?Math.max(.25,Math.min(3,data.camera.zoom)):1;
  state.controlMode=data.controlMode==="joystick"?"joystick":"dpad";state.paused=Boolean(data.paused);
  snapVisual();controls.setMode(state.controlMode);path=[];draw();if(data.worldMode)strategic.open();else strategic.close();notify("Wczytano kampanię");
@@ -319,7 +372,7 @@ $("loadBtn").addEventListener("click",restore);
 $("pauseBtn").addEventListener("click",()=>{state.paused=!state.paused;draw();});
 $("newBtn").addEventListener("click",()=>{$("confirmNew").showModal();});
 $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="confirm")return;
- Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();draw();notify("Rozpoczęto nową kampanię");
+ Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
 $("fastTravelTavern").addEventListener("click",()=>{
@@ -385,7 +438,7 @@ setInterval(()=>{if(path.length&&!strategic.active()){const step=path.shift(),p=
  }},145);
 setInterval(()=>{if(!state.paused){updateClock(1);hud();}},1000);
 new ResizeObserver(resize).observe(canvas);
-snapVisual();resize();requestAnimationFrame(animateVisual);
+snapVisual();refreshPlotPanel();resize();requestAnimationFrame(animateVisual);
 if("serviceWorker" in navigator){
  let reloadedForUpdate=false;
  navigator.serviceWorker.addEventListener("controllerchange",()=>{
