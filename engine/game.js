@@ -1,5 +1,5 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.6";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.6";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.7";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.7";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
@@ -7,7 +7,7 @@ import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.6";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.7";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -104,7 +104,13 @@ function draw(){
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
- ctx.fillStyle="#6dd4fc";ctx.beginPath();ctx.arc(px,py,Math.max(5,size*.32),0,Math.PI*2);ctx.fill();
+ const elevated=p.map==="site-city1"&&tileAt(p.map,p.floor,p.x,p.y)==="rampart";
+ if(elevated){
+  // Ground-level shadow displaced from the player: visual height, no halo.
+  ctx.fillStyle="#0a162466";ctx.beginPath();
+  ctx.ellipse(px+size*.18,py+size*.24,Math.max(5,size*.29),Math.max(3,size*.12),0,0,Math.PI*2);ctx.fill();
+ }
+ ctx.fillStyle=elevated?"#9be7ff":"#6dd4fc";ctx.beginPath();ctx.arc(px,py-(elevated?size*.1:0),Math.max(5,size*.32),0,Math.PI*2);ctx.fill();
  ctx.strokeStyle="#e9fbff";ctx.lineWidth=2;ctx.stroke();
  hud();
 }
@@ -300,33 +306,77 @@ function drawCityElevation(cx,cy,w,h,size){
   ctx.restore();
  }
 }
+// VIS 1.3 — elevated rampart: walkable crest, masonry face, depth and stairs.
 function drawRampartDetails(cx,cy,w,h,size){
- const p=state.player;
- if(p.map!=="site-city1")return;
+ if(state.player.map!=="site-city1")return;
  const left=Math.max(0,Math.floor(cx-w/(2*size))-2),right=Math.min(111,Math.ceil(cx+w/(2*size))+2);
  const top=Math.max(0,Math.floor(cy-h/(2*size))-2),bottom=Math.min(87,Math.ceil(cy+h/(2*size))+2);
+ const t=(x,y)=>tileAt("site-city1",0,x,y);
  ctx.save();
  for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++){
-  if(tileAt("site-city1",0,x,y)!=="rampart")continue;
+  const tile=t(x,y);
+  if(tile!=="rampart"&&tile!=="stairs-up")continue;
   const sx=(x-cx)*size+w/2,sy=(y-cy)*size+h/2;
-  // Outer parapet, shadowed wall face, and inner drop form a continuous
-  // elevated walkway, rather than an outline attached to the player.
-  const outer=x===20||x===91||y===8||y===78;
-  const inner=x===22||x===89||y===10||y===76;
-  if(inner){
-   ctx.fillStyle="#303d40a8";
-   if(x===22)ctx.fillRect(sx+size*.77,sy,size*.23,size);
-   if(x===89)ctx.fillRect(sx,sy,size*.23,size);
-   if(y===10)ctx.fillRect(sx,sy+size*.77,size,size*.23);
-   if(y===76)ctx.fillRect(sx,sy,size,size*.23);
+  if(tile==="stairs-up"){
+   // Stair treads run toward the raised wall; show the change in elevation.
+   const rightWall=t(x+1,y)==="rampart",leftWall=t(x-1,y)==="rampart";
+   const upper=rightWall?"right":leftWall?"left":"up";
+   ctx.fillStyle="#776e63";ctx.fillRect(sx,sy,size,size);
+   for(let j=0;j<5;j++){
+    const shade=95+j*12;
+    ctx.fillStyle=`rgb(${shade+13},${shade+11},${shade+3})`;
+    if(upper==="right")ctx.fillRect(sx+j*size/5,sy,size/5+1,size);
+    else if(upper==="left")ctx.fillRect(sx+(4-j)*size/5,sy,size/5+1,size);
+    else ctx.fillRect(sx,sy+(4-j)*size/5,size,size/5+1);
+   }
+   ctx.strokeStyle="#342f2a";ctx.lineWidth=Math.max(.7,size*.025);
+   for(let j=1;j<5;j++){
+    ctx.beginPath();
+    if(upper==="right"||upper==="left"){ctx.moveTo(sx+j*size/5,sy);ctx.lineTo(sx+j*size/5,sy+size);}
+    else{ctx.moveTo(sx,sy+j*size/5);ctx.lineTo(sx+size,sy+j*size/5);}
+    ctx.stroke();
+   }
+   continue;
   }
+  // The masonry drop is drawn along the inner edge of the elevated walkway.
+  // A shaded face and a long cast shadow on the street make the height legible.
+  const faces=[[1,0],[0,1],[-1,0],[0,-1]];
+  for(const [dx,dy] of faces){
+   const adjacent=t(x+dx,y+dy);
+   if(adjacent==="rampart"||adjacent==="stairs-up"||adjacent==="void")continue;
+   const inner=(x===22&&dx===1)||(x===89&&dx===-1)||(y===10&&dy===1)||(y===76&&dy===-1);
+   if(!inner)continue;
+   const face=Math.max(3,size*.27),shadow=Math.max(3,size*.35);
+   ctx.fillStyle="#1b242b55";
+   if(dx===1)ctx.fillRect(sx+size,sy+size*.15,shadow,size*.9);
+   if(dx===-1)ctx.fillRect(sx-shadow,sy+size*.15,shadow,size*.9);
+   if(dy===1)ctx.fillRect(sx+size*.15,sy+size, size*.9,shadow);
+   if(dy===-1)ctx.fillRect(sx+size*.15,sy-shadow,size*.9,shadow);
+   ctx.fillStyle="#52595a";
+   if(dx===1)ctx.fillRect(sx+size-face,sy,face,size);
+   if(dx===-1)ctx.fillRect(sx,sy,face,size);
+   if(dy===1)ctx.fillRect(sx,sy+size-face,size,face);
+   if(dy===-1)ctx.fillRect(sx,sy,size,face);
+   ctx.fillStyle="#8f9690";
+   if(dx===1)ctx.fillRect(sx+size-face,sy,Math.max(1,size*.06),size);
+   if(dx===-1)ctx.fillRect(sx+face-size*.06,sy,Math.max(1,size*.06),size);
+   if(dy===1)ctx.fillRect(sx,sy+size-face,size,Math.max(1,size*.06));
+   if(dy===-1)ctx.fillRect(sx,sy+face-size*.06,size,Math.max(1,size*.06));
+  }
+  // Crenellations run along the exterior rim, never around the character.
+  const outer=x===20||x===91||y===8||y===78;
   if(outer&&(x+y)%2===0){
-   ctx.fillStyle="#ddd7c9";
    const lip=Math.max(2,size*.22);
+   ctx.fillStyle="#d2d1c6";
    if(x===20)ctx.fillRect(sx,sy,lip,size);
    if(x===91)ctx.fillRect(sx+size-lip,sy,lip,size);
    if(y===8)ctx.fillRect(sx,sy,size,lip);
    if(y===78)ctx.fillRect(sx,sy+size-lip,size,lip);
+   ctx.strokeStyle="#666a65";ctx.lineWidth=Math.max(.7,size*.025);
+   if(x===20)ctx.strokeRect(sx,sy,lip,size);
+   if(x===91)ctx.strokeRect(sx+size-lip,sy,lip,size);
+   if(y===8)ctx.strokeRect(sx,sy,size,lip);
+   if(y===78)ctx.strokeRect(sx,sy+size-lip,size,lip);
   }
  }
  ctx.restore();
