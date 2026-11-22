@@ -29,3 +29,33 @@ export function elevationMetadata(){
  return {schema:ELEVATION_SCHEMA,unitMeters:ELEVATION_UNIT_METERS,rampart:CITY_RAMPART_LEVEL,
   buildings:CITY_BUILDINGS.map(b=>({id:b.id,roofZ:buildingRoofLevel(b)}))};
 }
+
+// VIS 1.5: a bridge has two independent walkable surfaces at the same x/y.
+// The demonstrator crosses the east-west road in City 1 at x=40.
+export const CITY_BRIDGE={id:"city1-bridge-01",x:40,y1:53,y2:58,z:2,
+ stairs:[{x:40,y:52},{x:40,y:59}]};
+export function isBridgeDeck(map,x,y){return map==="site-city1"&&x===CITY_BRIDGE.x&&y>=CITY_BRIDGE.y1&&y<=CITY_BRIDGE.y2;}
+export function isBridgeStair(map,x,y){return map==="site-city1"&&CITY_BRIDGE.stairs.some(p=>p.x===x&&p.y===y);}
+export function surfaceLevels(map,x,y,floor=0){
+ if(isBridgeDeck(map,x,y))return [0,CITY_BRIDGE.z];
+ if(isBridgeStair(map,x,y))return [0,1];
+ return [elevationAt(map,x,y,floor)];
+}
+export function resolveSurfaceStep(map,from,to,floor=0){
+ const fromZ=Number.isInteger(from.z)?from.z:elevationAt(map,from.x,from.y,floor);
+ const levels=surfaceLevels(map,to.x,to.y,floor);
+ if(map!=="site-city1")return {allowed:true,z:levels[0]};
+ const onDeck=isBridgeDeck(map,from.x,from.y),nextDeck=isBridgeDeck(map,to.x,to.y);
+ const onStair=isBridgeStair(map,from.x,from.y),nextStair=isBridgeStair(map,to.x,to.y);
+ // Only the dedicated stair tiles connect street level to bridge level.
+ if(nextStair&&onDeck&&fromZ===2)return {allowed:true,z:1};
+ if(onStair&&nextDeck&&fromZ===1)return {allowed:true,z:2};
+ if(onStair&&fromZ===1&&!nextDeck)return {allowed:true,z:0};
+ if(nextStair&&fromZ===0)return {allowed:true,z:0};
+ if(onDeck&&nextDeck&&fromZ===2)return {allowed:true,z:2};
+ if(nextDeck&&fromZ===0)return {allowed:true,z:0}; // under the bridge
+ if(onDeck&&fromZ===2&&!nextStair)return {allowed:false,z:fromZ};
+ if(onDeck&&fromZ===0)return {allowed:true,z:0};
+ if(fromZ!==0&&fromZ!==elevationAt(map,from.x,from.y,floor))return {allowed:false,z:fromZ};
+ return {allowed:true,z:levels[0]};
+}
