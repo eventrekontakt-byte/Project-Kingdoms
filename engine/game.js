@@ -1,5 +1,5 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.7";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.7";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.8";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.8";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
@@ -7,7 +7,8 @@ import {findRoute} from "./pathfinding.js";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.7";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.8";
+import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS} from "./elevation.js";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -20,6 +21,7 @@ const VIS={stepMs:150,cameraResponse:10,deadZoneX:.9,deadZoneY:.65};
 function snapVisual(){
  const p=state.player;visual.map=p.map;visual.floor=p.floor;
  visual.x=visual.fromX=visual.toX=p.x+.5;visual.y=visual.fromY=visual.toY=p.y+.5;
+ visual.z=visual.fromZ=visual.toZ=elevationAt(p.map,p.x,p.y,p.floor);
  visual.active=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;
  visual.manualPan=false;state.camera.x=visual.x;state.camera.y=visual.y;
 }
@@ -28,6 +30,8 @@ function startVisualStep(previous,now=performance.now()){
  if(previous.map!==p.map||previous.floor!==p.floor){snapVisual();return;}
  // Use current rendered position as the start of a new step; rapid input never teleports.
  visual.fromX=visual.x;visual.fromY=visual.y;
+ visual.fromZ=Number.isFinite(visual.z)?visual.z:elevationAt(previous.map,previous.x,previous.y,previous.floor);
+ visual.toZ=elevationAt(p.map,p.x,p.y,p.floor);
  visual.toX=p.x+.5;visual.toY=p.y+.5;
  visual.started=now;visual.duration=VIS.stepMs;visual.active=true;
  visual.manualPan=false;
@@ -42,6 +46,7 @@ function animateVisual(now){
   const eased=t*t*(3-2*t);
   visual.x=visual.fromX+(visual.toX-visual.fromX)*eased;
   visual.y=visual.fromY+(visual.toY-visual.fromY)*eased;
+  visual.z=visual.fromZ+(visual.toZ-visual.fromZ)*eased;
   if(t>=1)visual.active=false;
  }
  if(!visual.manualPan){
@@ -64,6 +69,7 @@ function updateClock(minutes){let total=state.clock.minute+state.clock.hour*60+(
 function hud(){
  const p=state.player;$("location").textContent=mapName(p.map,p.floor);
  $("coordinates").textContent=strategic?.active()?`Świat: ${state.worldPosition.x}, ${state.worldPosition.y}`:`Pozycja: ${p.x}, ${p.y} • ${siteForMap(p.map)?"Lokacja":"Wnętrze"}`;
+ if(p.map==="site-city1")$("coordinates").textContent+=` • poziom Z=${elevationAt(p.map,p.x,p.y,p.floor)} (${(elevationAt(p.map,p.x,p.y,p.floor)*ELEVATION_UNIT_METERS).toFixed(1)} m)`;
  $("clock").textContent=`Dzień ${state.clock.day} • ${String(state.clock.hour).padStart(2,"0")}:${String(state.clock.minute).padStart(2,"0")}${state.paused?" • PAUZA":""}`;
  $("zoomLabel").textContent=Math.round(state.camera.zoom*100)+"%";
  if(p.map==="interior-city1-karczma")$("coordinates").textContent=`Karczma: ${p.x},${p.y} • piętro ${p.floor} • mapa ${mapSize(p.map).w}×${mapSize(p.map).h}`;
@@ -104,13 +110,14 @@ function draw(){
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
- const elevated=p.map==="site-city1"&&tileAt(p.map,p.floor,p.x,p.y)==="rampart";
+ const visualZ=Number.isFinite(visual.z)?visual.z:elevationAt(p.map,p.x,p.y,p.floor);
+ const elevated=p.map==="site-city1"&&visualZ>0;
  if(elevated){
   // Ground-level shadow displaced from the player: visual height, no halo.
   ctx.fillStyle="#0a162466";ctx.beginPath();
-  ctx.ellipse(px+size*.18,py+size*.24,Math.max(5,size*.29),Math.max(3,size*.12),0,0,Math.PI*2);ctx.fill();
+  ctx.ellipse(px+size*.18,py+size*.18,Math.max(5,size*.29),Math.max(3,size*.12),0,0,Math.PI*2);ctx.fill();
  }
- ctx.fillStyle=elevated?"#9be7ff":"#6dd4fc";ctx.beginPath();ctx.arc(px,py-(elevated?size*.1:0),Math.max(5,size*.32),0,Math.PI*2);ctx.fill();
+ ctx.fillStyle=elevated?"#9be7ff":"#6dd4fc";ctx.beginPath();ctx.arc(px,py-(p.map==="site-city1"?visualZ*size*.07:0),Math.max(5,size*.32),0,Math.PI*2);ctx.fill();
  ctx.strokeStyle="#e9fbff";ctx.lineWidth=2;ctx.stroke();
  hud();
 }
@@ -252,7 +259,7 @@ function drawCityElevation(cx,cy,w,h,size){
   const sx=(x1-cx)*size+w/2,sy=(y1-cy)*size+h/2;
   const bw=(x2-x1+1)*size,bh=(y2-y1+1)*size;
   if(sx>w+size||sy>h+size||sx+bw<-size||sy+bh<-size)continue;
-  const floors=CITY_HEIGHTS[b.id]||1;
+  const floors=buildingRoofLevel(b)/2;
   const eave=Math.max(1,size*.13);
   const roofX=sx+eave,roofY=sy+eave,roofW=bw-2*eave,roofH=bh-2*eave;
   const vertical=roofW<roofH*.86;
@@ -462,7 +469,10 @@ function move(dir,fromPath=false){
  }
  if((p.map==="site-city1"&&!cityStepAllowed(p.x,p.y,nx,ny))||blocked(p.map,p.floor,nx,ny)){if(!fromPath)notify("Droga zablokowana");draw();return false;}
  const previous={map:p.map,floor:p.floor,x:p.x,y:p.y};
+ const heightChange=p.map==="site-city1"?elevationTransition(p.map,p,{x:nx,y:ny},p.floor):null;
  p.x=nx;p.y=ny;
+ if(heightChange?.climbing&&heightChange.toZ===2&&!fromPath)notify("Wejście na chodnik obronny");
+ if(heightChange?.descending&&heightChange.toZ===0&&!fromPath)notify("Zejście z podwyższenia");
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
  if(dest){Object.assign(p,dest);path=[];if(p.map===TAVERN_MAP){state.camera.zoom=Math.max(0.75,state.camera.zoom);}notify(mapName(p.map,p.floor));}
  startVisualStep(previous);draw();return true;
