@@ -1,3 +1,8 @@
+## 0.3.9.1-alpha — poprawka uruchamiania
+- Naprawiono błąd „elevation.js does not provide an export named CITY_BRIDGE” wywołany użyciem starej wersji modułu z pamięci przeglądarki.
+- Dodano wersjonowane adresy importów elevation.js i pathfinding.js oraz ich wpisy w pre-cache.
+- Zmieniono wersję service workera, aby wymusić odświeżenie zasobów.
+
 ## 0.3.9-alpha — VIS 1.5: dwupoziomowe powierzchnie
 - Demonstracyjny drewniany most w Mieście 1 (x=40, y=53–58), nad drogą y=55–57; dwa podejścia schodowe (40,52) i (40,59).
 - Most posiada dwie powierzchnie ruchu na tych samych współrzędnych: teren Z=0 pod spodem i pomost Z=2 na górze.
