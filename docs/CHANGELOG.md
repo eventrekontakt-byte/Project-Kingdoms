@@ -1,3 +1,10 @@
+## 0.3.6-alpha — VIS 1.2: dachy i mury obronne
+- Zastąpiono wąskie, unoszące się paski nad budynkami pełnymi dachami dwuspadowymi z kalenicą, rozróżnieniem połaci, rysunkiem dachówek i pasem elewacji.
+- Usunięto sztuczną obwódkę wokół postaci na murach.
+- Dodano ciągłą wizualizację podwyższonego chodnika murów: jasne blanki po stronie zewnętrznej, zacieniona krawędź od strony miasta, kamienna nawierzchnia.
+- Wizualizacja nie zmienia kolizji, przejść, zapisów ani geometrii działek.
+- Wysokość pozostaje na razie efektem 2.5D, nie pełną symulacją pionowej perspektywy.
+
 ## 0.3.5-alpha — VIS 1.1: pierwsza warstwa wysokości 2.5D
 - Miasto 1: projekcja podwyższonych dachów i górnych elewacji z wizualnym rozróżnieniem 1, 2 i 3 kondygnacji.
 - Dachy nie przesłaniają drzwi na poziomie parteru, nie wpływają na siatkę kolizji ani układ PLOT.
