@@ -51,7 +51,7 @@ export function resolveSurfaceStep(map,from,to,floor=0){
  if(nextStair&&onDeck&&fromZ===2)return {allowed:true,z:1};
  if(onStair&&nextDeck&&fromZ===1)return {allowed:true,z:2};
  if(onStair&&fromZ===1&&!nextDeck)return {allowed:true,z:0};
- if(nextStair&&fromZ===0)return {allowed:true,z:0};
+ if(nextStair&&fromZ===0)return {allowed:true,z:1};
  if(onDeck&&nextDeck&&fromZ===2)return {allowed:true,z:2};
  if(nextDeck&&fromZ===0)return {allowed:true,z:0}; // under the bridge
  if(onDeck&&fromZ===2&&!nextStair)return {allowed:false,z:fromZ};
