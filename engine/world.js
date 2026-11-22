@@ -1,4 +1,4 @@
-import {TAVERN_MAP,TAVERN_SIZE,tavernTile,tavernObject,tavernPortals} from "./interiors/templates.js?v=0.3.1";
+import {TAVERN_MAP,TAVERN_SIZE,tavernTile,tavernObject,tavernPortals} from "./interiors/templates.js?v=0.3.3";
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {SITE_LAYOUTS,siteTile} from "./sites.js";
 import {CITY_WIDTH,CITY_HEIGHT,CITY_BUILDINGS,cityTile,cityDoorAt} from "./city-one.js";
@@ -59,8 +59,8 @@ for(const b of CITY_BUILDINGS.filter(b=>!b.decorative)){
 }
 const tavernBuilding=CITY_BUILDINGS.find(b=>b.id==="city1-karczma");
 const tavernExterior=[tavernBuilding.door.x,tavernBuilding.door.y+1];
-PORTALS.push(["site-city1",0,tavernBuilding.door.x,tavernBuilding.door.y,TAVERN_MAP,0,18,26]);
-PORTALS.push([TAVERN_MAP,0,18,27,"site-city1",0,...tavernExterior]);
+PORTALS.push(["site-city1",0,tavernBuilding.door.x,tavernBuilding.door.y,TAVERN_MAP,0,16,25]);
+PORTALS.push([TAVERN_MAP,0,16,26,"site-city1",0,...tavernExterior]);
 for(const p of tavernPortals())if(p.to)PORTALS.push([TAVERN_MAP,...p.from,TAVERN_MAP,...p.to]);
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
 export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
