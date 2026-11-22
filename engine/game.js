@@ -1,5 +1,5 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.0";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.1";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.1";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
@@ -29,7 +29,7 @@ function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.d
 function geometry(){return {w:canvas.clientWidth,h:canvas.clientHeight,size:32*state.camera.zoom};}
 function ensureValidPosition(){
  const p=state.player,{w,h}=mapSize(p.map);
- if(p.map==="interior-city1-karczma"&&(p.floor<0||p.floor>2||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
+ if(p.map===TAVERN_MAP&&(p.floor<0||p.floor>=3||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
   Object.assign(p,{floor:0,x:18,y:26});
   state.camera.x=p.x+.5;state.camera.y=p.y+.5;path=[];
   notify("Poprawiono pozycję bohatera w karczmie.");
