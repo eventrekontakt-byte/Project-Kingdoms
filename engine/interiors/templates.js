@@ -1,32 +1,32 @@
-import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.3.1";
+import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.3.3";
 export const TAVERN_MAP="interior-city1-karczma";
-export const TAVERN_SIZE={width:36,height:28,floors:3};
+export const TAVERN_SIZE={width:36,height:27,floors:3};
 const walls=new Set(),furniture=[],decor=[],portals=[];
 const k=(f,x,y)=>f+":"+x+":"+y;
 function wall(f,x,y){walls.add(k(f,x,y));}
 function line(f,x1,y1,x2,y2,doors=[]){for(let y=y1;y<=y2;y++)for(let x=x1;x<=x2;x++)if(!doors.some(([dx,dy])=>dx===x&&dy===y))wall(f,x,y);}
-for(let f=0;f<3;f++){for(let x=0;x<36;x++){wall(f,x,0);wall(f,x,27);}for(let y=0;y<28;y++){wall(f,0,y);wall(f,35,y);}}
-walls.delete(k(0,18,27));
+for(let f=0;f<3;f++){for(let x=0;x<36;x++){wall(f,x,0);wall(f,x,26);}for(let y=0;y<27;y++){wall(f,0,y);wall(f,35,y);}}
+walls.delete(k(0,16,26));
 // Ground: tavern hall, kitchen, pantry, service room, southern lobby.
 line(0,23,1,23,23,[[23,8],[23,9],[23,19]]);
 line(0,24,12,34,12,[[29,12]]);
 line(0,24,18,34,18,[[29,18]]);
 line(0,1,23,34,23,[[17,23],[18,23],[29,23]]);
-line(0,11,24,11,26,[[11,25]]);
+line(0,11,24,11,25,[[11,25]]);
 // First floor: five guest rooms and owner quarters around a corridor.
 line(1,1,12,34,12,[[6,12],[17,12],[29,12]]);
 line(1,1,16,34,16,[[6,16],[17,16],[29,16]]);
 line(1,12,1,12,11,[[12,6]]);
 line(1,24,1,24,11,[[24,6]]);
-line(1,12,17,12,26,[[12,21]]);
-line(1,24,17,24,26,[[24,21]]);
+line(1,12,17,12,25,[[12,21]]);
+line(1,24,17,24,25,[[24,21]]);
 // Cellar: storage, food cellar and locked strongroom.
-line(2,20,1,20,26,[[20,8],[20,20]]);
+line(2,20,1,20,25,[[20,8],[20,20]]);
 line(2,21,14,34,14,[[27,14]]);
 line(2,1,17,19,17,[[10,17]]);
 // Matching 3x3 staircase footprints. Arrival one tile beside each portal.
 const STAIRS={x:5,y:24},CELLAR_STAIRS={x:29,y:24};
-portals.push({from:[0,18,27],to:null,exit:true});
+portals.push({from:[0,16,26],to:null,exit:true});
 portals.push({from:[0,5,24],to:[1,6,24]},{from:[1,5,24],to:[0,6,24]});
 portals.push({from:[0,29,24],to:[2,30,24]},{from:[2,29,24],to:[0,30,24]});
 export const TAVERN_STAIRS=STAIRS;
@@ -62,8 +62,8 @@ beds.forEach(([x,y],i)=>{item(1,"bed-"+i,i===5?"Łóżko karczmarza":"Łóżko g
 item(1,"wardrobe-1","Szafa","container",34,20,1,3,{style:"wardrobe"});
 item(1,"wardrobe-2","Szafa","container",11,3,1,3,{style:"wardrobe"});
 item(1,"dresser-1","Komoda","container",18,1,2,1,{style:"dresser"});
-item(1,"dresser-2","Komoda","container",2,26,2,1,{style:"dresser"});
-for(const [x,y] of [[5,1],[17,1],[29,1],[5,26],[17,26],[29,26]])lamp(1,x,y);
+item(1,"dresser-2","Komoda","container",2,25,2,1,{style:"dresser"});
+for(const [x,y] of [[5,1],[17,1],[29,1],[5,25],[17,25],[29,25]])lamp(1,x,y);
 // Cellar: stockrooms and treasury.
 for(const [id,x,y] of [["beer",2,2],["wine",5,2],["ale",8,2],["cider",11,2],["water",14,2]])item(2,id,"Beczka "+id,"inspect",x,y,1,1,{style:"barrel"});
 item(2,"store-table","Stół magazynowy","inspect",7,8,4,2,{style:"table"});
@@ -87,7 +87,7 @@ export function tavernObject(f,x,y){return occupancy.get(k(f,x,y))||null;}
 export function tavernPortals(){return portals;}
 export function tavernTile(f,x,y){
  if(f<0||f>=3||x<0||x>=36||y<0||y>=28)return "void";
- if(portals.some(p=>p.from[0]===f&&p.from[1]===x&&p.from[2]===y))return f===0&&y===27?"door":f===1?"stairs-down":f===2?"stairs-up":x===5?"stairs-up":"stairs-down";
+ if(portals.some(p=>p.from[0]===f&&p.from[1]===x&&p.from[2]===y))return f===0&&y===26?"door":f===1?"stairs-down":f===2?"stairs-up":x===5?"stairs-up":"stairs-down";
  if(walls.has(k(f,x,y)))return "wall";
  if(occupancy.has(k(f,x,y)))return "object";
  return "wood";
