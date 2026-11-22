@@ -120,11 +120,48 @@ for(const point of originalRoads){
   at=parents.get(at);
  }
 }
+let vacantReady=false;
 export function cityTile(x,y){
+ if(vacantReady&&VACANT_TILES.has(k(x,y)))return "meadow";
  const tile=baseCityTile(x,y);
  return EXTRA_ROADS.has(k(x,y))&&tile!=="wall"&&tile!=="rampart"&&tile!=="door"?"road":tile;
 }
 
+// PLOT 1.0: vacant plots are selected after the road graph has been finalized.
+// Their one-tile perimeter remains free of roads, walls and existing buildings.
+const VACANT_SIZES=[[8,6],[7,6],[6,5],[9,6],[7,5],[6,6],[8,5],[7,7]];
+export const CITY_VACANT_PLOTS=[];
+const reserved=new Set();
+function safeVacantTile(x,y){
+ if(x<1||y<1||x>=CITY_WIDTH-1||y>=CITY_HEIGHT-1)return false;
+ const t=cityTile(x,y);
+ return (t==="grass"||t==="meadow"||t==="tree")&&!reserved.has(k(x,y));
+}
+for(const [index,[pw,ph]] of VACANT_SIZES.entries()){
+ let found=null;
+ // Seek compact, buildable pockets near existing neighborhoods.
+ const positions=[];
+ for(let y=12;y<CITY_HEIGHT-ph-2;y+=2)for(let x=4;x<CITY_WIDTH-pw-2;x+=2){
+  const center=Math.abs(x-56)+Math.abs(y-43);
+  positions.push({x,y,score:center+(index%3)*Math.abs(y-43)+((x*17+y*11+index*7)%13)});
+ }
+ positions.sort((a,b)=>a.score-b.score);
+ for(const {x,y} of positions){
+  let valid=true;
+  for(let yy=y-1;yy<=y+ph&&valid;yy++)for(let xx=x-1;xx<=x+pw;xx++)if(!safeVacantTile(xx,yy)){valid=false;break;}
+  if(valid){found={id:"city1-vacant-"+(index+1),name:"Wolna działka "+(index+1),bounds:[x,y,x+pw-1,y+ph-1],status:"vacant"};break;}
+ }
+ if(!found)continue;
+ CITY_VACANT_PLOTS.push(found);
+ const [x1,y1,x2,y2]=found.bounds;
+ for(let y=y1-1;y<=y2+1;y++)for(let x=x1-1;x<=x2+1;x++)reserved.add(k(x,y));
+}
+const VACANT_TILES=new Set();
+for(const plot of CITY_VACANT_PLOTS){
+ const [x1,y1,x2,y2]=plot.bounds;
+ for(let y=y1;y<=y2;y++)for(let x=x1;x<=x2;x++)VACANT_TILES.add(k(x,y));
+}
+vacantReady=true;
 export function cityStepAllowed(x1,y1,x2,y2){
  const a=cityTile(x1,y1),b=cityTile(x2,y2);
  if(a==="rampart"||b==="rampart"){
