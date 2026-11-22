@@ -61,7 +61,7 @@ const beds=[[1,2],[14,2],[26,2],[1,19],[14,19],[26,19]];
 beds.forEach(([x,y],i)=>{item(1,"bed-"+i,i===5?"Łóżko karczmarza":"Łóżko gościnne","rest",x+1,y-1,2,3,{style:"bed",owner:i===5?"karczmarz":"publiczny"});item(1,"chest-"+i,"Kufer","container",x+6,y-1,2,1,{style:"chest",loot:i===5?["Dokumenty"]:["Ubrania"]});rug(1,x+3,y+5,3,2,i%2?"blue":"red");});
 item(1,"wardrobe-1","Szafa","container",34,20,1,3,{style:"wardrobe"});
 item(1,"wardrobe-2","Szafa","container",11,3,1,3,{style:"wardrobe"});
-item(1,"dresser-1","Komoda","container",15,1,2,1,{style:"dresser"});
+item(1,"dresser-1","Komoda","container",18,1,2,1,{style:"dresser"});
 item(1,"dresser-2","Komoda","container",2,26,2,1,{style:"dresser"});
 for(const [x,y] of [[5,1],[17,1],[29,1],[5,26],[17,26],[29,26]])lamp(1,x,y);
 // Cellar: stockrooms and treasury.
