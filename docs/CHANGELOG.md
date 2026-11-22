@@ -1,3 +1,12 @@
+## 0.3.9-alpha — VIS 1.5: dwupoziomowe powierzchnie
+- Demonstracyjny drewniany most w Mieście 1 (x=40, y=53–58), nad drogą y=55–57; dwa podejścia schodowe (40,52) i (40,59).
+- Most posiada dwie powierzchnie ruchu na tych samych współrzędnych: teren Z=0 pod spodem i pomost Z=2 na górze.
+- Schody Z=1 są jedynym legalnym wejściem na górną powierzchnię; próba zejścia z krawędzi mostu jest blokowana.
+- Bohater przechowuje wysokość z w stanie i zapisie gry; starsze zapisy automatycznie wyliczają z z terenu.
+- A* rozróżnia węzły x,y,z i przejścia pomiędzy powierzchniami.
+- Pomost jest półprzezroczysty, kiedy postać znajduje się bezpośrednio pod nim, aby zachować widoczność.
+- To prototyp mostu i systemu z; nie wprowadzono jeszcze skoków ani swobodnego chodzenia po dachach.
+
 ## 0.3.8-alpha — VIS 1.4: model wysokości Z
 - Niezależny od kondygnacji model wysokości: grunt Z=0, schody na mur Z=1, chodnik obronny Z=2.
 - Wysokość terenu wynika z typu kratki; istniejące zapisy i portale nie wymagają migracji.
