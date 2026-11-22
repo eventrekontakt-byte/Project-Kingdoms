@@ -1,3 +1,9 @@
+## 0.2.9.1-alpha — stałe meble przy ścianach i powrót krzeseł
+- Ręcznie poprawiono położenie 21 mebli, tak by cała odpowiednia krawędź dotykała ściany.
+- Przywrócono 12 krzeseł przy trzech stołach; brak automatycznego przestawiania.
+- Usunięto niepotrzebny losowy slot dekoracji; układ jest deterministyczny.
+- Test modułu: 46 obiektów, 0 kolizji, 0 nieprzylegających mebli ściennych; wszystkie meble dostępne z osiągalnych pól obu pięter.
+
 ## 0.2.9-alpha — TBI 1.0, etap I
 - Wprowadzono niezmienny wzorzec tavern-urban-01 i indywidualną instancję budynku.
 - Wyłączono automatyczne przestawianie mebli oraz generowanie krzeseł w istniejącej karczmie.
