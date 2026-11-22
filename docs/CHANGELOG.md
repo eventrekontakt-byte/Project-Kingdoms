@@ -1,3 +1,11 @@
+## 0.3.8-alpha — VIS 1.4: model wysokości Z
+- Niezależny od kondygnacji model wysokości: grunt Z=0, schody na mur Z=1, chodnik obronny Z=2.
+- Wysokość terenu wynika z typu kratki; istniejące zapisy i portale nie wymagają migracji.
+- Płynna interpolacja wysokości bohatera podczas wejścia na schody i zejścia z murów, zsynchronizowana z animacją kroku.
+- HUD pokazuje aktualny poziom Z i orientacyjną wysokość w metrach (1 poziom = 1,5 m).
+- Dachy budynków mają metadane wysokości, gotowe do przyszłych balkonów, wież, mostów i eksploracji dachów.
+- Model Z jest fundamentem pod przyszłe kolizje pionowe; w tej wersji nie odblokowuje chodzenia po dachach ani skoków.
+
 ## 0.3.7-alpha — VIS 1.3: podwyższone mury i schody
 - Chodnik murów obronnych otrzymał pionową, ciemniejszą krawędź muru od strony miasta i cień padający na niższy teren.
 - Blanki zewnętrzne mają kamienną fakturę i obrys, nie są powiązane z pozycją postaci.
