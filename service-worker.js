@@ -1,6 +1,6 @@
 // Project Kingdoms 0.1-alpha: network-first for updates, cache fallback for offline play.
-const CACHE_VERSION="kingdoms-alpha-0341-v1";
-const ASSETS=["./","./index.html","./manifest.json","./styles/main.css?v=0.3.4.1","./engine/game.js?v=0.3.4.1","./engine/world.js?v=0.3.4.1","./engine/city-one.js","./engine/city-interiors.js","./engine/bis.js","./engine/plots.js?v=0.3.4.1","./engine/interiors/templates.js?v=0.3.4.1","./engine/interiors/tbi.js?v=0.3.4.1","./engine/buildings.js","./engine/pathfinding.js","./engine/world-map.js","./engine/regions.js","./engine/sites.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js"];
+const CACHE_VERSION="kingdoms-alpha-035-v1";
+const ASSETS=["./","./index.html","./manifest.json","./styles/main.css?v=0.3.5","./engine/game.js?v=0.3.5","./engine/world.js?v=0.3.5","./engine/city-one.js","./engine/city-interiors.js","./engine/bis.js","./engine/plots.js?v=0.3.5","./engine/interiors/templates.js?v=0.3.5","./engine/interiors/tbi.js?v=0.3.5","./engine/buildings.js","./engine/pathfinding.js","./engine/world-map.js","./engine/regions.js","./engine/sites.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js"];
 self.addEventListener("install",event=>{
  event.waitUntil(caches.open(CACHE_VERSION).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
 });
