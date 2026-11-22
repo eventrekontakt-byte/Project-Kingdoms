@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101b28"><meta name="apple-mobile-web-app-capable" content="yes">
-<title>Project Kingdoms — Alpha 0.2.9.1</title>
-<link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css?v=0.2.9.1">
+<title>Project Kingdoms — Alpha 0.3.0</title>
+<link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css?v=0.3.0">
 </head>
 <body>
-<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.2.9.1 • TBI — ręczny układ i krzesła</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
+<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.0 • TBI — Karczma 01</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
 <main id="gameShell">
 <section id="viewport" aria-label="Mapa świata"><canvas id="world" aria-label="Mapa gry"></canvas><div id="toast" role="status"></div></section>
 <aside id="sidePanel">
@@ -16,7 +16,7 @@
 <div class="panel"><h3>Widok</h3><div class="row"><button id="zoomOut">−</button><span id="zoomLabel">100%</span><button id="zoomIn">+</button><button id="centerCamera">⌖</button></div><label>Tryb sterowania <select id="controlMode"><option value="dpad">Przyciski</option><option value="joystick">Joystick</option></select></label></div>
 <div class="panel"><h3>Stara mapa testowa — budynki</h3><div class="row wrap"><button data-visit="keep">Warownia</button><button data-visit="house">Dom</button><button data-visit="inn">Karczma</button><button data-visit="warehouse">Magazyn</button></div><p class="hint">Przyciski testowe przenoszą przed wejście do budynku.</p></div>
 <div class="panel"><h3>Interakcje</h3><button id="interactBtn">Zbadaj / Otwórz (E)</button><p class="hint">Podejdź do drzwi budynku i naciśnij E albo wejdź na pole drzwi. Wnętrza mają osobne plany i wyjścia.</p></div>
-<div class="panel"><h3>Gra</h3><div class="row wrap"><button id="saveBtn">Zapisz</button><button id="loadBtn">Wczytaj</button><button id="pauseBtn">Pauza</button><button id="newBtn">Nowa gra</button></div><p class="hint" id="saveStatus">Stan lokalny tej przeglądarki</p></div>
+<div class="panel"><h3>Szybka podróż — testowanie</h3><button id="fastTravelTavern">🏠 Karczma 01 (parter)</button><p class="hint">Przenosi bezpośrednio do holu karczmy bez upływu czasu. Funkcja testowa.</p></div>\n<div class="panel"><h3>Gra</h3><div class="row wrap"><button id="saveBtn">Zapisz</button><button id="loadBtn">Wczytaj</button><button id="pauseBtn">Pauza</button><button id="newBtn">Nowa gra</button></div><p class="hint" id="saveStatus">Stan lokalny tej przeglądarki</p></div>
 <div class="panel"><h3>Legenda</h3><p class="hint">🟦 bohater • 🟨 drzwi • 🟪 schody • ⬛ ściana • 🟩 trawa</p></div>
 </aside>
 <button id="worldMapMobile">🗺 Świat</button>
@@ -25,5 +25,5 @@
 </main>
 <section id="worldMapOverlay" hidden role="dialog" aria-modal="true" aria-label="Mapa świata"><div class="world-map-panel"><div class="world-map-heading"><h2>Mapa świata</h2><div class="row"><button id="worldZoomOut" aria-label="Oddal mapę świata">−</button><button id="worldZoomIn" aria-label="Przybliż mapę świata">+</button><button id="worldCenter" aria-label="Wyśrodkuj na bohaterze">⌖</button><button id="closeWorldMap">Zamknij</button></div></div><p class="hint">Otwarty świat: 2 miasta, 2 zamki, 4 wsie, 2 kryjówki i 4 inne lokacje. Nazwy lokacji są robocze. Przeciągnij mapę, przybliż kółkiem myszy lub gestem dwóch palców. Kliknij cel, aby podróżować. Stań na znaczniku i naciśnij E, by wejść. Kolorowe obszary oznaczają dwa państwa.</p><canvas id="strategicMap" width="720" height="480" aria-label="Strategiczna mapa regionów"></canvas><div class="world-map-actions"><div><h3 id="worldRegionTitle">Pogranicze</h3><p id="worldRegionDescription"></p></div><button id="worldTravelBtn">Podróżuj</button><button id="worldEnterBtn">Wejdź do lokacji (E)</button></div></div></section>
 <dialog id="confirmNew"><form method="dialog"><h3>Nowa kampania?</h3><p>Obecny niezapisany postęp zostanie utracony.</p><div class="row"><button value="cancel">Anuluj</button><button value="confirm">Rozpocznij</button></div></form></dialog>
-<script type="module" src="./engine/game.js?v=0.2.9.1"></script>
+<script type="module" src="./engine/game.js?v=0.3.0"></script>
 </body></html>
