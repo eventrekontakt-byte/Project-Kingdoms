@@ -1,3 +1,10 @@
+## 0.3.5-alpha — VIS 1.1: pierwsza warstwa wysokości 2.5D
+- Miasto 1: projekcja podwyższonych dachów i górnych elewacji z wizualnym rozróżnieniem 1, 2 i 3 kondygnacji.
+- Dachy nie przesłaniają drzwi na poziomie parteru, nie wpływają na siatkę kolizji ani układ PLOT.
+- Podczas spaceru po murach wyświetlany jest subtelny wskaźnik wysokości.
+- Zachowano płynny ruch, kamerę VIS 1.0 i rezerwacje PLOT 1.0.
+- To etap wizualny 2.5D; docelowe balkony, dachy jako odrębne poziomy oraz różnice wysokości gruntu wymagają kolejnych prac.
+
 ## 0.3.4-alpha — PLOT 1.0 i reorganizacja działek Miasta 1
 - Miasto 1 podzielono na 39 działek: 32 istniejące zabudowane oraz 7 nowych pustych terenów pod przyszłe budowy.
 - Nowe działki automatycznie wybierane w wolnych fragmentach miasta, nie kolidują z budynkami, drogami i murami; mają co najmniej jedną kratkę bufora.
