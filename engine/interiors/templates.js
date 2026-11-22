@@ -1,4 +1,4 @@
-import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.2.9";
+import {defineTemplate,resolveInstance,buildOccupancy,validateTemplate} from "./tbi.js?v=0.2.9.1";
 // Reusable interior template: tavern, with deterministic furniture and persistent instances.
 export const TAVERN_MAP="interior-city1-karczma";
 export const TAVERN_SIZE={width:30,height:22,floors:2};
