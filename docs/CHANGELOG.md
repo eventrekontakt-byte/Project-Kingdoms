@@ -1,3 +1,10 @@
+## 0.3.0-alpha — Karczma 01 i szybka podróż
+- Ręcznie zaprojektowane 36×28, trzy kondygnacje: sala, kuchnia i zaplecze; pokoje; piwnica.
+- 64 obiekty, w tym 20 krzeseł, stałe pozycje i kolizje TBI.
+- Dwie pary schodów łączą parter z piętrem i piwnicą; nowa pozycja wejścia/wyjścia.
+- Menu: szybka podróż bezpośrednio do karczmy na potrzeby testów.
+- Testy logiki: brak kolizji; dostępność wszystkich obiektów z głównej sieci przejść na każdej kondygnacji.
+
 ## 0.2.9.1-alpha — stałe meble przy ścianach i powrót krzeseł
 - Ręcznie poprawiono położenie 21 mebli, tak by cała odpowiednia krawędź dotykała ściany.
 - Przywrócono 12 krzeseł przy trzech stołach; brak automatycznego przestawiania.
