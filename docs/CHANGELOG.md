@@ -1,3 +1,10 @@
+## 0.3.3-alpha — BIS 1.0
+- Wymiary wnętrz Miasta 1 wynikają z wymiarów budynku na mapie: 1 kratka elewacji = 3 kratki wnętrza w obu osiach.
+- Nowy moduł engine/bis.js: maski obrysu, drzwi zgodne z fasadą, obsługa kształtów L i T oraz pełnych prostokątów.
+- 23 standardowe wnętrza Miasta 1 korzystają z BIS; wyeliminowano arbitralne rozmiary 22x17 i 30x22.
+- Karczma 01 ma teraz dokładnie 36x27 kratek (zewnętrzne 12x9), trzy kondygnacje, zachowane wyposażenie i schody; wejście i teleportacja dostosowane do nowego wymiaru.
+- PLOT 1.0 i wizualne wysokości 2.5D pozostają zaplanowane na 0.3.4–0.3.5.
+
 ## 0.3.2-alpha — VIS 1.0: płynne poruszanie i kamera
 - Współrzędne logiczne gracza nadal są kafelkowe, ale pozycja na ekranie jest interpolowana przez 150 ms (smoothstep).
 - Kamera ma wygładzone podążanie i martwą strefę 0,9 × 0,65 kratki; nie przeskakuje już automatycznie po każdym kroku.
