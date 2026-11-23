@@ -1,3 +1,14 @@
+## Alpha 0.3.26 — DNS 1.0: obserwacja NPC
+
+- Dodano wybór obserwowanego NPC tła przez dotknięcie jego sylwetki lub Zbadaj w pobliżu. Ponowne dotknięcie anuluje obserwację.
+- NPC zdobywa czas obserwacji podczas widoczności i bliskości gracza; po około 20 sekundach otrzymuje poziom L1 i dłuższe trasy, a po około 60 sekundach śledzenia L2 i cele podróży między częściami miasta.
+- Zachowana zostaje tożsamość, kolor, położenie i animacja postaci podczas zmiany poziomów — nie ma teleportacji.
+- Nowy budżet CPU: najwyżej 3 NPC ze zwiększoną szczegółowością i tylko 1 priorytetowy L2. Planowanie tras korzysta z ograniczonego BFS, a pozostałe NPC poruszają się tanim algorytmem lokalnym.
+- Oznaczenie obserwowanego NPC na mapie oraz informacja o poziomie i czasie śledzenia w panelu DNS.
+- Test symulacyjny 85 s: L1 po 20,02 s, L2 po 60,06 s; 0 naruszeń geometrii, 0 kolizji NPC; zachowane imię, kolory i obiekt aktora.
+- Nadal brak trwałej pamięci i przejść do wnętrz dla NPC tła: to zakres etapu 0.3.27. Zoom 50% i minimapa również pozostają na później.
+- Nie zmieniano mapy ani formatu zapisów; test przeglądarkowy na Androidzie pozostaje do potwierdzenia.
+
 ## Alpha 0.3.25 — DNS 1.0: strumieniowanie mieszkańców tła
 
 - Dodano osobny moduł engine/dns-population.js oraz generowanie NPC na żądanie w sąsiedztwie kamery.
