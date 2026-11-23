@@ -74,27 +74,50 @@ for(let y=57;y<=59;y++)for(let x=58;x<=62;x++)INNER.delete(KEY(x,y));
 for(const g of CITY_GATES)for(let y=g.bounds[1];y<=g.bounds[3];y++)for(let x=g.bounds[0];x<=g.bounds[2];x++){WALL.delete(KEY(x,y));INNER.delete(KEY(x,y));}
 // Resolve geometry conflicts by moving buildings, NEVER erasing the curtain wall.
 // Maintain the original footprint and facade direction for portal compatibility.
+// Street-front placement: structures occupy parcels, not carriageways.
+// Large landmarks remain near their planned districts; smaller plots may shift
+// to a parallel frontage, always preserving entrances and the city walls.
 const placed=[];
-for(const b of CITY_BUILDINGS){
- const original=b.bounds.slice(),[x1,y1,x2,y2]=original;
- const fits=(dx,dy)=>{
+const occupiedRoad=(B)=>{let n=0;for(let y=B[1];y<=B[3];y++)for(let x=B[0];x<=B[2];x++)if(ROAD.has(KEY(x,y)))n++;return n;};
+for(const building of CITY_BUILDINGS){
+ const [x1,y1,x2,y2]=building.bounds,originalDoor=building.door;
+ const candidates=[];
+ const radiusLimit=building.id==="city1-twierdza"?12:32;
+ for(let radius=0;radius<=radiusLimit;radius++)for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){
+  if(Math.max(Math.abs(dx),Math.abs(dy))!==radius)continue;
   const B=[x1+dx,y1+dy,x2+dx,y2+dy];
-  if(B[0]<2||B[1]<2||B[2]>=CITY_WIDTH-2||B[3]>=CITY_HEIGHT-2)return false;
-  if(placed.some(p=>B[0]<=p[2]+1&&B[2]>=p[0]-1&&B[1]<=p[3]+1&&B[3]>=p[1]-1))return false;
-  for(let y=B[1];y<=B[3];y++)for(let x=B[0];x<=B[2];x++)
-   if(WALL.has(KEY(x,y))||INNER.has(KEY(x,y)))return false;
-  return true;
- };
- let choice=null,score=Infinity;
- for(let radius=0;radius<=36;radius++)for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){
-  if(Math.max(Math.abs(dx),Math.abs(dy))!==radius||!fits(dx,dy))continue;
-  let roads=0;for(let y=y1+dy;y<=y2+dy;y++)for(let x=x1+dx;x<=x2+dx;x++)if(ROAD.has(KEY(x,y)))roads++;
-  const cost=radius*100+roads*2;
-  if(cost<score){score=cost;choice=[dx,dy];}
+  if(B[0]<2||B[1]<2||B[2]>=CITY_WIDTH-2||B[3]>=CITY_HEIGHT-2)continue;
+  if(placed.some(p=>B[0]<=p[2]+2&&B[2]>=p[0]-2&&B[1]<=p[3]+2&&B[3]>=p[1]-2))continue;
+  let wall=false;
+  for(let y=B[1];y<=B[3]&&!wall;y++)for(let x=B[0];x<=B[2];x++)if(WALL.has(KEY(x,y))||INNER.has(KEY(x,y))){wall=true;break;}
+  if(wall)continue;
+  const roadTiles=occupiedRoad(B);
+  const total=(B[2]-B[0]+1)*(B[3]-B[1]+1);
+  // Face the nearest existing street, not a wall or a neighbour's roof.
+  let frontage=0;
+  if(originalDoor){
+   const D={x:originalDoor.x+dx,y:originalDoor.y+dy};
+   const [ox,oy]={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[building.facing];
+   for(let k=1;k<=5;k++){const xx=D.x+ox*k,yy=D.y+oy*k;
+    if(WALL.has(KEY(xx,yy))||INNER.has(KEY(xx,yy)))break;
+    if(ROAD.has(KEY(xx,yy))){frontage=6-k;break;}
+   }
+  }else{
+   for(let x=B[0];x<=B[2];x++)if(ROAD.has(KEY(x,B[1]-2))||ROAD.has(KEY(x,B[3]+2)))frontage++;
+   for(let y=B[1];y<=B[3];y++)if(ROAD.has(KEY(B[0]-2,y))||ROAD.has(KEY(B[2]+2,y)))frontage++;
+   frontage=Math.min(5,frontage);
+  }
+  // Streets are precious: prefer empty plots, with modest displacement.
+  const cost=roadTiles/total*1100+radius*6-frontage*14;
+  candidates.push({B,dx,dy,cost});
  }
- if(choice){const [dx,dy]=choice;b.bounds=[x1+dx,y1+dy,x2+dx,y2+dy];if(b.door){b.door={x:b.door.x+dx,y:b.door.y+dy};}}
- placed.push(b.bounds);
+ candidates.sort((a,b)=>a.cost-b.cost);
+ const chosen=candidates[0];
+ if(chosen){building.bounds=chosen.B;if(originalDoor)building.door={x:originalDoor.x+chosen.dx,y:originalDoor.y+chosen.dy};}
+ placed.push(building.bounds);
 }
+// Street surfaces must not exist under any footprint, even decorative ones.
+for(const B of placed)for(let y=B[1];y<=B[3];y++)for(let x=B[0];x<=B[2];x++)ROAD.delete(KEY(x,y));
 // Put the staircase on walkable ground exactly next to a wall, with a clear approach.
 for(const [x,y] of [[48,60],[69,60],[74,43],[44,43],[96,23],[103,25],[89,25],[96,136],[89,135],[103,135],[27,73],[28,89],[164,73],[163,91],[54,132],[136,121]]){
  if(CITY_BUILDINGS.some(b=>rect(x,y,b.bounds))||WALL.has(KEY(x,y))||INNER.has(KEY(x,y)))continue;
