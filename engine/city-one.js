@@ -12,12 +12,12 @@ const B=[
 ["piekarnia","Piekarnia","🥖",25,44,36,51,"N"],
 ["targ","Hala targowa","⚖",42,44,55,52,"N"],
 ["stajnia","Stajnia","🐴",61,44,73,52,"N"],
-["apteka","Apteka","⚗",79,44,88,51,"N"],
+["apteka","Apteka","⚗",79,46,87,53,"N"],
 ["arena","Arena","🏟",26,60,42,70,"N"],
 ["switynia","Świątynia","⛪",48,60,59,69,"N"],
 ["straznica","Strażnica","🗼",66,60,76,69,"N"],
 ["magazyn","Magazyn","📦",80,59,87,68,"N"],
-["dom1","Dom 1","⌂",23,29,29,35,"S"],
+["dom1","Dom 1","⌂",23,37,29,39,"S"],
 ["dom2","Dom 2","⌂",80,70,88,75,"N"],
 ["dom3","Dom 3","⌂",94,30,100,37,"W"],
 ["dom4","Dom 4","⌂",94,44,100,50,"W"],
@@ -179,4 +179,24 @@ export function cityGateBarrierAt(x,y){
 }
 export function cityGateControlNear(x,y){
  return CITY_GATES.find(g=>Math.abs(x-g.x)+Math.abs(y-g.y)<=4)||null;
+}
+
+// Map integrity checks: fail early rather than hiding a road or gate under a roof.
+export function cityLayoutIssues(){
+ const issues=[];
+ for(let i=0;i<CITY_BUILDINGS.length;i++){
+  const a=CITY_BUILDINGS[i],A=a.bounds;
+  for(let j=i+1;j<CITY_BUILDINGS.length;j++){
+   const b=CITY_BUILDINGS[j],B=b.bounds;
+   if(A[0]<=B[2]&&A[2]>=B[0]&&A[1]<=B[3]&&A[3]>=B[1])issues.push("overlap:"+a.id+":"+b.id);
+  }
+  for(const g of CITY_GATES){const G=g.bounds;
+   if(A[0]<=G[2]&&A[2]>=G[0]&&A[1]<=G[3]&&A[3]>=G[1])issues.push("gate:"+a.id+":"+g.id);
+  }
+  if(a.door){const offset={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[a.facing];
+   const x=a.door.x+offset[0],y=a.door.y+offset[1];
+   if(["wall","rampart","void","water"].includes(cityTile(x,y)))issues.push("door:"+a.id);
+  }
+ }
+ return issues;
 }
