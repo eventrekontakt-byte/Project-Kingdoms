@@ -1,202 +1,124 @@
-// City 1: hand-authored, data-driven walled settlement inspired by medieval town plans.
-// Bounds are inclusive; door is always on the road-facing wall.
-export const CITY_WIDTH=112,CITY_HEIGHT=88;
-const B=[
-["twierdza","Twierdza","🏰",46,12,65,24,"S"],
-["koszary","Koszary","🛡",27,15,39,23,"S"],
-["zbrojownia","Zbrojownia","⚔",72,15,83,23,"S"],
-["biblioteka","Biblioteka","📚",28,29,39,36,"S"],
-["karczma","Karczma","🍺",45,30,56,38,"S"],
-["kasyno","Kasyno","🎲",62,30,73,38,"S"],
-["kuznia","Kuźnia","⚒",78,30,88,38,"S"],
-["piekarnia","Piekarnia","🥖",25,44,36,51,"N"],
-["targ","Hala targowa","⚖",42,44,55,52,"N"],
-["stajnia","Stajnia","🐴",61,44,73,52,"N"],
-["apteka","Apteka","⚗",79,46,87,53,"N"],
-["arena","Arena","🏟",26,60,42,70,"N"],
-["switynia","Świątynia","⛪",48,60,59,69,"N"],
-["straznica","Strażnica","🗼",66,60,76,69,"N"],
-["magazyn","Magazyn","📦",80,59,87,68,"N"],
-["dom1","Dom 1","⌂",23,37,29,39,"S"],
-["dom2","Dom 2","⌂",80,70,88,75,"N"],
-["dom3","Dom 3","⌂",94,30,100,37,"W"],
-["dom4","Dom 4","⌂",94,44,100,50,"W"],
-["mlyn","Młyn","🌾",9,12,18,20,"S"],
-["farma1","Farma 1","🌱",7,28,17,37,"S"],
-["farma2","Farma 2","🌱",6,49,16,59,"E"],
-["tartak","Tartak","🪵",95,12,107,21,"S"],
-["farma3","Farma 3","🌱",94,57,105,67,"W"]
+// Project Kingdoms — City 1 urban plan v0.3.14. Stable, hand-authored hybrid city.
+export const CITY_WIDTH=192,CITY_HEIGHT=160;
+const DATA=[
+["twierdza","Twierdza","🏰",45,34,66,50,"S"],["koszary","Koszary","🛡",28,47,40,55,"S"],["zbrojownia","Zbrojownia","⚔",71,44,82,52,"S"],
+["biblioteka","Biblioteka","📚",102,45,114,54,"S"],["karczma","Karczma","🍺",91,81,103,91,"S"],["kasyno","Kasyno","🎲",121,83,133,91,"S"],["kuznia","Kuźnia","⚒",145,91,156,99,"W"],
+["piekarnia","Piekarnia","🥖",73,99,83,106,"N"],["targ","Hala targowa","⚖",107,100,122,110,"N"],["stajnia","Stajnia","🐴",137,111,150,121,"N"],["apteka","Apteka","⚗",113,65,122,73,"S"],
+["arena","Arena","🏟",40,113,60,128,"N"],["switynia","Świątynia","⛪",68,115,83,127,"N"],["straznica","Strażnica","🗼",155,67,165,77,"W"],["magazyn","Magazyn","📦",154,106,164,116,"W"],
+["dom1","Dom 1","⌂",77,65,84,71,"E"],["dom2","Dom 2","⌂",107,117,116,124,"N"],["dom3","Dom 3","⌂",138,63,145,70,"W"],["dom4","Dom 4","⌂",132,125,141,132,"N"],
+["mlyn","Młyn","🌾",13,25,23,35,"S"],["farma1","Farma 1","🌱",9,49,21,61,"E"],["farma2","Farma 2","🌱",12,107,25,119,"E"],["tartak","Tartak","🪵",171,36,185,48,"W"],["farma3","Farma 3","🌱",171,111,185,125,"W"]
 ];
-const DECOR=[["kamienica1","Kamienica",34,81,39,83],["kamienica2","Kamienica",61,81,66,83],["szopa1","Szopa",2,14,6,19],["szopa2","Szopa",103,33,108,39],["spichlerz","Spichlerz",2,69,9,76],["dom5","Dom",102,72,108,78],["dom6","Dom",2,2,9,8],["warsztat","Warsztat",99,80,106,85]];
-export const CITY_BUILDINGS=B.map(([id,name,icon,x1,y1,x2,y2,facing])=>{
+const DECOR=[
+["kamienica1","Kamienica",103,61,110,68],["kamienica2","Kamienica",123,62,130,70],["szopa1","Szopa",31,93,37,99],["szopa2","Szopa",146,57,152,63],
+["spichlerz","Spichlerz",31,103,39,111],["dom5","Dom",120,118,127,125],["dom6","Dom",87,59,95,66],["warsztat","Warsztat",143,125,153,133],
+["kamienica3","Kamienica",105,76,112,82],["kamienica4","Kamienica",117,77,125,82],["kamienica5","Kamienica",77,78,85,85],
+["dom7","Dom",35,68,42,75],["dom8","Dom",43,75,50,82],["dom9","Dom",53,84,61,91],["dom10","Dom",65,91,72,97],
+["dom11","Dom",147,78,153,85],["dom12","Dom",133,101,141,108],["ogrod","Ogród",43,95,52,103]
+];
+const rect=(x,y,b)=>x>=b[0]&&x<=b[2]&&y>=b[1]&&y<=b[3];
+export const CITY_BUILDINGS=DATA.map(([id,name,icon,x1,y1,x2,y2,facing])=>{
  const door=facing==="N"?{x:Math.floor((x1+x2)/2),y:y1}:facing==="S"?{x:Math.floor((x1+x2)/2),y:y2}:facing==="W"?{x:x1,y:Math.floor((y1+y2)/2)}:{x:x2,y:Math.floor((y1+y2)/2)};
- return {id:"city1-"+id,name,icon,bounds:[x1,y1,x2,y2],facing,door,external:x1<20||x2>92,decorative:false};
-}).concat(DECOR.map(([id,name,x1,y1,x2,y2])=>({id:"city1-"+id,name,bounds:[x1,y1,x2,y2],decorative:true,external:x1<20||x2>92,door:null})));
-export const CITY_STAIRS=[{x:23,y:69},{x:88,y:69},{x:44,y:75},{x:68,y:75}];
+ return {id:"city1-"+id,name,icon,bounds:[x1,y1,x2,y2],facing,door,external:x1<26||x2>166,decorative:false};
+}).concat(DECOR.map(([id,name,x1,y1,x2,y2])=>({id:"city1-"+id,name,bounds:[x1,y1,x2,y2],decorative:true,external:false,door:null})));
 export const CITY_GATES=[
- {id:"north",name:"Brama Północna",x:55,y:8,axis:"vertical",bounds:[53,7,57,11]},
- {id:"south",name:"Brama Południowa",x:55,y:78,axis:"vertical",bounds:[53,75,57,79]},
- {id:"west",name:"Brama Zachodnia",x:20,y:43,axis:"horizontal",bounds:[19,41,23,45]},
- {id:"east",name:"Brama Wschodnia",x:91,y:43,axis:"horizontal",bounds:[88,41,92,45]}
-];
+{id:"north",name:"Brama Północna",x:96,y:20,axis:"vertical",bounds:[94,18,98,22]},
+{id:"south",name:"Brama Południowa",x:96,y:139,axis:"vertical",bounds:[94,137,98,141]},
+{id:"west",name:"Brama Zachodnia",x:24,y:80,axis:"horizontal",bounds:[22,78,26,82]},
+{id:"east",name:"Brama Wschodnia",x:167,y:80,axis:"horizontal",bounds:[165,78,169,82]}];
+export const CITY_STAIRS=[{x:27,y:72},{x:164,y:89},{x:89,y:23},{x:103,y:136}];
 export function cityGatePart(x,y){
- for(const g of CITY_GATES){
-  const [x1,y1,x2,y2]=g.bounds;
-  if(x<x1||x>x2||y<y1||y>y2)continue;
-  const cross=g.axis==="vertical"?x-g.x:y-g.y;
-  // The 3-tile passage stays open; the two flanking 1-tile towers
-  // extend the original 3-tile wall to a 5-tile gatehouse.
-  return {gate:g,part:Math.abs(cross)===2?"tower":"passage"};
- }
+ for(const g of CITY_GATES){if(!rect(x,y,g.bounds))continue;const cross=g.axis==="vertical"?x-g.x:y-g.y;
+ return {gate:g,part:Math.abs(cross)===2?"tower":"passage"};}
  return null;
 }
-const inside=(x,y,[x1,y1,x2,y2])=>x>=x1&&x<=x2&&y>=y1&&y<=y2;
-const isRoad=(x,y)=>(
- (x>=53&&x<=57&&y>=0&&y<=87)||
- (y>=41&&y<=44&&x>=0&&x<=111)||
- (x>=53&&x<=58&&y>=8&&y<=78)||
- (y>=40&&y<=43&&x>=19&&x<=92)||
- (y>=26&&y<=28&&x>=20&&x<=92)||
- (y>=55&&y<=57&&x>=20&&x<=92)||
- (x>=20&&x<=22&&y>=25&&y<=78)||
- (x>=91&&x<=93&&y>=25&&y<=78)||
- (y>=72&&y<=75&&x>=20&&x<=92)||
- (y>=9&&y<=11&&x>=20&&x<=92)||
- (x>=42&&x<=44&&y>=24&&y<=72)||
- (x>=76&&x<=78&&y>=24&&y<=72)
-);
-export function cityBuildingAt(x,y){return CITY_BUILDINGS.find(b=>inside(x,y,b.bounds))||null;}
+export function cityBuildingAt(x,y){return CITY_BUILDINGS.find(b=>rect(x,y,b.bounds))||null;}
 export function cityDoorAt(x,y){return CITY_BUILDINGS.find(b=>b.door&&b.door.x===x&&b.door.y===y)||null;}
-function baseCityTile(x,y){
- if(x<0||y<0||x>=CITY_WIDTH||y>=CITY_HEIGHT)return "void";
- const gate=cityGatePart(x,y);
- if(gate)return gate.part==="tower"?"rampart":"road";
- const b=cityBuildingAt(x,y);
- if(b){if(b.door&&b.door.x===x&&b.door.y===y)return "door";
-  const [x1,y1,x2,y2]=b.bounds;
-  // Exterior roofs are solid; entering is only possible via the designated portal.
-  return "wall";
- }
- // Walled inner town, four aligned gates, outer farms and sawmill.
- const boundary=((x>=20&&x<=22)||(x>=89&&x<=91))&&y>=8&&y<=78||((y>=8&&y<=10)||(y>=76&&y<=78))&&x>=20&&x<=91;
- if(boundary){
-  if(CITY_GATES.some(g=>Math.abs(x-g.x)<=2&&Math.abs(y-g.y)<=2&&(g.x===55?y>=8&&y<=10||y>=76&&y<=78:x>=20&&x<=22||x>=89&&x<=91)))return "road";
-  return "rampart";
- }
- if(CITY_STAIRS.some(p=>p.x===x&&p.y===y))return "stairs-up";
- if(isRoad(x,y))return "road";
- // Market square, well, planted courtyards and small lanes.
- if(x>=45&&x<=52&&y>=39&&y<=43)return "road";
- if(x>=57&&x<=65&&y>=39&&y<=43)return "road";
- if(x>=46&&x<=51&&y>=53&&y<=55)return "road";
- if(x>=57&&x<=63&&y>=53&&y<=55)return "road";
- if((x===47||x===48)&&y===41)return "water";
- if(x>=10&&x<=15&&y>=39&&y<=46)return "meadow";
- // Door approaches connect to the nearest lane with a clear walkable corridor.
- for(const building of CITY_BUILDINGS){
-  const d=building.door;if(!d)continue;
-  if(d.x===x&&(Math.abs(y-d.y)<=8)&&((building.facing==="N"&&y<d.y)||(building.facing==="S"&&y>d.y)))return "road";
-  if(d.y===y&&(Math.abs(x-d.x)<=8)&&((building.facing==="W"&&x<d.x)||(building.facing==="E"&&x>d.x)))return "road";
- }
- if(x>=20&&x<=91&&y>=8&&y<=78){
-  const n=(x*31+y*17+x*y*7)%101;
-  return n<5?"tree":n<16?"meadow":"grass";
- }
- if((x*13+y*23)%29===0)return "tree";
- return y>67?"meadow":"grass";
-}
-
-// Connect every road fragment to the primary street network without cutting through buildings or city walls.
-const EXTRA_ROADS=new Set();
-const k=(x,y)=>x+","+y;
-const originalRoads=new Set();
-for(let y=0;y<CITY_HEIGHT;y++)for(let x=0;x<CITY_WIDTH;x++)if(baseCityTile(x,y)==="road")originalRoads.add(k(x,y));
-const mainRoad=new Set(),queue=[k(55,76)];mainRoad.add(queue[0]);
-for(let i=0;i<queue.length;i++){
- const [x,y]=queue[i].split(",").map(Number);
- for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
-  const xx=x+dx,yy=y+dy,key=k(xx,yy);
-  if(originalRoads.has(key)&&!mainRoad.has(key)){mainRoad.add(key);queue.push(key);}
- }
-}
-const seen=new Set(mainRoad),parents=new Map(),search=[...mainRoad];
-for(let i=0;i<search.length;i++){
- const [x,y]=search[i].split(",").map(Number);
- for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
-  const xx=x+dx,yy=y+dy,key=k(xx,yy);
-  if(xx<0||yy<0||xx>=CITY_WIDTH||yy>=CITY_HEIGHT||seen.has(key))continue;
-  const t=baseCityTile(xx,yy);
-  if(["wall","rampart","void","water","door"].includes(t))continue;
-  seen.add(key);parents.set(key,k(x,y));search.push(key);
- }
-}
-for(const point of originalRoads){
- if(mainRoad.has(point)||!seen.has(point))continue;
- let at=point;
- while(at&&!mainRoad.has(at)){
-  EXTRA_ROADS.add(at);
-  at=parents.get(at);
- }
-}
-// PLOT 1.0: fixed, verified vacant parcels. Never generate them during module loading.
-// Static coordinates avoid expensive mobile startup and initialization-order dependencies.
-export const CITY_VACANT_PLOTS=[
- {id:"city1-vacant-1",name:"Wolna działka 1",bounds:[10,62,17,67],status:"vacant"},
- {id:"city1-vacant-2",name:"Wolna działka 2",bounds:[102,46,108,51],status:"vacant"},
- {id:"city1-vacant-3",name:"Wolna działka 3",bounds:[6,22,11,26],status:"vacant"},
- {id:"city1-vacant-4",name:"Wolna działka 4",bounds:[8,78,16,83],status:"vacant"},
- {id:"city1-vacant-5",name:"Wolna działka 5",bounds:[72,80,78,84],status:"vacant"},
- {id:"city1-vacant-6",name:"Wolna działka 6",bounds:[12,70,17,75],status:"vacant"},
- {id:"city1-vacant-7",name:"Wolna działka 7",bounds:[44,80,51,84],status:"vacant"}
+// Irregular polygon: wider old town, tighter northern shoulders and southern wards.
+const OUTLINE=[[79,20],[113,20],[132,26],[150,36],[161,51],[167,67],[167,95],[160,112],[147,128],[120,139],[73,139],[48,131],[31,112],[24,94],[24,67],[31,49],[47,34],[65,25]];
+function within(x,y){let inside=false;for(let i=0,j=OUTLINE.length-1;i<OUTLINE.length;j=i++){const a=OUTLINE[i],b=OUTLINE[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])inside=!inside;}return inside;}
+const KEY=(x,y)=>x+","+y;
+const WALL=new Set(),INNER=new Set(),ROAD=new Set();
+function mark(set,x,y,r=0){for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++)if(x+dx>=0&&y+dy>=0&&x+dx<CITY_WIDTH&&y+dy<CITY_HEIGHT&&Math.hypot(dx,dy)<=r+.25)set.add(KEY(x+dx,y+dy));}
+function line(set,a,b,r=0){const n=Math.max(Math.abs(b[0]-a[0]),Math.abs(b[1]-a[1]))*2;for(let i=0;i<=n;i++){const t=i/n;mark(set,Math.round(a[0]+(b[0]-a[0])*t),Math.round(a[1]+(b[1]-a[1])*t),r);}}
+function path(set,pts,r){for(let i=1;i<pts.length;i++)line(set,pts[i-1],pts[i],r);}
+for(let y=1;y<CITY_HEIGHT-1;y++)for(let x=1;x<CITY_WIDTH-1;x++)if(within(x,y)){for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]])if(!within(x+dx,y+dy)){mark(WALL,x,y,1);break;}}
+const MAIN=[
+[[96,0],[96,20],[97,32],[94,45],[96,60],[95,76],[96,97],[96,117],[96,139],[96,159]],
+[[0,80],[24,80],[39,82],[56,78],[72,84],[96,87],[119,85],[140,81],[167,80],[191,80]],
+[[35,54],[49,60],[67,66],[85,74],[96,87],[112,100],[132,114],[150,128]],
+[[43,116],[60,108],[78,101],[96,87],[117,72],[138,60],[159,53]],
+[[44,82],[54,94],[66,108],[79,119],[96,126],[118,125],[137,119]],
+[[42,62],[56,55],[70,57],[83,65],[97,74],[113,79],[132,75],[149,72]],
+[[52,38],[66,52],[79,60],[93,66],[110,60],[127,49],[143,40]]
 ];
-const VACANT_TILES=new Set();
-for(const plot of CITY_VACANT_PLOTS){
- const [x1,y1,x2,y2]=plot.bounds;
- for(let y=y1;y<=y2;y++)for(let x=x1;x<=x2;x++)VACANT_TILES.add(k(x,y));
+for(const p of MAIN)path(ROAD,p,2);
+const LANES=[
+[[35,72],[49,72],[61,78],[75,78],[88,84]],[[44,96],[56,97],[66,102],[80,109]],
+[[74,57],[75,72],[70,86],[75,97]],[[114,52],[115,64],[118,77],[123,88]],
+[[135,53],[136,68],[142,82],[147,95],[151,109]],[[53,113],[64,121],[79,131]],
+[[106,106],[119,112],[130,125]],[[39,85],[36,97],[42,112]],[[153,57],[155,68],[159,81]],
+[[84,36],[81,48],[89,60]],[[104,35],[108,47],[116,58]],[[65,89],[79,88],[96,87]],
+[[108,94],[123,96],[140,102]],[[92,112],[109,113],[126,110]],[[97,102],[103,108],[112,116]]
+];
+for(const p of LANES)path(ROAD,p,1);
+// The citadel is a separate walled precinct, with a guarded southern entry.
+const CITADEL=[24,28,86,60];
+for(let x=CITADEL[0];x<=CITADEL[2];x++)for(let y=CITADEL[1];y<=CITADEL[3];y++)
+ if(x<=26||x>=84||y<=30||y>=58)INNER.add(KEY(x,y));
+path(ROAD,[[55,58],[55,65],[67,70],[83,77]],1);
+for(let y=58;y<=60;y++)for(let x=53;x<=57;x++)INNER.delete(KEY(x,y));
+// Build safe approach lanes from each entrance to the closest already connected street.
+// Use shortest-path search, never cutting buildings, gates or walls.
+const occupied=new Set();for(const b of CITY_BUILDINGS)for(let y=b.bounds[1];y<=b.bounds[3];y++)for(let x=b.bounds[0];x<=b.bounds[2];x++)occupied.add(KEY(x,y));
+const forbidden=(x,y)=>x<1||y<1||x>=CITY_WIDTH-1||y>=CITY_HEIGHT-1||occupied.has(KEY(x,y))||WALL.has(KEY(x,y))||INNER.has(KEY(x,y));
+const dirs=[[1,0],[-1,0],[0,1],[0,-1]];
+for(const b of CITY_BUILDINGS.filter(b=>b.door)){
+ const offset={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing],start=[b.door.x+offset[0],b.door.y+offset[1]];
+ if(forbidden(...start))continue;
+ const q=[start],prev=new Map([[KEY(...start),null]]);let found=null;
+ for(let i=0;i<q.length;i++){const [x,y]=q[i],k=KEY(x,y);if(ROAD.has(k)){found=k;break;}
+ for(const [dx,dy] of dirs){const xx=x+dx,yy=y+dy,kk=KEY(xx,yy);if(forbidden(xx,yy)||prev.has(kk))continue;prev.set(kk,k);q.push([xx,yy]);}}
+ for(let at=found;at;at=prev.get(at))ROAD.add(at);
+ ROAD.add(KEY(...start));
 }
+export const CITY_VACANT_PLOTS=[
+{id:"city1-vacant-1",name:"Wolna działka 1",bounds:[31,119,37,125],status:"vacant"},
+{id:"city1-vacant-2",name:"Wolna działka 2",bounds:[158,121,164,127],status:"vacant"},
+{id:"city1-vacant-3",name:"Wolna działka 3",bounds:[12,68,18,74],status:"vacant"},
+{id:"city1-vacant-4",name:"Wolna działka 4",bounds:[9,131,18,138],status:"vacant"},
+{id:"city1-vacant-5",name:"Wolna działka 5",bounds:[173,91,180,98],status:"vacant"}];
+const VACANT=new Set();for(const p of CITY_VACANT_PLOTS)for(let y=p.bounds[1];y<=p.bounds[3];y++)for(let x=p.bounds[0];x<=p.bounds[2];x++)VACANT.add(KEY(x,y));
 export function cityTile(x,y){
- if(cityGatePart(x,y))return baseCityTile(x,y);
- if(VACANT_TILES.has(k(x,y)))return "meadow";
- const tile=baseCityTile(x,y);
- return EXTRA_ROADS.has(k(x,y))&&tile!=="wall"&&tile!=="rampart"&&tile!=="door"?"road":tile;
+ if(x<0||y<0||x>=CITY_WIDTH||y>=CITY_HEIGHT)return "void";
+ const gate=cityGatePart(x,y);if(gate)return gate.part==="tower"?"rampart":"road";
+ const b=cityBuildingAt(x,y);if(b)return b.door?.x===x&&b.door?.y===y?"door":"wall";
+ const key=KEY(x,y);
+ if(VACANT.has(key))return "meadow";
+ if(CITY_STAIRS.some(s=>s.x===x&&s.y===y))return "stairs-up";
+ if(INNER.has(key)||WALL.has(key))return "rampart";
+ if(ROAD.has(key))return "road";
+ if(!within(x,y))return y>130?"meadow":(x*13+y*17)%23===0?"tree":"grass";
+ if(x>=88&&x<=107&&y>=82&&y<=100)return "road";
+ if(x>=46&&x<=72&&y>=34&&y<=55)return "stone";
+ const n=(x*31+y*17+x*y*7)%101;
+ return n<4?"tree":n<24?"meadow":"grass";
 }
-
 export function cityStepAllowed(x1,y1,x2,y2){
  const a=cityTile(x1,y1),b=cityTile(x2,y2);
- if(a==="rampart"||b==="rampart"){
-  const gatehouse=(x,y)=>CITY_GATES.some(g=>Math.abs(x-g.x)<=4&&Math.abs(y-g.y)<=4);
-  return a==="rampart"&&b==="rampart"||a==="stairs-up"&&b==="rampart"||b==="stairs-up"&&a==="rampart"||gatehouse(x1,y1)&&gatehouse(x2,y2)&&(a==="road"||b==="road");
- }
- return true;
+ if(a!=="rampart"&&b!=="rampart")return true;
+ if(a==="rampart"&&b==="rampart")return true;
+ if(a==="stairs-up"||b==="stairs-up")return true;
+ return CITY_GATES.some(g=>Math.abs(x1-g.x)<=3&&Math.abs(y1-g.y)<=3&&Math.abs(x2-g.x)<=3&&Math.abs(y2-g.y)<=3);
 }
-
-// Gate controls are independent of map tiles, so later sieges can operate
-// them without regenerating the city or its building plots.
-export function cityGateBarrierAt(x,y){
- return CITY_GATES.find(g=>g.axis==="vertical"
-  ? y===g.y&&Math.abs(x-g.x)<=1
-  : x===g.x&&Math.abs(y-g.y)<=1)||null;
-}
-export function cityGateControlNear(x,y){
- return CITY_GATES.find(g=>Math.abs(x-g.x)+Math.abs(y-g.y)<=4)||null;
-}
-
-// Map integrity checks: fail early rather than hiding a road or gate under a roof.
+export function cityGateBarrierAt(x,y){return CITY_GATES.find(g=>g.axis==="vertical"?y===g.y&&Math.abs(x-g.x)<=1:x===g.x&&Math.abs(y-g.y)<=1)||null;}
+export function cityGateControlNear(x,y){return CITY_GATES.find(g=>Math.abs(x-g.x)+Math.abs(y-g.y)<=4)||null;}
 export function cityLayoutIssues(){
  const issues=[];
  for(let i=0;i<CITY_BUILDINGS.length;i++){
-  const a=CITY_BUILDINGS[i],A=a.bounds;
-  for(let j=i+1;j<CITY_BUILDINGS.length;j++){
-   const b=CITY_BUILDINGS[j],B=b.bounds;
-   if(A[0]<=B[2]&&A[2]>=B[0]&&A[1]<=B[3]&&A[3]>=B[1])issues.push("overlap:"+a.id+":"+b.id);
-  }
-  for(const g of CITY_GATES){const G=g.bounds;
-   if(A[0]<=G[2]&&A[2]>=G[0]&&A[1]<=G[3]&&A[3]>=G[1])issues.push("gate:"+a.id+":"+g.id);
-  }
-  if(a.door){const offset={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[a.facing];
-   const x=a.door.x+offset[0],y=a.door.y+offset[1];
-   if(["wall","rampart","void","water"].includes(cityTile(x,y)))issues.push("door:"+a.id);
-  }
+ const a=CITY_BUILDINGS[i],A=a.bounds;
+ for(let j=i+1;j<CITY_BUILDINGS.length;j++){const b=CITY_BUILDINGS[j],B=b.bounds;if(A[0]<=B[2]&&A[2]>=B[0]&&A[1]<=B[3]&&A[3]>=B[1])issues.push("overlap:"+a.id+":"+b.id);}
+ for(const g of CITY_GATES){const G=g.bounds;if(A[0]<=G[2]&&A[2]>=G[0]&&A[1]<=G[3]&&A[3]>=G[1])issues.push("gate:"+a.id+":"+g.id);}
+ if(a.door){const [dx,dy]={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[a.facing];if(["wall","rampart","void","water"].includes(cityTile(a.door.x+dx,a.door.y+dy)))issues.push("door:"+a.id);}
  }
  return issues;
 }
