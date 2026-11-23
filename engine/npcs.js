@@ -1,8 +1,27 @@
-// NPC 1.2.2 (0.3.23): preserve planned walking destinations across ticks.
+// NPC 1.3 (0.3.24): stable professions, purposeful jobs, DNS simulation classes.
 import {CITY_BUILDINGS,CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
 import {tileAt,mapSize} from "./world.js";
 const FIRST=["Aldric","Berta","Cedryk","Daria","Edmund","Fenna","Gustaw","Hilda","Iwo","Jagna","Konrad","Lena","Marek","Nora","Oskar","Petra","Radomir","Sara","Tomasz","Wera"];
-const ROLES=["Strażnik","Kupiec","Rzemieślnik","Mieszkaniec","Mieszkaniec","Robotnik","Posłaniec","Mieszkaniec"];
+const ROLES=["Strażnik","Kupiec","Rzemieślnik","Mieszkaniec","Robotnik","Mieszkaniec","Posłaniec","Mieszkaniec"];
+// Canonical city staff. Their profession, workplace and conversation are one
+// profile, never three independent random assignments.
+const IMPORTANT_PROFILES=[
+ {role:"Dowódca straży",building:"straznica",indoor:false,behavior:"patrol",speech:"Dowodzę strażą miejską. Pełnię służbę przy strażnicy i kontroluję patrole."},
+ {role:"Kupiec",building:"targ",indoor:true,behavior:"merchant",speech:"Prowadzę stoisko w hali targowej. Rankiem rozkładam towar i obsługuję klientów."},
+ {role:"Kowal",building:"kuznia",indoor:true,behavior:"craft",speech:"Pracuję w kuźni. Naprawiam narzędzia i wykuwam zamówienia."},
+ {role:"Karczmarka",building:"karczma",indoor:true,behavior:"innkeeper",speech:"Prowadzę karczmę. Od rana przygotowuję salę dla gości i zajmuję się zapasami."},
+ {role:"Piekarz",building:"piekarnia",indoor:true,behavior:"craft",speech:"Pracuję w piekarni. Wypiek zaczynam wcześnie rano."},
+ {role:"Zielarka",building:"apteka",indoor:true,behavior:"merchant",speech:"Przyjmuję klientów w aptece. Przygotowuję zioła i mieszanki."},
+ {role:"Strażnik",building:"straznica",indoor:false,behavior:"patrol",speech:"Patroluję ulice i bramy miasta. Strażnica jest moim posterunkiem."},
+ {role:"Bibliotekarka",building:"biblioteka",indoor:true,behavior:"scholar",speech:"Pracuję w bibliotece. Zajmuję się księgami i miejskimi kronikami."},
+ {role:"Stajenny",building:"stajnia",indoor:true,behavior:"service",speech:"Pracuję w stajni. Karmię konie i przygotowuję je do drogi."},
+ {role:"Kapłanka",building:"switynia",indoor:true,behavior:"service",speech:"Służę w świątyni. Opiekuję się pielgrzymami i odprawiam obrzędy."},
+ {role:"Magazynier",building:"magazyn",indoor:true,behavior:"service",speech:"Pilnuję miejskiego magazynu. Przyjmuję dostawy i wydaję zapasy."},
+ {role:"Urzędniczka",building:"twierdza",indoor:true,behavior:"scholar",speech:"Pracuję w twierdzy. Prowadzę rejestry i korespondencję władz miasta."}
+];
+// DNS stage 1 keeps the founding cast permanent. Dynamic population and
+// observation-based promotion will use this metadata in later releases.
+export const DNS_RULES={version:"1.0",permanentCount:12,residentCount:28,backgroundEnabled:false};
 const COLORS=["#759bc9","#d7a663","#94b67d","#bc92be","#c4a17c","#b8b7a5","#cc8881","#84b4aa"];
 const SKINS=["#efc99c","#a66e4c","#ddaf80","#b88460","#e3b78b"];
 const CITY="site-city1",WIDTH=CITY_WIDTH,HEIGHT=CITY_HEIGHT,N=WIDTH*HEIGHT;
@@ -49,10 +68,12 @@ function doorEntry(b){
  return near(x,y,false);
 }
 const workFor=(role,i)=>{
- const names=role==="Strażnik"?["straznica","koszary","twierdza"]:role==="Kupiec"?["targ","karczma","apteka"]:
- role==="Rzemieślnik"?["kuznia","piekarnia","tartak"]:role==="Robotnik"?["magazyn","stajnia","mlyn"]:
- role==="Posłaniec"?["biblioteka","targ","straznica"]:["targ","biblioteka","karczma","switynia"];
- return findBuilding(names[i%names.length])||dwellings[0];
+ const names=role==="Strażnik"||role==="Dowódca straży"?["straznica","koszary"]:
+ role==="Kupiec"?["targ"]:role==="Rzemieślnik"?["kuznia","piekarnia","tartak"]:
+ role==="Robotnik"?["magazyn","stajnia","mlyn"]:
+ role==="Posłaniec"?["biblioteka","targ","straznica"]:
+ ["targ","biblioteka","stajnia"];
+ return findBuilding(names[(i*3+Math.floor(i/5))%names.length])||dwellings[0];
 };
 // Keep crowds distributed around workplaces and social hubs, never stack
 // dozens of actors on one tile after off-screen schedule updates.
@@ -107,15 +128,18 @@ function interiorSpot(map,seed=0,occupied=null){
  return null;
 }
 export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
+ const profile=IMPORTANT_PROFILES[i]||null;
+ const role=profile?.role||ROLES[i%8];
  const homeBuilding=residences[(i*7+Math.floor(i/4))%residences.length];
- const workBuilding=workFor(ROLES[i%8],i);
+ const workBuilding=(profile?findBuilding(profile.building):null)||workFor(role,i);
  const homeEntry=doorEntry(homeBuilding),workEntry=doorEntry(workBuilding);
- const worksIndoors=["Kupiec","Rzemieślnik","Robotnik"].includes(ROLES[i%8])||i%7===0;
+ const worksIndoors=profile?profile.indoor:["Kupiec","Rzemieślnik","Robotnik"].includes(role);
+ const behavior=profile?.behavior||(role==="Strażnik"?"patrol":role==="Posłaniec"?"courier":role==="Kupiec"?"merchant":role==="Rzemieślnik"?"craft":role==="Robotnik"?"service":"citizen");
  // Outdoor workers and patrols need destinations along streets and squares,
  // never permanent standing spots right on the doorstep of a public building.
  const guardStops=[[96,25],[161,79],[96,133],[30,80],[55,60],[142,80]];
  const outdoorStops=[[61,76],[70,90],[104,113],[133,75],[145,107],[61,116],[119,58],[85,67],[96,127],[128,105],[44,88],[104,72]];
- const base=worksIndoors?doorApproach(workBuilding):near(...(ROLES[i%8]==="Strażnik"?guardStops[(i*3)%guardStops.length]:outdoorStops[(i*7)%outdoorStops.length]));
+ const base=worksIndoors?doorApproach(workBuilding):near(...(behavior==="patrol"?guardStops[(i*5+Math.floor(i/5))%guardStops.length]:outdoorStops[(i*7)%outdoorStops.length]));
  const home=distinctSpot(doorApproach(homeBuilding),usedHome),work=distinctSpot(base,usedWork);
  const market=near(100+(i%7-3)*2,98+((i*3)%9-4)*2);
  const venue=VENUE_SLOTS[(i*13)%VENUE_SLOTS.length];
@@ -123,7 +147,7 @@ export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
  const social=distinctSpot(venue.point,usedSocial);
  return {id:"npc-"+String(i+1).padStart(2,"0"),
  name:FIRST[i%20]+(i>=20?" "+["Starszy","Młodsza","z Doliny","z Północy"][i%4]:""),
- role:ROLES[i%8],color:COLORS[i%8],skin:SKINS[i%5],important:i<12,
+ role,color:COLORS[i%8],skin:SKINS[i%5],important:i<12,simulationClass:i<12?"permanent":"resident",behavior,workSpeech:profile?.speech||null,workTitle:workBuilding.name,
  home,work,market,social,homeEntry,workEntry,socialEntry,venueId:venue.id,venueName:venue.name,
  venueMap:venue.map,venueIndoor:venue.indoor,
  homeMap:"interior-"+homeBuilding.id,homeBuilding:homeBuilding.id,
@@ -203,7 +227,16 @@ function scheduleGoal(n,phase){
  return n.venueIndoor?n.socialEntry:n.social;
 }
 function phaseLabel(n,phase){
- return {sleep:"Odpoczywa w domu",morning:"Idzie do pracy",work:"Pracuje",social:"Spędza czas: "+n.venueName,evening:"Wraca do domu"}[phase]||"Spaceruje";
+ if(phase==="work"){
+  return n.behavior==="patrol"?"Patroluje okolice "+n.workTitle:
+   n.behavior==="courier"?"Dostarcza wiadomości między dzielnicami":
+   n.behavior==="merchant"?"Obsługuje klientów — "+n.workTitle:
+   n.behavior==="craft"?"Wykonuje zamówienia — "+n.workTitle:
+   n.behavior==="scholar"?"Prowadzi dokumentację — "+n.workTitle:
+   n.behavior==="innkeeper"?"Obsługuje gości — "+n.workTitle:
+   "Pracuje — "+n.workTitle;
+ }
+ return {sleep:"Odpoczywa w domu",morning:"Idzie do pracy",social:"Spędza czas: "+n.venueName,evening:"Wraca do domu"}[phase]||"Spaceruje";
 }
 function indoorDestination(n,phase){
  if(phase==="sleep"||phase==="evening")return n.homeMap;
@@ -213,11 +246,23 @@ function indoorDestination(n,phase){
 }
 function roamGoal(n){
  const center=n.goal||n.work;
- // Courtyards and meeting places encourage short conversation-friendly stops.
- const distance=n.phase==="social"?4+(n.seed%5):n.role==="Posłaniec"?20:12+(n.seed%12);
+ if(n.phase==="work"&&n.behavior==="patrol"){
+  // Guards rotate between concrete street checkpoints instead of circling
+  // one square endlessly. Each patrol leg has a clear, reachable destination.
+  const stops=[[12,0],[7,10],[-8,12],[-12,0],[-8,-10],[7,-10]];
+  for(let j=0;j<stops.length;j++){
+   const k=((n.patrolIndex||0)+j)%stops.length;
+   const [dx,dy]=stops[k],candidate=near(center.x+dx,center.y+dy);
+   if(Math.abs(candidate.x-n.x)+Math.abs(candidate.y-n.y)>=6){
+    n.patrolIndex=(k+1)%stops.length;return candidate;
+   }
+  }
+ }
+ const distance=n.phase==="social"?4+(n.seed%5):n.behavior==="courier"?20:8+(n.seed%7);
  for(let j=0;j<16;j++){
   const angle=rand(n.seed++)*Math.PI*2;
-  const x=center.x+Math.round(Math.cos(angle)*distance),y=center.y+Math.round(Math.sin(angle)*distance);
+  const x=center.x+Math.round(Math.cos(angle)*distance);
+  const y=center.y+Math.round(Math.sin(angle)*distance);
   const candidate=near(x,y);
   if(walkable(candidate.x,candidate.y)&&Math.abs(candidate.x-n.x)+Math.abs(candidate.y-n.y)>=4)return candidate;
  }
@@ -274,10 +319,13 @@ function moveIndoor(n,player,now,npcs){
   if(x===player.x&&y===player.y||occupied.has(x+","+y))continue;
   n.fromX=n.x;n.fromY=n.y;n.x=x;n.y=y;
   n.direction=dx>0?"right":dx<0?"left":dy>0?"down":"up";
-  n.started=now;n.duration=310;n.nextMove=now+1150+(n.seed%6)*180;
+  n.started=now;n.duration=310;
+  // Someone working a counter or a craft station changes position only
+  // occasionally; leisure guests have a more active interior walk.
+  n.nextMove=now+(n.indoorActivity==="work"?4900:1750)+(n.seed%6)*350;
   return true;
  }
- n.nextMove=now+1600;return false;
+ n.nextMove=now+(n.indoorActivity==="work"?4800:1600);return false;
 }
 export function stepNPCs(npcs,player,clock,now,gateStates={}){
  let changed=false;
@@ -395,11 +443,15 @@ export function nearestNPC(npcs,player){
 }
 export function npcGreeting(n,clock){
  const greet=n.met>=3?"Znów się spotykamy!":clock.hour<12?"Dzień dobry":clock.hour<19?"Witaj, podróżniku":"Dobry wieczór";
- const lines={"Strażnik":"Pilnuję porządku w mieście. Trzymaj się głównych ulic.","Kupiec":"Przybyły nowe towary na targ.","Rzemieślnik":"Pracy nie brakuje, a dobrych narzędzi nigdy za wiele.","Mieszkaniec":"Nasze miasto wciąż się zmienia.","Robotnik":"Od świtu mamy ręce pełne roboty.","Posłaniec":"Mam wiadomości do doręczenia. Droga daleka!"};
+ const lines={"Dowódca straży":"Pilnuję porządku w mieście.","Strażnik":"Pilnuję porządku w mieście.","Kupiec":"Przybyły nowe towary na targ.","Kowal":"Kuźnia ma dziś wiele zamówień.","Karczmarka":"W karczmie zawsze znajdzie się miejsce na rozmowę.","Piekarz":"Rano pachnie świeżym chlebem.","Zielarka":"Zioła mają wiele zastosowań.","Bibliotekarka":"Kroniki kryją niejedną tajemnicę.","Stajenny":"Konie muszą być gotowe do drogi.","Kapłanka":"Świątynia jest otwarta dla potrzebujących.","Magazynier":"Zapasów trzeba pilnować.","Urzędniczka":"Miasto prowadzi wiele spraw.","Rzemieślnik":"Pracy nie brakuje, a dobrych narzędzi nigdy za wiele.","Mieszkaniec":"Nasze miasto wciąż się zmienia.","Robotnik":"Od świtu mamy ręce pełne roboty.","Posłaniec":"Mam wiadomości do doręczenia. Droga daleka!"};
  return greet+". "+(lines[n.role]||"Miłego dnia!");
 }
 export function npcDialogue(n,topic,clock){
- if(topic==="work")return {"Strażnik":"Patroluję bramy i ulice. Zmiana kończy się przed wieczorem.","Kupiec":"Handluję na targowisku; rano jest tam największy ruch.","Rzemieślnik":"Warsztat czeka od rana. Dziś mam sporo zamówień.","Posłaniec":"Przenoszę listy między dzielnicami, czasem poza mury.","Robotnik":"Pomagam przy składach i dostawach.","Mieszkaniec":"Pracuję tam, gdzie akurat jestem potrzebny."}[n.role]||"Każdy ma swoje obowiązki.";
+ if(topic==="work"){
+  if(n.workSpeech)return n.workSpeech;
+  const intro={Strażnik:"Pełnię służbę w mieście.",Kupiec:"Sprzedaję towary.",Rzemieślnik:"Zajmuję się rzemiosłem.",Posłaniec:"Roznoszę listy i wiadomości.",Robotnik:"Pomagam przy dostawach i pracach miejskich.",Mieszkaniec:"Mam codzienne obowiązki."}[n.role]||"Każdy ma swoje obowiązki.";
+  return intro+" Moim miejscem pracy jest "+n.workTitle+".";
+ }
  if(topic==="city")return "Rynek tętni życiem, ale przy murach wciąż trwa rozbudowa. Mieszkańcy spotykają się w "+n.venueName.toLowerCase()+" i innych częściach miasta.";
  if(topic==="activity")return n.task+". "+(n.indoors?"Jestem teraz wewnątrz budynku.":"Na ulicach zawsze coś się dzieje.");
  if(topic==="rumour"){
