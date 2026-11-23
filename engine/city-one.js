@@ -169,3 +169,14 @@ export function cityStepAllowed(x1,y1,x2,y2){
  }
  return true;
 }
+
+// Gate controls are independent of map tiles, so later sieges can operate
+// them without regenerating the city or its building plots.
+export function cityGateBarrierAt(x,y){
+ return CITY_GATES.find(g=>g.axis==="vertical"
+  ? y===g.y&&Math.abs(x-g.x)<=1
+  : x===g.x&&Math.abs(y-g.y)<=1)||null;
+}
+export function cityGateControlNear(x,y){
+ return CITY_GATES.find(g=>Math.abs(x-g.x)+Math.abs(y-g.y)<=4)||null;
+}
