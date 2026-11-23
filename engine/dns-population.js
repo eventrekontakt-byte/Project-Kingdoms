@@ -1,7 +1,11 @@
-// DNS 1.0 / Alpha 0.3.25 — bounded, camera-streamed ambient population.
+// DNS 1.0 / Alpha 0.3.26 — observation-aware hybrid population.
 // Only real on-screen actors are objects. The city's simulated headcount is metadata.
 import {CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
 const CITY="site-city1", CHUNK=12, LIMIT=38, SYNC_MS=1300, GRACE_MS=14000;
+const OBSERVE_MS=20000,FOLLOW_MS=60000,MAX_ADVANCED=3,MAX_FOLLOWED=1;
+const N=CITY_WIDTH*CITY_HEIGHT;
+const visit=new Uint32Array(N),parent=new Int32Array(N),queue=new Int32Array(N);
+let searchSerial=0;
 const COLORS=["#879dcb","#af876f","#b1a683","#7bafa7","#ce938f","#a397c4","#9bac83"];
 const SKINS=["#eac49e","#9f6c4c","#c38f67","#edb783"];
 const ROLES=["Przechodzień","Mieszkaniec","Tragarz","Podróżny","Robotnik"];
@@ -37,12 +41,12 @@ function peopleAt(fixed,actors,x,y,player){
  for(const n of actors)if(n.map===CITY&&n.x===x&&n.y===y)return true;
  return false;
 }
-export const AMBIENT_CONFIG=Object.freeze({chunkSize:CHUNK,maxActive:LIMIT,syncMs:SYNC_MS,despawnGraceMs:GRACE_MS,populationPotential:650});
+export const AMBIENT_CONFIG=Object.freeze({chunkSize:CHUNK,maxActive:LIMIT,syncMs:SYNC_MS,despawnGraceMs:GRACE_MS,populationPotential:650,observationMs:OBSERVE_MS,followMs:FOLLOW_MS,maxAdvanced:MAX_ADVANCED,maxFollowed:MAX_FOLLOWED});
 export function createAmbientPopulation(){
- return {actors:[],loaded:new Set(),serial:0,lastSync:-Infinity,generated:0,removed:0};
+ return {actors:[],loaded:new Set(),serial:0,lastSync:-Infinity,generated:0,removed:0,focusId:null,manualFocus:false,focusLostAt:0,lastObservationAt:null};
 }
 export function resetAmbientPopulation(pop){
- pop.actors.length=0;pop.loaded.clear();pop.lastSync=-Infinity;pop.serial=0;pop.generated=0;pop.removed=0;
+ pop.actors.length=0;pop.loaded.clear();pop.lastSync=-Infinity;pop.serial=0;pop.generated=0;pop.removed=0;pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;pop.lastObservationAt=null;
 }
 function density(x,y,clock){
  const type=district(x,y),hour=clock.hour,day=hour>=7&&hour<20;
@@ -64,7 +68,7 @@ function chooseSpawn(pop,cx,cy,slot,clock,viewRect,gateStates,fixed,player){
    skin:SKINS[(h>>>15)%SKINS.length],simulationClass:"ambient",important:false,map:CITY,x,y,
    fromX:x,fromY:y,direction:STEPS[h%4][0]?"right":"down",started:-1,duration:350,
    nextMove:0,seed:h,goal:null,talking:false,met:0,createdAt:0,unseenSince:0,
-   district:district(x,y),task:"Przechodzi przez miasto",workTitle:"okoliczne ulice",venueName:"mieście"};
+   district:district(x,y),task:"Przechodzi przez miasto",workTitle:"okoliczne ulice",venueName:"mieście",simulationLevel:0,observationMs:0,focusMs:0,visibleLastAt:0,route:[],nextPlan:0};
  }
  return null;
 }
