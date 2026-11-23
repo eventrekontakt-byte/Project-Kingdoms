@@ -37,25 +37,49 @@ export const CITY_BRIDGE={id:"city1-bridge-01",x:40,y1:53,y2:58,z:2,
 export function isBridgeDeck(map,x,y){return map==="site-city1"&&x===CITY_BRIDGE.x&&y>=CITY_BRIDGE.y1&&y<=CITY_BRIDGE.y2;}
 export function isBridgeStair(map,x,y){return map==="site-city1"&&CITY_BRIDGE.stairs.some(p=>p.x===x&&p.y===y);}
 export function surfaceLevels(map,x,y,floor=0){
- if(isBridgeDeck(map,x,y))return [0,CITY_BRIDGE.z];
+ if(isElevatedPlatform(map,x,y))return [0,CITY_BRIDGE.z];
  if(isBridgeStair(map,x,y))return [0,1];
  return [elevationAt(map,x,y,floor)];
 }
 export function resolveSurfaceStep(map,from,to,floor=0){
  const fromZ=Number.isInteger(from.z)?from.z:elevationAt(map,from.x,from.y,floor);
- const levels=surfaceLevels(map,to.x,to.y,floor);
- if(map!=="site-city1")return {allowed:true,z:levels[0]};
- const onDeck=isBridgeDeck(map,from.x,from.y),nextDeck=isBridgeDeck(map,to.x,to.y);
+ const toBase=elevationAt(map,to.x,to.y,floor);
+ if(map!=="site-city1")return {allowed:true,z:toBase};
  const onStair=isBridgeStair(map,from.x,from.y),nextStair=isBridgeStair(map,to.x,to.y);
- // Only the dedicated stair tiles connect street level to bridge level.
- if(nextStair&&onDeck&&fromZ===2)return {allowed:true,z:1};
- if(onStair&&nextDeck&&fromZ===1)return {allowed:true,z:2};
- if(onStair&&fromZ===1&&!nextDeck)return {allowed:true,z:0};
- if(nextStair&&fromZ===0)return {allowed:true,z:1};
- if(onDeck&&nextDeck&&fromZ===2)return {allowed:true,z:2};
- if(nextDeck&&fromZ===0)return {allowed:true,z:0}; // under the bridge
- if(onDeck&&fromZ===2&&!nextStair)return {allowed:false,z:fromZ};
- if(onDeck&&fromZ===0)return {allowed:true,z:0};
- if(fromZ!==0&&fromZ!==elevationAt(map,from.x,from.y,floor))return {allowed:false,z:fromZ};
- return {allowed:true,z:levels[0]};
+ const onPlatform=isElevatedPlatform(map,from.x,from.y),nextPlatform=isElevatedPlatform(map,to.x,to.y);
+ // Street -> stair -> upper platform, and the reverse direction.
+ if(nextStair){
+  if(onPlatform&&fromZ===2)return {allowed:true,z:1};
+  if(fromZ===0)return {allowed:true,z:1};
+  if(onStair&&fromZ===1)return {allowed:true,z:1};
+  return {allowed:false,z:fromZ};
+ }
+ if(onStair&&fromZ===1){
+  if(nextPlatform)return {allowed:true,z:2};
+  if(!nextPlatform&&toBase===0)return {allowed:true,z:0};
+  return {allowed:false,z:fromZ};
+ }
+ if(onPlatform&&fromZ===2){
+  if(nextPlatform)return {allowed:true,z:2};
+  return {allowed:false,z:fromZ};
+ }
+ if(nextPlatform&&fromZ===0)return {allowed:true,z:0}; // beneath the deck
+ if(onPlatform&&fromZ===0)return {allowed:true,z:toBase};
+ if(fromZ!==toBase&&fromZ!==elevationAt(map,from.x,from.y,floor))return {allowed:false,z:fromZ};
+ return {allowed:true,z:toBase};
+}
+
+// VIS 1.6: watchtower roof and its balcony share the bridge's elevated deck.
+// These surfaces remain independent of ground movement at identical coordinates.
+export const CITY_WATCHTOWER={id:"city1-watchtower-test",roof:{x1:39,y1:49,x2:40,y2:51},balcony:{x1:38,y1:50,x2:38,y2:50},z:2,access:{x:40,y:52}};
+export function isWatchtowerRoof(map,x,y){
+ const b=CITY_WATCHTOWER.roof;
+ return map==="site-city1"&&x>=b.x1&&x<=b.x2&&y>=b.y1&&y<=b.y2;
+}
+export function isWatchtowerBalcony(map,x,y){
+ const b=CITY_WATCHTOWER.balcony;
+ return map==="site-city1"&&x>=b.x1&&x<=b.x2&&y>=b.y1&&y<=b.y2;
+}
+export function isElevatedPlatform(map,x,y){
+ return isBridgeDeck(map,x,y)||isWatchtowerRoof(map,x,y)||isWatchtowerBalcony(map,x,y);
 }
