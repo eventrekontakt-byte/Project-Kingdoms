@@ -70,8 +70,31 @@ for(let x=CITADEL[0];x<=CITADEL[2];x++)for(let y=CITADEL[1];y<=CITADEL[3];y++)
 path(ROAD,[[60,58],[60,65],[67,70],[83,77]],1);
 for(let y=57;y<=59;y++)for(let x=58;x<=62;x++)INNER.delete(KEY(x,y));
 // Wall courses must never pass through buildings or cover the gate passage.
-for(const b of CITY_BUILDINGS)for(let y=b.bounds[1]-1;y<=b.bounds[3]+1;y++)for(let x=b.bounds[0]-1;x<=b.bounds[2]+1;x++){WALL.delete(KEY(x,y));INNER.delete(KEY(x,y));}
+
 for(const g of CITY_GATES)for(let y=g.bounds[1];y<=g.bounds[3];y++)for(let x=g.bounds[0];x<=g.bounds[2];x++){WALL.delete(KEY(x,y));INNER.delete(KEY(x,y));}
+// Resolve geometry conflicts by moving buildings, NEVER erasing the curtain wall.
+// Maintain the original footprint and facade direction for portal compatibility.
+const placed=[];
+for(const b of CITY_BUILDINGS){
+ const original=b.bounds.slice(),[x1,y1,x2,y2]=original;
+ const fits=(dx,dy)=>{
+  const B=[x1+dx,y1+dy,x2+dx,y2+dy];
+  if(B[0]<2||B[1]<2||B[2]>=CITY_WIDTH-2||B[3]>=CITY_HEIGHT-2)return false;
+  if(placed.some(p=>B[0]<=p[2]+1&&B[2]>=p[0]-1&&B[1]<=p[3]+1&&B[3]>=p[1]-1))return false;
+  for(let y=B[1];y<=B[3];y++)for(let x=B[0];x<=B[2];x++)
+   if(WALL.has(KEY(x,y))||INNER.has(KEY(x,y)))return false;
+  return true;
+ };
+ let choice=null,score=Infinity;
+ for(let radius=0;radius<=36;radius++)for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){
+  if(Math.max(Math.abs(dx),Math.abs(dy))!==radius||!fits(dx,dy))continue;
+  let roads=0;for(let y=y1+dy;y<=y2+dy;y++)for(let x=x1+dx;x<=x2+dx;x++)if(ROAD.has(KEY(x,y)))roads++;
+  const cost=radius*100+roads*2;
+  if(cost<score){score=cost;choice=[dx,dy];}
+ }
+ if(choice){const [dx,dy]=choice;b.bounds=[x1+dx,y1+dy,x2+dx,y2+dy];if(b.door){b.door={x:b.door.x+dx,y:b.door.y+dy};}}
+ placed.push(b.bounds);
+}
 // Put the staircase on walkable ground exactly next to a wall, with a clear approach.
 for(const [x,y] of [[48,60],[69,60],[74,43],[44,43],[96,23],[103,25],[89,25],[96,136],[89,135],[103,135],[27,73],[28,89],[164,73],[163,91],[54,132],[136,121]]){
  if(CITY_BUILDINGS.some(b=>rect(x,y,b.bounds))||WALL.has(KEY(x,y))||INNER.has(KEY(x,y)))continue;
@@ -108,11 +131,11 @@ const VACANT=new Set();for(const p of CITY_VACANT_PLOTS)for(let y=p.bounds[1];y<
 export function cityTile(x,y){
  if(x<0||y<0||x>=CITY_WIDTH||y>=CITY_HEIGHT)return "void";
  const gate=cityGatePart(x,y);if(gate)return gate.part==="tower"?"rampart":"road";
- const b=cityBuildingAt(x,y);if(b)return b.door?.x===x&&b.door?.y===y?"door":"wall";
  const key=KEY(x,y);
+ if(INNER.has(key)||WALL.has(key))return "rampart";
+ const b=cityBuildingAt(x,y);if(b)return b.door?.x===x&&b.door?.y===y?"door":"wall";
  if(VACANT.has(key))return "meadow";
  if(CITY_STAIRS.some(s=>s.x===x&&s.y===y))return "stairs-up";
- if(INNER.has(key)||WALL.has(key))return "rampart";
  if(ROAD.has(key))return "road";
  if(!within(x,y))return y>130?"meadow":(x*13+y*17)%23===0?"tree":"grass";
  if(x>=88&&x<=107&&y>=82&&y<=100)return "road";
@@ -135,6 +158,7 @@ export function cityLayoutIssues(){
  const a=CITY_BUILDINGS[i],A=a.bounds;
  for(let j=i+1;j<CITY_BUILDINGS.length;j++){const b=CITY_BUILDINGS[j],B=b.bounds;if(A[0]<=B[2]&&A[2]>=B[0]&&A[1]<=B[3]&&A[3]>=B[1])issues.push("overlap:"+a.id+":"+b.id);}
  for(const g of CITY_GATES){const G=g.bounds;if(A[0]<=G[2]&&A[2]>=G[0]&&A[1]<=G[3]&&A[3]>=G[1])issues.push("gate:"+a.id+":"+g.id);}
+ for(let y=A[1];y<=A[3];y++)for(let x=A[0];x<=A[2];x++)if(WALL.has(KEY(x,y))||INNER.has(KEY(x,y)))issues.push("wall-building:"+a.id+":"+x+","+y);
  if(a.door){const [dx,dy]={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[a.facing];if(["wall","rampart","void","water"].includes(cityTile(a.door.x+dx,a.door.y+dy)))issues.push("door:"+a.id);}
  }
  return issues;
