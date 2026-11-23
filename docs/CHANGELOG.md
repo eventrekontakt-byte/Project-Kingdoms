@@ -8,6 +8,7 @@
 - Pracownicy we wnętrzach wykonują znacznie rzadsze przemieszczenia, pozwalając im pozostawać przy miejscu pracy. Status "Co teraz robisz?" opisuje zawód i stanowisko.
 - Rozszerzono grafikę nakryć głowy o dowódcę straży; pozostała oprawa NPC bez zmian.
 - Nie zmieniano układu miasta, zoomu, minimapy ani struktury zapisu (schema 9). Te funkcje należą do następnych etapów DNS.
+- Wczytywanie starszych zapisów resetuje fazę rutyny NPC do ponownego przeliczenia, dzięki czemu kupiec zapisany wcześniej w błędnym miejscu pracy trafia do właściwego budynku bez czyszczenia historii rozmów.
 - Test logiczny dnia 6:00–24:00: Berta o 8:42 i 12:00 jest w hali targowej, w godzinach nocnych przebywa w domu; nie wykryto kolizji NPC, ani niedozwolonych pozycji. Symulacja patrolu dowódcy i strażnika objęła odpowiednio 83 i 78 różnych kratek w próbie. Test mobilny w przeglądarce pozostaje do wykonania.
 
 ## Alpha 0.3.23 — NPC 1.2.2: naprawa ruchu na ekranie
