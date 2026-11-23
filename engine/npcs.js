@@ -205,6 +205,15 @@ function roamGoal(n){
  }
  return center;
 }
+function unoccupiedGround(goal,occupied){
+ if(!occupied.has(goal.x+","+goal.y))return goal;
+ for(let r=1;r<=8;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){
+  if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;
+  const x=goal.x+dx,y=goal.y+dy;
+  if(walkable(x,y)&&!occupied.has(x+","+y))return {x,y};
+ }
+ return goal;
+}
 function enterBuilding(n,map,phase,npcs,now){
  const used=new Set(npcs.filter(o=>o!==n&&o.map===map).map(o=>o.map+":"+o.x+","+o.y));
  const spot=interiorSpot(map,Number(n.id.slice(-2))+n.seed%9,used);
@@ -263,9 +272,9 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
    n.phase=phase;n.goal=scheduleGoal(n,phase);n.steps=[];n.destination=null;n.roams=0;
    n.task=phaseLabel(n,phase);n.blockedCount=0;
   }
-  const closeOutside=player.map===CITY&&n.map===CITY&&
+  let closeOutside=player.map===CITY&&n.map===CITY&&
    Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
-  const insideWithPlayer=n.map!=="site-city1"&&n.map===player.map;
+  let insideWithPlayer=n.map!=="site-city1"&&n.map===player.map;
   if(n.indoors){
    if(n.indoorActivity===phase){
     if(insideWithPlayer&&moveIndoor(n,player,now,npcs))changed=true;
@@ -273,6 +282,8 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
    }
    // Day's next activity begins with leaving through the building's exit.
    comeOutside(n,now,npcs);changed=true;
+   closeOutside=player.map===CITY&&Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
+   insideWithPlayer=false;
   }
   if(!closeOutside&&!insideWithPlayer){
    // Cheap off-screen simulation: update only on phase changes, without A*.
@@ -280,7 +291,7 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
     const indoor=indoorDestination(n,phase);
     if(indoor&&enterBuilding(n,indoor,phase,npcs,now)){changed=true;}
     else{
-     const dest=scheduleGoal(n,phase);occupied.delete(n.x+","+n.y);
+     const dest=unoccupiedGround(scheduleGoal(n,phase),occupied);occupied.delete(n.x+","+n.y);
      n.map=CITY;n.x=dest.x;n.y=dest.y;n.fromX=n.x;n.fromY=n.y;
      n.steps=[];n.started=-1;n.destination=null;n.nextMove=now+800;
      occupied.add(n.x+","+n.y);changed=true;
@@ -339,28 +350,48 @@ export function nearestNPC(npcs,player){
  return npcs.find(n=>n.map===player.map&&Math.abs(n.x-player.x)+Math.abs(n.y-player.y)<=2);
 }
 export function npcGreeting(n,clock){
- const greet=clock.hour<12?"Dzień dobry":clock.hour<19?"Witaj, podróżniku":"Dobry wieczór";
+ const greet=n.met>=3?"Znów się spotykamy!":clock.hour<12?"Dzień dobry":clock.hour<19?"Witaj, podróżniku":"Dobry wieczór";
  const lines={"Strażnik":"Pilnuję porządku w mieście. Trzymaj się głównych ulic.","Kupiec":"Przybyły nowe towary na targ.","Rzemieślnik":"Pracy nie brakuje, a dobrych narzędzi nigdy za wiele.","Mieszkaniec":"Nasze miasto wciąż się zmienia.","Robotnik":"Od świtu mamy ręce pełne roboty.","Posłaniec":"Mam wiadomości do doręczenia. Droga daleka!"};
  return greet+". "+(lines[n.role]||"Miłego dnia!");
 }
 export function npcDialogue(n,topic,clock){
  if(topic==="work")return {"Strażnik":"Patroluję bramy i ulice. Zmiana kończy się przed wieczorem.","Kupiec":"Handluję na targowisku; rano jest tam największy ruch.","Rzemieślnik":"Warsztat czeka od rana. Dziś mam sporo zamówień.","Posłaniec":"Przenoszę listy między dzielnicami, czasem poza mury.","Robotnik":"Pomagam przy składach i dostawach.","Mieszkaniec":"Pracuję tam, gdzie akurat jestem potrzebny."}[n.role]||"Każdy ma swoje obowiązki.";
- if(topic==="city")return "Rynek tętni życiem, ale przy murach wciąż trwa rozbudowa. Wieczorami mieszkańcy spotykają się w karczmie.";
+ if(topic==="city")return "Rynek tętni życiem, ale przy murach wciąż trwa rozbudowa. Mieszkańcy spotykają się w "+n.venueName.toLowerCase()+" i innych częściach miasta.";
+ if(topic==="activity")return n.task+". "+(n.indoors?"Jestem teraz wewnątrz budynku.":"Na ulicach zawsze coś się dzieje.");
+ if(topic==="rumour"){
+  const rumours=[
+   "Strażnicy mówią, że przy bramach pojawili się nowi przybysze.",
+   "Kupcy liczą na większy ruch w dzielnicy handlowej.",
+   "Przy arenie podobno szykuje się wielkie widowisko.",
+   "W karczmie można usłyszeć historie o okolicznych ruinach.",
+   "Budowniczowie mają jeszcze sporo pracy przy miejskich murach."
+  ];
+  return rumours[Number(n.id.slice(-2))%rumours.length];
+ }
  return npcGreeting(n,clock);
 }
-export function exportNPCState(npcs){return npcs.map(n=>({id:n.id,map:n.map,x:n.x,y:n.y,direction:n.direction,indoors:n.indoors}));}
+export function exportNPCState(npcs){
+ return npcs.map(n=>({id:n.id,map:n.map,x:n.x,y:n.y,direction:n.direction,
+  indoors:n.indoors,indoorActivity:n.indoorActivity,phase:n.phase,met:n.met||0}));
+}
 export function restoreNPCState(npcs,saved){
  if(!Array.isArray(saved))return;
  const savedById=new Map(saved.filter(x=>x&&typeof x.id==="string").map(x=>[x.id,x]));
  for(const n of npcs){
   const data=savedById.get(n.id);if(!data)continue;
-  const indoors=data.map===n.homeMap;
+  const indoors=[n.homeMap,n.workMap,n.venueMap].includes(data.map)&&data.map!==CITY;
   if(!indoors&&data.map!==CITY)continue;
   if(!Number.isInteger(data.x)||!Number.isInteger(data.y))continue;
-  if(!indoors&&!walkable(data.x,data.y))continue;
-  if(indoors&&(data.x<2||data.y<2||data.x>18||data.y>18))continue;
-  n.map=data.map;n.indoors=indoors;n.x=data.x;n.y=data.y;n.fromX=n.x;n.fromY=n.y;
+  const size=mapSize(data.map);
+  if(data.x<1||data.y<1||data.x>=size.w-1||data.y>=size.h-1)continue;
+  const tile=tileAt(data.map,0,data.x,data.y);
+  if(indoors?!["wood","stone","marble"].includes(tile):!walkable(data.x,data.y))continue;
+  n.map=data.map;n.indoors=indoors;n.x=data.x;n.y=data.y;
+  n.fromX=n.x;n.fromY=n.y;n.met=Math.max(0,Math.min(999,Number(data.met)||0));
   n.direction=["up","down","left","right"].includes(data.direction)?data.direction:"down";
-  n.phase="";n.steps=[];n.started=-1;n.destination=null;n.nextMove=0;
+  n.indoorActivity=indoors?["sleep","work","social"].includes(data.indoorActivity)?data.indoorActivity:"sleep":null;
+  n.phase=["sleep","morning","work","social","evening"].includes(data.phase)?data.phase:"";
+  n.goal=n.phase?scheduleGoal(n,n.phase):null;n.task=phaseLabel(n,n.phase);
+  n.steps=[];n.started=-1;n.destination=null;n.nextMove=0;n.roams=0;
  }
 }
