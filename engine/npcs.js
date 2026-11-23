@@ -1,4 +1,4 @@
-// NPC 1.2.1 (0.3.22): residential homes, real entry points and guaranteed night-time return.
+// NPC 1.2.2 (0.3.23): preserve planned walking destinations across ticks.
 import {CITY_BUILDINGS,CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
 import {tileAt,mapSize} from "./world.js";
 const FIRST=["Aldric","Berta","Cedryk","Daria","Edmund","Fenna","Gustaw","Hilda","Iwo","Jagna","Konrad","Lena","Marek","Nora","Oskar","Petra","Radomir","Sara","Tomasz","Wera"];
@@ -341,7 +341,9 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
   if(indoor&&Math.abs(n.x-n.goal.x)+Math.abs(n.y-n.goal.y)<=4){
    if(enterBuilding(n,indoor,phase,npcs,now)){occupied.delete(n.x+","+n.y);changed=true;continue;}
   }
-  if(!indoor&&n.x===n.goal.x&&n.y===n.goal.y&&!n.steps.length){
+  // Keep the selected roam destination until movement can start. The old
+  // condition replaced it every tick while the NPC stood at their work spot.
+  if(!indoor&&!n.destination&&n.x===n.goal.x&&n.y===n.goal.y&&!n.steps.length){
    if(phase==="sleep"||phase==="evening"){
     n.nextMove=now+1900;continue;
    }
