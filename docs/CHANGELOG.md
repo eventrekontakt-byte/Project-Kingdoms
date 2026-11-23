@@ -1,3 +1,11 @@
+## 0.3.10-alpha — VIS 1.6: wieża i balkon (bez przejścia do 0.4)
+- Miasto 1: testowa wieża strażnicza z dostępnym dachem (x=39–40, y=49–51) i balkonem (x=38, y=50).
+- Wejście na dach przez istniejące schody (40,52), poziom Z=2; możliwość zejścia i powrotu.
+- Dach i balkon współdzielą system kolizji i poziomów z mostem, a teren pod nimi pozostaje niezależną powierzchnią Z=0.
+- Dodano kamienne blanki, fakturę tarasu i drewnianą balustradę balkonu.
+- A* rozpoznaje dach i balkon jako powierzchnie na wysokości Z=2.
+- Wersja nadal 0.3.x: rozwijamy mapy przed awansem do 0.4.
+
 ## 0.3.9.1-alpha — poprawka uruchamiania
 - Naprawiono błąd „elevation.js does not provide an export named CITY_BRIDGE” wywołany użyciem starej wersji modułu z pamięci przeglądarki.
 - Dodano wersjonowane adresy importów elevation.js i pathfinding.js oraz ich wpisy w pre-cache.
