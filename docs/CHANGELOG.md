@@ -1,3 +1,10 @@
+## Alpha 0.3.13 — optymalizacja miasta i wnętrz
+- Usunięto kolizję domu z biblioteką i kolizję apteki z bramą wschodnią.
+- Dodano walidator nakładania się budynków, bram i wyjść.
+- Usunięto wielokrotne obliczanie masek BIS i wejść podczas renderowania każdej kratki.
+- Dodano statyczne układy mebli w pozostałych budynkach, z kolizją i grafiką wielokratkową.
+- Zachowano dotychczasowe działanie bram i zapisów.
+
 ## 0.3.12-alpha — VIS 1.8: interaktywne bramy miejskie
 - Cztery bramy miejskie mają niezależne, podnoszone i opuszczane kraty.
 - Użycie Zbadaj/E w pobliżu bramy przełącza stan kraty.
