@@ -2,7 +2,7 @@ import {TAVERN_MAP,TAVERN_SIZE,tavernTile,tavernObject,tavernPortals} from "./in
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {SITE_LAYOUTS,siteTile} from "./sites.js";
 import {CITY_WIDTH,CITY_HEIGHT,CITY_BUILDINGS,cityTile,cityDoorAt} from "./city-one.js";
-import {CITY_INTERIORS,interiorTile,interiorMapFor,interiorEntrance} from "./city-interiors.js";
+import {CITY_INTERIORS,interiorTile,interiorMapFor,interiorEntrance,interiorObjectAt} from "./city-interiors.js?v=0.3.13";
 import {BUILDINGS,BUILDING_ENTRIES,roomWall} from "./buildings.js";
 // Data-driven locations, floors and explicit paired transitions.
 export const START={map:"site-city1",floor:0,x:55,y:76};
@@ -65,7 +65,7 @@ for(const p of tavernPortals())if(p.to)PORTALS.push([TAVERN_MAP,...p.from,TAVERN
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
 export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
 export function mapSize(map){const l=LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
-export function objectAt(map,floor,x,y){return map===TAVERN_MAP?tavernObject(floor,x,y):OBJECTS[portalKey(map,floor,x,y)]||null;}
+export function objectAt(map,floor,x,y){return map===TAVERN_MAP?tavernObject(floor,x,y):CITY_INTERIORS[map]?interiorObjectAt(map,x,y):OBJECTS[portalKey(map,floor,x,y)]||null;}
 export function transitionAt(map,floor,x,y){return portalIndex.get(portalKey(map,floor,x,y))||null;}
 export const DOORS={
  "overworld:0:24:20":{id:"keep-main",name:"Brama warowni",initial:"open"},
