@@ -1,4 +1,4 @@
-import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting} from "./npcs.js?v=0.3.19";
+import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.20";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.14";
@@ -13,7 +13,8 @@ import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
 import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
-const npcs=createNPCs();
+const npcs=createNPCs();state.npcs=npcs;
+let activeNpc=null;
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 // VIS 1.0: authoritative tile coordinates stay integer; visual coordinates interpolate.
 const visual={x:START.x+.5,y:START.y+.5,map:START.map,floor:START.floor,
@@ -62,7 +63,7 @@ function animateVisual(now){
  }
  // Do not redraw an idle map 60 times per second on mobile.
  const cameraMoving=Math.abs(visual.cameraTargetX-state.camera.x)+Math.abs(visual.cameraTargetY-state.camera.y)>.002;
- if((visual.active||cameraMoving)&&now-visual.lastPaint>=30){draw();visual.lastPaint=now;}
+ if((visual.active||cameraMoving||npcMoving(npcs,p,now))&&now-visual.lastPaint>=40){draw();visual.lastPaint=now;}
  requestAnimationFrame(animateVisual);
 }
 function notify(message){const el=$("toast");el.textContent=message;el.classList.add("visible");clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove("visible"),2300);}
@@ -124,7 +125,8 @@ function draw(){
    else if(o.type==="shelf"||o.type==="crate"){ctx.strokeStyle="#c9a06b";for(let i=1;i<o.w;i++){ctx.beginPath();ctx.moveTo(x+i*size,y+size*.15);ctx.lineTo(x+i*size,y+fh-size*.15);ctx.stroke();}}
   }
  }
- if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);drawNPCs(cx,cy,w,h,size);}
+ if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
+ drawNPCs(cx,cy,w,h,size);
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -140,15 +142,54 @@ function draw(){
  hud();
 }
 // Decorations are rendered behind furniture; rugs and stairs do not block movement.
+// Directional, mobile-friendly miniature character sprites (no external image files).
 function drawNPCs(cx,cy,w,h,size){
+ const now=performance.now();
  for(const n of visibleNPCs(npcs,state.player)){
-  const sx=(n.x+.5-cx)*size+w/2,sy=(n.y+.5-cy)*size+h/2;
+  const walking=n.started>=0&&now<n.started+n.duration;
+  const t=walking?Math.min(1,(now-n.started)/n.duration):1;
+  const smooth=t*t*(3-2*t);
+  const x=walking?n.fromX+(n.x-n.fromX)*smooth:n.x;
+  const y=walking?n.fromY+(n.y-n.fromY)*smooth:n.y;
+  const sx=(x+.5-cx)*size+w/2,sy=(y+.5-cy)*size+h/2;
   if(sx<-size||sy<-size||sx>w+size||sy>h+size)continue;
-  const r=Math.max(3,size*.23);
-  ctx.fillStyle="#10182080";ctx.beginPath();ctx.ellipse(sx,sy+size*.15,r*1.2,r*.45,0,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=n.color;ctx.beginPath();ctx.arc(sx,sy,r,0,Math.PI*2);ctx.fill();
-  ctx.strokeStyle=n.important?"#ffe2a4":"#e4e9dc";ctx.lineWidth=Math.max(1,size*.055);ctx.stroke();
-  if(size>=19){ctx.font="bold "+Math.max(9,Math.min(12,size*.32))+"px system-ui";ctx.textAlign="center";ctx.textBaseline="bottom";ctx.fillStyle="#fff5dc";ctx.fillText(n.name,sx,sy-r-3);}
+  const bob=walking?Math.abs(Math.sin(t*Math.PI*2))*1.25:0;
+  const stride=walking?Math.sin(t*Math.PI*2)*2.6:0;
+  const scale=Math.max(7,Math.min(size*.88,30))/24;
+  ctx.save();ctx.translate(sx,sy);ctx.scale(scale,scale);ctx.lineCap="round";
+  // Ground shadow beneath the moving feet.
+  ctx.fillStyle="#07141b80";ctx.beginPath();ctx.ellipse(0,10,8,2.6,0,0,Math.PI*2);ctx.fill();
+  const facing=n.direction||"down",faceDown=facing==="down",faceUp=facing==="up";
+  const side=facing==="right"?1:facing==="left"?-1:0;
+  ctx.strokeStyle="#332b29";ctx.lineWidth=3.6;
+  ctx.beginPath();ctx.moveTo(-3,6-bob);ctx.lineTo(-3-stride,10);ctx.moveTo(3,6-bob);ctx.lineTo(3+stride,10);ctx.stroke();
+  ctx.fillStyle=n.color;ctx.strokeStyle="#29333b";ctx.lineWidth=1;
+  ctx.fillRect(-6,-2-bob,12,10);ctx.strokeRect(-6,-2-bob,12,10);
+  // Arms shift opposite to the stepping leg.
+  ctx.strokeStyle=n.skin||"#dfb58d";ctx.lineWidth=3.2;
+  ctx.beginPath();ctx.moveTo(-6,0-bob);ctx.lineTo(-8+stride*.45,5-bob);
+  ctx.moveTo(6,0-bob);ctx.lineTo(8-stride*.45,5-bob);ctx.stroke();
+  ctx.fillStyle=n.skin||"#e0b38a";ctx.beginPath();ctx.arc(side*1,-7-bob,5.3,0,Math.PI*2);ctx.fill();
+  // Hair/helmet/cap denotes profession rather than a plain colored dot.
+  const helmet=n.role==="Strażnik",cap=n.role==="Kupiec"||n.role==="Posłaniec";
+  ctx.fillStyle=helmet?"#8e9da6":cap?"#754a34":"#463b32";
+  ctx.beginPath();ctx.arc(side*1,-9.7-bob,5.3,Math.PI,Math.PI*2);ctx.fill();
+  if(helmet){ctx.fillStyle="#bfcbd0";ctx.fillRect(-5,-11.5-bob,10,2);}
+  if(cap){ctx.fillRect(side-6,-12-bob,12,2.2);}
+  ctx.fillStyle="#1d2429";
+  if(!faceUp){
+   if(side!==0){ctx.fillRect(side*4-1,-7-bob,1.5,1.5);}
+   else{ctx.fillRect(-3,-7-bob,1.3,1.3);ctx.fillRect(2,-7-bob,1.3,1.3);}
+  }else{ctx.fillStyle="#322b2b";ctx.fillRect(-3,-9-bob,6,1);}
+  if(n.important){ctx.strokeStyle="#f5d692";ctx.lineWidth=.85;ctx.strokeRect(-7,-14-bob,14,24);}
+  ctx.restore();
+  if(size>=21){
+   const font=Math.max(9,Math.min(12,size*.34));
+   ctx.textAlign="center";ctx.textBaseline="bottom";ctx.font="bold "+font+"px system-ui";
+   const label=n.name,width=ctx.measureText(label).width+8;
+   ctx.fillStyle="#15202bcc";ctx.fillRect(sx-width/2,sy-size*.68-font-3,width,font+5);
+   ctx.fillStyle="#fff2d8";ctx.fillText(label,sx,sy-size*.68);
+  }
  }
 }
 function drawTavernDecor(floor,cx,cy,w,h,size){
@@ -538,6 +579,7 @@ function drawCityTerrain(ctx,t,x,y,sx,sy,size){
 }
 function follow(){visual.manualPan=false;visual.cameraTargetX=state.player.x+.5;visual.cameraTargetY=state.player.y+.5;}
 function move(dir,fromPath=false){
+ if(activeNpc)closeNPCDialogue();
  if(strategic?.active())return strategic.move(dir);
  if(!fromPath)path=[];
  const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[dir];if(!d)return false;
@@ -578,6 +620,8 @@ canvas.addEventListener("pointermove",e=>{if(!drag||drag.id!==e.pointerId)return
 canvas.addEventListener("pointerup",e=>{if(!drag||drag.id!==e.pointerId)return;
  if(!drag.moved){
   const goal=toTile(e);
+  const selected=visibleNPCs(npcs,state.player).find(n=>Math.abs(n.x-goal.x)+Math.abs(n.y-goal.y)<=1);
+  if(selected&&!state.plotMode&&Math.abs(selected.x-state.player.x)+Math.abs(selected.y-state.player.y)<=3){showNPCDialogue(selected);drag=null;return;}
   if(state.plotMode&&state.player.map==="site-city1"){
    const plot=plotAt(goal.x,goal.y);state.selectedPlot=plot?.id||null;
    refreshPlotPanel();if(plot)notify(plot.name);draw();
@@ -603,6 +647,7 @@ $("plotReserveBtn").addEventListener("click",()=>{
 $("zoomIn").addEventListener("click",()=>zoom(1));$("zoomOut").addEventListener("click",()=>zoom(-1));$("centerCamera").addEventListener("click",()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();});
 $("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
+ closeNPCDialogue();restoreNPCState(npcs,data.npcState);
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
  Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.gateStates=data.gateStates||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
  state.camera.zoom=Number.isFinite(data.camera?.zoom)?Math.max(.25,Math.min(3,data.camera.zoom)):1;
@@ -640,9 +685,39 @@ function showObjectPanel(object){
  }
  const close=document.createElement("button");close.textContent="Zamknij okno";close.style.margin="4px";close.addEventListener("click",()=>panel.remove());panel.appendChild(close);
 }
+function closeNPCDialogue(){
+ if(activeNpc)activeNpc.talking=false;
+ activeNpc=null;
+ const panel=$("npcDialoguePanel");if(panel)panel.remove();
+}
+function showNPCDialogue(n,topic="hello"){
+ if(!n)return;
+ if(activeNpc!==n){closeNPCDialogue();activeNpc=n;n.talking=true;}
+ let panel=$("npcDialoguePanel");
+ if(!panel){
+  panel=document.createElement("div");panel.id="npcDialoguePanel";
+  Object.assign(panel.style,{position:"absolute",left:"8px",right:"8px",bottom:"12px",maxWidth:"480px",
+   margin:"auto",boxSizing:"border-box",zIndex:"20",background:"#162432f5",border:"1px solid #b19b70",
+   borderRadius:"12px",padding:"14px",boxShadow:"0 8px 30px #0008",color:"#f7ebd4",font:"14px system-ui"});
+  $("viewport").appendChild(panel);
+ }
+ panel.replaceChildren();
+ const title=document.createElement("div");title.textContent=n.name+" — "+n.role;
+ title.style.fontWeight="bold";title.style.fontSize="16px";title.style.marginBottom="8px";panel.appendChild(title);
+ const body=document.createElement("div");body.textContent=topic==="hello"?npcGreeting(n,state.clock):npcDialogue(n,topic,state.clock);
+ body.style.marginBottom="12px";body.style.lineHeight="1.4";panel.appendChild(body);
+ const row=document.createElement("div");Object.assign(row.style,{display:"flex",flexWrap:"wrap",gap:"6px"});
+ const add=(label,fn)=>{const btn=document.createElement("button");btn.textContent=label;
+ Object.assign(btn.style,{flex:"1 1 auto",minHeight:"35px",borderRadius:"7px",padding:"6px",
+ background:"#33485b",color:"#fff5df",border:"1px solid #6c7680"});btn.addEventListener("click",fn);row.appendChild(btn);};
+ add("Czym się zajmujesz?",()=>showNPCDialogue(n,"work"));
+ add("Co słychać w mieście?",()=>showNPCDialogue(n,"city"));
+ add("Do widzenia",closeNPCDialogue);
+ panel.appendChild(row);
+}
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
  if(state.player.map==="site-city1"){
-  const npc=nearestNPC(npcs,state.player);if(npc){notify(npc.name+" — "+npcGreeting(npc,state.clock));return;}
+  const npc=nearestNPC(npcs,state.player);if(npc){showNPCDialogue(npc);return;}
   const p=state.player,gate=cityGateControlNear(p.x,p.y);
   if(gate){
    const wasClosed=state.gateStates[gate.id]==="closed";
@@ -690,7 +765,7 @@ setInterval(()=>{if(path.length&&!strategic.active()){const step=path.shift(),p=
   if(!dir||!move(dir,true))path=[];
  }},145);
 setInterval(()=>{if(!state.paused){updateClock(1);hud();}},1000);
-setInterval(()=>{if(!state.paused&&!strategic.active()&&stepNPCs(npcs,state.player,state.clock,performance.now()))draw();},350);
+setInterval(()=>{if(!state.paused&&!strategic.active()&&stepNPCs(npcs,state.player,state.clock,performance.now(),state.gateStates))draw();},220);
 new ResizeObserver(resize).observe(canvas);
 snapVisual();refreshPlotPanel();resize();requestAnimationFrame(animateVisual);
 if("serviceWorker" in navigator){
