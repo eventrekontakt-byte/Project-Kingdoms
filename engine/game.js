@@ -183,7 +183,7 @@ function drawNPCs(cx,cy,w,h,size){
   }else{ctx.fillStyle="#322b2b";ctx.fillRect(-3,-9-bob,6,1);}
   if(n.important){ctx.strokeStyle="#f5d692";ctx.lineWidth=.85;ctx.strokeRect(-7,-14-bob,14,24);}
   ctx.restore();
-  if(size>=21){
+  if(size>=21&&(n.important||Math.abs(n.x-state.player.x)+Math.abs(n.y-state.player.y)<=3)){
    const font=Math.max(9,Math.min(12,size*.34));
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.font="bold "+font+"px system-ui";
    const label=n.name,width=ctx.measureText(label).width+8;
@@ -719,7 +719,6 @@ function showNPCDialogue(n,topic="hello"){
  panel.appendChild(row);
 }
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
- const npc=nearestNPC(npcs,state.player);if(npc){showNPCDialogue(npc);return;}
  if(state.player.map==="site-city1"){
   const p=state.player,gate=cityGateControlNear(p.x,p.y);
   if(gate){
@@ -735,6 +734,7 @@ function performInteraction(){if(strategic.active()){if(!strategic.interact())no
   const building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
   if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=16;p.y=25;state.camera.zoom=Math.max(.75,state.camera.zoom);}snapVisual();draw();notify("Wejście: "+building.name);return;}}
  }
+ const npc=nearestNPC(npcs,state.player);if(npc){showNPCDialogue(npc);return;}
  const obj=interactionNear(state.player);if(obj&&state.player.map==="interior-city1-karczma"){showObjectPanel(obj);path=[];draw();return;}
  notify(interact(state));path=[];draw();}
 $("interactBtn").addEventListener("click",performInteraction);
