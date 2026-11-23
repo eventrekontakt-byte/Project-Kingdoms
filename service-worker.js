@@ -1,6 +1,6 @@
 // Project Kingdoms 0.1-alpha: network-first for updates, cache fallback for offline play.
-const CACHE_VERSION="kingdoms-alpha-0325-v1";
-const ASSETS=["./","./index.html","./manifest.json","./styles/main.css?v=0.3.13","./engine/game.js?v=0.3.25","./engine/npcs.js?v=0.3.24","./engine/dns-population.js?v=0.3.25","./engine/world.js","./engine/city-one.js","./engine/city-interiors.js?v=0.3.13","./engine/bis.js","./engine/elevation.js?v=0.3.13","./engine/plots.js?v=0.3.13","./engine/interiors/templates.js?v=0.3.13","./engine/interiors/tbi.js?v=0.3.13","./engine/buildings.js","./engine/pathfinding.js?v=0.3.21","./engine/world-map.js","./engine/regions.js","./engine/sites.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js?v=0.3.24"];
+const CACHE_VERSION="kingdoms-alpha-0326-v1";
+const ASSETS=["./","./index.html","./manifest.json","./styles/main.css?v=0.3.13","./engine/game.js?v=0.3.26","./engine/npcs.js?v=0.3.24","./engine/dns-population.js?v=0.3.26","./engine/world.js","./engine/city-one.js","./engine/city-interiors.js?v=0.3.13","./engine/bis.js","./engine/elevation.js?v=0.3.13","./engine/plots.js?v=0.3.13","./engine/interiors/templates.js?v=0.3.13","./engine/interiors/tbi.js?v=0.3.13","./engine/buildings.js","./engine/pathfinding.js?v=0.3.21","./engine/world-map.js","./engine/regions.js","./engine/sites.js","./ui/world-map.js","./systems/interactions.js","./ui/controls.js","./save/storage.js?v=0.3.24"];
 self.addEventListener("install",event=>{
  event.waitUntil(caches.open(CACHE_VERSION).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
 });
