@@ -1,3 +1,16 @@
+## Alpha 0.3.25 — DNS 1.0: strumieniowanie mieszkańców tła
+
+- Dodano osobny moduł engine/dns-population.js oraz generowanie NPC na żądanie w sąsiedztwie kamery.
+- Miasto dzielone na sektory 12×12 kratek; aktywne są tylko sektory przy aktualnej kamerze wraz z buforem.
+- 40 dotychczasowych NPC pozostaje w grze. Obok nich silnik obsługuje maksymalnie 38 tymczasowych przechodniów.
+- Gęstość postaci tła zależy od części miasta i pory dnia. Postacie pojawiają się poza widocznym ekranem, a potem pieszo wchodzą w kadr.
+- Ruch tła wykorzystuje tani algorytm lokalny i nie uruchamia kosztownego A* ani pełnych harmonogramów.
+- Po opuszczeniu obszaru symulacji i 14 sekundach poza zasięgiem niezapamiętane postacie są zwalniane z pamięci.
+- NPC tła nie są zapisywani w plikach kampanii, nie zastępują postaci ważnych i na tym etapie nie mają pełnych rozmów ani pamięci.
+- W bocznym panelu widoczny licznik aktywnych, wygenerowanych i zwolnionych postaci.
+- Sprawdzone statycznie i w symulacji: 38 NPC tła to twardy limit; przy rynku 14 tymczasowych aktorów weszło w widoczny obszar w 20 sekund; 0 pojawień bezpośrednio w kadrze i 0 wejść w mury/drzwi. Test ręczny na Androidzie wciąż potrzebny.
+- Zoom 50%, minimapa, promocja śledzonych NPC i ich trwała pamięć pozostają do następnych wersji serii 0.3.
+
 ## Alpha 0.3.24 — DNS 1.0, etap 1: spójne profesje i zachowania
 
 - Zainicjowano architekturę DNS 1.0; szczegółowy projekt zapisano w docs/DNS-ARCHITECTURE.md.
