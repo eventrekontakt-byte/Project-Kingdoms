@@ -352,7 +352,13 @@ export function visibleNPCs(npcs,player){
  return npcs.filter(n=>n.map===player.map&&Math.abs(n.x-player.x)<28&&Math.abs(n.y-player.y)<24);
 }
 export function nearestNPC(npcs,player){
- return npcs.find(n=>n.map===player.map&&Math.abs(n.x-player.x)+Math.abs(n.y-player.y)<=2);
+ let closest=null,distance=3;
+ for(const n of npcs){
+  if(n.map!==player.map)continue;
+  const d=Math.abs(n.x-player.x)+Math.abs(n.y-player.y);
+  if(d<distance){closest=n;distance=d;}
+ }
+ return closest;
 }
 export function npcGreeting(n,clock){
  const greet=n.met>=3?"Znów się spotykamy!":clock.hour<12?"Dzień dobry":clock.hour<19?"Witaj, podróżniku":"Dobry wieczór";
