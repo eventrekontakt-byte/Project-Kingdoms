@@ -168,83 +168,162 @@ export function createNPCs(){
   phase:"",goal:null,steps:[],seed:i*17+3,nextMove:0,started:-1,duration:350,visible:true,
  indoors:false,indoorActivity:null,roams:0,talking:false,task:"Wraca do domu",insideSince:0}));
 }
-export function schedulePhase(clock){
- const h=clock.hour;
- return h<6||h>=22?"sleep":h<8?"morning":h<16?"work":h<20?"social":"evening";
+// Every inhabitant has a separate shift; no city-wide 16:00 crowd surge.
+export function schedulePhase(clock,n=null){
+ const minutes=(clock.hour||0)*60+(clock.minute||0);
+ const wake=n?.wakeAt??390,work=n?.workAt??470,finish=n?.workEndAt??940;
+ const socialEnd=n?.socialEndAt??1190,sleep=n?.sleepAt??1320;
+ if(minutes<wake||minutes>=sleep)return "sleep";
+ if(minutes<work)return "morning";
+ if(minutes<finish)return "work";
+ if(minutes<socialEnd)return "social";
+ return "evening";
 }
 function scheduleGoal(n,phase){
  if(phase==="sleep"||phase==="evening")return n.home;
  if(phase==="morning"||phase==="work")return n.work;
  return n.social;
 }
+function phaseLabel(n,phase){
+ return {sleep:"Odpoczywa w domu",morning:"Idzie do pracy",work:"Pracuje",social:"Spędza czas: "+n.venueName,evening:"Wraca do domu"}[phase]||"Spaceruje";
+}
+function indoorDestination(n,phase){
+ if(phase==="sleep")return n.homeMap;
+ if(phase==="work"&&n.workIndoor)return n.workMap;
+ if(phase==="social"&&n.venueIndoor)return n.venueMap;
+ return null;
+}
 function roamGoal(n){
  const center=n.goal||n.work;
- // Roaming is a journey of 10–28 tiles, not a random 1-tile oscillation.
- const distance=n.role==="Posłaniec"?20:12+(n.seed%12);
+ // Courtyards and meeting places encourage short conversation-friendly stops.
+ const distance=n.phase==="social"?4+(n.seed%5):n.role==="Posłaniec"?20:12+(n.seed%12);
  for(let j=0;j<16;j++){
   const angle=rand(n.seed++)*Math.PI*2;
   const x=center.x+Math.round(Math.cos(angle)*distance),y=center.y+Math.round(Math.sin(angle)*distance);
   const candidate=near(x,y);
-  if(walkable(candidate.x,candidate.y)&&Math.abs(candidate.x-n.x)+Math.abs(candidate.y-n.y)>=9)return candidate;
+  if(walkable(candidate.x,candidate.y)&&Math.abs(candidate.x-n.x)+Math.abs(candidate.y-n.y)>=4)return candidate;
  }
- return scheduleGoal(n,n.phase);
+ return center;
 }
-function goInside(n){
- n.map=n.homeMap;n.indoors=true;n.x=4+(n.seed%4);n.y=4+(n.seed%3);
- n.fromX=n.x;n.fromY=n.y;n.steps=[];n.started=-1;n.nextMove=0;
+function enterBuilding(n,map,phase,npcs,now){
+ const used=new Set(npcs.filter(o=>o!==n&&o.map===map).map(o=>o.map+":"+o.x+","+o.y));
+ const spot=interiorSpot(map,Number(n.id.slice(-2))+n.seed%9,used);
+ if(!spot)return false;
+ n.map=map;n.indoors=true;n.indoorActivity=phase;n.insideSince=now;
+ n.x=spot.x;n.y=spot.y;n.fromX=spot.x;n.fromY=spot.y;
+ n.steps=[];n.destination=null;n.started=-1;
+ n.nextMove=now+800+(n.seed%9)*200;n.task=phaseLabel(n,phase);
+ return true;
 }
-function comeOutside(n){
- n.map=CITY;n.indoors=false;n.x=n.home.x;n.y=n.home.y;
- n.fromX=n.x;n.fromY=n.y;n.steps=[];n.started=-1;n.nextMove=0;n.phase="";
+function comeOutside(n,now,npcs){
+ const last=n.indoorActivity;
+ const nearDoor=last==="work"?n.work:last==="social"?n.social:n.home;
+ // Exiting the building uses its real exterior approach rather than a fixed
+ // shared spawn, avoiding NPC stacks beside doors.
+ const used=new Set(npcs.filter(o=>o!==n&&o.map===CITY).map(o=>o.x+","+o.y));
+ let at=nearDoor;
+ if(used.has(at.x+","+at.y)){
+  for(let radius=1;radius<=6;radius++){
+   let found=null;
+   for(let dy=-radius;dy<=radius&&!found;dy++)for(let dx=-radius;dx<=radius;dx++){
+    const x=at.x+dx,y=at.y+dy;
+    if(walkable(x,y)&&!used.has(x+","+y)){found={x,y};break;}
+   }
+   if(found){at=found;break;}
+  }
+ }
+ n.map=CITY;n.indoors=false;n.indoorActivity=null;
+ n.x=at.x;n.y=at.y;n.fromX=n.x;n.fromY=n.y;n.steps=[];n.destination=null;
+ n.started=-1;n.nextMove=now+400;n.roams=0;
+}
+function moveIndoor(n,player,now,npcs){
+ if(now<n.nextMove)return false;
+ const occupied=new Set(npcs.filter(o=>o!==n&&o.map===n.map).map(o=>o.x+","+o.y));
+ const order=(n.seed++)%4;
+ for(let i=0;i<4;i++){
+  const [dx,dy]=MOVES[(i+order)%4],x=n.x+dx,y=n.y+dy;
+  const tile=tileAt(n.map,0,x,y);
+  if(tile!=="wood"&&tile!=="stone"&&tile!=="marble")continue;
+  if(x===player.x&&y===player.y||occupied.has(x+","+y))continue;
+  n.fromX=n.x;n.fromY=n.y;n.x=x;n.y=y;
+  n.direction=dx>0?"right":dx<0?"left":dy>0?"down":"up";
+  n.started=now;n.duration=310;n.nextMove=now+1150+(n.seed%6)*180;
+  return true;
+ }
+ n.nextMove=now+1600;return false;
 }
 export function stepNPCs(npcs,player,clock,now,gateStates={}){
- const phase=schedulePhase(clock);
  let changed=false;
  const occupied=new Set(npcs.filter(n=>n.map===CITY).map(n=>n.x+","+n.y));
  for(const n of npcs){
   if(n.talking)continue;
-  if(n.indoors){
-   if(phase!=="sleep"&&phase!=="evening"){comeOutside(n);changed=true;}
-   continue;
+  const phase=schedulePhase(clock,n);
+  const changedPhase=n.phase!==phase;
+  if(changedPhase){
+   n.phase=phase;n.goal=scheduleGoal(n,phase);n.steps=[];n.destination=null;n.roams=0;
+   n.task=phaseLabel(n,phase);n.blockedCount=0;
   }
-  const nearby=player.map===CITY&&Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
-  if(!nearby){
-   // Outside the simulated region: only apply coarse schedule relocations.
-   if(n.phase!==phase){
-    n.phase=phase;n.goal=scheduleGoal(n,phase);n.steps=[];
-    if(phase==="sleep"&&n.important){goInside(n);changed=true;}
-    else{const p=scheduleGoal(n,phase);n.x=p.x;n.y=p.y;n.fromX=n.x;n.fromY=n.y;n.started=-1;}
+  const closeOutside=player.map===CITY&&n.map===CITY&&
+   Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
+  const insideWithPlayer=n.map!=="site-city1"&&n.map===player.map;
+  if(n.indoors){
+   if(n.indoorActivity===phase){
+    if(insideWithPlayer&&moveIndoor(n,player,now,npcs))changed=true;
+    continue;
+   }
+   // Day's next activity begins with leaving through the building's exit.
+   comeOutside(n,now,npcs);changed=true;
+  }
+  if(!closeOutside&&!insideWithPlayer){
+   // Cheap off-screen simulation: update only on phase changes, without A*.
+   if(changedPhase||n.indoorActivity!==null){
+    const indoor=indoorDestination(n,phase);
+    if(indoor&&enterBuilding(n,indoor,phase,npcs,now)){changed=true;}
+    else{
+     const dest=scheduleGoal(n,phase);occupied.delete(n.x+","+n.y);
+     n.map=CITY;n.x=dest.x;n.y=dest.y;n.fromX=n.x;n.fromY=n.y;
+     n.steps=[];n.started=-1;n.destination=null;n.nextMove=now+800;
+     occupied.add(n.x+","+n.y);changed=true;
+    }
    }
    continue;
   }
-  if(n.phase!==phase){
-   n.phase=phase;n.goal=scheduleGoal(n,phase);n.steps=[];n.roams=0;
-  }
   if(now<n.nextMove)continue;
-  if(n.x===n.goal.x&&n.y===n.goal.y&&!n.steps.length){
-   if(phase==="sleep"&&n.important){goInside(n);changed=true;continue;}
-   if(phase==="sleep"){n.nextMove=now+3000;continue;}
-   n.roams++;
-   n.destination=roamGoal(n);
+  const indoor=indoorDestination(n,phase);
+  // Actual transition occurs only after arriving near a venue entrance.
+  if(indoor&&Math.abs(n.x-n.goal.x)+Math.abs(n.y-n.goal.y)<=2){
+   if(enterBuilding(n,indoor,phase,npcs,now)){occupied.delete(n.x+","+n.y);changed=true;continue;}
   }
-  const dest=n.destination&&n.steps.length?n.destination:(n.destination&&n.roams>0?n.destination:n.goal);
+  if(!indoor&&n.x===n.goal.x&&n.y===n.goal.y&&!n.steps.length){
+   if(phase==="sleep"||phase==="evening"){
+    n.nextMove=now+1900;continue;
+   }
+   n.roams++;n.destination=roamGoal(n);n.nextMove=now+1300+(n.seed%5)*350;continue;
+  }
   if(!n.steps.length){
+   const dest=n.destination||n.goal;
    n.steps=route(n,dest,gateStates);
-   if(!n.steps.length){n.destination=null;n.roams=0;n.nextMove=now+1800;continue;}
+   if(!n.steps.length){
+    // If a courtyard or entrance is inaccessible, wait before retrying.
+    n.destination=null;n.nextMove=now+1200+(n.seed++%5)*270;
+    continue;
+   }
   }
-  const next=n.steps[0],pos=next.x+","+next.y;
+  const next=n.steps[0],position=next.x+","+next.y;
   const gate=cityGateBarrierAt(next.x,next.y);
-  if(occupied.has(pos)||(next.x===player.x&&next.y===player.y&&player.map===CITY)||(gate&&gateStates[gate.id]==="closed")){
-   n.nextMove=now+450+Math.floor(rand(n.seed++)*350);
-   if(gate&&gateStates[gate.id]==="closed")n.steps=[];
+  if(occupied.has(position)||(player.map===CITY&&next.x===player.x&&next.y===player.y)||(gate&&gateStates[gate.id]==="closed")){
+   n.nextMove=now+320+(n.seed++%6)*100;
+   n.blockedCount=(n.blockedCount||0)+1;
+   if(n.blockedCount>=4){n.steps=[];n.destination=null;n.blockedCount=0;}
    continue;
   }
+  n.blockedCount=0;
   occupied.delete(n.x+","+n.y);
   n.fromX=n.x;n.fromY=n.y;n.x=next.x;n.y=next.y;n.steps.shift();
-  occupied.add(pos);
+  occupied.add(position);
   n.direction=next.x>n.fromX?"right":next.x<n.fromX?"left":next.y>n.fromY?"down":"up";
-  n.started=now;n.duration=250+(n.seed%4)*40;
-  n.nextMove=now+n.duration+50+(n.seed%3)*55;
+  n.started=now;n.duration=260+(n.seed%4)*35;
+  n.nextMove=now+n.duration+65+(n.seed++%3)*65;
   changed=true;
   if(!n.steps.length)n.destination=null;
  }
