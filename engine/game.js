@@ -3,7 +3,7 @@ import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.14";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.20";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.12";
 import {setupWorldMap} from "../ui/world-map.js";
