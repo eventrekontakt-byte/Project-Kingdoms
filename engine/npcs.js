@@ -54,29 +54,44 @@ export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
  role:ROLES[i%8],color:COLORS[i%8],skin:SKINS[i%5],important:i<12,
  home,work,market,social,homeMap:"interior-"+homeBuilding.id,homeBuilding:homeBuilding.id,workBuilding:workBuilding.id};
 });
-const visited=new Uint32Array(N),parent=new Int32Array(N),queue=new Int32Array(N);
+// Reused typed arrays keep route planning allocation-light on Android.
+const visited=new Uint32Array(N),parent=new Int32Array(N),gScore=new Float32Array(N);
 let searchVersion=0;
 const MOVES=[[0,1],[1,0],[0,-1],[-1,0]];
 function route(from,to,gateStates={}){
- if(!walkable(to.x,to.y))return [];
+ if(!walkable(to.x,to.y)||!walkable(from.x,from.y))return [];
  if(from.x===to.x&&from.y===to.y)return [];
  searchVersion++;if(searchVersion>=4294967290){visited.fill(0);searchVersion=1;}
  const start=idx(from.x,from.y),end=idx(to.x,to.y);
- let front=0,back=1;queue[0]=start;visited[start]=searchVersion;parent[start]=-1;
- const max=Math.min(N,7500);
- while(front<back&&front<max){
-  const current=queue[front++];if(current===end)break;
-  const x=current%WIDTH,y=Math.floor(current/WIDTH);
-  const rotation=(from.x+from.y)%4;
-  for(let i=0;i<4;i++){
-   const [dx,dy]=MOVES[(i+rotation)%4],nx=x+dx,ny=y+dy;
-   if(nx<1||ny<1||nx>=WIDTH-1||ny>=HEIGHT-1||!walkable(nx,ny))continue;
-   const gate=cityGateBarrierAt(nx,ny);if(gate&&gateStates[gate.id]==="closed")continue;
-   const next=idx(nx,ny);if(visited[next]===searchVersion)continue;
-   visited[next]=searchVersion;parent[next]=current;queue[back++]=next;
-   if(next===end)break;
+ const distance=(x,y)=>Math.abs(x-to.x)+Math.abs(y-to.y);
+ const heap=[];
+ const push=(node,g,f)=>{
+  const item={node,g,f};let i=heap.length;heap.push(item);
+  while(i>0){let p=Math.floor((i-1)/2);if(heap[p].f<=item.f)break;heap[i]=heap[p];i=p;}heap[i]=item;
+ };
+ const pop=()=>{
+  const root=heap[0],last=heap.pop();if(!heap.length)return root;
+  let i=0;while(i*2+1<heap.length){
+   let c=i*2+1;if(c+1<heap.length&&heap[c+1].f<heap[c].f)c++;
+   if(heap[c].f>=last.f)break;heap[i]=heap[c];i=c;
   }
-  if(visited[end]===searchVersion)break;
+  heap[i]=last;return root;
+ };
+ visited[start]=searchVersion;gScore[start]=0;parent[start]=-1;push(start,0,distance(from.x,from.y));
+ let expanded=0;
+ while(heap.length&&expanded++<12500){
+  const current=pop();
+  if(current.g>gScore[current.node]+.01)continue;
+  if(current.node===end)break;
+  const x=current.node%WIDTH,y=Math.floor(current.node/WIDTH);
+  for(const [dx,dy] of MOVES){
+   const nx=x+dx,ny=y+dy,kind=tileKind(nx,ny);if(kind<2)continue;
+   const gate=cityGateBarrierAt(nx,ny);if(gate&&gateStates[gate.id]==="closed")continue;
+   const next=idx(nx,ny),newG=current.g+(kind===3?1:1.8);
+   if(visited[next]===searchVersion&&newG>=gScore[next]-.001)continue;
+   visited[next]=searchVersion;gScore[next]=newG;parent[next]=current.node;
+   push(next,newG,newG+distance(nx,ny));
+  }
  }
  if(visited[end]!==searchVersion)return [];
  const result=[];
