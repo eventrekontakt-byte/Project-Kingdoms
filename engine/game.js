@@ -83,6 +83,9 @@ function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.d
 function geometry(){return {w:canvas.clientWidth,h:canvas.clientHeight,size:32*state.camera.zoom};}
 function ensureValidPosition(){
  const p=state.player,{w,h}=mapSize(p.map);
+ if(p.map==="site-city1"&&(!Number.isInteger(p.x)||!Number.isInteger(p.y)||p.x<0||p.y<0||p.x>=w||p.y>=h||blocked(p.map,p.floor,p.x,p.y))){
+  Object.assign(p,{x:96,y:132,z:0});path=[];snapVisual();notify("Przeniesiono bohatera na bezpieczną drogę nowego miasta.");
+ }
  if(p.map===TAVERN_MAP&&(p.floor<0||p.floor>=3||!Number.isFinite(p.x)||!Number.isFinite(p.y)||p.x<1||p.x>=w-1||p.y<1||p.y>=h-1||blocked(p.map,p.floor,p.x,p.y))){
   Object.assign(p,{floor:0,x:16,y:25});
   snapVisual();path=[];
