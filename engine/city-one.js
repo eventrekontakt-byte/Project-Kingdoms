@@ -33,7 +33,23 @@ export const CITY_BUILDINGS=B.map(([id,name,icon,x1,y1,x2,y2,facing])=>{
  return {id:"city1-"+id,name,icon,bounds:[x1,y1,x2,y2],facing,door,external:x1<20||x2>92,decorative:false};
 }).concat(DECOR.map(([id,name,x1,y1,x2,y2])=>({id:"city1-"+id,name,bounds:[x1,y1,x2,y2],decorative:true,external:x1<20||x2>92,door:null})));
 export const CITY_STAIRS=[{x:23,y:69},{x:88,y:69},{x:44,y:75},{x:68,y:75}];
-export const CITY_GATES=[{x:55,y:8},{x:55,y:78},{x:20,y:43},{x:91,y:43}];
+export const CITY_GATES=[
+ {id:"north",name:"Brama Północna",x:55,y:8,axis:"vertical",bounds:[53,7,57,11]},
+ {id:"south",name:"Brama Południowa",x:55,y:78,axis:"vertical",bounds:[53,75,57,79]},
+ {id:"west",name:"Brama Zachodnia",x:20,y:43,axis:"horizontal",bounds:[19,41,23,45]},
+ {id:"east",name:"Brama Wschodnia",x:91,y:43,axis:"horizontal",bounds:[88,41,92,45]}
+];
+export function cityGatePart(x,y){
+ for(const g of CITY_GATES){
+  const [x1,y1,x2,y2]=g.bounds;
+  if(x<x1||x>x2||y<y1||y>y2)continue;
+  const cross=g.axis==="vertical"?x-g.x:y-g.y;
+  // The 3-tile passage stays open; the two flanking 1-tile towers
+  // extend the original 3-tile wall to a 5-tile gatehouse.
+  return {gate:g,part:Math.abs(cross)===2?"tower":"passage"};
+ }
+ return null;
+}
 const inside=(x,y,[x1,y1,x2,y2])=>x>=x1&&x<=x2&&y>=y1&&y<=y2;
 const isRoad=(x,y)=>(
  (x>=53&&x<=57&&y>=0&&y<=87)||
@@ -53,6 +69,8 @@ export function cityBuildingAt(x,y){return CITY_BUILDINGS.find(b=>inside(x,y,b.b
 export function cityDoorAt(x,y){return CITY_BUILDINGS.find(b=>b.door&&b.door.x===x&&b.door.y===y)||null;}
 function baseCityTile(x,y){
  if(x<0||y<0||x>=CITY_WIDTH||y>=CITY_HEIGHT)return "void";
+ const gate=cityGatePart(x,y);
+ if(gate)return gate.part==="tower"?"rampart":"road";
  const b=cityBuildingAt(x,y);
  if(b){if(b.door&&b.door.x===x&&b.door.y===y)return "door";
   const [x1,y1,x2,y2]=b.bounds;
@@ -137,6 +155,7 @@ for(const plot of CITY_VACANT_PLOTS){
  for(let y=y1;y<=y2;y++)for(let x=x1;x<=x2;x++)VACANT_TILES.add(k(x,y));
 }
 export function cityTile(x,y){
+ if(cityGatePart(x,y))return baseCityTile(x,y);
  if(VACANT_TILES.has(k(x,y)))return "meadow";
  const tile=baseCityTile(x,y);
  return EXTRA_ROADS.has(k(x,y))&&tile!=="wall"&&tile!=="rampart"&&tile!=="door"?"road":tile;
@@ -145,7 +164,7 @@ export function cityTile(x,y){
 export function cityStepAllowed(x1,y1,x2,y2){
  const a=cityTile(x1,y1),b=cityTile(x2,y2);
  if(a==="rampart"||b==="rampart"){
-  const gatehouse=(x,y)=>CITY_GATES.some(g=>Math.abs(x-g.x)<=3&&Math.abs(y-g.y)<=3);
+  const gatehouse=(x,y)=>CITY_GATES.some(g=>Math.abs(x-g.x)<=4&&Math.abs(y-g.y)<=4);
   return a==="rampart"&&b==="rampart"||a==="stairs-up"&&b==="rampart"||b==="stairs-up"&&a==="rampart"||gatehouse(x1,y1)&&gatehouse(x2,y2)&&(a==="road"||b==="road");
  }
  return true;
