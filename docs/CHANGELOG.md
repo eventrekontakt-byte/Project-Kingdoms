@@ -1,3 +1,10 @@
+## 0.3.11-alpha — cztery bramy miejskie
+- Usunięto testowy most i wieżę z balkonem oraz ich specjalne powierzchnie Z.
+- Cztery stałe bramy: północna, południowa, zachodnia i wschodnia.
+- Każda brama ma gabaryt 5×5 kratek, w porównaniu do muru grubości 3 kratek; przejazd 3 kratki szerokości i dwie boczne wieże po 1 kratce.
+- Przejazdy pozostają otwarte i przechodnie, z wizualizacją kamiennych wież i podniesionej kraty.
+- Zachowano mury obronne i poziomy Z oraz obsługę tras.
+
 ## 0.3.10-alpha — VIS 1.6: wieża i balkon (bez przejścia do 0.4)
 - Miasto 1: testowa wieża strażnicza z dostępnym dachem (x=39–40, y=49–51) i balkonem (x=38, y=50).
 - Wejście na dach przez istniejące schody (40,52), poziom Z=2; możliwość zejścia i powrotu.
