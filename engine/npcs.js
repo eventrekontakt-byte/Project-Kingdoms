@@ -1,5 +1,6 @@
-// NPC 1.1 (0.3.20): 40 hybrid agents with daily destinations, long routes and visual animation.
+// NPC 1.2 (0.3.21): staggered schedules, eight meeting places, indoor visits and crowd limits.
 import {CITY_BUILDINGS,CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
+import {tileAt,mapSize} from "./world.js?v=0.3.21";
 const FIRST=["Aldric","Berta","Cedryk","Daria","Edmund","Fenna","Gustaw","Hilda","Iwo","Jagna","Konrad","Lena","Marek","Nora","Oskar","Petra","Radomir","Sara","Tomasz","Wera"];
 const ROLES=["Strażnik","Kupiec","Rzemieślnik","Mieszkaniec","Mieszkaniec","Robotnik","Posłaniec","Mieszkaniec"];
 const COLORS=["#759bc9","#d7a663","#94b67d","#bc92be","#c4a17c","#b8b7a5","#cc8881","#84b4aa"];
@@ -57,16 +58,62 @@ function distinctSpot(origin,used){
  }
  const p=best||origin;used.add(p.x+","+p.y);return p;
 }
+// Quotas: at most six visitors in the tavern; the whole population cannot
+// be assigned to the same doorstep. Indoor venues resolve to real BIS/TBI maps.
+export const NPC_VENUES=[
+ {id:"karczma",name:"Karczma",building:"karczma",capacity:6,indoor:true},
+ {id:"rynek",name:"Rynek",point:[102,99],capacity:8,indoor:false},
+ {id:"swiatynia",name:"Świątynia",building:"switynia",capacity:4,indoor:true},
+ {id:"arena",name:"Plac przy arenie",building:"arena",capacity:5,indoor:false},
+ {id:"park",name:"Zielony skwer",point:[68,87],capacity:5,indoor:false},
+ {id:"dziedziniec",name:"Dziedziniec twierdzy",point:[58,55],capacity:4,indoor:false},
+ {id:"kasyno",name:"Kasyno",building:"kasyno",capacity:3,indoor:true},
+ {id:"biblioteka",name:"Biblioteka",building:"biblioteka",capacity:5,indoor:true}
+].map(v=>({...v,buildingData:v.building?findBuilding(v.building):null,
+ map:v.indoor?"interior-city1-"+v.building:null,
+ point:v.point?near(...v.point):doorApproach(findBuilding(v.building))}));
+const VENUE_SLOTS=NPC_VENUES.flatMap(v=>Array.from({length:v.capacity},()=>v));
+const interiorCache=new Map();
+// Use actual passable floor tiles so visitors never materialise in furniture/walls.
+function interiorSpot(map,seed=0,occupied=null){
+ const dimensions=mapSize(map);if(!dimensions.w||!dimensions.h)return null;
+ let spots=interiorCache.get(map);
+ if(!spots){
+  spots=[];
+  const cx=Math.floor(dimensions.w/2),cy=Math.floor(dimensions.h/2);
+  for(let y=2;y<dimensions.h-2;y++)for(let x=2;x<dimensions.w-2;x++){
+   const t=tileAt(map,0,x,y);
+   if(t==="wood"||t==="stone"||t==="marble")spots.push({x,y,score:Math.abs(x-cx)+Math.abs(y-cy)});
+  }
+  spots.sort((a,b)=>a.score-b.score||a.y-b.y||a.x-b.x);
+  interiorCache.set(map,spots);
+ }
+ if(!spots.length)return null;
+ const start=(seed*17)%spots.length;
+ for(let j=0;j<spots.length;j++){
+  const p=spots[(start+j)%spots.length];
+  if(!occupied||!occupied.has(map+":"+p.x+","+p.y))return {x:p.x,y:p.y};
+ }
+ return null;
+}
 export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
  const homeBuilding=dwellings[(i*7+14)%dwellings.length];
  const workBuilding=workFor(ROLES[i%8],i);
  const home=distinctSpot(doorApproach(homeBuilding),usedHome),work=distinctSpot(doorApproach(workBuilding),usedWork);
  const market=near(100+(i%7-3)*2,98+((i*3)%9-4)*2);
- const social=distinctSpot(doorApproach(findBuilding(i%3===0?"karczma":"targ")),usedSocial);
+ const venue=VENUE_SLOTS[(i*13)%VENUE_SLOTS.length];
+ const social=distinctSpot(venue.point,usedSocial);
  return {id:"npc-"+String(i+1).padStart(2,"0"),
  name:FIRST[i%20]+(i>=20?" "+["Starszy","Młodsza","z Doliny","z Północy"][i%4]:""),
  role:ROLES[i%8],color:COLORS[i%8],skin:SKINS[i%5],important:i<12,
- home,work,market,social,homeMap:"interior-"+homeBuilding.id,homeBuilding:homeBuilding.id,workBuilding:workBuilding.id};
+ home,work,market,social,venueId:venue.id,venueName:venue.name,
+ venueMap:venue.map,venueIndoor:venue.indoor,
+ homeMap:"interior-"+homeBuilding.id,homeBuilding:homeBuilding.id,
+ workMap:"interior-"+workBuilding.id,workBuilding:workBuilding.id,
+ workIndoor:["Kupiec","Rzemieślnik","Robotnik"].includes(ROLES[i%8])||i%7===0,
+ wakeAt:355+(i*19)%130,workAt:435+(i*31)%110,
+ workEndAt:845+(i*37)%225,socialEndAt:1070+(i*23)%205,
+ sleepAt:1250+(i*17)%125};
 });
 // Reused typed arrays keep route planning allocation-light on Android.
 const visited=new Uint32Array(N),parent=new Int32Array(N),gScore=new Float32Array(N);
@@ -118,7 +165,8 @@ function route(from,to,gateStates={}){
 export function createNPCs(){
  return NPC_DEFINITIONS.map((d,i)=>({...d,map:CITY,x:d.home.x,y:d.home.y,
   fromX:d.home.x,fromY:d.home.y,direction:["down","left","up","right"][i%4],
-  phase:"",goal:null,steps:[],seed:i*17+3,nextMove:0,started:-1,duration:350,visible:true,indoors:false,roams:0,talking:false}));
+  phase:"",goal:null,steps:[],seed:i*17+3,nextMove:0,started:-1,duration:350,visible:true,
+ indoors:false,indoorActivity:null,roams:0,talking:false,task:"Wraca do domu",insideSince:0}));
 }
 export function schedulePhase(clock){
  const h=clock.hour;
