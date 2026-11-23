@@ -1,14 +1,14 @@
-import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.20";
+import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.21";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.14";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.21";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js?v=0.3.20";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.21";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.12";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
-import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js?v=0.3.15";
+import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js";
 import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
 import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
@@ -693,7 +693,7 @@ function closeNPCDialogue(){
 }
 function showNPCDialogue(n,topic="hello"){
  if(!n)return;
- if(activeNpc!==n){closeNPCDialogue();activeNpc=n;n.talking=true;}
+ if(activeNpc!==n){closeNPCDialogue();activeNpc=n;n.talking=true;n.met=Math.min(999,(n.met||0)+1);}
  let panel=$("npcDialoguePanel");
  if(!panel){
   panel=document.createElement("div");panel.id="npcDialoguePanel";
@@ -712,13 +712,15 @@ function showNPCDialogue(n,topic="hello"){
  Object.assign(btn.style,{flex:"1 1 auto",minHeight:"35px",borderRadius:"7px",padding:"6px",
  background:"#33485b",color:"#fff5df",border:"1px solid #6c7680"});btn.addEventListener("click",fn);row.appendChild(btn);};
  add("Czym się zajmujesz?",()=>showNPCDialogue(n,"work"));
+ add("Co teraz robisz?",()=>showNPCDialogue(n,"activity"));
  add("Co słychać w mieście?",()=>showNPCDialogue(n,"city"));
+ add("Słyszałeś jakieś wieści?",()=>showNPCDialogue(n,"rumour"));
  add("Do widzenia",closeNPCDialogue);
  panel.appendChild(row);
 }
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
+ const npc=nearestNPC(npcs,state.player);if(npc){showNPCDialogue(npc);return;}
  if(state.player.map==="site-city1"){
-  const npc=nearestNPC(npcs,state.player);if(npc){showNPCDialogue(npc);return;}
   const p=state.player,gate=cityGateControlNear(p.x,p.y);
   if(gate){
    const wasClosed=state.gateStates[gate.id]==="closed";
