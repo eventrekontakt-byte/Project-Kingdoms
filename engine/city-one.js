@@ -1,10 +1,10 @@
 // Project Kingdoms — City 1 urban plan v0.3.14. Stable, hand-authored hybrid city.
 export const CITY_WIDTH=192,CITY_HEIGHT=160;
 const DATA=[
-["twierdza","Twierdza","🏰",45,34,66,50,"S"],["koszary","Koszary","🛡",28,47,40,55,"S"],["zbrojownia","Zbrojownia","⚔",71,44,82,52,"S"],
+["twierdza","Twierdza","🏰",48,34,69,50,"S"],["koszary","Koszary","🛡",32,47,44,55,"S"],["zbrojownia","Zbrojownia","⚔",90,45,101,53,"S"],
 ["biblioteka","Biblioteka","📚",102,45,114,54,"S"],["karczma","Karczma","🍺",91,81,103,91,"S"],["kasyno","Kasyno","🎲",121,83,133,91,"S"],["kuznia","Kuźnia","⚒",145,91,156,99,"W"],
 ["piekarnia","Piekarnia","🥖",73,99,83,106,"N"],["targ","Hala targowa","⚖",107,100,122,110,"N"],["stajnia","Stajnia","🐴",137,111,150,121,"N"],["apteka","Apteka","⚗",113,65,122,73,"S"],
-["arena","Arena","🏟",40,113,60,128,"N"],["switynia","Świątynia","⛪",68,115,83,127,"N"],["straznica","Strażnica","🗼",155,67,165,77,"W"],["magazyn","Magazyn","📦",154,106,164,116,"W"],
+["arena","Arena","🏟",43,108,60,121,"N"],["switynia","Świątynia","⛪",68,115,83,127,"N"],["straznica","Strażnica","🗼",155,67,165,77,"W"],["magazyn","Magazyn","📦",154,106,164,116,"W"],
 ["dom1","Dom 1","⌂",77,65,84,71,"E"],["dom2","Dom 2","⌂",107,117,116,124,"N"],["dom3","Dom 3","⌂",138,63,145,70,"W"],["dom4","Dom 4","⌂",132,125,141,132,"N"],
 ["mlyn","Młyn","🌾",13,25,23,35,"S"],["farma1","Farma 1","🌱",9,49,21,61,"E"],["farma2","Farma 2","🌱",12,107,25,119,"E"],["tartak","Tartak","🪵",171,36,185,48,"W"],["farma3","Farma 3","🌱",171,111,185,125,"W"]
 ];
@@ -25,7 +25,7 @@ export const CITY_GATES=[
 {id:"south",name:"Brama Południowa",x:96,y:139,axis:"vertical",bounds:[94,137,98,141]},
 {id:"west",name:"Brama Zachodnia",x:24,y:80,axis:"horizontal",bounds:[22,78,26,82]},
 {id:"east",name:"Brama Wschodnia",x:167,y:80,axis:"horizontal",bounds:[165,78,169,82]}];
-export const CITY_STAIRS=[{x:27,y:72},{x:164,y:89},{x:89,y:23},{x:103,y:136}];
+export const CITY_STAIRS=[];
 export function cityGatePart(x,y){
  for(const g of CITY_GATES){if(!rect(x,y,g.bounds))continue;const cross=g.axis==="vertical"?x-g.x:y-g.y;
  return {gate:g,part:Math.abs(cross)===2?"tower":"passage"};}
@@ -61,12 +61,22 @@ const LANES=[
 [[108,94],[123,96],[140,102]],[[92,112],[109,113],[126,110]],[[97,102],[103,108],[112,116]]
 ];
 for(const p of LANES)path(ROAD,p,1);
+// Keep the countryside agricultural: only two main approaches outside the city.
+for(const key of [...ROAD]){const [x,y]=key.split(",").map(Number);if(!within(x,y)&&!(Math.abs(x-96)<=3||Math.abs(y-80)<=3))ROAD.delete(key);}
 // The citadel is a separate walled precinct, with a guarded southern entry.
-const CITADEL=[24,28,86,60];
+const CITADEL=[45,31,73,59];
 for(let x=CITADEL[0];x<=CITADEL[2];x++)for(let y=CITADEL[1];y<=CITADEL[3];y++)
- if(x<=26||x>=84||y<=30||y>=58)INNER.add(KEY(x,y));
-path(ROAD,[[55,58],[55,65],[67,70],[83,77]],1);
-for(let y=58;y<=60;y++)for(let x=53;x<=57;x++)INNER.delete(KEY(x,y));
+ if(x<=46||x>=72||y<=32||y>=57)INNER.add(KEY(x,y));
+path(ROAD,[[60,58],[60,65],[67,70],[83,77]],1);
+for(let y=57;y<=59;y++)for(let x=58;x<=62;x++)INNER.delete(KEY(x,y));
+// Wall courses must never pass through buildings or cover the gate passage.
+for(const b of CITY_BUILDINGS)for(let y=b.bounds[1]-1;y<=b.bounds[3]+1;y++)for(let x=b.bounds[0]-1;x<=b.bounds[2]+1;x++){WALL.delete(KEY(x,y));INNER.delete(KEY(x,y));}
+for(const g of CITY_GATES)for(let y=g.bounds[1];y<=g.bounds[3];y++)for(let x=g.bounds[0];x<=g.bounds[2];x++){WALL.delete(KEY(x,y));INNER.delete(KEY(x,y));}
+// Put the staircase on walkable ground exactly next to a wall, with a clear approach.
+for(const [x,y] of [[48,60],[69,60],[74,43],[44,43],[96,23],[103,25],[89,25],[96,136],[89,135],[103,135],[27,73],[28,89],[164,73],[163,91],[54,132],[136,121]]){
+ if(CITY_BUILDINGS.some(b=>rect(x,y,b.bounds))||WALL.has(KEY(x,y))||INNER.has(KEY(x,y)))continue;
+ if([[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>WALL.has(KEY(x+dx,y+dy))||INNER.has(KEY(x+dx,y+dy))))CITY_STAIRS.push({x,y});
+}
 // Build safe approach lanes from each entrance to the closest already connected street.
 // Use shortest-path search, never cutting buildings, gates or walls.
 const occupied=new Set();for(const b of CITY_BUILDINGS)for(let y=b.bounds[1];y<=b.bounds[3];y++)for(let x=b.bounds[0];x<=b.bounds[2];x++)occupied.add(KEY(x,y));
@@ -76,8 +86,8 @@ for(const b of CITY_BUILDINGS.filter(b=>b.door)){
  const offset={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing],start=[b.door.x+offset[0],b.door.y+offset[1]];
  if(forbidden(...start))continue;
  const q=[start],prev=new Map([[KEY(...start),null]]);let found=null;
- for(let i=0;i<q.length;i++){const [x,y]=q[i],k=KEY(x,y);if(ROAD.has(k)){found=k;break;}
- for(const [dx,dy] of dirs){const xx=x+dx,yy=y+dy,kk=KEY(xx,yy);if(forbidden(xx,yy)||prev.has(kk))continue;prev.set(kk,k);q.push([xx,yy]);}}
+ for(let i=0;i<q.length;i++){const [x,y]=q[i],k=KEY(x,y);if(ROAD.has(k)&&(!b.external||!within(x,y))){found=k;break;}
+ for(const [dx,dy] of dirs){const xx=x+dx,yy=y+dy,kk=KEY(xx,yy);if(forbidden(xx,yy)||prev.has(kk)||(b.external&&within(xx,yy)))continue;prev.set(kk,k);q.push([xx,yy]);}}
  for(let at=found;at;at=prev.get(at))ROAD.add(at);
  ROAD.add(KEY(...start));
 }
