@@ -1,4 +1,5 @@
 import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.24";
+import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation} from "./dns-population.js?v=0.3.25";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
@@ -14,6 +15,8 @@ import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
 const npcs=createNPCs();state.npcs=npcs;
+// Temporary passers-by are intentionally NOT saved with the 40 established residents.
+const ambient=createAmbientPopulation();
 let activeNpc=null;
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 // VIS 1.0: authoritative tile coordinates stay integer; visual coordinates interpolate.
@@ -63,7 +66,7 @@ function animateVisual(now){
  }
  // Do not redraw an idle map 60 times per second on mobile.
  const cameraMoving=Math.abs(visual.cameraTargetX-state.camera.x)+Math.abs(visual.cameraTargetY-state.camera.y)>.002;
- if((visual.active||cameraMoving||npcMoving(npcs,p,now))&&now-visual.lastPaint>=40){draw();visual.lastPaint=now;}
+ if((visual.active||cameraMoving||npcMoving(npcs,p,now)||npcMoving(ambient.actors,p,now))&&now-visual.lastPaint>=40){draw();visual.lastPaint=now;}
  requestAnimationFrame(animateVisual);
 }
 function notify(message){const el=$("toast");el.textContent=message;el.classList.add("visible");clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove("visible"),2300);}
@@ -127,6 +130,7 @@ function draw(){
  }
  if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  drawNPCs(cx,cy,w,h,size);
+ if(p.map==="site-city1")drawNPCs(cx,cy,w,h,size,ambient.actors);
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -143,9 +147,9 @@ function draw(){
 }
 // Decorations are rendered behind furniture; rugs and stairs do not block movement.
 // Directional, mobile-friendly miniature character sprites (no external image files).
-function drawNPCs(cx,cy,w,h,size){
+function drawNPCs(cx,cy,w,h,size,actors=npcs){
  const now=performance.now();
- for(const n of visibleNPCs(npcs,state.player)){
+ for(const n of visibleNPCs(actors,state.player)){
   const walking=n.started>=0&&now<n.started+n.duration;
   const t=walking?Math.min(1,(now-n.started)/n.duration):1;
   const smooth=t*t*(3-2*t);
@@ -183,7 +187,7 @@ function drawNPCs(cx,cy,w,h,size){
   }else{ctx.fillStyle="#322b2b";ctx.fillRect(-3,-9-bob,6,1);}
   if(n.important){ctx.strokeStyle="#f5d692";ctx.lineWidth=.85;ctx.strokeRect(-7,-14-bob,14,24);}
   ctx.restore();
-  if(size>=21&&(n.important||Math.abs(n.x-state.player.x)+Math.abs(n.y-state.player.y)<=3)){
+  if(n.simulationClass!=="ambient"&&size>=21&&(n.important||Math.abs(n.x-state.player.x)+Math.abs(n.y-state.player.y)<=3)){
    const font=Math.max(9,Math.min(12,size*.34));
    ctx.textAlign="center";ctx.textBaseline="bottom";ctx.font="bold "+font+"px system-ui";
    const label=n.name,width=ctx.measureText(label).width+8;
@@ -647,7 +651,7 @@ $("plotReserveBtn").addEventListener("click",()=>{
 $("zoomIn").addEventListener("click",()=>zoom(1));$("zoomOut").addEventListener("click",()=>zoom(-1));$("centerCamera").addEventListener("click",()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();});
 $("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
- closeNPCDialogue();restoreNPCState(npcs,data.npcState);
+ closeNPCDialogue();resetAmbientPopulation(ambient);restoreNPCState(npcs,data.npcState);
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
  Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.gateStates=data.gateStates||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
  state.camera.zoom=Number.isFinite(data.camera?.zoom)?Math.max(.25,Math.min(3,data.camera.zoom)):1;
@@ -658,7 +662,7 @@ $("loadBtn").addEventListener("click",restore);
 $("pauseBtn").addEventListener("click",()=>{state.paused=!state.paused;draw();});
 $("newBtn").addEventListener("click",()=>{$("confirmNew").showModal();});
 $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="confirm")return;
- closeNPCDialogue();npcs.splice(0,npcs.length,...createNPCs());
+ closeNPCDialogue();resetAmbientPopulation(ambient);npcs.splice(0,npcs.length,...createNPCs());
  Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
@@ -768,7 +772,19 @@ setInterval(()=>{if(path.length&&!strategic.active()){const step=path.shift(),p=
   if(!dir||!move(dir,true))path=[];
  }},145);
 setInterval(()=>{if(!state.paused){updateClock(1);hud();}},1000);
-setInterval(()=>{if(!state.paused&&!strategic.active()&&stepNPCs(npcs,state.player,state.clock,performance.now(),state.gateStates))draw();},220);
+setInterval(()=>{
+ if(state.paused||strategic.active())return;
+ const now=performance.now();
+ const changedFixed=stepNPCs(npcs,state.player,state.clock,now,state.gateStates);
+ let changedAmbient=false;
+ if(state.player.map==="site-city1"){
+  const view=geometry();
+  const created=syncAmbientPopulation(ambient,state.player,state.camera,view,state.clock,now,npcs,state.gateStates);
+  const walked=moveAmbientPopulation(ambient,state.player,state.camera,view,state.clock,now,npcs,state.gateStates);
+  changedAmbient=created||walked;
+ }
+ if(changedFixed||changedAmbient)draw();
+},220);
 new ResizeObserver(resize).observe(canvas);
 snapVisual();refreshPlotPanel();resize();requestAnimationFrame(animateVisual);
 if("serviceWorker" in navigator){
