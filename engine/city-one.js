@@ -3,8 +3,8 @@ export const CITY_WIDTH=192,CITY_HEIGHT=160;
 const DATA=[
 ["twierdza","Twierdza","🏰",48,34,69,50,"S"],["koszary","Koszary","🛡",32,47,44,55,"S"],["zbrojownia","Zbrojownia","⚔",90,45,101,53,"S"],
 ["biblioteka","Biblioteka","📚",102,45,114,54,"S"],["karczma","Karczma","🍺",91,81,103,91,"S"],["kasyno","Kasyno","🎲",121,83,133,91,"S"],["kuznia","Kuźnia","⚒",145,91,156,99,"W"],
-["piekarnia","Piekarnia","🥖",73,99,83,106,"N"],["targ","Hala targowa","⚖",107,100,122,110,"N"],["stajnia","Stajnia","🐴",137,111,150,121,"N"],["apteka","Apteka","⚗",113,65,122,73,"S"],
-["arena","Arena","🏟",43,108,60,121,"N"],["switynia","Świątynia","⛪",68,115,83,127,"N"],["straznica","Strażnica","🗼",155,67,165,77,"W"],["magazyn","Magazyn","📦",154,106,164,116,"W"],
+["piekarnia","Piekarnia","🥖",73,99,83,106,"N"],["targ","Hala targowa","⚖",107,100,119,108,"N"],["stajnia","Stajnia","🐴",137,111,148,119,"N"],["apteka","Apteka","⚗",113,65,122,73,"S"],
+["arena","Arena","🏟",76,103,89,113,"N"],["switynia","Świątynia","⛪",72,115,84,124,"N"],["straznica","Strażnica","🗼",155,67,165,77,"W"],["magazyn","Magazyn","📦",154,106,164,116,"W"],
 ["dom1","Dom 1","⌂",77,65,84,71,"E"],["dom2","Dom 2","⌂",107,117,116,124,"N"],["dom3","Dom 3","⌂",138,63,145,70,"W"],["dom4","Dom 4","⌂",132,125,141,132,"N"],
 ["mlyn","Młyn","🌾",13,25,23,35,"S"],["farma1","Farma 1","🌱",9,49,21,61,"E"],["farma2","Farma 2","🌱",12,107,25,119,"E"],["tartak","Tartak","🪵",171,36,185,48,"W"],["farma3","Farma 3","🌱",171,111,185,125,"W"]
 ];
@@ -115,6 +115,53 @@ for(const building of CITY_BUILDINGS){
  const chosen=candidates[0];
  if(chosen){building.bounds=chosen.B;if(originalDoor)building.door={x:originalDoor.x+chosen.dx,y:originalDoor.y+chosen.dy};}
  placed.push(building.bounds);
+}
+// Districts: historic citadel, merchant core, artisans, housing and outskirts.
+// Filler buildings are deliberately non-enterable and never affect interior portals.
+export const CITY_DISTRICTS=[
+ {id:"castle",name:"Dzielnica zamkowa",bounds:[43,29,76,62]},
+ {id:"market",name:"Dzielnica handlowa",bounds:[85,70,135,112]},
+ {id:"craft",name:"Dzielnica rzemieślnicza",bounds:[130,55,165,123]},
+ {id:"housing",name:"Dzielnica mieszkalna",bounds:[58,55,116,133]},
+ {id:"outer",name:"Przedmieścia",bounds:[8,18,185,145]}
+];
+const DECOR_TYPES={
+ castle:[["Oficyna",7,5],["Dom służby",6,5],["Skład",5,5]],
+ market:[["Kamienica",6,7],["Sklep",5,5],["Kram",4,4],["Dom kupca",7,6]],
+ craft:[["Warsztat",7,6],["Szopa",5,4],["Magazyn",8,6],["Dom rzemieślnika",6,6]],
+ housing:[["Dom",6,5],["Dom",5,6],["Kamienica",7,7],["Oficyna",4,5]],
+ outer:[["Chata",6,5],["Stodoła",8,6],["Szopa",5,4]]
+};
+const districtAt=(x,y)=>{
+ if(x>=45&&x<=73&&y>=31&&y<=59)return "castle";
+ if(x>=86&&x<=133&&y>=72&&y<=112)return "market";
+ if(x>=130&&x<=165&&y>=55&&y<=123)return "craft";
+ if(x>=58&&x<=116&&y>=55&&y<=133)return "housing";
+ return "outer";
+};
+const hasStreetFront=(B)=>{
+ let count=0;
+ for(let x=B[0];x<=B[2];x++)if(ROAD.has(KEY(x,B[1]-2))||ROAD.has(KEY(x,B[3]+2)))count++;
+ for(let y=B[1];y<=B[3];y++)if(ROAD.has(KEY(B[0]-2,y))||ROAD.has(KEY(B[2]+2,y)))count++;
+ return count>=2;
+};
+const fillerCounts={castle:0,market:0,craft:0,housing:0,outer:0};
+for(let y=29;y<135;y+=5)for(let x=30;x<164;x+=5){
+ const district=districtAt(x,y),variants=DECOR_TYPES[district];
+ const hash=(x*92821+y*68917+x*y*31)>>>0;
+ if(hash%7===0)continue;
+ const [name,w,h]=variants[hash%variants.length];
+ const xx=x+(hash%3)-1,yy=y+((hash>>>3)%3)-1;
+ const B=[xx,yy,xx+w-1,yy+h-1];
+ if(!within(B[0],B[1])||!within(B[2],B[3])||!hasStreetFront(B))continue;
+ if(placed.some(p=>B[0]<=p[2]+1&&B[2]>=p[0]-1&&B[1]<=p[3]+1&&B[3]>=p[1]-1))continue;
+ let invalid=false;
+ for(let by=B[1];by<=B[3]&&!invalid;by++)for(let bx=B[0];bx<=B[2];bx++)
+  if(WALL.has(KEY(bx,by))||INNER.has(KEY(bx,by))||ROAD.has(KEY(bx,by))){invalid=true;break;}
+ if(invalid)continue;
+ const id="city1-quarter-"+district+"-"+(++fillerCounts[district]);
+ CITY_BUILDINGS.push({id,name,bounds:B,decorative:true,external:false,door:null,district});
+ placed.push(B);
 }
 // Street surfaces must not exist under any footprint, even decorative ones.
 for(const B of placed)for(let y=B[1];y<=B[3];y++)for(let x=B[0];x<=B[2];x++)ROAD.delete(KEY(x,y));
