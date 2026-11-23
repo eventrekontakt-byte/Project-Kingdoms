@@ -1,3 +1,15 @@
+## Alpha 0.3.24 — DNS 1.0, etap 1: spójne profesje i zachowania
+
+- Zainicjowano architekturę DNS 1.0; szczegółowy projekt zapisano w docs/DNS-ARCHITECTURE.md.
+- Zachowano 40 NPC w Mieście 1; 12 oznaczono jako permanent (kluczowi mieszkańcy), pozostałe 28 jako resident. Dynamiczne generowanie NPC tła nie jest jeszcze aktywne.
+- 12 ważnych postaci otrzymało spójne profile: zawód, faktyczne miejsce pracy, zachowanie i zgodną wypowiedź. Berta pracuje w hali targowej, Daria prowadzi karczmę, Cedryk pracuje w kuźni itd.
+- Zwykli kupcy kierowani są na targ, zamiast losowo do apteki czy karczmy. Odpowiedź o pracy uwzględnia rzeczywiste stanowisko postaci.
+- Dowódca straży i strażnicy patrolują kolejne punkty kontrolne, a nie stale chodzą w małym kółku. Posłańcy otrzymali dłuższe trasy.
+- Pracownicy we wnętrzach wykonują znacznie rzadsze przemieszczenia, pozwalając im pozostawać przy miejscu pracy. Status "Co teraz robisz?" opisuje zawód i stanowisko.
+- Rozszerzono grafikę nakryć głowy o dowódcę straży; pozostała oprawa NPC bez zmian.
+- Nie zmieniano układu miasta, zoomu, minimapy ani struktury zapisu (schema 9). Te funkcje należą do następnych etapów DNS.
+- Test logiczny dnia 6:00–24:00: Berta o 8:42 i 12:00 jest w hali targowej, w godzinach nocnych przebywa w domu; nie wykryto kolizji NPC, ani niedozwolonych pozycji. Symulacja patrolu dowódcy i strażnika objęła odpowiednio 83 i 78 różnych kratek w próbie. Test mobilny w przeglądarce pozostaje do wykonania.
+
 ## Alpha 0.3.23 — NPC 1.2.2: naprawa ruchu na ekranie
 
 - Naprawiono stan NPC przy miejscu pracy lub spotkań: po wyznaczeniu celu spaceru nowy cel nie jest już nadpisywany przed rozpoczęciem marszu.
