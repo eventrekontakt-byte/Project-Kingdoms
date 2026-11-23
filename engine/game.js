@@ -79,6 +79,8 @@ function hud(){
  if(p.map==="site-city1")$("coordinates").textContent+=` • poziom Z=${(p.z??elevationAt(p.map,p.x,p.y,p.floor))} (${((p.z??elevationAt(p.map,p.x,p.y,p.floor))*ELEVATION_UNIT_METERS).toFixed(1)} m)`;
  $("clock").textContent=`Dzień ${state.clock.day} • ${String(state.clock.hour).padStart(2,"0")}:${String(state.clock.minute).padStart(2,"0")}${state.paused?" • PAUZA":""}`;
  $("zoomLabel").textContent=Math.round(state.camera.zoom*100)+"%";
+ const npcStats=$("npcStats");
+ if(npcStats)npcStats.textContent="DNS 1.0: 40 stałych mieszkańców · "+ambient.actors.length+" NPC tła aktywnych (limit 38) · utworzono "+ambient.generated+" / zwolniono "+ambient.removed;
  if(p.map==="interior-city1-karczma")$("coordinates").textContent=`Karczma: ${p.x},${p.y} • piętro ${p.floor} • mapa ${mapSize(p.map).w}×${mapSize(p.map).h}`;
  $("pauseBtn").textContent=state.paused?"Wznów":"Pauza";
 }
