@@ -1,3 +1,14 @@
+## 0.3.20-alpha — NPC 1.1: trasy, animacja i plany dnia
+- Zachowano populację 40 NPC, w tym 12 ważnych postaci.
+- Zastąpiono krótkie losowe kroki trasami A* do pracy, targu, karczmy i domu; pojedyncze spacery obejmują kilkanaście lub kilkadziesiąt kratek.
+- Wprowadzono podstawowy harmonogram: rano / praca / spotkania / powrót / noc. Ważne postacie mogą znikać z ulicy po powrocie do swojego budynku i pojawiać się w jego wnętrzu.
+- Symulacja NPC poza sąsiedztwem gracza działa uproszczonym modelem; planowanie tras i animacja obejmują przede wszystkim pobliskich mieszkańców.
+- Dodano rysowane w Canvas sylwetki z głową, ubiorem, nakryciem głowy zależnym od profesji, kierunkiem patrzenia i animacją nóg.
+- Rozmowy mają teraz okno z opcjami: praca, miasto, pożegnanie. Obsługa na telefonie przez E/Zbadaj lub dotknięcie pobliskiej postaci.
+- Zapis lokalny przechowuje pozycję i miejsce pobytu NPC (schema 9). Wczytywanie wcześniejszych zapisów pozostaje możliwe.
+- Zaktualizowano wersję aplikacji i cache offline.
+- Weryfikacja kodowa: 40 NPC, symulacja 90 s, 34 postacie zmieniły pozycję o 15+ kratek; składnia JS poprawna. Test na Androidzie pozostaje do wykonania.
+
 ## Alpha 0.3.13 — optymalizacja miasta i wnętrz
 - Usunięto kolizję domu z biblioteką i kolizję apteki z bramą wschodnią.
 - Dodano walidator nakładania się budynków, bram i wyjść.
