@@ -1,4 +1,4 @@
-import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.23";
+import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.24";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
@@ -171,7 +171,7 @@ function drawNPCs(cx,cy,w,h,size){
   ctx.moveTo(6,0-bob);ctx.lineTo(8-stride*.45,5-bob);ctx.stroke();
   ctx.fillStyle=n.skin||"#e0b38a";ctx.beginPath();ctx.arc(side*1,-7-bob,5.3,0,Math.PI*2);ctx.fill();
   // Hair/helmet/cap denotes profession rather than a plain colored dot.
-  const helmet=n.role==="Strażnik",cap=n.role==="Kupiec"||n.role==="Posłaniec";
+  const helmet=n.role==="Strażnik"||n.role==="Dowódca straży",cap=n.role==="Kupiec"||n.role==="Posłaniec";
   ctx.fillStyle=helmet?"#8e9da6":cap?"#754a34":"#463b32";
   ctx.beginPath();ctx.arc(side*1,-9.7-bob,5.3,Math.PI,Math.PI*2);ctx.fill();
   if(helmet){ctx.fillStyle="#bfcbd0";ctx.fillRect(-5,-11.5-bob,10,2);}
