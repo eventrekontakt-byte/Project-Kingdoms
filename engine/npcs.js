@@ -282,12 +282,17 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
    }
    // Day's next activity begins with leaving through the building's exit.
    comeOutside(n,now,npcs);changed=true;
+   occupied.add(n.x+","+n.y);
    closeOutside=player.map===CITY&&Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
    insideWithPlayer=false;
   }
   if(!closeOutside&&!insideWithPlayer){
    // Cheap off-screen simulation: update only on phase changes, without A*.
-   if(changedPhase||n.indoorActivity!==null){
+   if(changedPhase||n.indoorActivity!==null||n.steps.length>0||n.destination||
+      (phase==="sleep"&&n.map===CITY)){
+    // Finish travel at coarse granularity once the NPC leaves the player's
+    // simulation radius: a sleeping resident must not wander outside all night.
+    n.steps=[];n.destination=null;
     const indoor=indoorDestination(n,phase);
     if(indoor&&enterBuilding(n,indoor,phase,npcs,now)){changed=true;}
     else{
