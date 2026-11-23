@@ -24,7 +24,7 @@ export function plotBufferValid(bounds,terrain=cityTile){
 export function validateNewPlot(bounds){
  if(!Array.isArray(bounds)||bounds.length!==4||bounds.some(v=>!Number.isInteger(v)))return {ok:false,reason:"Nieprawidłowe współrzędne"};
  const [x1,y1,x2,y2]=bounds;
- if(x1<1||y1<1||x2>=111||y2>=87||x1>x2||y1>y2)return {ok:false,reason:"Poza granicami miasta"};
+ if(x1<1||y1<1||x2>=191||y2>=159||x1>x2||y1>y2)return {ok:false,reason:"Poza granicami miasta"};
  if(CITY_PLOTS.some(p=>!(x2<p.bounds[0]-1||x1>p.bounds[2]+1||y2<p.bounds[1]-1||y1>p.bounds[3]+1)))return {ok:false,reason:"Działka koliduje z istniejącą działką lub jej odstępem"};
  if(!plotBufferValid(bounds))return {ok:false,reason:"Wymagany odstęp co najmniej jednej kratki od drogi i murów"};
  for(let y=y1;y<=y2;y++)for(let x=x1;x<=x2;x++)if(!["grass","meadow","tree"].includes(cityTile(x,y)))return {ok:false,reason:"Teren nie nadaje się pod zabudowę"};
