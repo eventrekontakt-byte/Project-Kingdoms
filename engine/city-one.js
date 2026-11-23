@@ -77,6 +77,13 @@ for(const [x,y] of [[48,60],[69,60],[74,43],[44,43],[96,23],[103,25],[89,25],[96
  if(CITY_BUILDINGS.some(b=>rect(x,y,b.bounds))||WALL.has(KEY(x,y))||INNER.has(KEY(x,y)))continue;
  if([[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>WALL.has(KEY(x+dx,y+dy))||INNER.has(KEY(x+dx,y+dy))))CITY_STAIRS.push({x,y});
 }
+// Supplement hand-placed stairs with distributed access along the outer curtain.
+for(let y=25;y<136;y+=12)for(const side of [0,1]){
+ const candidates=[];
+ for(let x=28;x<164;x++)if((side===0?x<96:x>=96)&&!WALL.has(KEY(x,y))&&!INNER.has(KEY(x,y))&&!CITY_BUILDINGS.some(b=>rect(x,y,b.bounds))&&dirsPlaceholder(x,y))candidates.push(x);
+ if(candidates.length){const x=candidates[Math.floor(candidates.length/2)];if(!CITY_STAIRS.some(p=>Math.abs(p.x-x)+Math.abs(p.y-y)<7))CITY_STAIRS.push({x,y});}
+}
+function dirsPlaceholder(x,y){return [[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>WALL.has(KEY(x+dx,y+dy)));}
 // Build safe approach lanes from each entrance to the closest already connected street.
 // Use shortest-path search, never cutting buildings, gates or walls.
 const occupied=new Set();for(const b of CITY_BUILDINGS)for(let y=b.bounds[1];y<=b.bounds[3];y++)for(let x=b.bounds[0];x<=b.bounds[2];x++)occupied.add(KEY(x,y));
