@@ -35,6 +35,17 @@ Goal: a city feels populated by hundreds while a smartphone simulates only a sma
 - Guards patrol waypoint circuits; indoor workers spend longer at their stations instead of repeatedly pacing.
 - Earlier night return and save schema remain supported.
 
+## Implemented — Alpha 0.3.25, ambient population streaming
+- A second transient NPC layer runs alongside the 40 saved city NPCs. Temporary actors are never written to the old campaign save format.
+- City divided into 12 × 12 tile chunks. Only chunks touching the camera viewport plus a small buffer are used to seed actors.
+- A fixed cap of 38 active temporary characters keeps CPU and memory bounded even if many chunks exist.
+- Density differs between market, artisan quarter, housing, fortress precinct and countryside; night-time generation is reduced.
+- New pedestrians are spawned strictly outside the visible camera rectangle. They initially walk towards nearby streets visible to the player.
+- An out-of-range actor receives a 14-second grace period before deletion. Active chunks are rearmed after the camera moves away.
+- Temporary actors have only L0 local steering (maximum four neighbour candidates), no A* or individual schedules. They are not yet promoted by observation, cannot be followed across building interiors, and have no persistent identity.
+- Side panel displays currently active ambient actors and cumulative creation/removal counters.
+- Tested simulated 20-second viewport at several hours: by midday 14 temporary actors entered the image naturally, zero spawned visibly, zero stepped on prohibited wall/door/rampart tiles. Further real-device tests required.
+
 ## Delivery roadmap (future work)
 - 0.3.25: spatial chunks, temporary crowd, spawn/despawn outside viewport.
 - 0.3.26: observation timer, promotion tiers, priority/cost budget.
