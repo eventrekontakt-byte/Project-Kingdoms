@@ -43,10 +43,10 @@ function peopleAt(fixed,actors,x,y,player){
 }
 export const AMBIENT_CONFIG=Object.freeze({chunkSize:CHUNK,maxActive:LIMIT,syncMs:SYNC_MS,despawnGraceMs:GRACE_MS,populationPotential:650,observationMs:OBSERVE_MS,followMs:FOLLOW_MS,maxAdvanced:MAX_ADVANCED,maxFollowed:MAX_FOLLOWED});
 export function createAmbientPopulation(){
- return {actors:[],loaded:new Set(),serial:0,lastSync:-Infinity,generated:0,removed:0,focusId:null,manualFocus:false,focusLostAt:0,lastObservationAt:null};
+ return {actors:[],loaded:new Set(),serial:0,lastSync:-Infinity,generated:0,removed:0,focusId:null,manualFocus:false,focusLostAt:0,lastObservationAt:null,suppressUntil:0};
 }
 export function resetAmbientPopulation(pop){
- pop.actors.length=0;pop.loaded.clear();pop.lastSync=-Infinity;pop.serial=0;pop.generated=0;pop.removed=0;pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;pop.lastObservationAt=null;
+ pop.actors.length=0;pop.loaded.clear();pop.lastSync=-Infinity;pop.serial=0;pop.generated=0;pop.removed=0;pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;pop.lastObservationAt=null;pop.suppressUntil=0;
 }
 function density(x,y,clock){
  const type=district(x,y),hour=clock.hour,day=hour>=7&&hour<20;
@@ -78,7 +78,7 @@ export function focusAmbient(pop,id){
  const actor=pop.actors.find(a=>a.id===id);
  if(!actor)return false;
  if(pop.focusId===id&&pop.manualFocus){
-  pop.focusId=null;pop.manualFocus=false;actor.followed=false;return false;
+  pop.focusId=null;pop.manualFocus=false;actor.followed=false;pop.suppressUntil=(pop.lastObservationAt||0)+8000;return false;
  }
  const old=pop.actors.find(a=>a.id===pop.focusId);if(old)old.followed=false;
  pop.focusId=id;pop.manualFocus=true;pop.focusLostAt=0;actor.followed=true;
@@ -145,7 +145,7 @@ export function observeAmbientPopulation(pop,player,camera,view,now){
    focus.followed=false;pop.focusId=null;pop.manualFocus=false;focus=null;
   }
  }
- if(!focus){
+ if(!focus&&now>=pop.suppressUntil){
   // At most one automatically focused pedestrian; proximity and staying
   // close distinguish intentional following from a busy visible market.
   const candidates=pop.actors.filter(n=>visible(n)&&Math.abs(n.x-player.x)+Math.abs(n.y-player.y)<=5);
