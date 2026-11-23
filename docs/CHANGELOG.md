@@ -1,3 +1,8 @@
+## 0.3.11.1-alpha — poprawka uruchamiania
+- Usunięto błąd „undefined is not iterable” podczas rysowania bram przy mieszaniu wersji modułów.
+- Dodano odświeżenie importu definicji bram oraz zabezpieczenie dla starszych danych.
+- Odświeżono cache aplikacji.
+
 ## 0.3.11-alpha — cztery bramy miejskie
 - Usunięto testowy most i wieżę z balkonem oraz ich specjalne powierzchnie Z.
 - Cztery stałe bramy: północna, południowa, zachodnia i wschodnia.
