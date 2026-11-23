@@ -1,3 +1,11 @@
+## 0.3.12-alpha — VIS 1.8: interaktywne bramy miejskie
+- Cztery bramy miejskie mają niezależne, podnoszone i opuszczane kraty.
+- Użycie Zbadaj/E w pobliżu bramy przełącza stan kraty.
+- Opuszczona krata blokuje przejście, także w automatycznym wyznaczaniu trasy.
+- Nie można opuścić kraty na polu zajmowanym przez bohatera.
+- Stan bram jest zapisywany i przywracany razem z kampanią.
+- Zachowano konstrukcje 5×5, chodniki obronne i wszystkie cztery przejazdy.
+
 ## 0.3.11.1-alpha — poprawka uruchamiania
 - Usunięto błąd „undefined is not iterable” podczas rysowania bram przy mieszaniu wersji modułów.
 - Dodano odświeżenie importu definicji bram oraz zabezpieczenie dla starszych danych.
