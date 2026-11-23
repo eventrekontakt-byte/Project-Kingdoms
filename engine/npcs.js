@@ -1,4 +1,4 @@
-// NPC 1.2 (0.3.21): staggered schedules, eight meeting places, indoor visits and crowd limits.
+// NPC 1.2.1 (0.3.22): residential homes, real entry points and guaranteed night-time return.
 import {CITY_BUILDINGS,CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
 import {tileAt,mapSize} from "./world.js";
 const FIRST=["Aldric","Berta","Cedryk","Daria","Edmund","Fenna","Gustaw","Hilda","Iwo","Jagna","Konrad","Lena","Marek","Nora","Oskar","Petra","Radomir","Sara","Tomasz","Wera"];
@@ -11,6 +11,9 @@ const walkCache=new Uint8Array(N);
 const idx=(x,y)=>y*WIDTH+x;
 const rand=n=>((Math.imul(n,1664525)+1013904223)>>>0)/4294967296;
 const dwellings=CITY_BUILDINGS.filter(b=>!b.decorative);
+// Only residential houses may be assigned as homes: arenas, forges and shops
+// are workplaces, never bedrooms. Current four enterable houses accommodate NPCs.
+const residences=CITY_BUILDINGS.filter(b=>/^city1-dom[1-4]$/.test(b.id));
 const findBuilding=id=>dwellings.find(b=>b.id==="city1-"+id);
 function tileKind(x,y){
  if(x<1||y<1||x>=WIDTH-1||y>=HEIGHT-1)return 0;
@@ -37,6 +40,13 @@ function doorApproach(b){
  const d=b.door||{x:Math.floor((b.bounds[0]+b.bounds[2])/2),y:b.bounds[3]};
  const [dx,dy]={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing]||[0,1];
  return near(d.x+dx*2,d.y+dy*2);
+}
+function doorEntry(b){
+ if(!b||!b.door)return {x:96,y:132};
+ const [dx,dy]={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing]||[0,1];
+ const x=b.door.x+dx,y=b.door.y+dy;
+ // NPCs need an actual accessible entry tile, not a distant pavement marker.
+ return near(x,y,false);
 }
 const workFor=(role,i)=>{
  const names=role==="Strażnik"?["straznica","koszary","twierdza"]:role==="Kupiec"?["targ","karczma","apteka"]:
@@ -97,23 +107,25 @@ function interiorSpot(map,seed=0,occupied=null){
  return null;
 }
 export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
- const homeBuilding=dwellings[(i*7+14)%dwellings.length];
+ const homeBuilding=residences[(i*7+Math.floor(i/4))%residences.length];
  const workBuilding=workFor(ROLES[i%8],i);
+ const homeEntry=doorEntry(homeBuilding),workEntry=doorEntry(workBuilding);
  const home=distinctSpot(doorApproach(homeBuilding),usedHome),work=distinctSpot(doorApproach(workBuilding),usedWork);
  const market=near(100+(i%7-3)*2,98+((i*3)%9-4)*2);
  const venue=VENUE_SLOTS[(i*13)%VENUE_SLOTS.length];
+ const socialEntry=venue.buildingData?doorEntry(venue.buildingData):venue.point;
  const social=distinctSpot(venue.point,usedSocial);
  return {id:"npc-"+String(i+1).padStart(2,"0"),
  name:FIRST[i%20]+(i>=20?" "+["Starszy","Młodsza","z Doliny","z Północy"][i%4]:""),
  role:ROLES[i%8],color:COLORS[i%8],skin:SKINS[i%5],important:i<12,
- home,work,market,social,venueId:venue.id,venueName:venue.name,
+ home,work,market,social,homeEntry,workEntry,socialEntry,venueId:venue.id,venueName:venue.name,
  venueMap:venue.map,venueIndoor:venue.indoor,
  homeMap:"interior-"+homeBuilding.id,homeBuilding:homeBuilding.id,
  workMap:"interior-"+workBuilding.id,workBuilding:workBuilding.id,
  workIndoor:["Kupiec","Rzemieślnik","Robotnik"].includes(ROLES[i%8])||i%7===0,
  wakeAt:355+(i*19)%130,workAt:435+(i*31)%110,
- workEndAt:845+(i*37)%225,socialEndAt:1070+(i*23)%205,
- sleepAt:1250+(i*17)%125};
+ workEndAt:845+(i*37)%225,socialEndAt:1040+(i*23)%130,
+ sleepAt:1200+(i*17)%110};
 });
 // Reused typed arrays keep route planning allocation-light on Android.
 const visited=new Uint32Array(N),parent=new Int32Array(N),gScore=new Float32Array(N);
@@ -180,9 +192,9 @@ export function schedulePhase(clock,n=null){
  return "evening";
 }
 function scheduleGoal(n,phase){
- if(phase==="sleep"||phase==="evening")return n.home;
- if(phase==="morning"||phase==="work")return n.work;
- return n.social;
+ if(phase==="sleep"||phase==="evening")return n.homeEntry;
+ if(phase==="morning"||phase==="work")return n.workIndoor?n.workEntry:n.work;
+ return n.venueIndoor?n.socialEntry:n.social;
 }
 function phaseLabel(n,phase){
  return {sleep:"Odpoczywa w domu",morning:"Idzie do pracy",work:"Pracuje",social:"Spędza czas: "+n.venueName,evening:"Wraca do domu"}[phase]||"Spaceruje";
@@ -226,7 +238,7 @@ function enterBuilding(n,map,phase,npcs,now){
 }
 function comeOutside(n,now,npcs){
  const last=n.indoorActivity;
- const nearDoor=last==="work"?n.work:last==="social"?n.social:n.home;
+ const nearDoor=last==="work"?n.workEntry:last==="social"?n.socialEntry:n.homeEntry;
  // Exiting the building uses its real exterior approach rather than a fixed
  // shared spawn, avoiding NPC stacks beside doors.
  const used=new Set(npcs.filter(o=>o!==n&&o.map===CITY).map(o=>o.x+","+o.y));
@@ -267,6 +279,17 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
  for(const n of npcs){
   if(n.talking)continue;
   const phase=schedulePhase(clock,n);
+  const minutes=clock.hour*60+clock.minute;
+  // Deadlines safeguard against disconnected streets and door queues: no one
+  // stays at a shop overnight after 50 in-game minutes past their bedtime.
+  const overdue=phase==="sleep"&&(minutes<n.wakeAt||minutes>=n.sleepAt+50);
+  if(overdue&&n.map!==n.homeMap){
+   occupied.delete(n.x+","+n.y);
+   if(enterBuilding(n,n.homeMap,"sleep",npcs,now)){
+    n.phase="sleep";n.goal=n.homeEntry;n.task=phaseLabel(n,"sleep");changed=true;
+    continue;
+   }
+  }
   const changedPhase=n.phase!==phase;
   if(changedPhase){
    n.phase=phase;n.goal=scheduleGoal(n,phase);n.steps=[];n.destination=null;n.roams=0;
@@ -276,7 +299,7 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
    Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
   let insideWithPlayer=n.map!=="site-city1"&&n.map===player.map;
   if(n.indoors){
-   if(n.indoorActivity===phase){
+   if(n.indoorActivity===phase&&n.map===indoorDestination(n,phase)){
     if(insideWithPlayer&&moveIndoor(n,player,now,npcs))changed=true;
     continue;
    }
@@ -307,7 +330,7 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
   if(now<n.nextMove)continue;
   const indoor=indoorDestination(n,phase);
   // Actual transition occurs only after arriving near a venue entrance.
-  if(indoor&&Math.abs(n.x-n.goal.x)+Math.abs(n.y-n.goal.y)<=2){
+  if(indoor&&Math.abs(n.x-n.goal.x)+Math.abs(n.y-n.goal.y)<=4){
    if(enterBuilding(n,indoor,phase,npcs,now)){occupied.delete(n.x+","+n.y);changed=true;continue;}
   }
   if(!indoor&&n.x===n.goal.x&&n.y===n.goal.y&&!n.steps.length){
