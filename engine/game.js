@@ -1,16 +1,16 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.11.1";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.11.1";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.12";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
-import {findRoute} from "./pathfinding.js?v=0.3.11.1";
+import {findRoute} from "./pathfinding.js?v=0.3.12";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
-import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js?v=0.3.11.1";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.11.1";
-import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.11.1";
+import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js?v=0.3.12";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.12";
+import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
-const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
+const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 // VIS 1.0: authoritative tile coordinates stay integer; visual coordinates interpolate.
 const visual={x:START.x+.5,y:START.y+.5,map:START.map,floor:START.floor,
@@ -427,14 +427,15 @@ function drawCityGates(cx,cy,w,h,size){
   const lw=vertical?size*3:gw,lh=vertical?gh:size*3;
   ctx.strokeStyle="#54463a";ctx.lineWidth=Math.max(2,size*.12);
   ctx.strokeRect(lx+size*.07,ly+size*.07,lw-size*.14,lh-size*.14);
-  // Open portcullis, visually raised above the traversable street.
-  ctx.strokeStyle="#c9a46b";ctx.lineWidth=Math.max(1,size*.065);
+  // Open portcullis hangs overhead; closed one blocks the three-tile lane.
+  const closed=state.gateStates[gate.id]==="closed";
+  ctx.strokeStyle=closed?"#523e2e":"#c9a46b";ctx.lineWidth=Math.max(1,size*(closed?.13:.065));
   if(vertical){
    const yy=(gate.y-cy)*size+h/2;
-   for(let k=0;k<4;k++){let xx=(gate.x-1+k-cx)*size+w/2;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx,yy+size*.25);ctx.stroke();}
+   for(let k=0;k<4;k++){let xx=(gate.x-1+k-cx)*size+w/2;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx,yy+size*(closed?1:.25));ctx.stroke();}
   }else{
    const xx=(gate.x-cx)*size+w/2;
-   for(let k=0;k<4;k++){let yy=(gate.y-1+k-cy)*size+h/2;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx+size*.25,yy);ctx.stroke();}
+   for(let k=0;k<4;k++){let yy=(gate.y-1+k-cy)*size+h/2;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx+size*(closed?1:.25),yy);ctx.stroke();}
   }
   ctx.restore();
  }
@@ -514,6 +515,7 @@ function move(dir,fromPath=false){
  const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[dir];if(!d)return false;
  const p=state.player,nx=p.x+d[0],ny=p.y+d[1];
  const door=doorAt(p.map,p.floor,nx,ny);if(door&&(state.doors[door.id]||door.initial)!=="open"){if(!fromPath)notify(door.name+": użyj Zbadaj / Otwórz (E)");path=[];draw();return false;}
+ if(p.map==="site-city1"){const gate=cityGateBarrierAt(nx,ny);if(gate&&state.gateStates[gate.id]==="closed"){if(!fromPath)notify(gate.name+": krata zamknięta — podejdź i użyj Zbadaj");path=[];draw();return false;}}
  const bounds=mapSize(p.map);
  if(siteForMap(p.map)&&(nx<0||ny<0||nx>=bounds.w||ny>=bounds.h)){
   path=[];strategic.open();notify("Opuszczono lokację — mapa świata");return true;
@@ -531,7 +533,7 @@ function move(dir,fromPath=false){
 }
 function findPath(goal){
  if(!$("worldMapOverlay").hidden)return [];
- const result=findRoute(state.player,goal,state.doors);
+ const result=findRoute(state.player,goal,state.doors,state.gateStates);
  if(result.reason)notify(result.reason);
  return result.path;
 }
@@ -574,7 +576,7 @@ $("zoomIn").addEventListener("click",()=>zoom(1));$("zoomOut").addEventListener(
 $("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
- Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
+ Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.gateStates=data.gateStates||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
  state.camera.zoom=Number.isFinite(data.camera?.zoom)?Math.max(.25,Math.min(3,data.camera.zoom)):1;
  state.controlMode=data.controlMode==="joystick"?"joystick":"dpad";state.paused=Boolean(data.paused);
  snapVisual();controls.setMode(state.controlMode);path=[];draw();if(data.worldMode)strategic.open();else strategic.close();notify("Wczytano kampanię");
@@ -612,7 +614,18 @@ function showObjectPanel(object){
 }
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
  if(state.player.map==="site-city1"){
-  const p=state.player,building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
+  const p=state.player,gate=cityGateControlNear(p.x,p.y);
+  if(gate){
+   const wasClosed=state.gateStates[gate.id]==="closed";
+   if(!wasClosed){
+    // Do not close the portcullis on the player's current tile.
+    const standing=cityGateBarrierAt(p.x,p.y);
+    if(standing?.id===gate.id){notify("Zejdź z progu bramy przed opuszczeniem kraty");return;}
+   }
+   state.gateStates[gate.id]=wasClosed?"open":"closed";
+   path=[];draw();notify(gate.name+": "+(wasClosed?"podniesiono kratę":"opuszczono kratę"));return;
+  }
+  const building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
   if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=16;p.y=25;state.camera.zoom=Math.max(.75,state.camera.zoom);}snapVisual();draw();notify("Wejście: "+building.name);return;}}
  }
  const obj=interactionNear(state.player);if(obj&&state.player.map==="interior-city1-karczma"){showObjectPanel(obj);path=[];draw();return;}
