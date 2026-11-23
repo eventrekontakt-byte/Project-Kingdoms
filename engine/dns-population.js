@@ -102,7 +102,18 @@ export function syncAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
  }
  return changed;
 }
-function chooseGoal(n,gateStates){
+function chooseGoal(n,gateStates,camera,view){
+ // New pedestrians should enter the scene from adjacent streets, rather
+ // than wandering indefinitely beyond the camera. Never teleport them.
+ const box=rect(camera,view);
+ if(!inside(box,null,n.x,n.y,0)){
+  const targetX=Math.max(Math.ceil(box.left+2),Math.min(Math.floor(box.right-2),n.x));
+  const targetY=Math.max(Math.ceil(box.top+2),Math.min(Math.floor(box.bottom-2),n.y));
+  for(let r=0;r<5;r++){
+   const x=targetX+(hash(n.seed+r)%5)-2,y=targetY+((hash(n.seed+r)>>>6)%5)-2;
+   if(terrain(x,y,gateStates))return {x,y};
+  }
+ }
  const radius=n.district==="market"?8:12;
  for(let j=0;j<18;j++){
   const h=hash(n.seed+=0x9e3779b9);
@@ -126,7 +137,7 @@ export function moveAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
   if(now<n.nextMove||n.talking)continue;
   n.nextMove=now+430+(hash(n.seed++)%450);
   const goal=n.goal;
-  if(!goal||Math.abs(goal.x-n.x)+Math.abs(goal.y-n.y)<=1)n.goal=chooseGoal(n,gateStates);
+  if(!goal||Math.abs(goal.x-n.x)+Math.abs(goal.y-n.y)<=1)n.goal=chooseGoal(n,gateStates,camera,view);
   const routes=STEPS.map(([dx,dy],k)=>{
    const nx=n.x+dx,ny=n.y+dy,v=terrain(nx,ny,gateStates);
    return {dx,dy,x:nx,y:ny,score:!v?1e6:(Math.abs(nx-n.goal.x)+Math.abs(ny-n.goal.y))*10-(v===2?4:0)+((hash(n.seed+k)%4)/4)};
