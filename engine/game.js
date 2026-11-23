@@ -7,7 +7,7 @@ import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.12";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
-import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js?v=0.3.14";
+import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js?v=0.3.15";
 import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
 import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
@@ -332,8 +332,8 @@ function drawCityElevation(cx,cy,w,h,size){
 // VIS 1.3 — elevated rampart: walkable crest, masonry face, depth and stairs.
 function drawRampartDetails(cx,cy,w,h,size){
  if(state.player.map!=="site-city1")return;
- const left=Math.max(0,Math.floor(cx-w/(2*size))-2),right=Math.min(111,Math.ceil(cx+w/(2*size))+2);
- const top=Math.max(0,Math.floor(cy-h/(2*size))-2),bottom=Math.min(87,Math.ceil(cy+h/(2*size))+2);
+ const left=Math.max(0,Math.floor(cx-w/(2*size))-2),right=Math.min(191,Math.ceil(cx+w/(2*size))+2);
+ const top=Math.max(0,Math.floor(cy-h/(2*size))-2),bottom=Math.min(159,Math.ceil(cy+h/(2*size))+2);
  const t=(x,y)=>tileAt("site-city1",0,x,y);
  ctx.save();
  for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++){
@@ -367,7 +367,7 @@ function drawRampartDetails(cx,cy,w,h,size){
   for(const [dx,dy] of faces){
    const adjacent=t(x+dx,y+dy);
    if(adjacent==="rampart"||adjacent==="stairs-up"||adjacent==="void")continue;
-   const inner=(x===22&&dx===1)||(x===89&&dx===-1)||(y===10&&dy===1)||(y===76&&dy===-1);
+   const inner=adjacent!=="rampart"&&adjacent!=="stairs-up";
    if(!inner)continue;
    const face=Math.max(3,size*.27),shadow=Math.max(3,size*.35);
    ctx.fillStyle="#1b242b55";
@@ -387,19 +387,19 @@ function drawRampartDetails(cx,cy,w,h,size){
    if(dy===-1)ctx.fillRect(sx,sy+face-size*.06,size,Math.max(1,size*.06));
   }
   // Crenellations run along the exterior rim, never around the character.
-  const outer=x===20||x===91||y===8||y===78;
+  const outer=[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>t(x+dx,y+dy)!=="rampart"&&t(x+dx,y+dy)!=="stairs-up");
   if(outer&&(x+y)%2===0){
    const lip=Math.max(2,size*.22);
    ctx.fillStyle="#d2d1c6";
-   if(x===20)ctx.fillRect(sx,sy,lip,size);
-   if(x===91)ctx.fillRect(sx+size-lip,sy,lip,size);
-   if(y===8)ctx.fillRect(sx,sy,size,lip);
-   if(y===78)ctx.fillRect(sx,sy+size-lip,size,lip);
+   if(t(x-1,y)!=="rampart")ctx.fillRect(sx,sy,lip,size);
+   if(t(x+1,y)!=="rampart")ctx.fillRect(sx+size-lip,sy,lip,size);
+   if(t(x,y-1)!=="rampart")ctx.fillRect(sx,sy,size,lip);
+   if(t(x,y+1)!=="rampart")ctx.fillRect(sx,sy+size-lip,size,lip);
    ctx.strokeStyle="#666a65";ctx.lineWidth=Math.max(.7,size*.025);
-   if(x===20)ctx.strokeRect(sx,sy,lip,size);
-   if(x===91)ctx.strokeRect(sx+size-lip,sy,lip,size);
-   if(y===8)ctx.strokeRect(sx,sy,size,lip);
-   if(y===78)ctx.strokeRect(sx,sy+size-lip,size,lip);
+   if(t(x-1,y)!=="rampart")ctx.strokeRect(sx,sy,lip,size);
+   if(t(x+1,y)!=="rampart")ctx.strokeRect(sx+size-lip,sy,lip,size);
+   if(t(x,y-1)!=="rampart")ctx.strokeRect(sx,sy,size,lip);
+   if(t(x,y+1)!=="rampart")ctx.strokeRect(sx,sy+size-lip,size,lip);
   }
  }
  ctx.restore();
