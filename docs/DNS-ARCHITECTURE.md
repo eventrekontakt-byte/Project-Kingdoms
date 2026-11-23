@@ -46,6 +46,16 @@ Goal: a city feels populated by hundreds while a smartphone simulates only a sma
 - Side panel displays currently active ambient actors and cumulative creation/removal counters.
 - Tested simulated 20-second viewport at several hours: by midday 14 temporary actors entered the image naturally, zero spawned visibly, zero stepped on prohibited wall/door/rampart tiles. Further real-device tests required.
 
+## Implemented — Alpha 0.3.26, observation priorities
+- NPC tła zawierają zegary obserwacji z czasu rzeczywistego. Używany jest czas widoczności w obrębie kamery oraz bliskość gracza; przeliczenia są ograniczone do jednego skupionego celu i niewielkiej liczby kandydatów.
+- Dotknięcie tymczasowego NPC lub przycisk Zbadaj w jego pobliżu ustawia jawne zainteresowanie; ponowne dotknięcie odznacza go, z krótkim okresem ochronnym przed automatycznym ponownym wyborem.
+- Pierwszy awans po około 20 sekundach => L1: spójne, dłuższe trasy planowane ograniczonym BFS. Drugi po około 60 sekundach skoncentrowanej obserwacji => L2: ważniejsze cele podróży do dzielnic i punktów miejskich.
+- Każdy awans zachowuje ten sam obiekt, współrzędne, kolory, nazwę i animację. Kolorowy obrys ułatwia rozpoznanie śledzonej postaci.
+- Budżet: najwyżej 3 podniesione poziomy symulacji (L1/L2) równocześnie i maksymalnie 1 postać L2. Pozostałe NPC używają lekkiego ruchu L0.
+- Licznik DNS w bocznym panelu pokazuje liczbę aktorów, podniesionych symulacji, śledzonego NPC, poziom i liczbę sekund obserwacji.
+- W 0.3.26 L2 oznacza zaawansowane **trasy na zewnątrz**. Zapis tożsamości po zniknięciu, wejścia do budynków i pamięć postaci są odłożone do 0.3.27.
+- Wersja 0.3.26 nie zmienia układu Miasta 1, limitu 38 tymczasowych NPC, systemu zapisów, zoomu ani minimapy.
+
 ## Delivery roadmap (future work)
 - 0.3.25: spatial chunks, temporary crowd, spawn/despawn outside viewport.
 - 0.3.26: observation timer, promotion tiers, priority/cost budget.
