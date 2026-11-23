@@ -486,8 +486,9 @@ export function restoreNPCState(npcs,saved){
   n.fromX=n.x;n.fromY=n.y;n.met=Math.max(0,Math.min(999,Number(data.met)||0));
   n.direction=["up","down","left","right"].includes(data.direction)?data.direction:"down";
   n.indoorActivity=indoors?["sleep","work","social"].includes(data.indoorActivity)?data.indoorActivity:"sleep":null;
-  n.phase=["sleep","morning","work","social","evening"].includes(data.phase)?data.phase:"";
-  n.goal=n.phase?scheduleGoal(n,n.phase):null;n.task=phaseLabel(n,n.phase);
+  // Reconcile every restored agent against current profession/schedule on next tick.
+  // Old v0.3.23 saves may put a merchant inside the wrong workplace.
+  n.phase="";n.goal=null;n.task="Aktualizuje plan dnia";
   n.steps=[];n.started=-1;n.destination=null;n.nextMove=0;n.roams=0;
  }
 }
