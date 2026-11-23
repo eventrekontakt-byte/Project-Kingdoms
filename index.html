@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101b28"><meta name="apple-mobile-web-app-capable" content="yes">
-<title>Project Kingdoms — Alpha 0.3.25 · DNS 1.0 — dynamiczna populacja</title>
+<title>Project Kingdoms — Alpha 0.3.26 · DNS 1.0 — obserwowanie NPC</title>
 <link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css?v=0.3.13">
 </head>
 <body>
-<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.25 · DNS 1.0 — dynamiczna populacja</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
+<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.26 · DNS 1.0 — obserwowanie NPC</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
 <main id="gameShell">
 <section id="viewport" aria-label="Mapa świata"><canvas id="world" aria-label="Mapa gry"></canvas><div id="toast" role="status"></div></section>
 <aside id="sidePanel">
-<div class="panel"><h2 id="location">Pogranicze</h2><p id="coordinates"></p><p id="clock"></p><p class="hint">Miasto 1 ma 40 istniejących mieszkańców oraz dodatkowych NPC tła generowanych poza widocznym obszarem kamery. NPC tła chodzą po ulicach, są usuwani po oddaleniu się gracza i na razie nie mają pełnych harmonogramów ani pamięci. Dotychczasowi mieszkańcy odwiedzają też karczmę, rynek, bibliotekę, świątynię i wnętrza innych budynków. Porozmawiaj z NPC przez „Zbadaj” (E) lub dotknij pobliskiej postaci. Przy drzwiach przycisk „Zbadaj” otwiera najpierw budynek. W menu działają mapa świata, działki i testowa szybka podróż.</p><p class="hint" id="npcStats">DNS 1.0: wczytywanie populacji…</p></div>
+<div class="panel"><h2 id="location">Pogranicze</h2><p id="coordinates"></p><p id="clock"></p><p class="hint">Miasto 1 ma 40 istniejących mieszkańców oraz dodatkowych NPC tła generowanych poza widocznym obszarem kamery. NPC tła chodzą po ulicach i znikają po oddaleniu się gracza. Dotknij przechodnia, aby zacząć go obserwować; po 20 s otrzyma dłuższe trasy, a po 60 s wyższy priorytet symulacji. Dotknij ponownie, aby przestać obserwować. Nie mają jeszcze pamięci rozmów ani przejść do wnętrz. Dotychczasowi mieszkańcy odwiedzają też karczmę, rynek, bibliotekę, świątynię i wnętrza innych budynków. Porozmawiaj z NPC przez „Zbadaj” (E) lub dotknij pobliskiej postaci. Przy drzwiach przycisk „Zbadaj” otwiera najpierw budynek. W menu działają mapa świata, działki i testowa szybka podróż.</p><p class="hint" id="npcStats">DNS 1.0: wczytywanie populacji…</p></div>
 <div class="panel"><h3>Świat</h3><button id="openWorldMap">🗺 Mapa świata (M)</button><p class="hint">Naciśnij M albo wyjdź poza granicę lokacji. Po mapie świata chodzisz strzałkami / WASD albo kliknięciem. Stań na znaczniku osady i naciśnij E.</p></div>
 <div class="panel"><h3>Widok</h3><div class="row"><button id="zoomOut">−</button><span id="zoomLabel">100%</span><button id="zoomIn">+</button><button id="centerCamera">⌖</button></div><label>Tryb sterowania <select id="controlMode"><option value="dpad">Przyciski</option><option value="joystick">Joystick</option></select></label></div>
 <div class="panel"><h3>Miasto 1 — działki PLOT 1.0</h3><button id="plotModeBtn">Włącz widok działek</button><p class="hint" id="plotStats">Ładowanie działek…</p><p class="hint" id="plotInfo">Włącz tryb zarządzania i dotknij działki na mapie.</p><button id="plotReserveBtn" hidden>Zarezerwuj działkę</button><p class="hint">Granice działek są widoczne tylko w trybie zarządzania. Nowe działki mają odstęp co najmniej jednej kratki od dróg i murów. Rezerwacje są zapisywane wraz z kampanią.</p></div>
@@ -38,5 +38,5 @@ window.addEventListener("unhandledrejection",function(event){
  if(toast){toast.textContent="Błąd modułu: "+String(event.reason?.message||event.reason);toast.classList.add("visible");toast.style.whiteSpace="normal";}
 });
 </script>
-<script type="module" src="./engine/game.js?v=0.3.25"></script>
+<script type="module" src="./engine/game.js?v=0.3.26"></script>
 </body></html>
