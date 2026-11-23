@@ -1,3 +1,11 @@
+## Alpha 0.3.23 — NPC 1.2.2: naprawa ruchu na ekranie
+
+- Naprawiono stan NPC przy miejscu pracy lub spotkań: po wyznaczeniu celu spaceru nowy cel nie jest już nadpisywany przed rozpoczęciem marszu.
+- Wcześniej warunek „stoi w celu” był wykonywany co 220 ms mimo oczekiującej trasy, przez co NPC sprawiali wrażenie nieruchomych, a poza zasięgiem byli przenoszeni uproszczoną symulacją.
+- Teraz NPC zachowują wylosowany punkt spaceru i docierają do niego krok po kroku, po czym mogą wrócić do miejsca pracy lub spotkań.
+- Test regresji: statyczna pozycja gracza przez 66 sekund, osiem symulacji ruchu przy 8:00, 10:00, 15:00 i 18:00 w rejonie rynku, świątyni, karczmy i centrum. W każdej z testowanych konfiguracji odnotowano poruszających się NPC w polu widzenia.
+- Bez zmian w układzie miasta, harmonogramach dnia i formacie zapisów. Test w przeglądarce na Androidzie nadal wymaga potwierdzenia.
+
 ## Alpha 0.3.22 — NPC 1.2.1: powroty do domów i wejścia do budynków
 
 - Naprawiono przydział noclegów: wcześniej każdy budynek (w tym kuźnia, arena i magazyn) mógł zostać "domem" NPC. Teraz 40 mieszkańców ma domy w czterech dostępnych budynkach mieszkalnych (Dom 1–4).
