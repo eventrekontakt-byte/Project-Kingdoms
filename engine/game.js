@@ -1,14 +1,14 @@
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.12";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.14";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.12";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
-import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js?v=0.3.12";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.12";
+import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js?v=0.3.14";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
 import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
