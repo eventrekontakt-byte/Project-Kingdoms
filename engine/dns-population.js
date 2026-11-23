@@ -165,6 +165,10 @@ export function observeAmbientPopulation(pop,player,camera,view,now){
    n.observationMs+=dt*.25;
   }else n.observationMs=Math.max(0,n.observationMs-dt*.15);
   if(n===focus&&n.simulationLevel===1&&n.focusMs>=FOLLOW_MS){
+   // Exactly one full-priority observed character at once.
+   for(const other of pop.actors)if(other!==n&&other.simulationLevel===2){
+    other.simulationLevel=1;other.route=[];other.nextPlan=0;
+   }
    n.simulationLevel=2;n.route=[];n.goal=null;n.nextPlan=0;
    n.task="Podróżuje do wybranego celu w mieście";updated=true;
   }
@@ -254,8 +258,34 @@ export function moveAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
  for(const n of pop.actors){
   if(now<n.nextMove||n.talking)continue;
   n.nextMove=now+430+(hash(n.seed++)%450);
-  const goal=n.goal;
-  if(!goal||Math.abs(goal.x-n.x)+Math.abs(goal.y-n.y)<=1)n.goal=chooseGoal(n,gateStates,camera,view);
+  if(n.simulationLevel>0){
+   // One route every few seconds per promoted actor; no visual teleport.
+   if(!n.route.length&&now>=n.nextPlan){
+    const destination=longTermGoal(n,gateStates);
+    const candidate=plannedWalk(n,destination,gateStates);
+    n.nextPlan=now+(candidate.length?3500:4800);
+    if(candidate.length){n.goal=destination;n.route=candidate;}
+   }
+   if(n.route.length){
+    const next=n.route[0],key=next.x+","+next.y;
+    if(!occupied.has(key)&&terrain(next.x,next.y,gateStates)){
+     occupied.delete(n.x+","+n.y);occupied.add(key);
+     n.fromX=n.x;n.fromY=n.y;n.x=next.x;n.y=next.y;n.route.shift();
+     n.direction=next.x>n.fromX?"right":next.x<n.fromX?"left":next.y>n.fromY?"down":"up";
+     n.started=now;n.duration=330;n.nextMove=now+550+(hash(n.seed++)%170);
+     if(!n.route.length)n.nextPlan=now+1100;
+     changed=true;continue;
+    }
+    n.nextMove=now+290;
+    // A blocked step will be re-planned after a modest delay, without
+    // rapidly recalculating A* for each passer-by.
+    n.stalled=(n.stalled||0)+1;
+    if(n.stalled>10){n.route=[];n.nextPlan=now+2500;n.stalled=0;}
+    continue;
+   }
+   n.stalled=0;
+  }
+  if(!n.goal||Math.abs(n.goal.x-n.x)+Math.abs(n.goal.y-n.y)<=1)n.goal=chooseGoal(n,gateStates,camera,view);
   const routes=STEPS.map(([dx,dy],k)=>{
    const nx=n.x+dx,ny=n.y+dy,v=terrain(nx,ny,gateStates);
    return {dx,dy,x:nx,y:ny,score:!v?1e6:(Math.abs(nx-n.goal.x)+Math.abs(ny-n.goal.y))*10-(v===2?4:0)+((hash(n.seed+k)%4)/4)};
