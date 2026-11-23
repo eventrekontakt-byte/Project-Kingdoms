@@ -43,12 +43,26 @@ const workFor=(role,i)=>{
  role==="Posłaniec"?["biblioteka","targ","straznica"]:["targ","biblioteka","karczma","switynia"];
  return findBuilding(names[i%names.length])||dwellings[0];
 };
+// Keep crowds distributed around workplaces and social hubs, never stack
+// dozens of actors on one tile after off-screen schedule updates.
+const usedHome=new Set(),usedWork=new Set(),usedSocial=new Set();
+function distinctSpot(origin,used){
+ let best=null,bestScore=Infinity;
+ for(let radius=0;radius<=12;radius++)for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){
+  if(Math.max(Math.abs(dx),Math.abs(dy))!==radius)continue;
+  const x=origin.x+dx,y=origin.y+dy,kind=tileKind(x,y),k=x+","+y;
+  if(kind<2||used.has(k))continue;
+  const score=radius*5+(kind===3?0:3)+Math.abs(dx-dy)*.04;
+  if(score<bestScore){bestScore=score;best={x,y};}
+ }
+ const p=best||origin;used.add(p.x+","+p.y);return p;
+}
 export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
  const homeBuilding=dwellings[(i*7+14)%dwellings.length];
  const workBuilding=workFor(ROLES[i%8],i);
- const home=doorApproach(homeBuilding),work=doorApproach(workBuilding);
+ const home=distinctSpot(doorApproach(homeBuilding),usedHome),work=distinctSpot(doorApproach(workBuilding),usedWork);
  const market=near(100+(i%7-3)*2,98+((i*3)%9-4)*2);
- const social=doorApproach(findBuilding(i%3===0?"karczma":"targ"));
+ const social=distinctSpot(doorApproach(findBuilding(i%3===0?"karczma":"targ")),usedSocial);
  return {id:"npc-"+String(i+1).padStart(2,"0"),
  name:FIRST[i%20]+(i>=20?" "+["Starszy","Młodsza","z Doliny","z Północy"][i%4]:""),
  role:ROLES[i%8],color:COLORS[i%8],skin:SKINS[i%5],important:i<12,
