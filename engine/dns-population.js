@@ -90,7 +90,17 @@ export function syncAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
  const activeChunks=new Set();
  for(let cy=loY;cy<=hiY;cy++)for(let cx=loX;cx<=hiX;cx++)activeChunks.add(key(cx,cy));
  for(const old of [...pop.loaded])if(!activeChunks.has(old))pop.loaded.delete(old);
- for(let cy=loY;cy<=hiY&&pop.actors.length<LIMIT;cy++)for(let cx=loX;cx<=hiX&&pop.actors.length<LIMIT;cx++){
+ // Fill the closest buffered chunks first; walking crowds arrive from all
+ // directions, instead of preferentially filling the northern map rows.
+ const chunks=[];
+ for(let cy=loY;cy<=hiY;cy++)for(let cx=loX;cx<=hiX;cx++){
+  const mx=cx*CHUNK+CHUNK/2,my=cy*CHUNK+CHUNK/2;
+  const dx=mx-camera.x,dy=my-camera.y;
+  chunks.push({cx,cy,score:dx*dx+dy*dy+hash(cx*997+cy*321)%11});
+ }
+ chunks.sort((a,b)=>a.score-b.score);
+ for(const {cx,cy} of chunks){
+  if(pop.actors.length>=LIMIT)break;
   const id=key(cx,cy);if(pop.loaded.has(id))continue;pop.loaded.add(id);
   const midX=cx*CHUNK+CHUNK/2,midY=cy*CHUNK+CHUNK/2;
   const count=density(midX,midY,clock);
