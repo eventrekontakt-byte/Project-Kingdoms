@@ -1,6 +1,6 @@
 // NPC 1.2 (0.3.21): staggered schedules, eight meeting places, indoor visits and crowd limits.
 import {CITY_BUILDINGS,CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
-import {tileAt,mapSize} from "./world.js?v=0.3.21";
+import {tileAt,mapSize} from "./world.js";
 const FIRST=["Aldric","Berta","Cedryk","Daria","Edmund","Fenna","Gustaw","Hilda","Iwo","Jagna","Konrad","Lena","Marek","Nora","Oskar","Petra","Radomir","Sara","Tomasz","Wera"];
 const ROLES=["Strażnik","Kupiec","Rzemieślnik","Mieszkaniec","Mieszkaniec","Robotnik","Posłaniec","Mieszkaniec"];
 const COLORS=["#759bc9","#d7a663","#94b67d","#bc92be","#c4a17c","#b8b7a5","#cc8881","#84b4aa"];
