@@ -72,6 +72,109 @@ function chooseSpawn(pop,cx,cy,slot,clock,viewRect,gateStates,fixed,player){
  }
  return null;
 }
+// Manual observation selects a real object and preserves its appearance
+// and coordinates. Touch it again to release explicit focus.
+export function focusAmbient(pop,id){
+ const actor=pop.actors.find(a=>a.id===id);
+ if(!actor)return false;
+ if(pop.focusId===id&&pop.manualFocus){
+  pop.focusId=null;pop.manualFocus=false;actor.followed=false;return false;
+ }
+ const old=pop.actors.find(a=>a.id===pop.focusId);if(old)old.followed=false;
+ pop.focusId=id;pop.manualFocus=true;pop.focusLostAt=0;actor.followed=true;
+ return true;
+}
+export function currentAmbientFocus(pop){return pop.actors.find(a=>a.id===pop.focusId)||null;}
+function routeKey(x,y){return y*CITY_WIDTH+x;}
+function longTermGoal(n,gateStates){
+ const landmarks=[[100,98],[79,112],[96,92],[113,103],[72,88],[144,93],[57,63],[130,112]];
+ if(n.simulationLevel===2){
+  const start=hash(n.seed)%landmarks.length;
+  for(let j=0;j<landmarks.length;j++){
+   const [x,y]=landmarks[(start+j)%landmarks.length];
+   if(terrain(x,y,gateStates)&&Math.abs(x-n.x)+Math.abs(y-n.y)>12)return {x,y};
+  }
+ }
+ const span=n.simulationLevel>=2?24:16;
+ for(let j=0;j<24;j++){
+  const h=hash(n.seed+j*17921),dx=h%(2*span+1)-span,dy=(h>>>11)%(2*span+1)-span;
+  const x=n.x+dx,y=n.y+dy;
+  if(terrain(x,y,gateStates)&&Math.abs(dx)+Math.abs(dy)>=10)return {x,y};
+ }
+ return null;
+}
+// Bounded path planning is reserved for at most three upgraded passers-by;
+// the rest keep their four-neighbour lightweight movement.
+function plannedWalk(n,dest,gateStates){
+ if(!dest||!terrain(dest.x,dest.y,gateStates))return [];
+ const begin=routeKey(n.x,n.y),end=routeKey(dest.x,dest.y);
+ if(begin===end)return [];
+ if(++searchSerial>4294967000){visit.fill(0);searchSerial=1;}
+ visit[begin]=searchSerial;parent[begin]=-1;
+ let read=0,write=1;queue[0]=begin;
+ while(read<write&&read<6500){
+  const at=queue[read++];if(at===end)break;
+  const x=at%CITY_WIDTH,y=Math.floor(at/CITY_WIDTH);
+  for(let j=0;j<4;j++){
+   const [dx,dy]=STEPS[(j+n.seed)%4],nx=x+dx,ny=y+dy;
+   if(!terrain(nx,ny,gateStates))continue;
+   const next=routeKey(nx,ny);if(visit[next]===searchSerial)continue;
+   visit[next]=searchSerial;parent[next]=at;queue[write++]=next;
+   if(next===end)break;
+  }
+  if(visit[end]===searchSerial)break;
+ }
+ if(visit[end]!==searchSerial)return [];
+ const path=[];
+ for(let current=end;current!==begin;current=parent[current]){
+  if(current<0||path.length>240)return [];
+  path.push({x:current%CITY_WIDTH,y:Math.floor(current/CITY_WIDTH)});
+ }
+ return path.reverse();
+}
+export function observeAmbientPopulation(pop,player,camera,view,now){
+ if(player.map!==CITY){pop.lastObservationAt=null;return false;}
+ const dt=pop.lastObservationAt===null?0:Math.max(0,Math.min(550,now-pop.lastObservationAt));
+ pop.lastObservationAt=now;
+ const box=rect(camera,view),visible=n=>inside(box,null,n.x,n.y,.15);
+ let focus=currentAmbientFocus(pop);
+ if(focus&&visible(focus)){pop.focusLostAt=0;}
+ else if(focus){
+  if(!pop.focusLostAt)pop.focusLostAt=now;
+  if(now-pop.focusLostAt>8500){
+   focus.followed=false;pop.focusId=null;pop.manualFocus=false;focus=null;
+  }
+ }
+ if(!focus){
+  // At most one automatically focused pedestrian; proximity and staying
+  // close distinguish intentional following from a busy visible market.
+  const candidates=pop.actors.filter(n=>visible(n)&&Math.abs(n.x-player.x)+Math.abs(n.y-player.y)<=5);
+  candidates.sort((a,b)=>(Math.abs(a.x-player.x)+Math.abs(a.y-player.y))-
+    (Math.abs(b.x-player.x)+Math.abs(b.y-player.y))||b.observationMs-a.observationMs);
+  focus=candidates[0]||null;
+  if(focus){pop.focusId=focus.id;pop.manualFocus=false;pop.focusLostAt=0;}
+ }
+ let updated=false;
+ let advanced=pop.actors.filter(n=>n.simulationLevel>0).length;
+ for(const n of pop.actors){
+  const onscreen=visible(n),distance=Math.abs(n.x-player.x)+Math.abs(n.y-player.y);
+  if(onscreen)n.visibleLastAt=now;
+  if(onscreen&&n===focus&&distance<=14){
+   n.observationMs+=dt;n.focusMs+=dt;
+  }else if(onscreen&&distance<=4){
+   n.observationMs+=dt*.25;
+  }else n.observationMs=Math.max(0,n.observationMs-dt*.15);
+  if(n===focus&&n.simulationLevel===1&&n.focusMs>=FOLLOW_MS){
+   n.simulationLevel=2;n.route=[];n.goal=null;n.nextPlan=0;
+   n.task="Podróżuje do wybranego celu w mieście";updated=true;
+  }
+  if(n.simulationLevel===0&&advanced<MAX_ADVANCED&&n.observationMs>=OBSERVE_MS){
+   n.simulationLevel=1;n.goal=null;n.route=[];n.nextPlan=0;
+   n.task="Spaceruje według własnego planu";advanced++;updated=true;
+  }
+ }
+ return updated;
+}
 // Stream only the camera's buffered chunk ring, independently of the full city map.
 export function syncAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],gateStates={}){
  if(player.map!==CITY)return false;
@@ -87,6 +190,7 @@ export function syncAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
   if(!a.unseenSince)a.unseenSince=now;
   // Keep anyone still visible, followed, interacting or inside their grace period.
   if(!inside(box,null,a.x,a.y,1)&&!a.talking&&!a.followed&&now-a.unseenSince>GRACE_MS){
+   if(pop.focusId===a.id){pop.focusId=null;pop.manualFocus=false;}
    pop.actors.splice(i,1);pop.removed++;changed=true;
   }
  }
