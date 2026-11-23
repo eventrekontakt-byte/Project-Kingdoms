@@ -1,3 +1,4 @@
+import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting} from "./npcs.js?v=0.3.19";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.14";
@@ -12,6 +13,7 @@ import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
 import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
+const npcs=createNPCs();
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 // VIS 1.0: authoritative tile coordinates stay integer; visual coordinates interpolate.
 const visual={x:START.x+.5,y:START.y+.5,map:START.map,floor:START.floor,
@@ -122,7 +124,7 @@ function draw(){
    else if(o.type==="shelf"||o.type==="crate"){ctx.strokeStyle="#c9a06b";for(let i=1;i<o.w;i++){ctx.beginPath();ctx.moveTo(x+i*size,y+size*.15);ctx.lineTo(x+i*size,y+fh-size*.15);ctx.stroke();}}
   }
  }
- if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
+ if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);drawNPCs(cx,cy,w,h,size);}
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -138,6 +140,17 @@ function draw(){
  hud();
 }
 // Decorations are rendered behind furniture; rugs and stairs do not block movement.
+function drawNPCs(cx,cy,w,h,size){
+ for(const n of visibleNPCs(npcs,state.player)){
+  const sx=(n.x+.5-cx)*size+w/2,sy=(n.y+.5-cy)*size+h/2;
+  if(sx<-size||sy<-size||sx>w+size||sy>h+size)continue;
+  const r=Math.max(3,size*.23);
+  ctx.fillStyle="#10182080";ctx.beginPath();ctx.ellipse(sx,sy+size*.15,r*1.2,r*.45,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle=n.color;ctx.beginPath();ctx.arc(sx,sy,r,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=n.important?"#ffe2a4":"#e4e9dc";ctx.lineWidth=Math.max(1,size*.055);ctx.stroke();
+  if(size>=19){ctx.font="bold "+Math.max(9,Math.min(12,size*.32))+"px system-ui";ctx.textAlign="center";ctx.textBaseline="bottom";ctx.fillStyle="#fff5dc";ctx.fillText(n.name,sx,sy-r-3);}
+ }
+}
 function drawTavernDecor(floor,cx,cy,w,h,size){
  for(const d of tavernDecor(floor)){
   const x=(d.x-cx)*size+w/2,y=(d.y-cy)*size+h/2,dw=d.w*size,dh=d.h*size;
@@ -629,6 +642,7 @@ function showObjectPanel(object){
 }
 function performInteraction(){if(strategic.active()){if(!strategic.interact())notify("Podejdź do oznaczonej lokacji, aby wejść.");return;}
  if(state.player.map==="site-city1"){
+  const npc=nearestNPC(npcs,state.player);if(npc){notify(npc.name+" — "+npcGreeting(npc,state.clock));return;}
   const p=state.player,gate=cityGateControlNear(p.x,p.y);
   if(gate){
    const wasClosed=state.gateStates[gate.id]==="closed";
@@ -676,6 +690,7 @@ setInterval(()=>{if(path.length&&!strategic.active()){const step=path.shift(),p=
   if(!dir||!move(dir,true))path=[];
  }},145);
 setInterval(()=>{if(!state.paused){updateClock(1);hud();}},1000);
+setInterval(()=>{if(!state.paused&&!strategic.active()&&stepNPCs(npcs,state.player,state.clock,performance.now()))draw();},350);
 new ResizeObserver(resize).observe(canvas);
 snapVisual();refreshPlotPanel();resize();requestAnimationFrame(animateVisual);
 if("serviceWorker" in navigator){
