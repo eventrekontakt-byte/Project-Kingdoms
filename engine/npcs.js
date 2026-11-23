@@ -6,7 +6,7 @@ const ROLES=["Strażnik","Kupiec","Rzemieślnik","Mieszkaniec","Mieszkaniec","Ro
 const COLORS=["#759bc9","#d7a663","#94b67d","#bc92be","#c4a17c","#b8b7a5","#cc8881","#84b4aa"];
 const SKINS=["#efc99c","#a66e4c","#ddaf80","#b88460","#e3b78b"];
 const CITY="site-city1",WIDTH=CITY_WIDTH,HEIGHT=CITY_HEIGHT,N=WIDTH*HEIGHT;
-const IMPASSABLE=new Set(["void","wall","tree","water","object","rampart","stairs-up","stairs-down"]);
+const IMPASSABLE=new Set(["void","wall","tree","water","object","door","rampart","stairs-up","stairs-down"]);
 const walkCache=new Uint8Array(N);
 const idx=(x,y)=>y*WIDTH+x;
 const rand=n=>((Math.imul(n,1664525)+1013904223)>>>0)/4294967296;
@@ -110,7 +110,13 @@ export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
  const homeBuilding=residences[(i*7+Math.floor(i/4))%residences.length];
  const workBuilding=workFor(ROLES[i%8],i);
  const homeEntry=doorEntry(homeBuilding),workEntry=doorEntry(workBuilding);
- const home=distinctSpot(doorApproach(homeBuilding),usedHome),work=distinctSpot(doorApproach(workBuilding),usedWork);
+ const worksIndoors=["Kupiec","Rzemieślnik","Robotnik"].includes(ROLES[i%8])||i%7===0;
+ // Outdoor workers and patrols need destinations along streets and squares,
+ // never permanent standing spots right on the doorstep of a public building.
+ const guardStops=[[96,25],[161,79],[96,133],[30,80],[55,60],[142,80]];
+ const outdoorStops=[[61,76],[70,90],[104,113],[133,75],[145,107],[61,116],[119,58],[85,67],[96,127],[128,105],[44,88],[104,72]];
+ const base=worksIndoors?doorApproach(workBuilding):near(...(ROLES[i%8]==="Strażnik"?guardStops[(i*3)%guardStops.length]:outdoorStops[(i*7)%outdoorStops.length]));
+ const home=distinctSpot(doorApproach(homeBuilding),usedHome),work=distinctSpot(base,usedWork);
  const market=near(100+(i%7-3)*2,98+((i*3)%9-4)*2);
  const venue=VENUE_SLOTS[(i*13)%VENUE_SLOTS.length];
  const socialEntry=venue.buildingData?doorEntry(venue.buildingData):venue.point;
@@ -122,7 +128,7 @@ export const NPC_DEFINITIONS=Array.from({length:40},(_,i)=>{
  venueMap:venue.map,venueIndoor:venue.indoor,
  homeMap:"interior-"+homeBuilding.id,homeBuilding:homeBuilding.id,
  workMap:"interior-"+workBuilding.id,workBuilding:workBuilding.id,
- workIndoor:["Kupiec","Rzemieślnik","Robotnik"].includes(ROLES[i%8])||i%7===0,
+ workIndoor:worksIndoors,
  wakeAt:355+(i*19)%130,workAt:435+(i*31)%110,
  workEndAt:845+(i*37)%225,socialEndAt:1040+(i*23)%130,
  sleepAt:1200+(i*17)%110};
