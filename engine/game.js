@@ -1,3 +1,4 @@
+import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.12";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
@@ -107,6 +108,17 @@ function draw(){
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
  if(p.map===TAVERN_MAP){drawTavernDecor(p.floor,cx,cy,w,h,size);drawTavernFurniture(p.floor,cx,cy,w,h,size);}
+ if(p.map.startsWith("interior-city1-")&&p.map!==TAVERN_MAP){
+  for(const o of interiorFurniture(p.map)){
+   const x=(o.x-cx)*size+w/2,y=(o.y-cy)*size+h/2,fw=o.w*size,fh=o.h*size;
+   if(x+fw<0||y+fh<0||x>w||y>h)continue;
+   ctx.fillStyle=o.type==="bed"?"#5d8192":o.type==="table"?"#9e7045":o.type==="shelf"?"#755138":"#9a6638";
+   ctx.fillRect(x+size*.08,y+size*.08,fw-size*.16,fh-size*.16);
+   ctx.strokeStyle="#382a22";ctx.lineWidth=Math.max(1,size*.06);ctx.strokeRect(x+size*.08,y+size*.08,fw-size*.16,fh-size*.16);
+   if(o.type==="bed"){ctx.fillStyle="#dfd3b5";ctx.fillRect(x+size*.22,y+size*.18,fw-size*.44,size*.5);}
+   else if(o.type==="shelf"||o.type==="crate"){ctx.strokeStyle="#c9a06b";for(let i=1;i<o.w;i++){ctx.beginPath();ctx.moveTo(x+i*size,y+size*.15);ctx.lineTo(x+i*size,y+fh-size*.15);ctx.stroke();}}
+  }
+ }
  if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
