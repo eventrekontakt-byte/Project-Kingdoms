@@ -1,3 +1,16 @@
+## Alpha 0.3.21 — NPC 1.2: życie codzienne i rozproszenie tłumu
+
+- Zachowano 40 postaci z hybrydową symulacją (12 ważnych + 28 pozostałych).
+- Wprowadzono osiem miejsc spotkań o limitach miejsc: karczma (6), rynek (8), świątynia (4), plac areny (5), skwer (5), dziedziniec (4), kasyno (3), biblioteka (5). Każdy NPC ma jeden przydział, dlatego nie ma już masowego zgromadzenia przed karczmą.
+- Każdy mieszkaniec ma nieco inne godziny rozpoczęcia i zakończenia pracy, spotkań oraz nocnego odpoczynku.
+- NPC odwiedzają realne wnętrza budynków: praca, spotkania i nocny wypoczynek. Przy graniu w tej samej lokacji mogą chodzić po dostępnych posadzkach i rozmawiać z graczem.
+- Poprawiono uproszczoną symulację poza ekranem: podróż jest kończona bez stałych obliczeń A*, a miejsce przybycia nie powinno nachodzić na inne NPC.
+- Dialogi: pytania o zajęcie, bieżącą aktywność, miasto i plotki; postacie zapamiętują liczbę rozmów i po kilku spotkaniach rozpoznają gracza.
+- W karczmie i innych wnętrzach można rozmawiać przez przycisk Zbadaj, nie tylko na ulicy. Przy drzwiach pierwszeństwo ma wejście do budynku, a NPC można dotknąć na ekranie.
+- Ograniczono nadmiar etykiet nad postaciami i ujednolicono importy świata/mapy, co ogranicza wielokrotne inicjalizacje modułów.
+- Rozszerzono stan NPC w dotychczasowym schemacie zapisu 9 o typ aktywności wewnątrz budynku, aktualny etap dnia i liczbę spotkań; starsze zapisy pozostają obsługiwane.
+- Testy kodowe: 40 NPC, 8 miejsc, brak błędnych pól ani nakładających się pozycji w próbie 17:00–23:00. Test ręczny w mobilnej przeglądarce wciąż wymagany.
+
 ## 0.3.20-alpha — NPC 1.1: trasy, animacja i plany dnia
 - Zachowano populację 40 NPC, w tym 12 ważnych postaci.
 - Zastąpiono krótkie losowe kroki trasami A* do pracy, targu, karczmy i domu; pojedyncze spacery obejmują kilkanaście lub kilkadziesiąt kratek.
