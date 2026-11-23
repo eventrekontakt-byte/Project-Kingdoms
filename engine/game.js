@@ -1,14 +1,14 @@
-import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.10";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.10";
+import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.11";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.11";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
 import {saveGame,loadGame} from "../save/storage.js";
 import {setupControls} from "../ui/controls.js";
-import {findRoute} from "./pathfinding.js?v=0.3.10";
+import {findRoute} from "./pathfinding.js?v=0.3.11";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
-import {CITY_BUILDINGS,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.10";
-import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep,isBridgeDeck,isBridgeStair,CITY_BRIDGE,CITY_WATCHTOWER,isWatchtowerRoof,isWatchtowerBalcony} from "./elevation.js?v=0.3.10";
+import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed} from "./city-one.js";
+import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.11";
+import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.11";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,crimes:0,reputation:0};
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -107,7 +107,7 @@ function draw(){
   if(t==="door"||t.startsWith("stairs")){ctx.fillStyle="#171b27";ctx.font=`${Math.max(12,size*.5)}px system-ui`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(t==="door"?"▣":t.includes("up")?"↑":"↓",sx+size/2,sy+size/2);}
  }
  if(p.map===TAVERN_MAP){drawTavernDecor(p.floor,cx,cy,w,h,size);drawTavernFurniture(p.floor,cx,cy,w,h,size);}
- if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawBridgeDeck(cx,cy,w,h,size);drawWatchtower(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
+ if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -389,73 +389,55 @@ function drawRampartDetails(cx,cy,w,h,size){
  }
  ctx.restore();
 }
-function drawBridgeDeck(cx,cy,w,h,size){
- const b=CITY_BRIDGE;
- const x=(b.x-cx)*size+w/2,y=(b.y1-cy)*size+h/2;
- const height=(b.y2-b.y1+1)*size;
- if(x>w+size||x+size<0||y>h+size||y+height<-size)return;
- const p=state.player;
- // When the character is under the bridge, the deck is translucent so
- // the street-level player remains visible; on top it is fully opaque.
- const under=isBridgeDeck(p.map,p.x,p.y)&&(p.z??0)===0;
- ctx.save();ctx.globalAlpha=under?.48:1;
- ctx.fillStyle="#1e2730aa";ctx.fillRect(x+size*.15,y+size*.2,size*.98,height+size*.12);
- ctx.fillStyle="#a18b6b";ctx.fillRect(x,y,size,height);
- ctx.fillStyle="#7e6850";ctx.fillRect(x,y,size*.13,height);
- ctx.fillRect(x+size*.87,y,size*.13,height);
- ctx.strokeStyle="#584a3a";ctx.lineWidth=Math.max(1,size*.04);
- for(let j=1;j<b.y2-b.y1+1;j++){
-  ctx.beginPath();ctx.moveTo(x+size*.13,y+j*size);ctx.lineTo(x+size*.87,y+j*size);ctx.stroke();
- }
- ctx.restore();
- for(const stair of b.stairs){
-  const sx=(stair.x-cx)*size+w/2,sy=(stair.y-cy)*size+h/2;
-  ctx.fillStyle="#89745b";ctx.fillRect(sx,sy,size,size);
-  for(let j=0;j<5;j++){
-   ctx.fillStyle=j%2?"#b7a080":"#d0b18b";
-   ctx.fillRect(sx,sy+j*size/5,size,size/5*.7);
+function drawCityGates(cx,cy,w,h,size){
+ // Four permanent gatehouses: 5 tiles across the passage, two fortified
+ // flanking towers, open 3-tile carriageway and a visible portcullis overhead.
+ for(const gate of CITY_GATES){
+  const [x1,y1,x2,y2]=gate.bounds;
+  const sx=(x1-cx)*size+w/2,sy=(y1-cy)*size+h/2;
+  const gw=(x2-x1+1)*size,gh=(y2-y1+1)*size;
+  if(sx>w+size||sy>h+size||sx+gw<-size||sy+gh<-size)continue;
+  const vertical=gate.axis==="vertical";
+  ctx.save();
+  // Masonry towers on either side of the three-tile roadway.
+  for(const side of [-2,2]){
+   const tx=vertical?gate.x+side:x1;
+   const ty=vertical?y1:gate.y+side;
+   const px=(tx-cx)*size+w/2,py=(ty-cy)*size+h/2;
+   const tw=vertical?size:gw,th=vertical?gh:size;
+   ctx.fillStyle="#454d4e77";ctx.fillRect(px+size*.16,py+size*.22,tw,th);
+   ctx.fillStyle="#8f938d";ctx.fillRect(px,py,tw,th);
+   ctx.fillStyle="#b8b9ad";ctx.fillRect(px+size*.12,py+size*.12,tw-size*.24,th-size*.24);
+   ctx.strokeStyle="#676b68";ctx.lineWidth=Math.max(1,size*.035);
+   for(let k=1;k<(vertical?5:5);k++){
+    ctx.beginPath();
+    if(vertical){ctx.moveTo(px,py+k*size);ctx.lineTo(px+tw,py+k*size);}
+    else{ctx.moveTo(px+k*size,py);ctx.lineTo(px+k*size,py+th);}
+    ctx.stroke();
+   }
+   ctx.fillStyle="#e0d9c8";
+   for(let k=0;k<5;k+=2){
+    if(vertical)ctx.fillRect(px,py+k*size,size*.24,size*.5);
+    else ctx.fillRect(px+k*size,py,size*.5,size*.24);
+   }
   }
+  // Elevated stone lintel marks the gateway without obstructing travel.
+  const lx=vertical?(gate.x-1-cx)*size+w/2:sx;
+  const ly=vertical?sy:(gate.y-1-cy)*size+h/2;
+  const lw=vertical?size*3:gw,lh=vertical?gh:size*3;
+  ctx.strokeStyle="#54463a";ctx.lineWidth=Math.max(2,size*.12);
+  ctx.strokeRect(lx+size*.07,ly+size*.07,lw-size*.14,lh-size*.14);
+  // Open portcullis, visually raised above the traversable street.
+  ctx.strokeStyle="#c9a46b";ctx.lineWidth=Math.max(1,size*.065);
+  if(vertical){
+   const yy=(gate.y-cy)*size+h/2;
+   for(let k=0;k<4;k++){let xx=(gate.x-1+k-cx)*size+w/2;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx,yy+size*.25);ctx.stroke();}
+  }else{
+   const xx=(gate.x-cx)*size+w/2;
+   for(let k=0;k<4;k++){let yy=(gate.y-1+k-cy)*size+h/2;ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx+size*.25,yy);ctx.stroke();}
+  }
+  ctx.restore();
  }
-}
-// VIS 1.6: fixed watchtower with walkable roof and a one-tile balcony.
-// The raised surface is drawn over the ground, and the ground player remains
-// visible through the deck while standing directly beneath it.
-function drawWatchtower(cx,cy,w,h,size){
- const b=CITY_WATCHTOWER,roof=b.roof,balcony=b.balcony;
- const px=(roof.x1-cx)*size+w/2,py=(roof.y1-cy)*size+h/2;
- const rw=(roof.x2-roof.x1+1)*size,rh=(roof.y2-roof.y1+1)*size;
- if(px>w+size*3||px+rw<-size*3||py>h+size*3||py+rh<-size*3)return;
- const p=state.player;
- const below=(isWatchtowerRoof(p.map,p.x,p.y)||isWatchtowerBalcony(p.map,p.x,p.y))&&(p.z??0)===0;
- ctx.save();
- ctx.globalAlpha=below?.48:1;
- // Projected masonry facade shows the height of the roof over the street.
- ctx.fillStyle="#202a2d66";
- ctx.fillRect(px+size*.3,py+size*.38,rw+size*.3,rh+size*.3);
- ctx.fillStyle="#706d65";
- ctx.fillRect(px+size*.12,py+size*.2,rw-size*.24,rh-size*.2);
- ctx.fillStyle="#b1aaa0";
- ctx.fillRect(px,py,rw,rh);
- ctx.fillStyle="#898b85";
- ctx.fillRect(px+size*.16,py+size*.16,rw-size*.32,rh-size*.32);
- ctx.strokeStyle="#595e5b";ctx.lineWidth=Math.max(1,size*.04);
- for(let j=1;j<roof.y2-roof.y1+1;j++){
-  ctx.beginPath();ctx.moveTo(px,py+j*size);ctx.lineTo(px+rw,py+j*size);ctx.stroke();
- }
- // A real parapet at the outer edges; access side stays open.
- const lip=Math.max(2,size*.2);
- ctx.fillStyle="#d2d1c8";
- ctx.fillRect(px,py,rw,lip);
- ctx.fillRect(px+rw-lip,py,lip,rh);
- ctx.fillRect(px,py,lip,rh);
- ctx.fillRect(px,py+rh-lip,rw-size,lip);
- // Narrow timber balcony projects from the west side.
- const bx=(balcony.x1-cx)*size+w/2,by=(balcony.y1-cy)*size+h/2;
- ctx.fillStyle="#705138";ctx.fillRect(bx,by,size,size);
- ctx.fillStyle="#b68d5e";ctx.fillRect(bx+size*.08,by+size*.08,size*.84,size*.84);
- ctx.strokeStyle="#d8bb8a";ctx.lineWidth=Math.max(1,size*.07);
- ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(bx,by+size);ctx.lineTo(bx+size,by+size);ctx.stroke();
- ctx.restore();
 }
 function drawCityLabels(cx,cy,w,h,size){
  const font=Math.max(10,Math.min(16,size*.48));
