@@ -1,3 +1,15 @@
+## Alpha 0.3.22 — NPC 1.2.1: powroty do domów i wejścia do budynków
+
+- Naprawiono przydział noclegów: wcześniej każdy budynek (w tym kuźnia, arena i magazyn) mógł zostać "domem" NPC. Teraz 40 mieszkańców ma domy w czterech dostępnych budynkach mieszkalnych (Dom 1–4).
+- NPC mają osobne współrzędne wejścia do domu, pracy i miejsc spotkań; ruch prowadzi do faktycznego wejścia, a nie losowo przesuniętego pola zbiórki.
+- Pola drzwi wyłączono z nawigacji pieszej NPC, aby nikt nie stał w progu i nie blokował przejść.
+- Rozproszono niezależne miejsca pracy na ulicach i trasy strażników, zamiast ustawiać niezatrudnionych wewnątrz budynków mieszkańców pod drzwiami sklepów i świątyni.
+- Po zakończeniu spotkań NPC wchodzą do domów już wieczorem. Przejścia morning→work oraz evening→sleep nie powodują ponownego opuszczania budynku.
+- Dodatkowe zabezpieczenie: jeśli NPC nie dotrze na czas do domu przez blokadę lub niedostępną trasę, po 50 minutach gry od pory snu jego harmonogram zostaje wyrównany do prawidłowego mieszkania.
+- Starsze zapisy z NPC nocującymi w nieodpowiednich budynkach podlegają korekcie przy aktualizacji harmonogramu; zachowano ten sam klucz zapisu i schemat 9.
+- Test symulacyjny 08:00–00:00, trzy lokalizacje obserwatora: o 22:00, 23:00 i 00:00 wszystkie 40 NPC w prawidłowych mieszkaniach; 0 postaci na polach drzwi; brak kolizji pozycji i nieprawidłowych pól; poprawne zapisanie i odtworzenie stanu NPC.
+- Test w realnej mobilnej przeglądarce pozostaje do potwierdzenia przez gracza.
+
 ## Alpha 0.3.21 — NPC 1.2: życie codzienne i rozproszenie tłumu
 
 - Zachowano 40 postaci z hybrydową symulacją (12 ważnych + 28 pozostałych).
