@@ -206,8 +206,8 @@ function phaseLabel(n,phase){
  return {sleep:"Odpoczywa w domu",morning:"Idzie do pracy",work:"Pracuje",social:"Spędza czas: "+n.venueName,evening:"Wraca do domu"}[phase]||"Spaceruje";
 }
 function indoorDestination(n,phase){
- if(phase==="sleep")return n.homeMap;
- if(phase==="work"&&n.workIndoor)return n.workMap;
+ if(phase==="sleep"||phase==="evening")return n.homeMap;
+ if((phase==="work"||phase==="morning")&&n.workIndoor)return n.workMap;
  if(phase==="social"&&n.venueIndoor)return n.venueMap;
  return null;
 }
@@ -305,8 +305,10 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
    Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
   let insideWithPlayer=n.map!=="site-city1"&&n.map===player.map;
   if(n.indoors){
-   if(n.indoorActivity===phase&&n.map===indoorDestination(n,phase)){
-    if(insideWithPlayer&&moveIndoor(n,player,now,npcs))changed=true;
+   if(n.map===indoorDestination(n,phase)){
+    // Stay in the same interior across morning→work and evening→night.
+    n.indoorActivity=phase;n.task=phaseLabel(n,phase);
+    if(insideWithPlayer&&phase!=="sleep"&&moveIndoor(n,player,now,npcs))changed=true;
     continue;
    }
    // Day's next activity begins with leaving through the building's exit.
