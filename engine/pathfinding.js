@@ -1,7 +1,7 @@
 // A* navigation on a single floor. Portals are route endpoints, not implicit teleports.
 import {blocked,doorAt,mapSize,objectAt} from "./world.js";
 import {cityStepAllowed} from "./city-one.js";
-import {elevationAt,resolveSurfaceStep,isBridgeDeck} from "./elevation.js?v=0.3.9.1";
+import {elevationAt,resolveSurfaceStep,isElevatedPlatform} from "./elevation.js?v=0.3.10";
 const DIRS=[[0,-1],[1,0],[0,1],[-1,0]];
 const key=(x,y,z=0)=>x+","+y+","+z;
 export function findRoute(player,goal,doors={}){
@@ -19,7 +19,7 @@ export function findRoute(player,goal,doors={}){
   :[goal].filter(p=>passable(p.x,p.y));
  if(!goals.length)return {path:[],reason:"Cel jest niedostępny."};
  const currentZ=Number.isInteger(player.z)?player.z:elevationAt(player.map,player.x,player.y,player.floor);
- const targetKeys=new Set(goals.map(p=>key(p.x,p.y,player.map==="site-city1"&&isBridgeDeck(player.map,p.x,p.y)&&currentZ>0?2:elevationAt(player.map,p.x,p.y,player.floor))));
+ const targetKeys=new Set(goals.map(p=>key(p.x,p.y,player.map==="site-city1"&&isElevatedPlatform(player.map,p.x,p.y)&&currentZ>0?2:elevationAt(player.map,p.x,p.y,player.floor))));
  const heuristic=(x,y)=>Math.min(...goals.map(p=>Math.abs(x-p.x)+Math.abs(y-p.y)));
  const start=key(player.x,player.y,currentZ);
  if(targetKeys.has(start))return {path:[],reason:targetClosed?"Podejdź do drzwi i użyj E / Otwórz.":targetIsObject?"Użyj E / Zbadaj.":"Jesteś na miejscu."};
