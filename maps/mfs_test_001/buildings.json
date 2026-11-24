@@ -1,0 +1,21 @@
+[
+  {
+    "id": "mfs_test_001.b001",
+    "parcelId": "mfs_test_001.p001",
+    "type": "tenement",
+    "name": "Kamienica testowa",
+    "geometry": {
+      "type": "rect",
+      "x": 6,
+      "y": 6,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mfs_test_001.b001.f0",
+      "mfs_test_001.b001.f1",
+      "mfs_test_001.b001.f2"
+    ]
+  }
+]

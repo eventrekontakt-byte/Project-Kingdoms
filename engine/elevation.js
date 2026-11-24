@@ -1,3 +1,4 @@
+import {mfsScene} from "./mfs/core.js?v=0.3.29";
 // VIS 1.4 — elevation model for locations and future bridges, balconies and roofs.
 // Elevation is independent of map floors; it is derived from the current tile.
 // This keeps older saves and movement/portal geometry compatible.
@@ -7,6 +8,7 @@ export const ELEVATION_UNIT_METERS=1.5;
 export const CITY_RAMPART_LEVEL=2;
 export const CITY_STAIRS_LEVEL=1;
 export function elevationAt(map,x,y,floor=0){
+ const s=mfsScene(map);if(s)return s.elevation[y*s.width+x]||0;
  if(map==="site-city1"){
   const tile=cityTile(x,y);
   return tile==="rampart"?CITY_RAMPART_LEVEL:tile==="stairs-up"?CITY_STAIRS_LEVEL:0;

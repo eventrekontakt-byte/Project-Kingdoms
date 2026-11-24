@@ -1,7 +1,7 @@
 // A* navigation on a single floor. Portals are route endpoints, not implicit teleports.
-import {blocked,doorAt,mapSize,objectAt,transitionAt} from "./world.js";
+import {blocked,doorAt,mapSize,objectAt,transitionAt} from "./world.js?v=0.3.29";
 import {cityStepAllowed,cityGateBarrierAt} from "./city-one.js";
-import {elevationAt,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
+import {elevationAt,resolveSurfaceStep} from "./elevation.js?v=0.3.29";
 const DIRS=[[0,-1],[1,0],[0,1],[-1,0]];
 const key=(x,y,z=0)=>x+","+y+","+z;
 export function findRoute(player,goal,doors={},gateStates={},options={}){

@@ -1,7 +1,7 @@
 // NPC 1.3 (0.3.24): stable professions, purposeful jobs, DNS simulation classes.
 import {CITY_BUILDINGS,CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
-import {tileAt,mapSize} from "./world.js";
-import {linkFor,at,freeAt,enterPortal,leavePortal,wanderInterior} from "./npc-doors.js?v=0.3.27";
+import {tileAt,mapSize} from "./world.js?v=0.3.29";
+import {linkFor,at,freeAt,enterPortal,leavePortal,wanderInterior} from "./npc-doors.js?v=0.3.29";
 const FIRST=["Aldric","Berta","Cedryk","Daria","Edmund","Fenna","Gustaw","Hilda","Iwo","Jagna","Konrad","Lena","Marek","Nora","Oskar","Petra","Radomir","Sara","Tomasz","Wera"];
 const ROLES=["Strażnik","Kupiec","Rzemieślnik","Mieszkaniec","Robotnik","Mieszkaniec","Posłaniec","Mieszkaniec"];
 // Canonical city staff. Their profession, workplace and conversation are one

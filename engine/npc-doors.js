@@ -1,6 +1,6 @@
 // Shared ground-floor entrances based on the same portal graph as the player.
 import {CITY_BUILDINGS,cityGateBarrierAt} from "./city-one.js";
-import {transitionAt,tileAt,mapSize} from "./world.js";
+import {transitionAt,tileAt,mapSize} from "./world.js?v=0.3.29";
 const CITY="site-city1",STEPS=[[1,0],[-1,0],[0,1],[0,-1]];
 export const floorTile=(map,x,y)=>["wood","stone","marble"].includes(tileAt(map,0,x,y));
 export const at=(n,p)=>n.x===p.x&&n.y===p.y;

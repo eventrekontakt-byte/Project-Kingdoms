@@ -1,0 +1,121 @@
+{
+  "id": "mfs_test_001.b001.f2",
+  "buildingId": "mfs_test_001.b001",
+  "level": 2,
+  "width": 12,
+  "height": 16,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 12,
+    "h": 16
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mfs_test_001.b001.f2.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mfs_test_001.b001.f2.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 15,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mfs_test_001.b001.f2.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mfs_test_001.b001.f2.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mfs_test_001.b001.f2.wall5",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 1,
+        "w": 1,
+        "h": 6
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mfs_test_001.b001.f2.wall6",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 8,
+        "w": 1,
+        "h": 3
+      },
+      "kind": "partition"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mfs_test_001.b001.f2.o001",
+      "type": "bed_single",
+      "name": "Łóżko",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 3,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "stations": [
+        {
+          "id": "mfs_test_001.b001.f2.o001.s001",
+          "action": "sleep",
+          "approach": {
+            "x": 3,
+            "y": 3
+          },
+          "capacity": 1
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "mfs_test_001.b001.f2.r001",
+      "type": "multipurpose",
+      "anchor": {
+        "x": 3,
+        "y": 5
+      },
+      "access": "Z0"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 // Touch-friendly independent map controls. No main-map movement until explicit route action.
-import {createMinimap,mapTransform,minimapTile,localPlaces,searchPlaces} from "./minimap.js?v=0.3.28.1";
+import {createMinimap,mapTransform,minimapTile,localPlaces,searchPlaces} from "./minimap.js?v=0.3.29";
 const KEY="kingdoms-minimap-options-v1",clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export function setupMinimap({getFrame,onRoute,onCancel,onCenterMain}){
  const $=id=>document.getElementById(id),canvas=$("localMinimap"),panel=$("minimapPanel"),renderer=createMinimap(canvas);

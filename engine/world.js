@@ -1,3 +1,4 @@
+import {mfsScene} from "./mfs/core.js?v=0.3.29";
 import {TAVERN_MAP,TAVERN_SIZE,tavernTile,tavernObject,tavernPortals} from "./interiors/templates.js?v=0.3.3";
 import {REGION_LAYOUTS,regionTile} from "./regions.js";
 import {SITE_LAYOUTS,siteTile} from "./sites.js";
@@ -63,10 +64,10 @@ PORTALS.push(["site-city1",0,tavernBuilding.door.x,tavernBuilding.door.y,TAVERN_
 PORTALS.push([TAVERN_MAP,0,16,26,"site-city1",0,...tavernExterior]);
 for(const p of tavernPortals())if(p.to)PORTALS.push([TAVERN_MAP,...p.from,TAVERN_MAP,...p.to]);
 const portalIndex=new Map(PORTALS.map(([m,f,x,y,tm,tf,tx,ty])=>[portalKey(m,f,x,y),{map:tm,floor:tf,x:tx,y:ty}]));
-export function validLocation(map,floor){return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
-export function mapSize(map){const l=LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
-export function objectAt(map,floor,x,y){return map===TAVERN_MAP?tavernObject(floor,x,y):CITY_INTERIORS[map]?interiorObjectAt(map,x,y):OBJECTS[portalKey(map,floor,x,y)]||null;}
-export function transitionAt(map,floor,x,y){return portalIndex.get(portalKey(map,floor,x,y))||null;}
+export function validLocation(map,floor){if(mfsScene(map))return floor===0;return Boolean(LOCATIONS[map]&&Number.isInteger(floor)&&floor>=0&&floor<LOCATIONS[map].floors);}
+export function mapSize(map){const l=mfsScene(map)||LOCATIONS[map];return l?{w:l.width,h:l.height}:{w:0,h:0};}
+export function objectAt(map,floor,x,y){const s=mfsScene(map);if(s)return floor===0?s.objects.get(y*s.width+x)||null:null;return map===TAVERN_MAP?tavernObject(floor,x,y):CITY_INTERIORS[map]?interiorObjectAt(map,x,y):OBJECTS[portalKey(map,floor,x,y)]||null;}
+export function transitionAt(map,floor,x,y){const s=mfsScene(map);if(s)return floor===0?s.portals.get(y*s.width+x)||null:null;return portalIndex.get(portalKey(map,floor,x,y))||null;}
 export const DOORS={
  "overworld:0:24:20":{id:"keep-main",name:"Brama warowni",initial:"open"},
  "keep:0:8:12":{id:"keep-main",name:"Brama warowni",initial:"open"},
@@ -77,11 +78,12 @@ export const DOORS={
  "overworld:0:11:31":{id:"warehouse-main",name:"Drzwi magazynu",initial:"locked"},
  "warehouse:0:0:4":{id:"warehouse-main",name:"Drzwi magazynu",initial:"locked"}
 };
-export function doorAt(map,floor,x,y){return DOORS[portalKey(map,floor,x,y)]||null;}
+export function doorAt(map,floor,x,y){const s=mfsScene(map);if(s)return floor===0?s.doors.get(y*s.width+x)||null:null;return DOORS[portalKey(map,floor,x,y)]||null;}
 export function defaultDoors(){return Object.fromEntries(Object.values(DOORS).map(d=>[d.id,d.initial]));}
 const entrances=BUILDINGS.map(b=>[BUILDING_ENTRIES[b.id].x,BUILDING_ENTRIES[b.id].y]);
 export function tileAt(map,floor,x,y){
  if(!validLocation(map,floor))return "void";
+ const s=mfsScene(map);if(s)return s.tile(x,y);
  const {w,h}=mapSize(map);
  if(x<0||y<0||x>=w||y>=h)return "void";
  const portal=transitionAt(map,floor,x,y);
@@ -106,5 +108,5 @@ export function tileAt(map,floor,x,y){
  return LOCATIONS[map].base==="wood"?"wood":floor===2?"marble":"stone";
 }
 export function blocked(map,floor,x,y){return ["void","wall","tree","water","object"].includes(tileAt(map,floor,x,y));}
-export function mapName(map,floor){const l=LOCATIONS[map];return l?`${l.name}${l.floors>1?` — piętro ${floor}`:""}`:"Nieznana lokacja";}
+export function mapName(map,floor){const s=mfsScene(map);if(s)return s.name;const l=LOCATIONS[map];return l?`${l.name}${l.floors>1?` — piętro ${floor}`:""}`:"Nieznana lokacja";}
 export const COLORS={void:"#050a0e",wall:"#36404a",tree:"#285b34",water:"#225d8c",road:"#8a7a60",rampart:"#a6a7a0",grass:"#416f45","forest-floor":"#365b3a",rock:"#79786c",hill:"#5b7750",meadow:"#689257",stone:"#777a78",wood:"#927b56",marble:"#8d9ba3",door:"#e4b64c","stairs-up":"#ad87dd","stairs-down":"#8863c0",object:"#b68b53"};

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MFS 1.0 paired portal",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "direction",
+    "a",
+    "b"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "enum": [
+        "door",
+        "stairs"
+      ]
+    },
+    "direction": {
+      "const": "both"
+    },
+    "a": {
+      "type": "object",
+      "required": [
+        "sceneId",
+        "trigger",
+        "arrival"
+      ],
+      "properties": {
+        "sceneId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger": {
+          "type": "object",
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "type": "integer"
+            },
+            "y": {
+              "type": "integer"
+            }
+          }
+        },
+        "arrival": {
+          "type": "object",
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "type": "integer"
+            },
+            "y": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "b": {
+      "type": "object",
+      "required": [
+        "sceneId",
+        "trigger",
+        "arrival"
+      ],
+      "properties": {
+        "sceneId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger": {
+          "type": "object",
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "type": "integer"
+            },
+            "y": {
+              "type": "integer"
+            }
+          }
+        },
+        "arrival": {
+          "type": "object",
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "type": "integer"
+            },
+            "y": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

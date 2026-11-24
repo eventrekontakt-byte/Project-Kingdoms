@@ -1,0 +1,28 @@
+{
+  "defaultTile": "grass",
+  "regions": [
+    {
+      "id": "mfs_test_001.terrain001",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 22,
+        "y": 2,
+        "w": 10,
+        "h": 10
+      }
+    },
+    {
+      "id": "mfs_test_001.water001",
+      "tile": "water",
+      "geometry": {
+        "type": "rect",
+        "x": 28,
+        "y": 20,
+        "w": 6,
+        "h": 5
+      }
+    }
+  ],
+  "elevations": []
+}

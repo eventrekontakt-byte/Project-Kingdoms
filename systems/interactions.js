@@ -1,4 +1,4 @@
-import {OBJECTS,objectAt,doorAt} from "../engine/world.js";
+import {OBJECTS,objectAt,doorAt} from "../engine/world.js?v=0.3.29";
 export function defaultObjects(){return Object.fromEntries(Object.values(OBJECTS).map(o=>[o.id,{opened:false,inspected:false}]));}
 export function interactionNear(player){
  const positions=[[player.x,player.y],[player.x+1,player.y],[player.x-1,player.y],[player.x,player.y+1],[player.x,player.y-1]];

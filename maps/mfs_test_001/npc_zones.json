@@ -1,0 +1,14 @@
+[
+  {
+    "id": "mfs_test_001.zone001",
+    "type": "N0",
+    "sceneId": "mfs_test_001",
+    "geometry": {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": 36,
+      "h": 28
+    }
+  }
+]

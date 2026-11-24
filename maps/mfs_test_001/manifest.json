@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "mdsVersion": "1.0",
+  "mapId": "mfs_test_001",
+  "mapRevision": 1,
+  "kind": "test",
+  "name": "Poligon MFS",
+  "sourceType": "manual",
+  "status": "published",
+  "width": 36,
+  "height": 28,
+  "tileMeters": 1,
+  "baseTilePixels": 32,
+  "elevationStepMeters": 0.5,
+  "interiorScale": 2,
+  "sectorSize": 16,
+  "files": {
+    "terrain": "terrain.json",
+    "parcels": "parcels.json",
+    "roads": "roads.json",
+    "fortifications": "fortifications.json",
+    "buildings": "buildings.json",
+    "infrastructure": "infrastructure.json",
+    "npcZones": "npc_zones.json",
+    "portals": "portals.json"
+  },
+  "interiors": [
+    "interiors/b001/f0.json",
+    "interiors/b001/f1.json",
+    "interiors/b001/f2.json"
+  ],
+  "spawnPoints": [
+    {
+      "id": "mfs_test_001.spawn001",
+      "sceneId": "mfs_test_001",
+      "x": 9,
+      "y": 16,
+      "role": "default"
+    }
+  ]
+}

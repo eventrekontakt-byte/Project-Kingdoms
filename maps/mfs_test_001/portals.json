@@ -1,0 +1,86 @@
+[
+  {
+    "id": "mfs_test_001.portal001",
+    "name": "Wejście do kamienicy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mfs_test_001",
+      "trigger": {
+        "x": 9,
+        "y": 13
+      },
+      "arrival": {
+        "x": 9,
+        "y": 14
+      }
+    },
+    "b": {
+      "sceneId": "mfs_test_001.b001.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mfs_test_001.portal002",
+    "name": "Schody parter ↔ I",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mfs_test_001.b001.f0",
+      "trigger": {
+        "x": 3,
+        "y": 10
+      },
+      "arrival": {
+        "x": 3,
+        "y": 11
+      }
+    },
+    "b": {
+      "sceneId": "mfs_test_001.b001.f1",
+      "trigger": {
+        "x": 3,
+        "y": 10
+      },
+      "arrival": {
+        "x": 3,
+        "y": 11
+      }
+    }
+  },
+  {
+    "id": "mfs_test_001.portal003",
+    "name": "Schody I ↔ II",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mfs_test_001.b001.f1",
+      "trigger": {
+        "x": 9,
+        "y": 4
+      },
+      "arrival": {
+        "x": 9,
+        "y": 5
+      }
+    },
+    "b": {
+      "sceneId": "mfs_test_001.b001.f2",
+      "trigger": {
+        "x": 9,
+        "y": 4
+      },
+      "arrival": {
+        "x": 9,
+        "y": 5
+      }
+    }
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "mfs_test_001.tree001",
+    "type": "tree",
+    "name": "Drzewo",
+    "geometry": {
+      "type": "rect",
+      "x": 25,
+      "y": 5,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true
+  }
+]

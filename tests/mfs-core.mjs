@@ -1,0 +1,5 @@
+import assert from "node:assert/strict";
+import {readFile} from "node:fs/promises";
+import {loadMfsWorld,rasterize,rotateCell} from "../engine/mfs/core.js";
+const get=async path=>{try{const data=await readFile(new URL("../"+path,import.meta.url),"utf8");return {ok:true,json:async()=>JSON.parse(data)};}catch{return {ok:false};}};
+const [b]=await loadMfsWorld("maps/",get);assert.equal(b.scenes.size,4);assert.equal(b.parcels.size,3);const m=b.manifest.mapId,s=b.scenes.get(m),a=b.scenes.get(m+".b001.f1");assert.equal(s.tile(9,13),"door");assert.equal(a.tile(3,10),"stairs-down");assert.equal(a.tile(9,4),"stairs-up");assert.equal(a.portals.get(123).map,m+".b001.f0");assert.equal(a.portals.get(57).map,m+".b001.f2");assert.equal(a.width,12);assert.equal(a.height,16);assert.equal(a.blocked(2,3),true);assert.equal(rasterize({type:"rect",x:0,y:0,w:2,h:2},3,3).size,4);assert.throws(()=>rasterize({type:"rect",x:0,y:0,w:4,h:2},3,3));assert.deepEqual(rotateCell(0,1,2,3,90),{x:1,y:0});console.log("MFS core smoke tests passed");

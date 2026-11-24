@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MFS 1.0 registry",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "locations"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "mapId",
+          "mapRevision",
+          "manifest"
+        ],
+        "properties": {
+          "mapId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mapRevision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "manifest": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

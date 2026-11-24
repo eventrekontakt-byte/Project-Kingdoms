@@ -1,0 +1,50 @@
+[
+  {
+    "id": "mfs_test_001.p001",
+    "name": "Działka A",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 6,
+      "w": 10,
+      "h": 9
+    },
+    "accessRoadIds": [
+      "mfs_test_001.road001"
+    ]
+  },
+  {
+    "id": "mfs_test_001.p002",
+    "name": "Działka B",
+    "class": "P2",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 15,
+      "y": 7,
+      "w": 8,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mfs_test_001.road001"
+    ]
+  },
+  {
+    "id": "mfs_test_001.p003",
+    "name": "Działka C",
+    "class": "P2",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 7,
+      "y": 18,
+      "w": 8,
+      "h": 7
+    },
+    "accessRoadIds": [
+      "mfs_test_001.road001"
+    ]
+  }
+]

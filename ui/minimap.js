@@ -1,5 +1,6 @@
+import {mfsScene} from "../engine/mfs/core.js?v=0.3.29";
 // Local minimap: static terrain raster cached separately from low-rate markers.
-import {mapSize,tileAt} from "../engine/world.js";
+import {mapSize,tileAt} from "../engine/world.js?v=0.3.29";
 import {CITY_GATES,CITY_BUILDINGS} from "../engine/city-one.js";
 export const MIN_ZOOM=1,MAX_ZOOM=3;
 export function clampZoom(value){return Number.isFinite(value)?Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,value)):1;}
@@ -17,6 +18,7 @@ export function minimapTile(t,x,y,mw,mh){
 export function normalizeSearch(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ł/g,"l").trim();}
 export function searchPlaces(places,q){const query=normalizeSearch(q);return places.filter(p=>normalizeSearch(p.name+" "+(p.kind||"")).includes(query));}
 export function localPlaces(map,floor){
+ const s=mfsScene(map);if(s)return floor===0?s.places:[];
  if(map==="site-city1"){
   return CITY_BUILDINGS.filter(b=>b.door&&!b.decorative).map(b=>{
    const [dx,dy]={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing];

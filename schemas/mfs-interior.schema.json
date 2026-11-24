@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MFS 1.0 interior scene",
+  "type": "object",
+  "required": [
+    "id",
+    "buildingId",
+    "level",
+    "width",
+    "height",
+    "geometry",
+    "floorTile",
+    "walls",
+    "objects"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "buildingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "level": {
+      "type": "integer"
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "geometry": {
+      "$ref": "mfs-geometry.schema.json"
+    },
+    "floorTile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "walls": {
+      "type": "array",
+      "items": {
+        "$ref": "mfs-entity.schema.json"
+      }
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "$ref": "mfs-entity.schema.json"
+      }
+    }
+  }
+}

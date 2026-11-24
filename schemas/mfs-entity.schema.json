@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MFS 1.0 geometry record",
+  "type": "object",
+  "required": [
+    "id",
+    "geometry"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "geometry": {
+      "$ref": "mfs-geometry.schema.json"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0.0",
+  "locations": [
+    {
+      "mapId": "mfs_test_001",
+      "mapRevision": 1,
+      "manifest": "mfs_test_001/manifest.json",
+      "kind": "test",
+      "connections": []
+    }
+  ]
+}

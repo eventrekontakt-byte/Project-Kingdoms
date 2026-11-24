@@ -1,0 +1,22 @@
+[
+  {
+    "id": "mfs_test_001.road001",
+    "class": "R3",
+    "width": 3,
+    "surface": "gravel",
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 2,
+          "y": 16
+        },
+        {
+          "x": 33,
+          "y": 16
+        }
+      ]
+    }
+  }
+]

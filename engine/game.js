@@ -1,20 +1,23 @@
-import {clampZoom} from "../ui/minimap.js?v=0.3.28.1";
-import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.28.1";
-import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.27";
-import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState,primeAmbientPopulation} from "./dns-population.js?v=0.3.28.4";
+import {loadMfsWorld,registerMfs,mfsScene} from "./mfs/core.js?v=0.3.29";
+import {clampZoom} from "../ui/minimap.js?v=0.3.29";
+import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.29";
+import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.29";
+import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState,primeAmbientPopulation} from "./dns-population.js?v=0.3.29";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
-import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.4";
+import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.29";
+import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js?v=0.3.29";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.29";
 import {setupControls} from "../ui/controls.js";
-import {findRoute} from "./pathfinding.js?v=0.3.28.1";
+import {findRoute} from "./pathfinding.js?v=0.3.29";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js";
 import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
-import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
+import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.29";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
+let mfsTest=null,mfsError=null;
+try{const bundles=await loadMfsWorld(new URL("../maps/",import.meta.url).href);for(const bundle of bundles){registerMfs(bundle);if(bundle.manifest.mapId==="mfs_test_001")mfsTest=bundle;}}catch(error){mfsError=error;console.error("MFS Core",error);}
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
 const npcs=createNPCs();state.npcs=npcs;
 // Only remembered passers-by enter a separate bounded campaign registry.
@@ -128,6 +131,7 @@ function draw(){
   ctx.fillStyle=COLORS[t]||"#333";ctx.fillRect(sx,sy,Math.ceil(size)+1,Math.ceil(size)+1);
   ctx.strokeStyle="#0a182b38";ctx.strokeRect(sx,sy,size,size);
   if(p.map==="site-city1")drawCityTerrain(ctx,t,x,y,sx,sy,size);
+  if(p.map==="mfs_test_001"){const sc=mfsScene(p.map);if(sc){for(const r of sc.records.values())if(r.ownershipMode==="standard"&&r.geometry.type==="rect"){const a=r.geometry;if(x>=a.x&&x<a.x+a.w&&y>=a.y&&y<a.y+a.h&&(x===a.x||x===a.x+a.w-1||y===a.y||y===a.y+a.h-1)){ctx.strokeStyle="#c2df85";ctx.lineWidth=1;ctx.strokeRect(sx+1,sy+1,size-2,size-2);break;}}}}
   if(t==="tree"){ctx.fillStyle="#1d4229";ctx.beginPath();ctx.arc(sx+size/2,sy+size/2,size*.29,0,Math.PI*2);ctx.fill();}
   if(t==="object"&&p.map!==TAVERN_MAP){const object=objectAt(p.map,p.floor,x,y);const opened=state.objects[object?.id]?.opened;ctx.fillStyle=opened?"#5b4b38":"#d8a45a";ctx.fillRect(sx+size*.2,sy+size*.2,size*.6,size*.6);}
   if(t==="door"){const door=doorAt(p.map,p.floor,x,y);const status=door?(state.doors[door.id]||door.initial):"open";ctx.fillStyle=status==="locked"?"#a63b3b":status==="closed"?"#bc7c36":"#e4b64c";ctx.fillRect(sx+size*.1,sy+size*.1,size*.8,size*.8);}
@@ -695,6 +699,11 @@ $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="
  Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();primePopulation();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
+$("mfsTestBtn").disabled=!mfsTest;
+$("mfsTestStatus").textContent=mfsTest?"3 działki · 1 kamienica · 3 kondygnacje · mapa JSON":("MFS niedostępny: "+(mfsError?.message||"brak mapy"));
+function travelMfs(point,label){closeNPCDialogue();minimap.resetTarget();Object.assign(state.player,point,{z:0});path=[];if(strategic.active())strategic.close();$("sidePanel").classList.remove("open");snapVisual();primePopulation();draw();notify(label);}
+$("mfsTestBtn").addEventListener("click",()=>{if(mfsTest)travelMfs(mfsTest.spawn,"Poligon MFS");});
+$("mfsReturnBtn").addEventListener("click",()=>travelMfs(START,"Miasto 1"));
 $("fastTravelTavern").addEventListener("click",()=>{
  Object.assign(state.player,{map:TAVERN_MAP,floor:0,x:16,y:25});
  path=[];state.camera.x=16.5;state.camera.y=25.5;state.camera.zoom=clampZoom(state.camera.zoom);
