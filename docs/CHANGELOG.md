@@ -4,7 +4,7 @@
 - Synchronizacja co 650 ms lub przy skoku kamery o co najmniej 8 kratek / zmianie mapy, maksymalnie 10 nowych aktorów w cyklu i nadal 38 aktywnych globalnie. Lokalna liczebność zależy od dzielnicy i pory dnia.
 - Sektory uzupełniają aktualny stan populacji zamiast jednorazowego oznaczania jako załadowane. Krótki cooldown prób, preferencja bliskich dróg poza kadrem, brak generowania na ekranie.
 - Zachowana ochrona widocznych NPC (również podczas animacji), rozmów i odwiedzających aktualne wnętrze. Zapamiętane tożsamości pozostają w rejestrze. Licznik pokazuje lokalną populację i odzyskiwanie miejsc.
-- Testy integracyjne i mobilne wymagają potwierdzenia.
+- Test modułów miasta z 40 stałymi mieszkańcami: start przy 38 NPC tła, skok kamery do innej dzielnicy zwolnił 38 miejsc i utworzył 10 postaci w pierwszej synchronizacji; po 5 s było 30 NPC w lokalnym pierścieniu i 38 aktywnych. Pięć kolejnych skoków: po 10 nowych w pierwszym cyklu, 25–33 lokalnych po 4,4 s. W próbie 0 pojawień w kadrze i 0 kolizji między NPC, zachowano pamięć rozmowy, odnotowano 2 wejścia do budynków; sektor uzupełnił 37 aktorów po zwolnieniu puli. Test w mobilnej przeglądarce pozostaje do wykonania.
 
 ## Alpha 0.3.28.1 — interaktywna minimapa
 
