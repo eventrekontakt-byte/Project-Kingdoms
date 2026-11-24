@@ -69,3 +69,9 @@ Goal: a city feels populated by hundreds while a smartphone simulates only a sma
 - Important and remembered identities persist across save/load.
 - Door access, road continuity and city walls cannot be broken by NPC generation.
 - Do not report future DNS features as implemented before they pass tests.
+
+## Alpha 0.3.27
+- Shared NPC/player portal links; visible fixed residents and ambient visitors use real thresholds and interior floor routing.
+- L0 and L2 visitors can enter public buildings; maximum three visit routes, ordinary visitors limited to two. Active ambient cap 38.
+- Separate 32-record identity registry for observed and contacted NPCs; compatible with schema 9. Advanced tiers require current attention.
+- Integration and Android verification pending.

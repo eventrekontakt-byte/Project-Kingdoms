@@ -1,3 +1,10 @@
+## Alpha 0.3.27 — DNS: pamięć i wnętrza NPC
+
+- Wspólne portale NPC i gracza: widoczni mieszkańcy dochodzą do rzeczywistego progu, pojawiają się po wewnętrznej stronie i wychodzą przez drzwi.
+- NPC tła L0 i L2 mogą odwiedzać publiczne budynki, chodzić po parterze i wracać na ulicę. Ograniczony budżet równoczesnych wizyt.
+- Dotknięcie wybiera obserwację, Zbadaj otwiera rozmowę. Rozmowa lub dłuższa obserwacja zachowuje tożsamość w rejestrze do 32 osób; zapis zachowuje wygląd, pozycję, licznik spotkań. Starsze zapisy schema 9 obsługiwane.
+- Testy integracyjne i mobilne wymagają potwierdzenia. Bez zmian mapy, zoomu i minimapy.
+
 ## Alpha 0.3.26 — DNS 1.0: obserwacja NPC
 
 - Dodano wybór obserwowanego NPC tła przez dotknięcie jego sylwetki lub Zbadaj w pobliżu. Ponowne dotknięcie anuluje obserwację.

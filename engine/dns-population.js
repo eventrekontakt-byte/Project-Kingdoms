@@ -1,6 +1,8 @@
 // DNS 1.0 / Alpha 0.3.26 — observation-aware hybrid population.
 // Only real on-screen actors are objects. The city's simulated headcount is metadata.
 import {CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
+import {links,linkFor,at,floorTile,freeAt,enterPortal,leavePortal,wanderInterior} from "./npc-doors.js?v=0.3.27";
+const MAX_MEMORY=32,MAX_VISITORS=3;
 const CITY="site-city1", CHUNK=12, LIMIT=38, SYNC_MS=1300, GRACE_MS=14000;
 const OBSERVE_MS=20000,FOLLOW_MS=60000,MAX_ADVANCED=3,MAX_FOLLOWED=1;
 const N=CITY_WIDTH*CITY_HEIGHT;
@@ -43,10 +45,10 @@ function peopleAt(fixed,actors,x,y,player){
 }
 export const AMBIENT_CONFIG=Object.freeze({chunkSize:CHUNK,maxActive:LIMIT,syncMs:SYNC_MS,despawnGraceMs:GRACE_MS,populationPotential:650,observationMs:OBSERVE_MS,followMs:FOLLOW_MS,maxAdvanced:MAX_ADVANCED,maxFollowed:MAX_FOLLOWED});
 export function createAmbientPopulation(){
- return {actors:[],loaded:new Set(),serial:0,lastSync:-Infinity,generated:0,removed:0,focusId:null,manualFocus:false,focusLostAt:0,lastObservationAt:null,suppressUntil:0};
+ return {actors:[],remembered:new Map(),loaded:new Set(),serial:0,lastSync:-Infinity,generated:0,removed:0,focusId:null,manualFocus:false,focusLostAt:0,lastObservationAt:null,suppressUntil:0};
 }
 export function resetAmbientPopulation(pop){
- pop.actors.length=0;pop.loaded.clear();pop.lastSync=-Infinity;pop.serial=0;pop.generated=0;pop.removed=0;pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;pop.lastObservationAt=null;pop.suppressUntil=0;
+ pop.actors.length=0;pop.remembered.clear();pop.loaded.clear();pop.lastSync=-Infinity;pop.serial=0;pop.generated=0;pop.removed=0;pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;pop.lastObservationAt=null;pop.suppressUntil=0;
 }
 function density(x,y,clock){
  const type=district(x,y),hour=clock.hour,day=hour>=7&&hour<20;
@@ -85,6 +87,50 @@ export function focusAmbient(pop,id){
  return true;
 }
 export function currentAmbientFocus(pop){return pop.actors.find(a=>a.id===pop.focusId)||null;}
+function snapshot(n,now){
+ const {id,name,role,color,skin,map,x,y,direction,seed,district,met,task,workTitle,venueName}=n;
+ return {id,name,role,color,skin,map,x,y,direction,seed,district,met:met||0,task,workTitle,venueName,remaining:Math.max(0,Math.min(35000,(n.visitUntil||now)-now))};
+}
+export function rememberAmbient(pop,n,now=0){
+ if(!n)return;
+ if(!pop.remembered.has(n.id)&&pop.remembered.size>=MAX_MEMORY){
+  const ids=[...pop.remembered.keys()].filter(id=>id!==pop.focusId&&!pop.actors.some(a=>a.id===id&&a.talking));
+  ids.sort((a,b)=>(pop.remembered.get(a).met>0)-(pop.remembered.get(b).met>0));
+  if(!ids.length)return;pop.remembered.delete(ids[0]);
+ }
+ pop.remembered.delete(n.id);pop.remembered.set(n.id,snapshot(n,now));
+}
+export function exportAmbientState(pop,now=0){
+ for(const n of pop.actors)if(pop.remembered.has(n.id))pop.remembered.set(n.id,snapshot(n,now));
+ return {serial:pop.serial,remembered:[...pop.remembered.values()]};
+}
+function hydrate(r,now){
+ return {...r,simulationClass:"ambient",important:false,indoors:r.map!==CITY,visitId:linkFor(r.map)?.id||null,fromX:r.x,fromY:r.y,started:-1,duration:320,nextMove:now+450,goal:null,route:[],nextPlan:0,nextVisit:now+4000,visitUntil:now+(r.remaining||12000),talking:false,followed:false,unseenSince:0,createdAt:now,visibleLastAt:0,simulationLevel:0,observationMs:0,focusMs:0};
+}
+export function restoreAmbientState(pop,data,now=0,player=null,fixed=[],gateStates={}){
+ resetAmbientPopulation(pop);
+ if(!data||!Array.isArray(data.remembered))return;
+ pop.serial=Math.max(0,Math.min(1e9,Number(data.serial)||0));
+ for(const r of data.remembered.slice(-MAX_MEMORY)){
+  if(!r||!/^ambient-\d+$/.test(r.id)||typeof r.name!=="string"||!Number.isInteger(r.x)||!Number.isInteger(r.y)||pop.remembered.has(r.id))continue;
+  if(r.map===CITY?!terrain(r.x,r.y,gateStates):!linkFor(r.map)||!floorTile(r.map,r.x,r.y))continue;
+  pop.serial=Math.max(pop.serial,Number(r.id.split("-")[1]));
+  const a=hydrate({...r,name:r.name.slice(0,50),role:typeof r.role==="string"?r.role:"Mieszkaniec",color:COLORS.includes(r.color)?r.color:COLORS[0],skin:SKINS.includes(r.skin)?r.skin:SKINS[0],seed:(Number(r.seed)||1)>>>0,direction:["up","down","left","right"].includes(r.direction)?r.direction:"down",met:Math.max(0,Math.min(999,Number(r.met)||0)),task:typeof r.task==="string"?r.task:"Spaceruje",workTitle:typeof r.workTitle==="string"?r.workTitle:"okoliczne ulice",venueName:typeof r.venueName==="string"?r.venueName:"mieście",remaining:Math.max(0,Math.min(35000,Number(r.remaining)||0))},now);
+  pop.remembered.set(a.id,snapshot(a,now));
+  if(player&&a.map===player.map&&!player.floor&&Math.abs(a.x-player.x)<35&&Math.abs(a.y-player.y)<30&&freeAt(a.map,a,fixed.concat(pop.actors),player,a))pop.actors.push(a);
+ }
+}
+function activateRemembered(pop,player,box,now,fixed,gateStates){
+ let changed=false;
+ for(const r of pop.remembered.values()){
+  if(pop.actors.length>=LIMIT||pop.actors.some(a=>a.id===r.id))continue;
+  const outside=r.map===CITY&&player.map===CITY&&inside(box,null,r.x,r.y,CHUNK*1.8)&&!inside(box,null,r.x,r.y,2.5)&&terrain(r.x,r.y,gateStates);
+  const insideRoom=r.map!==CITY&&r.map===player.map&&!player.floor&&floorTile(r.map,r.x,r.y);
+  if((outside||insideRoom)&&freeAt(r.map,r,fixed.concat(pop.actors),player,null)){pop.actors.push(hydrate(r,now));changed=true;}
+ }
+ return changed;
+}
+
 function routeKey(x,y){return y*CITY_WIDTH+x;}
 function longTermGoal(n,gateStates){
  const landmarks=[[100,98],[79,112],[96,92],[113,103],[72,88],[144,93],[57,63],[130,112]];
@@ -136,12 +182,12 @@ export function observeAmbientPopulation(pop,player,camera,view,now){
  if(player.map!==CITY){pop.lastObservationAt=null;return false;}
  const dt=pop.lastObservationAt===null?0:Math.max(0,Math.min(550,now-pop.lastObservationAt));
  pop.lastObservationAt=now;
- const box=rect(camera,view),visible=n=>inside(box,null,n.x,n.y,.15);
+ const box=rect(camera,view),visible=n=>n.map===CITY&&inside(box,null,n.x,n.y,.15);
  let focus=currentAmbientFocus(pop);
  if(focus&&visible(focus)){pop.focusLostAt=0;}
  else if(focus){
   if(!pop.focusLostAt)pop.focusLostAt=now;
-  if(now-pop.focusLostAt>8500){
+  if(now-pop.focusLostAt>(focus.map===CITY?8500:30000)){
    focus.followed=false;pop.focusId=null;pop.manualFocus=false;focus=null;
   }
  }
@@ -167,34 +213,36 @@ export function observeAmbientPopulation(pop,player,camera,view,now){
   if(n===focus&&n.simulationLevel===1&&n.focusMs>=FOLLOW_MS){
    // Exactly one full-priority observed character at once.
    for(const other of pop.actors)if(other!==n&&other.simulationLevel===2){
-    other.simulationLevel=1;other.route=[];other.nextPlan=0;
+    other.simulationLevel=1;if(!other.visitId){other.route=[];other.nextPlan=0;}
    }
-   n.simulationLevel=2;n.route=[];n.goal=null;n.nextPlan=0;
-   n.task="Podróżuje do wybranego celu w mieście";updated=true;
+   n.simulationLevel=2;if(!n.visitId){n.route=[];n.goal=null;n.nextPlan=0;}
+   n.task="Podróżuje do wybranego celu w mieście";rememberAmbient(pop,n,now);updated=true;
   }
   if(n.simulationLevel===0&&advanced<MAX_ADVANCED&&n.observationMs>=OBSERVE_MS){
-   n.simulationLevel=1;n.goal=null;n.route=[];n.nextPlan=0;
-   n.task="Spaceruje według własnego planu";advanced++;updated=true;
+   n.simulationLevel=1;if(!n.visitId){n.goal=null;n.route=[];n.nextPlan=0;}
+   n.task="Spaceruje według własnego planu";if(n===focus&&pop.manualFocus)rememberAmbient(pop,n,now);advanced++;updated=true;
   }
  }
  return updated;
 }
 // Stream only the camera's buffered chunk ring, independently of the full city map.
 export function syncAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],gateStates={}){
- if(player.map!==CITY)return false;
+ if(player.map!==CITY)return activateRemembered(pop,player,null,now,fixed,gateStates);
  if(now-pop.lastSync<SYNC_MS)return false;
  pop.lastSync=now;
  const box=rect(camera,view),buffer=CHUNK*1.8;
  const loX=Math.max(0,Math.floor((box.left-buffer)/CHUNK)),hiX=Math.min(Math.ceil(CITY_WIDTH/CHUNK)-1,Math.floor((box.right+buffer)/CHUNK));
  const loY=Math.max(0,Math.floor((box.top-buffer)/CHUNK)),hiY=Math.min(Math.ceil(CITY_HEIGHT/CHUNK)-1,Math.floor((box.bottom+buffer)/CHUNK));
- let changed=false;
+ let changed=activateRemembered(pop,player,box,now,fixed,gateStates);
  for(let i=pop.actors.length-1;i>=0;i--){
-  const a=pop.actors[i],inBuffer=inside(box,null,a.x,a.y,buffer);
+  const a=pop.actors[i];if(a.map!==CITY)continue;
+  const inBuffer=inside(box,null,a.x,a.y,buffer);
   if(inBuffer){a.unseenSince=0;continue;}
   if(!a.unseenSince)a.unseenSince=now;
   // Keep anyone still visible, followed, interacting or inside their grace period.
   if(!inside(box,null,a.x,a.y,1)&&!a.talking&&!a.followed&&now-a.unseenSince>GRACE_MS){
    if(pop.focusId===a.id){pop.focusId=null;pop.manualFocus=false;}
+   if(pop.remembered.has(a.id))rememberAmbient(pop,a,now);
    pop.actors.splice(i,1);pop.removed++;changed=true;
   }
  }
@@ -250,17 +298,50 @@ function chooseGoal(n,gateStates,camera,view){
 // Very cheap L0 movement: no A*, needs only up to four neighbour checks.
 // Opportunistic road preference + consistent goal gives believable traffic.
 export function moveAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],gateStates={}){
- if(player.map!==CITY)return false;
- let changed=false;const occupied=new Set();
+ let changed=false;const occupied=new Set(),all=fixed.concat(pop.actors);
+ let visitors=pop.actors.filter(a=>a.visitId).length,plans=0;
  for(const n of fixed)if(n.map===CITY)occupied.add(n.x+","+n.y);
- for(const n of pop.actors)occupied.add(n.x+","+n.y);
- occupied.add(player.x+","+player.y);
+ for(const n of pop.actors)if(n.map===CITY)occupied.add(n.x+","+n.y);
+ if(player.map===CITY)occupied.add(player.x+","+player.y);
  for(const n of pop.actors){
   if(now<n.nextMove||n.talking)continue;
+  if(n.map!==CITY){
+   const l=linkFor(n.map);if(!l)continue;
+   if(now>=n.visitUntil){
+    if(leavePortal(n,l,all,player,now,gateStates)){
+     changed=true;if(n.map===CITY){Object.assign(n,{indoors:false,visitId:null,route:[],goal:null,nextVisit:now+18000,task:"Wraca na ulice miasta"});occupied.add(n.x+","+n.y);visitors=Math.max(0,visitors-1);}
+    }
+   }else if(wanderInterior(n,l,all,player,now))changed=true;
+   continue;
+  }
+  if(player.map!==CITY&&!n.visitId)continue;
+  if(n.visitId){
+   const l=links.find(l=>l.id===n.visitId);
+   if(l&&at(n,l.outside)){
+    const old=n.x+","+n.y;
+    if(enterPortal(n,l,all,player,now)){occupied.delete(old);Object.assign(n,{indoors:true,route:[],goal:null,visitUntil:now+15000+hash(n.seed)%12000,task:"Odwiedza: "+l.name});changed=true;}
+    else n.nextMove=now+500;
+    continue;
+   }
+   if(!l||(!n.route.length&&now>=n.nextPlan)){
+    n.route=l?plannedWalk(n,l.outside,gateStates):[];
+    if(!n.route.length){n.visitId=null;n.goal=null;n.nextVisit=now+10000;visitors=Math.max(0,visitors-1);}
+   }
+  }
+  if(!n.visitId&&plans<2&&now>=(n.nextVisit||n.createdAt+3000)&&player.map===CITY&&visitors<(n.simulationLevel===2?MAX_VISITORS:MAX_VISITORS-1)){
+   const nearby=links.filter(l=>/karczma|targ|piekarnia|apteka|biblioteka|switynia|kasyno|kuznia|stajnia/.test(l.id)).map(l=>({l,dist:Math.abs(l.outside.x-n.x)+Math.abs(l.outside.y-n.y)})).filter(a=>a.dist<=(n.simulationLevel===2?65:16)&&terrain(a.l.outside.x,a.l.outside.y,gateStates)).sort((a,b)=>a.dist-b.dist);
+   n.nextVisit=now+9000+hash(n.seed)%9000;
+   for(const {l} of nearby.slice(0,2)){
+    if(pop.actors.some(a=>a!==n&&a.visitId===l.id))continue;
+    if(plans>=2)break;plans++;
+    const route=plannedWalk(n,l.outside,gateStates);
+    if(route.length||at(n,l.outside)){Object.assign(n,{visitId:l.id,route,goal:l.outside,nextPlan:now+1000,task:"Idzie do: "+l.name,venueName:l.name});visitors++;break;}
+   }
+  }
   n.nextMove=now+430+(hash(n.seed++)%450);
-  if(n.simulationLevel>0){
+  if(n.simulationLevel>0||n.visitId){
    // One route every few seconds per promoted actor; no visual teleport.
-   if(!n.route.length&&now>=n.nextPlan){
+   if(!n.visitId&&!n.route.length&&now>=n.nextPlan){
     const destination=longTermGoal(n,gateStates);
     const candidate=plannedWalk(n,destination,gateStates);
     n.nextPlan=now+(candidate.length?3500:4800);
@@ -273,7 +354,7 @@ export function moveAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
      n.fromX=n.x;n.fromY=n.y;n.x=next.x;n.y=next.y;n.route.shift();
      n.direction=next.x>n.fromX?"right":next.x<n.fromX?"left":next.y>n.fromY?"down":"up";
      n.started=now;n.duration=330;n.nextMove=now+550+(hash(n.seed++)%170);
-     if(!n.route.length)n.nextPlan=now+1100;
+     n.stalled=0;if(!n.route.length)n.nextPlan=now+1100;
      changed=true;continue;
     }
     n.nextMove=now+290;
@@ -284,7 +365,9 @@ export function moveAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
     continue;
    }
    n.stalled=0;
+   if(n.visitId){n.nextMove=now+350;continue;}
   }
+  if(player.map!==CITY)continue;
   if(!n.goal||Math.abs(n.goal.x-n.x)+Math.abs(n.goal.y-n.y)<=1)n.goal=chooseGoal(n,gateStates,camera,view);
   const routes=STEPS.map(([dx,dy],k)=>{
    const nx=n.x+dx,ny=n.y+dy,v=terrain(nx,ny,gateStates);

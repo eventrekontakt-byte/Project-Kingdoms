@@ -1,10 +1,10 @@
-import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.24";
-import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus} from "./dns-population.js?v=0.3.26";
+import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.27";
+import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState} from "./dns-population.js?v=0.3.27";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js?v=0.3.24";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.27";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.21";
 import {setupWorldMap} from "../ui/world-map.js";
@@ -15,7 +15,7 @@ import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
 const npcs=createNPCs();state.npcs=npcs;
-// Temporary passers-by are intentionally NOT saved with the 40 established residents.
+// Only remembered passers-by enter a separate bounded campaign registry.
 const ambient=createAmbientPopulation();
 let activeNpc=null;
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
@@ -83,7 +83,7 @@ function hud(){
  if(npcStats){
   const watched=currentAmbientFocus(ambient),active=ambient.actors.filter(n=>n.simulationLevel>0).length;
   const focusInfo=watched?" · obserwujesz "+watched.name+" (L"+watched.simulationLevel+", "+Math.floor(watched.focusMs/1000)+" s)":"";
-  npcStats.textContent="DNS 1.0: 40 stałych · "+ambient.actors.length+" NPC tła (limit 38) · "+active+" zaawansowanych"+focusInfo+" · utworzono "+ambient.generated+" / zwolniono "+ambient.removed;
+  npcStats.textContent="DNS 1.0: 40 stałych · "+ambient.actors.length+" NPC tła (limit 38) · "+active+" zaawansowanych"+focusInfo+" · zapamiętani "+ambient.remembered.size+" · utworzono "+ambient.generated+" / zwolniono "+ambient.removed;
  }
  if(p.map==="interior-city1-karczma")$("coordinates").textContent=`Karczma: ${p.x},${p.y} • piętro ${p.floor} • mapa ${mapSize(p.map).w}×${mapSize(p.map).h}`;
  $("pauseBtn").textContent=state.paused?"Wznów":"Pauza";
@@ -136,7 +136,7 @@ function draw(){
  }
  if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  drawNPCs(cx,cy,w,h,size);
- if(p.map==="site-city1")drawNPCs(cx,cy,w,h,size,ambient.actors);
+ drawNPCs(cx,cy,w,h,size,ambient.actors);
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -634,7 +634,7 @@ canvas.addEventListener("pointermove",e=>{if(!drag||drag.id!==e.pointerId)return
 canvas.addEventListener("pointerup",e=>{if(!drag||drag.id!==e.pointerId)return;
  if(!drag.moved){
   const goal=toTile(e);
-  const passerby=ambient.actors.find(n=>n.map===state.player.map&&n.x===goal.x&&n.y===goal.y);
+  const passerby=!state.player.floor&&ambient.actors.find(n=>n.map===state.player.map&&n.x===goal.x&&n.y===goal.y);
   if(passerby&&!state.plotMode){
    const watching=focusAmbient(ambient,passerby.id);
    notify(watching?"Obserwujesz: "+passerby.name+" · poziom L"+passerby.simulationLevel:"Zakończono obserwację");
@@ -665,12 +665,13 @@ $("plotReserveBtn").addEventListener("click",()=>{
  refreshPlotPanel();draw();notify(current==="reserved"?"Zwolniono działkę":"Zarezerwowano działkę");
 });
 $("zoomIn").addEventListener("click",()=>zoom(1));$("zoomOut").addEventListener("click",()=>zoom(-1));$("centerCamera").addEventListener("click",()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();});
-$("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
+$("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();state.ambientState=exportAmbientState(ambient,performance.now());const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
  closeNPCDialogue();resetAmbientPopulation(ambient);restoreNPCState(npcs,data.npcState);
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
  Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.gateStates=data.gateStates||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
  state.camera.zoom=Number.isFinite(data.camera?.zoom)?Math.max(.25,Math.min(3,data.camera.zoom)):1;
+ restoreAmbientState(ambient,data.ambientState,performance.now(),state.player,npcs,state.gateStates);
  state.controlMode=data.controlMode==="joystick"?"joystick":"dpad";state.paused=Boolean(data.paused);
  snapVisual();controls.setMode(state.controlMode);path=[];draw();if(data.worldMode)strategic.open();else strategic.close();notify("Wczytano kampanię");
 }
@@ -713,7 +714,7 @@ function closeNPCDialogue(){
 }
 function showNPCDialogue(n,topic="hello"){
  if(!n)return;
- if(activeNpc!==n){closeNPCDialogue();activeNpc=n;n.talking=true;n.met=Math.min(999,(n.met||0)+1);}
+ if(activeNpc!==n){closeNPCDialogue();activeNpc=n;n.talking=true;n.met=Math.min(999,(n.met||0)+1);if(n.simulationClass==="ambient")rememberAmbient(ambient,n,performance.now());}
  let panel=$("npcDialoguePanel");
  if(!panel){
   panel=document.createElement("div");panel.id="npcDialoguePanel";
@@ -754,12 +755,7 @@ function performInteraction(){if(strategic.active()){if(!strategic.interact())no
   const building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
   if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=16;p.y=25;state.camera.zoom=Math.max(.75,state.camera.zoom);}snapVisual();draw();notify("Wejście: "+building.name);return;}}
  }
- const npc=nearestNPC(npcs,state.player);if(npc){showNPCDialogue(npc);return;}
- const passerby=ambient.actors.find(n=>n.map===state.player.map&&Math.abs(n.x-state.player.x)+Math.abs(n.y-state.player.y)<=2);
- if(passerby){
-  const watching=focusAmbient(ambient,passerby.id);
-  notify(watching?"Obserwujesz: "+passerby.name+" · poziom L"+passerby.simulationLevel:"Zakończono obserwację");draw();return;
- }
+ const npc=nearestNPC(npcs.concat(ambient.actors),state.player);if(npc){showNPCDialogue(npc);return;}
  const obj=interactionNear(state.player);if(obj&&state.player.map==="interior-city1-karczma"){showObjectPanel(obj);path=[];draw();return;}
  notify(interact(state));path=[];draw();}
 $("interactBtn").addEventListener("click",performInteraction);
@@ -796,9 +792,9 @@ setInterval(()=>{if(!state.paused){updateClock(1);hud();}},1000);
 setInterval(()=>{
  if(state.paused||strategic.active())return;
  const now=performance.now();
- const changedFixed=stepNPCs(npcs,state.player,state.clock,now,state.gateStates);
+ const changedFixed=stepNPCs(npcs,state.player,state.clock,now,state.gateStates,ambient.actors);
  let changedAmbient=false;
- if(state.player.map==="site-city1"){
+ if(state.player.map==="site-city1"||state.player.map.startsWith("interior-city1-")){
   const view=geometry();
   const created=syncAmbientPopulation(ambient,state.player,state.camera,view,state.clock,now,npcs,state.gateStates);
   const observed=observeAmbientPopulation(ambient,state.player,state.camera,view,now);

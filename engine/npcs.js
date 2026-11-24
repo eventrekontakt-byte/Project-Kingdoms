@@ -1,6 +1,7 @@
 // NPC 1.3 (0.3.24): stable professions, purposeful jobs, DNS simulation classes.
 import {CITY_BUILDINGS,CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
 import {tileAt,mapSize} from "./world.js";
+import {linkFor,at,freeAt,enterPortal,leavePortal,wanderInterior} from "./npc-doors.js?v=0.3.27";
 const FIRST=["Aldric","Berta","Cedryk","Daria","Edmund","Fenna","Gustaw","Hilda","Iwo","Jagna","Konrad","Lena","Marek","Nora","Oskar","Petra","Radomir","Sara","Tomasz","Wera"];
 const ROLES=["Strażnik","Kupiec","Rzemieślnik","Mieszkaniec","Robotnik","Mieszkaniec","Posłaniec","Mieszkaniec"];
 // Canonical city staff. Their profession, workplace and conversation are one
@@ -65,7 +66,7 @@ function doorEntry(b){
  const [dx,dy]={N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]}[b.facing]||[0,1];
  const x=b.door.x+dx,y=b.door.y+dy;
  // NPCs need an actual accessible entry tile, not a distant pavement marker.
- return near(x,y,false);
+ return {x,y};
 }
 const workFor=(role,i)=>{
  const names=role==="Strażnik"||role==="Dowódca straży"?["straznica","koszary"]:
@@ -277,7 +278,13 @@ function unoccupiedGround(goal,occupied){
  }
  return goal;
 }
-function enterBuilding(n,map,phase,npcs,now){
+function enterBuilding(n,map,phase,npcs,now,player,physical=false){
+ const l=linkFor(map);if(!l)return false;
+ if(physical||player.map===map&&!player.floor){
+  if(physical){if(!enterPortal(n,l,npcs,player,now))return false;}
+  else{if(!freeAt(map,l.inside,npcs,player,n))return false;Object.assign(n,{map,x:l.inside.x,y:l.inside.y,fromX:l.inside.x,fromY:l.inside.y,started:-1,nextMove:now+450});}
+  Object.assign(n,{indoors:true,indoorActivity:phase,insideSince:now,steps:[],destination:null,task:phaseLabel(n,phase)});return true;
+ }
  const used=new Set(npcs.filter(o=>o!==n&&o.map===map).map(o=>o.map+":"+o.x+","+o.y));
  const spot=interiorSpot(map,Number(n.id.slice(-2))+n.seed%9,used);
  if(!spot)return false;
@@ -287,36 +294,22 @@ function enterBuilding(n,map,phase,npcs,now){
  n.nextMove=now+800+(n.seed%9)*200;n.task=phaseLabel(n,phase);
  return true;
 }
-function comeOutside(n,now,npcs){
- const last=n.indoorActivity;
- const nearDoor=last==="work"?n.workEntry:last==="social"?n.socialEntry:n.homeEntry;
- // Exiting the building uses its real exterior approach rather than a fixed
- // shared spawn, avoiding NPC stacks beside doors.
- const used=new Set(npcs.filter(o=>o!==n&&o.map===CITY).map(o=>o.x+","+o.y));
- let at=nearDoor;
- if(used.has(at.x+","+at.y)){
-  for(let radius=1;radius<=6;radius++){
-   let found=null;
-   for(let dy=-radius;dy<=radius&&!found;dy++)for(let dx=-radius;dx<=radius;dx++){
-    const x=at.x+dx,y=at.y+dy;
-    if(walkable(x,y)&&!used.has(x+","+y)){found={x,y};break;}
-   }
-   if(found){at=found;break;}
-  }
- }
- n.map=CITY;n.indoors=false;n.indoorActivity=null;
- n.x=at.x;n.y=at.y;n.fromX=n.x;n.fromY=n.y;n.steps=[];n.destination=null;
- n.started=-1;n.nextMove=now+400;n.roams=0;
+function comeOutside(n,now,npcs,player,gateStates){
+ const l=linkFor(n.map);if(!l)return false;
+ const changed=leavePortal(n,l,npcs,player,now,gateStates,player.map!==n.map||!!player.floor);
+ if(n.map===CITY)Object.assign(n,{indoors:false,indoorActivity:null,steps:[],destination:null,roams:0});
+ return changed;
 }
 function moveIndoor(n,player,now,npcs){
  if(now<n.nextMove)return false;
+ const l=linkFor(n.map);if(l&&at(n,l.inside))return wanderInterior(n,l,npcs,player,now);
  const occupied=new Set(npcs.filter(o=>o!==n&&o.map===n.map).map(o=>o.x+","+o.y));
  const order=(n.seed++)%4;
  for(let i=0;i<4;i++){
   const [dx,dy]=MOVES[(i+order)%4],x=n.x+dx,y=n.y+dy;
   const tile=tileAt(n.map,0,x,y);
   if(tile!=="wood"&&tile!=="stone"&&tile!=="marble")continue;
-  if(x===player.x&&y===player.y||occupied.has(x+","+y))continue;
+  if((player.map===n.map&&!player.floor&&x===player.x&&y===player.y)||occupied.has(x+","+y)||(l&&at({x,y},l.inside)))continue;
   n.fromX=n.x;n.fromY=n.y;n.x=x;n.y=y;
   n.direction=dx>0?"right":dx<0?"left":dy>0?"down":"up";
   n.started=now;n.duration=310;
@@ -327,9 +320,9 @@ function moveIndoor(n,player,now,npcs){
  }
  n.nextMove=now+(n.indoorActivity==="work"?4800:1600);return false;
 }
-export function stepNPCs(npcs,player,clock,now,gateStates={}){
- let changed=false;
- const occupied=new Set(npcs.filter(n=>n.map===CITY).map(n=>n.x+","+n.y));
+export function stepNPCs(npcs,player,clock,now,gateStates={},ambientActors=[]){
+ let changed=false;const all=npcs.concat(ambientActors);
+ const occupied=new Set(all.filter(n=>n.map===CITY).map(n=>n.x+","+n.y));
  for(const n of npcs){
   if(n.talking)continue;
   const phase=schedulePhase(clock,n);
@@ -337,9 +330,10 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
   // Deadlines safeguard against disconnected streets and door queues: no one
   // stays at a shop overnight after 50 in-game minutes past their bedtime.
   const overdue=phase==="sleep"&&(minutes<n.wakeAt||minutes>=n.sleepAt+50);
-  if(overdue&&n.map!==n.homeMap){
-   occupied.delete(n.x+","+n.y);
-   if(enterBuilding(n,n.homeMap,"sleep",npcs,now)){
+  const visibleHere=n.map===player.map&&!player.floor&&Math.abs(n.x-player.x)<29&&Math.abs(n.y-player.y)<25;
+  if(overdue&&n.map!==n.homeMap&&!visibleHere){
+   const old=n.map===CITY?n.x+","+n.y:null;
+   if(enterBuilding(n,n.homeMap,"sleep",all,now,player)){if(old)occupied.delete(old);
     n.phase="sleep";n.goal=n.homeEntry;n.task=phaseLabel(n,"sleep");changed=true;
     continue;
    }
@@ -351,29 +345,32 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
   }
   let closeOutside=player.map===CITY&&n.map===CITY&&
    Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
-  let insideWithPlayer=n.map!=="site-city1"&&n.map===player.map;
+  let insideWithPlayer=n.map!=="site-city1"&&n.map===player.map&&!player.floor;
   if(n.indoors){
    if(n.map===indoorDestination(n,phase)){
     // Stay in the same interior across morning→work and evening→night.
     n.indoorActivity=phase;n.task=phaseLabel(n,phase);
-    if(insideWithPlayer&&phase!=="sleep"&&moveIndoor(n,player,now,npcs))changed=true;
+    const link=linkFor(n.map);
+    if(insideWithPlayer&&phase!=="sleep"&&moveIndoor(n,player,now,all))changed=true;
+    else if(link&&at(n,link.inside)&&wanderInterior(n,link,all,player,now))changed=true;
     continue;
    }
    // Day's next activity begins with leaving through the building's exit.
-   comeOutside(n,now,npcs);changed=true;
+   if(comeOutside(n,now,all,player,gateStates))changed=true;
+   if(n.map!==CITY)continue;
    occupied.add(n.x+","+n.y);
    closeOutside=player.map===CITY&&Math.abs(n.x-player.x)<=29&&Math.abs(n.y-player.y)<=25;
    insideWithPlayer=false;
   }
   if(!closeOutside&&!insideWithPlayer){
    // Cheap off-screen simulation: update only on phase changes, without A*.
-   if(changedPhase||n.indoorActivity!==null||n.steps.length>0||n.destination||
+   if(changedPhase||n.indoorActivity!==null||n.steps.length>0||n.destination||indoorDestination(n,phase)||
       (phase==="sleep"&&n.map===CITY)){
     // Finish travel at coarse granularity once the NPC leaves the player's
     // simulation radius: a sleeping resident must not wander outside all night.
     n.steps=[];n.destination=null;
     const indoor=indoorDestination(n,phase);
-    if(indoor&&enterBuilding(n,indoor,phase,npcs,now)){changed=true;}
+    if(indoor){const old=n.x+","+n.y;if(enterBuilding(n,indoor,phase,all,now,player)){occupied.delete(old);changed=true;}}
     else{
      const dest=unoccupiedGround(scheduleGoal(n,phase),occupied);occupied.delete(n.x+","+n.y);
      n.map=CITY;n.x=dest.x;n.y=dest.y;n.fromX=n.x;n.fromY=n.y;
@@ -386,8 +383,8 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
   if(now<n.nextMove)continue;
   const indoor=indoorDestination(n,phase);
   // Actual transition occurs only after arriving near a venue entrance.
-  if(indoor&&Math.abs(n.x-n.goal.x)+Math.abs(n.y-n.goal.y)<=4){
-   if(enterBuilding(n,indoor,phase,npcs,now)){occupied.delete(n.x+","+n.y);changed=true;continue;}
+  if(indoor&&at(n,n.goal)){
+   const old=n.x+","+n.y;if(enterBuilding(n,indoor,phase,all,now,player,true)){occupied.delete(old);changed=true;}else n.nextMove=now+500;continue;
   }
   // Keep the selected roam destination until movement can start. The old
   // condition replaced it every tick while the NPC stood at their work spot.
@@ -427,12 +424,13 @@ export function stepNPCs(npcs,player,clock,now,gateStates={}){
  return changed;
 }
 export function npcMoving(npcs,player,now){
- return npcs.some(n=>n.map===player.map&&n.started>=0&&now<n.started+n.duration&&Math.abs(n.x-player.x)<28&&Math.abs(n.y-player.y)<24);
+ return !player.floor&&npcs.some(n=>n.map===player.map&&n.started>=0&&now<n.started+n.duration&&Math.abs(n.x-player.x)<28&&Math.abs(n.y-player.y)<24);
 }
 export function visibleNPCs(npcs,player){
- return npcs.filter(n=>n.map===player.map&&Math.abs(n.x-player.x)<28&&Math.abs(n.y-player.y)<24);
+ return player.floor?[]:npcs.filter(n=>n.map===player.map&&Math.abs(n.x-player.x)<28&&Math.abs(n.y-player.y)<24);
 }
 export function nearestNPC(npcs,player){
+ if(player.floor)return null;
  let closest=null,distance=3;
  for(const n of npcs){
   if(n.map!==player.map)continue;
