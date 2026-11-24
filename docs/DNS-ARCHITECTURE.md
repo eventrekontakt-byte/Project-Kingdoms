@@ -75,3 +75,15 @@ Goal: a city feels populated by hundreds while a smartphone simulates only a sma
 - L0 and L2 visitors can enter public buildings; maximum three visit routes, ordinary visitors limited to two. Active ambient cap 38.
 - Separate 32-record identity registry for observed and contacted NPCs; compatible with schema 9. Advanced tiers require current attention.
 - Module simulation passed: 24 valid links, L2 entry/exit and 24 interior steps, identity and conversation-count restore, fixed-resident entry, 4 ordinary L0 entrances in 90 seconds with 40 residents active, 38 ambient cap and zero NPC overlap. Android browser verification pending.
+
+## Alpha 0.3.28 — local minimap
+- Local zoom clamped to 0.50–3.00 on user actions and load; strategic map unaffected.
+- Tile raster LRU cache (5 maps/floors), marker updates throttled to 250 ms; no additional NPC spawning. Collapsible overlay, actual viewport rectangle, actor/gate markers.
+- Mock Canvas tests passed; actual Android rendering and performance verification pending.
+- User confirmed NPC building entry in 0.3.27.
+## Approved DNS 2.0 roadmap
+The 0.3.x series continues world/exploration development; character/combat milestone remains later. After DNS 1.0 optimisation (0.3.29), the approved order is:
+- 0.3.30 NPC appearance; 0.3.31 needs; 0.3.32 dynamic daily plans.
+- 0.3.33 work stations and occupational animation; 0.3.34 NPC-to-NPC interactions.
+- 0.3.35 personality; 0.3.36 dialogue and memory; 0.3.37 environmental reactions; 0.3.38 integration and optimisation.
+- Individual economy, social networks, life cycles and long-term ambitions are future cross-system work, not promised for this release.

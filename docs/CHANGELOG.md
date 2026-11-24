@@ -1,3 +1,11 @@
+## Alpha 0.3.28 — DNS 1.0: minimapa i zoom
+
+- Minimalny zoom lokalnej mapy to 50%, maksymalny nadal 300%. Starsze zapisy z 25% są automatycznie ograniczane do 50%; rozmiar okna mapy pozostaje bez zmian.
+- Dodano zwijaną minimapę w prawym górnym rogu, również we wnętrzach i na różnych piętrach. Pokazuje uproszczony teren, drogi, mury, bohatera, mieszkańców, aktywnych przechodniów, obserwowanego NPC, zamknięte bramy i rzeczywisty zasięg kamery.
+- Teren rysowany jest raz na mapę/piętro do rastra; pamięć podręczna ograniczona do 5 map. Znaczniki i kamera aktualizowane do 4 razy na sekundę podczas zwykłej pracy; zmiana mapy i ręczny zoom odświeżają natychmiast. Zwijanie zatrzymuje odświeżanie minimapy.
+- Testy V8 z atrapą Canvas: poprawne ograniczenie zoomu, proporcje, prostokąt kamery, brak ponownych odczytów 30 720 kafli miasta, 4 odświeżenia w pierwszej sekundzie, zmiana piętra i limit 5 rastrów. Składnia JS poprawna. Test rzeczywistej przeglądarki mobilnej pozostaje do wykonania.
+- Użytkownik potwierdził działanie wejść NPC w 0.3.27 na swoim urządzeniu. Kolejny etap: 0.3.29 optymalizacja DNS 1.0.
+
 ## Alpha 0.3.27 — DNS: pamięć i wnętrza NPC
 
 - Wspólne portale NPC i gracza: widoczni mieszkańcy dochodzą do rzeczywistego progu, pojawiają się po wewnętrznej stronie i wychodzą przez drzwi.

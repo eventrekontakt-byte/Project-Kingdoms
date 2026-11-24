@@ -3,7 +3,7 @@ import {defaultObjects} from "../systems/interactions.js";
 export const SAVE_KEY="project-kingdoms-alpha-01";
 export const SAVE_SCHEMA=9;
 export function saveGame(state){
- const payload={schema:SAVE_SCHEMA,app:"0.3.27-alpha",savedAt:new Date().toISOString(),state:{
+ const payload={schema:SAVE_SCHEMA,app:"0.3.28-alpha",savedAt:new Date().toISOString(),state:{
   player:{...state.player},camera:{...state.camera},clock:{...state.clock},controlMode:state.controlMode,paused:state.paused,worldRegion:state.worldRegion||"pogranicze",worldPosition:{...state.worldPosition},worldMode:Boolean(state.worldMode),worldTravelMinutes:state.worldTravelMinutes||0,
   buildingEdits:structuredClone(state.buildingEdits||{}),plotEdits:structuredClone(state.plotEdits||{}),gateStates:structuredClone(state.gateStates||{}),
   npcState:(state.npcs||[]).map(n=>({id:n.id,map:n.map,x:n.x,y:n.y,direction:n.direction,indoors:Boolean(n.indoors),indoorActivity:n.indoorActivity||null,phase:n.phase||"",met:n.met||0})),

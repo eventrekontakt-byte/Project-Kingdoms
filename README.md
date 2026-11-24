@@ -2,10 +2,10 @@
 
 Offline 2D fantasy RPG and kingdom simulation — projekt rozwijany etapami zgodnie z GDD 1.0.
 
-## Stan: 0.1-alpha (prototyp techniczny)
+## Stan: Alpha 0.3.28 — świat i eksploracja
 Pierwszy uruchamialny etap: mapa 2D, ruch, kolizje, wnętrze warowni, trzy kondygnacje, dwie klatki schodowe, kamera, zoom, trasa automatyczna, sterowanie dotykowe i klawiaturą, podstawowy zegar oraz lokalny zapis.
 
-**To nie jest ukończona wersja 0.1.** Mechaniki gospodarki, polityki, NPC i walki zostaną dodane później.
+**To nadal wersja rozwojowa.** Seria 0.3.x kontynuuje eksplorację i DNS; postać, walka, gospodarka i polityka pozostają do kolejnych etapów. Szczegóły: docs/CHANGELOG.md i docs/DNS-ARCHITECTURE.md.
 
 ## Uruchomienie
 - GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root). Po publikacji uruchom adres wskazany przez GitHub Pages.
