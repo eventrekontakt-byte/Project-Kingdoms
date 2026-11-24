@@ -96,3 +96,6 @@ Main local zoom 100–300% after user-reported lag at 50%. Independent minimap 1
 
 ## Alpha 0.3.28.3 — zoning and load priming
 Ambient terrain uses the true city polygon cached as a tile mask; spawning excludes vacant plots. Ordinary NPCs cannot roam outside the curtain wall or visit external facilities. Fixed workers are unchanged. Optional active snapshots (38 cap) alongside the remembered registry preserve visible actors on reload; older saves use bounded pre-render priming with time and viewport density, including public interiors. Invalid legacy remembered positions migrate to legal urban roads. Ordinary streaming never seeds on-screen. Real-module checks: 10 initial visible actors on legacy load, exact restored identity/position, legacy exterior identity migration, all four corners empty for 12 s each, five jumps, 38 cap, no NPC collisions or visible ordinary spawns, public interior priming. Android verification pending.
+
+## Alpha 0.3.28.4 — module cache hotfix
+Versioned city module URL for DNS and offline precache; update bootstrap independent of game imports. HTTP reload on precache and revalidation on fetch. Save schema unchanged.

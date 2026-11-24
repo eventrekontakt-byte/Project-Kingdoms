@@ -1,6 +1,6 @@
-// DNS 1.0 / Alpha 0.3.28.3 — city zoning and initial population.
+// DNS 1.0 / Alpha 0.3.28.4 — city zoning and initial population.
 // Only real on-screen actors are objects. The city's simulated headcount is metadata.
-import {CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt,cityPopulationZone,CITY_VACANT_PLOTS} from "./city-one.js";
+import {CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt,cityPopulationZone,CITY_VACANT_PLOTS} from "./city-one.js?v=0.3.28.4";
 import {links,linkFor,at,floorTile,freeAt,enterPortal,leavePortal,wanderInterior} from "./npc-doors.js?v=0.3.27";
 const MAX_MEMORY=32,MAX_VISITORS=3;
 const CITY="site-city1", CHUNK=12, LIMIT=38, SYNC_MS=650, GRACE_MS=4000;

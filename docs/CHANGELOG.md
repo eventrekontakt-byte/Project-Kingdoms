@@ -1,3 +1,9 @@
+## Alpha 0.3.28.4 — poprawka uruchamiania / cache
+
+- DNS importuje cityPopulationZone z jednoznacznie wersjonowanego adresu modułu miasta, uwzględnionego w pakiecie offline.
+- Rejestracja Service Workera odbywa się w HTML, niezależnie od poprawności importów gry. Instalacja omija cache HTTP; zwykłe pobieranie wymaga rewalidacji, z zachowaniem trybu offline.
+- Bez zmian geometrii, mechaniki NPC i schematu zapisów. Testy statyczne i symulacja cache; rzeczywista przeglądarka do potwierdzenia.
+
 ## Alpha 0.3.28.3 — strefy NPC i zaludnienie przy wczytywaniu
 
 - Dynamiczni cywile mają maskę dokładnego wielokąta murów miasta. Ograniczenie obowiązuje przy generowaniu, chodzeniu, planowaniu tras, przywracaniu zapisów i odwiedzaniu budynków. Nie pojawiają się na pustkowiach, za murami ani na wolnych działkach; zewnętrzne farmy pozostają miejscami pracy stałych mieszkańców, bez losowego tłumu.

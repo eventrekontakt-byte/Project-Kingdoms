@@ -1,12 +1,12 @@
 import {clampZoom} from "../ui/minimap.js?v=0.3.28.1";
 import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.28.1";
 import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.27";
-import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState,primeAmbientPopulation} from "./dns-population.js?v=0.3.28.3";
+import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState,primeAmbientPopulation} from "./dns-population.js?v=0.3.28.4";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.3";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.4";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.28.1";
 import {setupWorldMap} from "../ui/world-map.js";
@@ -818,15 +818,3 @@ setInterval(()=>{
 },220);
 new ResizeObserver(resize).observe(canvas);
 snapVisual();refreshPlotPanel();primePopulation();resize();requestAnimationFrame(animateVisual);
-if("serviceWorker" in navigator){
- let reloadedForUpdate=false;
- navigator.serviceWorker.addEventListener("controllerchange",()=>{
-  if(!reloadedForUpdate){reloadedForUpdate=true;window.location.reload();}
- });
- window.addEventListener("load",async()=>{
-  try{
-   const registration=await navigator.serviceWorker.register("./service-worker.js",{updateViaCache:"none"});
-   await registration.update();
-  }catch(error){console.warn("Aktualizacja offline niedostępna",error);}
- });
-}
