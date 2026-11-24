@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101b28"><meta name="apple-mobile-web-app-capable" content="yes">
-<title>Project Kingdoms — Alpha 0.3.34 · Expanded MTL</title>
+<title>Project Kingdoms — Alpha 0.3.35 · Interior Details</title>
 <link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css?v=0.3.28.1">
 </head>
 <body>
-<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.34 · Expanded MTL</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
+<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.35 · Interior Details</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
 <main id="gameShell">
 <section id="viewport" aria-label="Mapa świata"><canvas id="world" aria-label="Mapa gry"></canvas><div id="minimapPanel" data-size="small">
 <div class="mini-head"><button id="minimapToggle" aria-controls="minimapBody" aria-expanded="true">Minimapa −</button><button id="minimapExpand" aria-controls="minimapOptions" aria-expanded="false">Opcje</button></div>
@@ -29,7 +29,7 @@
 <div class="panel"><h3>Miasto 1 — działki PLOT 1.0</h3><button id="plotModeBtn">Włącz widok działek</button><p class="hint" id="plotStats">Ładowanie działek…</p><p class="hint" id="plotInfo">Włącz tryb zarządzania i dotknij działki na mapie.</p><button id="plotReserveBtn" hidden>Zarezerwuj działkę</button><p class="hint">Granice działek są widoczne tylko w trybie zarządzania. Nowe działki mają odstęp co najmniej jednej kratki od dróg i murów. Rezerwacje są zapisywane wraz z kampanią.</p></div>
 <div class="panel"><h3>Stara mapa testowa — budynki</h3><div class="row wrap"><button data-visit="keep">Warownia</button><button data-visit="house">Dom</button><button data-visit="inn">Karczma</button><button data-visit="warehouse">Magazyn</button></div><p class="hint">Przyciski testowe przenoszą przed wejście do budynku.</p></div>
 <div class="panel"><h3>Interakcje</h3><button id="interactBtn">Zbadaj / Otwórz (E)</button><p class="hint">Podejdź do drzwi budynku i naciśnij E albo wejdź na pole drzwi. Wnętrza mają osobne plany i wyjścia.</p></div>
-<div class="panel"><h3>Szybka podróż — testowanie</h3><button id="fastTravelTavern">🏠 Karczma 01 (parter)</button><p class="hint">Przenosi bezpośrednio do holu karczmy bez upływu czasu. Funkcja testowa.</p></div>\n<div class="panel"><h3>MFS — mapy i walidacja</h3><p><a href="./tools/map-viewer/" style="color:inherit">🗺 Otwórz Map Viewer</a></p><p><a href="./tools/map-viewer/?map=mtl_gallery_001&amp;rev=4" style="color:inherit">🏠 Katalog budynków MTL</a></p><button id="mfsTestBtn" disabled>Otwórz mapę testową MFS</button><button id="mfsReturnBtn">Wróć do Miasta 1</button><p class="hint" id="mfsTestStatus">Ładowanie JSON…</p><details><summary>Raport walidacji MFS</summary><p id="mfsValidationSummary" class="hint">Walidacja…</p><pre id="mfsValidationDetail" style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:240px;overflow:auto"></pre><button id="mfsReportBtn" disabled>Pobierz raport JSON</button></details><p class="hint">Z drogi wejdź do żółtych drzwi kamienicy, sprawdź schody w obie strony. Działki zaznaczone zielonym obrysem. Stara mapa pozostaje bez zmian.</p></div><div class="panel"><h3>Gra</h3><div class="row wrap"><button id="saveBtn">Zapisz</button><button id="loadBtn">Wczytaj</button><button id="pauseBtn">Pauza</button><button id="newBtn">Nowa gra</button></div><p class="hint" id="saveStatus">Stan lokalny tej przeglądarki</p></div>
+<div class="panel"><h3>Szybka podróż — testowanie</h3><button id="fastTravelTavern">🏠 Karczma 01 (parter)</button><p class="hint">Przenosi bezpośrednio do holu karczmy bez upływu czasu. Funkcja testowa.</p></div>\n<div class="panel"><h3>MFS — mapy i walidacja</h3><p><a href="./tools/map-viewer/" style="color:inherit">🗺 Otwórz Map Viewer</a></p><p><a href="./tools/map-viewer/?map=mtl_gallery_001&amp;rev=5" style="color:inherit">🏠 Katalog budynków MTL</a></p><button id="mfsTestBtn" disabled>Otwórz mapę testową MFS</button><button id="mfsReturnBtn">Wróć do Miasta 1</button><p class="hint" id="mfsTestStatus">Ładowanie JSON…</p><details><summary>Raport walidacji MFS</summary><p id="mfsValidationSummary" class="hint">Walidacja…</p><pre id="mfsValidationDetail" style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:240px;overflow:auto"></pre><button id="mfsReportBtn" disabled>Pobierz raport JSON</button></details><p class="hint">Z drogi wejdź do żółtych drzwi kamienicy, sprawdź schody w obie strony. Działki zaznaczone zielonym obrysem. Stara mapa pozostaje bez zmian.</p></div><div class="panel"><h3>Gra</h3><div class="row wrap"><button id="saveBtn">Zapisz</button><button id="loadBtn">Wczytaj</button><button id="pauseBtn">Pauza</button><button id="newBtn">Nowa gra</button></div><p class="hint" id="saveStatus">Stan lokalny tej przeglądarki</p></div>
 <div class="panel"><h3>Legenda</h3><p class="hint">🟦 bohater • 🟨 drzwi • 🟪 schody • ⬛ ściana • 🟩 trawa</p></div>
 </aside>
 <button id="worldMapMobile">🗺 Świat</button>
@@ -62,5 +62,5 @@ if("serviceWorker" in navigator){
   .catch(error=>console.warn("Aktualizacja offline niedostępna",error));
 }
 </script>
-<script type="module" src="./engine/game.js?v=0.3.34"></script>
+<script type="module" src="./engine/game.js?v=0.3.35"></script>
 </body></html>

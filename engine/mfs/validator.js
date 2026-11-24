@@ -1,8 +1,8 @@
-import {decorationIssues} from "./decorations.js?v=0.3.34";
+import {decorationIssues} from "./decorations.js?v=0.3.35";
 import {roomTopology} from "./room-topology.js?v=0.3.33.2";
 import {placementIssues} from "./furniture-placement.js?v=0.3.32.2";
 import {rasterize,compileMap,VERSION} from "./core.js?v=0.3.29";
-export const VALIDATOR_VERSION="1.2.0";
+export const VALIDATOR_VERSION="1.3.0";
 export const PROFILES=["terrain","parcels","roads","fortifications","buildings","interiors","infrastructure","final"];
 const PDS={P1:[3,4,5,6],P2:[4,5,8,10],P3:[6,8,12,14],P4:[9,11,18,20],P5:[12,14,26,30],P6:[14,16,40,48]};
 const WIDTH={R1:6,R2:5,R3:3,R4:2,R5:1};

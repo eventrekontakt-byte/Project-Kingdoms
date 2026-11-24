@@ -1,0 +1,173 @@
+[
+  {
+    "id": "mtl_gallery_001.road000",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 24
+        },
+        {
+          "x": 1,
+          "y": 206
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road1",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 24
+        },
+        {
+          "x": 157,
+          "y": 24
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road2",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 50
+        },
+        {
+          "x": 157,
+          "y": 50
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road3",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 76
+        },
+        {
+          "x": 157,
+          "y": 76
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road4",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 102
+        },
+        {
+          "x": 157,
+          "y": 102
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road5",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 128
+        },
+        {
+          "x": 157,
+          "y": 128
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road6",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 154
+        },
+        {
+          "x": 157,
+          "y": 154
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road7",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 180
+        },
+        {
+          "x": 157,
+          "y": 180
+        }
+      ]
+    }
+  },
+  {
+    "id": "mtl_gallery_001.road8",
+    "class": "R3",
+    "width": 3,
+    "geometry": {
+      "type": "polyline",
+      "width": 3,
+      "points": [
+        {
+          "x": 1,
+          "y": 206
+        },
+        {
+          "x": 157,
+          "y": 206
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,642 @@
+{
+  "id": "mtl_gallery_001.b042.f0",
+  "buildingId": "mtl_gallery_001.b042",
+  "level": 0,
+  "width": 16,
+  "height": 20,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 20
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b042.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 19,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b042.f0.o1",
+      "type": "bath",
+      "name": "Wanna",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bath",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o1.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o2",
+      "type": "bath",
+      "name": "Wanna",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 5,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bath",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o2.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 7,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o3",
+      "type": "bath",
+      "name": "Wanna",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 8,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bath",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o3.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 12,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o4",
+      "type": "washstand",
+      "name": "Umywalka z misą",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "washstand",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o4.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o5",
+      "type": "linen_cabinet",
+      "name": "Szafa na bieliznę",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 18,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "linen_cabinet",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o5.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 7,
+            "y": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o6",
+      "type": "bench",
+      "name": "Ława",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 17,
+        "w": 3,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bench",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o6.s1",
+          "action": "sit",
+          "capacity": 1,
+          "approach": {
+            "x": 14,
+            "y": 18
+          }
+        },
+        {
+          "id": "mtl_gallery_001.b042.f0.o6.s2",
+          "action": "sit",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 18
+          }
+        },
+        {
+          "id": "mtl_gallery_001.b042.f0.o6.s3",
+          "action": "sit",
+          "capacity": 1,
+          "approach": {
+            "x": 12,
+            "y": 18
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o7",
+      "type": "stove",
+      "name": "Piec",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 1,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "back": 1,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "stove",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o7.s1",
+          "action": "cook",
+          "capacity": 1,
+          "approach": {
+            "x": 3,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o8",
+      "type": "barrel",
+      "name": "Beczka",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "barrel",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o8.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o9",
+      "type": "spinning_wheel",
+      "name": "Kołowrotek",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "spinning_wheel",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o9.s1",
+          "action": "weave",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.o10",
+      "type": "shoe_rack",
+      "name": "Półka na obuwie",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "shoe_rack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b042.f0.o10.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 5,
+            "y": 2
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b042.f0.dec1",
+      "type": "rug_large",
+      "name": "Dywan ozdobny",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 10,
+        "w": 3,
+        "h": 4
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_large",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.dec2",
+      "type": "rug_long",
+      "name": "Chodnik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 10,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_long",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.dec3",
+      "type": "wall_map",
+      "name": "Mapa ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 10,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_map",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.dec4",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.dec5",
+      "type": "wall_tapestry",
+      "name": "Gobelin",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 10,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_tapestry",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.dec6",
+      "type": "prop_jug",
+      "name": "Dzbanek",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_jug",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b042.f0.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "side_table",
+        "washstand",
+        "water_jug_stand"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.dec7",
+      "type": "prop_soap",
+      "name": "Mydło",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_soap",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b042.f0.o4",
+      "slot": 2,
+      "allowedHosts": [
+        "washstand"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b042.f0.dec8",
+      "type": "prop_folded_cloth",
+      "name": "Złożona tkanina",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 18,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_folded_cloth",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b042.f0.o5",
+      "slot": 0,
+      "allowedHosts": [
+        "dresser",
+        "washstand",
+        "linen_cabinet",
+        "crate"
+      ],
+      "size": 0.36
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "bath_hall",
+      "anchor": {
+        "x": 8,
+        "y": 10
+      },
+      "access": "Z0",
+      "functions": [
+        "wash"
+      ],
+      "id": "mtl_gallery_001.b042.f0.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "BATHHOUSE_M01",
+    "version": 2
+  }
+}

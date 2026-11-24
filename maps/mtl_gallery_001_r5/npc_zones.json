@@ -1,0 +1,14 @@
+[
+  {
+    "id": "mtl_gallery_001.zone001",
+    "type": "N0",
+    "sceneId": "mtl_gallery_001",
+    "geometry": {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": 160,
+      "h": 208
+    }
+  }
+]
