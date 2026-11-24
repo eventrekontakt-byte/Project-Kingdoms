@@ -3,7 +3,7 @@
 - Dynamiczni cywile mają maskę dokładnego wielokąta murów miasta. Ograniczenie obowiązuje przy generowaniu, chodzeniu, planowaniu tras, przywracaniu zapisów i odwiedzaniu budynków. Nie pojawiają się na pustkowiach, za murami ani na wolnych działkach; zewnętrzne farmy pozostają miejscami pracy stałych mieszkańców, bez losowego tłumu.
 - Zapis zachowuje do 38 aktywnych przechodniów (oprócz rejestru 32 poznanych osób). Po wczytaniu przywracane są poprawne pozycje pobliskich aktorów; starsze zapisy uzupełniają widoczną populację przed pierwszą klatką. Poznane osoby zapisane wcześniej poza murami zachowują tożsamość i otrzymują poprawną pozycję w mieście.
 - Pierwsza klatka nowej kampanii oraz wczytanie nawet podczas pauzy zawierają już odpowiednią populację, zależną od pory dnia, obszaru miasta i wielkości widoku. W zwykłym ruchu NPC nadal generują się wyłącznie poza ekranem. W publicznych wnętrzach można odtworzyć odwiedzających; prywatne domy nie są losowo zaludniane.
-- Testy modułowe i mobilne wymagają potwierdzenia.
+- Test rzeczywistych modułów: po wczytaniu starego zapisu 10 NPC od pierwszej klatki w centrum, nowy zapis odtworzył ich pozycje i pamięć rozmów; cztery rogi mapy bez NPC po 12 s symulacji każdy, pięć skoków kamery z zachowaniem limitu 38 i szybkiego uzupełniania w mieście, 0 kolizji, 0 pojawień na ekranie podczas zwykłej rozgrywki, wejście NPC do budynku i inicjalizacja karczmy. Test na Androidzie pozostaje do wykonania.
 
 ## Alpha 0.3.28.2 — lokalny priorytet NPC tła
 

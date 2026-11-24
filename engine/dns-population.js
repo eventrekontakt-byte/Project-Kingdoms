@@ -418,9 +418,17 @@ export function primeAmbientPopulation(pop,player,camera,view,clock,now,fixed=[]
    candidates.push({x,y,h,score:(t===2?0:20)+h%31+d*.25});
   }
  const day=clock.hour>=7&&clock.hour<20;
- const target=Math.min(day?Math.ceil(localTarget(camera,clock)*.55):2,Math.floor(candidates.length/(day?13:35)));
+ const target=Math.min(day?Math.ceil(localTarget(camera,clock)*.55):2,day&&candidates.length>=4?Math.max(1,Math.floor(candidates.length/13)):Math.floor(candidates.length/(day?13:35)));
  const visible=()=>pop.actors.filter(a=>a.map===CITY&&inside(box,null,a.x,a.y)).length;
  let count=visible(),changed=false;
+ // A full saved pool can consist entirely of off-camera people. Reserve
+ // enough slots for the first view, without evicting a visible identity.
+ const deficit=Math.max(0,target-count-(LIMIT-pop.actors.length));
+ if(deficit){
+  const far=pop.actors.filter(a=>!visibleActor(a,player,box,now)&&!a.talking)
+    .sort((a,b)=>(Boolean(pop.remembered.has(a.id))-Boolean(pop.remembered.has(b.id)))||actorDistance(b,box)-actorDistance(a,box));
+  for(const a of far.slice(0,deficit))changed=removeActor(pop,a,now,true)||changed;
+ }
  candidates.sort((a,b)=>a.score-b.score);
  for(const p of candidates){
   if(count>=target||pop.actors.length>=LIMIT)break;
