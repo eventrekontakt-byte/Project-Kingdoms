@@ -1,10 +1,10 @@
 // A* navigation on a single floor. Portals are route endpoints, not implicit teleports.
-import {blocked,doorAt,mapSize,objectAt} from "./world.js";
+import {blocked,doorAt,mapSize,objectAt,transitionAt} from "./world.js";
 import {cityStepAllowed,cityGateBarrierAt} from "./city-one.js";
 import {elevationAt,resolveSurfaceStep} from "./elevation.js?v=0.3.12";
 const DIRS=[[0,-1],[1,0],[0,1],[-1,0]];
 const key=(x,y,z=0)=>x+","+y+","+z;
-export function findRoute(player,goal,doors={},gateStates={}){
+export function findRoute(player,goal,doors={},gateStates={},options={}){
  const {w,h}=mapSize(player.map);
  const passable=(x,y)=>{
   if(x<0||y<0||x>=w||y>=h||blocked(player.map,player.floor,x,y))return false;
@@ -40,6 +40,7 @@ export function findRoute(player,goal,doors={},gateStates={}){
    const x=current.x+dx,y=current.y+dy;
    const step=resolveSurfaceStep(player.map,current,{x,y},player.floor);
    const k=key(x,y,step.z),g=current.g+1;
+   if(options.localOnly&&transitionAt(player.map,player.floor,x,y)&&!targetKeys.has(k))continue;
    if(!step.allowed||!passable(x,y)||(player.map==="site-city1"&&!cityStepAllowed(current.x,current.y,x,y))||closed.has(k)||g>=(best.get(k)??Infinity))continue;
    best.set(k,g);parent.set(k,ck);open.push({x,y,z:step.z,g,f:g+heuristic(x,y)});
   }

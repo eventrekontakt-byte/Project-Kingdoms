@@ -1,13 +1,14 @@
-import {createMinimap,clampZoom} from "../ui/minimap.js?v=0.3.28";
+import {clampZoom} from "../ui/minimap.js?v=0.3.28.1";
+import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.28.1";
 import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.27";
 import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState} from "./dns-population.js?v=0.3.27";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js?v=0.3.27";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.1";
 import {setupControls} from "../ui/controls.js";
-import {findRoute} from "./pathfinding.js?v=0.3.21";
+import {findRoute} from "./pathfinding.js?v=0.3.28.1";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js";
@@ -18,7 +19,7 @@ const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{da
 const npcs=createNPCs();state.npcs=npcs;
 // Only remembered passers-by enter a separate bounded campaign registry.
 const ambient=createAmbientPopulation();
-const minimap=createMinimap($("localMinimap"));
+
 let activeNpc=null;
 let path=[],toastTimeout=null,drag=null,keyboardTimer=null,keyboardDirection=null;
 // VIS 1.0: authoritative tile coordinates stay integer; visual coordinates interpolate.
@@ -75,8 +76,11 @@ function notify(message){const el=$("toast");el.textContent=message;el.classList
 function updateClock(minutes){let total=state.clock.minute+state.clock.hour*60+(state.clock.day-1)*1440+minutes;
  state.clock.day=Math.floor(total/1440)+1;state.clock.hour=Math.floor(total%1440/60);state.clock.minute=total%60;
 }
-function refreshMinimap(force=false){
- minimap.draw({player:state.player,camera:state.camera,view:geometry(),fixed:npcs,ambient:ambient.actors,focusId:ambient.focusId,gateStates:state.gateStates,force,hidden:$("localMinimap").hidden||!$("worldMapOverlay").hidden});
+function refreshMinimap(force=false){minimap.refresh(force);}
+function minimapRoute(goal){
+ if(goal.map!==state.player.map||goal.floor!==state.player.floor)return;
+ const result=findRoute(state.player,goal,state.doors,state.gateStates,{localOnly:true});
+ path=result.path;notify(result.reason||("Wyznaczono trasę: "+path.length+" pól"));draw();
 }
 function hud(){
  const p=state.player;$("location").textContent=mapName(p.map,p.floor);
@@ -618,7 +622,7 @@ function move(dir,fromPath=false){
  if(heightChange&&heightChange.z===2&&previous.z!==2&&!fromPath)notify("Wejście na chodnik obronny");
  if(heightChange&&heightChange.z===0&&previous.z>0&&!fromPath)notify("Zejście z podwyższenia");
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
- if(dest){Object.assign(p,dest);p.z=elevationAt(p.map,p.x,p.y,p.floor);path=[];if(p.map===TAVERN_MAP){state.camera.zoom=Math.max(0.75,state.camera.zoom);}notify(mapName(p.map,p.floor));}
+ if(dest){Object.assign(p,dest);p.z=elevationAt(p.map,p.x,p.y,p.floor);path=[];if(p.map===TAVERN_MAP){state.camera.zoom=clampZoom(state.camera.zoom);}notify(mapName(p.map,p.floor));}
  startVisualStep(previous);draw();return true;
 }
 function findPath(goal){
@@ -658,7 +662,7 @@ canvas.addEventListener("pointerup",e=>{if(!drag||drag.id!==e.pointerId)return;
 canvas.addEventListener("pointercancel",()=>drag=null);
 canvas.addEventListener("wheel",e=>{e.preventDefault();zoom(e.deltaY<0?1:-1);},{passive:false});
 function zoom(delta){state.camera.zoom=clampZoom(Math.round((state.camera.zoom+delta*.25)*100)/100);draw();refreshMinimap(true);}
-$("minimapToggle").addEventListener("click",()=>{const c=$("localMinimap");c.hidden=!c.hidden;$("minimapToggle").setAttribute("aria-expanded",String(!c.hidden));$("minimapToggle").textContent=c.hidden?"Minimapa +":"Minimapa −";refreshMinimap(true);});
+
 $("plotModeBtn").addEventListener("click",()=>{
  if(state.player.map!=="site-city1"){notify("Zarządzanie działkami jest dostępne w Mieście 1");return;}
  state.plotMode=!state.plotMode;state.selectedPlot=null;path=[];refreshPlotPanel();draw();
@@ -674,7 +678,7 @@ $("plotReserveBtn").addEventListener("click",()=>{
 $("zoomIn").addEventListener("click",()=>zoom(1));$("zoomOut").addEventListener("click",()=>zoom(-1));$("centerCamera").addEventListener("click",()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();});
 $("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();state.ambientState=exportAmbientState(ambient,performance.now());const ok=saveGame(state);$("saveStatus").textContent=ok?"Zapisano kampanię lokalnie":"Nie udało się zapisać";notify(ok?"Gra zapisana":"Błąd zapisu");});
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
- closeNPCDialogue();resetAmbientPopulation(ambient);restoreNPCState(npcs,data.npcState);
+ closeNPCDialogue();minimap.resetTarget();resetAmbientPopulation(ambient);restoreNPCState(npcs,data.npcState);
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
  Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.gateStates=data.gateStates||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
  state.camera.zoom=clampZoom(data.camera?.zoom);
@@ -686,13 +690,13 @@ $("loadBtn").addEventListener("click",restore);
 $("pauseBtn").addEventListener("click",()=>{state.paused=!state.paused;draw();});
 $("newBtn").addEventListener("click",()=>{$("confirmNew").showModal();});
 $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="confirm")return;
- closeNPCDialogue();resetAmbientPopulation(ambient);npcs.splice(0,npcs.length,...createNPCs());
+ closeNPCDialogue();minimap.resetTarget();resetAmbientPopulation(ambient);npcs.splice(0,npcs.length,...createNPCs());
  Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
 $("fastTravelTavern").addEventListener("click",()=>{
  Object.assign(state.player,{map:TAVERN_MAP,floor:0,x:16,y:25});
- path=[];state.camera.x=16.5;state.camera.y=25.5;state.camera.zoom=Math.max(.75,state.camera.zoom);
+ path=[];state.camera.x=16.5;state.camera.y=25.5;state.camera.zoom=clampZoom(state.camera.zoom);
  if(!$("worldMapOverlay").hidden)strategic.close();
  $("sidePanel").classList.remove("open");snapVisual();draw();notify("Szybka podróż: Karczma 01");
 });
@@ -760,7 +764,7 @@ function performInteraction(){if(strategic.active()){if(!strategic.interact())no
    path=[];draw();notify(gate.name+": "+(wasClosed?"podniesiono kratę":"opuszczono kratę"));return;
   }
   const building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
-  if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=16;p.y=25;state.camera.zoom=Math.max(.75,state.camera.zoom);}snapVisual();draw();notify("Wejście: "+building.name);return;}}
+  if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=16;p.y=25;state.camera.zoom=clampZoom(state.camera.zoom);}snapVisual();draw();notify("Wejście: "+building.name);return;}}
  }
  const npc=nearestNPC(npcs.concat(ambient.actors),state.player);if(npc){showNPCDialogue(npc);return;}
  const obj=interactionNear(state.player);if(obj&&state.player.map==="interior-city1-karczma"){showObjectPanel(obj);path=[];draw();return;}
@@ -778,6 +782,7 @@ const strategic=setupWorldMap({
  onStep:minutes=>{updateClock(minutes);hud();}
 });
 $("worldMapMobile").addEventListener("click",()=>$("openWorldMap").click());
+const minimap=setupMinimap({getFrame:()=>({player:state.player,camera:state.camera,view:geometry(),fixed:npcs,ambient:ambient.actors,focusId:ambient.focusId,gateStates:state.gateStates,route:path,hidden:!$("worldMapOverlay").hidden}),onRoute:minimapRoute,onCancel:()=>{path=[];draw();},onCenterMain:()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();}});
 const controls=setupControls(dir=>move(dir),mode=>{state.controlMode=mode;});
 window.addEventListener("keydown",e=>{
  if(e.code==="Escape"&&!e.repeat&&strategic.active()){e.preventDefault();strategic.close();return;}

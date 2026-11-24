@@ -1,3 +1,11 @@
+## Alpha 0.3.28.1 — interaktywna minimapa
+
+- Po informacji o spadku płynności przy 50%: zoom mapy głównej ograniczony do 100–300%, także przy wczytywaniu starego zapisu. Mapa strategiczna bez zmian.
+- Minimapę można zwinąć, wybrać jeden z czterech rozmiarów (mały, średni, duży, pełny widok), powiększać niezależnie w zakresie 100–600%, przeciągać oraz wyśrodkować na bohaterze.
+- Wyszukiwarka miejsc w bieżącej lokacji: budynki i bramy w mieście, drzwi/schody we wnętrzach; wyszukiwanie bez polskich znaków. Wybór lub dotknięcie mapy tworzy znacznik. Osobny przycisk uruchamia dojście do celu istniejącym systemem A*, bez teleportacji; przejścia do innych map są blokowane jako pośrednie kroki trasy.
+- Filtry NPC, zasięgu kamery i punktów miejsc, linia aktualnej trasy, zapis preferencji interfejsu niezależnie od kampanii. Zachowany limit rastrów i odświeżania.
+- Testy V8: ograniczenia zoomu, przesuwanie, przeliczenie współrzędnych, wyszukiwanie bez znaków diakrytycznych, cele na właściwym piętrze, linia trasy i cache; składnia JS poprawna. Test rzeczywistej przeglądarki mobilnej pozostaje do wykonania.
+
 ## Alpha 0.3.28 — DNS 1.0: minimapa i zoom
 
 - Minimalny zoom lokalnej mapy to 50%, maksymalny nadal 300%. Starsze zapisy z 25% są automatycznie ograniczane do 50%; rozmiar okna mapy pozostaje bez zmian.

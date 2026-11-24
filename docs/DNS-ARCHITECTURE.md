@@ -87,3 +87,6 @@ The 0.3.x series continues world/exploration development; character/combat miles
 - 0.3.33 work stations and occupational animation; 0.3.34 NPC-to-NPC interactions.
 - 0.3.35 personality; 0.3.36 dialogue and memory; 0.3.37 environmental reactions; 0.3.38 integration and optimisation.
 - Individual economy, social networks, life cycles and long-term ambitions are future cross-system work, not promised for this release.
+
+## Alpha 0.3.28.1 — mobile navigation refinement
+Main local zoom 100–300% after user-reported lag at 50%. Independent minimap 100–600%, four sizes, pan/follow, current-map POI search, waypoint and explicit local route, display filters, saved UI preferences. Cached terrain remains unchanged; actual mobile verification pending.
