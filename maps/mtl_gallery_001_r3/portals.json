@@ -1,0 +1,674 @@
+[
+  {
+    "id": "mtl_gallery_001.b001.portal1",
+    "name": "Wejście — Chata mała",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 16
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b001.f0",
+      "trigger": {
+        "x": 4,
+        "y": 9
+      },
+      "arrival": {
+        "x": 4,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b002.portal1",
+    "name": "Wejście — Chata standardowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 27,
+        "y": 15
+      },
+      "arrival": {
+        "x": 27,
+        "y": 16
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b002.f0",
+      "trigger": {
+        "x": 5,
+        "y": 9
+      },
+      "arrival": {
+        "x": 5,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b003.portal1",
+    "name": "Wejście — Chata duża",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 47,
+        "y": 15
+      },
+      "arrival": {
+        "x": 47,
+        "y": 16
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b003.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b004.portal1",
+    "name": "Wejście — Dom S – otwarty",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 67,
+        "y": 15
+      },
+      "arrival": {
+        "x": 67,
+        "y": 16
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b004.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b005.portal1",
+    "name": "Wejście — Dom S – sypialnia boczna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 87,
+        "y": 15
+      },
+      "arrival": {
+        "x": 87,
+        "y": 16
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b005.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b006.portal1",
+    "name": "Wejście — Dom S – sypialnia tylna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 7,
+        "y": 35
+      },
+      "arrival": {
+        "x": 7,
+        "y": 36
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b006.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b007.portal1",
+    "name": "Wejście — Dom M – wspólna izba",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 28,
+        "y": 35
+      },
+      "arrival": {
+        "x": 28,
+        "y": 36
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b007.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b008.portal1",
+    "name": "Wejście — Dom M – boczne pokoje",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 48,
+        "y": 35
+      },
+      "arrival": {
+        "x": 48,
+        "y": 36
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b008.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b009.portal1",
+    "name": "Wejście — Dom M – izba tylna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 68,
+        "y": 35
+      },
+      "arrival": {
+        "x": 68,
+        "y": 36
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b009.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b010.portal1",
+    "name": "Wejście — Dom L – rodzinna sala",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 35
+      },
+      "arrival": {
+        "x": 88,
+        "y": 36
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b010.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b011.portal1",
+    "name": "Wejście — Dom L – skrzydło mieszkalne",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 55
+      },
+      "arrival": {
+        "x": 8,
+        "y": 56
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b011.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b012.portal1",
+    "name": "Wejście — Dom L – dwie strefy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 28,
+        "y": 55
+      },
+      "arrival": {
+        "x": 28,
+        "y": 56
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b012.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b013.portal1",
+    "name": "Wejście — Sklep mały",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 47,
+        "y": 55
+      },
+      "arrival": {
+        "x": 47,
+        "y": 56
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b013.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b014.portal1",
+    "name": "Wejście — Sklep standardowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 68,
+        "y": 55
+      },
+      "arrival": {
+        "x": 68,
+        "y": 56
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b014.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b015.portal1",
+    "name": "Wejście — Sklep duży",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 55
+      },
+      "arrival": {
+        "x": 88,
+        "y": 56
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b015.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b016.portal1",
+    "name": "Wejście — Kuźnia mała",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 7,
+        "y": 75
+      },
+      "arrival": {
+        "x": 7,
+        "y": 76
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b016.f0",
+      "trigger": {
+        "x": 5,
+        "y": 13
+      },
+      "arrival": {
+        "x": 5,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b017.portal1",
+    "name": "Wejście — Kuźnia standardowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 28,
+        "y": 75
+      },
+      "arrival": {
+        "x": 28,
+        "y": 76
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b017.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b018.portal1",
+    "name": "Wejście — Kuźnia duża",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 48,
+        "y": 75
+      },
+      "arrival": {
+        "x": 48,
+        "y": 76
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b018.f0",
+      "trigger": {
+        "x": 7,
+        "y": 17
+      },
+      "arrival": {
+        "x": 7,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b019.portal1",
+    "name": "Wejście — Piekarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 68,
+        "y": 75
+      },
+      "arrival": {
+        "x": 68,
+        "y": 76
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b019.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b020.portal1",
+    "name": "Wejście — Apteka",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 75
+      },
+      "arrival": {
+        "x": 88,
+        "y": 76
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b020.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b021.portal1",
+    "name": "Wejście — Magazyn",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 95
+      },
+      "arrival": {
+        "x": 9,
+        "y": 96
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b021.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b022.portal1",
+    "name": "Wejście — Karczma – do adaptacji",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 29,
+        "y": 95
+      },
+      "arrival": {
+        "x": 29,
+        "y": 96
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b022.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b023.portal1",
+    "name": "Wejście — Kamienica – dwie kondygnacje",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 48,
+        "y": 95
+      },
+      "arrival": {
+        "x": 48,
+        "y": 96
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b023.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b023.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b023.f0",
+      "trigger": {
+        "x": 9,
+        "y": 12
+      },
+      "arrival": {
+        "x": 9,
+        "y": 13
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b023.f1",
+      "trigger": {
+        "x": 9,
+        "y": 12
+      },
+      "arrival": {
+        "x": 9,
+        "y": 13
+      }
+    }
+  }
+]

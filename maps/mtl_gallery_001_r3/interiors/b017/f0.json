@@ -1,0 +1,304 @@
+{
+  "id": "mtl_gallery_001.b017.f0",
+  "buildingId": "mtl_gallery_001.b017",
+  "level": 0,
+  "width": 12,
+  "height": 16,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 12,
+    "h": 16
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b017.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 15,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b017.f0.o1",
+      "type": "forge",
+      "name": "Palenisko kuźnicze",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 1,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "forge",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b017.f0.o1.s1",
+          "action": "heat_metal",
+          "capacity": 1,
+          "approach": {
+            "x": 7,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.o2",
+      "type": "anvil",
+      "name": "Kowadło",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "anvil",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b017.f0.o2.s1",
+          "action": "smith",
+          "capacity": 1,
+          "approach": {
+            "x": 5,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.o3",
+      "type": "workbench",
+      "name": "Stół warsztatowy",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 8,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "workbench",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b017.f0.o3.s1",
+          "action": "craft",
+          "capacity": 1,
+          "approach": {
+            "x": 7,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.o4",
+      "type": "chest",
+      "name": "Skrzynia",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "chest",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b017.f0.o4.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.o5",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 7,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "shelf",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b017.f0.o5.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b017.f0.o6",
+      "type": "weapon_rack",
+      "name": "Stojak na broń",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 10,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "weapon_rack",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b017.f0.o6.s1",
+          "action": "equip",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 10
+          }
+        }
+      ]
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "workshop",
+      "anchor": {
+        "x": 6,
+        "y": 6
+      },
+      "access": "Z2",
+      "functions": [
+        "smith",
+        "heat_metal",
+        "craft"
+      ],
+      "id": "mtl_gallery_001.b017.f0.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "SMITHY_M01",
+    "version": 3
+  }
+}

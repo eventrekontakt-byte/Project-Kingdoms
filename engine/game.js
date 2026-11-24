@@ -1,4 +1,5 @@
-import {validateWorld} from "./mfs/validator.js?v=0.3.30";
+import {drawMfsInterior} from "./mfs/interior-renderer.js?v=0.3.33.2";
+import {validateWorld} from "./mfs/validator.js?v=0.3.33.2";
 import {registerMfs,mfsScene} from "./mfs/core.js?v=0.3.29";
 import {clampZoom} from "../ui/minimap.js?v=0.3.29";
 import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.29";
@@ -127,7 +128,8 @@ function draw(){
  const {x:cx,y:cy}=state.camera,{w:mw,h:mh}=mapSize(p.map);
  const left=Math.max(0,Math.floor(cx-w/(2*size))-1),right=Math.min(mw-1,Math.ceil(cx+w/(2*size))+1);
  const top=Math.max(0,Math.floor(cy-h/(2*size))-1),bottom=Math.min(mh-1,Math.ceil(cy+h/(2*size))+1);
- for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++){
+ const mfsInterior=mfsScene(p.map);if(mfsInterior&&mfsInterior.floorTile){ctx.save();ctx.translate(w/2-cx*size,h/2-cy*size);ctx.scale(size,size);drawMfsInterior(ctx,mfsInterior,{l:left,r:right,t:top,b:bottom});ctx.restore();}
+ else for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++){
   const t=tileAt(p.map,p.floor,x,y),sx=Math.floor((x-cx)*size+w/2),sy=Math.floor((y-cy)*size+h/2);
   ctx.fillStyle=COLORS[t]||"#333";ctx.fillRect(sx,sy,Math.ceil(size)+1,Math.ceil(size)+1);
   ctx.strokeStyle="#0a182b38";ctx.strokeRect(sx,sy,size,size);
