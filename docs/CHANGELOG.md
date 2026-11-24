@@ -1,3 +1,11 @@
+## Alpha 0.3.28.2 — lokalny priorytet NPC tła
+
+- Naprawiono blokowanie limitu populacji po szybkim przejściu do innej dzielnicy. Odległe postacie zwalniane od razu poza twardym buforem; zwykły okres ochronny skrócony z 14 do 4 sekund. Przy deficycie w okolicy kamery odzyskiwane są miejsca od najdalszych niewidocznych NPC.
+- Synchronizacja co 650 ms lub przy skoku kamery o co najmniej 8 kratek / zmianie mapy, maksymalnie 10 nowych aktorów w cyklu i nadal 38 aktywnych globalnie. Lokalna liczebność zależy od dzielnicy i pory dnia.
+- Sektory uzupełniają aktualny stan populacji zamiast jednorazowego oznaczania jako załadowane. Krótki cooldown prób, preferencja bliskich dróg poza kadrem, brak generowania na ekranie.
+- Zachowana ochrona widocznych NPC (również podczas animacji), rozmów i odwiedzających aktualne wnętrze. Zapamiętane tożsamości pozostają w rejestrze. Licznik pokazuje lokalną populację i odzyskiwanie miejsc.
+- Testy integracyjne i mobilne wymagają potwierdzenia.
+
 ## Alpha 0.3.28.1 — interaktywna minimapa
 
 - Po informacji o spadku płynności przy 50%: zoom mapy głównej ograniczony do 100–300%, także przy wczytywaniu starego zapisu. Mapa strategiczna bez zmian.

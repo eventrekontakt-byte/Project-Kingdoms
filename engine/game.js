@@ -1,12 +1,12 @@
 import {clampZoom} from "../ui/minimap.js?v=0.3.28.1";
 import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.28.1";
 import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.27";
-import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState} from "./dns-population.js?v=0.3.27";
+import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState} from "./dns-population.js?v=0.3.28.2";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.1";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.2";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.28.1";
 import {setupWorldMap} from "../ui/world-map.js";
@@ -92,7 +92,7 @@ function hud(){
  if(npcStats){
   const watched=currentAmbientFocus(ambient),active=ambient.actors.filter(n=>n.simulationLevel>0).length;
   const focusInfo=watched?" · obserwujesz "+watched.name+" (L"+watched.simulationLevel+", "+Math.floor(watched.focusMs/1000)+" s)":"";
-  npcStats.textContent="DNS 1.0: 40 stałych · "+ambient.actors.length+" NPC tła (limit 38) · "+active+" zaawansowanych"+focusInfo+" · zapamiętani "+ambient.remembered.size+" · utworzono "+ambient.generated+" / zwolniono "+ambient.removed;
+  npcStats.textContent="DNS 1.0: 40 stałych · "+ambient.actors.length+" NPC tła (limit 38) · lokalnie "+ambient.nearCount+" / w kadrze "+ambient.visibleCount+" · "+active+" zaawansowanych"+focusInfo+" · zapamiętani "+ambient.remembered.size+" · utworzono "+ambient.generated+" / zwolniono "+ambient.removed+" (priorytet lokalny: "+ambient.reclaimed+")";
  }
  if(p.map==="interior-city1-karczma")$("coordinates").textContent=`Karczma: ${p.x},${p.y} • piętro ${p.floor} • mapa ${mapSize(p.map).w}×${mapSize(p.map).h}`;
  $("pauseBtn").textContent=state.paused?"Wznów":"Pauza";

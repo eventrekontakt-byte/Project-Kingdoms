@@ -90,3 +90,6 @@ The 0.3.x series continues world/exploration development; character/combat miles
 
 ## Alpha 0.3.28.1 — mobile navigation refinement
 Main local zoom 100–300% after user-reported lag at 50%. Independent minimap 100–600%, four sizes, pan/follow, current-map POI search, waypoint and explicit local route, display filters, saved UI preferences. Cached terrain remains unchanged; actual mobile verification pending.
+
+## Alpha 0.3.28.2 — local-first streaming
+38 active cap unchanged; sync 650 ms or significant camera/map change. Immediate far eviction, 4 s outer grace, pressure reclamation of invisible remote actors, actual sector occupancy and retry cooldown, up to 10 new actors per cycle. Protect visible and talking actors/current interior; remembered identities remain in registry. Integration/mobile tests pending.

@@ -1,9 +1,10 @@
-// DNS 1.0 / Alpha 0.3.26 — observation-aware hybrid population.
+// DNS 1.0 / Alpha 0.3.28.2 — local-first population streaming.
 // Only real on-screen actors are objects. The city's simulated headcount is metadata.
 import {CITY_WIDTH,CITY_HEIGHT,cityTile,cityGateBarrierAt} from "./city-one.js";
 import {links,linkFor,at,floorTile,freeAt,enterPortal,leavePortal,wanderInterior} from "./npc-doors.js?v=0.3.27";
 const MAX_MEMORY=32,MAX_VISITORS=3;
-const CITY="site-city1", CHUNK=12, LIMIT=38, SYNC_MS=1300, GRACE_MS=14000;
+const CITY="site-city1", CHUNK=12, LIMIT=38, SYNC_MS=650, GRACE_MS=4000;
+const NEAR=12, BUFFER=22, HARD_BUFFER=34, SPAWN_BATCH=10, RETRY_MS=1800, SHIFT=8;
 const OBSERVE_MS=20000,FOLLOW_MS=60000,MAX_ADVANCED=3,MAX_FOLLOWED=1;
 const N=CITY_WIDTH*CITY_HEIGHT;
 const visit=new Uint32Array(N),parent=new Int32Array(N),queue=new Int32Array(N);
@@ -43,12 +44,12 @@ function peopleAt(fixed,actors,x,y,player){
  for(const n of actors)if(n.map===CITY&&n.x===x&&n.y===y)return true;
  return false;
 }
-export const AMBIENT_CONFIG=Object.freeze({chunkSize:CHUNK,maxActive:LIMIT,syncMs:SYNC_MS,despawnGraceMs:GRACE_MS,populationPotential:650,observationMs:OBSERVE_MS,followMs:FOLLOW_MS,maxAdvanced:MAX_ADVANCED,maxFollowed:MAX_FOLLOWED});
+export const AMBIENT_CONFIG=Object.freeze({chunkSize:CHUNK,maxActive:LIMIT,syncMs:SYNC_MS,despawnGraceMs:GRACE_MS,nearRadius:NEAR,bufferRadius:BUFFER,spawnBatch:SPAWN_BATCH,populationPotential:650,observationMs:OBSERVE_MS,followMs:FOLLOW_MS,maxAdvanced:MAX_ADVANCED,maxFollowed:MAX_FOLLOWED});
 export function createAmbientPopulation(){
- return {actors:[],remembered:new Map(),loaded:new Set(),serial:0,lastSync:-Infinity,generated:0,removed:0,focusId:null,manualFocus:false,focusLostAt:0,lastObservationAt:null,suppressUntil:0};
+ return {actors:[],remembered:new Map(),loaded:new Map(),serial:0,lastSync:-Infinity,lastArea:null,nearCount:0,visibleCount:0,generated:0,removed:0,reclaimed:0,focusId:null,manualFocus:false,focusLostAt:0,lastObservationAt:null,suppressUntil:0};
 }
 export function resetAmbientPopulation(pop){
- pop.actors.length=0;pop.remembered.clear();pop.loaded.clear();pop.lastSync=-Infinity;pop.serial=0;pop.generated=0;pop.removed=0;pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;pop.lastObservationAt=null;pop.suppressUntil=0;
+ pop.actors.length=0;pop.remembered.clear();pop.loaded.clear();pop.lastSync=-Infinity;pop.lastArea=null;pop.nearCount=0;pop.visibleCount=0;pop.serial=0;pop.generated=0;pop.removed=0;pop.reclaimed=0;pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;pop.lastObservationAt=null;pop.suppressUntil=0;
 }
 function density(x,y,clock){
  const type=district(x,y),hour=clock.hour,day=hour>=7&&hour<20;
@@ -58,21 +59,29 @@ function density(x,y,clock){
 function candidateSeed(cx,cy,slot,clock){
  return hash(cx*23719 ^ cy*56311 ^ slot*16127 ^ (clock.day||1)*311 ^ Math.floor(clock.hour/4)*701);
 }
-function chooseSpawn(pop,cx,cy,slot,clock,viewRect,gateStates,fixed,player){
- const h=candidateSeed(cx,cy,slot,clock);
- for(let j=0;j<42;j++){
-  const x=cx*CHUNK+((h+j*7+j*j)%CHUNK);
-  const y=cy*CHUNK+((h>>>8+j*5+j*j*3)%CHUNK);
-  if(inside(viewRect,null,x,y,2.5))continue; // never materialise on camera
-  if(!terrain(x,y,gateStates)||peopleAt(fixed,pop.actors,x,y,player))continue;
-  const role=ROLES[(h>>>3)%ROLES.length],id="ambient-"+(++pop.serial);
-  return {id,name:FIRST[(h>>>7)%FIRST.length],role,color:COLORS[(h>>>10)%COLORS.length],
-   skin:SKINS[(h>>>15)%SKINS.length],simulationClass:"ambient",important:false,map:CITY,x,y,
-   fromX:x,fromY:y,direction:STEPS[h%4][0]?"right":"down",started:-1,duration:350,
-   nextMove:0,seed:h,goal:null,talking:false,met:0,createdAt:0,unseenSince:0,
-   district:district(x,y),task:"Przechodzi przez miasto",workTitle:"okoliczne ulice",venueName:"mieście",simulationLevel:0,observationMs:0,focusMs:0,visibleLastAt:0,route:[],nextPlan:0};
+function distanceToBox(box,x,y){
+ return Math.max(0,box.left-x,x-box.right,box.top-y,y-box.bottom);
+}
+function chooseSpawn(pop,cx,cy,slot,clock,viewRect,gateStates,fixed,player,maxDistance=BUFFER){
+ // Try a varied deterministic sample, preferring roads just beyond the visible screen.
+ const h=candidateSeed(cx,cy,slot,clock),offset=hash(h^Math.floor(pop.serial/3));
+ let best=null,score=Infinity;
+ for(let j=0;j<36;j++){
+  const k=hash(offset+j*1777),x=cx*CHUNK+k%CHUNK,y=cy*CHUNK+(k>>>12)%CHUNK;
+  const dist=distanceToBox(viewRect,x,y);
+  if(dist<=2.5||dist>maxDistance)continue;
+  const t=terrain(x,y,gateStates);if(!t||peopleAt(fixed,pop.actors,x,y,player))continue;
+  const cost=dist*3+(t===2?0:4)+(k%7)/7;
+  if(cost<score){score=cost;best={x,y};}
+  if(t===2&&dist<=4)break;
  }
- return null;
+ if(!best)return null;
+ const {x,y}=best,role=ROLES[(h>>>3)%ROLES.length],id="ambient-"+(++pop.serial);
+ return {id,name:FIRST[(h>>>7)%FIRST.length],role,color:COLORS[(h>>>10)%COLORS.length],
+  skin:SKINS[(h>>>15)%SKINS.length],simulationClass:"ambient",important:false,map:CITY,x,y,
+  fromX:x,fromY:y,direction:STEPS[h%4][0]?"right":"down",started:-1,duration:350,
+  nextMove:0,seed:h,goal:null,talking:false,met:0,createdAt:0,unseenSince:null,
+  district:district(x,y),task:"Przechodzi przez miasto",workTitle:"okoliczne ulice",venueName:"mieście",simulationLevel:0,observationMs:0,focusMs:0,visibleLastAt:0,route:[],nextPlan:0};
 }
 // Manual observation selects a real object and preserves its appearance
 // and coordinates. Touch it again to release explicit focus.
@@ -105,7 +114,7 @@ export function exportAmbientState(pop,now=0){
  return {serial:pop.serial,remembered:[...pop.remembered.values()]};
 }
 function hydrate(r,now){
- return {...r,simulationClass:"ambient",important:false,indoors:r.map!==CITY,visitId:linkFor(r.map)?.id||null,fromX:r.x,fromY:r.y,started:-1,duration:320,nextMove:now+450,goal:null,route:[],nextPlan:0,nextVisit:now+4000,visitUntil:now+(r.remaining||12000),talking:false,followed:false,unseenSince:0,createdAt:now,visibleLastAt:0,simulationLevel:0,observationMs:0,focusMs:0};
+ return {...r,simulationClass:"ambient",important:false,indoors:r.map!==CITY,visitId:linkFor(r.map)?.id||null,fromX:r.x,fromY:r.y,started:-1,duration:320,nextMove:now+450,goal:null,route:[],nextPlan:0,nextVisit:now+4000,visitUntil:now+(r.remaining||12000),talking:false,followed:false,unseenSince:null,createdAt:now,visibleLastAt:0,simulationLevel:0,observationMs:0,focusMs:0};
 }
 export function restoreAmbientState(pop,data,now=0,player=null,fixed=[],gateStates={}){
  resetAmbientPopulation(pop);
@@ -120,13 +129,13 @@ export function restoreAmbientState(pop,data,now=0,player=null,fixed=[],gateStat
   if(player&&a.map===player.map&&!player.floor&&Math.abs(a.x-player.x)<35&&Math.abs(a.y-player.y)<30&&freeAt(a.map,a,fixed.concat(pop.actors),player,a))pop.actors.push(a);
  }
 }
-function activateRemembered(pop,player,box,now,fixed,gateStates){
- let changed=false;
+function activateRemembered(pop,player,box,now,fixed,gateStates,maxNew=SPAWN_BATCH){
+ let changed=false,created=0;
  for(const r of pop.remembered.values()){
-  if(pop.actors.length>=LIMIT||pop.actors.some(a=>a.id===r.id))continue;
-  const outside=r.map===CITY&&player.map===CITY&&inside(box,null,r.x,r.y,CHUNK*1.8)&&!inside(box,null,r.x,r.y,2.5)&&terrain(r.x,r.y,gateStates);
+  if(created>=maxNew||pop.actors.length>=LIMIT||pop.actors.some(a=>a.id===r.id))continue;
+  const outside=r.map===CITY&&player.map===CITY&&inside(box,null,r.x,r.y,NEAR)&&!inside(box,null,r.x,r.y,2.5)&&terrain(r.x,r.y,gateStates);
   const insideRoom=r.map!==CITY&&r.map===player.map&&!player.floor&&floorTile(r.map,r.x,r.y);
-  if((outside||insideRoom)&&freeAt(r.map,r,fixed.concat(pop.actors),player,null)){pop.actors.push(hydrate(r,now));changed=true;}
+  if((outside||insideRoom)&&freeAt(r.map,r,fixed.concat(pop.actors),player,null)){pop.actors.push(hydrate(r,now));created++;changed=true;}
  }
  return changed;
 }
@@ -225,51 +234,101 @@ export function observeAmbientPopulation(pop,player,camera,view,now){
  }
  return updated;
 }
-// Stream only the camera's buffered chunk ring, independently of the full city map.
+// A local budget follows the camera; remote actors never monopolise the cap.
+function actorDistance(a,box){
+ const p=a.map===CITY?a:linkFor(a.map)?.outside;
+ return p?distanceToBox(box,p.x,p.y):Infinity;
+}
+function visibleActor(a,player,box,now){
+ if(a.map!==player.map||player.floor)return false;
+ if(a.map!==CITY)return true; // never unload a visitor in the current room
+ if(inside(box,null,a.x,a.y,1.5))return true;
+ return a.started>=0&&now<a.started+a.duration&&inside(box,null,a.fromX,a.fromY,1.5);
+}
+function removeActor(pop,a,now,pressure=false){
+ if(pop.remembered.has(a.id)||(a.followed&&(a.met>0||a.focusMs>=OBSERVE_MS)))rememberAmbient(pop,a,now);
+ if(pop.focusId===a.id){pop.focusId=null;pop.manualFocus=false;pop.focusLostAt=0;}
+ const i=pop.actors.indexOf(a);if(i<0)return false;
+ pop.actors.splice(i,1);pop.removed++;if(pressure)pop.reclaimed++;return true;
+}
+function localTarget(camera,clock){
+ const area=district(camera.x,camera.y),day=clock.hour>=7&&clock.hour<20;
+ if(!day)return area==="market"?4:1;
+ return area==="market"?18:area==="craft"?15:area==="housing"?14:area==="castle"?10:8;
+}
 export function syncAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],gateStates={}){
- if(player.map!==CITY)return activateRemembered(pop,player,null,now,fixed,gateStates);
- if(now-pop.lastSync<SYNC_MS)return false;
- pop.lastSync=now;
- const box=rect(camera,view),buffer=CHUNK*1.8;
- const loX=Math.max(0,Math.floor((box.left-buffer)/CHUNK)),hiX=Math.min(Math.ceil(CITY_WIDTH/CHUNK)-1,Math.floor((box.right+buffer)/CHUNK));
- const loY=Math.max(0,Math.floor((box.top-buffer)/CHUNK)),hiY=Math.min(Math.ceil(CITY_HEIGHT/CHUNK)-1,Math.floor((box.bottom+buffer)/CHUNK));
- let changed=activateRemembered(pop,player,box,now,fixed,gateStates);
- for(let i=pop.actors.length-1;i>=0;i--){
-  const a=pop.actors[i];if(a.map!==CITY)continue;
-  const inBuffer=inside(box,null,a.x,a.y,buffer);
-  if(inBuffer){a.unseenSince=0;continue;}
-  if(!a.unseenSince)a.unseenSince=now;
-  // Keep anyone still visible, followed, interacting or inside their grace period.
-  if(!inside(box,null,a.x,a.y,1)&&!a.talking&&!a.followed&&now-a.unseenSince>GRACE_MS){
-   if(pop.focusId===a.id){pop.focusId=null;pop.manualFocus=false;}
-   if(pop.remembered.has(a.id))rememberAmbient(pop,a,now);
-   pop.actors.splice(i,1);pop.removed++;changed=true;
+ const isCity=player.map===CITY,entrance=isCity?null:linkFor(player.map);
+ if(!isCity&&!entrance)return false;
+ const anchor=isCity?camera:entrance.outside;
+ const old=pop.lastArea,shift=!old||old.map!==player.map||Math.max(Math.abs(anchor.x-old.x),Math.abs(anchor.y-old.y))>=SHIFT;
+ if(!shift&&now-pop.lastSync<SYNC_MS)return false;
+ pop.lastSync=now;pop.lastArea={map:player.map,x:anchor.x,y:anchor.y};
+ const box=isCity?rect(camera,view):{left:anchor.x,right:anchor.x,top:anchor.y,bottom:anchor.y};
+ let changed=false;
+ // Distant actors are removed immediately; nearby ones keep a short grace period.
+ for(const a of [...pop.actors]){
+  if(visibleActor(a,player,box,now)||a.talking&&a.map===player.map){a.unseenSince=null;continue;}
+  const d=actorDistance(a,box);
+  if(d<=BUFFER){a.unseenSince=null;continue;}
+  if(a.unseenSince==null)a.unseenSince=now;
+  if(d>HARD_BUFFER||now-a.unseenSince>=GRACE_MS){
+   changed=removeActor(pop,a,now,d>HARD_BUFFER)||changed;
   }
  }
- // Re-arm chunks only after the camera leaves them for a time; no per-frame churn.
- const activeChunks=new Set();
- for(let cy=loY;cy<=hiY;cy++)for(let cx=loX;cx<=hiX;cx++)activeChunks.add(key(cx,cy));
- for(const old of [...pop.loaded])if(!activeChunks.has(old))pop.loaded.delete(old);
- // Fill the closest buffered chunks first; walking crowds arrive from all
- // directions, instead of preferentially filling the northern map rows.
- const chunks=[];
+ if(!isCity){
+  changed=activateRemembered(pop,player,null,now,fixed,gateStates)||changed;
+  pop.nearCount=pop.actors.filter(a=>a.map===player.map).length;pop.visibleCount=player.floor?0:pop.nearCount;
+  return changed;
+ }
+ const nearActors=()=>pop.actors.filter(a=>a.map===CITY&&actorDistance(a,box)<=NEAR).length;
+ const desired=localTarget(camera,clock);
+ // Under pressure reclaim the farthest non-visible actors before spawning.
+ // A followed actor is protected while nearby; its saved identity survives unloading.
+ const need=Math.min(SPAWN_BATCH,Math.max(0,desired-nearActors()));
+ const shortage=Math.max(0,need-(LIMIT-pop.actors.length));
+ if(shortage){
+  const victims=pop.actors.filter(a=>!visibleActor(a,player,box,now)&&!(a.talking&&a.map===player.map)&&actorDistance(a,box)>NEAR)
+    .sort((a,b)=>(Boolean(a.followed)-Boolean(b.followed))||actorDistance(b,box)-actorDistance(a,box));
+  for(const a of victims.slice(0,shortage))changed=removeActor(pop,a,now,true)||changed;
+ }
+ // Reappear remembered actors offscreen before creating unrelated new identities.
+ const before=pop.actors.length;
+ changed=activateRemembered(pop,player,box,now,fixed,gateStates)||changed;
+ let budget=Math.max(0,SPAWN_BATCH-(pop.actors.length-before));
+ const loX=Math.max(0,Math.floor((box.left-BUFFER)/CHUNK)),hiX=Math.min(Math.ceil(CITY_WIDTH/CHUNK)-1,Math.floor((box.right+BUFFER)/CHUNK));
+ const loY=Math.max(0,Math.floor((box.top-BUFFER)/CHUNK)),hiY=Math.min(Math.ceil(CITY_HEIGHT/CHUNK)-1,Math.floor((box.bottom+BUFFER)/CHUNK));
+ const chunks=[],counts=new Map(),activeChunks=new Set();
+ for(const n of pop.actors)if(n.map===CITY){
+  const id=key(Math.floor(n.x/CHUNK),Math.floor(n.y/CHUNK));counts.set(id,(counts.get(id)||0)+1);
+ }
  for(let cy=loY;cy<=hiY;cy++)for(let cx=loX;cx<=hiX;cx++){
-  const mx=cx*CHUNK+CHUNK/2,my=cy*CHUNK+CHUNK/2;
-  const dx=mx-camera.x,dy=my-camera.y;
-  chunks.push({cx,cy,score:dx*dx+dy*dy+hash(cx*997+cy*321)%11});
+  const id=key(cx,cy),mx=cx*CHUNK+CHUNK/2,my=cy*CHUNK+CHUNK/2;
+  activeChunks.add(id);
+  const d=distanceToBox(box,mx,my),dx=mx-camera.x,dy=my-camera.y;
+  chunks.push({cx,cy,id,d,score:d*100+Math.hypot(dx,dy)});
  }
+ for(const id of pop.loaded.keys())if(!activeChunks.has(id))pop.loaded.delete(id);
  chunks.sort((a,b)=>a.score-b.score);
- for(const {cx,cy} of chunks){
-  if(pop.actors.length>=LIMIT)break;
-  const id=key(cx,cy);if(pop.loaded.has(id))continue;pop.loaded.add(id);
-  const midX=cx*CHUNK+CHUNK/2,midY=cy*CHUNK+CHUNK/2;
-  const count=density(midX,midY,clock);
-  for(let slot=0;slot<count&&pop.actors.length<LIMIT;slot++){
-   let a=chooseSpawn(pop,cx,cy,slot,clock,box,gateStates,fixed,player);
-   if(!a)continue;
-   a.createdAt=now;a.nextMove=now+500+(a.seed%800);pop.actors.push(a);pop.generated++;changed=true;
+ // A sector is never permanently marked "loaded"; its live population is counted
+ // again. Failed or successful spawn attempts receive a short retry cooldown.
+ let near=nearActors();
+ for(const c of chunks){
+  if(!budget||pop.actors.length>=LIMIT)break;
+  const mx=c.cx*CHUNK+CHUNK/2,my=c.cy*CHUNK+CHUNK/2,target=density(mx,my,clock);
+  if(!target||(pop.loaded.get(c.id)??-Infinity)>now)continue;
+  const missing=target-(counts.get(c.id)||0);if(missing<=0)continue;
+  // Prioritise nearby entry ring; fill outer chunks only after the local target.
+  const radius=near<desired?NEAR:BUFFER;
+  if(c.d>radius+CHUNK/2)continue;
+  pop.loaded.set(c.id,now+RETRY_MS);
+  for(let slot=0;slot<missing&&budget>0&&pop.actors.length<LIMIT;slot++){
+   const n=chooseSpawn(pop,c.cx,c.cy,slot+(counts.get(c.id)||0),clock,box,gateStates,fixed,player,radius);
+   if(!n)continue;
+   n.createdAt=now;n.nextMove=now+180+n.seed%260;pop.actors.push(n);pop.generated++;budget--;changed=true;
+   if(actorDistance(n,box)<=NEAR)near++;
   }
  }
+ pop.nearCount=nearActors();pop.visibleCount=pop.actors.filter(a=>a.map===CITY&&inside(box,null,a.x,a.y)).length;
  return changed;
 }
 function chooseGoal(n,gateStates,camera,view){
@@ -368,7 +427,7 @@ export function moveAmbientPopulation(pop,player,camera,view,clock,now,fixed=[],
    if(n.visitId){n.nextMove=now+350;continue;}
   }
   if(player.map!==CITY)continue;
-  if(!n.goal||Math.abs(n.goal.x-n.x)+Math.abs(n.goal.y-n.y)<=1)n.goal=chooseGoal(n,gateStates,camera,view);
+  if(!n.goal||Math.abs(n.goal.x-n.x)+Math.abs(n.goal.y-n.y)<=1||(!n.visitId&&n.simulationLevel===0&&distanceToBox(rect(camera,view),n.goal.x,n.goal.y)>NEAR))n.goal=chooseGoal(n,gateStates,camera,view);
   const routes=STEPS.map(([dx,dy],k)=>{
    const nx=n.x+dx,ny=n.y+dy,v=terrain(nx,ny,gateStates);
    return {dx,dy,x:nx,y:ny,score:!v?1e6:(Math.abs(nx-n.goal.x)+Math.abs(ny-n.goal.y))*10-(v===2?4:0)+((hash(n.seed+k)%4)/4)};
