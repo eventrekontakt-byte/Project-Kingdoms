@@ -3,7 +3,7 @@
 - Wspólne portale NPC i gracza: widoczni mieszkańcy dochodzą do rzeczywistego progu, pojawiają się po wewnętrznej stronie i wychodzą przez drzwi.
 - NPC tła L0 i L2 mogą odwiedzać publiczne budynki, chodzić po parterze i wracać na ulicę. Ograniczony budżet równoczesnych wizyt.
 - Dotknięcie wybiera obserwację, Zbadaj otwiera rozmowę. Rozmowa lub dłuższa obserwacja zachowuje tożsamość w rejestrze do 32 osób; zapis zachowuje wygląd, pozycję, licznik spotkań. Starsze zapisy schema 9 obsługiwane.
-- Testy integracyjne i mobilne wymagają potwierdzenia. Bez zmian mapy, zoomu i minimapy.
+- Testy symulacyjne na rzeczywistych modułach w V8: 24 poprawne portale, wejście i wyjście L2, 24 kroki we wnętrzu, odtworzenie tożsamości i licznika rozmów, fizyczne wejście stałego mieszkańca, 4 wejścia L0 w 90 sekund przy aktywnej symulacji 40 mieszkańców; maks. 38 NPC tła, 0 kolizji między NPC. Test w mobilnej przeglądarce nadal wymagany. Bez zmian mapy, zoomu i minimapy.
 
 ## Alpha 0.3.26 — DNS 1.0: obserwacja NPC
 
