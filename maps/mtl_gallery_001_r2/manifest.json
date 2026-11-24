@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0.0",
+  "mdsVersion": "1.0",
+  "mapId": "mtl_gallery_001",
+  "mapRevision": 2,
+  "kind": "test",
+  "name": "MTL — katalog wzorców FPS",
+  "sourceType": "manual",
+  "status": "review",
+  "width": 104,
+  "height": 100,
+  "tileMeters": 1,
+  "baseTilePixels": 32,
+  "elevationStepMeters": 0.5,
+  "interiorScale": 2,
+  "sectorSize": 16,
+  "files": {
+    "terrain": "terrain.json",
+    "parcels": "parcels.json",
+    "roads": "roads.json",
+    "fortifications": "fortifications.json",
+    "buildings": "buildings.json",
+    "infrastructure": "infrastructure.json",
+    "npcZones": "npc_zones.json",
+    "portals": "portals.json"
+  },
+  "interiors": [
+    "interiors/b001/f0.json",
+    "interiors/b002/f0.json",
+    "interiors/b003/f0.json",
+    "interiors/b004/f0.json",
+    "interiors/b005/f0.json",
+    "interiors/b006/f0.json",
+    "interiors/b007/f0.json",
+    "interiors/b008/f0.json",
+    "interiors/b009/f0.json",
+    "interiors/b010/f0.json",
+    "interiors/b011/f0.json",
+    "interiors/b012/f0.json",
+    "interiors/b013/f0.json",
+    "interiors/b014/f0.json",
+    "interiors/b015/f0.json",
+    "interiors/b016/f0.json",
+    "interiors/b017/f0.json",
+    "interiors/b018/f0.json",
+    "interiors/b019/f0.json",
+    "interiors/b020/f0.json",
+    "interiors/b021/f0.json",
+    "interiors/b022/f0.json",
+    "interiors/b023/f0.json",
+    "interiors/b023/f1.json"
+  ],
+  "spawnPoints": [
+    {
+      "id": "mtl_gallery_001.spawn001",
+      "sceneId": "mtl_gallery_001",
+      "x": 1,
+      "y": 18,
+      "role": "default"
+    }
+  ]
+}

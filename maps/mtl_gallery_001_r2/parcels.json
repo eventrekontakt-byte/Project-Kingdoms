@@ -1,0 +1,370 @@
+[
+  {
+    "id": "mtl_gallery_001.p001",
+    "name": "Chata mała",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 4,
+      "y": 9,
+      "w": 6,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road1"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p002",
+    "name": "Chata standardowa",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 9,
+      "w": 7,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road1"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p003",
+    "name": "Chata duża",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 44,
+      "y": 9,
+      "w": 7,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road1"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p004",
+    "name": "Dom S – otwarty",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 64,
+      "y": 9,
+      "w": 7,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road1"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p005",
+    "name": "Dom S – sypialnia boczna",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 84,
+      "y": 9,
+      "w": 7,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road1"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p006",
+    "name": "Dom S – sypialnia tylna",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 4,
+      "y": 29,
+      "w": 7,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road2"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p007",
+    "name": "Dom M – wspólna izba",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 29,
+      "w": 8,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road2"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p008",
+    "name": "Dom M – boczne pokoje",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 44,
+      "y": 29,
+      "w": 8,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road2"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p009",
+    "name": "Dom M – izba tylna",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 64,
+      "y": 29,
+      "w": 8,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road2"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p010",
+    "name": "Dom L – rodzinna sala",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 84,
+      "y": 28,
+      "w": 9,
+      "h": 9
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road2"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p011",
+    "name": "Dom L – skrzydło mieszkalne",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 4,
+      "y": 48,
+      "w": 9,
+      "h": 9
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road3"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p012",
+    "name": "Dom L – dwie strefy",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 48,
+      "w": 9,
+      "h": 9
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road3"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p013",
+    "name": "Sklep mały",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 44,
+      "y": 49,
+      "w": 7,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road3"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p014",
+    "name": "Sklep standardowy",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 64,
+      "y": 49,
+      "w": 8,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road3"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p015",
+    "name": "Sklep duży",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 84,
+      "y": 48,
+      "w": 9,
+      "h": 9
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road3"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p016",
+    "name": "Kuźnia mała",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 4,
+      "y": 69,
+      "w": 7,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road4"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p017",
+    "name": "Kuźnia standardowa",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 68,
+      "w": 8,
+      "h": 9
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road4"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p018",
+    "name": "Kuźnia duża",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 44,
+      "y": 67,
+      "w": 9,
+      "h": 10
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road4"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p019",
+    "name": "Piekarnia",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 64,
+      "y": 69,
+      "w": 8,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road4"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p020",
+    "name": "Apteka",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 84,
+      "y": 69,
+      "w": 8,
+      "h": 8
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road4"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p021",
+    "name": "Magazyn",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 4,
+      "y": 86,
+      "w": 10,
+      "h": 11
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road5"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p022",
+    "name": "Karczma – do adaptacji",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 86,
+      "w": 10,
+      "h": 11
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road5"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.p023",
+    "name": "Kamienica – dwie kondygnacje",
+    "class": "P3",
+    "ownershipMode": "standard",
+    "geometry": {
+      "type": "rect",
+      "x": 44,
+      "y": 88,
+      "w": 8,
+      "h": 9
+    },
+    "accessRoadIds": [
+      "mtl_gallery_001.road5"
+    ]
+  }
+]

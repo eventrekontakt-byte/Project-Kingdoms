@@ -1,5 +1,6 @@
+import {placementIssues} from "./furniture-placement.js?v=0.3.32.2";
 import {rasterize,compileMap,VERSION} from "./core.js?v=0.3.29";
-export const VALIDATOR_VERSION="1.0.0";
+export const VALIDATOR_VERSION="1.0.1";
 export const PROFILES=["terrain","parcels","roads","fortifications","buildings","interiors","infrastructure","final"];
 const PDS={P1:[3,4,5,6],P2:[4,5,8,10],P3:[6,8,12,14],P4:[9,11,18,20],P5:[12,14,26,30],P6:[14,16,40,48]};
 const WIDTH={R1:6,R2:5,R3:3,R4:2,R5:1};
@@ -151,6 +152,7 @@ export function validateMap(m,d,profile="final"){
    if(r){const above=levels.filter(x=>x>=0).length,below=levels.filter(x=>x<0).length;if(above<r[7]||above>r[8]||below>(["keep","prison"].includes(b.type)?2:1))error("BDS_LIMIT","Floor count outside BDS","buildings.json",b,null,null,"MDS §21");}
   }
  });
+ run("FPS_PLACEMENT",5,()=>{for(const f of list(d.interiors))for(const issue of placementIssues(f,d.portals))emit("FPS_PLACEMENT","ERROR",issue.message,"interiors/"+f.id,issue.objectId,f.id,issue.point,"FPS 1.0");},!list(d.interiors).some(f=>list(f.objects).some(o=>o.placement))?"No FPS metadata (legacy map)":undefined);
  run("PORTAL_PAIR",5,()=>{
   const triggers=new Set(),endpoints=[];
   for(const p of array(d.portals,"portals.json")){id(p,"portals.json");if(!["door","stairs"].includes(p.type)||p.direction!=="both")error("PORTAL_PAIR","Portal must be paired door/stairs","portals.json",p);
