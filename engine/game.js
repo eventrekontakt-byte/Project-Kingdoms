@@ -1,12 +1,12 @@
 import {clampZoom} from "../ui/minimap.js?v=0.3.28.1";
 import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.28.1";
 import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.27";
-import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState} from "./dns-population.js?v=0.3.28.2";
+import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState,primeAmbientPopulation} from "./dns-population.js?v=0.3.28.3";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
 import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js";
-import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.2";
+import {saveGame,loadGame} from "../save/storage.js?v=0.3.28.3";
 import {setupControls} from "../ui/controls.js";
 import {findRoute} from "./pathfinding.js?v=0.3.28.1";
 import {setupWorldMap} from "../ui/world-map.js";
@@ -103,6 +103,7 @@ function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.d
  ctx.setTransform(dpr,0,0,dpr,0,0);draw();
 }
 function geometry(){return {w:canvas.clientWidth,h:canvas.clientHeight,size:32*state.camera.zoom};}
+function primePopulation(){const now=performance.now();stepNPCs(npcs,state.player,state.clock,now,state.gateStates,ambient.actors);primeAmbientPopulation(ambient,state.player,state.camera,geometry(),state.clock,now,npcs,state.gateStates);}
 function ensureValidPosition(){
  const p=state.player,{w,h}=mapSize(p.map);
  if(p.map==="site-city1"&&(!Number.isInteger(p.x)||!Number.isInteger(p.y)||p.x<0||p.y<0||p.x>=w||p.y>=h||blocked(p.map,p.floor,p.x,p.y))){
@@ -684,14 +685,14 @@ function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu"
  state.camera.zoom=clampZoom(data.camera?.zoom);
  restoreAmbientState(ambient,data.ambientState,performance.now(),state.player,npcs,state.gateStates);
  state.controlMode=data.controlMode==="joystick"?"joystick":"dpad";state.paused=Boolean(data.paused);
- snapVisual();controls.setMode(state.controlMode);path=[];draw();if(data.worldMode)strategic.open();else strategic.close();notify("Wczytano kampanię");
+ snapVisual();controls.setMode(state.controlMode);path=[];primePopulation();draw();if(data.worldMode)strategic.open();else strategic.close();notify("Wczytano kampanię");
 }
 $("loadBtn").addEventListener("click",restore);
 $("pauseBtn").addEventListener("click",()=>{state.paused=!state.paused;draw();});
 $("newBtn").addEventListener("click",()=>{$("confirmNew").showModal();});
 $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="confirm")return;
  closeNPCDialogue();minimap.resetTarget();resetAmbientPopulation(ambient);npcs.splice(0,npcs.length,...createNPCs());
- Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();draw();notify("Rozpoczęto nową kampanię");
+ Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();primePopulation();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
 $("fastTravelTavern").addEventListener("click",()=>{
@@ -816,7 +817,7 @@ setInterval(()=>{
  if(changedFixed||changedAmbient)draw();
 },220);
 new ResizeObserver(resize).observe(canvas);
-snapVisual();refreshPlotPanel();resize();requestAnimationFrame(animateVisual);
+snapVisual();refreshPlotPanel();primePopulation();resize();requestAnimationFrame(animateVisual);
 if("serviceWorker" in navigator){
  let reloadedForUpdate=false;
  navigator.serviceWorker.addEventListener("controllerchange",()=>{

@@ -1,3 +1,10 @@
+## Alpha 0.3.28.3 — strefy NPC i zaludnienie przy wczytywaniu
+
+- Dynamiczni cywile mają maskę dokładnego wielokąta murów miasta. Ograniczenie obowiązuje przy generowaniu, chodzeniu, planowaniu tras, przywracaniu zapisów i odwiedzaniu budynków. Nie pojawiają się na pustkowiach, za murami ani na wolnych działkach; zewnętrzne farmy pozostają miejscami pracy stałych mieszkańców, bez losowego tłumu.
+- Zapis zachowuje do 38 aktywnych przechodniów (oprócz rejestru 32 poznanych osób). Po wczytaniu przywracane są poprawne pozycje pobliskich aktorów; starsze zapisy uzupełniają widoczną populację przed pierwszą klatką. Poznane osoby zapisane wcześniej poza murami zachowują tożsamość i otrzymują poprawną pozycję w mieście.
+- Pierwsza klatka nowej kampanii oraz wczytanie nawet podczas pauzy zawierają już odpowiednią populację, zależną od pory dnia, obszaru miasta i wielkości widoku. W zwykłym ruchu NPC nadal generują się wyłącznie poza ekranem. W publicznych wnętrzach można odtworzyć odwiedzających; prywatne domy nie są losowo zaludniane.
+- Testy modułowe i mobilne wymagają potwierdzenia.
+
 ## Alpha 0.3.28.2 — lokalny priorytet NPC tła
 
 - Naprawiono blokowanie limitu populacji po szybkim przejściu do innej dzielnicy. Odległe postacie zwalniane od razu poza twardym buforem; zwykły okres ochronny skrócony z 14 do 4 sekund. Przy deficycie w okolicy kamery odzyskiwane są miejsca od najdalszych niewidocznych NPC.

@@ -36,6 +36,8 @@ export function cityDoorAt(x,y){return CITY_BUILDINGS.find(b=>b.door&&b.door.x==
 // Irregular polygon: wider old town, tighter northern shoulders and southern wards.
 const OUTLINE=[[79,20],[113,20],[132,26],[150,36],[161,51],[167,67],[167,95],[160,112],[147,128],[120,139],[73,139],[48,131],[31,112],[24,94],[24,67],[31,49],[47,34],[65,25]];
 function within(x,y){let inside=false;for(let i=0,j=OUTLINE.length-1;i<OUTLINE.length;j=i++){const a=OUTLINE[i],b=OUTLINE[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])inside=!inside;}return inside;}
+// Shared exact city boundary; ambient civilians stay inside the curtain walls.
+export function cityPopulationZone(x,y){return Number.isInteger(x)&&Number.isInteger(y)&&x>=0&&y>=0&&x<CITY_WIDTH&&y<CITY_HEIGHT&&within(x,y);}
 const KEY=(x,y)=>x+","+y;
 const WALL=new Set(),INNER=new Set(),ROAD=new Set();
 function mark(set,x,y,r=0){for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++)if(x+dx>=0&&y+dy>=0&&x+dx<CITY_WIDTH&&y+dy<CITY_HEIGHT&&Math.hypot(dx,dy)<=r+.25)set.add(KEY(x+dx,y+dy));}
