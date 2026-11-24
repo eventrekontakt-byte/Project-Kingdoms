@@ -1,0 +1,2 @@
+# Residential expansion
+16 furnished variants based on existing plans, with one additional profession-specific or household object each. Existing templates retained. 62 buildings, 73 floors. 64 rotated new instances checked for placement, topology and decorations. Gallery approved-copy compilation and actual viewer loader checked; review-only. No browser test. These are furnishing variants, not 16 unique architectural plans.
