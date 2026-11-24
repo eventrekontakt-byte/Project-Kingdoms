@@ -1,4 +1,11 @@
 {
   "schemaVersion": "1.0.0",
-  "locations": []
+  "locations": [
+    {
+      "mapId": "mtl_gallery_001",
+      "mapRevision": 1,
+      "manifest": "mtl_gallery_001/manifest.json",
+      "profile": "final"
+    }
+  ]
 }

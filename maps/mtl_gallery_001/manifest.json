@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0.0",
+  "mdsVersion": "1.0",
+  "mapId": "mtl_gallery_001",
+  "mapRevision": 1,
+  "kind": "test",
+  "name": "MTL — katalog wzorców",
+  "sourceType": "manual",
+  "status": "review",
+  "width": 104,
+  "height": 100,
+  "tileMeters": 1,
+  "baseTilePixels": 32,
+  "elevationStepMeters": 0.5,
+  "interiorScale": 2,
+  "sectorSize": 16,
+  "files": {
+    "terrain": "terrain.json",
+    "parcels": "parcels.json",
+    "roads": "roads.json",
+    "fortifications": "fortifications.json",
+    "buildings": "buildings.json",
+    "infrastructure": "infrastructure.json",
+    "npcZones": "npc_zones.json",
+    "portals": "portals.json"
+  },
+  "interiors": [
+    "interiors/mtl_gallery_001.b001.f0.json",
+    "interiors/mtl_gallery_001.b002.f0.json",
+    "interiors/mtl_gallery_001.b003.f0.json",
+    "interiors/mtl_gallery_001.b004.f0.json",
+    "interiors/mtl_gallery_001.b005.f0.json",
+    "interiors/mtl_gallery_001.b006.f0.json",
+    "interiors/mtl_gallery_001.b007.f0.json",
+    "interiors/mtl_gallery_001.b008.f0.json",
+    "interiors/mtl_gallery_001.b009.f0.json",
+    "interiors/mtl_gallery_001.b010.f0.json",
+    "interiors/mtl_gallery_001.b011.f0.json",
+    "interiors/mtl_gallery_001.b012.f0.json",
+    "interiors/mtl_gallery_001.b013.f0.json",
+    "interiors/mtl_gallery_001.b014.f0.json",
+    "interiors/mtl_gallery_001.b015.f0.json",
+    "interiors/mtl_gallery_001.b016.f0.json",
+    "interiors/mtl_gallery_001.b017.f0.json",
+    "interiors/mtl_gallery_001.b018.f0.json",
+    "interiors/mtl_gallery_001.b019.f0.json",
+    "interiors/mtl_gallery_001.b020.f0.json",
+    "interiors/mtl_gallery_001.b021.f0.json",
+    "interiors/mtl_gallery_001.b022.f0.json",
+    "interiors/mtl_gallery_001.b023.f0.json",
+    "interiors/mtl_gallery_001.b023.f1.json"
+  ],
+  "spawnPoints": [
+    {
+      "id": "mtl_gallery_001.spawn001",
+      "sceneId": "mtl_gallery_001",
+      "x": 1,
+      "y": 18,
+      "role": "default"
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "id": "mtl_gallery_001.b021.f0",
+  "buildingId": "mtl_gallery_001.b021",
+  "level": 0,
+  "width": 16,
+  "height": 20,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 20
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b021.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 19,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b021.f0.o1",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "shelf",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o1.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o2",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "shelf",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 5,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o3",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "shelf",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 11,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o4",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "shelf",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o4.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o5",
+      "type": "chest",
+      "name": "Skrzynia",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o5.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o6",
+      "type": "chest",
+      "name": "Skrzynia",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o6.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 5,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o7",
+      "type": "chest",
+      "name": "Skrzynia",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o7.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 11,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o8",
+      "type": "chest",
+      "name": "Skrzynia",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o8.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b021.f0.o9",
+      "type": "desk",
+      "name": "Biurko",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 14,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b021.f0.o9.s1",
+          "action": "administration",
+          "capacity": 1,
+          "approach": {
+            "x": 3,
+            "y": 14
+          }
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "type": "storage",
+      "anchor": {
+        "x": 8,
+        "y": 10
+      },
+      "access": "Z2",
+      "functions": [
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b021.f0.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "WAREHOUSE_M01",
+    "version": 1
+  }
+}

@@ -1,0 +1,3762 @@
+{
+  "schemaVersion": "1.0.0",
+  "libraryVersion": "0.1.0",
+  "mdsVersion": "1.0",
+  "furniture": [
+    {
+      "id": "bed_single",
+      "version": 1,
+      "name": "Łóżko jednoosobowe",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sleep",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "bed_double",
+      "version": 1,
+      "name": "Łóżko dwuosobowe",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sleep",
+          "x": 2,
+          "y": 0,
+          "capacity": 2
+        }
+      ]
+    },
+    {
+      "id": "chair",
+      "version": 1,
+      "name": "Krzesło",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sit",
+          "x": 0,
+          "y": -1,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "armchair",
+      "version": 1,
+      "name": "Fotel",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "rest",
+          "x": 0,
+          "y": -1,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "bench",
+      "version": 1,
+      "name": "Ława",
+      "w": 1,
+      "h": 3,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sit",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        },
+        {
+          "action": "sit",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        },
+        {
+          "action": "sit",
+          "x": 1,
+          "y": 2,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "table_small",
+      "version": 1,
+      "name": "Mały stół",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "eat",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "table_large",
+      "version": 1,
+      "name": "Duży stół",
+      "w": 2,
+      "h": 3,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "eat",
+          "x": 2,
+          "y": 0,
+          "capacity": 1
+        },
+        {
+          "action": "eat",
+          "x": 2,
+          "y": 2,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "desk",
+      "version": 1,
+      "name": "Biurko",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "administration",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "wardrobe",
+      "version": 1,
+      "name": "Szafa",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "chest",
+      "version": 1,
+      "name": "Skrzynia",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "shelf",
+      "version": 1,
+      "name": "Regał",
+      "w": 1,
+      "h": 3,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "counter",
+      "version": 1,
+      "name": "Lada",
+      "w": 1,
+      "h": 3,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sell",
+          "x": -1,
+          "y": 1,
+          "capacity": 1
+        },
+        {
+          "action": "buy",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "bar",
+      "version": 1,
+      "name": "Bar",
+      "w": 1,
+      "h": 4,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "serve",
+          "x": -1,
+          "y": 1,
+          "capacity": 1
+        },
+        {
+          "action": "order",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "fireplace",
+      "version": 1,
+      "name": "Kominek",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "cook",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "stove",
+      "version": 1,
+      "name": "Piec",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "cook",
+          "x": -1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "anvil",
+      "version": 1,
+      "name": "Kowadło",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "smith",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "workbench",
+      "version": 1,
+      "name": "Stół warsztatowy",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "craft",
+          "x": -1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "forge",
+      "version": 1,
+      "name": "Palenisko kuźnicze",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "heat_metal",
+          "x": -1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "alchemy",
+      "version": 1,
+      "name": "Stanowisko alchemiczne",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "alchemy",
+          "x": -1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "loom",
+      "version": 1,
+      "name": "Krosno",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "weave",
+          "x": -1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "weapon_rack",
+      "version": 1,
+      "name": "Stojak na broń",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "equip",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "bath",
+      "version": 1,
+      "name": "Wanna",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "wash",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "altar",
+      "version": 1,
+      "name": "Ołtarz",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "pray",
+          "x": 1,
+          "y": 2,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "throne",
+      "version": 1,
+      "name": "Tron",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sit",
+          "x": 0,
+          "y": 1,
+          "capacity": 1
+        }
+      ]
+    }
+  ],
+  "buildings": [
+    {
+      "id": "HUT_S01",
+      "version": 1,
+      "type": "hut",
+      "name": "Chata mała",
+      "size": "S",
+      "width": 4,
+      "height": 5,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 4,
+        "h": 5
+      },
+      "entry": {
+        "x": 2,
+        "y": 4
+      },
+      "interiorEntry": {
+        "x": 4,
+        "y": 9
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "fireplace",
+              "x": 5,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 3,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 6,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 3,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "fireplace",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HUT_M01",
+      "version": 1,
+      "type": "hut",
+      "name": "Chata standardowa",
+      "size": "M",
+      "width": 5,
+      "height": 5,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 5
+      },
+      "entry": {
+        "x": 2,
+        "y": 4
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 9
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "fireplace",
+              "x": 7,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 4,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 3,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 3,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "fireplace",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HUT_L01",
+      "version": 1,
+      "type": "hut",
+      "name": "Chata duża",
+      "size": "L",
+      "width": 5,
+      "height": 6,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 6
+      },
+      "entry": {
+        "x": 2,
+        "y": 5
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 11
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 6,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 5,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 4,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 3,
+                "y": 4
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_S01",
+      "version": 1,
+      "type": "house",
+      "name": "Dom S – otwarty",
+      "size": "S",
+      "width": 5,
+      "height": 6,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 6
+      },
+      "entry": {
+        "x": 2,
+        "y": 5
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 11
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 6,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 4,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 3,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 3,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_S02",
+      "version": 1,
+      "type": "house",
+      "name": "Dom S – sypialnia boczna",
+      "size": "S",
+      "width": 5,
+      "height": 6,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 6
+      },
+      "entry": {
+        "x": 2,
+        "y": 5
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 11
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 6,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 6,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 5,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "anchor": {
+                "x": 2,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "living",
+              "anchor": {
+                "x": 7,
+                "y": 4
+              },
+              "access": "Z4",
+              "functions": [
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 1,
+              "w": 1,
+              "h": 3
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 5,
+              "w": 1,
+              "h": 4
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_S03",
+      "version": 1,
+      "type": "house",
+      "name": "Dom S – sypialnia tylna",
+      "size": "S",
+      "width": 5,
+      "height": 6,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 6
+      },
+      "entry": {
+        "x": 2,
+        "y": 5
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 11
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 6,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 2,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 1,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 6,
+              "y": 1,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "anchor": {
+                "x": 3,
+                "y": 2
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "living",
+              "anchor": {
+                "x": 4,
+                "y": 8
+              },
+              "access": "Z4",
+              "functions": [
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 4,
+              "w": 4,
+              "h": 1
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_M01",
+      "version": 1,
+      "type": "house",
+      "name": "Dom M – wspólna izba",
+      "size": "M",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 5,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 4,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "wardrobe",
+              "x": 9,
+              "y": 9,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 5,
+                "y": 4
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_large",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "wardrobe",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_M02",
+      "version": 1,
+      "type": "house",
+      "name": "Dom M – boczne pokoje",
+      "size": "M",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 8,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 7,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "anchor": {
+                "x": 2,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "living",
+              "anchor": {
+                "x": 8,
+                "y": 5
+              },
+              "access": "Z4",
+              "functions": [
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 1,
+              "w": 1,
+              "h": 3
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 5,
+              "w": 1,
+              "h": 5
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_M03",
+      "version": 1,
+      "type": "house",
+      "name": "Dom M – izba tylna",
+      "size": "M",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "wardrobe",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 8,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 3,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 2,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "anchor": {
+                "x": 3,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "living",
+              "anchor": {
+                "x": 6,
+                "y": 10
+              },
+              "access": "Z4",
+              "functions": [
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 5,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 5,
+              "w": 5,
+              "h": 1
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "wardrobe",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_L01",
+      "version": 1,
+      "type": "house",
+      "name": "Dom L – rodzinna sala",
+      "size": "L",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 7,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 5,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 10,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 6,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 5,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "wardrobe",
+              "x": 11,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 6,
+                "y": 5
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_large",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "wardrobe",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_L02",
+      "version": 1,
+      "type": "house",
+      "name": "Dom L – skrzydło mieszkalne",
+      "size": "L",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 7,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 3,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 10,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 8,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 7,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "anchor": {
+                "x": 2,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "living",
+              "anchor": {
+                "x": 9,
+                "y": 5
+              },
+              "access": "Z4",
+              "functions": [
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 1,
+              "w": 1,
+              "h": 4
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 6,
+              "w": 1,
+              "h": 5
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_large",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "HOUSE_L03",
+      "version": 1,
+      "type": "house",
+      "name": "Dom L – dwie strefy",
+      "size": "L",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 7,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "wardrobe",
+              "x": 11,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 10,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 4,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 3,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "anchor": {
+                "x": 6,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "living",
+              "anchor": {
+                "x": 7,
+                "y": 12
+              },
+              "access": "Z4",
+              "functions": [
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 6,
+              "w": 6,
+              "h": 1
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "wardrobe",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_large",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "SHOP_S01",
+      "version": 1,
+      "type": "shop",
+      "name": "Sklep mały",
+      "size": "S",
+      "width": 5,
+      "height": 6,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 6
+      },
+      "entry": {
+        "x": 2,
+        "y": 5
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 11
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "counter",
+              "x": 5,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 7,
+              "y": 1,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "sales",
+              "anchor": {
+                "x": 6,
+                "y": 9
+              },
+              "access": "Z0",
+              "functions": [
+                "buy",
+                "sell"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 3,
+                "y": 4
+              },
+              "access": "Z2",
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "counter",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "SHOP_M01",
+      "version": 1,
+      "type": "shop",
+      "name": "Sklep standardowy",
+      "size": "M",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "counter",
+              "x": 6,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 9,
+              "y": 9,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "sales",
+              "anchor": {
+                "x": 8,
+                "y": 10
+              },
+              "access": "Z0",
+              "functions": [
+                "buy",
+                "sell"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 3,
+                "y": 4
+              },
+              "access": "Z2",
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 5,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 5,
+              "w": 3,
+              "h": 1
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "counter",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "SHOP_L01",
+      "version": 1,
+      "type": "shop",
+      "name": "Sklep duży",
+      "size": "L",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 7,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "counter",
+              "x": 7,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 10,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 11,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 2,
+              "y": 11,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "sales",
+              "anchor": {
+                "x": 9,
+                "y": 12
+              },
+              "access": "Z0",
+              "functions": [
+                "buy",
+                "sell"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 4,
+                "y": 4
+              },
+              "access": "Z2",
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "counter",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "SMITHY_S01",
+      "version": 1,
+      "type": "smithy",
+      "name": "Kuźnia mała",
+      "size": "S",
+      "width": 5,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 7
+      },
+      "entry": {
+        "x": 2,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "forge",
+              "x": 6,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "anvil",
+              "x": 3,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 6,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "anchor": {
+                "x": 5,
+                "y": 5
+              },
+              "access": "Z2",
+              "functions": [
+                "smith",
+                "heat_metal",
+                "craft"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "forge",
+          "version": 1
+        },
+        {
+          "id": "anvil",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "SMITHY_M01",
+      "version": 1,
+      "type": "smithy",
+      "name": "Kuźnia standardowa",
+      "size": "M",
+      "width": 6,
+      "height": 8,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "forge",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "anvil",
+              "x": 4,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 8,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "weapon_rack",
+              "x": 3,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "anchor": {
+                "x": 6,
+                "y": 6
+              },
+              "access": "Z2",
+              "functions": [
+                "smith",
+                "heat_metal",
+                "craft"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "forge",
+          "version": 1
+        },
+        {
+          "id": "anvil",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "weapon_rack",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "SMITHY_L01",
+      "version": 1,
+      "type": "smithy",
+      "name": "Kuźnia duża",
+      "size": "L",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "entry": {
+        "x": 3,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 7,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "forge",
+              "x": 10,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "anvil",
+              "x": 4,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "anvil",
+              "x": 8,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 10,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "weapon_rack",
+              "x": 3,
+              "y": 12,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "anchor": {
+                "x": 7,
+                "y": 7
+              },
+              "access": "Z2",
+              "functions": [
+                "smith",
+                "heat_metal",
+                "craft"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "forge",
+          "version": 1
+        },
+        {
+          "id": "anvil",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "weapon_rack",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "BAKERY_M01",
+      "version": 1,
+      "type": "bakery",
+      "name": "Piekarnia",
+      "size": "M",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "stove",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 8,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "counter",
+              "x": 6,
+              "y": 8,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "kitchen",
+              "anchor": {
+                "x": 6,
+                "y": 3
+              },
+              "access": "Z2",
+              "functions": [
+                "cook",
+                "craft"
+              ]
+            },
+            {
+              "type": "sales",
+              "anchor": {
+                "x": 8,
+                "y": 11
+              },
+              "access": "Z0",
+              "functions": [
+                "buy",
+                "sell"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "APOTHECARY_M01",
+      "version": 1,
+      "type": "apothecary",
+      "name": "Apteka",
+      "size": "M",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "alchemy",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "counter",
+              "x": 6,
+              "y": 8,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "anchor": {
+                "x": 6,
+                "y": 3
+              },
+              "access": "Z2",
+              "functions": [
+                "alchemy"
+              ]
+            },
+            {
+              "type": "sales",
+              "anchor": {
+                "x": 8,
+                "y": 11
+              },
+              "access": "Z0",
+              "functions": [
+                "buy",
+                "sell"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "alchemy",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 1
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "WAREHOUSE_M01",
+      "version": 1,
+      "type": "warehouse",
+      "name": "Magazyn",
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 10,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 12,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 4,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 10,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 12,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 2,
+              "y": 14,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 8,
+                "y": 10
+              },
+              "access": "Z2",
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Portal pieszy; wielokafelkowe wrota i dostawy wozem wymagają rozszerzenia silnika."
+      ]
+    },
+    {
+      "id": "INN_M01",
+      "version": 1,
+      "type": "inn",
+      "name": "Karczma – do adaptacji",
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "stove",
+              "x": 11,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 11,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bar",
+              "x": 7,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 3,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 2,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 11,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 10,
+              "y": 12,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "kitchen",
+              "anchor": {
+                "x": 9,
+                "y": 3
+              },
+              "access": "Z2",
+              "functions": [
+                "cook"
+              ]
+            },
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 4,
+                "y": 4
+              },
+              "access": "Z2",
+              "functions": [
+                "storage"
+              ]
+            },
+            {
+              "type": "tavern_hall",
+              "anchor": {
+                "x": 8,
+                "y": 15
+              },
+              "access": "Z0",
+              "functions": [
+                "serve",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        },
+        {
+          "id": "bar",
+          "version": 1
+        },
+        {
+          "id": "table_large",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Wzorzec do indywidualnej adaptacji."
+      ]
+    },
+    {
+      "id": "TENEMENT_S01",
+      "version": 1,
+      "type": "tenement",
+      "name": "Kamienica – dwie kondygnacje",
+      "size": "S",
+      "width": 6,
+      "height": 8,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 4,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 3,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 3,
+                "y": 4
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        },
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 4,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 3,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 5,
+                "y": 4
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": []
+        }
+      ],
+      "stairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 9,
+              "y": 12
+            },
+            "arrival": {
+              "x": 9,
+              "y": 13
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 9,
+              "y": 12
+            },
+            "arrival": {
+              "x": 9,
+              "y": 13
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 1
+        },
+        {
+          "id": "chair",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 1
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "rooms": [
+    {
+      "id": "ROOM_BEDROOM",
+      "version": 1,
+      "type": "bedroom",
+      "min": [
+        3,
+        3
+      ],
+      "max": [
+        5,
+        6
+      ],
+      "functions": [
+        "sleep"
+      ]
+    },
+    {
+      "id": "ROOM_KITCHEN",
+      "version": 1,
+      "type": "kitchen",
+      "min": [
+        3,
+        3
+      ],
+      "max": [
+        6,
+        8
+      ],
+      "functions": [
+        "cook"
+      ]
+    },
+    {
+      "id": "ROOM_SALES",
+      "version": 1,
+      "type": "sales",
+      "min": [
+        4,
+        4
+      ],
+      "max": [
+        12,
+        16
+      ],
+      "functions": [
+        "buy",
+        "sell"
+      ]
+    },
+    {
+      "id": "ROOM_WORKSHOP",
+      "version": 1,
+      "type": "workshop",
+      "min": [
+        4,
+        4
+      ],
+      "max": [
+        12,
+        16
+      ],
+      "functions": [
+        "craft"
+      ]
+    },
+    {
+      "id": "ROOM_STORAGE",
+      "version": 1,
+      "type": "storage",
+      "min": [
+        3,
+        4
+      ],
+      "max": [
+        16,
+        20
+      ],
+      "functions": [
+        "storage"
+      ]
+    },
+    {
+      "id": "ROOM_TAVERN_HALL",
+      "version": 1,
+      "type": "tavern_hall",
+      "min": [
+        6,
+        6
+      ],
+      "max": [
+        16,
+        20
+      ],
+      "functions": [
+        "serve",
+        "eat"
+      ]
+    }
+  ],
+  "infrastructure": [
+    {
+      "id": "INF_WELL",
+      "version": 1,
+      "type": "well",
+      "name": "Studnia",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "stations": [
+        {
+          "action": "draw_water",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ]
+    },
+    {
+      "id": "INF_TREE",
+      "version": 1,
+      "type": "tree",
+      "name": "Drzewo",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "stations": []
+    },
+    {
+      "id": "INF_BENCH",
+      "version": 1,
+      "type": "bench",
+      "name": "Ławka publiczna",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 3
+      },
+      "stations": [
+        {
+          "action": "sit",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        }
+      ]
+    }
+  ],
+  "terrain": [
+    {
+      "id": "TERRAIN_GRASS",
+      "version": 1,
+      "tile": "grass"
+    },
+    {
+      "id": "TERRAIN_MEADOW",
+      "version": 1,
+      "tile": "meadow"
+    },
+    {
+      "id": "TERRAIN_WATER",
+      "version": 1,
+      "tile": "water"
+    },
+    {
+      "id": "TERRAIN_ROAD",
+      "version": 1,
+      "tile": "road"
+    },
+    {
+      "id": "TERRAIN_WOOD",
+      "version": 1,
+      "tile": "wood"
+    },
+    {
+      "id": "TERRAIN_STONE",
+      "version": 1,
+      "tile": "stone"
+    }
+  ],
+  "fortifications": [
+    {
+      "id": "FORT_WALL_F1",
+      "version": 1,
+      "type": "wall",
+      "class": "F1",
+      "thickness": 1,
+      "runtimeSupported": false
+    },
+    {
+      "id": "FORT_WALL_F2",
+      "version": 1,
+      "type": "wall",
+      "class": "F2",
+      "thickness": 2,
+      "runtimeSupported": false
+    },
+    {
+      "id": "FORT_WALL_F3",
+      "version": 1,
+      "type": "wall",
+      "class": "F3",
+      "thickness": 3,
+      "runtimeSupported": false
+    },
+    {
+      "id": "FORT_WALL_F4",
+      "version": 1,
+      "type": "wall",
+      "class": "F4",
+      "thickness": 4,
+      "runtimeSupported": false
+    }
+  ]
+}
