@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import {readFile} from "node:fs/promises";
+import {validateMap,validateWorld} from "../engine/mfs/validator.js";
+const fetcher=async p=>{try{const s=await readFile(new URL("../"+p,import.meta.url),"utf8");return {ok:true,json:async()=>JSON.parse(s)};}catch{return {ok:false};}};
+const root="maps/",dir=root+"mfs_test_001/",m=JSON.parse(await readFile(new URL("../"+dir+"manifest.json",import.meta.url),"utf8"));
+const d=Object.fromEntries(await Promise.all(Object.entries(m.files).map(async ([k,p])=>[k,await (await fetcher(dir+p)).json()])));
+d.interiors=await Promise.all(m.interiors.map(async p=>(await fetcher(dir+p)).json()));
+const [v]=await validateWorld(root,fetcher);assert.equal(v.report.counts.ERROR,0);assert.equal(v.report.playable,true);assert.equal(v.report.readyForPublication,false);
+assert.equal(validateMap({...m,status:"draft"},{terrain:d.terrain,parcels:d.parcels},"parcels").report.counts.ERROR,0);
+const bad=(code,change)=>{const mm=structuredClone(m),dd=structuredClone(d);change(mm,dd);const r=validateMap(mm,dd).report;assert.equal(r.playable,false);assert.ok(r.entries.some(e=>e.severity==="ERROR"&&e.code===code),code);};
+bad("MFS_SCHEMA",m=>m.schemaVersion="2");bad("MFS_REF",(m,d)=>d.parcels[1].id=d.parcels[0].id);bad("PDS_OVERLAP",(m,d)=>d.parcels[1].geometry.x=14);bad("RDS_NETWORK",(m,d)=>d.roads[0].geometry.width=2);bad("BDS_LIMIT",(m,d)=>d.buildings[0].geometry.w=4);bad("ISS_SCALE",(m,d)=>d.interiors[0].width=11);bad("IDS_ACCESS",(m,d)=>d.portals.pop());bad("RRS_STATION",(m,d)=>d.interiors[0].objects[0].stations[0].approach={x:2,y:3});bad("NPC_ZONE",(m,d)=>{d.npcZones[0].type="N3";d.npcZones[0].ambientSpawn=true;});
+console.log("Map Validator smoke tests passed");

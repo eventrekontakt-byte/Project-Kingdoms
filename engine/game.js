@@ -1,4 +1,5 @@
-import {loadMfsWorld,registerMfs,mfsScene} from "./mfs/core.js?v=0.3.29";
+import {validateWorld} from "./mfs/validator.js?v=0.3.30";
+import {registerMfs,mfsScene} from "./mfs/core.js?v=0.3.29";
 import {clampZoom} from "../ui/minimap.js?v=0.3.29";
 import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.29";
 import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.29";
@@ -16,8 +17,8 @@ import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,city
 import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
 import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.29";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
-let mfsTest=null,mfsError=null;
-try{const bundles=await loadMfsWorld(new URL("../maps/",import.meta.url).href);for(const bundle of bundles){registerMfs(bundle);if(bundle.manifest.mapId==="mfs_test_001")mfsTest=bundle;}}catch(error){mfsError=error;console.error("MFS Core",error);}
+let mfsTest=null,mfsError=null,mfsReports=[];
+try{const results=await validateWorld(new URL("../maps/",import.meta.url).href);for(const {report,bundle} of results){mfsReports.push(report);if(bundle){registerMfs(bundle);if(bundle.manifest.mapId==="mfs_test_001")mfsTest=bundle;}else if(report.mapId==="mfs_test_001")mfsError=new Error("Walidacja: "+report.counts.ERROR+" błędów");}}catch(error){mfsError=error;console.error("MFS Validator",error);}
 const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
 const npcs=createNPCs();state.npcs=npcs;
 // Only remembered passers-by enter a separate bounded campaign registry.
@@ -700,6 +701,14 @@ $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
 $("mfsTestBtn").disabled=!mfsTest;
+const validationSummary=$("mfsValidationSummary"),validationDetail=$("mfsValidationDetail");
+const testReport=mfsReports.find(r=>r.mapId==="mfs_test_001");
+if(testReport){
+ validationSummary.textContent="ERROR: "+testReport.counts.ERROR+" · WARNING: "+testReport.counts.WARNING+" · INFO: "+testReport.counts.INFO+" · pominięte: "+testReport.checks.filter(c=>c.status==="skipped").length;
+ validationDetail.textContent=(testReport.playable?"Poligon dopuszczony do testów.":"Mapa zablokowana.")+"\n"+testReport.checks.map(c=>c.code+": "+c.status+(c.reason?" — "+c.reason:"")).join("\n")+"\n"+testReport.entries.map(e=>e.severity+" "+e.code+" | "+e.message+(e.objectId?" | "+e.objectId:"")).join("\n");
+}else{validationSummary.textContent="Raport niedostępny";validationDetail.textContent=String(mfsError?.message||"Brak danych");}
+$("mfsReportBtn").disabled=!mfsReports.length;
+$("mfsReportBtn").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(mfsReports,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="mfs-validation-0.3.30.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $("mfsTestStatus").textContent=mfsTest?"3 działki · 1 kamienica · 3 kondygnacje · mapa JSON":("MFS niedostępny: "+(mfsError?.message||"brak mapy"));
 function travelMfs(point,label){closeNPCDialogue();minimap.resetTarget();Object.assign(state.player,point,{z:0});path=[];if(strategic.active())strategic.close();$("sidePanel").classList.remove("open");snapVisual();primePopulation();draw();notify(label);}
 $("mfsTestBtn").addEventListener("click",()=>{if(mfsTest)travelMfs(mfsTest.spawn,"Poligon MFS");});
