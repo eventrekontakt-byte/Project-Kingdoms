@@ -1,0 +1,219 @@
+{
+  "id": "mtl_gallery_001.b013.f0",
+  "buildingId": "mtl_gallery_001.b013",
+  "level": 0,
+  "width": 10,
+  "height": 12,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 10,
+    "h": 12
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b013.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 10,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b013.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 11,
+        "w": 10,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b013.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 10
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b013.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 1,
+        "w": 1,
+        "h": 10
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b013.f0.o1",
+      "type": "counter",
+      "name": "Lada",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 5,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "counter",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b013.f0.o1.s1",
+          "action": "sell",
+          "capacity": 1,
+          "approach": {
+            "x": 4,
+            "y": 6
+          }
+        },
+        {
+          "id": "mtl_gallery_001.b013.f0.o1.s2",
+          "action": "buy",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b013.f0.o2",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "shelf",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b013.f0.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b013.f0.o3",
+      "type": "chest",
+      "name": "Skrzynia",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b013.f0.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 4,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b013.f0.o4",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "templateRef": {
+        "id": "shelf",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b013.f0.o4.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 8,
+            "y": 2
+          }
+        }
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "type": "sales",
+      "anchor": {
+        "x": 6,
+        "y": 9
+      },
+      "access": "Z0",
+      "functions": [
+        "buy",
+        "sell"
+      ],
+      "id": "mtl_gallery_001.b013.f0.r1"
+    },
+    {
+      "type": "storage",
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "access": "Z2",
+      "functions": [
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b013.f0.r2"
+    }
+  ],
+  "templateRef": {
+    "id": "SHOP_S01",
+    "version": 1
+  }
+}
