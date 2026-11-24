@@ -18,12 +18,26 @@ export function drawInteriorFurniture(c,o){
  else if(["wardrobe","shelf","weapon_rack"].includes(t)){box(c,.06,.06,w-.12,h-.12,"#6d472c");box(c,.15,.15,w-.3,h-.3,"#ad7d4e");for(let y=.55;y<h-.12;y+=.55)line(c,.15,y,w-.15,y,"#61412b",.06);if(t==="wardrobe"){line(c,.5,.15,.5,h-.15,"#69452d");dot(c,.66,h*.45,.045,"#e1bc72");}else for(let y=.28;y<h-.2;y+=.55)box(c,.25,y,.46,.19,t==="weapon_rack"?"#b9b8af":"#7c9b71",null);}
  else if(["stove","forge","fireplace"].includes(t)){box(c,.05,.06,w-.1,h-.12,"#6b716e");box(c,.16,.18,w-.32,h-.36,"#363c3b");for(let x=.5;x<w;x+=1)dot(c,x,.57,.25,"#151a1c");if(t!=="stove"){dot(c,w/2,h*.65,.25,"#cc733e");dot(c,w/2,h*.65,.11,"#f4c271");}}
  else if(["chair","armchair","throne"].includes(t)){box(c,.16,.16,w-.32,h-.32,"#8a5b39");box(c,.15,h-.28,w-.3,.19,"#593921");box(c,.25,.24,w-.5,h-.55,t==="throne"?"#a75a4b":"#c2a06d");}
+ else if(["barrel","brewing_vat"].includes(t)){box(c,.08,.08,w-.16,h-.16,"#6e472d");for(let y=.3;y<h-.1;y+=.55)line(c,.1,y,w-.1,y,"#b2aba0",.08);dot(c,w/2,h/2,Math.min(w,h)*.27,t==="brewing_vat"?"#b38a4b":"#91623c");}
+ else if(["washstand","medical_bed","healing_table","medicine_cabinet","linen_cabinet","dresser","bookcase","display_case","food_rack","tool_rack","armor_rack","grain_bin","feed_trough","hay_rack","horse_stall"].includes(t)){box(c,.07,.07,w-.14,h-.14,"#684c35");box(c,.14,.14,w-.28,h-.28,["medical_bed","healing_table","linen_cabinet"].includes(t)?"#c6c6b3":t==="washstand"?"#87aeb2":t==="display_case"?"#75959d":t==="hay_rack"||t==="grain_bin"?"#c9a95b":"#a27a4d");for(let y=.45;y<h-.15;y+=.5)line(c,.18,y,w-.18,y,"#5c4a3a",.035);if(t==="washstand")dot(c,w*.5,h*.5,.26,"#b9d8db");if(t==="bookcase")for(let y=.3;y<h-.1;y+=.5)box(c,.26,y,.48,.22,"#6c8a79");}
+ else if(["sack","crate","training_dummy","kneeler","lectern","notice_board","coat_rack"].includes(t)){box(c,.12,.12,w-.24,h-.24,t==="sack"?"#c2aa79":t==="training_dummy"?"#bd9767":"#98724e");line(c,.2,.3,w-.2,.3,"#674c34",.055);if(t==="training_dummy")dot(c,w/2,.25,.15,"#d4b17f");}
  else if(t==="anvil"){box(c,.22,.22,.56,.56,"#805d3a");box(c,.12,.33,.76,.34,"#899298","#343e42");box(c,.34,.22,.36,.56,"#b0b7b8","#343e42");}
  else if(t==="altar"||t==="bath"){box(c,.08,.08,w-.16,h-.16,"#a5a19a");box(c,.22,.2,w-.44,h-.4,t==="bath"?"#74a9bd":"#dbd2b9");}
  else{box(c,.07,.07,w-.14,h-.14,"#80532f");box(c,.14,.14,w-.28,h-.28,"#b58452");for(let y=.42;y<h-.1;y+=.4)line(c,.15,y,w-.15,y,"#8c603a",.025);if(t==="chest"){line(c,.15,h*.45,w-.15,h*.45,"#4d3828",.07);box(c,w*.42,h*.4,.16,.18,"#d6b56f");}if(t==="workbench"||t==="alchemy"){box(c,.24,.24,.25,.5,"#787f80");dot(c,w-.4,.5,.16,"#7098a3");}}
  c.restore();
 }
+
+export function drawDecoration(c,o){
+ const g=o.geometry;if(g?.type!=="rect")return;const r=o.rotation||0,swap=r%180!==0,w=swap?g.h:g.w,h=swap?g.w:g.h;c.save();c.translate(g.x+g.w/2,g.y+g.h/2);c.rotate(r*Math.PI/180);c.translate(-w/2,-h/2);
+ if(o.mount==="floor"){const color=o.type==="floor_mat"?"#9d9668":o.type==="rug_long"?"#527b78":"#995b4d";box(c,.07,.07,w-.14,h-.14,color,"#564131",.025);box(c,.15,.15,w-.3,h-.3,color,"#d7bc80",.035);for(let y=.38;y<h-.2;y+=.46){line(c,w*.24,y,w*.76,y,"#d7bc80",.045);dot(c,w*.5,y,.07,"#ebd8ac");}}
+ else if(o.type==="wall_lantern"){box(c,.32,.19,.36,.55,"#493a2c");box(c,.4,.28,.2,.31,"#efbf60");dot(c,.5,.44,.09,"#ffedb0");}
+ else if(o.type==="wall_shield"){dot(c,.5,.5,.32,"#70473d");box(c,.42,.22,.16,.56,"#b8b7a8",null);dot(c,.5,.5,.1,"#ddc6a1");}
+ else{box(c,.18,.13,w-.36,h-.26,"#9b634c","#50392a");box(c,.26,.22,w-.52,h-.44,"#cfad74","#8e6846");line(c,.32,.32,w-.32,h-.32,"#6e7158",.065);}c.restore();
+}
+
 export function drawMfsInterior(c,scene,range={l:0,r:scene.width-1,t:0,b:scene.height-1}){
  const {l,r,t,b}=range;for(let y=t;y<=b;y++)for(let x=l;x<=r;x++)drawInteriorTile(c,scene.tile(x,y),x,y,scene.floorTile||"wood");
+ for(const a of scene.decorations||[])if(a.mount==="floor")drawDecoration(c,a);
  const os=new Map();for(const o of scene.objects.values())os.set(o.id,o);for(const o of os.values()){const g=o.geometry;if(g&&g.x<=r&&g.y<=b&&g.x+g.w>l&&g.y+g.h>t)drawInteriorFurniture(c,o);}
+ for(const a of scene.decorations||[])if(a.mount==="wall")drawDecoration(c,a);
 }

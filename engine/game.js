@@ -1,5 +1,5 @@
-import {drawMfsInterior} from "./mfs/interior-renderer.js?v=0.3.33.2";
-import {validateWorld} from "./mfs/validator.js?v=0.3.33.2";
+import {drawMfsInterior} from "./mfs/interior-renderer.js?v=0.3.34";
+import {validateWorld} from "./mfs/validator.js?v=0.3.34";
 import {registerMfs,mfsScene} from "./mfs/core.js?v=0.3.29";
 import {clampZoom} from "../ui/minimap.js?v=0.3.29";
 import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.29";

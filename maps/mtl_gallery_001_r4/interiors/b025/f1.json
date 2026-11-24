@@ -1,0 +1,450 @@
+{
+  "id": "mtl_gallery_001.b025.f1",
+  "buildingId": "mtl_gallery_001.b025",
+  "level": 1,
+  "width": 16,
+  "height": 20,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 20
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b025.f1.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 19,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b025.f1.o1",
+      "type": "bed_double",
+      "name": "Łóżko dwuosobowe",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 1,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 0,
+        "mode": "head"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bed_double",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b025.f1.o1.s1",
+          "action": "sleep",
+          "capacity": 2,
+          "approach": {
+            "x": 5,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.o2",
+      "type": "wardrobe",
+      "name": "Szafa",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 1,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "wardrobe",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b025.f1.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.o3",
+      "type": "stove",
+      "name": "Piec",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 8,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 1,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "stove",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b025.f1.o3.s1",
+          "action": "cook",
+          "capacity": 1,
+          "approach": {
+            "x": 12,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.o4",
+      "type": "table_large",
+      "name": "Duży stół",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 11,
+        "w": 2,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "table_large",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b025.f1.o4.s1",
+          "action": "eat",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 11
+          }
+        },
+        {
+          "id": "mtl_gallery_001.b025.f1.o4.s2",
+          "action": "eat",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.o5",
+      "type": "chair",
+      "name": "Krzesło",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "front": 0,
+        "mode": "table"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "relatedObjectId": "mtl_gallery_001.b025.f1.o4",
+      "templateRef": {
+        "id": "chair",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b025.f1.o5.s1",
+          "action": "sit",
+          "capacity": 1,
+          "approach": {
+            "x": 5,
+            "y": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.o6",
+      "type": "washstand",
+      "name": "Umywalka z misą",
+      "geometry": {
+        "type": "rect",
+        "x": 14,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "washstand",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b025.f1.o6.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.o7",
+      "type": "dresser",
+      "name": "Komoda",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 1,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "dresser",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b025.f1.o7.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 2
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b025.f1.dec1",
+      "type": "rug_large",
+      "name": "Dywan ozdobny",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 10,
+        "w": 3,
+        "h": 4
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_large",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.dec2",
+      "type": "rug_long",
+      "name": "Chodnik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 10,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_long",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.dec3",
+      "type": "wall_picture",
+      "name": "Obraz",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 10,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_picture",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.dec4",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b025.f1.dec5",
+      "type": "wall_tapestry",
+      "name": "Gobelin",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 10,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_tapestry",
+        "version": 1
+      }
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "multipurpose",
+      "anchor": {
+        "x": 8,
+        "y": 10
+      },
+      "access": "Z4",
+      "functions": [
+        "sleep",
+        "cook",
+        "eat"
+      ],
+      "id": "mtl_gallery_001.b025.f1.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "MERCHANT_HOUSE_M01",
+    "version": 1
+  }
+}

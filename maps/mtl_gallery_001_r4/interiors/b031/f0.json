@@ -1,0 +1,509 @@
+{
+  "id": "mtl_gallery_001.b031.f0",
+  "buildingId": "mtl_gallery_001.b031",
+  "level": 0,
+  "width": 16,
+  "height": 20,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 20
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b031.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 19,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b031.f0.o1",
+      "type": "lectern",
+      "name": "Pulpit",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "lectern",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o1.s1",
+          "action": "teach",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o2",
+      "type": "school_desk",
+      "name": "Ławka szkolna",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 5,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "school_desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o2.s1",
+          "action": "study",
+          "capacity": 1,
+          "approach": {
+            "x": 8,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o3",
+      "type": "school_desk",
+      "name": "Ławka szkolna",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 8,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "school_desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o3.s1",
+          "action": "study",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o4",
+      "type": "school_desk",
+      "name": "Ławka szkolna",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 11,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "school_desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o4.s1",
+          "action": "study",
+          "capacity": 1,
+          "approach": {
+            "x": 4,
+            "y": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o5",
+      "type": "school_desk",
+      "name": "Ławka szkolna",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 14,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "school_desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o5.s1",
+          "action": "study",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o6",
+      "type": "bookcase",
+      "name": "Regał z książkami",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 18,
+        "w": 3,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bookcase",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o6.s1",
+          "action": "read",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o7",
+      "type": "desk",
+      "name": "Biurko",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "desk",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o7.s1",
+          "action": "administration",
+          "capacity": 1,
+          "approach": {
+            "x": 4,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o8",
+      "type": "chair",
+      "name": "Krzesło",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 4,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "front": 0,
+        "mode": "table"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "relatedObjectId": "mtl_gallery_001.b031.f0.o7",
+      "templateRef": {
+        "id": "chair",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o8.s1",
+          "action": "sit",
+          "capacity": 1,
+          "approach": {
+            "x": 3,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.o9",
+      "type": "notice_board",
+      "name": "Tablica ogłoszeń",
+      "geometry": {
+        "type": "rect",
+        "x": 14,
+        "y": 7,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "notice_board",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b031.f0.o9.s1",
+          "action": "read",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 7
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b031.f0.dec1",
+      "type": "rug_large",
+      "name": "Dywan ozdobny",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 10,
+        "w": 3,
+        "h": 4
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_large",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.dec2",
+      "type": "rug_long",
+      "name": "Chodnik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 10,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_long",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.dec3",
+      "type": "wall_picture",
+      "name": "Obraz",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 10,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_picture",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.dec4",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b031.f0.dec5",
+      "type": "wall_tapestry",
+      "name": "Gobelin",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 10,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_tapestry",
+        "version": 1
+      }
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "classroom",
+      "anchor": {
+        "x": 8,
+        "y": 10
+      },
+      "access": "Z0",
+      "functions": [
+        "teach",
+        "study"
+      ],
+      "id": "mtl_gallery_001.b031.f0.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "SCHOOL_M01",
+    "version": 1
+  }
+}

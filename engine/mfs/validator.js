@@ -1,7 +1,8 @@
+import {decorationIssues} from "./decorations.js?v=0.3.34";
 import {roomTopology} from "./room-topology.js?v=0.3.33.2";
 import {placementIssues} from "./furniture-placement.js?v=0.3.32.2";
 import {rasterize,compileMap,VERSION} from "./core.js?v=0.3.29";
-export const VALIDATOR_VERSION="1.1.0";
+export const VALIDATOR_VERSION="1.2.0";
 export const PROFILES=["terrain","parcels","roads","fortifications","buildings","interiors","infrastructure","final"];
 const PDS={P1:[3,4,5,6],P2:[4,5,8,10],P3:[6,8,12,14],P4:[9,11,18,20],P5:[12,14,26,30],P6:[14,16,40,48]};
 const WIDTH={R1:6,R2:5,R3:3,R4:2,R5:1};
@@ -155,6 +156,7 @@ export function validateMap(m,d,profile="final"){
  });
  run("FPS_PLACEMENT",5,()=>{for(const f of list(d.interiors))for(const issue of placementIssues(f,d.portals))emit("FPS_PLACEMENT","ERROR",issue.message,"interiors/"+f.id,issue.objectId,f.id,issue.point,"FPS 1.0");},!list(d.interiors).some(f=>list(f.objects).some(o=>o.placement))?"No FPS metadata (legacy map)":undefined);
  run("RTS_TOPOLOGY",5,()=>{for(const f of list(d.interiors))if(f.roomTopologyVersion===1)for(const issue of roomTopology(f,d.portals).issues)emit("RTS_TOPOLOGY","ERROR",issue.message,"interiors/"+f.id,issue.objectId,f.id,issue.point,"RTS 1.0");},!list(d.interiors).some(f=>f.roomTopologyVersion===1)?"Legacy room anchors, no RTS data":undefined);
+ run("IDS_DECORATIONS",5,()=>{for(const f of list(d.interiors))for(const issue of decorationIssues(f,d.portals))emit("IDS_DECORATIONS","ERROR",issue.message,"interiors/"+f.id,issue.objectId,f.id,issue.point,"MDS L07");},!list(d.interiors).some(f=>Array.isArray(f.decorations))?"Legacy map, no decoration data":undefined);
  run("PORTAL_PAIR",5,()=>{
   const triggers=new Set(),endpoints=[];
   for(const p of array(d.portals,"portals.json")){id(p,"portals.json");if(!["door","stairs"].includes(p.type)||p.direction!=="both")error("PORTAL_PAIR","Portal must be paired door/stairs","portals.json",p);
@@ -181,7 +183,7 @@ export function validateMap(m,d,profile="final"){
  // is not a normal walk-through tile: walking onto it changes scenes.
  run("MFS_COMPILE",7,()=>{
   if(report.counts.ERROR){skip("IDS_ACCESS_RUNTIME","Earlier errors prevent safe compilation");return;}
-  try{bundle=compileMap({...m,status:"approved"},d);for(const f of list(d.interiors)){const scene=bundle.scenes.get(f.id);if(scene){scene.floorTile=f.floorTile;if(f.roomTopologyVersion===1)scene.roomTopology=roomTopology(f,d.portals);}}}catch(e){error("MFS_COMPILE",e.message,"manifest.json",m);return;}
+  try{bundle=compileMap({...m,status:"approved"},d);for(const f of list(d.interiors)){const scene=bundle.scenes.get(f.id);if(scene){scene.floorTile=f.floorTile;scene.decorations=f.decorations||[];if(f.roomTopologyVersion===1)scene.roomTopology=roomTopology(f,d.portals);}}}catch(e){error("MFS_COMPILE",e.message,"manifest.json",m);return;}
   const starts=new Map([[m.mapId,[bundle.spawn]]]),visited=new Map();
   for(const s of bundle.scenes.values())for(const p of s.portals.values()){if(!starts.has(p.map))starts.set(p.map,[]);starts.get(p.map).push(p);}
   for(const s of bundle.scenes.values()){

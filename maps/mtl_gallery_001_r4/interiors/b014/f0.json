@@ -1,0 +1,584 @@
+{
+  "id": "mtl_gallery_001.b014.f0",
+  "buildingId": "mtl_gallery_001.b014",
+  "level": 0,
+  "width": 12,
+  "height": 14,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 12,
+    "h": 14
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b014.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 13,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 12
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 1,
+        "h": 12
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.wall5",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 5,
+        "w": 3,
+        "h": 1
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.wall6",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 5,
+        "w": 3,
+        "h": 1
+      },
+      "kind": "partition"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b014.f0.o1",
+      "type": "counter",
+      "name": "Lada",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 6,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "counter",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o1.s1",
+          "action": "sell",
+          "capacity": 1,
+          "approach": {
+            "x": 5,
+            "y": 7
+          }
+        },
+        {
+          "id": "mtl_gallery_001.b014.f0.o1.s2",
+          "action": "buy",
+          "capacity": 1,
+          "approach": {
+            "x": 7,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o2",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "shelf",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o3",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 1,
+        "w": 3,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "shelf",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 4,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o4",
+      "type": "shelf",
+      "name": "Regał",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 1,
+        "w": 3,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "shelf",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o4.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o5",
+      "type": "chest",
+      "name": "Skrzynia",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "chest",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o5.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o6",
+      "type": "desk",
+      "name": "Biurko",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 9,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "desk",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o6.s1",
+          "action": "administration",
+          "capacity": 1,
+          "approach": {
+            "x": 10,
+            "y": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o7",
+      "type": "display_case",
+      "name": "Gablota",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 6,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "display_case",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o7.s1",
+          "action": "browse",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o8",
+      "type": "crate",
+      "name": "Skrzynia transportowa",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 4,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "crate",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o8.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 7,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.o9",
+      "type": "notice_board",
+      "name": "Tablica ogłoszeń",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "notice_board",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b014.f0.o9.s1",
+          "action": "read",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 10
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b014.f0.dec1",
+      "type": "rug_small",
+      "name": "Dywanik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 7,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_small",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.dec2",
+      "type": "rug_long",
+      "name": "Chodnik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 7,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_long",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.dec3",
+      "type": "wall_picture",
+      "name": "Obraz",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_picture",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.dec4",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [
+    {
+      "id": "mtl_gallery_001.b014.f0.cut1",
+      "kind": "open",
+      "a": {
+        "x": 4,
+        "y": 4
+      },
+      "b": {
+        "x": 4,
+        "y": 5
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.cut2",
+      "kind": "open",
+      "a": {
+        "x": 5,
+        "y": 4
+      },
+      "b": {
+        "x": 5,
+        "y": 5
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.cut3",
+      "kind": "open",
+      "a": {
+        "x": 6,
+        "y": 4
+      },
+      "b": {
+        "x": 6,
+        "y": 5
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b014.f0.cut4",
+      "kind": "open",
+      "a": {
+        "x": 7,
+        "y": 4
+      },
+      "b": {
+        "x": 7,
+        "y": 5
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "type": "sales",
+      "anchor": {
+        "x": 8,
+        "y": 10
+      },
+      "access": "Z0",
+      "functions": [
+        "buy",
+        "sell"
+      ],
+      "id": "mtl_gallery_001.b014.f0.r1"
+    },
+    {
+      "type": "storage",
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "access": "Z2",
+      "functions": [
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b014.f0.r2"
+    }
+  ],
+  "templateRef": {
+    "id": "SHOP_M01",
+    "version": 4
+  }
+}
