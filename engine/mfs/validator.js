@@ -107,7 +107,7 @@ export function validateMap(m,d,profile="final"){
   }
   const q=[...walls].find(k=>roads.has(k)&&!gates.has(k));if(q!==undefined)error("FDS_GATE","Wall blocks road outside gate","fortifications.json",null,xy(q,w));
  });
- if(stage>=3&&d.fortifications?.class!=="F0")skip("FDS_RUNTIME","Core 0.3.29 supports F0 only; defensive levels, full gate raster and traversal not implemented");
+ if(stage>=3&&d.fortifications?.class!=="F0")skip("FDS_RUNTIME","F3 ground raster, gates and bridges supported; wall-walk levels, tower interiors and full defensive traversal not implemented");
  run("BDS_CONTAIN",4,()=>{
   for(const b of array(d.buildings,"buildings.json")){
    id(b,"buildings.json");const cs=geo(b,"buildings.json");bmap.set(b.id,{b,cs});const p=pmap.get(b.parcelId);
