@@ -50,3 +50,5 @@ Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograni
 | 2026-11-25 | II-B12a WIP, czat (5) | 28 modeli skontrolowanych, 25 zmienionych; 29 przesunięć, izolowane 35→3, granice 9→1, 128 obrotów V8; 93 unikatowe ID | ../MTL_AUDIT_0.3.44_PASS2B12A.md |
 
 | 2026-11-25 | II-B12b–e WIP, czat (5) | komunikacja 35→0 / 9→0; zamki +20 pomieszczeń, 996 pól; 13 progów wyjaśnionych, 17 stref, 5 korekt programu, 10 domów poprawionych; 110 ID | ../MTL_AUDIT_0.3.44_PASS2B12B_E.md |
+
+**Dopisek — potwierdzenie po pełnym regresie:** Regres po B12e potwierdzony: 163/163 modeli, 110 nakładkowych, 229 kondygnacji, 609 pomieszczeń, 2585 obiektów, 5164 dekoracje, 2906 stanowisk, 916 obrotów bez błędów w wykonanych kontrolach; izolacja 0, granice 0, nierozstrzygnięte sygnały przekrojów i maski ścian 0. Pozostały dokładnie 33 zgłoszenia wymiarowe w 25 modelach (138 bez takich zgłoszeń). Dane: templates/mtl/ids-regression-after-b12e.json, raport docs/MTL_AUDIT_0.3.44_PASS2B12B_E.md. Rozstrzygnąć skończoną listę korekt/indywidualnych wyjątków; nie wracać do B11. r14 bez zmian, r15 nieopublikowana.
