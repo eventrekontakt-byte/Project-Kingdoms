@@ -5,7 +5,7 @@ Offline 2D fantasy RPG and kingdom simulation — projekt rozwijany etapami zgod
 ## Stan: Alpha 0.3.44 — audyt MTL, etap I
 Pierwszy uruchamialny etap: mapa 2D, ruch, kolizje, wnętrze warowni, trzy kondygnacje, dwie klatki schodowe, kamera, zoom, trasa automatyczna, sterowanie dotykowe i klawiaturą, podstawowy zegar oraz lokalny zapis.
 
-**To nadal wersja rozwojowa.** Seria 0.3.x rozszerza MFS, walidator, Map Viewer i bibliotekę ręcznych szablonów MTL. Galeria r11 (128 budynków, 163 kondygnacje wnętrz) pozostaje w odbiorze, nie jest mapą produkcyjną. Rozwój DNS jest wstrzymany do stabilizacji mapy referencyjnej; postać, walka, gospodarka i polityka pozostają do kolejnych etapów. Szczegóły: docs/CHANGELOG.md i docs/DNS-ARCHITECTURE.md.
+**To nadal wersja rozwojowa.** Seria 0.3.x rozszerza MFS, walidator, Map Viewer i bibliotekę ręcznych szablonów MTL. Galeria r14 (163 szablony, 229 kondygnacji wnętrz) pozostaje w odbiorze, nie jest mapą produkcyjną. Rozwój DNS jest wstrzymany do stabilizacji mapy referencyjnej; postać, walka, gospodarka i polityka pozostają do kolejnych etapów. Szczegóły: docs/CHANGELOG.md i docs/DNS-ARCHITECTURE.md.
 
 ## Uruchomienie
 - GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root). Po publikacji uruchom adres wskazany przez GitHub Pages.
@@ -39,3 +39,6 @@ Pierwszy uruchamialny etap: mapa 2D, ruch, kolizje, wnętrze warowni, trzy kondy
 0.1 fundamenty → 0.2 świat i eksploracja → 0.3 postać i walka → 0.4 gospodarka → 0.5 budownictwo → 0.6 żyjący świat → 0.7 wojsko i polityka → 0.8 magia i religia → 0.9 integracja → 1.0 wydanie.
 
 Gra powstaje jako oddzielny projekt; archiwalny Universal Engine jest wyłącznie źródłem rozwiązań technicznych.
+
+## Pamięć produkcyjna
+Nowy czat: rozpocznij od [CHAT_HANDOVER.md](docs/memory/CHAT_HANDOVER.md) oraz [WORK_RULES.md](docs/memory/WORK_RULES.md). Aktualny [stan projektu](docs/memory/PROJECT_STATE.md), [backlog](docs/memory/BACKLOG.md), [plan](docs/memory/ROADMAP.md), [decyzje](docs/memory/DECISIONS.md) i [dziennik](docs/memory/DEVELOPMENT_LOG.md).
