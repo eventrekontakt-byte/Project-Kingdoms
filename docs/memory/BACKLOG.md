@@ -9,8 +9,8 @@
 | QA-001 | P0 | Rzeczywisty Node: tests/mtl-r14.mjs oraz właściwa regresja r15; jeżeli brak środowiska zgłosić, nie udawać wyniku. |
 | QA-002 | P0 | Testy przeglądarki, Android (priorytet), offline i Pages; rzeczywiste wyniki. |
 | MTL-006 | P0 przed integracją | Odbiór końcowy r15 według MDS/MFS, wyjątki i klasyfikacje zatwierdzone (D010); zakres katalogowy zamknięty (zamrożona referencja); pozostałe warunki decyzji oraz wizualne i techniczne bramki otwarte; 0 ERROR/0 WARNING final MFS nie zastępuje odbioru. |
-| CITY-001a | Zrealizowana w danych r1 | D012–D015 + D016; mapa 96/72/24, 79 budynków, 127 kondygnacji, 400 deklarowanych miejsc snu, 55 elementów FDS. Pozostałe kwestie rozstrzygać przy konkretnych testach, nie wracać do mikroakceptacji. |
-| CITY-001b | P0 | Mapa city_001 r1 w review, core F0-only: implementacja kompatybilnego F3, test pełny MFS/Node/przeglądarka/Android/offline/Pages, wizualny odbiór, połączenia wyjść, migracja ID/zapisów; zachować legacy. NPC tła zgodnie D015, DNS wstrzymany. |
+| CITY-001a | Zrealizowana w danych r2 | D012–D017; 96/72/24, 79 budynków, 127 kondygnacji, 400 miejsc snu, 22 przecinające się drogi, wejścia N/E/S/W. R1 zachowana. |
+| CITY-001b | P0 | Mapa city_001 r2 review; odbiór wizualny, road017 RDS_STYLE, pełny MFS i runtime F3, testy Node/przeglądarka/Android/offline/Pages, połączenia wyjść i migracja. Zachować legacy, DNS wstrzymany. |
 | DNS-001 | wstrzymane | Po odbiorze i stabilizacji mapy referencyjnej. |
 
-Następna partia: testowalny runtime F3 i odbiór miasta, bez ponawiania koncepcji. R15 zamrożona, dług odbiorowy w ../MTL_R15_CLOSURE_0.3.44.md.
+Następna partia: odbiór wizualny r2, konkretne korekty i runtime F3, bez ponawiania koncepcji. R15 zamrożona, dług odbiorowy w ../MTL_R15_CLOSURE_0.3.44.md.

@@ -43,3 +43,6 @@ Data 2026-11-25; użytkownik zaakceptował skorygowane podejście po wskazaniu p
 
 ## D016 — delegowanie realizacji miasta
 2026-11-25; użytkownik polecił zakończyć mikroakceptacje i stworzyć mapę w pełni na bazie MTL i zatwierdzonych ustaleń. Realizować większe partie samodzielnie, zapisywać checkpointy bez przymusowej zmiany czatu; zgłaszać rzeczywiste blokery. D012–D015 pozostają. CITY-001 r1 zapisane w review; wybór modeli/położenia i konkretne korekty asystenta opisane w [raporcie](../CITY_001_R1_BUILD_REPORT.md). Nie jest to akceptacja nieprzeprowadzonych testów, zmiana MDS/MFS, automatyczna migracja ani publikacja produkcyjna.
+
+## D017 — organiczne miasta
+2026-11-25; użytkownik wskazał potrzebę organicznej urbanistyki, przecinających się ulic i wejść w różnych kierunkach, potwierdził realizację r2. Przyjęto zasadę różnorodnych kwartałów i frontów w czterech orientacjach, w granicach MFS/BDS; r1 zachowana. Szczegółowe wybory realizacyjne i otwarte testy w [raporcie r2](../CITY_001_R2_BUILD_REPORT.md). Nie jest to końcowy odbiór r2.
