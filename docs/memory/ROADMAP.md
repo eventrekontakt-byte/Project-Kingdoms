@@ -3,7 +3,8 @@ Aktualizacja: 2026-11-25. Plan operacyjny wynikający z istniejącego raportu, n
 
 ## Najbliższa ścieżka
 1. [x] Alpha 0.3.44 Pass I / r14 — audyt techniczny.
-2. [ ] Alpha 0.3.44 Pass II — indywidualna kontrola 67 modeli, weryfikacja heurystyk, układy funkcjonalne, tereny wiejskie, semantyka, podziemia i wyposażenie.
+2. [x] Alpha 0.3.44 Pass II-A — triage 67/67 modeli i indywidualne zalecenia wg MDS.
+   - [ ] Pass II-B — weryfikacja geometrii, funkcji i klasyfikacji, przebudowa układów, logistyka, semantyka, podziemia i wyposażenie.
 3. [ ] Kolejne rewizje MTL wg wyników kontroli; zachować archiwum.
 4. [ ] Odbiór biblioteki MTL wg MDS; rzeczywiste testy i akceptacja.
 5. [ ] Projekt nowego Miasta 1 wg MDS, z kolejnymi bramkami odbioru.

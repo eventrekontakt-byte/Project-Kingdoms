@@ -1,5 +1,5 @@
 # Przekazanie do następnego czatu
-Aktualizacja: 2026-11-25, czat (4). Punkt startowy: Alpha 0.3.44 / MTL r14 / Audit Pass II jeszcze do wykonania.
+Aktualizacja: 2026-11-25, czat (4). Punkt startowy: Alpha 0.3.44 / MTL r14 / Audit Pass II-A zakończony (triage 67/67); II-B do wykonania.
 
 ## Procedura wznawiania
 1. Połącz się z GitHub eventrekontakt-byte/Project-Kingdoms i sprawdź aktualny HEAD main. Nie ufaj wyłącznie numerowi w README ani streszczeniu rozmowy.
@@ -9,9 +9,9 @@ Aktualizacja: 2026-11-25, czat (4). Punkt startowy: Alpha 0.3.44 / MTL r14 / Aud
 5. Po etapie uaktualnij stan, backlog, log i to przekazanie; przy nowych decyzjach także rejestr i plan.
 
 ## Bezpośredni następny krok
-MTL-001: odczytać raport 67 modeli z templates/mtl/audit-candidates-0.3.44.json, porównać z MDS §§50–61, rozróżnić błędne heurystyki i rzeczywiste braki. Następnie przejść do zmian układów i wyposażenia w kolejnej rewizji, zachowując r14. Szczegóły: ../MTL_AUDIT_0.3.44_PASS1.md.
+MTL-001/002: rozpocząć Pass II-B według ../MTL_AUDIT_0.3.44_PASS2A.md. Najpierw rzeczywiste braki programu i klasyfikacja F/H: koszary, lecznice, ratusz, SP_KEEP_VAULT; następnie układy S (karczmy, więzienia, domy). Odczytać geometrię i katalog r14, zaprojektować następną rewizję, nie nadpisywać r14. MDS §51: kuchnia w keep dodatkowa, mieszkanie i reprezentacja obowiązkowe.
 Nie wdrażać DNS ani nowych niezwiązanych mechanik na tym etapie. Nie uznawać r14 za odebraną mapę.
-Nie odzyskano dosłownego końca rozmowy (3); repozytorium i raporty są podstawą odzyskania stanu. Poza dokumentacją pamięci w czacie (4) nie zmieniano kodu ani nie przeprowadzono nowych testów.
+Nie odzyskano dosłownego końca rozmowy (3); repozytorium i raporty są podstawą odzyskania stanu. W czacie (4) dodano pamięć oraz raport Pass II-A; nie zmieniano kodu/map ani nie przeprowadzono nowych testów silnika.
 
 ## Polecenie startowe
 „Kontynuuj produkcję Project Kingdoms. Odczytaj docs/memory/CHAT_HANDOVER.md i WORK_RULES.md z gałęzi main, a następnie wznow pracę.”

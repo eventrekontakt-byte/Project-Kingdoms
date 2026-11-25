@@ -4,7 +4,7 @@ Ostatni commit funkcjonalny: ac670f9f5fc2cd78efb86e107e3133c850627117 (Alpha 0.3
 Gałąź: main. Gra offline 2D fantasy RPG + symulacja królestwa, rozwijana hybrydowo, oddzielnie od Universal Engine.
 
 ## Aktualny etap
-MTL Audit Pass II — do wykonania. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
+MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii do wykonania. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
 - 163 szablony, 229 kondygnacji, 230 scen galerii wraz z zewnętrzną, 2491 stanowisk interakcji.
 - 161 zmienionych modeli, 191 dodanych mebli, 218 dodanych i 224 zastąpione dekoracje.
 - 67 modeli do indywidualnej kontroli; 8 modeli z heurystycznymi brakami funkcji (nie są to automatycznie błędy MDS).
@@ -21,3 +21,5 @@ Istnieje eksploracja 2D, ruch/kolizje, wnętrza i kondygnacje, kamera, zoom, aut
 - [Walidacja r14](../../maps/mtl_gallery_001_r14/validation/final-report.json)
 - [DNS](../DNS-ARCHITECTURE.md)
 - [Przekazanie](CHAT_HANDOVER.md), [Backlog](BACKLOG.md), [Zasady](WORK_RULES.md).
+
+- [Pass II-A — indywidualne rozstrzygnięcia](../MTL_AUDIT_0.3.44_PASS2A.md). Brak zmian map/runtime; r14 pozostaje ostatnią rewizją. Klasyfikacja nie oznacza naprawy ani odbioru.

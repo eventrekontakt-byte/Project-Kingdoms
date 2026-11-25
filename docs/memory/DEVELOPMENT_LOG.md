@@ -11,4 +11,6 @@ Skrócony dziennik checkpointów; pełna historia kodu w Git, szczegółowe zmia
 | 2026-11-25 | 0.3.44 | MTL r14, Pass I: 161 poprawionych modeli, walidacja statyczna; otwarty Pass II | ac670f9f5fc2cd78efb86e107e3133c850627117 |
 | 2026-11-25 | Dokumentacja | Czat (4): odzyskano stan z GitHub, wdrożono pamięć produkcyjną i monitor; bez zmiany wersji gry | bieżący commit dokumentacyjny |
 
+| 2026-11-25 | 0.3.44 Pass II-A | Triage 67/67 modeli według MDS; brak zmian w mapach, test kompletności ID; brak nowych testów runtime | ../MTL_AUDIT_0.3.44_PASS2A.md |
+
 Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograniczenia i następny krok. Wpisy dopisywać bez usuwania historii.
