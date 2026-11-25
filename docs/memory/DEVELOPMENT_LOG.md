@@ -52,3 +52,7 @@ Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograni
 | 2026-11-25 | II-B12b–e WIP, czat (5) | komunikacja 35→0 / 9→0; zamki +20 pomieszczeń, 996 pól; 13 progów wyjaśnionych, 17 stref, 5 korekt programu, 10 domów poprawionych; 110 ID | ../MTL_AUDIT_0.3.44_PASS2B12B_E.md |
 
 **Dopisek — potwierdzenie po pełnym regresie:** Regres po B12e potwierdzony: 163/163 modeli, 110 nakładkowych, 229 kondygnacji, 609 pomieszczeń, 2585 obiektów, 5164 dekoracje, 2906 stanowisk, 916 obrotów bez błędów w wykonanych kontrolach; izolacja 0, granice 0, nierozstrzygnięte sygnały przekrojów i maski ścian 0. Pozostały dokładnie 33 zgłoszenia wymiarowe w 25 modelach (138 bez takich zgłoszeń). Dane: templates/mtl/ids-regression-after-b12e.json, raport docs/MTL_AUDIT_0.3.44_PASS2B12B_E.md. Rozstrzygnąć skończoną listę korekt/indywidualnych wyjątków; nie wracać do B11. r14 bez zmian, r15 nieopublikowana.
+
+
+## Checkpoint II-B12f — WIP (czat 6)
+II-B12f WIP: 33 pozycji zamkniętej listy; 12 korekt w 10 modelach, 12 indywidualnych propozycji wyjątków do akceptacji, 9 nadal wymagających korekty; 60 obrotów kondygnacji sprawdzonych w V8 dla zmienionych modeli (FPS, RTS, dekoracje, kolizje, dojścia, izolacja i granice). Nie uruchamiano Node, przeglądarki, Android ani pełnego MFS. r14 bez zmian; r15 nieopublikowana. Nie powtarzać II-B11. Szczegóły w templates/mtl/pass2b12f-candidates.json.
