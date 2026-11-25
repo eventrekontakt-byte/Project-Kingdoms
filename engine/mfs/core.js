@@ -100,7 +100,7 @@ export function portalLanes(p){
 function pointIndex(s,p){coord(p);check(p.x>=0&&p.x<s.width&&p.y>=0&&p.y<s.height,"point outside "+s.id);return p.y*s.width+p.x;}
 const dirs=[[1,0],[-1,0],[0,1],[0,-1]];
 function accessible(s,a,b){const start=pointIndex(s,a),end=pointIndex(s,b);if(s.blocked(a.x,a.y)||s.blocked(b.x,b.y))return false;
- const seen=new Set([start]),q=[start];for(let i=0;i<q.length;i++){const n=q[i];if(n===end)return true;const x=n%s.width,y=Math.floor(n/s.width);for(const [dx,dy] of dirs){const xx=x+dx,yy=y+dy,k=yy*s.width+xx;if(!s.blocked(xx,yy)&&!seen.has(k)){seen.add(k);q.push(k);}}}return false;}
+ const seen=new Set([start]),q=[start];for(let i=0;i<q.length;i++){const n=q[i];if(n===end)return true;const x=n%s.width,y=Math.floor(n/s.width);for(const [dx,dy] of dirs){const xx=x+dx,yy=y+dy,k=yy*s.width+xx;if(!s.blocked(xx,yy)&&!s.portals.has(k)&&(!s.groundFortifications||Math.abs(s.elevation[k]-s.elevation[n])<=1)&&!seen.has(k)){seen.add(k);q.push(k);}}}return false;}
 export function compileMap(m,data){
  check(m?.schemaVersion===VERSION&&m.mdsVersion==="1.0","unsupported schema/MDS");
  check(m.sourceType==="manual"&&["published","approved"].includes(m.status),"unapproved map");
@@ -120,7 +120,18 @@ export function compileMap(m,data){
  for(const r of arr(data.roads,"roads")){record(r);check(({R1:6,R2:5,R3:3,R4:2,R5:1})[r.class]===r.width,"bad road width");roads.add(r.id);const cs=geom(s,r);for(const k of cs){check(!occupied.has(k),"road crosses parcel");check(!SOLID.has(s.tiles[k]),"road crosses obstacle");roadCells.add(k);}paint(s,cs,"road");s.records.set(r.id,r);}
  for(const p of parcels.values()){check(arr(p.accessRoadIds,"parcel roads").length>0&&p.accessRoadIds.every(id=>roads.has(id)),"invalid road reference "+p.id);
   check([...p.cells].some(k=>dirs.some(([dx,dy])=>{const x=k%s.width+dx,y=Math.floor(k/s.width)+dy;return x>=0&&x<s.width&&y>=0&&y<s.height&&roadCells.has(y*s.width+x);})),"parcel has no road access "+p.id);}
- check(data.fortifications?.class==="F0"&&arr(data.fortifications.elements,"fortifications").length===0,"fortifications not supported by core yet");
+ const fort=data.fortifications,elements=arr(fort?.elements,"fortifications");
+ check(["F0","F3"].includes(fort.class),"unsupported fortification class");
+ check(fort.class!=="F0"||elements.length===0,"F0 must be empty");
+ const fortSolid=new Set(),gateCells=new Set(),bridgeCells=new Set();
+ for(const e of elements){record(e);const cells=geom(s,e);s.records.set(e.id,e);check(["wall","tower","gate","bridge","special"].includes(e.kind),"unsupported fortification element "+e.id);
+  if(e.kind==="wall"||e.kind==="tower"){for(const k of cells){check(!occupied.has(k),"fortification on parcel "+e.id);fortSolid.add(k);}}
+  if(e.kind==="gate"||e.kind==="bridge"){check(roads.has(e.roadId),"fortification without road "+e.id);for(const k of cells)(e.kind==="gate"?gateCells:bridgeCells).add(k);}
+ }
+ for(const k of fortSolid){check(!roadCells.has(k)||gateCells.has(k)||bridgeCells.has(k),"fortification blocks road at "+k);s.tiles[k]="wall";}
+ for(const e of elements){const cells=geom(s,e);if(e.kind==="bridge")paint(s,cells,"wood");if(e.kind==="gate"){for(const k of cells){s.tiles[k]="door";s.doors.set(k,{id:e.id,name:e.name,initial:e.initialState==="closed"?"closed":"open",gate:true});}}}
+ s.worldExits=arr(m.worldExits||[],"worldExits").map(e=>({...e}));s.groundFortifications=fort.class==="F3";
+
  const buildings=new Map(),built=new Set();
  for(const b of arr(data.buildings,"buildings")){record(b);const cs=geom(s,b),p=parcels.get(b.parcelId);check(p,"unknown parcel "+b.parcelId);
   for(const k of cs){check(p.cells.has(k)&&!built.has(k)&&!SOLID.has(s.tiles[k]),"building collision/outside parcel "+b.id);built.add(k);}
@@ -135,7 +146,7 @@ export function compileMap(m,data){
   check(arr(b.floorIds,"building floors").includes(f.id),"floor not declared");
   const xs=[...b.cells].map(k=>k%s.width),ys=[...b.cells].map(k=>Math.floor(k/s.width)),minX=Math.min(...xs),minY=Math.min(...ys);
   check(f.width===2*(Math.max(...xs)-minX+1)&&f.height===2*(Math.max(...ys)-minY+1),"ISS size mismatch "+f.id);
-  const q=newScene(f.id,f.width,f.height,f.level,b.name+" — poziom "+f.level,"void");
+  const q=newScene(f.id,f.width,f.height,f.level,b.name+" — poziom "+f.level,"void");q.floorTile=f.floorTile;q.decorations=f.decorations||[];
   const mask=rasterize(f.geometry,f.width,f.height),expected=new Set();
   for(const k of b.cells){const x=2*(k%s.width-minX),y=2*(Math.floor(k/s.width)-minY);for(let j=0;j<2;j++)for(let i=0;i<2;i++)expected.add((y+j)*q.width+x+i);}
   check(mask.size===expected.size&&[...mask].every(k=>expected.has(k)),"ISS mask mismatch "+f.id);
@@ -178,6 +189,8 @@ export function compileMap(m,data){
  }
  const spawn=arr(m.spawnPoints,"spawnPoints").find(p=>p.role==="default");check(spawn&&spawn.sceneId===s.id,"missing default spawn");record(spawn);check(!s.blocked(spawn.x,spawn.y)&&!s.portals.has(pointIndex(s,spawn)),"bad spawn");
  for(const p of s.places)check(accessible(s,spawn,p),"unreachable exterior door");
+ for(const e of s.worldExits){check(pointIndex(s,e)>=0&&accessible(s,spawn,e),"unreachable world exit "+e.direction);}
+
  return {manifest:m,scenes:all,spawn:{map:s.id,floor:0,x:spawn.x,y:spawn.y},parcels,buildings};
 }
 const REQUIRED=["terrain","parcels","roads","fortifications","buildings","infrastructure","npcZones","portals"];
