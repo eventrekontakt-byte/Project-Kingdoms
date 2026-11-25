@@ -122,8 +122,8 @@
       "tile": "meadow",
       "geometry": {
         "type": "rect",
-        "x": 157,
-        "y": 90,
+        "x": 119,
+        "y": 83,
         "w": 8,
         "h": 10
       },
@@ -134,13 +134,13 @@
         "state": "growing",
         "farmId": "city_001.farm1",
         "access": {
-          "x": 161,
-          "y": 99
+          "x": 123,
+          "y": 92
         },
         "approaches": [
           {
-            "x": 161,
-            "y": 99
+            "x": 123,
+            "y": 92
           }
         ],
         "rowSpacing": 2
