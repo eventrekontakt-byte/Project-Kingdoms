@@ -4,7 +4,7 @@ Ostatni commit wydania mapy r14: ac670f9f5fc2cd78efb86e107e3133c850627117 (Alpha
 Gałąź: main. Gra offline 2D fantasy RPG + symulacja królestwa, rozwijana hybrydowo, oddzielnie od Universal Engine.
 
 ## Aktualny etap
-MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B12a zapisany, II-B12b otwarty. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
+MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B12b–e zapisane; końcowa lista IDS otwarta. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
 - 163 szablony, 229 kondygnacji, 230 scen galerii wraz z zewnętrzną, 2491 stanowisk interakcji.
 - 161 zmienionych modeli, 191 dodanych mebli, 218 dodanych i 224 zastąpione dekoracje.
 - 67 modeli do indywidualnej kontroli; 8 modeli z heurystycznymi brakami funkcji (nie są to automatycznie błędy MDS).
@@ -76,3 +76,6 @@ Końcowy przegląd II-B11: 163/163 modeli, 79 nakładkowych + 84 r14, 229 kondyg
 
 ## II-B12a (WIP)
 II-B12a: 28 modeli przejść/izolowanych pól przejrzanych, 25 zmienionych, 29 przesunięć mebli i ich dekoracji; 35→3 izolowane pola, 9→1 zajętych odcinków RTS. 128 obrotów V8 bez błędów w wykonanych kontrolach. Bez nowych/usuniętych obiektów, zmiany geometrii, pokojów, portali i silnika. 93 unikatowe ID nakładkowe (14 nowych względem 79), 163 modeli łącznie. r14 bez zmian, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B12A.md). II-B12b: HOUSE_S04/S05, APOTHECARY_M01 (po 1 izolowanym polu), INN_M01 (1 zajęty odcinek RTS) — indywidualne rozstrzygnięcie, bez wymuszania zera; 29 obwiedni pokojów 26 modeli według IDS §50, cztery piętra dwóch zamków; następnie pełne właściwe bramki IDS, przekroje, pojemność, klasyfikacja, Z0–Z5 i wyjątki. B13 integracja, B14 QA; pełny MFS, Node, Android, offline, Pages, logistyka, większe jednostki i wizualny odbiór otwarte. Nie wracać do masowego meblowania.
+
+## II-B12b–e (WIP)
+II-B12b–e zapisane: izolowane pola 35→0, zajęte granice 9→0; zamki M/L +20 funkcjonalnych pomieszczeń, +20 obiektów, odzyskano 996 pól z maski ścian, wszystkie 4 piętra poniżej 45% (próg audytu); 13 pomiarów progów wyjaśnionych, 17 realnych stref otwartych, 5 korekt nazw, 10 domów z poprawionymi sypialniami i zachowanymi miejscami snu. 110 unikatowych ID nakładkowych, 163 modele ogółem. Globalny przebieg po B12c 916 obrotów, zero błędów BDS/kolizji/izolacji/granic, pełny regres po B12d/e otwarty. [Raport](../MTL_AUDIT_0.3.44_PASS2B12B_E.md). Zamknąć pozostałą skończoną listę wymiarów: 43 zgłoszenia w 35 modelach po B12d minus 10 domów B12e, pełny regres. Nie wymuszać podziałów wyjątkowych hal, uzasadnić indywidualnie i uzyskać akceptację; zwykłe pomieszczenia skorygować. SAC_TEMPLE_L01 +1: ciągła oś 4 pól, 2×2 spójna odnoga, sygnał szerokości wyjaśniony. Klasyfikacja depozyt/sztab i kontekst FDS; końcowe bramki IDS, B13 integracja, B14 QA. r14 bez zmian, r15 nieopublikowana. Pełny MFS/Node, Android, offline, Pages, prawa dostępu, większe jednostki, odbiór wizualny otwarte. Nie wracać do masowego meblowania.
