@@ -32,3 +32,5 @@ Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograni
 | 2026-11-25 | II-B8a WIP | Wielopolowy portal, MTL/FPS/RTS/IDS/viewer; regresja V8 poligonu, 12 nowych i 652 zgodne stare orientacje | ../MFS_WIDE_PORTALS_0.3.44.md |
 
 | 2026-11-25 | II-B8b review | 16 szerokich wejść, 64 kompilacje, 372 pola przejścia, 88 obrotów kondygnacji; 56 unikatowych kandydatów | ../MTL_AUDIT_0.3.44_PASS2B8B.md |
+
+| 2026-11-25 | II-B9 review | 9 wersji mebli; 28 modeli, 196 obrotów V8; 74 unikatowe kandydaty; klasyfikacja BDS do rozstrzygnięcia | ../MTL_AUDIT_0.3.44_PASS2B9.md |

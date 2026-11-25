@@ -15,3 +15,6 @@ Mierzalne wskaźniki zastępcze: liczba zakończonych partii produkcyjnych w cza
 
 ### Kolejna obserwacja — 2026-11-25, czat (4), II-B8b
 8 zakończonych partii II-B (II-B8 podzielony na 2 checkpointy), 56 unikatowych kandydatów. W tej partii 16 modeli zastąpiono nowszymi, nie dodawano ID. Obciążenie szacunkowe wysokie, rosnące; pojemność pozostała nieustalona. Zapis i kompilacje V8 zadziałały; brak nowego zgłoszenia awarii aplikacji. Zalecany nowy czat przed kolejnym dużym etapem. Brak pomiaru limitu czatu.
+
+### Kolejna obserwacja — 2026-11-25, czat (4), II-B9
+9 zakończonych partii II-B (II-B8 dwa checkpointy), 74 unikatowe kandydaty. W tej partii 28 zmienionych modeli, 18 nowych ID. Obciążenie orientacyjnie wysokie, rosnące; pozostała pojemność nieustalona. Zapis i testy V8 zadziałały. Brak nowego zgłoszenia awarii; zalecany nowy czat przed dużym etapem monumentalnym. Nie ma rzeczywistego pomiaru pojemności.

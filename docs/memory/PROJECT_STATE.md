@@ -52,3 +52,6 @@ II-B8a: kod wielopolowych progów, MTL, walidacja i viewer; pozytywna regresja V
 
 ## Pass II-B8b (review)
 II-B8 zakończony w zakresie mechanizmu i migracji kandydatów: 16 modeli II-B7 zastąpiono nowszymi z II-B8b; 15 wejść 2/4 i 1 wejście 1/2, 64 kompilacje instancji i 372 pola przejścia sprawdzone, 88 obrotów kondygnacji, wszystkie meble i dekoracje zachowane. 56 unikatowych kandydatów. r14 niezmieniona, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B8B.md).
+
+## Pass II-B9 (review)
+II-B9: 9 wersjonowanych definicji wyposażenia, 28 zaktualizowanych modeli, 74 unikatowych kandydatów (18 nowych ID), 196 obrotów V8, 38 zmian funkcji pokojów, 13 nieprawidłowych stanowisk drabin wyłączono. SP_PORT: +29/-34 dekoracje. Zachowano typy BDS; proponowane podtypy depozytu i sztabu wymagają akceptacji, nabrzeże portu otwarte. Nowe akcje opisowe, nie działające procesy. r14 bez zmian, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B9.md).
