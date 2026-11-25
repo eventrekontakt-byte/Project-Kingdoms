@@ -1,6 +1,6 @@
 import {drawUndergroundObject} from "../../engine/mfs/underground-renderer.js?v=0.3.43";
 import {drawRuralRegion,drawRuralObject} from "../../engine/mfs/rural-areas.js?v=0.3.42";
-import {revisionChoices,revisionLabel,revisionSelection} from "./revision-menu.js?v=0.3.43";
+import {revisionChoices,revisionLabel,revisionSelection} from "./revision-menu.js?v=0.3.44";
 import {drawMfsInterior} from "../../engine/mfs/interior-renderer.js?v=0.3.43";
 import {LAYERS,PALETTE,loadRegistry,loadRevision,makeScene,sceneOptions,hits,fit,zoomAt,tile,cell,distance} from "./model.js?v=0.3.43";
 const $=id=>document.getElementById(id),canvas=$("map"),ctx=canvas.getContext("2d"),base=new URL("../../maps/",import.meta.url).href;

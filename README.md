@@ -2,7 +2,7 @@
 
 Offline 2D fantasy RPG and kingdom simulation — projekt rozwijany etapami zgodnie z GDD 1.0.
 
-## Stan: Alpha 0.3.43 — budynki specjalne i podziemia
+## Stan: Alpha 0.3.44 — audyt MTL, etap I
 Pierwszy uruchamialny etap: mapa 2D, ruch, kolizje, wnętrze warowni, trzy kondygnacje, dwie klatki schodowe, kamera, zoom, trasa automatyczna, sterowanie dotykowe i klawiaturą, podstawowy zegar oraz lokalny zapis.
 
 **To nadal wersja rozwojowa.** Seria 0.3.x rozszerza MFS, walidator, Map Viewer i bibliotekę ręcznych szablonów MTL. Galeria r11 (128 budynków, 163 kondygnacje wnętrz) pozostaje w odbiorze, nie jest mapą produkcyjną. Rozwój DNS jest wstrzymany do stabilizacji mapy referencyjnej; postać, walka, gospodarka i polityka pozostają do kolejnych etapów. Szczegóły: docs/CHANGELOG.md i docs/DNS-ARCHITECTURE.md.

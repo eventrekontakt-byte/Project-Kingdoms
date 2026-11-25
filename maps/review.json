@@ -106,6 +106,12 @@
       "manifest": "underground_hideout_001/manifest.json",
       "profile": "final",
       "name": "Podziemna kryjówka"
+    },
+    {
+      "mapId": "mtl_gallery_001",
+      "mapRevision": 14,
+      "manifest": "mtl_gallery_001_r14/manifest.json",
+      "profile": "final"
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "models": 163,
+  "floors": 229,
+  "changedModels": 161,
+  "furnitureAdded": 191,
+  "decorationsAdded": 218,
+  "decorationsReplaced": 224,
+  "modelsWithManualReview": 67,
+  "missingBefore": 13,
+  "missingAfter": 8,
+  "rotationCount": 916,
+  "rotationIssues": 0,
+  "stagedFloorHashesVerified": 229,
+  "allMapLayerHashesVerified": true,
+  "stage": "pass-1",
+  "status": "review",
+  "next": "individual structural and program revisions"
+}
