@@ -112,6 +112,12 @@
       "mapRevision": 14,
       "manifest": "mtl_gallery_001_r14/manifest.json",
       "profile": "final"
+    },
+    {
+      "mapId": "mtl_gallery_001",
+      "mapRevision": 15,
+      "manifest": "mtl_gallery_001_r15/manifest.json",
+      "profile": "final"
     }
   ]
 }
