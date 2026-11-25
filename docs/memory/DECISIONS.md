@@ -25,3 +25,6 @@ Data 2026-11-25; użytkownik zaakceptował skorygowane podejście po wskazaniu p
 
 ## D010 — indywidualne wyjątki IDS i klasyfikacje r15
 2026-11-25; status: zatwierdzone przez użytkownika, źródło: bezpośrednia odpowiedź MTL-006. E01–E14 oraz C01–C02 (wszystkie 16/16) zatwierdzone zgodnie z rekomendacją i warunkami odbioru; uwagi: brak. Szczegółowy zakres i indywidualny rejestr: [pakiet decyzji r15](../MTL_R15_DECISIONS_0.3.44.md). Wyjątki dotyczą tylko określonych modeli/poziomów/typów/kotwic; C01 deposit_house przy shop, C02 military_command przy hall z warunkami BDS/FDS. Nie zmieniać standardów globalnie. Zgoda projektowa nie jest końcowym odbiorem r15 ani zaliczeniem bramek, uprawnień, logistyki czy mechanik runtime. Użytkownik polecił zapisać decyzje i nie rozpoczynać kolejnej partii.
+
+## D011 — zamknięcie zakresu katalogowego r15
+2026-11-25; źródło: polecenie użytkownika zakończyć r15 i przejść następnie do projektowania Miasta 1. Decyzja operacyjna: zamrożona biblioteka referencyjna r15 / review; kolejna partia koncepcyjna miasta. Nie interpretować polecenia jako zwolnienia z MDS/MFS, zatwierdzenia nieprzeprowadzonych testów lub zgody na produkcyjną publikację; zaległości pozostają otwarte przed produkcyjną integracją. [Protokół](../MTL_R15_CLOSURE_0.3.44.md). Bez zmian map/kodu; projektowania nie rozpoczęto.

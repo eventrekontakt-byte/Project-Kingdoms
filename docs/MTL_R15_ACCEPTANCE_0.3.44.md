@@ -1,6 +1,6 @@
 # MTL r15 — protokół odbioru technicznego (review)
 
-Data: 2026-11-25. Stan: **review**, nie zatwierdzenie produkcyjne.
+Data: 2026-11-25. Stan: **zamrożona referencja / review**, nie zatwierdzenie produkcyjne. Aktualny status: [protokół zamknięcia zakresu](MTL_R15_CLOSURE_0.3.44.md). Poniższy checkpoint historyczny.
 
 
 ## Checkpoint II-B12h–B14 — r15 review (czat 6, 2026-11-25)
@@ -8,6 +8,9 @@ Lista 33: 19 korekt, 14 uzasadnionych wyjątków proponowanych do akceptacji, 0 
 
 ## Bramki
 - Katalog i skala instancji, kolizje, FPS, RTS, dekoracje, portale, sieć dróg, działki, kompilacja MFS: pozytywne w wykonanych kontrolach V8 i profilu final.
-- Wyjątki: lista 14 z indywidualnymi uzasadnieniami w pass2b12h-candidates.json; decyzja użytkownika otwarta. Nie zmieniono standardu IDS.
+- Wyjątki: lista 14 z indywidualnymi uzasadnieniami w pass2b12h-candidates.json; decyzje użytkownika E01–E14 i C01–C02 zapisane w D010 (16/16), z warunkami odbioru. Nie zmieniono standardu IDS.
 - Nie uznawać testów V8 za uruchomienie aplikacji Node/Android. Nie testowano publikacji Pages ani offline. Kontrole pominięte przez walidator jawnie zapisane w JSON.
 - Nie zatwierdzono użytkowania produkcyjnego; nie modyfikowano świata ani zapisów.
+
+## Zamknięcie zakresu r15
+Zamrożono bibliotekę referencyjną; projektowe decyzje przyjęte, pozostałe bramki jawnie otwarte. Szczegóły i ograniczenia: [MTL_R15_CLOSURE_0.3.44.md](MTL_R15_CLOSURE_0.3.44.md). Nie zmieniono statusu manifestu ani readyForPublication/playable.

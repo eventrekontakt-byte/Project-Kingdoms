@@ -70,3 +70,5 @@ Lista 33: 19 korekt, 14 uzasadnionych wyjątków proponowanych do akceptacji, 0 
 - 2026-11-25 | MTL-006: przygotowano pakiet 14 wyjątków IDS i 2 klasyfikacji BDS/FDS; 16 oczekuje decyzji. Bez zmian map/katalogu/walidatora, bez nowych testów runtime. Raport: ../MTL_R15_DECISIONS_0.3.44.md.
 
 - 2026-11-25 | MTL-006: użytkownik zatwierdził E01–E14 i C01–C02 (16/16), uwagi: brak; zachowano wszystkie warunki odbioru. D010 i raport decyzji zaktualizowane; bez zmian kodu/map/katalogu/walidatorów i nowych testów. STOP na polecenie użytkownika.
+
+- 2026-11-25 | MTL r15 zamrożona referencja / review. Statyczna kontrola 12 modeli/17 kondygnacji, 14 pokojów E01–E14, C01/C02, E04 198-18=180; zapisany final report i manifest zgodne. Brak rzeczywistego Node/Chromium z powodu niedostępnego pobrania repozytorium. Pełny odbiór otwarty; bez zmian kodu/map i rozpoczęcia miasta. Raport ../MTL_R15_CLOSURE_0.3.44.md.
