@@ -72,6 +72,40 @@
       "mapRevision": 12,
       "manifest": "mtl_gallery_001_r12/manifest.json",
       "profile": "final"
+    },
+    {
+      "mapId": "mtl_gallery_001",
+      "mapRevision": 13,
+      "manifest": "mtl_gallery_001_r13/manifest.json",
+      "profile": "final"
+    },
+    {
+      "mapId": "underground_cave_001",
+      "mapRevision": 1,
+      "manifest": "underground_cave_001/manifest.json",
+      "profile": "final",
+      "name": "Jaskinia Źródeł"
+    },
+    {
+      "mapId": "underground_mine_001",
+      "mapRevision": 1,
+      "manifest": "underground_mine_001/manifest.json",
+      "profile": "final",
+      "name": "Kopalnia Żelaznego Grzbietu"
+    },
+    {
+      "mapId": "underground_catacomb_001",
+      "mapRevision": 1,
+      "manifest": "underground_catacomb_001/manifest.json",
+      "profile": "final",
+      "name": "Katakumby Zapomnianych"
+    },
+    {
+      "mapId": "underground_hideout_001",
+      "mapRevision": 1,
+      "manifest": "underground_hideout_001/manifest.json",
+      "profile": "final",
+      "name": "Podziemna kryjówka"
     }
   ]
 }

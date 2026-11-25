@@ -33,7 +33,7 @@ export async function loadRevision(base,e,fetcher=fetch){
 }
 export function cell(x,y,w,h){return Number.isInteger(x)&&Number.isInteger(y)&&x>=0&&y>=0&&x<w&&y<h?y*w+x:null;}
 export function bounds(c,w){let x=Infinity,y=Infinity,r=-1,b=-1;for(const k of c){x=Math.min(x,k%w);y=Math.min(y,Math.floor(k/w));r=Math.max(r,k%w);b=Math.max(b,Math.floor(k/w));}return {x,y,w:r-x+1,h:b-y+1};}
-export function sceneOptions(p){return [{id:p.manifest.mapId,label:"Zewnętrze — "+p.manifest.name},...list(p.data.interiors).map(f=>({id:f.id,label:(list(p.data.buildings).find(b=>b.id===f.buildingId)?.name||f.buildingId)+" · poziom "+f.level}))];}
+export function sceneOptions(p){return [{id:p.manifest.mapId,label:(p.manifest.underground?"Podziemia — ":"Zewnętrze — ")+p.manifest.name},...list(p.data.interiors).map(f=>({id:f.id,label:(list(p.data.buildings).find(b=>b.id===f.buildingId)?.name||f.buildingId)+" · poziom "+f.level}))];}
 export function makeScene(p,id){
  const m=p.manifest,d=p.data,f=id===m.mapId?null:list(d.interiors).find(f=>f.id===id);
  if(id!==m.mapId&&!f)throw Error("Nieznana scena");
