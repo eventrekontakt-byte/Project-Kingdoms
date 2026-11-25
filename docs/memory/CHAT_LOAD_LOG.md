@@ -36,3 +36,6 @@ Użytkownik zgłosił przeciążenie (4) po ostatnim zapisanym II-B10b: 10 zako�
 
 ### Kolejna obserwacja — 2026-11-25, czat (5), II-B11c
 3 zapisane checkpointy produkcyjne (B11 WIP), 79 unikatowych kandydatów, 22 zaktualizowane modele w tym czacie. II-B11c: 7 modeli, 48 obrotów V8, zapis nakładki i raportu udany; bez zgłoszonej awarii aplikacji. Obciążenie orientacyjne umiarkowane, rosnące; brak pomiaru kontekstu i progu awarii. Kontynuować małymi partiami; checkpoint aktualny.
+
+### Kolejna obserwacja — 2026-11-25, czat (5), II-B11 FINAL
+4 zapisane checkpointy (3 partie wyposażenia + pełny przegląd), 79 unikatowych kandydatów, 163 modele zbadane w 916 obrotach kondygnacji. W tym czacie 22 modele zaktualizowano przed audytem. Użytkownik wskazał powielenie prac; skorygowano harmonogram. Pierwsza próba audytu przerwana przez brak structuredClone w V8, ponowna zakończona powodzeniem. Raport i pamięć zapisane; brak zgłoszenia awarii. Obciążenie orientacyjne wysokie z uwagi na odczyty licznych nakładek, kodu i pełnego raportu; bez telemetrii kontekstu. Zalecany nowy czat przed obszernym II-B12.
