@@ -26,3 +26,6 @@ Wszystkie 4 modele w `templates/mtl/pass2b2-candidates.json` obok 4 z II-B1; 32 
 
 ## Checkpoint II-B3 — najnowszy
 3 modele w pass2b3-candidates.json obok 8 z II-B1/B2. Raport ../MTL_AUDIT_0.3.44_PASS2B3.md. Dokończyć INN_L01 (wejście parteru: x10,y23, pole przybycia x10,y22; nie zabudowywać). Następnie duże domy i rezydencje kupieckie; kontrola szerokości korytarzy, klasyfikacji i dalsza integracja r15. Cele otwarte, blokady runtime niewdrożone. Node, Android, Pages, pełny MFS i odbiór wizualny nadal otwarte. Nie nadpisywać r14.
+
+## Checkpoint II-B4 — najnowszy
+5 modeli w `templates/mtl/pass2b4-candidates.json` obok 11 z II-B1/B2/B3. Raport ../MTL_AUDIT_0.3.44_PASS2B4.md. RUR_HOUSE_L01, biblioteka, szkoły, łaźnie, archiwum; potem weryfikacja procesów i logistyki. Przed integracją r15 sprawdzić szerokości, wymiary IDS i Z0–Z5. Nie integrować bez pełnej walidacji. Node, Android, Pages i wizualny odbiór nadal otwarte; r14 niezmieniona. Użytkownik wybrał kontynuację czatu (4) mimo wysokiego obciążenia.

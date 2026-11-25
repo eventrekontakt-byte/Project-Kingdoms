@@ -23,3 +23,5 @@ Aktualizacja: 2026-11-25. Wszystkie poniższe zadania pozostają otwarte, chyba 
 
 
 **Checkpoint II-B3:** SP_INN_CELLAR, PRISON_M01, SP_PRISON_DEEP zapisane. Dokończyć INN_L01 (wejście parteru: x10,y23, pole przybycia x10,y22; nie zabudowywać). Następnie duże domy i rezydencje kupieckie; kontrola szerokości korytarzy, klasyfikacji i dalsza integracja r15. Drzwi zamykane cel wymagają wsparcia silnika. Pełne testy i odbiór otwarte.
+
+**Checkpoint II-B4:** INN_L01, LARGE_HOUSE_M01, LARGE_HOUSE_M02, MERCHANT_HOUSE_M01, MERCHANT_HOUSE_M02 zapisane. RUR_HOUSE_L01, biblioteka, szkoły, łaźnie, archiwum; potem weryfikacja procesów i logistyki. Przed integracją r15 sprawdzić szerokości, wymiary IDS i Z0–Z5. Pełne testy i odbiór otwarte.
