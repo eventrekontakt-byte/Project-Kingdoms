@@ -4,7 +4,7 @@ Ostatni commit wydania mapy r14: ac670f9f5fc2cd78efb86e107e3133c850627117 (Alpha
 Gałąź: main. Gra offline 2D fantasy RPG + symulacja królestwa, rozwijana hybrydowo, oddzielnie od Universal Engine.
 
 ## Aktualny etap
-MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B11a zapisany. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
+MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B11b zapisany. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
 - 163 szablony, 229 kondygnacji, 230 scen galerii wraz z zewnętrzną, 2491 stanowisk interakcji.
 - 161 zmienionych modeli, 191 dodanych mebli, 218 dodanych i 224 zastąpione dekoracje.
 - 67 modeli do indywidualnej kontroli; 8 modeli z heurystycznymi brakami funkcji (nie są to automatycznie błędy MDS).
@@ -64,3 +64,6 @@ II-B10b: 5 modeli (trzy zamki, krypta, skarbiec), 39→110 pomieszczeń, 242→3
 
 ## Pass II-B11a (WIP)
 Czat (5). Cztery modele wojskowe i mieszkalne w templates/mtl/pass2b11a-candidates.json; +13 mebli, +33 dekoracje, 50→63 stanowiska, 16 obrotów V8 bez zgłoszeń. 79 unikatowych kandydatów; r14 bez zmian; r15 nieopublikowana. II-B11 nadal WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B11A.md).
+
+## Pass II-B11b (WIP)
+II-B11b: 11 modeli z B2–B4, +51 mebli, +165 dekoracji, 246→301 stanowisk, 84 obroty V8 bez zgłoszeń. 79 unikatowych kandydatów; B11a+B11b: 15 modeli, +64 meble, +198 dekoracji, +68 stanowisk, 100 obrotów. Jedna cela PRISON_M01 bez dodatkowej ławy (brak bezpiecznej pozycji). r14 bez zmian, r15 nieopublikowana. B11 nadal WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B11B.md).
