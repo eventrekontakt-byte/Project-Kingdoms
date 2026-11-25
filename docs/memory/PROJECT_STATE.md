@@ -55,3 +55,6 @@ II-B8 zakończony w zakresie mechanizmu i migracji kandydatów: 16 modeli II-B7 
 
 ## Pass II-B9 (review)
 II-B9: 9 wersjonowanych definicji wyposażenia, 28 zaktualizowanych modeli, 74 unikatowych kandydatów (18 nowych ID), 196 obrotów V8, 38 zmian funkcji pokojów, 13 nieprawidłowych stanowisk drabin wyłączono. SP_PORT: +29/-34 dekoracje. Zachowano typy BDS; proponowane podtypy depozytu i sztabu wymagają akceptacji, nabrzeże portu otwarte. Nowe akcje opisowe, nie działające procesy. r14 bez zmian, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B9.md).
+
+## Pass II-B10a (WIP)
+II-B10a: sąd i trzy świątynie, 4 modele, 20→49 pomieszczeń, 172→218 stanowisk, +30 mebli, +44 dekoracje, 0 usuniętych, 40 obrotów V8. 75 unikatowych kandydatów; r14 bez zmian. B10 nadal WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B10A.md).
