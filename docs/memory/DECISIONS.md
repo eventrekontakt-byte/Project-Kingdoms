@@ -28,3 +28,6 @@ Data 2026-11-25; użytkownik zaakceptował skorygowane podejście po wskazaniu p
 
 ## D011 — zamknięcie zakresu katalogowego r15
 2026-11-25; źródło: polecenie użytkownika zakończyć r15 i przejść następnie do projektowania Miasta 1. Decyzja operacyjna: zamrożona biblioteka referencyjna r15 / review; kolejna partia koncepcyjna miasta. Nie interpretować polecenia jako zwolnienia z MDS/MFS, zatwierdzenia nieprzeprowadzonych testów lub zgody na produkcyjną publikację; zaległości pozostają otwarte przed produkcyjną integracją. [Protokół](../MTL_R15_CLOSURE_0.3.44.md). Bez zmian map/kodu; projektowania nie rozpoczęto.
+
+## D012 — CITY-001a.01 karta Miasta 1
+2026-11-25; użytkownik zatwierdził: średnie miasto, 192×192, 96 działek, populacja docelowa 400, specjalizacja handlowo-rzemieślnicza, F3 + twierdza; uwagi brak. MDS §17/70: 72/24 (75%); zgodność dokumentacyjna §3.1, 6, 19, 37, 43–44, 70–73. Nie oznacza odbioru mapy, pojemności ani akceptacji topografii. Polecenie przejść do 02 bez programowania i mapy. [Karta](../CITY_001a_01_CONCEPT.md).
