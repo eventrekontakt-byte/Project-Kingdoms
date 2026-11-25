@@ -1,5 +1,5 @@
 # Przekazanie do następnego czatu
-Aktualizacja: 2026-11-25, czat (5). Punkt startowy: Alpha 0.3.44 / MTL r14 / II-B11a zapisany; II-B11b następny. Najnowszy checkpoint na końcu pliku.
+Aktualizacja: 2026-11-25, czat (5). Punkt startowy: Alpha 0.3.44 / MTL r14 / II-B11b zapisany; II-B11c następny. Najnowszy checkpoint na końcu pliku.
 
 ## Procedura wznawiania
 1. Połącz się z GitHub eventrekontakt-byte/Project-Kingdoms i sprawdź aktualny HEAD main. Nie ufaj wyłącznie numerowi w README ani streszczeniu rozmowy.
@@ -56,3 +56,6 @@ II-B10b: 5 modeli (trzy zamki, krypta, skarbiec), 39→110 pomieszczeń, 242→3
 
 ## Checkpoint II-B11a — najnowszy
 Czat (5), wznowiono od HEAD 20293c8. II-B11a: BARRACKS_S02, BARRACKS_L02, OFFICER_M01, GUARDHOUSE_L02, 13 mebli, 33 dekoracje, 50→63 stanowiska, 16 obrotów V8 bez zgłoszeń; 79 unikatowych kandydatów. Nakładka templates/mtl/pass2b11a-candidates.json po B10b; raport ../MTL_AUDIT_0.3.44_PASS2B11A.md. II-B11b: lecznice, ratusz, karczmy, więzienia, rezydencje; później pozostałe wcześniejsze wnętrza. B12: szerokości, wymiary, pojemności, proporcje ścian, klasyfikacja, Z0–Z5, widok; B13 integracja, B14 QA. B11 w toku. r14 bez zmian, r15 nieopublikowana. Node, pełny MFS, Android, offline, Pages i wizualny odbiór otwarte. Aktualizować CHAT_LOAD_LOG.md. Użytkownik zgłosił przeciążenie czatu (4); przyczyna i limit niezweryfikowane.
+
+## Checkpoint II-B11b — najnowszy
+II-B11b: 11 modeli z B2–B4, +51 mebli, +165 dekoracji, 246→301 stanowisk, 84 obroty V8 bez zgłoszeń. 79 unikatowych kandydatów; B11a+B11b: 15 modeli, +64 meble, +198 dekoracji, +68 stanowisk, 100 obrotów. Jedna cela PRISON_M01 bez dodatkowej ławy (brak bezpiecznej pozycji). r14 bez zmian, r15 nieopublikowana. B11 nadal WIP. Nakładka templates/mtl/pass2b11b-candidates.json po B11a; raport ../MTL_AUDIT_0.3.44_PASS2B11B.md. II-B11c: LIBRARY_M01, SCHOOL_M01, SP_SCHOOL, BATHHOUSE_M01, SP_BATHHOUSE, SP_ARCHIVE, RUR_HOUSE_L01 (wersja B9 i definicje v2), potem pozostałe wcześniejsze przebudowy. B12 IDS (w tym przekroje przejść, wyrównanie wyposażenia cel, pojemność i proporcje ścian), B13 integracja, B14 QA. Node, pełny MFS, Android, offline, Pages i odbiór wizualny otwarte. Pamiętać o CHAT_LOAD_LOG.md i zachowaniu najnowszych wersji nakładek.
