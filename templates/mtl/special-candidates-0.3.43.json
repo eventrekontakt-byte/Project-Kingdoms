@@ -1,0 +1,6936 @@
+{
+  "schemaVersion": "1.0.0",
+  "mdsVersion": "1.0",
+  "baseLibraryVersion": "0.12.0",
+  "status": "draft",
+  "buildings": [
+    {
+      "id": "SP_INN_CELLAR",
+      "name": "Karczma z piwnicą",
+      "type": "inn",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "bar",
+              "x": 11,
+              "y": 14,
+              "rotation": 270
+            },
+            {
+              "type": "table_large",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 7,
+              "rotation": 90
+            },
+            {
+              "type": "stove",
+              "x": 13,
+              "y": 1,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "dining_room",
+              "access": "Z0",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "serve",
+                "order",
+                "eat",
+                "sit",
+                "cook"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 11,
+              "y": 14,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_mine_lamp",
+              "x": 1,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "wine_cask",
+              "x": 14,
+              "y": 12,
+              "rotation": 90
+            },
+            {
+              "type": "wine_cask",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 14,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "bar",
+          "version": 2
+        },
+        {
+          "id": "table_large",
+          "version": 2
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "wine_cask",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_CHAPEL_CRYPT",
+      "name": "Kaplica z kryptą",
+      "type": "chapel",
+      "version": 1,
+      "size": "M",
+      "width": 6,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "crypt_altar",
+              "x": 9,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "kneeler",
+              "x": 1,
+              "y": 2,
+              "rotation": 270
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 9,
+              "rotation": 90
+            },
+            {
+              "type": "ritual_basin",
+              "x": 9,
+              "y": 5,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "ritual_hall",
+              "access": "Z0",
+              "anchor": {
+                "x": 7,
+                "y": 8
+              },
+              "functions": [
+                "pray",
+                "sit",
+                "wash"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 11,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 11,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 11,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 11,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 11,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 9,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 9,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 10,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 10,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "stone_sarcophagus",
+              "x": 9,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "crypt_altar",
+              "x": 1,
+              "y": 2,
+              "rotation": 270
+            },
+            {
+              "type": "burial_chest",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "relic_pedestal",
+              "x": 9,
+              "y": 5,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "crypt",
+              "access": "Z5",
+              "anchor": {
+                "x": 7,
+                "y": 8
+              },
+              "functions": [
+                "inspect",
+                "pray",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 11,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 11,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 11,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 11,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 11,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 9,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 9,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 10,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 10,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 2,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 2,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 9,
+              "y": 5,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 9,
+              "y": 5,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 10,
+              "y": 5,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 10,
+              "y": 5,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 6,
+              "y": 2
+            },
+            "arrival": {
+              "x": 6,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 6,
+              "y": 2
+            },
+            "arrival": {
+              "x": 6,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "crypt_altar",
+          "version": 1
+        },
+        {
+          "id": "kneeler",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "ritual_basin",
+          "version": 1
+        },
+        {
+          "id": "stone_sarcophagus",
+          "version": 1
+        },
+        {
+          "id": "burial_chest",
+          "version": 1
+        },
+        {
+          "id": "relic_pedestal",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_TEMPLE_CRYPT",
+      "name": "Świątynia grobowa",
+      "type": "temple",
+      "version": 1,
+      "size": "M",
+      "width": 10,
+      "height": 12,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 10,
+        "h": 12
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 11
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 23
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "crypt_altar",
+              "x": 1,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "kneeler",
+              "x": 1,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "ritual_basin",
+              "x": 17,
+              "y": 21,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "ritual_hall",
+              "access": "Z0",
+              "anchor": {
+                "x": 11,
+                "y": 12
+              },
+              "functions": [
+                "pray",
+                "sit",
+                "wash"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 19,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 19,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 19,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 19,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 19,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 19,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 19,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_ore",
+              "x": 2,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 2,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 22,
+              "rotation": 270
+            },
+            {
+              "type": "archive_shelf",
+              "x": 18,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 17,
+              "y": 21,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 11,
+                "y": 12
+              },
+              "functions": [
+                "read",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 19,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 19,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 19,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 19,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 19,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 19,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 19,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 22,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 22,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_ore",
+              "x": 2,
+              "y": 22,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 2,
+              "y": 22,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 18,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 18,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_ore",
+              "x": 18,
+              "y": 15,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 18,
+              "y": 15,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "stone_sarcophagus",
+              "x": 1,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "crypt_altar",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "burial_chest",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "relic_pedestal",
+              "x": 17,
+              "y": 12,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "crypt",
+              "access": "Z5",
+              "anchor": {
+                "x": 11,
+                "y": 12
+              },
+              "functions": [
+                "inspect",
+                "pray",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 19,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 19,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 19,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 19,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 19,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 19,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 19,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_ore",
+              "x": 2,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 2,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 17,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 17,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_ore",
+              "x": 18,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 18,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 17,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 17,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_ore",
+              "x": 18,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 18,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 10,
+              "y": 2
+            },
+            "arrival": {
+              "x": 10,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 10,
+              "y": 2
+            },
+            "arrival": {
+              "x": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 10,
+              "y": 5
+            },
+            "arrival": {
+              "x": 10,
+              "y": 6
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 10,
+              "y": 5
+            },
+            "arrival": {
+              "x": 10,
+              "y": 6
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "crypt_altar",
+          "version": 1
+        },
+        {
+          "id": "kneeler",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "ritual_basin",
+          "version": 1
+        },
+        {
+          "id": "archive_shelf",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "stone_sarcophagus",
+          "version": 1
+        },
+        {
+          "id": "burial_chest",
+          "version": 1
+        },
+        {
+          "id": "relic_pedestal",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_KEEP_VAULT",
+      "name": "Siedziba ze skarbcem",
+      "type": "keep",
+      "version": 1,
+      "size": "M",
+      "width": 12,
+      "height": 16,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 16
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 6,
+        "y": 15
+      },
+      "interiorEntry": {
+        "x": 12,
+        "y": 31
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "guard_bench",
+              "x": 1,
+              "y": 6,
+              "rotation": 90
+            },
+            {
+              "type": "watch_desk",
+              "x": 1,
+              "y": 22,
+              "rotation": 0
+            },
+            {
+              "type": "supply_crate",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "weapon_rack",
+              "x": 1,
+              "y": 29,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "guardroom",
+              "access": "Z3",
+              "anchor": {
+                "x": 13,
+                "y": 16
+              },
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 22,
+              "rotation": 0
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 1,
+              "y": 29,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 13,
+                "y": 16
+              },
+              "functions": [
+                "read",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 22,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 22,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 23,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 23,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "vault_safe",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "vault_safe",
+              "x": 1,
+              "y": 22,
+              "rotation": 0
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 22,
+              "y": 7,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "treasury",
+              "access": "Z5",
+              "anchor": {
+                "x": 13,
+                "y": 16
+              },
+              "functions": [
+                "storage",
+                "administration",
+                "read"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 22,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 22,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 22,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 22,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 22,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            }
+          ]
+        },
+        {
+          "level": -2,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 1,
+              "y": 22,
+              "rotation": 0
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "grain_bin",
+              "x": 1,
+              "y": 29,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 13,
+                "y": 16
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -2,
+          "to": -1,
+          "a": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          }
+        },
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 12,
+              "y": 5
+            },
+            "arrival": {
+              "x": 12,
+              "y": 6
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 12,
+              "y": 5
+            },
+            "arrival": {
+              "x": 12,
+              "y": 6
+            }
+          }
+        },
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "guard_bench",
+          "version": 1
+        },
+        {
+          "id": "watch_desk",
+          "version": 1
+        },
+        {
+          "id": "supply_crate",
+          "version": 1
+        },
+        {
+          "id": "weapon_rack",
+          "version": 2
+        },
+        {
+          "id": "archive_shelf",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "vault_safe",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "grain_bin",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_PRISON_DEEP",
+      "name": "Więzienie z lochami",
+      "type": "prison",
+      "version": 1,
+      "size": "M",
+      "width": 9,
+      "height": 12,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 9,
+        "h": 12
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 11
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 23
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "guard_bench",
+              "x": 1,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "watch_desk",
+              "x": 16,
+              "y": 2,
+              "rotation": 270
+            },
+            {
+              "type": "supply_crate",
+              "x": 1,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "weapon_rack",
+              "x": 16,
+              "y": 10,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "guardroom",
+              "access": "Z3",
+              "anchor": {
+                "x": 10,
+                "y": 12
+              },
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 17,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 17,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 17,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 17,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 17,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 17,
+              "y": 20,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "guard_bench",
+              "x": 1,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "watch_desk",
+              "x": 16,
+              "y": 2,
+              "rotation": 270
+            },
+            {
+              "type": "supply_crate",
+              "x": 1,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "weapon_rack",
+              "x": 16,
+              "y": 10,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "guardroom",
+              "access": "Z3",
+              "anchor": {
+                "x": 10,
+                "y": 12
+              },
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 17,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 17,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 17,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 17,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 17,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 17,
+              "y": 20,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "detention_cot",
+              "x": 1,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "detention_cot",
+              "x": 15,
+              "y": 11,
+              "rotation": 270
+            },
+            {
+              "type": "prison_bench",
+              "x": 1,
+              "y": 15,
+              "rotation": 90
+            },
+            {
+              "type": "supply_cask",
+              "x": 16,
+              "y": 9,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "detention",
+              "access": "Z5",
+              "anchor": {
+                "x": 10,
+                "y": 12
+              },
+              "functions": [
+                "sleep",
+                "sit",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 17,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 17,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 17,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 17,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 17,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 17,
+              "y": 20,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -2,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "detention_cot",
+              "x": 1,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "detention_cot",
+              "x": 15,
+              "y": 11,
+              "rotation": 270
+            },
+            {
+              "type": "prison_bench",
+              "x": 1,
+              "y": 15,
+              "rotation": 90
+            },
+            {
+              "type": "supply_cask",
+              "x": 16,
+              "y": 9,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "detention",
+              "access": "Z5",
+              "anchor": {
+                "x": 10,
+                "y": 12
+              },
+              "functions": [
+                "sleep",
+                "sit",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 17,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 17,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 17,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 17,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 17,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 17,
+              "y": 20,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -2,
+          "to": -1,
+          "a": {
+            "trigger": {
+              "x": 9,
+              "y": 2
+            },
+            "arrival": {
+              "x": 9,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 9,
+              "y": 2
+            },
+            "arrival": {
+              "x": 9,
+              "y": 3
+            }
+          }
+        },
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 9,
+              "y": 5
+            },
+            "arrival": {
+              "x": 9,
+              "y": 6
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 9,
+              "y": 5
+            },
+            "arrival": {
+              "x": 9,
+              "y": 6
+            }
+          }
+        },
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 9,
+              "y": 2
+            },
+            "arrival": {
+              "x": 9,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 9,
+              "y": 2
+            },
+            "arrival": {
+              "x": 9,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "guard_bench",
+          "version": 1
+        },
+        {
+          "id": "watch_desk",
+          "version": 1
+        },
+        {
+          "id": "supply_crate",
+          "version": 1
+        },
+        {
+          "id": "weapon_rack",
+          "version": 2
+        },
+        {
+          "id": "detention_cot",
+          "version": 1
+        },
+        {
+          "id": "prison_bench",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_ARCHIVE",
+      "name": "Archiwum chronione",
+      "type": "library",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 14,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 1,
+              "y": 17,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "read",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 14,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 14,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 14,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 14,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 14,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 1,
+              "y": 17,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "read",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 14,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 14,
+              "y": 13,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 14,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 14,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "archive_shelf",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_SCHOOL",
+      "name": "Szkoła miejska",
+      "type": "school",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "school_desk",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "school_desk",
+              "x": 14,
+              "y": 6,
+              "rotation": 90
+            },
+            {
+              "type": "lectern",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "classroom",
+              "access": "Z1",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "study",
+                "teach",
+                "read"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 14,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "read",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_mine_lamp",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 14,
+              "y": 15,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 14,
+              "y": 15,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 14,
+              "y": 16,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_mine_lamp",
+              "x": 14,
+              "y": 16,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 10,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 10,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_cellar_key",
+              "x": 1,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_mine_lamp",
+              "x": 1,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "school_desk",
+          "version": 1
+        },
+        {
+          "id": "lectern",
+          "version": 1
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "archive_shelf",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_CLINIC",
+      "name": "Lecznica z magazynem",
+      "type": "clinic",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "medical_bed",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "medical_bed",
+              "x": 14,
+              "y": 17,
+              "rotation": 180
+            },
+            {
+              "type": "medicine_cabinet",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "healing_table",
+              "x": 13,
+              "y": 9,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "treat",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 14,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "grain_bin",
+              "x": 1,
+              "y": 14,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "medical_bed",
+          "version": 1
+        },
+        {
+          "id": "medicine_cabinet",
+          "version": 1
+        },
+        {
+          "id": "healing_table",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "grain_bin",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_BATHHOUSE",
+      "name": "Łaźnia z zapleczem",
+      "type": "bathhouse",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "bath",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "bath",
+              "x": 1,
+              "y": 16,
+              "rotation": 270
+            },
+            {
+              "type": "bench",
+              "x": 12,
+              "y": 10,
+              "rotation": 90
+            },
+            {
+              "type": "water_tub",
+              "x": 1,
+              "y": 5,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bath",
+              "access": "Z1",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "wash",
+                "sit"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 14,
+              "y": 10,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "grain_bin",
+              "x": 13,
+              "y": 2,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "bath",
+          "version": 2
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "grain_bin",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_ARENA",
+      "name": "Hala treningowa",
+      "type": "arena_hall",
+      "version": 1,
+      "size": "M",
+      "width": 12,
+      "height": 14,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 14
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 6,
+        "y": 13
+      },
+      "interiorEntry": {
+        "x": 12,
+        "y": 27
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "training_dummy",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "training_dummy",
+              "x": 1,
+              "y": 18,
+              "rotation": 270
+            },
+            {
+              "type": "weapon_rack",
+              "x": 22,
+              "y": 17,
+              "rotation": 180
+            },
+            {
+              "type": "guard_bench",
+              "x": 1,
+              "y": 7,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "training",
+              "access": "Z1",
+              "anchor": {
+                "x": 13,
+                "y": 14
+              },
+              "functions": [
+                "train",
+                "equip",
+                "sit"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 1,
+              "y": 18,
+              "rotation": 270
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "grain_bin",
+              "x": 21,
+              "y": 8,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 13,
+                "y": 14
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "training_dummy",
+          "version": 1
+        },
+        {
+          "id": "weapon_rack",
+          "version": 2
+        },
+        {
+          "id": "guard_bench",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "grain_bin",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_PORT",
+      "name": "Urząd portowy",
+      "type": "port_office",
+      "version": 1,
+      "size": "M",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 17
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "counter",
+              "x": 1,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "desk",
+              "x": 1,
+              "y": 2,
+              "rotation": 90
+            },
+            {
+              "type": "bench",
+              "x": 10,
+              "y": 7,
+              "rotation": 270
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 9,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "reception",
+              "access": "Z0",
+              "anchor": {
+                "x": 8,
+                "y": 9
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "administration",
+                "sit",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 13,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 13,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 13,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 13,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 13,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 2,
+              "rotation": 270
+            },
+            {
+              "type": "desk",
+              "x": 11,
+              "y": 5,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 8,
+                "y": 9
+              },
+              "functions": [
+                "read",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 13,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 13,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 13,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 13,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 13,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "prop_bone",
+              "x": 1,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_bone",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_bone",
+              "x": 1,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 2,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 2,
+              "y": 2,
+              "rotation": 270,
+              "hostIndex": 2,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 7,
+              "y": 2
+            },
+            "arrival": {
+              "x": 7,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 7,
+              "y": 2
+            },
+            "arrival": {
+              "x": 7,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "archive_shelf",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    },
+    {
+      "id": "SP_MINE_STORE",
+      "name": "Magazyn górniczy",
+      "type": "warehouse",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 1,
+              "y": 4,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 14,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "grain_bin",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "stone_worktable",
+              "x": 1,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "mining_tool_rack",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "ore_crate",
+              "x": 14,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "ore_crate",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workroom",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "craft",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_relic_fragment",
+              "x": 1,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 2,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 2,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "grain_bin",
+          "version": 1
+        },
+        {
+          "id": "stone_worktable",
+          "version": 1
+        },
+        {
+          "id": "mining_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "ore_crate",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building."
+      ]
+    }
+  ],
+  "furniture": [
+    {
+      "id": "stone_sarcophagus",
+      "version": 1,
+      "name": "Sarkofag kamienny",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "inspect",
+          "x": 1,
+          "y": 2,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "altar"
+    },
+    {
+      "id": "burial_chest",
+      "version": 1,
+      "name": "Skrzynia grobowa",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "chest"
+    },
+    {
+      "id": "crypt_altar",
+      "version": 1,
+      "name": "Ołtarz krypty",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "pray",
+          "x": 1,
+          "y": 2,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "altar"
+    },
+    {
+      "id": "vault_safe",
+      "name": "Sejf skarbcowy",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "strongbox"
+    },
+    {
+      "id": "wine_cask",
+      "version": 1,
+      "name": "Beczka wina",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "barrel"
+    },
+    {
+      "id": "cellar_rack",
+      "version": 1,
+      "name": "Regał piwniczny",
+      "w": 1,
+      "h": 3,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "shelf"
+    },
+    {
+      "id": "prison_bench",
+      "version": 1,
+      "name": "Ława więzienna",
+      "w": 1,
+      "h": 3,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sit",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        },
+        {
+          "action": "sit",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        },
+        {
+          "action": "sit",
+          "x": 1,
+          "y": 2,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "bench"
+    },
+    {
+      "id": "detention_cot",
+      "name": "Prycza lochu",
+      "version": 1,
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "sleep",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "art": "bed",
+      "artRef": "prison_cot"
+    },
+    {
+      "id": "archive_shelf",
+      "version": 1,
+      "name": "Regał archiwalny",
+      "w": 1,
+      "h": 3,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "read",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "bookcase"
+    },
+    {
+      "id": "stone_worktable",
+      "name": "Stół podziemny",
+      "version": 1,
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "craft",
+          "x": 2,
+          "y": 1,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "art": "bench",
+      "artRef": "stone_bench"
+    },
+    {
+      "id": "ore_crate",
+      "version": 1,
+      "name": "Skrzynia rudy",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "crate"
+    },
+    {
+      "id": "mining_tool_rack",
+      "version": 1,
+      "name": "Stojak kilofów",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 1,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "tool_rack"
+    },
+    {
+      "id": "ritual_basin",
+      "version": 1,
+      "name": "Kamienna misa",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "wash",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "bath"
+    },
+    {
+      "id": "supply_cask",
+      "version": 1,
+      "name": "Beczka zapasów",
+      "w": 1,
+      "h": 1,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "storage",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "barrel"
+    },
+    {
+      "id": "relic_pedestal",
+      "version": 1,
+      "name": "Postument relikwii",
+      "w": 2,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "inspect",
+          "x": 1,
+          "y": 2,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "altar"
+    },
+    {
+      "id": "sealing_desk",
+      "version": 1,
+      "name": "Stół pieczęci",
+      "w": 1,
+      "h": 2,
+      "blocking": true,
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "stations": [
+        {
+          "action": "administration",
+          "x": 1,
+          "y": 0,
+          "capacity": 1
+        }
+      ],
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "artRef": "desk"
+    }
+  ],
+  "decorations": [
+    {
+      "id": "wall_crypt_lamp",
+      "name": "Lampa krypty",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_lantern"
+    },
+    {
+      "id": "wall_memorial",
+      "name": "Tablica nagrobna",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_picture"
+    },
+    {
+      "id": "wall_chain",
+      "name": "Łańcuch",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_sword"
+    },
+    {
+      "id": "wall_mining_pick",
+      "name": "Kilof",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_sword"
+    },
+    {
+      "id": "wall_vault_seal",
+      "name": "Pieczęć skarbca",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_shield"
+    },
+    {
+      "id": "wall_ancient_symbol",
+      "name": "Znak starożytny",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_cross"
+    },
+    {
+      "id": "wall_damp_mark",
+      "name": "Zacieki",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_herbs"
+    },
+    {
+      "id": "wall_cellar_rope",
+      "name": "Lina piwniczna",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "wall",
+      "blocking": false,
+      "artRef": "wall_wreath"
+    },
+    {
+      "id": "crypt_mat",
+      "name": "Całun kamienny",
+      "version": 1,
+      "w": 1,
+      "h": 2,
+      "mount": "floor",
+      "blocking": false,
+      "artRef": "floor_mat"
+    },
+    {
+      "id": "cellar_mat",
+      "name": "Mata piwniczna",
+      "version": 1,
+      "w": 1,
+      "h": 2,
+      "mount": "floor",
+      "blocking": false,
+      "artRef": "reed_mat"
+    },
+    {
+      "id": "prop_bone",
+      "name": "Kość",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "carpentry_bench",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36,
+      "artRef": "prop_wood_block"
+    },
+    {
+      "id": "prop_burial_urn",
+      "name": "Urna",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "food_rack",
+        "shelf",
+        "cupboard",
+        "cellar_rack",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36,
+      "artRef": "prop_jar"
+    },
+    {
+      "id": "prop_relic_fragment",
+      "name": "Fragment relikwii",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "alchemy",
+        "display_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36,
+      "artRef": "prop_crystal"
+    },
+    {
+      "id": "prop_old_coin",
+      "name": "Stara moneta",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "size": 0.29,
+      "allowedHosts": [
+        "jewelry_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "artRef": "prop_ring",
+      "blocking": false
+    },
+    {
+      "id": "prop_ore",
+      "name": "Bryłka rudy",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "workbench",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36,
+      "artRef": "prop_iron_ingot"
+    },
+    {
+      "id": "prop_gemstone",
+      "name": "Kamień szlachetny",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "display_case",
+        "strongbox",
+        "vault_safe",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36,
+      "artRef": "prop_jewels"
+    },
+    {
+      "id": "prop_old_scroll",
+      "name": "Stary zwój",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "bookcase",
+        "archive_shelf",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk"
+      ],
+      "size": 0.36,
+      "artRef": "prop_scroll"
+    },
+    {
+      "id": "prop_wine_flask",
+      "name": "Butelka wina",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "counter",
+        "bar",
+        "display_case",
+        "shelf",
+        "cellar_rack",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36,
+      "artRef": "prop_bottle"
+    },
+    {
+      "id": "prop_cellar_key",
+      "name": "Klucz piwnicy",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "size": 0.33,
+      "allowedHosts": [
+        "reception_desk",
+        "lockbox_rack",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "artRef": "prop_key",
+      "blocking": false
+    },
+    {
+      "id": "prop_mine_lamp",
+      "name": "Lampka górnicza",
+      "version": 1,
+      "w": 1,
+      "h": 1,
+      "mount": "surface",
+      "blocking": false,
+      "allowedHosts": [
+        "table_small",
+        "table_large",
+        "side_table",
+        "reading_desk",
+        "dresser",
+        "altar",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36,
+      "artRef": "prop_candle"
+    }
+  ]
+}
