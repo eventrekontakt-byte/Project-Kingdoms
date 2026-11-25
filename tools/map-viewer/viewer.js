@@ -1,5 +1,5 @@
 import {revisionChoices,revisionLabel,revisionSelection} from "./revision-menu.js?v=0.3.38.1";
-import {drawMfsInterior} from "../../engine/mfs/interior-renderer.js?v=0.3.38";
+import {drawMfsInterior} from "../../engine/mfs/interior-renderer.js?v=0.3.39";
 import {LAYERS,PALETTE,loadRegistry,loadRevision,makeScene,sceneOptions,hits,fit,zoomAt,tile,cell,distance} from "./model.js?v=0.3.35";
 const $=id=>document.getElementById(id),canvas=$("map"),ctx=canvas.getContext("2d"),base=new URL("../../maps/",import.meta.url).href;
 const defaults=["terrain","water","parcels","roads","fortifications","buildings","vegetation","infrastructure","objects","decorations","surfaceProps","lighting","portals","stations"];
