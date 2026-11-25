@@ -4,7 +4,7 @@ Ostatni commit wydania mapy r14: ac670f9f5fc2cd78efb86e107e3133c850627117 (Alpha
 Gałąź: main. Gra offline 2D fantasy RPG + symulacja królestwa, rozwijana hybrydowo, oddzielnie od Universal Engine.
 
 ## Aktualny etap
-MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B11c zapisany. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
+MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B11 zakończony w zakresie przeglądu; II-B12 otwarty. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
 - 163 szablony, 229 kondygnacji, 230 scen galerii wraz z zewnętrzną, 2491 stanowisk interakcji.
 - 161 zmienionych modeli, 191 dodanych mebli, 218 dodanych i 224 zastąpione dekoracje.
 - 67 modeli do indywidualnej kontroli; 8 modeli z heurystycznymi brakami funkcji (nie są to automatycznie błędy MDS).
@@ -70,3 +70,6 @@ II-B11b: 11 modeli z B2–B4, +51 mebli, +165 dekoracji, 246→301 stanowisk, 84
 
 ## Pass II-B11c (WIP)
 II-B11c: 7 modeli B5 (RUR_HOUSE_L01 z B9), +36 mebli, +114 dekoracji, 116→156 stanowisk, 48 obrotów V8 bez zgłoszeń. Nowe meble nie zajmują końców roomCuts; nowe stanowiska w pokoju obiektu. Jedna przebieralnia BATHHOUSE_M01 bez dodatkowego mebla. B11a–c: 22 modele, +100 mebli, +312 dekoracji, +108 stanowisk, 148 obrotów; 79 unikatowych kandydatów. r14 bez zmian, r15 nieopublikowana, B11 WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B11C.md).
+
+## II-B11 — końcowy przegląd (review zakończony, odbiór otwarty)
+Końcowy przegląd II-B11: 163/163 modeli, 79 nakładkowych + 84 r14, 229 kondygnacji, 562 pokoje, 2565 obiektów, 5164 dekoracje, 2886 stanowisk, 916 obrotów V8, 0 błędów w wykonanych podstawowych kontrolach, 105 modeli bez sygnałów i 58 z sygnałami (nakładające się). Wszystkie wcześniejsze nakładki pokryte, 22 modele B11a–c zachowały wcześniejsze wyposażenie i geometrię. Nie zmieniano modeli ani kodu. Ogólny przegląd wyposażenia II-B11 zakończony; nie powtarzać masowego meblowania B11d/e/f. II-B12: rozstrzygnąć wyłącznie rzeczywiste problemy raportu (35 izolowanych pól w 23 modelach, 9 zajętych odcinków logicznej granicy RTS w 6 modelach, 29 obwiedni pokojów w 26 modelach, 4 piętra 2 zamków z >45% maską ścian, klasyfikacja depozytu/sztabu/wież, heurystyka reprezentacji keep), pełne właściwe bramki IDS, rzeczywiste szerokości i pojemności, strefy, wyjątki; nie traktować sygnałów jako automatycznych błędów. Potem B13 integracja r15, B14 QA i odbiór wizualny. Node, pełny MFS, Android, offline, Pages, zewnętrzna logistyka i większe jednostki otwarte. r14 bez zmian, r15 nieopublikowana. [Raport](../MTL_FINAL_REVIEW_0.3.44.md).
