@@ -2,15 +2,20 @@
 
 Offline 2D fantasy RPG and kingdom simulation — projekt rozwijany etapami zgodnie z GDD 1.0.
 
-## Stan: Alpha 0.3.28 — świat i eksploracja
+## Stan: Alpha 0.3.39 — MFS / Map Template Library
 Pierwszy uruchamialny etap: mapa 2D, ruch, kolizje, wnętrze warowni, trzy kondygnacje, dwie klatki schodowe, kamera, zoom, trasa automatyczna, sterowanie dotykowe i klawiaturą, podstawowy zegar oraz lokalny zapis.
 
-**To nadal wersja rozwojowa.** Seria 0.3.x kontynuuje eksplorację i DNS; postać, walka, gospodarka i polityka pozostają do kolejnych etapów. Szczegóły: docs/CHANGELOG.md i docs/DNS-ARCHITECTURE.md.
+**To nadal wersja rozwojowa.** Seria 0.3.x rozszerza MFS, walidator, Map Viewer i bibliotekę ręcznych szablonów MTL. Galeria r9 (110 budynków, 125 kondygnacji wnętrz) pozostaje w odbiorze, nie jest mapą produkcyjną. Rozwój DNS jest wstrzymany do stabilizacji mapy referencyjnej; postać, walka, gospodarka i polityka pozostają do kolejnych etapów. Szczegóły: docs/CHANGELOG.md i docs/DNS-ARCHITECTURE.md.
 
 ## Uruchomienie
 - GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root). Po publikacji uruchom adres wskazany przez GitHub Pages.
 - Lokalnie: uruchom serwer HTTP w katalogu repozytorium, np. `python -m http.server 8000`, i otwórz `http://localhost:8000`.
 - Nie otwieraj `index.html` przez `file://` — moduły JS i service worker wymagają serwera.
+
+## Podgląd map i testy
+- Map Viewer: `tools/map-viewer/` — domyślnie najnowsza galeria i mapa testowa; starsze rewizje po włączeniu archiwum.
+- Test regresji galerii r9: `node --experimental-default-type=module tests/mtl-r9.mjs`.
+- Status i ograniczenia: `docs/PRODUCTION_CHECKPOINT_0.3.39.md`.
 
 ## Sterowanie
 - PC: strzałki lub WASD, przytrzymanie = ciągły ruch; przeciągnij mapę, aby przesunąć kamerę; kółko myszy = zoom.
