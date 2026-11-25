@@ -1,0 +1,7820 @@
+{
+  "schemaVersion": "1.0.0",
+  "baseCatalog": "templates/mtl/catalog-v14.json",
+  "baseLibraryVersion": "0.14.0",
+  "status": "review-candidates-not-integrated",
+  "stage": "0.3.44 Pass II-B6",
+  "buildings": [
+    {
+      "id": "WORKSHOP_M01",
+      "type": "workshop",
+      "name": "Warsztat stolarski",
+      "version": 4,
+      "size": "M",
+      "width": 6,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "carpentry_bench",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 6,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "tool_rack",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 10,
+              "y": 11,
+              "rotation": 180
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 6,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 5,
+              "y": 3,
+              "rotation": 90,
+              "relatedIndex": 5
+            },
+            {
+              "type": "wood_pile",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "tool_chest",
+              "x": 4,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "lathe",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "plank_stack",
+              "x": 5,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "anchor": {
+                "x": 6,
+                "y": 8
+              },
+              "access": "Z2",
+              "functions": [
+                "craft",
+                "storage",
+                "administration",
+                "sit",
+                "turn_wood"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "hide_rug",
+              "x": 7,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "rug_long",
+              "x": 5,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_sword",
+              "x": 11,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 11,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "prop_peg",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_wood_wedge",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_tool_knife",
+              "x": 2,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_saw",
+              "x": 2,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_hammer",
+              "x": 7,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_tongs",
+              "x": 7,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_basket_small",
+              "x": 10,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 10,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_jar",
+              "x": 10,
+              "y": 12,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 10,
+              "y": 12,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 1,
+              "y": 14,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 1,
+              "y": 14,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_inkpot",
+              "x": 6,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_parchment",
+              "x": 6,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_seal",
+              "x": 6,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 6,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_tongs",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_hammer",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wood_plank",
+              "x": 8,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_chisel",
+              "x": 8,
+              "y": 1,
+              "slot": 2,
+              "rotation": 0,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_wood_plank",
+              "x": 1,
+              "y": 2,
+              "slot": 1,
+              "rotation": 0,
+              "hostIndex": 0
+            },
+            {
+              "type": "prop_wood_shavings",
+              "x": 1,
+              "y": 2,
+              "slot": 3,
+              "rotation": 0,
+              "hostIndex": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 11,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 13,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "carpentry_bench",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 2
+        },
+        {
+          "id": "tool_rack",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "chair",
+          "version": 2
+        },
+        {
+          "id": "wood_pile",
+          "version": 1
+        },
+        {
+          "id": "tool_chest",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "lathe",
+          "version": 1
+        },
+        {
+          "id": "plank_stack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Pass II-B6: obróbka drewna, toczenie i składowanie desek; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "WORKSHOP_L01",
+      "type": "workshop",
+      "name": "Warsztat tkacki",
+      "version": 4,
+      "size": "L",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 7,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "loom",
+              "x": 1,
+              "y": 2,
+              "rotation": 90
+            },
+            {
+              "type": "loom",
+              "x": 6,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 11,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "tool_rack",
+              "x": 1,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 9,
+              "y": 16,
+              "rotation": 270
+            },
+            {
+              "type": "crate",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "table_small",
+              "x": 7,
+              "y": 4,
+              "rotation": 90
+            },
+            {
+              "type": "chair",
+              "x": 9,
+              "y": 4,
+              "rotation": 270,
+              "relatedIndex": 6
+            },
+            {
+              "type": "tool_chest",
+              "x": 6,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "wood_pile",
+              "x": 7,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "spinning_wheel",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "fabric_rack",
+              "x": 10,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "anchor": {
+                "x": 7,
+                "y": 9
+              },
+              "access": "Z2",
+              "functions": [
+                "weave",
+                "craft",
+                "storage",
+                "eat",
+                "sit",
+                "browse"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "rug_large",
+              "x": 8,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "rug_long",
+              "x": 6,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cross",
+              "x": 13,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_tapestry",
+              "x": 0,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "prop_tool_knife",
+              "x": 12,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_jar",
+              "x": 9,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 9,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_basket_small",
+              "x": 10,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 10,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 4,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 4,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_spoon",
+              "x": 7,
+              "y": 4,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_candle",
+              "x": 7,
+              "y": 4,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_plate",
+              "x": 8,
+              "y": 4,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_cup",
+              "x": 8,
+              "y": 4,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_hammer",
+              "x": 6,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_fabric_stack",
+              "x": 10,
+              "y": 1,
+              "slot": 0,
+              "rotation": 90,
+              "hostIndex": 12
+            },
+            {
+              "type": "prop_thread",
+              "x": 10,
+              "y": 1,
+              "slot": 2,
+              "rotation": 90,
+              "hostIndex": 12
+            },
+            {
+              "type": "prop_yarn",
+              "x": 6,
+              "y": 5,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 1
+            },
+            {
+              "type": "prop_yarn",
+              "x": 1,
+              "y": 2,
+              "slot": 0,
+              "rotation": 90,
+              "hostIndex": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 16,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "loom",
+          "version": 2
+        },
+        {
+          "id": "workbench",
+          "version": 2
+        },
+        {
+          "id": "tool_rack",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "table_small",
+          "version": 2
+        },
+        {
+          "id": "chair",
+          "version": 2
+        },
+        {
+          "id": "tool_chest",
+          "version": 1
+        },
+        {
+          "id": "wood_pile",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "spinning_wheel",
+          "version": 1
+        },
+        {
+          "id": "fabric_rack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Pass II-B6: przędzenie, tkanie i składowanie tkanin; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "BARBER_S01",
+      "type": "workshop",
+      "name": "Zakład balwierza",
+      "version": 3,
+      "size": "S",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "washstand",
+              "x": 7,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "linen_cabinet",
+              "x": 2,
+              "y": 4,
+              "rotation": 270
+            },
+            {
+              "type": "water_tub",
+              "x": 10,
+              "y": 2,
+              "rotation": 270
+            },
+            {
+              "type": "dresser",
+              "x": 5,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "hairdresser_chair",
+              "x": 1,
+              "y": 9,
+              "rotation": 270
+            },
+            {
+              "type": "service_mirror",
+              "x": 8,
+              "y": 12,
+              "rotation": 270
+            },
+            {
+              "type": "bench",
+              "x": 3,
+              "y": 10,
+              "rotation": 180
+            },
+            {
+              "type": "reception_desk",
+              "x": 9,
+              "y": 7,
+              "rotation": 270
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "linen_cabinet",
+              "x": 10,
+              "y": 3,
+              "rotation": 180
+            },
+            {
+              "type": "dresser",
+              "x": 10,
+              "y": 8,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 6,
+                "y": 2
+              },
+              "functions": [
+                "wash",
+                "storage"
+              ]
+            },
+            {
+              "type": "service",
+              "access": "Z0",
+              "anchor": {
+                "x": 6,
+                "y": 10
+              },
+              "functions": [
+                "groom",
+                "sit",
+                "reception",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 5,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 5,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 6,
+              "start": 1,
+              "end": 10,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_folded_cloth",
+              "x": 7,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_soap",
+              "x": 7,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 2,
+              "y": 4,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_comb",
+              "x": 5,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_mirror_small",
+              "x": 5,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 6,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_candle",
+              "x": 6,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_scissors",
+              "x": 8,
+              "y": 12,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_razor",
+              "x": 8,
+              "y": 12,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_letter",
+              "x": 9,
+              "y": 7,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_ticket",
+              "x": 9,
+              "y": 7,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_key",
+              "x": 10,
+              "y": 7,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_banner",
+              "x": 11,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "rug_small",
+              "x": 4,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "floor_mat",
+              "x": 2,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_comb",
+              "x": 10,
+              "y": 8,
+              "slot": 0,
+              "rotation": 180,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_mirror_small",
+              "x": 10,
+              "y": 8,
+              "slot": 2,
+              "rotation": 180,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 10,
+              "y": 3,
+              "slot": 0,
+              "rotation": 180,
+              "hostIndex": 9
+            },
+            {
+              "type": "wall_mirror",
+              "x": 11,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "wall_lantern",
+              "x": 11,
+              "y": 12,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "linen_cabinet",
+          "version": 1
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "dresser",
+          "version": 1
+        },
+        {
+          "id": "hairdresser_chair",
+          "version": 1
+        },
+        {
+          "id": "service_mirror",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "New authored plan: public and service zones, open passage.",
+        "Pass II-B6: narzędzia balwierza, mycie i czysta bielizna; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "REPAIR_M01",
+      "type": "workshop",
+      "name": "Punkt napraw i szewc",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "repair_bench",
+              "x": 4,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "tool_rack",
+              "x": 12,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "tool_chest",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "sewing_table",
+              "x": 10,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 6,
+              "rotation": 270
+            },
+            {
+              "type": "shoe_rack",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 10,
+              "y": 9,
+              "rotation": 90
+            },
+            {
+              "type": "display_case",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "shoe_rack",
+              "x": 12,
+              "y": 8,
+              "rotation": 180
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 2
+              },
+              "functions": [
+                "repair",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "sales",
+              "access": "Z0",
+              "anchor": {
+                "x": 7,
+                "y": 12
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "storage",
+                "sit",
+                "browse"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 4,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 4,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 5,
+              "start": 1,
+              "end": 12,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_scissors",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_thread",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_hammer",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_tongs",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 11,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_cloth_roll",
+              "x": 11,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_cloth_roll",
+              "x": 1,
+              "y": 10,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 1,
+              "y": 10,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_map",
+              "x": 13,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "rug_small",
+              "x": 2,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "floor_mat",
+              "x": 4,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 1,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_flax",
+              "x": 4,
+              "y": 1,
+              "slot": 1,
+              "rotation": 90,
+              "hostIndex": 0
+            },
+            {
+              "type": "wall_horse_shoe",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 14,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "repair_bench",
+          "version": 1
+        },
+        {
+          "id": "tool_rack",
+          "version": 1
+        },
+        {
+          "id": "tool_chest",
+          "version": 1
+        },
+        {
+          "id": "sewing_table",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "shoe_rack",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "display_case",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "New authored plan: public and service zones, open passage.",
+        "Pass II-B6: naprawy, materiały i wydawanie obuwia; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "SCRIVENER_S01",
+      "type": "workshop",
+      "name": "Kancelaria pisarza",
+      "version": 3,
+      "size": "S",
+      "width": 6,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "scribe_station",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "bookcase",
+              "x": 10,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "desk",
+              "x": 7,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "strongbox",
+              "x": 1,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "reception_desk",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 8,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "notice_board",
+              "x": 10,
+              "y": 9,
+              "rotation": 180
+            },
+            {
+              "type": "reading_desk",
+              "x": 9,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 3,
+              "rotation": 90
+            },
+            {
+              "type": "writing_desk",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "bookcase",
+              "x": 8,
+              "y": 5,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "office",
+              "access": "Z2",
+              "anchor": {
+                "x": 6,
+                "y": 2
+              },
+              "functions": [
+                "write",
+                "read",
+                "administration",
+                "storage"
+              ]
+            },
+            {
+              "type": "service",
+              "access": "Z0",
+              "anchor": {
+                "x": 6,
+                "y": 12
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "read"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 6,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 7,
+              "start": 1,
+              "end": 10,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_ticket",
+              "x": 1,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_letter",
+              "x": 1,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 10,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 10,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_scroll",
+              "x": 10,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 7,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_seal",
+              "x": 7,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_open",
+              "x": 7,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 7,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 1,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_key",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_letter",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_ticket",
+              "x": 1,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_quill",
+              "x": 9,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_parchment",
+              "x": 9,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_open",
+              "x": 10,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_candle",
+              "x": 10,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_picture",
+              "x": 11,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "rug_small",
+              "x": 2,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "floor_mat",
+              "x": 4,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 8,
+              "y": 5,
+              "slot": 0,
+              "rotation": 270,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_scroll",
+              "x": 8,
+              "y": 5,
+              "slot": 2,
+              "rotation": 270,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_quill",
+              "x": 3,
+              "y": 1,
+              "slot": 0,
+              "rotation": 90,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_inkpot",
+              "x": 3,
+              "y": 1,
+              "slot": 2,
+              "rotation": 90,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_quill",
+              "x": 7,
+              "y": 1,
+              "slot": 1,
+              "rotation": 0,
+              "hostIndex": 2
+            },
+            {
+              "type": "prop_inkpot",
+              "x": 7,
+              "y": 1,
+              "slot": 3,
+              "rotation": 0,
+              "hostIndex": 2
+            },
+            {
+              "type": "wall_map",
+              "x": 11,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "wall_clock",
+              "x": 0,
+              "y": 4,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "scribe_station",
+          "version": 1
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "strongbox",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "notice_board",
+          "version": 1
+        },
+        {
+          "id": "reading_desk",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        },
+        {
+          "id": "writing_desk",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "New authored plan: public and service zones, open passage.",
+        "Pass II-B6: pisanie dokumentów, archiwum i kancelaria; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "COOPER_M01",
+      "type": "workshop",
+      "name": "Warsztat bednarza",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "carpentry_bench",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "lathe",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "tool_rack",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wood_pile",
+              "x": 5,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "barrel",
+              "x": 12,
+              "y": 3,
+              "rotation": 90
+            },
+            {
+              "type": "barrel",
+              "x": 12,
+              "y": 8,
+              "rotation": 180
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "crate",
+              "x": 12,
+              "y": 13,
+              "rotation": 270
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "plank_stack",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "barrel",
+              "x": 7,
+              "y": 14,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 3,
+                "y": 8
+              },
+              "functions": [
+                "craft",
+                "turn_wood",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 10,
+                "y": 8
+              },
+              "functions": [
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 1,
+              "w": 1,
+              "h": 5
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 10,
+              "w": 1,
+              "h": 5
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_peg",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_wood_wedge",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_wood_plank",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_chisel",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 11,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 12,
+              "y": 13,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 12,
+              "y": 13,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wood_plank",
+              "x": 3,
+              "y": 1,
+              "slot": 1,
+              "rotation": 90,
+              "hostIndex": 0
+            },
+            {
+              "type": "prop_wood_shavings",
+              "x": 3,
+              "y": 1,
+              "slot": 3,
+              "rotation": 90,
+              "hostIndex": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 13,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "carpentry_bench",
+          "version": 1
+        },
+        {
+          "id": "lathe",
+          "version": 1
+        },
+        {
+          "id": "tool_rack",
+          "version": 1
+        },
+        {
+          "id": "wood_pile",
+          "version": 1
+        },
+        {
+          "id": "barrel",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "plank_stack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: obróbka klepek i odbiór beczek; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "WEAVER_M01",
+      "type": "workshop",
+      "name": "Tkalnia",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "loom",
+              "x": 3,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "loom",
+              "x": 1,
+              "y": 5,
+              "rotation": 90
+            },
+            {
+              "type": "spinning_wheel",
+              "x": 2,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "fulling_table",
+              "x": 1,
+              "y": 2,
+              "rotation": 90
+            },
+            {
+              "type": "fabric_rack",
+              "x": 12,
+              "y": 3,
+              "rotation": 180
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 7,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 8,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 12,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "fabric_rack",
+              "x": 7,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 3,
+                "y": 8
+              },
+              "functions": [
+                "weave",
+                "full_cloth",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 10,
+                "y": 8
+              },
+              "functions": [
+                "browse",
+                "sell",
+                "buy",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 1,
+              "w": 1,
+              "h": 5
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 10,
+              "w": 1,
+              "h": 5
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_yarn",
+              "x": 3,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_yarn",
+              "x": 1,
+              "y": 5,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_dye_powder",
+              "x": 1,
+              "y": 2,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_yarn",
+              "x": 2,
+              "y": 2,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_fabric_stack",
+              "x": 12,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_thread",
+              "x": 12,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 7,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 7,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 11,
+              "y": 7,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 8,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 8,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 1,
+              "y": 7,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_thread",
+              "x": 7,
+              "y": 12,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 8
+            },
+            {
+              "type": "prop_flax",
+              "x": 7,
+              "y": 12,
+              "slot": 2,
+              "rotation": 0,
+              "hostIndex": 8
+            },
+            {
+              "type": "prop_fabric_stack",
+              "x": 10,
+              "y": 7,
+              "slot": 1,
+              "rotation": 90,
+              "hostIndex": 5
+            },
+            {
+              "type": "prop_flax",
+              "x": 12,
+              "y": 3,
+              "slot": 1,
+              "rotation": 180,
+              "hostIndex": 4
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "loom",
+          "version": 2
+        },
+        {
+          "id": "spinning_wheel",
+          "version": 1
+        },
+        {
+          "id": "fulling_table",
+          "version": 1
+        },
+        {
+          "id": "fabric_rack",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: przędza i gotowe tkaniny; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "DYER_M01",
+      "type": "workshop",
+      "name": "Farbiarnia",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "dye_vat",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "dye_vat",
+              "x": 7,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "fulling_table",
+              "x": 10,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "water_tub",
+              "x": 1,
+              "y": 4,
+              "rotation": 270
+            },
+            {
+              "type": "fabric_rack",
+              "x": 12,
+              "y": 9,
+              "rotation": 180
+            },
+            {
+              "type": "barrel",
+              "x": 1,
+              "y": 11,
+              "rotation": 90
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 13,
+              "rotation": 90
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "drying_rack",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "fabric_rack",
+              "x": 1,
+              "y": 8,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 4
+              },
+              "functions": [
+                "dye",
+                "full_cloth",
+                "wash",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 13
+              },
+              "functions": [
+                "browse",
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 7,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 7,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 8,
+              "start": 1,
+              "end": 12,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_dye_powder",
+              "x": 4,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_dye_powder",
+              "x": 7,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_dye_powder",
+              "x": 10,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_yarn",
+              "x": 11,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_fabric_stack",
+              "x": 12,
+              "y": 9,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_thread",
+              "x": 12,
+              "y": 9,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 13,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 13,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 11,
+              "y": 13,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_fabric_stack",
+              "x": 1,
+              "y": 8,
+              "slot": 0,
+              "rotation": 90,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_thread",
+              "x": 1,
+              "y": 8,
+              "slot": 2,
+              "rotation": 90,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_fabric_stack",
+              "x": 10,
+              "y": 13,
+              "slot": 1,
+              "rotation": 90,
+              "hostIndex": 6
+            },
+            {
+              "type": "prop_flax",
+              "x": 12,
+              "y": 9,
+              "slot": 1,
+              "rotation": 180,
+              "hostIndex": 4
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "dye_vat",
+          "version": 1
+        },
+        {
+          "id": "fulling_table",
+          "version": 1
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "fabric_rack",
+          "version": 1
+        },
+        {
+          "id": "barrel",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "drying_rack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: barwienie, suszenie i gotowa tkanina; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "POTTER_S01",
+      "type": "workshop",
+      "name": "Garncarnia",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 7,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 7
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "pottery_wheel",
+              "x": 2,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "pottery_kiln",
+              "x": 5,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "drying_rack",
+              "x": 11,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "counter",
+              "x": 1,
+              "y": 10,
+              "rotation": 270
+            },
+            {
+              "type": "display_case",
+              "x": 10,
+              "y": 12,
+              "rotation": 270
+            },
+            {
+              "type": "crate",
+              "x": 12,
+              "y": 10,
+              "rotation": 90
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "drying_rack",
+              "x": 10,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 3
+              },
+              "functions": [
+                "pottery",
+                "fire_clay",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 10
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 6,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 7,
+              "start": 1,
+              "end": 12,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_clay_lump",
+              "x": 2,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 2,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_clay_lump",
+              "x": 11,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 11,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_ceramic_bowl",
+              "x": 11,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 1,
+              "y": 10,
+              "rotation": 270,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 1,
+              "y": 10,
+              "rotation": 270,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 2,
+              "y": 10,
+              "rotation": 270,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 10,
+              "y": 12,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 12,
+              "y": 10,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 12,
+              "y": 10,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 11,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_jar",
+              "x": 1,
+              "y": 7,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 8
+            },
+            {
+              "type": "prop_clay_lump",
+              "x": 10,
+              "y": 5,
+              "slot": 0,
+              "rotation": 270,
+              "hostIndex": 7
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 10,
+              "y": 5,
+              "slot": 2,
+              "rotation": 270,
+              "hostIndex": 7
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 13,
+              "y": 12,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "pottery_wheel",
+          "version": 1
+        },
+        {
+          "id": "pottery_kiln",
+          "version": 1
+        },
+        {
+          "id": "drying_rack",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "display_case",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: suszenie przed wypałem i przechowywanie ceramiki; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "POTTER_L01",
+      "type": "workshop",
+      "name": "Manufaktura ceramiczna",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "pottery_kiln",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "pottery_wheel",
+              "x": 4,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "pottery_wheel",
+              "x": 1,
+              "y": 6,
+              "rotation": 90
+            },
+            {
+              "type": "drying_rack",
+              "x": 6,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "drying_rack",
+              "x": 1,
+              "y": 16,
+              "rotation": 270
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "display_case",
+              "x": 12,
+              "y": 4,
+              "rotation": 180
+            },
+            {
+              "type": "shelf",
+              "x": 9,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 9,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "drying_rack",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "crate",
+              "x": 6,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 4,
+                "y": 9
+              },
+              "functions": [
+                "fire_clay",
+                "pottery",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 11,
+                "y": 9
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 1,
+              "w": 1,
+              "h": 6
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 11,
+              "w": 1,
+              "h": 6
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_clay_lump",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_clay_lump",
+              "x": 1,
+              "y": 6,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 1,
+              "y": 6,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_clay_lump",
+              "x": 6,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 6,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_ceramic_bowl",
+              "x": 6,
+              "y": 15,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_clay_lump",
+              "x": 1,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 1,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_ceramic_bowl",
+              "x": 2,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 8,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 8,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 11,
+              "y": 8,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 12,
+              "y": 4,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 9,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 9,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_jar",
+              "x": 10,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 9,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 9,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_clay_lump",
+              "x": 8,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 10
+            },
+            {
+              "type": "prop_clay_pot",
+              "x": 8,
+              "y": 1,
+              "slot": 2,
+              "rotation": 0,
+              "hostIndex": 10
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 13,
+              "y": 16,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "pottery_kiln",
+          "version": 1
+        },
+        {
+          "id": "pottery_wheel",
+          "version": 1
+        },
+        {
+          "id": "drying_rack",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "display_case",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: surowa glina i osobny odbiór ceramiki; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "MASON_M01",
+      "type": "workshop",
+      "name": "Warsztat kamieniarza",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "stone_bench",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stone_bench",
+              "x": 11,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "grindstone",
+              "x": 1,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "tool_rack",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "counter",
+              "x": 1,
+              "y": 12,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 12,
+              "y": 10,
+              "rotation": 180
+            },
+            {
+              "type": "workbench",
+              "x": 11,
+              "y": 11,
+              "rotation": 270
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 7,
+              "rotation": 270
+            },
+            {
+              "type": "stone_worktable",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "ore_crate",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 4
+              },
+              "functions": [
+                "carve",
+                "sharpen",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 13
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "storage",
+                "craft"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 8,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 8,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 9,
+              "start": 1,
+              "end": 12,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_chisel",
+              "x": 8,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_stone_block",
+              "x": 8,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_chisel",
+              "x": 11,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_stone_block",
+              "x": 11,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_metal_blank",
+              "x": 1,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 1,
+              "y": 12,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 1,
+              "y": 12,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 2,
+              "y": 12,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 12,
+              "y": 10,
+              "rotation": 180,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 12,
+              "y": 10,
+              "rotation": 180,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_tongs",
+              "x": 11,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_iron_ingot",
+              "x": 12,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 3,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 8
+            },
+            {
+              "type": "prop_ore",
+              "x": 11,
+              "y": 11,
+              "slot": 0,
+              "rotation": 270,
+              "hostIndex": 6
+            },
+            {
+              "type": "prop_hammer",
+              "x": 11,
+              "y": 11,
+              "slot": 1,
+              "rotation": 270,
+              "hostIndex": 6
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 16,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "stone_bench",
+          "version": 1
+        },
+        {
+          "id": "grindstone",
+          "version": 1
+        },
+        {
+          "id": "tool_rack",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 2
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "stone_worktable",
+          "version": 1
+        },
+        {
+          "id": "ore_crate",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: obróbka kamienia, narzędzia, skład surowca; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "CANDLE_M01",
+      "type": "workshop",
+      "name": "Warsztat świecarza",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "candle_mold",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "candle_mold",
+              "x": 6,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "stove",
+              "x": 9,
+              "y": 1,
+              "rotation": 270
+            },
+            {
+              "type": "cupboard",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 8,
+              "rotation": 270
+            },
+            {
+              "type": "display_case",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "crate",
+              "x": 12,
+              "y": 11,
+              "rotation": 180
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 12,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 7,
+              "rotation": 90
+            },
+            {
+              "type": "candle_mold",
+              "x": 11,
+              "y": 5,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 3
+              },
+              "functions": [
+                "make_candle",
+                "cook",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 11
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 6,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 7,
+              "start": 1,
+              "end": 12,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_wax_block",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_candle_bundle",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_wax_block",
+              "x": 6,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_candle_bundle",
+              "x": 6,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_plate",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_bowl",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_jar",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 8,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 8,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 11,
+              "y": 8,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 12,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 12,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wax_block",
+              "x": 11,
+              "y": 5,
+              "slot": 0,
+              "rotation": 180,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_candle_bundle",
+              "x": 11,
+              "y": 5,
+              "slot": 2,
+              "rotation": 180,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_jar",
+              "x": 1,
+              "y": 7,
+              "slot": 0,
+              "rotation": 90,
+              "hostIndex": 8
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "wall_herbs",
+              "x": 0,
+              "y": 4,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "candle_mold",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "cupboard",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "display_case",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: formowanie i składowanie świec; semantyka pieca osobno; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "PAPER_M01",
+      "type": "workshop",
+      "name": "Papiernia",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "paper_press",
+              "x": 2,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "paper_press",
+              "x": 5,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "drying_rack",
+              "x": 1,
+              "y": 12,
+              "rotation": 270
+            },
+            {
+              "type": "water_tub",
+              "x": 1,
+              "y": 2,
+              "rotation": 90
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 4,
+              "rotation": 90
+            },
+            {
+              "type": "shelf",
+              "x": 10,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 12,
+              "y": 12,
+              "rotation": 90
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 12,
+              "y": 9,
+              "rotation": 180
+            },
+            {
+              "type": "drying_rack",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 4,
+                "y": 9
+              },
+              "functions": [
+                "press_paper",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 11,
+                "y": 9
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 1,
+              "w": 1,
+              "h": 6
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 11,
+              "w": 1,
+              "h": 6
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_paper_sheet",
+              "x": 2,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_paper_sheet",
+              "x": 5,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 4,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 4,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 11,
+              "y": 4,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 10,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 10,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_jar",
+              "x": 11,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 12,
+              "y": 12,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 12,
+              "y": 12,
+              "rotation": 90,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 12,
+              "y": 9,
+              "slot": 0,
+              "rotation": 180,
+              "hostIndex": 8
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 13,
+              "y": 16,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "paper_press",
+          "version": 1
+        },
+        {
+          "id": "drying_rack",
+          "version": 1
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: prasowanie i suszenie arkuszy; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "GLASS_M01",
+      "type": "workshop",
+      "name": "Huta szkła",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "glass_furnace",
+              "x": 9,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "glass_furnace",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "drying_rack",
+              "x": 12,
+              "y": 6,
+              "rotation": 180
+            },
+            {
+              "type": "workbench",
+              "x": 3,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "counter",
+              "x": 8,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "display_case",
+              "x": 9,
+              "y": 16,
+              "rotation": 270
+            },
+            {
+              "type": "crate",
+              "x": 12,
+              "y": 11,
+              "rotation": 270
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 8,
+              "rotation": 270
+            },
+            {
+              "type": "drying_rack",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 12,
+              "y": 12,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 5
+              },
+              "functions": [
+                "make_glass",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 14
+              },
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 9,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 12,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_glass_blank",
+              "x": 9,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_glass_blank",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_tongs",
+              "x": 3,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_iron_ingot",
+              "x": 4,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 8,
+              "y": 14,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 8,
+              "y": 14,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 8,
+              "y": 15,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_cloth_roll",
+              "x": 9,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 9,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_crystal",
+              "x": 10,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 12,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 12,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 12,
+              "y": 12,
+              "slot": 0,
+              "rotation": 180,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_jar",
+              "x": 12,
+              "y": 12,
+              "slot": 2,
+              "rotation": 180,
+              "hostIndex": 9
+            },
+            {
+              "type": "prop_glass_blank",
+              "x": 1,
+              "y": 10,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 8
+            },
+            {
+              "type": "prop_bottle",
+              "x": 8,
+              "y": 14,
+              "slot": 1,
+              "rotation": 0,
+              "hostIndex": 4
+            },
+            {
+              "type": "prop_glass_blank",
+              "x": 12,
+              "y": 6,
+              "slot": 0,
+              "rotation": 180,
+              "hostIndex": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 13,
+              "y": 16,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "glass_furnace",
+          "version": 1
+        },
+        {
+          "id": "drying_rack",
+          "version": 1
+        },
+        {
+          "id": "workbench",
+          "version": 2
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "display_case",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: skład półfabrykatów i gotowe szkło; suszarnia do dalszej kontroli procesu; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "FOUNDRY_L01",
+      "type": "workshop",
+      "name": "Odlewnia metalu",
+      "version": 3,
+      "size": "M",
+      "width": 7,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 7,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "casting_mold",
+              "x": 2,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "forge",
+              "x": 1,
+              "y": 7,
+              "rotation": 270
+            },
+            {
+              "type": "bellows",
+              "x": 5,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "anvil",
+              "x": 1,
+              "y": 14,
+              "rotation": 90
+            },
+            {
+              "type": "grindstone",
+              "x": 1,
+              "y": 11,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 12,
+              "y": 7,
+              "rotation": 90
+            },
+            {
+              "type": "counter",
+              "x": 10,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "tool_rack",
+              "x": 12,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "barrel",
+              "x": 12,
+              "y": 4,
+              "rotation": 90
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 12,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "ore_crate",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "tool_chest",
+              "x": 8,
+              "y": 1,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 4,
+                "y": 9
+              },
+              "functions": [
+                "cast",
+                "heat_metal",
+                "blow_air",
+                "smith",
+                "sharpen",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 11,
+                "y": 9
+              },
+              "functions": [
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 1,
+              "w": 1,
+              "h": 6
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 11,
+              "w": 1,
+              "h": 6
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_horseshoe",
+              "x": 2,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_metal_blank",
+              "x": 2,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_horseshoe",
+              "x": 1,
+              "y": 14,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_metal_blank",
+              "x": 1,
+              "y": 14,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_horseshoe",
+              "x": 1,
+              "y": 11,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_metal_blank",
+              "x": 1,
+              "y": 11,
+              "rotation": 90,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 12,
+              "y": 7,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_rope_coil",
+              "x": 12,
+              "y": 7,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 10,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 10,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_scale",
+              "x": 10,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_hammer",
+              "x": 8,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 11
+            },
+            {
+              "type": "prop_tongs",
+              "x": 8,
+              "y": 1,
+              "slot": 2,
+              "rotation": 0,
+              "hostIndex": 11
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 7,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "casting_mold",
+          "version": 1
+        },
+        {
+          "id": "forge",
+          "version": 2
+        },
+        {
+          "id": "bellows",
+          "version": 1
+        },
+        {
+          "id": "anvil",
+          "version": 2
+        },
+        {
+          "id": "grindstone",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "tool_rack",
+          "version": 1
+        },
+        {
+          "id": "barrel",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "ore_crate",
+          "version": 1
+        },
+        {
+          "id": "tool_chest",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Authored production and dispatch zones; fixed design-time furnishings.",
+        "Pass II-B6: odlewanie, surowce metalowe, narzędzia i wyroby; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "RUR_ANNEX_S01",
+      "name": "Oficyna gospodarcza",
+      "type": "annex",
+      "version": 3,
+      "size": "M",
+      "width": 6,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "harvest_sorting_table",
+              "x": 9,
+              "y": 3,
+              "rotation": 180
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 10,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "hand_quern",
+              "x": 1,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "root_bin",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "farm_cart",
+              "x": 10,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "grain_sack",
+              "x": 10,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "farm_cupboard",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "grain_chest",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workroom",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 8
+              },
+              "functions": [
+                "cook",
+                "storage",
+                "sharpen"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_grain_sheaf",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_sickle",
+              "x": 11,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_sickle",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 11,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_rake",
+              "x": 11,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_rake",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_harness",
+              "x": 11,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_harness",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_horse_shoe",
+              "x": 11,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "farm_mat",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "hay_mat",
+              "x": 4,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "prop_seed_bag",
+              "x": 9,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_feed_scoop",
+              "x": 9,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_farm_bucket",
+              "x": 10,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_brush",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_feed_scoop",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_farm_bucket",
+              "x": 2,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_wheat_sheaf",
+              "x": 3,
+              "y": 1,
+              "slot": 0,
+              "rotation": 90,
+              "hostIndex": 7
+            },
+            {
+              "type": "prop_barley",
+              "x": 3,
+              "y": 1,
+              "slot": 2,
+              "rotation": 90,
+              "hostIndex": 7
+            },
+            {
+              "type": "prop_egg",
+              "x": 1,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 6
+            },
+            {
+              "type": "prop_wheat_sheaf",
+              "x": 1,
+              "y": 3,
+              "slot": 1,
+              "rotation": 0,
+              "hostIndex": 3
+            },
+            {
+              "type": "prop_barley",
+              "x": 1,
+              "y": 3,
+              "slot": 3,
+              "rotation": 0,
+              "hostIndex": 3
+            },
+            {
+              "type": "prop_wheat_sheaf",
+              "x": 9,
+              "y": 3,
+              "slot": 1,
+              "rotation": 180,
+              "hostIndex": 0
+            },
+            {
+              "type": "prop_barley",
+              "x": 9,
+              "y": 3,
+              "slot": 3,
+              "rotation": 180,
+              "hostIndex": 0
+            },
+            {
+              "type": "wall_grain_sheaf",
+              "x": 11,
+              "y": 10,
+              "rotation": 180
+            },
+            {
+              "type": "wall_sickle",
+              "x": 0,
+              "y": 13,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "harvest_sorting_table",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "hand_quern",
+          "version": 1
+        },
+        {
+          "id": "root_bin",
+          "version": 1
+        },
+        {
+          "id": "farm_cart",
+          "version": 1
+        },
+        {
+          "id": "grain_sack",
+          "version": 1
+        },
+        {
+          "id": "farm_cupboard",
+          "version": 1
+        },
+        {
+          "id": "grain_chest",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed design-time layout; wide doors, animals, production and transport not yet implemented.",
+        "Pass II-B6: oficyna do sortowania plonów i przechowywania zapasów; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    },
+    {
+      "id": "RUR_WORKYARD_S01",
+      "name": "Zamknięty warsztat gospodarczy",
+      "type": "workshop",
+      "version": 3,
+      "size": "M",
+      "width": 6,
+      "height": 8,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 8
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 3,
+        "y": 7
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 15
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "harvest_sorting_table",
+              "x": 10,
+              "y": 6,
+              "rotation": 270
+            },
+            {
+              "type": "farm_tool_rack",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "hand_quern",
+              "x": 10,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "root_bin",
+              "x": 1,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "farm_cart",
+              "x": 10,
+              "y": 8,
+              "rotation": 180
+            },
+            {
+              "type": "grain_sack",
+              "x": 1,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "ore_crate",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "carpentry_bench",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "tool_chest",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workroom",
+              "access": "Z2",
+              "anchor": {
+                "x": 7,
+                "y": 8
+              },
+              "functions": [
+                "cook",
+                "storage",
+                "sharpen",
+                "craft"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_rake",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_harness",
+              "x": 11,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_harness",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_horse_shoe",
+              "x": 11,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_horse_shoe",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_pitchfork",
+              "x": 11,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_pitchfork",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 11,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_grain_sheaf",
+              "x": 11,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "farm_mat",
+              "x": 2,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "hay_mat",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wood_wedge",
+              "x": 10,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_peg",
+              "x": 10,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_leather_strip",
+              "x": 10,
+              "y": 7,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_dried_hide",
+              "x": 10,
+              "y": 7,
+              "rotation": 270,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_feed_scoop",
+              "x": 1,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_farm_bucket",
+              "x": 1,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_leather_strip",
+              "x": 2,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_dried_hide",
+              "x": 2,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "prop_hammer",
+              "x": 1,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 8
+            },
+            {
+              "type": "prop_wood_plank",
+              "x": 4,
+              "y": 1,
+              "slot": 0,
+              "rotation": 0,
+              "hostIndex": 7
+            },
+            {
+              "type": "prop_wood_shavings",
+              "x": 4,
+              "y": 1,
+              "slot": 2,
+              "rotation": 0,
+              "hostIndex": 7
+            },
+            {
+              "type": "prop_peg",
+              "x": 1,
+              "y": 11,
+              "slot": 1,
+              "rotation": 0,
+              "hostIndex": 3
+            },
+            {
+              "type": "prop_wood_wedge",
+              "x": 1,
+              "y": 11,
+              "slot": 3,
+              "rotation": 0,
+              "hostIndex": 3
+            },
+            {
+              "type": "wall_rake",
+              "x": 11,
+              "y": 10,
+              "rotation": 180
+            },
+            {
+              "type": "wall_farm_rope",
+              "x": 11,
+              "y": 4,
+              "rotation": 180
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "harvest_sorting_table",
+          "version": 1
+        },
+        {
+          "id": "farm_tool_rack",
+          "version": 1
+        },
+        {
+          "id": "hand_quern",
+          "version": 1
+        },
+        {
+          "id": "root_bin",
+          "version": 1
+        },
+        {
+          "id": "farm_cart",
+          "version": 1
+        },
+        {
+          "id": "grain_sack",
+          "version": 1
+        },
+        {
+          "id": "ore_crate",
+          "version": 1
+        },
+        {
+          "id": "carpentry_bench",
+          "version": 1
+        },
+        {
+          "id": "tool_chest",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed design-time layout; wide doors, animals, production and transport not yet implemented.",
+        "Pass II-B6: gospodarcze naprawy drewna, narzędzia i sortowanie; semantyka żaren osobno; dedicated furnishings and compatible profession-specific props; no new economic runtime."
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "WORKSHOP_M01",
+      "baseVersion": 3,
+      "candidateVersion": 4,
+      "note": "obróbka drewna, toczenie i składowanie desek",
+      "furniture": [
+        {
+          "type": "lathe",
+          "room": "workshop",
+          "x": 8,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "type": "plank_stack",
+          "room": "workshop",
+          "x": 5,
+          "y": 1,
+          "rotation": 90
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_wood_plank",
+            "host": "lathe"
+          },
+          {
+            "type": "prop_chisel",
+            "host": "lathe"
+          },
+          {
+            "type": "prop_wood_plank",
+            "host": "carpentry_bench"
+          },
+          {
+            "type": "prop_wood_shavings",
+            "host": "carpentry_bench"
+          },
+          {
+            "type": "wall_farm_rope",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_leather_strip",
+          "prop_leather_roll"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 140,
+              "functions": [
+                "craft",
+                "storage",
+                "administration",
+                "sit"
+              ]
+            }
+          ],
+          "stationCount": 10,
+          "accessibleCells": 119
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 140,
+              "functions": [
+                "craft",
+                "storage",
+                "administration",
+                "sit",
+                "turn_wood"
+              ]
+            }
+          ],
+          "stationCount": 12,
+          "accessibleCells": 114
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "WORKSHOP_L01",
+      "baseVersion": 3,
+      "candidateVersion": 4,
+      "note": "przędzenie, tkanie i składowanie tkanin",
+      "furniture": [
+        {
+          "type": "spinning_wheel",
+          "room": "workshop",
+          "x": 8,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "type": "fabric_rack",
+          "room": "workshop",
+          "x": 10,
+          "y": 1,
+          "rotation": 90
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_fabric_stack",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "prop_thread",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "prop_yarn",
+            "host": "loom"
+          },
+          {
+            "type": "prop_yarn",
+            "host": "loom"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_leather_strip",
+          "prop_tongs",
+          "prop_iron_ingot",
+          "prop_tongs"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 192,
+              "functions": [
+                "weave",
+                "craft",
+                "storage",
+                "eat",
+                "sit"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 167
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 192,
+              "functions": [
+                "weave",
+                "craft",
+                "storage",
+                "eat",
+                "sit",
+                "browse"
+              ]
+            }
+          ],
+          "stationCount": 13,
+          "accessibleCells": 163
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "BARBER_S01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "narzędzia balwierza, mycie i czysta bielizna",
+      "furniture": [
+        {
+          "type": "linen_cabinet",
+          "room": "storage",
+          "x": 10,
+          "y": 3,
+          "rotation": 180
+        },
+        {
+          "type": "dresser",
+          "room": "service",
+          "x": 10,
+          "y": 8,
+          "rotation": 180
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_comb",
+            "host": "dresser"
+          },
+          {
+            "type": "prop_mirror_small",
+            "host": "dresser"
+          },
+          {
+            "type": "prop_folded_cloth",
+            "host": "linen_cabinet"
+          },
+          {
+            "type": "wall_mirror",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": []
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 43,
+              "functions": [
+                "wash",
+                "storage"
+              ]
+            },
+            {
+              "type": "service",
+              "area": 70,
+              "functions": [
+                "groom",
+                "sit",
+                "reception"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 96
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 43,
+              "functions": [
+                "wash",
+                "storage"
+              ]
+            },
+            {
+              "type": "service",
+              "area": 70,
+              "functions": [
+                "groom",
+                "sit",
+                "reception",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 13,
+          "accessibleCells": 92
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "REPAIR_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "naprawy, materiały i wydawanie obuwia",
+      "furniture": [
+        {
+          "type": "shoe_rack",
+          "room": "sales",
+          "x": 12,
+          "y": 8,
+          "rotation": 180
+        },
+        {
+          "type": "crate",
+          "room": "workshop",
+          "x": 1,
+          "y": 1,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_folded_cloth",
+            "host": "crate"
+          },
+          {
+            "type": "prop_flax",
+            "host": "repair_bench"
+          },
+          {
+            "type": "wall_horse_shoe",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_crystal",
+          "prop_jewels"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 40,
+              "functions": [
+                "repair",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "sales",
+              "area": 120,
+              "functions": [
+                "sell",
+                "buy",
+                "storage",
+                "sit",
+                "browse"
+              ]
+            }
+          ],
+          "stationCount": 12,
+          "accessibleCells": 140
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 40,
+              "functions": [
+                "repair",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "sales",
+              "area": 120,
+              "functions": [
+                "sell",
+                "buy",
+                "storage",
+                "sit",
+                "browse"
+              ]
+            }
+          ],
+          "stationCount": 14,
+          "accessibleCells": 138
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "SCRIVENER_S01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "pisanie dokumentów, archiwum i kancelaria",
+      "furniture": [
+        {
+          "type": "writing_desk",
+          "room": "office",
+          "x": 3,
+          "y": 1,
+          "rotation": 90
+        },
+        {
+          "type": "bookcase",
+          "room": "office",
+          "x": 8,
+          "y": 5,
+          "rotation": 270
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_book_open",
+            "host": "bookcase"
+          },
+          {
+            "type": "prop_scroll",
+            "host": "bookcase"
+          },
+          {
+            "type": "prop_quill",
+            "host": "writing_desk"
+          },
+          {
+            "type": "prop_inkpot",
+            "host": "writing_desk"
+          },
+          {
+            "type": "prop_quill",
+            "host": "desk"
+          },
+          {
+            "type": "prop_inkpot",
+            "host": "desk"
+          },
+          {
+            "type": "wall_map",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_clock",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_jewels"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "office",
+              "area": 53,
+              "functions": [
+                "write",
+                "read",
+                "administration",
+                "storage"
+              ]
+            },
+            {
+              "type": "service",
+              "area": 80,
+              "functions": [
+                "reception",
+                "sit",
+                "read"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 114
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "office",
+              "area": 53,
+              "functions": [
+                "write",
+                "read",
+                "administration",
+                "storage"
+              ]
+            },
+            {
+              "type": "service",
+              "area": 80,
+              "functions": [
+                "reception",
+                "sit",
+                "read"
+              ]
+            }
+          ],
+          "stationCount": 13,
+          "accessibleCells": 109
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "COOPER_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "obróbka klepek i odbiór beczek",
+      "furniture": [
+        {
+          "type": "plank_stack",
+          "room": "workshop",
+          "x": 1,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "type": "barrel",
+          "room": "storage",
+          "x": 7,
+          "y": 14,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_wood_plank",
+            "host": "carpentry_bench"
+          },
+          {
+            "type": "prop_wood_shavings",
+            "host": "carpentry_bench"
+          },
+          {
+            "type": "wall_farm_rope",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": []
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 74,
+              "functions": [
+                "craft",
+                "turn_wood",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 84,
+              "functions": [
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "stationCount": 10,
+          "accessibleCells": 139
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 74,
+              "functions": [
+                "craft",
+                "turn_wood",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 84,
+              "functions": [
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "stationCount": 12,
+          "accessibleCells": 137
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "WEAVER_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "przędza i gotowe tkaniny",
+      "furniture": [
+        {
+          "type": "fabric_rack",
+          "room": "storage",
+          "x": 7,
+          "y": 12,
+          "rotation": 0
+        },
+        {
+          "type": "crate",
+          "room": "workshop",
+          "x": 1,
+          "y": 7,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_folded_cloth",
+            "host": "crate"
+          },
+          {
+            "type": "prop_thread",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "prop_flax",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "prop_fabric_stack",
+            "host": "counter"
+          },
+          {
+            "type": "prop_flax",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_hide"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 74,
+              "functions": [
+                "weave",
+                "full_cloth"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 84,
+              "functions": [
+                "browse",
+                "sell",
+                "buy",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 134
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 74,
+              "functions": [
+                "weave",
+                "full_cloth",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 84,
+              "functions": [
+                "browse",
+                "sell",
+                "buy",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 130
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "DYER_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "barwienie, suszenie i gotowa tkanina",
+      "furniture": [
+        {
+          "type": "drying_rack",
+          "room": "workshop",
+          "x": 1,
+          "y": 1,
+          "rotation": 90
+        },
+        {
+          "type": "fabric_rack",
+          "room": "storage",
+          "x": 1,
+          "y": 8,
+          "rotation": 90
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_fabric_stack",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "prop_thread",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "prop_fabric_stack",
+            "host": "counter"
+          },
+          {
+            "type": "prop_flax",
+            "host": "fabric_rack"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_hide"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 76,
+              "functions": [
+                "dye",
+                "full_cloth",
+                "wash"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 108,
+              "functions": [
+                "browse",
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 162
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 76,
+              "functions": [
+                "dye",
+                "full_cloth",
+                "wash",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 108,
+              "functions": [
+                "browse",
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 156
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "POTTER_S01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "suszenie przed wypałem i przechowywanie ceramiki",
+      "furniture": [
+        {
+          "type": "drying_rack",
+          "room": "workshop",
+          "x": 10,
+          "y": 5,
+          "rotation": 270
+        },
+        {
+          "type": "shelf",
+          "room": "storage",
+          "x": 1,
+          "y": 7,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_jar",
+            "host": "shelf"
+          },
+          {
+            "type": "prop_clay_lump",
+            "host": "drying_rack"
+          },
+          {
+            "type": "prop_clay_pot",
+            "host": "drying_rack"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_farm_rope",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_cloth_roll",
+          "prop_crystal"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 64,
+              "functions": [
+                "pottery",
+                "fire_clay",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 72,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 8,
+          "accessibleCells": 115
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 64,
+              "functions": [
+                "pottery",
+                "fire_clay",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 72,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 10,
+          "accessibleCells": 109
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "POTTER_L01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "surowa glina i osobny odbiór ceramiki",
+      "furniture": [
+        {
+          "type": "drying_rack",
+          "room": "storage",
+          "x": 8,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "type": "crate",
+          "room": "workshop",
+          "x": 6,
+          "y": 1,
+          "rotation": 90
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_clay_lump",
+            "host": "drying_rack"
+          },
+          {
+            "type": "prop_clay_pot",
+            "host": "drying_rack"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_farm_rope",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_cloth_roll",
+          "prop_crystal"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "fire_clay",
+                "pottery",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 80,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 151
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "fire_clay",
+                "pottery",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 80,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 13,
+          "accessibleCells": 147
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "MASON_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "obróbka kamienia, narzędzia, skład surowca",
+      "furniture": [
+        {
+          "type": "stone_worktable",
+          "room": "workshop",
+          "x": 3,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "type": "ore_crate",
+          "room": "storage",
+          "x": 1,
+          "y": 9,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_ore",
+            "host": "stone_worktable"
+          },
+          {
+            "type": "prop_ore",
+            "host": "workbench"
+          },
+          {
+            "type": "prop_hammer",
+            "host": "workbench"
+          },
+          {
+            "type": "wall_mining_pick",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_horseshoe",
+          "prop_leather_strip"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 88,
+              "functions": [
+                "carve",
+                "sharpen",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 96,
+              "functions": [
+                "sell",
+                "buy",
+                "storage",
+                "craft"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 162
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 88,
+              "functions": [
+                "carve",
+                "sharpen",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 96,
+              "functions": [
+                "sell",
+                "buy",
+                "storage",
+                "craft"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 157
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "CANDLE_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "formowanie i składowanie świec; semantyka pieca osobno",
+      "furniture": [
+        {
+          "type": "shelf",
+          "room": "storage",
+          "x": 1,
+          "y": 7,
+          "rotation": 90
+        },
+        {
+          "type": "candle_mold",
+          "room": "workshop",
+          "x": 11,
+          "y": 5,
+          "rotation": 180
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_wax_block",
+            "host": "candle_mold"
+          },
+          {
+            "type": "prop_candle_bundle",
+            "host": "candle_mold"
+          },
+          {
+            "type": "prop_jar",
+            "host": "shelf"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_herbs",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_cloth_roll",
+          "prop_crystal"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 64,
+              "functions": [
+                "make_candle",
+                "cook",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 96,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 142
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 64,
+              "functions": [
+                "make_candle",
+                "cook",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 96,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 137
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "PAPER_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "prasowanie i suszenie arkuszy",
+      "furniture": [
+        {
+          "type": "shelf",
+          "room": "storage",
+          "x": 12,
+          "y": 9,
+          "rotation": 180
+        },
+        {
+          "type": "drying_rack",
+          "room": "workshop",
+          "x": 1,
+          "y": 4,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_book_closed",
+            "host": "shelf"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_farm_rope",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_clay_lump",
+          "prop_clay_pot",
+          "prop_ceramic_bowl"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "press_paper",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 80,
+              "functions": [
+                "sell",
+                "buy",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 158
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "press_paper",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 80,
+              "functions": [
+                "sell",
+                "buy",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 152
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "GLASS_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "skład półfabrykatów i gotowe szkło; suszarnia do dalszej kontroli procesu",
+      "furniture": [
+        {
+          "type": "drying_rack",
+          "room": "storage",
+          "x": 1,
+          "y": 10,
+          "rotation": 0
+        },
+        {
+          "type": "shelf",
+          "room": "storage",
+          "x": 12,
+          "y": 12,
+          "rotation": 180
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_bottle",
+            "host": "shelf"
+          },
+          {
+            "type": "prop_jar",
+            "host": "shelf"
+          },
+          {
+            "type": "prop_glass_blank",
+            "host": "drying_rack"
+          },
+          {
+            "type": "prop_bottle",
+            "host": "counter"
+          },
+          {
+            "type": "prop_glass_blank",
+            "host": "drying_rack"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_farm_rope",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_clay_lump",
+          "prop_clay_pot",
+          "prop_ceramic_bowl",
+          "prop_leather_strip"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "make_glass",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 84,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 157
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "make_glass",
+                "storage",
+                "craft"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 84,
+              "functions": [
+                "sell",
+                "buy",
+                "browse",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 151
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "FOUNDRY_L01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "odlewanie, surowce metalowe, narzędzia i wyroby",
+      "furniture": [
+        {
+          "type": "ore_crate",
+          "room": "workshop",
+          "x": 1,
+          "y": 1,
+          "rotation": 90
+        },
+        {
+          "type": "tool_chest",
+          "room": "storage",
+          "x": 8,
+          "y": 1,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_hammer",
+            "host": "tool_chest"
+          },
+          {
+            "type": "prop_tongs",
+            "host": "tool_chest"
+          },
+          {
+            "type": "wall_mining_pick",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_lantern",
+            "mount": "wall"
+          }
+        ],
+        "removed": []
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "cast",
+                "heat_metal",
+                "blow_air",
+                "smith",
+                "sharpen"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 80,
+              "functions": [
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 158
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workshop",
+              "area": 100,
+              "functions": [
+                "cast",
+                "heat_metal",
+                "blow_air",
+                "smith",
+                "sharpen",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 80,
+              "functions": [
+                "storage",
+                "sell",
+                "buy"
+              ]
+            }
+          ],
+          "stationCount": 13,
+          "accessibleCells": 156
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "RUR_ANNEX_S01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "oficyna do sortowania plonów i przechowywania zapasów",
+      "furniture": [
+        {
+          "type": "farm_cupboard",
+          "room": "workroom",
+          "x": 1,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "type": "grain_chest",
+          "room": "workroom",
+          "x": 3,
+          "y": 1,
+          "rotation": 90
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_wheat_sheaf",
+            "host": "grain_chest"
+          },
+          {
+            "type": "prop_barley",
+            "host": "grain_chest"
+          },
+          {
+            "type": "prop_egg",
+            "host": "farm_cupboard"
+          },
+          {
+            "type": "prop_wheat_sheaf",
+            "host": "root_bin"
+          },
+          {
+            "type": "prop_barley",
+            "host": "root_bin"
+          },
+          {
+            "type": "prop_wheat_sheaf",
+            "host": "harvest_sorting_table"
+          },
+          {
+            "type": "prop_barley",
+            "host": "harvest_sorting_table"
+          },
+          {
+            "type": "wall_grain_sheaf",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_sickle",
+            "mount": "wall"
+          }
+        ],
+        "removed": [
+          "prop_leather_strip",
+          "prop_leather_strip"
+        ]
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workroom",
+              "area": 140,
+              "functions": [
+                "cook",
+                "storage",
+                "sharpen"
+              ]
+            }
+          ],
+          "stationCount": 6,
+          "accessibleCells": 127
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workroom",
+              "area": 140,
+              "functions": [
+                "cook",
+                "storage",
+                "sharpen"
+              ]
+            }
+          ],
+          "stationCount": 8,
+          "accessibleCells": 124
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "RUR_WORKYARD_S01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "note": "gospodarcze naprawy drewna, narzędzia i sortowanie; semantyka żaren osobno",
+      "furniture": [
+        {
+          "type": "carpentry_bench",
+          "room": "workroom",
+          "x": 4,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "type": "tool_chest",
+          "room": "workroom",
+          "x": 1,
+          "y": 1,
+          "rotation": 0
+        }
+      ],
+      "skipped": [],
+      "decor": {
+        "added": [
+          {
+            "type": "prop_hammer",
+            "host": "tool_chest"
+          },
+          {
+            "type": "prop_wood_plank",
+            "host": "carpentry_bench"
+          },
+          {
+            "type": "prop_wood_shavings",
+            "host": "carpentry_bench"
+          },
+          {
+            "type": "prop_peg",
+            "host": "root_bin"
+          },
+          {
+            "type": "prop_wood_wedge",
+            "host": "root_bin"
+          },
+          {
+            "type": "wall_rake",
+            "mount": "wall"
+          },
+          {
+            "type": "wall_farm_rope",
+            "mount": "wall"
+          }
+        ],
+        "removed": []
+      },
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workroom",
+              "area": 140,
+              "functions": [
+                "cook",
+                "storage",
+                "sharpen"
+              ]
+            }
+          ],
+          "stationCount": 7,
+          "accessibleCells": 126
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "workroom",
+              "area": 140,
+              "functions": [
+                "cook",
+                "storage",
+                "sharpen",
+                "craft"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 121
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    }
+  ]
+}

@@ -10,3 +10,6 @@ Inicjalizacja: 2026-11-25. Nie jest kopią wszystkich decyzji GDD; pełne ustale
 | D-005 | zatwierdzona przez użytkownika | Orientacyjny monitor obciążenia w każdej odpowiedzi produkcyjnej; bez fikcyjnych procentów. | czat (4), 2026-11-25 |
 
 Nowe wpisy: data, ID, treść, status (propozycja/zatwierdzona/odrzucona/zastąpiona), źródło, wpływ. Nie przedstawiać propozycji asystenta jako zatwierdzonych decyzji użytkownika. W razie sprzeczności wskazać ją i stosować najnowsze potwierdzone ustalenia, nie nadpisując samowolnie GDD/MDS/MFS.
+
+## D006 — wyposażenie i dekoracje
+Data: 2026-11-25; status: zatwierdzone, źródło: bezpośrednie polecenie użytkownika w czacie (4). Kontynuując MTL, stale dodawać funkcjonalne wyposażenie, meble i tematyczne dekoracje; nie ograniczać się do geometrii. Wymagane kontrole dostępności i wizualne przed odbiorem. Dotyczy także wcześniejszych kandydatów r15.

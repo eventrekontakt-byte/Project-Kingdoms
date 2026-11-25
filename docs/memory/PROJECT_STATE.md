@@ -40,3 +40,6 @@ Istnieje eksploracja 2D, ruch/kolizje, wnętrza i kondygnacje, kamera, zoom, aut
 
 ## Pass II-B5 (WIP)
 7 modeli w pass2b5-candidates.json, razem 23 kandydatów. 12 → 55 pomieszczeń, 92 → 116 stanowisk, 48 obrotów V8. r14 niezmieniona, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B5.md).
+
+## Pass II-B6 (WIP)
+17 modeli w pass2b6-candidates.json, razem 40 kandydatów. +34 mebli, +92 dekoracji, 28 usuniętych dekoracji, +34 stanowisk, 68 obrotów V8. r14 bez zmian; r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B6.md).

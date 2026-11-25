@@ -32,3 +32,6 @@ Wszystkie 4 modele w `templates/mtl/pass2b2-candidates.json` obok 4 z II-B1; 32 
 
 ## Checkpoint II-B5 — najnowszy
 7 modeli w `templates/mtl/pass2b5-candidates.json` obok 16 z II-B1–B4. Raport ../MTL_AUDIT_0.3.44_PASS2B5.md. Następnie MTL-001/003/004: weryfikacja procesów zawodowych, logistyki, semantyki i klasyfikacji depozytu/sztabu. Weryfikacja indywidualnych projektów monumentalnych, IDS (w tym szerokości, wymiary, dostęp), pełna integracja r15 pozostają otwarte. Nie integrować bez pełnej walidacji. Node, Android, Pages i wizualny odbiór nadal otwarte; r14 niezmieniona. Użytkownik wybrał kontynuację czatu (4) mimo wysokiego obciążenia.
+
+## Checkpoint II-B6 — najnowszy
+17 modeli w `templates/mtl/pass2b6-candidates.json` obok 23 z II-B1–B5. Raport ../MTL_AUDIT_0.3.44_PASS2B6.md. MTL-003: magazyny, spichlerze, stodoły, stajnie, obory i dojazdy. Szerokie wrota wymagają sprawdzenia formatu portali/runtime; nie udawać szerokiej bramy przez jednokaflowy portal. MTL-004: semantyka 9 urządzeń, klasyfikacja depozytu/sztabu, indywidualne projekty monumentalne. Przed r15 kontrola IDS, visual review i pełny MFS. Polecenie użytkownika: stale uzupełniać dekoracje, meble i wyposażenie stosownie do funkcji budynku; objąć też wcześniejsze przebudowy. Node, Android, Pages i wizualny odbiór otwarte. r14 bez zmian.

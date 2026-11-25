@@ -14,3 +14,5 @@ Zatwierdzono system w czacie (4), 2026-11-25.
 
 ## Szablon monitora
 **Monitor czatu (N):** obciążenie orientacyjne — Niskie/Umiarkowane/Wysokie/Krytyczne/niepewne; checkpoint — aktualny/WIP/do aktualizacji; zmiana czatu — nie/zalecana.
+
+- Polecenie użytkownika (2026-11-25): przy dalszej produkcji systematycznie uzupełniać meble, dekoracje, narzędzia i przedmioty zgodnie z funkcją pomieszczenia. Nie zwiększać liczby kosztem przejść i stanowisk; sprawdzać dopasowanie tematyczne i wizualne. Przed odbiorem wrócić także do wcześniej przebudowanych wnętrz.
