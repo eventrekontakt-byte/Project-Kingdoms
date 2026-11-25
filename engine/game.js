@@ -1,13 +1,14 @@
 import {drawMfsInterior} from "./mfs/interior-renderer.js?v=0.3.39";
 import {validateWorld} from "./mfs/validator.js?v=0.3.35";
 import {registerMfs,mfsScene} from "./mfs/core.js?v=0.3.29";
+import {loadCityR2,registryFetcher,isNewCity,createCityBackground,stepCityBackground} from "./city-runtime.js?v=0.3.45";
 import {clampZoom} from "../ui/minimap.js?v=0.3.29";
 import {setupMinimap} from "../ui/minimap-controls.js?v=0.3.29";
 import {createNPCs,stepNPCs,visibleNPCs,nearestNPC,npcGreeting,npcDialogue,npcMoving,exportNPCState,restoreNPCState} from "./npcs.js?v=0.3.29";
 import {createAmbientPopulation,resetAmbientPopulation,syncAmbientPopulation,moveAmbientPopulation,observeAmbientPopulation,focusAmbient,currentAmbientFocus,rememberAmbient,exportAmbientState,restoreAmbientState,primeAmbientPopulation} from "./dns-population.js?v=0.3.29";
 import {interiorFurniture} from "./city-interiors.js?v=0.3.13";
 import {TAVERN_MAP,tavernFurniture,tavernDecor} from "./interiors/templates.js?v=0.3.12";
-import {START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.29";
+import {START as LEGACY_START,mapSize,tileAt,blocked,transitionAt,mapName,COLORS,objectAt,doorAt,defaultDoors} from "./world.js?v=0.3.29";
 import {defaultObjects,interact,interactionNear,objectActions,useObject} from "../systems/interactions.js?v=0.3.29";
 import {saveGame,loadGame} from "../save/storage.js?v=0.3.29";
 import {setupControls} from "../ui/controls.js";
@@ -15,12 +16,19 @@ import {findRoute} from "./pathfinding.js?v=0.3.29";
 import {setupWorldMap} from "../ui/world-map.js";
 import {WORLD_START,siteAt,siteForMap} from "./world-map.js";
 import {CITY_BUILDINGS,CITY_GATES,cityDoorAt,cityBuildingAt,cityStepAllowed,cityGateBarrierAt,cityGateControlNear} from "./city-one.js";
-import {CITY_PLOTS,plotAt,plotStatus,parcelSummary} from "./plots.js?v=0.3.14";
+import {CITY_PLOTS,plotStatus} from "./plots.js?v=0.3.14";
 import {elevationAt,elevationTransition,buildingRoofLevel,ELEVATION_UNIT_METERS,resolveSurfaceStep} from "./elevation.js?v=0.3.29";
 const $=id=>document.getElementById(id),canvas=$("world"),ctx=canvas.getContext("2d");
-let mfsTest=null,mfsError=null,mfsReports=[];
-try{const results=await validateWorld(new URL("../maps/",import.meta.url).href);for(const {report,bundle} of results){mfsReports.push(report);if(bundle){registerMfs(bundle);if(bundle.manifest.mapId==="mfs_test_001")mfsTest=bundle;}else if(report.mapId==="mfs_test_001")mfsError=new Error("Walidacja: "+report.counts.ERROR+" błędów");}}catch(error){mfsError=error;console.error("MFS Validator",error);}
-const state={player:{...START,z:0},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
+let mfsTest=null,mfsError=null,mfsReports=[],cityBundle=null,cityError=null;
+const mapsBase=new URL("../maps/",import.meta.url).href;
+try{const results=await validateWorld(mapsBase,await registryFetcher(mapsBase,false));for(const {report,bundle} of results){mfsReports.push(report);if(bundle){registerMfs(bundle);if(bundle.manifest.mapId==="mfs_test_001")mfsTest=bundle;}else if(report.mapId==="mfs_test_001")mfsError=new Error("Walidacja: "+report.counts.ERROR+" błędów");}}catch(error){mfsError=error;console.error("MFS Validator",error);}
+try{cityBundle=await loadCityR2(mapsBase);registerMfs(cityBundle);}catch(error){cityBundle=null;cityError=error;console.error("City r2 runtime",error);}
+const START=cityBundle?.spawn||LEGACY_START;
+const activePlots=()=>cityBundle?.plots||CITY_PLOTS;
+const activePlotAt=(x,y)=>activePlots().find(p=>x>=p.bounds[0]&&x<=p.bounds[2]&&y>=p.bounds[1]&&y<=p.bounds[3])||null;
+const activePlotSummary=edits=>activePlots().reduce((a,p)=>{const s=plotStatus(p,edits).status;a[s]=(a[s]||0)+1;return a;},{total:activePlots().length});
+const cityBackground=createCityBackground(cityBundle);
+const state={player:{...START,z:elevationAt(START.map,START.x,START.y,START.floor)},camera:{x:START.x,y:START.y,zoom:1},clock:{day:1,hour:8,minute:0},controlMode:"dpad",paused:false,objects:defaultObjects(),doors:defaultDoors(),worldRegion:"pogranicze",worldPosition:{...WORLD_START},worldTravelMinutes:0,inventory:[],buildingEdits:{},plotEdits:{},plotMode:false,selectedPlot:null,gateStates:{},crimes:0,reputation:0};
 const npcs=createNPCs();state.npcs=npcs;
 // Only remembered passers-by enter a separate bounded campaign registry.
 const ambient=createAmbientPopulation();
@@ -74,7 +82,7 @@ function animateVisual(now){
  }
  // Do not redraw an idle map 60 times per second on mobile.
  const cameraMoving=Math.abs(visual.cameraTargetX-state.camera.x)+Math.abs(visual.cameraTargetY-state.camera.y)>.002;
- if((visual.active||cameraMoving||npcMoving(npcs,p,now)||npcMoving(ambient.actors,p,now))&&now-visual.lastPaint>=40){draw();visual.lastPaint=now;}
+ if((visual.active||cameraMoving||npcMoving(npcs,p,now)||npcMoving(ambient.actors,p,now)||npcMoving(cityBackground,p,now))&&now-visual.lastPaint>=40){draw();visual.lastPaint=now;}
  requestAnimationFrame(animateVisual);
 }
 function notify(message){const el=$("toast");el.textContent=message;el.classList.add("visible");clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove("visible"),2300);}
@@ -108,7 +116,7 @@ function resize(){const box=canvas.getBoundingClientRect(),dpr=Math.min(window.d
  ctx.setTransform(dpr,0,0,dpr,0,0);draw();
 }
 function geometry(){return {w:canvas.clientWidth,h:canvas.clientHeight,size:32*state.camera.zoom};}
-function primePopulation(){const now=performance.now();stepNPCs(npcs,state.player,state.clock,now,state.gateStates,ambient.actors);primeAmbientPopulation(ambient,state.player,state.camera,geometry(),state.clock,now,npcs,state.gateStates);}
+function primePopulation(){if(cityBundle)return;const now=performance.now();stepNPCs(npcs,state.player,state.clock,now,state.gateStates,ambient.actors);primeAmbientPopulation(ambient,state.player,state.camera,geometry(),state.clock,now,npcs,state.gateStates);}
 function ensureValidPosition(){
  const p=state.player,{w,h}=mapSize(p.map);
  if(p.map==="site-city1"&&(!Number.isInteger(p.x)||!Number.isInteger(p.y)||p.x<0||p.y<0||p.x>=w||p.y>=h||blocked(p.map,p.floor,p.x,p.y))){
@@ -134,6 +142,7 @@ function draw(){
   ctx.fillStyle=COLORS[t]||"#333";ctx.fillRect(sx,sy,Math.ceil(size)+1,Math.ceil(size)+1);
   ctx.strokeStyle="#0a182b38";ctx.strokeRect(sx,sy,size,size);
   if(p.map==="site-city1")drawCityTerrain(ctx,t,x,y,sx,sy,size);
+  if(p.map==="city_001"&&cityBundle){const b=cityBundle.buildingCells.get(y*mw+x);if(t==="wall"&&b){const g=b.geometry,edge=x===g.x||y===g.y||x===g.x+g.w-1||y===g.y+g.h-1;ctx.fillStyle=edge?"#76564a":((b.rotation%180?x:y)%2?"#aa6751":"#a0604c");ctx.fillRect(sx,sy,Math.ceil(size)+1,Math.ceil(size)+1);}else if(t==="wall"){ctx.fillStyle="#898a83";ctx.fillRect(sx,sy,Math.ceil(size)+1,Math.ceil(size)+1);}else if(t==="road"){ctx.fillStyle="#b49a75";ctx.fillRect(sx,sy,Math.ceil(size)+1,Math.ceil(size)+1);}}
   if(p.map==="mfs_test_001"){const sc=mfsScene(p.map);if(sc){for(const r of sc.records.values())if(r.ownershipMode==="standard"&&r.geometry.type==="rect"){const a=r.geometry;if(x>=a.x&&x<a.x+a.w&&y>=a.y&&y<a.y+a.h&&(x===a.x||x===a.x+a.w-1||y===a.y||y===a.y+a.h-1)){ctx.strokeStyle="#c2df85";ctx.lineWidth=1;ctx.strokeRect(sx+1,sy+1,size-2,size-2);break;}}}}
   if(t==="tree"){ctx.fillStyle="#1d4229";ctx.beginPath();ctx.arc(sx+size/2,sy+size/2,size*.29,0,Math.PI*2);ctx.fill();}
   if(t==="object"&&p.map!==TAVERN_MAP){const object=objectAt(p.map,p.floor,x,y);const opened=state.objects[object?.id]?.opened;ctx.fillStyle=opened?"#5b4b38":"#d8a45a";ctx.fillRect(sx+size*.2,sy+size*.2,size*.6,size*.6);}
@@ -155,6 +164,7 @@ function draw(){
  if(p.map==="site-city1"){drawCityElevation(cx,cy,w,h,size);drawRampartDetails(cx,cy,w,h,size);drawCityGates(cx,cy,w,h,size);if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawCityLabels(cx,cy,w,h,size);}
  drawNPCs(cx,cy,w,h,size);
  drawNPCs(cx,cy,w,h,size,ambient.actors);
+ if(p.map==="city_001"){if(state.plotMode)drawPlotOverlay(cx,cy,w,h,size);drawNPCs(cx,cy,w,h,size,cityBackground);}
  ctx.strokeStyle="#ffe69b";ctx.lineWidth=Math.max(2,size*.075);ctx.beginPath();
  for(const [i,step] of path.entries()){const sx=(step.x-cx)*size+w/2+size/2,sy=(step.y-cy)*size+h/2+size/2;i?ctx.lineTo(sx,sy):ctx.moveTo(sx,sy);}ctx.stroke();
  const px=(visual.x-cx)*size+w/2,py=(visual.y-cy)*size+h/2;
@@ -314,7 +324,7 @@ function drawTavernFurniture(floor,cx,cy,w,h,size){
  }
 }
 function drawPlotOverlay(cx,cy,w,h,size){
- for(const plot of CITY_PLOTS){
+ for(const plot of activePlots()){
   const [x1,y1,x2,y2]=plot.bounds;
   const sx=(x1-cx)*size+w/2,sy=(y1-cy)*size+h/2;
   const pw=(x2-x1+1)*size,ph=(y2-y1+1)*size;
@@ -336,10 +346,10 @@ function drawPlotOverlay(cx,cy,w,h,size){
 }
 function refreshPlotPanel(){
  const panel=$("plotInfo");if(!panel)return;
- const summary=parcelSummary(state.plotEdits);
+ const summary=activePlotSummary(state.plotEdits);
  $("plotModeBtn").textContent=state.plotMode?"Wyłącz widok działek":"Włącz widok działek";
  $("plotStats").textContent=`Działki: ${summary.total} • zabudowane: ${summary.occupied||0} • wolne: ${summary.vacant||0} • zarezerwowane: ${summary.reserved||0}`;
- const plot=CITY_PLOTS.find(p=>p.id===state.selectedPlot);
+ const plot=activePlots().find(p=>p.id===state.selectedPlot);
  if(!plot){panel.textContent="Włącz tryb zarządzania i dotknij działki na mapie."; $("plotReserveBtn").hidden=true;return;}
  const info=plotStatus(plot,state.plotEdits);
  const [x1,y1,x2,y2]=plot.bounds;
@@ -620,15 +630,16 @@ function move(dir,fromPath=false){
  if(p.map==="site-city1"){const gate=cityGateBarrierAt(nx,ny);if(gate&&state.gateStates[gate.id]==="closed"){if(!fromPath)notify(gate.name+": krata zamknięta — podejdź i użyj Zbadaj");path=[];draw();return false;}}
  const bounds=mapSize(p.map);
  if(siteForMap(p.map)&&(nx<0||ny<0||nx>=bounds.w||ny>=bounds.h)){
+  if(p.map==="city_001"&&!mfsScene(p.map).worldExits.some(e=>e.x===p.x&&e.y===p.y&&((e.direction==="west"&&nx<0)||(e.direction==="east"&&nx>=bounds.w)||(e.direction==="south"&&ny>=bounds.h)||(e.direction==="north"&&ny<0)))){if(!fromPath)notify("Wyjdź przez jedną z bram miasta");return false;}
   path=[];strategic.open();notify("Opuszczono lokację — mapa świata");return true;
  }
  if((p.map==="site-city1"&&!cityStepAllowed(p.x,p.y,nx,ny))||blocked(p.map,p.floor,nx,ny)){if(!fromPath)notify("Droga zablokowana");draw();return false;}
  const previous={map:p.map,floor:p.floor,x:p.x,y:p.y,z:p.z};
- const heightChange=p.map==="site-city1"?resolveSurfaceStep(p.map,p,{x:nx,y:ny},p.floor):null;
+ const heightChange=(p.map==="site-city1"||p.map==="city_001")?resolveSurfaceStep(p.map,p,{x:nx,y:ny},p.floor):null;
  if(heightChange&&!heightChange.allowed){if(!fromPath)notify("Potrzebne schody lub przejście na właściwym poziomie");path=[];return false;}
  p.x=nx;p.y=ny;p.z=heightChange?heightChange.z:elevationAt(p.map,nx,ny,p.floor);
- if(heightChange&&heightChange.z===2&&previous.z!==2&&!fromPath)notify("Wejście na chodnik obronny");
- if(heightChange&&heightChange.z===0&&previous.z>0&&!fromPath)notify("Zejście z podwyższenia");
+ if(p.map==="site-city1"&&heightChange&&heightChange.z===2&&previous.z!==2&&!fromPath)notify("Wejście na chodnik obronny");
+ if(p.map==="site-city1"&&heightChange&&heightChange.z===0&&previous.z>0&&!fromPath)notify("Zejście z podwyższenia");
  const dest=transitionAt(p.map,p.floor,p.x,p.y);
  if(dest){Object.assign(p,dest);p.z=elevationAt(p.map,p.x,p.y,p.floor);path=[];if(p.map===TAVERN_MAP){state.camera.zoom=clampZoom(state.camera.zoom);}notify(mapName(p.map,p.floor));}
  startVisualStep(previous);draw();return true;
@@ -660,8 +671,8 @@ canvas.addEventListener("pointerup",e=>{if(!drag||drag.id!==e.pointerId)return;
   }
   const selected=visibleNPCs(npcs,state.player).find(n=>Math.abs(n.x-goal.x)+Math.abs(n.y-goal.y)<=1);
   if(selected&&!state.plotMode&&Math.abs(selected.x-state.player.x)+Math.abs(selected.y-state.player.y)<=3){showNPCDialogue(selected);drag=null;return;}
-  if(state.plotMode&&state.player.map==="site-city1"){
-   const plot=plotAt(goal.x,goal.y);state.selectedPlot=plot?.id||null;
+  if(state.plotMode&&state.player.map===START.map){
+   const plot=activePlotAt(goal.x,goal.y);state.selectedPlot=plot?.id||null;
    refreshPlotPanel();if(plot)notify(plot.name);draw();
   }else{path=findPath(goal);if(path.length)notify(`Wyznaczono trasę: ${path.length} pól`);draw();}
  }
@@ -672,11 +683,11 @@ canvas.addEventListener("wheel",e=>{e.preventDefault();zoom(e.deltaY<0?1:-1);},{
 function zoom(delta){state.camera.zoom=clampZoom(Math.round((state.camera.zoom+delta*.25)*100)/100);draw();refreshMinimap(true);}
 
 $("plotModeBtn").addEventListener("click",()=>{
- if(state.player.map!=="site-city1"){notify("Zarządzanie działkami jest dostępne w Mieście 1");return;}
+ if(state.player.map!==START.map){notify("Zarządzanie działkami jest dostępne w Mieście 1");return;}
  state.plotMode=!state.plotMode;state.selectedPlot=null;path=[];refreshPlotPanel();draw();
 });
 $("plotReserveBtn").addEventListener("click",()=>{
- const plot=CITY_PLOTS.find(p=>p.id===state.selectedPlot);
+ const plot=activePlots().find(p=>p.id===state.selectedPlot);
  if(!plot||plot.status!=="vacant")return;
  const current=plotStatus(plot,state.plotEdits).status;
  if(current==="reserved")delete state.plotEdits[plot.id];
@@ -688,18 +699,18 @@ $("saveBtn").addEventListener("click",()=>{state.worldMode=strategic.active();st
 function restore(){const data=loadGame();if(!data){notify("Brak zgodnego zapisu");return;}
  closeNPCDialogue();minimap.resetTarget();resetAmbientPopulation(ambient);restoreNPCState(npcs,data.npcState);
  if(blocked(data.player.map,data.player.floor,data.player.x,data.player.y)){notify("Nieprawidłowa pozycja zapisu");return;}
- Object.assign(state.player,data.player);Object.assign(state.clock,data.clock);state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.gateStates=data.gateStates||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
+ Object.assign(state.player,data.player);state.player.z=elevationAt(state.player.map,state.player.x,state.player.y,state.player.floor);Object.assign(state.clock,data.clock);state.buildingEdits=data.buildingEdits||{};state.objects=data.objects||defaultObjects();state.inventory=data.inventory||[];state.plotEdits=data.plotEdits||{};state.gateStates=data.gateStates||{};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.crimes=data.crimes||0;state.reputation=data.reputation||0;state.doors=data.doors||defaultDoors();state.worldRegion="pogranicze";state.worldPosition=data.worldPosition&&Number.isInteger(data.worldPosition.x)&&Number.isInteger(data.worldPosition.y)?{...data.worldPosition}:{...WORLD_START};state.worldTravelMinutes=data.worldTravelMinutes||0;
  state.camera.zoom=clampZoom(data.camera?.zoom);
  restoreAmbientState(ambient,data.ambientState,performance.now(),state.player,npcs,state.gateStates);
  state.controlMode=data.controlMode==="joystick"?"joystick":"dpad";state.paused=Boolean(data.paused);
- snapVisual();controls.setMode(state.controlMode);path=[];primePopulation();draw();if(data.worldMode)strategic.open();else strategic.close();notify("Wczytano kampanię");
+ snapVisual();controls.setMode(state.controlMode);path=[];primePopulation();draw();if(data.worldMode)strategic.open();else strategic.close();notify(data.cityMigrated?"Wczytano kampanię — przeniesiono bohatera do Miasta 1 r2":"Wczytano kampanię");
 }
 $("loadBtn").addEventListener("click",restore);
 $("pauseBtn").addEventListener("click",()=>{state.paused=!state.paused;draw();});
 $("newBtn").addEventListener("click",()=>{$("confirmNew").showModal();});
 $("confirmNew").addEventListener("close",()=>{if($("confirmNew").returnValue!=="confirm")return;
  closeNPCDialogue();minimap.resetTarget();resetAmbientPopulation(ambient);npcs.splice(0,npcs.length,...createNPCs());
- Object.assign(state.player,START);Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();primePopulation();draw();notify("Rozpoczęto nową kampanię");
+ Object.assign(state.player,START,{z:elevationAt(START.map,START.x,START.y,START.floor)});state.gateStates={};state.buildingEdits={};Object.assign(state.clock,{day:1,hour:8,minute:0});state.objects=defaultObjects();state.plotEdits={};state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();state.inventory=[];state.crimes=0;state.reputation=0;state.doors=defaultDoors();state.worldRegion="pogranicze";state.worldPosition={...WORLD_START};state.worldTravelMinutes=0;state.paused=false;document.getElementById("worldMapOverlay").hidden=true;path=[];snapVisual();primePopulation();draw();notify("Rozpoczęto nową kampanię");
 });
 $("menuBtn").addEventListener("click",()=>$("sidePanel").classList.toggle("open"));
 $("mfsTestBtn").disabled=!mfsTest;
@@ -712,11 +723,12 @@ if(testReport){
 $("mfsReportBtn").disabled=!mfsReports.length;
 $("mfsReportBtn").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(mfsReports,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="mfs-validation-0.3.30.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $("mfsTestStatus").textContent=mfsTest?"3 działki · 1 kamienica · 3 kondygnacje · mapa JSON":("MFS niedostępny: "+(mfsError?.message||"brak mapy"));
-function travelMfs(point,label){closeNPCDialogue();minimap.resetTarget();Object.assign(state.player,point,{z:0});path=[];if(strategic.active())strategic.close();$("sidePanel").classList.remove("open");snapVisual();primePopulation();draw();notify(label);}
+function travelMfs(point,label){closeNPCDialogue();minimap.resetTarget();Object.assign(state.player,point,{z:elevationAt(point.map,point.x,point.y,point.floor)});path=[];if(strategic.active())strategic.close();$("sidePanel").classList.remove("open");snapVisual();primePopulation();draw();notify(label);}
 $("mfsTestBtn").addEventListener("click",()=>{if(mfsTest)travelMfs(mfsTest.spawn,"Poligon MFS");});
 $("mfsReturnBtn").addEventListener("click",()=>travelMfs(START,"Miasto 1"));
 $("fastTravelTavern").addEventListener("click",()=>{
- Object.assign(state.player,{map:TAVERN_MAP,floor:0,x:16,y:25});
+ if(cityBundle?.tavern){travelMfs(cityBundle.tavern,"Karczma — Miasto 1");return;}
+ Object.assign(state.player,{map:TAVERN_MAP,floor:0,x:16,y:25,z:0});
  path=[];state.camera.x=16.5;state.camera.y=25.5;state.camera.zoom=clampZoom(state.camera.zoom);
  if(!$("worldMapOverlay").hidden)strategic.close();
  $("sidePanel").classList.remove("open");snapVisual();draw();notify("Szybka podróż: Karczma 01");
@@ -788,14 +800,15 @@ function performInteraction(){if(strategic.active()){if(!strategic.interact())no
   if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=16;p.y=25;state.camera.zoom=clampZoom(state.camera.zoom);}snapVisual();draw();notify("Wejście: "+building.name);return;}}
  }
  const npc=nearestNPC(npcs.concat(ambient.actors),state.player);if(npc){showNPCDialogue(npc);return;}
- const obj=interactionNear(state.player);if(obj&&state.player.map==="interior-city1-karczma"){showObjectPanel(obj);path=[];draw();return;}
+ const obj=interactionNear(state.player);if(obj&&(state.player.map==="interior-city1-karczma"||isNewCity(state.player.map))){showObjectPanel(obj);path=[];draw();return;}
  notify(interact(state));path=[];draw();}
 $("interactBtn").addEventListener("click",performInteraction);
 $("interactMobile").addEventListener("click",performInteraction);
 const strategic=setupWorldMap({
  getState:()=>state,
  onEnter:site=>{
-  Object.assign(state.player,{map:site.map,floor:0,x:site.map==="site-city1"?55:32,y:site.map==="site-city1"?76:22});
+  const point=site.map==="site-city1"&&cityBundle?START:{map:site.map,floor:0,x:site.map==="site-city1"?55:32,y:site.map==="site-city1"?76:22};
+  Object.assign(state.player,point,{z:elevationAt(point.map,point.x,point.y,point.floor)});state.plotMode=false;state.selectedPlot=null;refreshPlotPanel();
   state.worldPosition={x:site.x,y:site.y};path=[];snapVisual();draw();
   notify("Wejście: "+site.name);
  },
@@ -803,7 +816,7 @@ const strategic=setupWorldMap({
  onStep:minutes=>{updateClock(minutes);hud();}
 });
 $("worldMapMobile").addEventListener("click",()=>$("openWorldMap").click());
-const minimap=setupMinimap({getFrame:()=>({player:state.player,camera:state.camera,view:geometry(),fixed:npcs,ambient:ambient.actors,focusId:ambient.focusId,gateStates:state.gateStates,route:path,hidden:!$("worldMapOverlay").hidden}),onRoute:minimapRoute,onCancel:()=>{path=[];draw();},onCenterMain:()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();}});
+const minimap=setupMinimap({getFrame:()=>({player:state.player,camera:state.camera,view:geometry(),fixed:npcs,ambient:cityBundle?cityBackground:ambient.actors,focusId:ambient.focusId,gateStates:state.gateStates,route:path,hidden:!$("worldMapOverlay").hidden}),onRoute:minimapRoute,onCancel:()=>{path=[];draw();},onCenterMain:()=>{visual.manualPan=false;visual.cameraTargetX=visual.x;visual.cameraTargetY=visual.y;draw();}});
 const controls=setupControls(dir=>move(dir),mode=>{state.controlMode=mode;});
 window.addEventListener("keydown",e=>{
  if(e.code==="Escape"&&!e.repeat&&strategic.active()){e.preventDefault();strategic.close();return;}
@@ -825,7 +838,8 @@ setInterval(()=>{if(!state.paused){updateClock(1);hud();}},1000);
 setInterval(()=>{
  if(state.paused||strategic.active())return;
  const now=performance.now();
- const changedFixed=stepNPCs(npcs,state.player,state.clock,now,state.gateStates,ambient.actors);
+ if(cityBundle){if(stepCityBackground(cityBundle,cityBackground,state.player,state.doors,now))draw();return;}
+  const changedFixed=stepNPCs(npcs,state.player,state.clock,now,state.gateStates,ambient.actors);
  let changedAmbient=false;
  if(state.player.map==="site-city1"||state.player.map.startsWith("interior-city1-")){
   const view=geometry();
@@ -838,3 +852,4 @@ setInterval(()=>{
 },220);
 new ResizeObserver(resize).observe(canvas);
 snapVisual();refreshPlotPanel();primePopulation();resize();requestAnimationFrame(animateVisual);
+if(cityBundle){notify("Miasto 1 r2 — mapa MFS");}else if(cityError){notify("Miasto 1 r2 niedostępne — wczytano wersję awaryjną");$("mfsTestStatus").textContent+=" · City r2: "+cityError.message;}

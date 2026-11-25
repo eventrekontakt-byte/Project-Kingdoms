@@ -37,7 +37,7 @@ export function elevationMetadata(){
 export function resolveSurfaceStep(map,from,to,floor=0){
  const fromZ=Number.isInteger(from.z)?from.z:elevationAt(map,from.x,from.y,floor);
  const nextZ=elevationAt(map,to.x,to.y,floor);
- if(map!=="site-city1")return {allowed:true,z:nextZ};
+ if(map!=="site-city1"&&map!=="city_001")return {allowed:true,z:nextZ};
  const delta=Math.abs(nextZ-fromZ);
  return {allowed:delta<=1||fromZ===nextZ,z:nextZ};
 }

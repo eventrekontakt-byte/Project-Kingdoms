@@ -9,6 +9,7 @@ export function interact(state){
  const positions=[[state.player.x+1,state.player.y],[state.player.x-1,state.player.y],[state.player.x,state.player.y+1],[state.player.x,state.player.y-1]];
  for(const [x,y] of positions){const door=doorAt(state.player.map,state.player.floor,x,y);if(!door)continue;
   const status=state.doors?.[door.id]||door.initial;
+  if(door.gate&&status==="open"&&doorAt(state.player.map,state.player.floor,state.player.x,state.player.y)?.id===door.id)return "Zejdź z progu bramy przed zamknięciem.";
   if(status==="locked")return door.name+": zamknięte na klucz.";
   state.doors[door.id]=status==="open"?"closed":"open";return door.name+": "+(state.doors[door.id]==="open"?"otwarte.":"zamknięte.");
  }

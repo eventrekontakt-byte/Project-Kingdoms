@@ -21,7 +21,7 @@ export const SITE_BY_MAP=Object.fromEntries(SITES.map(s=>[s.map,s]));
 export const SITE_COLORS={city:"#f4ca78",castle:"#d7a9fa",village:"#e7e2bb",hideout:"#e17d79",landmark:"#8fd8d3"};
 export function siteAt(x,y){return SITES.find(s=>s.x===x&&s.y===y)||null;}
 export function siteById(id){return SITES.find(s=>s.id===id)||null;}
-export function siteForMap(map){return SITE_BY_MAP[map]||null;}
+export function siteForMap(map){return SITE_BY_MAP[map==="city_001"?"site-city1":map]||null;}
 export function worldTile(x,y){
  if(x<0||y<0||x>=WORLD_WIDTH||y>=WORLD_HEIGHT)return "void";
  const ridge=Math.sin(x*.115)+Math.cos(y*.13)+Math.sin((x+y)*.052);

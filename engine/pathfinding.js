@@ -40,7 +40,7 @@ export function findRoute(player,goal,doors={},gateStates={},options={}){
    const x=current.x+dx,y=current.y+dy;
    const step=resolveSurfaceStep(player.map,current,{x,y},player.floor);
    const k=key(x,y,step.z),g=current.g+1;
-   if(options.localOnly&&transitionAt(player.map,player.floor,x,y)&&!targetKeys.has(k))continue;
+   if((options.localOnly||player.map==="city_001"||player.map.startsWith("city_001."))&&transitionAt(player.map,player.floor,x,y)&&!targetKeys.has(k))continue;
    if(!step.allowed||!passable(x,y)||(player.map==="site-city1"&&!cityStepAllowed(current.x,current.y,x,y))||closed.has(k)||g>=(best.get(k)??Infinity))continue;
    best.set(k,g);parent.set(k,ck);open.push({x,y,z:step.z,g,f:g+heuristic(x,y)});
   }
