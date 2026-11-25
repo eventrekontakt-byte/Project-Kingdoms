@@ -40,3 +40,5 @@ Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograni
 | 2026-11-25 | II-B10b review | 5 modeli, +71 pomieszczeń, +108 stanowisk, +80 mebli, +70 dekoracji, 72 obroty V8; 79 unikatowych kandydatów | ../MTL_AUDIT_0.3.44_PASS2B10B.md |
 
 | 2026-11-25 | II-B11a WIP, czat (5) | 4 modele, +13 mebli, +33 dekoracje, 50→63 stanowiska, 16 obrotów V8; 79 unikatowych kandydatów | ../MTL_AUDIT_0.3.44_PASS2B11A.md |
+
+| 2026-11-25 | II-B11b WIP, czat (5) | 11 modeli, +51 mebli, +165 dekoracji, 246→301 stanowisk, 84 obroty V8; 79 unikatowych kandydatów | ../MTL_AUDIT_0.3.44_PASS2B11B.md |
