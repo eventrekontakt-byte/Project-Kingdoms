@@ -6,7 +6,7 @@
 - [x] B13 — r15 zintegrowana jako review.
 - [x] B14 — zapisany profil final pozytywny; 16 decyzji projektowych zatwierdzonych (D010).
 - [x] Zamknięcie prac katalogowych r15 jako zamrożona referencja / review (nie pełny odbiór produkcyjny).
-- [ ] CITY-001a — 01–03 zatwierdzone (D012–D014), 04 bilans WIP do akceptacji, 05 komunikacja i dalsze partie na polecenie.
+- [ ] CITY-001a — 01–04 zatwierdzone (D012–D015); STOP, 05 komunikacja/logistyka/infrastruktura nie rozpoczęta, na polecenie w nowym czacie. W 08 rozstrzygnąć NPC tła.
 - [ ] Pełny odbiór MTL wg MDS/MFS: zaległe warunki, wizualne i techniczne bramki przed produkcyjną integracją; zachować archiwum.
 - [ ] CITY-001b — osobna mapa review, migracja ID i zapisów, kolejne bramki.
 - [ ] Integracja i stabilizacja mapy referencyjnej.
