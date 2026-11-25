@@ -98,11 +98,12 @@ function minimapRoute(goal){
 function hud(){
  const p=state.player;$("location").textContent=mapName(p.map,p.floor);
  $("coordinates").textContent=strategic?.active()?`Świat: ${state.worldPosition.x}, ${state.worldPosition.y}`:`Pozycja: ${p.x}, ${p.y} • ${siteForMap(p.map)?"Lokacja":"Wnętrze"}`;
+ if(p.map==="city_001")$("coordinates").textContent+=` • wysokość ${(p.z*.5).toFixed(1)} m`;
  if(p.map==="site-city1")$("coordinates").textContent+=` • poziom Z=${(p.z??elevationAt(p.map,p.x,p.y,p.floor))} (${((p.z??elevationAt(p.map,p.x,p.y,p.floor))*ELEVATION_UNIT_METERS).toFixed(1)} m)`;
  $("clock").textContent=`Dzień ${state.clock.day} • ${String(state.clock.hour).padStart(2,"0")}:${String(state.clock.minute).padStart(2,"0")}${state.paused?" • PAUZA":""}`;
  $("zoomLabel").textContent=Math.round(state.camera.zoom*100)+"%";
  const npcStats=$("npcStats");
- if(npcStats){
+ if(npcStats&&cityBundle){npcStats.textContent="Miasto 1 r2: "+cityBackground.length+" uproszczonych NPC tła; pełna symulacja mieszkańców w przygotowaniu.";}else if(npcStats){
   const watched=currentAmbientFocus(ambient),active=ambient.actors.filter(n=>n.simulationLevel>0).length;
   const focusInfo=watched?" · obserwujesz "+watched.name+" (L"+watched.simulationLevel+", "+Math.floor(watched.focusMs/1000)+" s)":"";
   npcStats.textContent="DNS 1.0: 40 stałych · "+ambient.actors.length+" NPC tła (limit 38) · lokalnie "+ambient.nearCount+" / w kadrze "+ambient.visibleCount+" · "+active+" zaawansowanych"+focusInfo+" · zapamiętani "+ambient.remembered.size+" · utworzono "+ambient.generated+" / zwolniono "+ambient.removed+" (priorytet lokalny: "+ambient.reclaimed+")";
@@ -799,6 +800,7 @@ function performInteraction(){if(strategic.active()){if(!strategic.interact())no
   const building=CITY_BUILDINGS.find(b=>b.door&&Math.abs(b.door.x-p.x)+Math.abs(b.door.y-p.y)<=1);
   if(building){const dest=transitionAt(p.map,p.floor,building.door.x,building.door.y);if(dest){Object.assign(p,dest);path=[];if(p.map==="interior-city1-karczma"){p.x=16;p.y=25;state.camera.zoom=clampZoom(state.camera.zoom);}snapVisual();draw();notify("Wejście: "+building.name);return;}}
  }
+ if(isNewCity(state.player.map)){const p=state.player;for(const [dx,dy] of [[0,1],[1,0],[0,-1],[-1,0]]){const x=p.x+dx,y=p.y+dy,door=doorAt(p.map,p.floor,x,y),dest=transitionAt(p.map,p.floor,x,y);if(door&&dest&&(state.doors[door.id]||door.initial)==="open"){Object.assign(p,dest);p.z=elevationAt(p.map,p.x,p.y,p.floor);path=[];snapVisual();draw();notify(mapName(p.map,p.floor));return;}}}
  const npc=nearestNPC(npcs.concat(ambient.actors),state.player);if(npc){showNPCDialogue(npc);return;}
  const obj=interactionNear(state.player);if(obj&&(state.player.map==="interior-city1-karczma"||isNewCity(state.player.map))){showObjectPanel(obj);path=[];draw();return;}
  notify(interact(state));path=[];draw();}
@@ -852,4 +854,4 @@ setInterval(()=>{
 },220);
 new ResizeObserver(resize).observe(canvas);
 snapVisual();refreshPlotPanel();primePopulation();resize();requestAnimationFrame(animateVisual);
-if(cityBundle){notify("Miasto 1 r2 — mapa MFS");}else if(cityError){notify("Miasto 1 r2 niedostępne — wczytano wersję awaryjną");$("mfsTestStatus").textContent+=" · City r2: "+cityError.message;}
+if(cityBundle){$("status").textContent="Alpha 0.3.45 · Miasto 1 r2";notify("Miasto 1 r2 — mapa MFS");}else if(cityError){notify("Miasto 1 r2 niedostępne — wczytano wersję awaryjną");$("mfsTestStatus").textContent+=" · City r2: "+cityError.message;}

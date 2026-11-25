@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101b28"><meta name="apple-mobile-web-app-capable" content="yes">
-<title>Project Kingdoms — Alpha 0.3.40 · Civic Buildings</title>
+<title>Project Kingdoms — Alpha 0.3.45 · Miasto 1 r2</title>
 <link rel="manifest" href="./manifest.json"><link rel="stylesheet" href="./styles/main.css?v=0.3.28.1">
 </head>
 <body>
-<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.40 · Civic Buildings</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
+<header><strong>⚔ PROJECT KINGDOMS</strong><span id="status">Alpha 0.3.45 · Miasto 1 r2</span><button id="menuBtn" aria-label="Menu">☰ Menu</button></header>
 <main id="gameShell">
 <section id="viewport" aria-label="Mapa świata"><canvas id="world" aria-label="Mapa gry"></canvas><div id="minimapPanel" data-size="small">
 <div class="mini-head"><button id="minimapToggle" aria-controls="minimapBody" aria-expanded="true">Minimapa −</button><button id="minimapExpand" aria-controls="minimapOptions" aria-expanded="false">Opcje</button></div>
@@ -23,8 +23,8 @@
 <p class="mini-hint">Dotknij mapy, aby oznaczyć cel. Przeciągnij, by przesunąć widok po przybliżeniu. Błękitny: bohater; złoty: cel lub obserwowany NPC.</p>
 </div></div></div><div id="toast" role="status"></div></section>
 <aside id="sidePanel">
-<div class="panel"><h2 id="location">Pogranicze</h2><p id="coordinates"></p><p id="clock"></p><p class="hint">Miasto 1 ma 40 istniejących mieszkańców oraz dodatkowych NPC tła generowanych poza widocznym obszarem kamery. NPC tła poruszają się wewnątrz murów miasta i znikają po oddaleniu się gracza. Podczas wczytania kampanii lokalna populacja jest przygotowywana przed wyświetleniem mapy. Dotknij przechodnia, aby zacząć go obserwować; po 20 s otrzyma dłuższe trasy, a po 60 s wyższy priorytet symulacji. Dotknij ponownie, aby przestać obserwować. Niektórzy przechodnie odwiedzają budynki; rozmowy i dłuższa obserwacja pozwalają zapamiętać ich tożsamość. Dotychczasowi mieszkańcy odwiedzają też karczmę, rynek, bibliotekę, świątynię i wnętrza innych budynków. Porozmawiaj z NPC przez „Zbadaj” (E) lub dotknij pobliskiej postaci. Przy drzwiach przycisk „Zbadaj” otwiera najpierw budynek. W menu działają mapa świata, działki i testowa szybka podróż.</p><p class="hint" id="npcStats">DNS 1.0: wczytywanie populacji…</p></div>
-<div class="panel"><h3>Świat</h3><button id="openWorldMap">🗺 Mapa świata (M)</button><p class="hint">Naciśnij M albo wyjdź poza granicę lokacji. Po mapie świata chodzisz strzałkami / WASD albo kliknięciem. Stań na znaczniku osady i naciśnij E.</p></div>
+<div class="panel"><h2 id="location">Pogranicze</h2><p id="coordinates"></p><p id="clock"></p><p class="hint">Miasto 1 r2 korzysta z nowych map MFS. W tej wersji 24 uproszczone postacie tła poruszają się po mieście; pełna symulacja DNS pozostaje w starej wersji awaryjnej. Wejdź przez drzwi lub użyj Zbadaj (E); bramy można otwierać i zamykać. Działki i szybka podróż działają na nowej mapie.</p><p class="hint" id="npcStats">DNS 1.0: wczytywanie populacji…</p></div>
+<div class="panel"><h3>Świat</h3><button id="openWorldMap">🗺 Mapa świata (M)</button><p class="hint">Naciśnij M albo wyjdź przez oznaczoną bramę Miasta 1. Po mapie świata chodzisz strzałkami / WASD albo kliknięciem. Stań na znaczniku osady i naciśnij E.</p></div>
 <div class="panel"><h3>Widok</h3><div class="row"><button id="zoomOut">−</button><span id="zoomLabel">100%</span><button id="zoomIn">+</button><button id="centerCamera">⌖</button></div><p class="hint">Zoom gry 100–300%. Minimapa ma niezależny zoom 100–600%, wyszukiwanie i cele podróży. Minimapa: błękitny punkt — bohater, jasne — mieszkańcy, zielone — przechodnie, złoty — obserwowany NPC, ramka — kamera. Możesz ją zwinąć.</p><label>Tryb sterowania <select id="controlMode"><option value="dpad">Przyciski</option><option value="joystick">Joystick</option></select></label></div>
 <div class="panel"><h3>Miasto 1 — działki PLOT 1.0</h3><button id="plotModeBtn">Włącz widok działek</button><p class="hint" id="plotStats">Ładowanie działek…</p><p class="hint" id="plotInfo">Włącz tryb zarządzania i dotknij działki na mapie.</p><button id="plotReserveBtn" hidden>Zarezerwuj działkę</button><p class="hint">Granice działek są widoczne tylko w trybie zarządzania. Nowe działki mają odstęp co najmniej jednej kratki od dróg i murów. Rezerwacje są zapisywane wraz z kampanią.</p></div>
 <div class="panel"><h3>Stara mapa testowa — budynki</h3><div class="row wrap"><button data-visit="keep">Warownia</button><button data-visit="house">Dom</button><button data-visit="inn">Karczma</button><button data-visit="warehouse">Magazyn</button></div><p class="hint">Przyciski testowe przenoszą przed wejście do budynku.</p></div>

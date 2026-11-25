@@ -13,7 +13,7 @@ export function saveGame(state){
   inventory:structuredClone(state.inventory||[]),crimes:state.crimes||0,reputation:state.reputation||0,
   objects:structuredClone(state.objects||defaultObjects()),doors:structuredClone(state.doors||defaultDoors())
  }};
- try{localStorage.setItem(SAVE_KEY,JSON.stringify(payload));return true;}catch(e){console.error("Save failed",e);return false;}
+ try{const raw=localStorage.getItem(SAVE_KEY);if(raw){let prev=null;try{prev=JSON.parse(raw);}catch{}if(mfsScene("city_001")&&prev?.schema<10&&!localStorage.getItem(LEGACY_BACKUP_KEY))localStorage.setItem(LEGACY_BACKUP_KEY,raw);if(!mfsScene("city_001")&&prev?.state?.player?.map?.startsWith("city_001"))return false;}localStorage.setItem(SAVE_KEY,JSON.stringify(payload));return true;}catch(e){console.error("Save failed",e);return false;}
 }
 export function loadGame(){
  try{
