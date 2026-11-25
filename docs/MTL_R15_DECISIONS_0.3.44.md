@@ -1,5 +1,5 @@
 # MTL-006 — pakiet decyzji r15 (Alpha 0.3.44)
-2026-11-25 | REVIEW — 16 indywidualnych decyzji oczekuje na użytkownika. Nie jest akceptacją ani zmianą walidatora. Źródła: B12h raport i rekordy results (14/33), B9, MDS 1.0 §§21,43–46,50–51. Wymiary użytkowe core w kafelkach; limity maksymalne IDS §50. Zgoda tylko na wskazany model, poziom, typ i kotwicę; nie na wszystkie pomieszczenia tego typu.
+2026-11-25 | DECYZJE PROJEKTOWE ZATWIERDZONE — 16/16 przez użytkownika, 2026-11-25, zgodnie z rekomendacjami i wszystkimi warunkami odbioru. Nie jest końcowym odbiorem r15 ani zmianą walidatora. Źródła: B12h raport i rekordy results (14/33), B9, MDS 1.0 §§21,43–46,50–51. Wymiary użytkowe core w kafelkach; limity maksymalne IDS §50. Zgoda tylko na wskazany model, poziom, typ i kotwicę; nie na wszystkie pomieszczenia tego typu.
 
 | ID decyzji | Model / poziom / typ / kotwica | Fakt: core / max / przekroczenie | Uzasadnienie i rekomendacja (niezatwierdzona) |
 |---|---|---|---|
@@ -21,4 +21,27 @@
 C01 — DEPOSIT_M01. Fakt B9: klasa geometryczna shop, proponowany deposit_house, reception/storage/administration, Z0/Z2. BDS nie ma samodzielnej klasy depozytu; shop standardowo wymaga sprzedaży, nie depozytu. Propozycja: indywidualny podtyp funkcjonalny z geometrią shop i programem recepcja/skład/administracja zamiast wymuszania handlu; Z0 tylko obsługa klienta, Z2 zaplecze; Z5 opcjonalnie dla osobno projektowanego skarbca, nie automatycznie. Nie potwierdza mechaniki przyjęcia/zwrotu, uprawnień ani zmiany programu BDS globalnie.
 C02 — COMMAND_M01. Fakt B9: geometria hall, proponowany military_command, planning/administration/equip, Z3; brak publicznej obsługi. BDS hall normalnie obejmuje obsługę mieszkańców; FDS §§43–45 dopuszcza administracyjno-militarny kompleks i rozdzielne funkcje. Propozycja: indywidualny podtyp sztabu z geometrią hall, programem wojskowym, Z3; bez wymuszania Z0. W twierdzy przypisać do kompleksu S/PS, nie samodzielnej fortyfikacji ani automatycznego przejęcia; poza twierdzą nadal kontrolowany obiekt wojskowy. Weryfikacja granic, punktów kontroli i uprawnień w późniejszym odbiorze.
 
-Rekomendacje są projektowe; zatwierdzenie wyjątku wymiarowego nie znosi pozostałych wymagań IDS/BDS/FDS i nie potwierdza logistyki, NPC ani testów runtime. Użytkownik może zaakceptować/odrzucić każdy ID osobno. Brak zmian map, katalogu, reguł walidacji, standardów. Nie wykonywano Node/Android ani nowej walidacji MFS. Następny checkpoint: zapisać odpowiedzi użytkownika i dopiero na odrębne polecenie wykonać uzgodnione korekty/pozostałe bramki.
+Rekomendacje są projektowe; zatwierdzenie wyjątku wymiarowego nie znosi pozostałych wymagań IDS/BDS/FDS i nie potwierdza logistyki, NPC ani testów runtime. Użytkownik zatwierdził indywidualnie każdy ID; uwagi dodatkowe: brak. Brak zmian map, katalogu, reguł walidacji, standardów. Nie wykonywano Node/Android ani nowej walidacji MFS. Decyzje zapisane; uzgodnione korekty/pozostałe bramki wyłącznie na odrębne polecenie. Nie rozpoczynać następnej partii automatycznie.
+
+## Rejestr zatwierdzeń użytkownika — 2026-11-25
+
+Źródło: bezpośrednia odpowiedź użytkownika w MTL-006; uwagi: brak. Każde zatwierdzenie obejmuje wyłącznie identyfikator, zakres i warunki z powyższego pakietu. Nie oznacza zaliczenia warunków odbioru, globalnego odstępstwa IDS/BDS/FDS ani implementacji mechanik.
+
+| ID | Decyzja |
+|---|---|
+| E01 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E02 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E03 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E04 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E05 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E06 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E07 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E08 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E09 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E10 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E11 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E12 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E13 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| E14 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| C01 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
+| C02 | Zatwierdzona zgodnie z rekomendacją i warunkami odbioru |
