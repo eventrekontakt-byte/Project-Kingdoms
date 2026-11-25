@@ -58,3 +58,6 @@ II-B9: 9 wersjonowanych definicji wyposażenia, 28 zaktualizowanych modeli, 74 u
 
 ## Pass II-B10a (WIP)
 II-B10a: sąd i trzy świątynie, 4 modele, 20→49 pomieszczeń, 172→218 stanowisk, +30 mebli, +44 dekoracje, 0 usuniętych, 40 obrotów V8. 75 unikatowych kandydatów; r14 bez zmian. B10 nadal WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B10A.md).
+
+## Pass II-B10b (review)
+II-B10b: 5 modeli (trzy zamki, krypta, skarbiec), 39→110 pomieszczeń, 242→350 stanowisk, +80 mebli, +70 dekoracji, 0 usuniętych, 72 obroty V8. B10 łącznie 9 modeli, +100 pomieszczeń, +110 mebli, +114 dekoracji, +154 stanowiska. 79 unikatowych kandydatów, r14 bez zmian. B10 zakończony w zakresie kandydatów. [Raport](../MTL_AUDIT_0.3.44_PASS2B10B.md).

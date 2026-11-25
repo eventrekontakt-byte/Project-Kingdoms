@@ -36,3 +36,5 @@ Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograni
 | 2026-11-25 | II-B9 review | 9 wersji mebli; 28 modeli, 196 obrotów V8; 74 unikatowe kandydaty; klasyfikacja BDS do rozstrzygnięcia | ../MTL_AUDIT_0.3.44_PASS2B9.md |
 
 | 2026-11-25 | II-B10a WIP | 4 modele; +29 pomieszczeń, +46 stanowisk, +30 mebli, +44 dekoracje, 40 obrotów V8 | ../MTL_AUDIT_0.3.44_PASS2B10A.md |
+
+| 2026-11-25 | II-B10b review | 5 modeli, +71 pomieszczeń, +108 stanowisk, +80 mebli, +70 dekoracji, 72 obroty V8; 79 unikatowych kandydatów | ../MTL_AUDIT_0.3.44_PASS2B10B.md |
