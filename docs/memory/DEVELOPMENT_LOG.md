@@ -48,3 +48,5 @@ Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograni
 | 2026-11-25 | II-B11 final review, czat (5) | 163/163 modeli, 916 obrotów V8, 0 błędów w wykonanych testach, 58 modeli z sygnałami do rozstrzygnięcia; ogólne meblowanie zakończone, bez zmian modeli | ../MTL_FINAL_REVIEW_0.3.44.md |
 
 | 2026-11-25 | II-B12a WIP, czat (5) | 28 modeli skontrolowanych, 25 zmienionych; 29 przesunięć, izolowane 35→3, granice 9→1, 128 obrotów V8; 93 unikatowe ID | ../MTL_AUDIT_0.3.44_PASS2B12A.md |
+
+| 2026-11-25 | II-B12b–e WIP, czat (5) | komunikacja 35→0 / 9→0; zamki +20 pomieszczeń, 996 pól; 13 progów wyjaśnionych, 17 stref, 5 korekt programu, 10 domów poprawionych; 110 ID | ../MTL_AUDIT_0.3.44_PASS2B12B_E.md |
