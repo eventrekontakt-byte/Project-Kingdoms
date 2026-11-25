@@ -9,3 +9,6 @@ Mierzalne wskaźniki zastępcze: liczba zakończonych partii produkcyjnych w cza
 | 2026-11-25 | (4), II-B7 | 7 | 56 | wysokie, rosnące | Zapis produkcyjny działa; brak ustalonego progu awarii. Zalecany nowy czat przed obszerną integracją. |
 
 **Wniosek obserwacyjny:** w czacie (4) potwierdzono możliwość wykonania co najmniej siedmiu kolejnych partii II-B, nie oznacza to gwarantowanego zapasu ani limitu rozmowy. Następne wpisy zachować w tej tabeli; aktualizować po każdym checkpointcie i odnotowywać zgłoszone objawy bez spekulowania o przyczynie.
+
+### Kolejna obserwacja — 2026-11-25, czat (4), II-B8a
+7 zakończonych partii II-B i 1 techniczny checkpoint II-B8a; 56 kandydatów. Obciążenie wysokie, rosnące; dostępna pojemność nieustalona. Pierwsza zbiorcza operacja przekroczyła limit wywołań narzędzi w jednym skrypcie (nie oznacza to przekroczenia limitu czatu); wykonana w mniejszych partiach. Brak nowego zgłoszenia awarii. Zalecana zmiana rozmowy przed kolejną obszerną operacją. Rejestr nie jest licznikiem tokenów.

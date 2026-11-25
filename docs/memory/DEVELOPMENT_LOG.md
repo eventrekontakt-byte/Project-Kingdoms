@@ -28,3 +28,5 @@ Skrócony dziennik checkpointów; pełna historia kodu w Git, szczegółowe zmia
 | 2026-11-25 | 0.3.44 Pass II-B7 (WIP) | 16 modeli, +43 mebli, +89 dekoracji, 88 obrotów V8; rejestr obciążenia rozmów | ../MTL_AUDIT_0.3.44_PASS2B7.md |
 
 Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograniczenia i następny krok. Wpisy dopisywać bez usuwania historii.
+
+| 2026-11-25 | II-B8a WIP | Wielopolowy portal, MTL/FPS/RTS/IDS/viewer; regresja V8 poligonu, 12 nowych i 652 zgodne stare orientacje | ../MFS_WIDE_PORTALS_0.3.44.md |

@@ -46,3 +46,6 @@ Istnieje eksploracja 2D, ruch/kolizje, wnętrza i kondygnacje, kamera, zoom, aut
 
 ## Pass II-B7 (WIP)
 16 modeli w pass2b7-candidates.json, razem 56 kandydatów; +43 mebli, +89 dekoracji, +43 stanowisk, 88 obrotów V8. Wrota nadal jednokaflowe; 16/16 ma prostokąt dojścia o szerokości ≥2. r14 bez zmian, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B7.md). [Rejestr obciążenia](CHAT_LOAD_LOG.md).
+
+## Pass II-B8a (WIP)
+II-B8a: kod wielopolowych progów, MTL, walidacja i viewer; pozytywna regresja V8. II-B8b: wdrożyć entrySpan w 16 kandydatach gospodarczych II-B7, dopasować dojścia, wystrój i wyposażenie; sprawdzić wszystkie pasy, skale i obroty. 56 kandydatów bez zmian, r14 niezmieniona, r15 nieopublikowana. Node, Android, offline, UI, większe jednostki i pełna walidacja nadal otwarte. [Raport](../MFS_WIDE_PORTALS_0.3.44.md).
