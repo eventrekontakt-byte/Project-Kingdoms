@@ -1,5 +1,5 @@
 # Przekazanie do następnego czatu
-Aktualizacja: 2026-11-25, czat (4). Punkt startowy: Alpha 0.3.44 / MTL r14 / Audit Pass II-A zakończony (triage 67/67); II-B do wykonania.
+Aktualizacja: 2026-11-25, czat (5). Punkt startowy: Alpha 0.3.44 / MTL r14 / II-B11a zapisany; II-B11b następny. Najnowszy checkpoint na końcu pliku.
 
 ## Procedura wznawiania
 1. Połącz się z GitHub eventrekontakt-byte/Project-Kingdoms i sprawdź aktualny HEAD main. Nie ufaj wyłącznie numerowi w README ani streszczeniu rozmowy.
@@ -53,3 +53,6 @@ II-B10a: sąd i trzy świątynie, 4 modele, 20→49 pomieszczeń, 172→218 stan
 
 ## Checkpoint II-B10b — najnowszy
 II-B10b: 5 modeli (trzy zamki, krypta, skarbiec), 39→110 pomieszczeń, 242→350 stanowisk, +80 mebli, +70 dekoracji, 0 usuniętych, 72 obroty V8. B10 łącznie 9 modeli, +100 pomieszczeń, +110 mebli, +114 dekoracji, +154 stanowiska. 79 unikatowych kandydatów, r14 bez zmian. B10 zakończony w zakresie kandydatów. Raport ../MTL_AUDIT_0.3.44_PASS2B10B.md, nakładka templates/mtl/pass2b10b-candidates.json po B10a. II-B11: wzbogacić wyposażenie i dekoracje wcześniej przebudowanych wnętrz, zachowując najnowsze wersje z B1–B10b i definicje mebli B9. II-B12 IDS: w tym proporcje powierzchni użytkowej i pełnych masek ścian w monumentalnych budynkach, wymiary, pojemność, dostępy, klasyfikacja, widok. II-B13 integracja, II-B14 QA. Node, Android, pełny MFS, offline i odbiór wizualny otwarte. Pamiętać o dekoracjach i CHAT_LOAD_LOG.md. Zalecany nowy czat przed obszerną partią B11.
+
+## Checkpoint II-B11a — najnowszy
+Czat (5), wznowiono od HEAD 20293c8. II-B11a: BARRACKS_S02, BARRACKS_L02, OFFICER_M01, GUARDHOUSE_L02, 13 mebli, 33 dekoracje, 50→63 stanowiska, 16 obrotów V8 bez zgłoszeń; 79 unikatowych kandydatów. Nakładka templates/mtl/pass2b11a-candidates.json po B10b; raport ../MTL_AUDIT_0.3.44_PASS2B11A.md. II-B11b: lecznice, ratusz, karczmy, więzienia, rezydencje; później pozostałe wcześniejsze wnętrza. B12: szerokości, wymiary, pojemności, proporcje ścian, klasyfikacja, Z0–Z5, widok; B13 integracja, B14 QA. B11 w toku. r14 bez zmian, r15 nieopublikowana. Node, pełny MFS, Android, offline, Pages i wizualny odbiór otwarte. Aktualizować CHAT_LOAD_LOG.md. Użytkownik zgłosił przeciążenie czatu (4); przyczyna i limit niezweryfikowane.
