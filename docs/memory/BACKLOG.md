@@ -1,5 +1,5 @@
 # Aktywny backlog — CMS 1.0
-2026-11-25. Alpha 0.3.44 / MTL r15 review. Historia zamkniętych prac w DEVELOPMENT_LOG, raportach i Git (d20880ca620a092901f985d411e06597dda3c486).
+2026-11-25. Alpha 0.3.45 / MTL r15 review. Historia zamkniętych prac w DEVELOPMENT_LOG, raportach i Git (d20880ca620a092901f985d411e06597dda3c486).
 | ID | Priorytet | Otwarte zadanie / kryterium odbioru |
 |---|---|---|
 | MTL-001/002 | P0 | Lista 33 zamknięta technicznie (19 korekt, 14 wyjątków); E01–E14 zatwierdzone indywidualnie z warunkami odbioru; E04 powierzchnia wyjaśniona statycznie, sprawdzić IDS_PROGRAM/MDS_MANUAL w zakresie rzeczywistych wymagań; nie rozpoczynać ponownego masowego audytu. |
@@ -10,7 +10,7 @@
 | QA-002 | P0 | Testy przeglądarki, Android (priorytet), offline i Pages; rzeczywiste wyniki. |
 | MTL-006 | P0 przed integracją | Odbiór końcowy r15 według MDS/MFS, wyjątki i klasyfikacje zatwierdzone (D010); zakres katalogowy zamknięty (zamrożona referencja); pozostałe warunki decyzji oraz wizualne i techniczne bramki otwarte; 0 ERROR/0 WARNING final MFS nie zastępuje odbioru. |
 | CITY-001a | Zrealizowana w danych r2 | D012–D017; 96/72/24, 79 budynków, 127 kondygnacji, 400 miejsc snu, 22 przecinające się drogi, wejścia N/E/S/W. R1 zachowana. |
-| CITY-001b | P0 | Mapa city_001 r2 review; odbiór wizualny, road017 RDS_STYLE, pełny MFS i runtime F3, testy Node/przeglądarka/Android/offline/Pages, połączenia wyjść i migracja. Zachować legacy, DNS wstrzymany. |
+| CITY-001b | Runtime podstawowy wdrożony; odbiór P0 | R2 w world.json, start i przejścia, 4 bramy/3 wyjścia, działki, migracja z kopią legacy, 24 NPC tła. Node i Chromium mobile smoke sukces (45656775026). Otwarte: Pages, fizyczny Android/offline, odbiór wizualny, road017, pełne F3/MFS/DNS. |
 | DNS-001 | wstrzymane | Po odbiorze i stabilizacji mapy referencyjnej. |
 
-Następna partia: odbiór wizualny r2, konkretne korekty i runtime F3, bez ponawiania koncepcji. R15 zamrożona, dług odbiorowy w ../MTL_R15_CLOSURE_0.3.44.md.
+Następna partia: potwierdzenie Pages i Android/offline, odbiór wizualny r2 oraz konkretne poprawki. Pełne F3 i DNS osobno. R15 zamrożona, dług odbiorowy w ../MTL_R15_CLOSURE_0.3.44.md.
