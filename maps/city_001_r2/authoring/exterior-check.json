@@ -1,0 +1,1 @@
+{"exits":[["west",true],["east",true],["south",true]],"badDoors":[],"badStations":[],"failures":[],"chamfers":["SE","SW"],"added":24,"reachable":24286,"roads":22,"field":{"type":"rect","x":74,"y":160,"w":8,"h":10},"missingAccess":[]}
