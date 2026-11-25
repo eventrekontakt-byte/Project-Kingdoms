@@ -25,4 +25,6 @@ Skrócony dziennik checkpointów; pełna historia kodu w Git, szczegółowe zmia
 
 | 2026-11-25 | 0.3.44 Pass II-B6 (WIP) | 17 modeli, +34 mebli, +92 dekoracji, 68 obrotów V8 | ../MTL_AUDIT_0.3.44_PASS2B6.md |
 
+| 2026-11-25 | 0.3.44 Pass II-B7 (WIP) | 16 modeli, +43 mebli, +89 dekoracji, 88 obrotów V8; rejestr obciążenia rozmów | ../MTL_AUDIT_0.3.44_PASS2B7.md |
+
 Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograniczenia i następny krok. Wpisy dopisywać bez usuwania historii.

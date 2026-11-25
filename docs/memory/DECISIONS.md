@@ -13,3 +13,6 @@ Nowe wpisy: data, ID, treść, status (propozycja/zatwierdzona/odrzucona/zastąp
 
 ## D006 — wyposażenie i dekoracje
 Data: 2026-11-25; status: zatwierdzone, źródło: bezpośrednie polecenie użytkownika w czacie (4). Kontynuując MTL, stale dodawać funkcjonalne wyposażenie, meble i tematyczne dekoracje; nie ograniczać się do geometrii. Wymagane kontrole dostępności i wizualne przed odbiorem. Dotyczy także wcześniejszych kandydatów r15.
+
+## D007 — rejestr obciążenia rozmów
+Data 2026-11-25; użytkownik zatwierdził regularny zapis obciążenia. CHAT_LOAD_LOG.md przechowuje mierzalne wskaźniki zastępcze i szacunki, nie fikcyjne wartości limitu. Utrzymać D005: brak dokładnego licznika, użytkownik decyduje o zmianie czatu.

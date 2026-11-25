@@ -43,3 +43,6 @@ Istnieje eksploracja 2D, ruch/kolizje, wnętrza i kondygnacje, kamera, zoom, aut
 
 ## Pass II-B6 (WIP)
 17 modeli w pass2b6-candidates.json, razem 40 kandydatów. +34 mebli, +92 dekoracji, 28 usuniętych dekoracji, +34 stanowisk, 68 obrotów V8. r14 bez zmian; r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B6.md).
+
+## Pass II-B7 (WIP)
+16 modeli w pass2b7-candidates.json, razem 56 kandydatów; +43 mebli, +89 dekoracji, +43 stanowisk, 88 obrotów V8. Wrota nadal jednokaflowe; 16/16 ma prostokąt dojścia o szerokości ≥2. r14 bez zmian, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B7.md). [Rejestr obciążenia](CHAT_LOAD_LOG.md).
