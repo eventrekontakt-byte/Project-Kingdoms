@@ -1,0 +1,1811 @@
+{
+  "schemaVersion": "1.0.0",
+  "baseCatalog": "templates/mtl/catalog-v14.json",
+  "sourceCommit": "a167228b9c7a34eaaad93b3dbe1308fbe6d2d503",
+  "status": "review-candidates-not-integrated",
+  "stage": "0.3.44 Pass II-B12b residual circulation",
+  "buildings": [
+    {
+      "id": "HOUSE_S04",
+      "version": 3,
+      "type": "house",
+      "name": "Dom samotnego rzemieślnika",
+      "size": "S",
+      "width": 5,
+      "height": 6,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 6
+      },
+      "entry": {
+        "x": 2,
+        "y": 5
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 11
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 6,
+              "y": 1,
+              "rotation": 270
+            },
+            {
+              "type": "table_small",
+              "x": 4,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 3,
+              "y": 5,
+              "rotation": 90,
+              "relatedIndex": 2
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "washstand",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "dresser",
+              "x": 8,
+              "y": 5,
+              "rotation": 180
+            },
+            {
+              "type": "coat_rack",
+              "x": 3,
+              "y": 10,
+              "rotation": 270
+            },
+            {
+              "type": "bookcase",
+              "x": 8,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "rocking_chair",
+              "x": 3,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "tool_chest",
+              "x": 5,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 3,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep",
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "hide_rug",
+              "x": 5,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "rug_long",
+              "x": 3,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "wall_sword",
+              "x": 9,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 9,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "prop_candle",
+              "x": 4,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_plate",
+              "x": 4,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_cup",
+              "x": 4,
+              "y": 6,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_bread",
+              "x": 4,
+              "y": 6,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_milk",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_soap",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_candle",
+              "x": 8,
+              "y": 5,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_comb",
+              "x": 8,
+              "y": 5,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_mirror_small",
+              "x": 8,
+              "y": 6,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 8,
+              "y": 6,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_open",
+              "x": 8,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 8,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "prop_scroll",
+              "x": 8,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 2
+        },
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "table_small",
+          "version": 2
+        },
+        {
+          "id": "chair",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "dresser",
+          "version": 1
+        },
+        {
+          "id": "coat_rack",
+          "version": 1
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "rocking_chair",
+          "version": 1
+        },
+        {
+          "id": "tool_chest",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Residential variant based on HOUSE_S01; distinct furnishing and decor.",
+        "II-B12b: final local reposition/rotation resolving residual circulation finding."
+      ]
+    },
+    {
+      "id": "HOUSE_S05",
+      "version": 3,
+      "type": "house",
+      "name": "Dom młodej rodziny",
+      "size": "S",
+      "width": 5,
+      "height": 6,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 5,
+        "h": 6
+      },
+      "entry": {
+        "x": 2,
+        "y": 5
+      },
+      "interiorEntry": {
+        "x": 5,
+        "y": 11
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "stove",
+              "x": 6,
+              "y": 1,
+              "rotation": 270
+            },
+            {
+              "type": "table_small",
+              "x": 6,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 6,
+              "y": 5,
+              "rotation": 180,
+              "relatedIndex": 2
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "washstand",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "dresser",
+              "x": 8,
+              "y": 5,
+              "rotation": 180
+            },
+            {
+              "type": "coat_rack",
+              "x": 3,
+              "y": 8,
+              "rotation": 180
+            },
+            {
+              "type": "bookcase",
+              "x": 8,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "plant_stand",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "stool",
+              "x": 5,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "anchor": {
+                "x": 2,
+                "y": 3
+              },
+              "access": "Z4",
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "living",
+              "anchor": {
+                "x": 7,
+                "y": 4
+              },
+              "access": "Z4",
+              "functions": [
+                "cook",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 1,
+              "w": 1,
+              "h": 3
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 5,
+              "w": 1,
+              "h": 4
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 4,
+              "start": 1,
+              "end": 10,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "rug_small",
+              "x": 5,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "rug_long",
+              "x": 5,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cross",
+              "x": 4,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 4,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "prop_plate",
+              "x": 6,
+              "y": 6,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_cup",
+              "x": 6,
+              "y": 6,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_bread",
+              "x": 6,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_bowl",
+              "x": 6,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_milk",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_comb",
+              "x": 8,
+              "y": 5,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_mirror_small",
+              "x": 8,
+              "y": 5,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_folded_cloth",
+              "x": 8,
+              "y": 6,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_flower_vase",
+              "x": 8,
+              "y": 6,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 8,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_scroll",
+              "x": 8,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_open",
+              "x": 8,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "bed_single",
+          "version": 2
+        },
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "table_small",
+          "version": 2
+        },
+        {
+          "id": "chair",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "dresser",
+          "version": 1
+        },
+        {
+          "id": "coat_rack",
+          "version": 1
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "plant_stand",
+          "version": 1
+        },
+        {
+          "id": "stool",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Residential variant based on HOUSE_S02; distinct furnishing and decor.",
+        "II-B12b: final local reposition/rotation resolving residual circulation finding."
+      ]
+    },
+    {
+      "id": "APOTHECARY_M01",
+      "version": 8,
+      "type": "apothecary",
+      "name": "Apteka",
+      "size": "M",
+      "width": 6,
+      "height": 7,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 7
+      },
+      "entry": {
+        "x": 3,
+        "y": 6
+      },
+      "interiorEntry": {
+        "x": 6,
+        "y": 13
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "alchemy",
+              "x": 7,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "counter",
+              "x": 6,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "medicine_cabinet",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "display_case",
+              "x": 10,
+              "y": 8,
+              "rotation": 180
+            },
+            {
+              "type": "bookcase",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "cupboard",
+              "x": 10,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "stool",
+              "x": 6,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "root_bin",
+              "x": 9,
+              "y": 4,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "anchor": {
+                "x": 6,
+                "y": 3
+              },
+              "access": "Z2",
+              "functions": [
+                "alchemy"
+              ]
+            },
+            {
+              "type": "sales",
+              "anchor": {
+                "x": 8,
+                "y": 11
+              },
+              "access": "Z0",
+              "functions": [
+                "buy",
+                "sell"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 7,
+              "start": 1,
+              "end": 10,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "rug_small",
+              "x": 6,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "rug_long",
+              "x": 5,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "wall_herbs",
+              "x": 11,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 11,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "prop_herbs",
+              "x": 8,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_open",
+              "x": 8,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_potion_red",
+              "x": 7,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_potion_blue",
+              "x": 7,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_sacred_oil",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_basket_small",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_basket_small",
+              "x": 3,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_bottle",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_jar",
+              "x": 4,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_seed_bag",
+              "x": 6,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 6,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_coin_purse",
+              "x": 6,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 6,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_medicine_bottle",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_bandage",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_vial",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_crystal",
+              "x": 10,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 10,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_cloth_roll",
+              "x": 10,
+              "y": 9,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_jewels",
+              "x": 10,
+              "y": 9,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_open",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_scroll",
+              "x": 1,
+              "y": 10,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_bowl",
+              "x": 10,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_plate",
+              "x": 10,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "prop_jar",
+              "x": 10,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_malt",
+              "x": 9,
+              "y": 4,
+              "rotation": 180,
+              "hostIndex": 10,
+              "slot": 0
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "alchemy",
+          "version": 2
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "counter",
+          "version": 2
+        },
+        {
+          "id": "medicine_cabinet",
+          "version": 1
+        },
+        {
+          "id": "display_case",
+          "version": 1
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "cupboard",
+          "version": 1
+        },
+        {
+          "id": "stool",
+          "version": 1
+        },
+        {
+          "id": "root_bin",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "II-B12a: local translation of existing furniture only; preserve objects, props, geometry, portals and room programme.",
+        "II-B12b: final local reposition/rotation resolving residual circulation finding."
+      ]
+    },
+    {
+      "id": "INN_M01",
+      "version": 7,
+      "type": "inn",
+      "name": "Karczma – do adaptacji",
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "stove",
+              "x": 11,
+              "y": 1,
+              "rotation": 270
+            },
+            {
+              "type": "workbench",
+              "x": 11,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "bar",
+              "x": 7,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 3,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 2,
+              "y": 11,
+              "rotation": 90,
+              "relatedIndex": 5
+            },
+            {
+              "type": "table_large",
+              "x": 11,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 10,
+              "y": 12,
+              "rotation": 90,
+              "relatedIndex": 7
+            },
+            {
+              "type": "cooking_prep",
+              "x": 2,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "food_rack",
+              "x": 4,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "barrel",
+              "x": 13,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "coat_rack",
+              "x": 2,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "water_jug_stand",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "wood_pile",
+              "x": 3,
+              "y": 5,
+              "rotation": 270
+            },
+            {
+              "type": "wine_cask",
+              "x": 1,
+              "y": 5,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "kitchen",
+              "anchor": {
+                "x": 9,
+                "y": 3
+              },
+              "access": "Z2",
+              "functions": [
+                "cook"
+              ]
+            },
+            {
+              "type": "multipurpose",
+              "anchor": {
+                "x": 4,
+                "y": 4
+              },
+              "access": "Z2",
+              "functions": [
+                "storage"
+              ]
+            },
+            {
+              "type": "tavern_hall",
+              "anchor": {
+                "x": 8,
+                "y": 15
+              },
+              "access": "Z0",
+              "functions": [
+                "serve",
+                "eat"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 6,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 1,
+              "end": 5,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "rug_large",
+              "x": 8,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "rug_long",
+              "x": 6,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "wall_sword",
+              "x": 10,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 5,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "wall_tapestry",
+              "x": 15,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "prop_iron_ingot",
+              "x": 11,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_tool_knife",
+              "x": 11,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_leather_roll",
+              "x": 12,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_hammer",
+              "x": 12,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_jar",
+              "x": 1,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_basket_small",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_silver_goblet",
+              "x": 7,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_pitcher",
+              "x": 7,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_bottle",
+              "x": 7,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_plate",
+              "x": 7,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_butter",
+              "x": 3,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_cheese",
+              "x": 3,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_fruit_bowl",
+              "x": 4,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_pitcher",
+              "x": 4,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_fruit_bowl",
+              "x": 11,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_pitcher",
+              "x": 11,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_candle",
+              "x": 12,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_spoon",
+              "x": 12,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_chopping_board",
+              "x": 2,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 9,
+              "slot": 0
+            },
+            {
+              "type": "prop_vegetables",
+              "x": 2,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 9,
+              "slot": 2
+            },
+            {
+              "type": "prop_dough",
+              "x": 3,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 9,
+              "slot": 0
+            },
+            {
+              "type": "prop_flour_bowl",
+              "x": 3,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 9,
+              "slot": 2
+            },
+            {
+              "type": "prop_fruit_bowl",
+              "x": 4,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 10,
+              "slot": 0
+            },
+            {
+              "type": "prop_bread",
+              "x": 4,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 10,
+              "slot": 2
+            },
+            {
+              "type": "prop_cheese",
+              "x": 5,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 10,
+              "slot": 0
+            },
+            {
+              "type": "prop_jar",
+              "x": 5,
+              "y": 5,
+              "rotation": 270,
+              "hostIndex": 10,
+              "slot": 2
+            },
+            {
+              "type": "prop_jug",
+              "x": 4,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 13,
+              "slot": 0
+            },
+            {
+              "type": "prop_cup",
+              "x": 4,
+              "y": 1,
+              "rotation": 0,
+              "hostIndex": 13,
+              "slot": 2
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "workbench",
+          "version": 2
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "bar",
+          "version": 2
+        },
+        {
+          "id": "table_large",
+          "version": 2
+        },
+        {
+          "id": "chair",
+          "version": 2
+        },
+        {
+          "id": "cooking_prep",
+          "version": 1
+        },
+        {
+          "id": "food_rack",
+          "version": 1
+        },
+        {
+          "id": "barrel",
+          "version": 1
+        },
+        {
+          "id": "coat_rack",
+          "version": 1
+        },
+        {
+          "id": "water_jug_stand",
+          "version": 1
+        },
+        {
+          "id": "wood_pile",
+          "version": 1
+        },
+        {
+          "id": "wine_cask",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Wzorzec do indywidualnej adaptacji.",
+        "II-B12b: final local reposition/rotation resolving residual circulation finding."
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "HOUSE_S04",
+      "baseVersion": 2,
+      "version": 3,
+      "tries": 61,
+      "move": {
+        "index": 8,
+        "from": {
+          "type": "bookcase",
+          "x": 8,
+          "y": 2,
+          "rotation": 180
+        },
+        "to": {
+          "type": "bookcase",
+          "x": 8,
+          "y": 7,
+          "rotation": 180
+        }
+      },
+      "before": {
+        "isolated": [
+          {
+            "x": 8,
+            "y": 1
+          }
+        ],
+        "cuts": []
+      },
+      "after": {
+        "isolated": [],
+        "cuts": []
+      }
+    },
+    {
+      "id": "HOUSE_S05",
+      "baseVersion": 2,
+      "version": 3,
+      "tries": 35,
+      "move": {
+        "index": 8,
+        "from": {
+          "type": "bookcase",
+          "x": 8,
+          "y": 2,
+          "rotation": 180
+        },
+        "to": {
+          "type": "bookcase",
+          "x": 8,
+          "y": 7,
+          "rotation": 180
+        }
+      },
+      "before": {
+        "isolated": [
+          {
+            "x": 8,
+            "y": 1
+          }
+        ],
+        "cuts": []
+      },
+      "after": {
+        "isolated": [],
+        "cuts": []
+      }
+    },
+    {
+      "id": "APOTHECARY_M01",
+      "baseVersion": 7,
+      "version": 8,
+      "tries": 14,
+      "move": {
+        "index": 0,
+        "from": {
+          "type": "alchemy",
+          "x": 8,
+          "y": 1,
+          "rotation": 0
+        },
+        "to": {
+          "type": "alchemy",
+          "x": 7,
+          "y": 1,
+          "rotation": 180
+        }
+      },
+      "before": {
+        "isolated": [
+          {
+            "x": 10,
+            "y": 1
+          }
+        ],
+        "cuts": []
+      },
+      "after": {
+        "isolated": [],
+        "cuts": []
+      }
+    },
+    {
+      "id": "INN_M01",
+      "baseVersion": 6,
+      "version": 7,
+      "tries": 43,
+      "move": {
+        "index": 14,
+        "from": {
+          "type": "wood_pile",
+          "x": 6,
+          "y": 1,
+          "rotation": 90
+        },
+        "to": {
+          "type": "wood_pile",
+          "x": 3,
+          "y": 5,
+          "rotation": 270
+        }
+      },
+      "before": {
+        "isolated": [],
+        "cuts": [
+          [
+            {
+              "x": 6,
+              "y": 1
+            },
+            {
+              "x": 7,
+              "y": 1
+            }
+          ]
+        ]
+      },
+      "after": {
+        "isolated": [],
+        "cuts": []
+      }
+    }
+  ],
+  "stats": {
+    "reviewed": 4,
+    "changed": 4,
+    "isolatedAfter": 0,
+    "cutsAfter": 0,
+    "rotations": 16,
+    "newIds": 3
+  }
+}
