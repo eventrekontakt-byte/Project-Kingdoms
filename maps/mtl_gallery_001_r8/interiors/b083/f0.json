@@ -1,0 +1,656 @@
+{
+  "id": "mtl_gallery_001.b083.f0",
+  "buildingId": "mtl_gallery_001.b083",
+  "level": 0,
+  "width": 16,
+  "height": 18,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 16,
+    "h": 18
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b083.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 17,
+        "w": 16,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 16
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 1,
+        "w": 1,
+        "h": 16
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.wall5",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 5,
+        "h": 1
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.wall6",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 9,
+        "w": 5,
+        "h": 1
+      },
+      "kind": "partition"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b083.f0.o1",
+      "type": "tanning_vat",
+      "name": "Kadź garbarska",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 1,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "tanning_vat",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b083.f0.o1.s1",
+          "action": "tan",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.o2",
+      "type": "hide_frame",
+      "name": "Rama do skór",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 1,
+        "w": 3,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "hide_frame",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b083.f0.o2.s1",
+          "action": "dry_hide",
+          "capacity": 1,
+          "approach": {
+            "x": 11,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.o3",
+      "type": "hide_frame",
+      "name": "Rama do skór",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 1,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "hide_frame",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b083.f0.o3.s1",
+          "action": "dry_hide",
+          "capacity": 1,
+          "approach": {
+            "x": 12,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.o4",
+      "type": "water_tub",
+      "name": "Balia",
+      "geometry": {
+        "type": "rect",
+        "x": 14,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "water_tub",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b083.f0.o4.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.o5",
+      "type": "crate",
+      "name": "Skrzynia transportowa",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "crate",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b083.f0.o5.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.o6",
+      "type": "counter",
+      "name": "Lada",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 14,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "counter",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b083.f0.o6.s1",
+          "action": "sell",
+          "capacity": 1,
+          "approach": {
+            "x": 5,
+            "y": 15
+          }
+        },
+        {
+          "id": "mtl_gallery_001.b083.f0.o6.s2",
+          "action": "buy",
+          "capacity": 1,
+          "approach": {
+            "x": 7,
+            "y": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.o7",
+      "type": "tool_rack",
+      "name": "Wieszak narzędziowy",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 10,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "tool_rack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b083.f0.o7.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 13,
+            "y": 11
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b083.f0.dec1",
+      "type": "prop_hide",
+      "name": "Skóra",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_hide",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b083.f0.o2",
+      "slot": 0,
+      "allowedHosts": [
+        "hide_frame",
+        "fulling_table"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec2",
+      "type": "prop_hide",
+      "name": "Skóra",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_hide",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b083.f0.o3",
+      "slot": 0,
+      "allowedHosts": [
+        "hide_frame",
+        "fulling_table"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec3",
+      "type": "prop_folded_cloth",
+      "name": "Złożona tkanina",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_folded_cloth",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b083.f0.o5",
+      "slot": 0,
+      "allowedHosts": [
+        "dresser",
+        "washstand",
+        "linen_cabinet",
+        "crate"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec4",
+      "type": "prop_rope_coil",
+      "name": "Zwinięta lina",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_rope_coil",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b083.f0.o5",
+      "slot": 2,
+      "allowedHosts": [
+        "crate"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec5",
+      "type": "prop_ledger",
+      "name": "Księga rachunkowa",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_ledger",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b083.f0.o6",
+      "slot": 0,
+      "allowedHosts": [
+        "desk",
+        "council_table",
+        "counter",
+        "writing_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec6",
+      "type": "prop_coin_purse",
+      "name": "Sakiewka",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_coin_purse",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b083.f0.o6",
+      "slot": 2,
+      "allowedHosts": [
+        "counter",
+        "strongbox"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec7",
+      "type": "prop_scale",
+      "name": "Waga szalkowa",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 15,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_scale",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b083.f0.o6",
+      "slot": 0,
+      "allowedHosts": [
+        "counter"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec8",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.dec9",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 15,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [
+    {
+      "id": "mtl_gallery_001.b083.f0.cut1",
+      "kind": "open",
+      "a": {
+        "x": 6,
+        "y": 9
+      },
+      "b": {
+        "x": 6,
+        "y": 10
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.cut2",
+      "kind": "open",
+      "a": {
+        "x": 7,
+        "y": 9
+      },
+      "b": {
+        "x": 7,
+        "y": 10
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.cut3",
+      "kind": "open",
+      "a": {
+        "x": 8,
+        "y": 9
+      },
+      "b": {
+        "x": 8,
+        "y": 10
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b083.f0.cut4",
+      "kind": "open",
+      "a": {
+        "x": 9,
+        "y": 9
+      },
+      "b": {
+        "x": 9,
+        "y": 10
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "type": "workshop",
+      "access": "Z2",
+      "anchor": {
+        "x": 8,
+        "y": 5
+      },
+      "functions": [
+        "tan",
+        "dry_hide",
+        "wash"
+      ],
+      "id": "mtl_gallery_001.b083.f0.r1"
+    },
+    {
+      "type": "storage",
+      "access": "Z2",
+      "anchor": {
+        "x": 8,
+        "y": 14
+      },
+      "functions": [
+        "storage",
+        "sell",
+        "buy"
+      ],
+      "id": "mtl_gallery_001.b083.f0.r2"
+    }
+  ],
+  "templateRef": {
+    "id": "TANNER_M01",
+    "version": 1
+  }
+}

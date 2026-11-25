@@ -1,4 +1,4 @@
-import {drawMfsInterior} from "./mfs/interior-renderer.js?v=0.3.35";
+import {drawMfsInterior} from "./mfs/interior-renderer.js?v=0.3.38";
 import {validateWorld} from "./mfs/validator.js?v=0.3.35";
 import {registerMfs,mfsScene} from "./mfs/core.js?v=0.3.29";
 import {clampZoom} from "../ui/minimap.js?v=0.3.29";

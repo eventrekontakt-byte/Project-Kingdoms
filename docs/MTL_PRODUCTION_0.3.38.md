@@ -1,0 +1,2 @@
+# Production expansion 0.3.38
+16 fixed new plans with authored partitions, work and storage zones; deterministic design-time placement search, no runtime rearrangement. 18 equipment and 16 surface decorations. 64 rotations checked for placement, topology, decor. Approved-copy compile and actual viewer loader passed; 63124 mock canvas operations for new floors. Machinery actions are descriptive station metadata, not a working production economy. Review gallery only; no browser test. Existing templates and revisions retained.
