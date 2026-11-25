@@ -62,6 +62,41 @@ function newScene(id,w,h,level,name,base){
  check(TYPES.has(base),"unknown base tile");
  return {id,width:w,height:h,level,name,tiles:Array(w*h).fill(base),elevation:new Int16Array(w*h),objects:new Map(),portals:new Map(),doors:new Map(),places:[],records:new Map(),tile(x,y){return int(x)&&int(y)&&x>=0&&y>=0&&x<w&&y<h?this.tiles[y*w+x]:"void";},blocked(x,y){return SOLID.has(this.tile(x,y));}};
 }
+// Optional explicit multi-cell door endpoints. Old maps retain a single implicit lane.
+// target indexes a safe arrival lane on the opposite side, not a trigger.
+export function portalEndpointCells(e){
+ if(!e)return [];
+ if(Array.isArray(e.lanes)&&e.lanes.length)return e.lanes.filter(l=>l&&l.trigger&&l.arrival).map(l=>({...l,sceneId:e.sceneId}));
+ return [{sceneId:e.sceneId,trigger:e.trigger,arrival:e.arrival,target:0}];
+}
+export function portalLanes(p){
+ const a=p?.a,b=p?.b;
+ check(a&&b&&typeof a.sceneId==="string"&&typeof b.sceneId==="string"&&a.sceneId!==b.sceneId,"invalid portal endpoints");
+ const wide=a.lanes!==undefined||b.lanes!==undefined;
+ const same=(u,v)=>u.x===v.x&&u.y===v.y;
+ const side=e=>{
+  coord(e.trigger);coord(e.arrival);
+  if(wide)check(Array.isArray(e.lanes)&&e.lanes.length>=1&&e.lanes.length<=4,"wide portal requires 1–4 explicit lanes per side");
+  const lanes=wide?e.lanes:[{trigger:e.trigger,arrival:e.arrival,target:0}];
+  for(const l of lanes){check(l&&typeof l==="object","invalid portal lane");coord(l.trigger);coord(l.arrival);check(int(l.target),"missing portal lane target");}
+  check(same(lanes[0].trigger,e.trigger)&&same(lanes[0].arrival,e.arrival),"primary endpoint differs from lane zero");
+  const dx=lanes[0].arrival.x-lanes[0].trigger.x,dy=lanes[0].arrival.y-lanes[0].trigger.y;
+  check(Math.abs(dx)+Math.abs(dy)===1,"arrival not adjacent to trigger");
+  const step=lanes.length>1?{x:lanes[1].trigger.x-lanes[0].trigger.x,y:lanes[1].trigger.y-lanes[0].trigger.y}:null;
+  if(step)check(Math.abs(step.x)+Math.abs(step.y)===1&&step.x*dx+step.y*dy===0,"noncontiguous portal span");
+  for(const [i,l] of lanes.entries()){
+   check(l.arrival.x-l.trigger.x===dx&&l.arrival.y-l.trigger.y===dy,"inconsistent portal lane approach");
+   if(step)check(l.trigger.x===lanes[0].trigger.x+i*step.x&&l.trigger.y===lanes[0].trigger.y+i*step.y,"noncontiguous portal span");
+  }
+  return lanes.map(l=>({...l,sceneId:e.sceneId}));
+ };
+ if(wide)check(p.type==="door","only doors support multi-cell spans");
+ const A=side(a),B=side(b);
+ if(wide)check(A.length>1||B.length>1,"use legacy endpoint for single lane");
+ for(const [from,to] of [[A,B],[B,A]])for(const l of from)check(l.target>=0&&l.target<to.length,"portal lane target out of range");
+ return {a:A,b:B};
+}
+
 function pointIndex(s,p){coord(p);check(p.x>=0&&p.x<s.width&&p.y>=0&&p.y<s.height,"point outside "+s.id);return p.y*s.width+p.x;}
 const dirs=[[1,0],[-1,0],[0,1],[0,-1]];
 function accessible(s,a,b){const start=pointIndex(s,a),end=pointIndex(s,b);if(s.blocked(a.x,a.y)||s.blocked(b.x,b.y))return false;
@@ -113,11 +148,12 @@ export function compileMap(m,data){
  for(const b of buildings.values())check(b.floorIds.length>0&&new Set(b.floorIds).size===b.floorIds.length&&b.floorIds.every(id=>floors.get(id)===b.id),"missing floor "+b.id);
  for(const p of arr(data.portals,"portals")){
   record(p);check(["door","stairs"].includes(p.type)&&p.direction==="both","unsupported portal");
-  const a=p.a,b=p.b,sa=all.get(a?.sceneId),sb=all.get(b?.sceneId);check(sa&&sb,"unknown portal scene");
+  const a=p.a,b=p.b,lanes=portalLanes(p),sa=all.get(a?.sceneId),sb=all.get(b?.sceneId);check(sa&&sb,"unknown portal scene");
   check(sa!==sb,"portal must connect different scenes");
-  const endpoint=(from,to,u,d)=>{
+  const endpoint=(from,to,u,d,index)=>{
    const trigger=pointIndex(from,u.trigger),arrival=pointIndex(to,d.arrival);
    check(!from.portals.has(trigger),"duplicate portal trigger");
+   check(!from.objects.has(trigger),"object on portal trigger");
    check(!to.blocked(d.arrival.x,d.arrival.y),"blocked arrival");
    check(pointIndex(to,d.trigger)!==arrival,"arrival on trigger");
    check(Math.abs(u.trigger.x-u.arrival.x)+Math.abs(u.trigger.y-u.arrival.y)===1,"arrival not adjacent to trigger");
@@ -127,12 +163,13 @@ export function compileMap(m,data){
    from.tiles[trigger]=tile;
    from.portals.set(trigger,{map:to.id,floor:0,x:d.arrival.x,y:d.arrival.y});
    if(p.type==="door")from.doors.set(trigger,{id:p.id,name:p.name||"Drzwi",initial:"open"});
-   from.places.push({id:p.id,name:p.name||tile,kind:"Przejście",x:u.arrival.x,y:u.arrival.y,map:from.id,floor:0});
+   from.places.push({id:index===0?p.id:p.id+".lane"+(index+1),name:p.name||tile,kind:"Przejście",x:u.arrival.x,y:u.arrival.y,map:from.id,floor:0});
   };
   if(p.type==="stairs")check(floors.get(sa.id)&&floors.get(sa.id)===floors.get(sb.id)&&Math.abs(sa.level-sb.level)===1,"invalid stairs levels");
   else check(sa===s&&floors.has(sb.id)||sb===s&&floors.has(sa.id),"invalid exterior door");
-  if(p.type==="door"){const ext=sa===s?a:b,inside=sa===s?sb:sa,building=buildings.get(floors.get(inside.id));check(inside.level===0&&building.cells.has(pointIndex(s,ext.trigger))&&!building.cells.has(pointIndex(s,ext.arrival)),"door not on owning building boundary");}
-  endpoint(sa,sb,a,b);endpoint(sb,sa,b,a);
+  if(p.type==="door"){const ext=sa===s?lanes.a:lanes.b,inside=sa===s?sb:sa,building=buildings.get(floors.get(inside.id));check(inside.level===0&&ext.every(e=>building.cells.has(pointIndex(s,e.trigger))&&!building.cells.has(pointIndex(s,e.arrival))),"door not on owning building boundary");}
+  for(const [i,u] of lanes.a.entries())endpoint(sa,sb,u,lanes.b[u.target],i);
+  for(const [i,u] of lanes.b.entries())endpoint(sb,sa,u,lanes.a[u.target],i);
  }
  for(const q of all.values()){
   for(const [k,d] of q.portals){const target=all.get(d.map);check(!target.portals.has(pointIndex(target,d)),"portal arrival on another trigger");}

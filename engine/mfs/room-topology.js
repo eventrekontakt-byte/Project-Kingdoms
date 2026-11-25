@@ -1,5 +1,5 @@
 // RTS 1.0: structural walls and authored open edges, not furniture, define room components.
-import {rasterize} from "./core.js?v=0.3.29";
+import {rasterize,portalEndpointCells} from "./core.js?v=0.3.29";
 export const ACCESS_COLORS={Z0:"#8fcf82",Z1:"#e1cb67",Z2:"#e8a85f",Z3:"#77a8e1",Z4:"#b99be1",Z5:"#e47e88"};
 const list=x=>Array.isArray(x)?x:[],edge=(a,b)=>a<b?a+":"+b:b+":"+a;
 export function roomTopology(f,portals=[]){
@@ -19,7 +19,7 @@ export function roomTopology(f,portals=[]){
  for(const c of cuts.values()){const a=componentOf.get(c.ak),b=componentOf.get(c.bk);if(a===b){issue("Boundary does not separate zones",c.id,c.a);continue;}const ra=byComponent.get(a),rb=byComponent.get(b);if(!ra||!rb)continue;ra.kind=rb.kind="open_zone";if(!ra.neighborIds.includes(rb.id))ra.neighborIds.push(rb.id);if(!rb.neighborIds.includes(ra.id))rb.neighborIds.push(ra.id);links.push({id:c.id,kind:"open",a:c.a,b:c.b,roomA:ra.id,roomB:rb.id});}
  for(const o of list(f.objects)){let cs;try{cs=rasterize(o.geometry,w,h);}catch(e){issue(e.message,o.id);continue;}const ids=new Set([...cs].map(k=>byCell.get(k)));if(ids.size!==1||ids.has(undefined)){issue("Furniture spans room boundaries or is outside assigned room",o.id,pt(cs.values().next().value));continue;}const id=ids.values().next().value,r=byId.get(id);byObject.set(o.id,id);r.objectIds.push(o.id);
  for(const s of list(o.stations)){const sid=byCell.get(idx(s.approach));if(!sid){issue("Station outside assigned room floor",s.id,s.approach);continue;}const sr=byId.get(sid);sr.stationIds.push(s.id);if(!sr.availableFunctions.includes(s.action))sr.availableFunctions.push(s.action);}}
- for(const p of list(portals))for(const e of [p.a,p.b])if(e?.sceneId===f.id){const id=byCell.get(idx(e.arrival));if(id){const r=byId.get(id);if(!r.portalIds.includes(p.id))r.portalIds.push(p.id);}}
+ for(const p of list(portals))for(const e of [p.a,p.b].flatMap(portalEndpointCells))if(e?.sceneId===f.id&&e.arrival){const id=byCell.get(idx(e.arrival));if(id){const r=byId.get(id);if(!r.portalIds.includes(p.id))r.portalIds.push(p.id);}}
  return {rooms,byCell,byObject,links,issues};
 }
 export function roomAt(t,x,y,w){return Number.isInteger(x)&&Number.isInteger(y)&&x>=0&&x<w&&y>=0?t.byCell.get(y*w+x)||null:null;}

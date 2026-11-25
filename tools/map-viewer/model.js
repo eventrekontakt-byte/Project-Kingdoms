@@ -2,7 +2,7 @@ import {ruralColor,validateRuralAreas} from "../../engine/mfs/rural-areas.js?v=0
 import {roomTopology,ACCESS_COLORS} from "../../engine/mfs/room-topology.js?v=0.3.33.2";
 import {compileMap} from "../../engine/mfs/core.js?v=0.3.29";
 import {playerStartCells} from "../../engine/mfs/furniture-placement.js?v=0.3.32.2";
-import {rasterize,VERSION} from "../../engine/mfs/core.js?v=0.3.29";
+import {rasterize,VERSION,portalEndpointCells} from "../../engine/mfs/core.js?v=0.3.29";
 import {readValidationInputs,validateMap,PROFILES} from "../../engine/mfs/validator.js?v=0.3.35";
 export const LAYERS=[["terrain","Teren","#698753"],["rural","Uprawy i tereny gospodarcze","#ae9659"],["water","Woda","#326e9c"],["elevation","Wysokość","#c9a98b"],["parcels","Działki","#b4ce87"],["roads","Drogi i place","#baa17d"],["fortifications","Fortyfikacje","#b9bdc5"],["buildings","Budynki / ściany","#aa805d"],["vegetation","Roślinność","#285d38"],["infrastructure","Infrastruktura","#e4b86b"],["objects","Wyposażenie","#aa805d"],["decorations","Dekoracje podłogi i ścian","#d49e77"],["surfaceProps","Drobne przedmioty na meblach","#f2cf86"],["lighting","Oświetlenie","#f2d770"],["portals","Portale","#edc865"],["stations","Stanowiska NPC","#53c6d0"],["playerStarts","Interakcja gracza","#9ccc77"],["access","Dostęp / pokoje","#b591d7"],["npcZones","Strefy NPC","#7db4f3"],["collision","Kolizje / progi","#e36c72"]];
 export const PALETTE={grass:"#57794b",meadow:"#7a9658",water:"#326e9c",road:"#baa17d",stone:"#94938c",wood:"#b39972",wall:"#4a5058",tree:"#285d38",object:"#ad8050",void:"#161e26",hill:"#69774d","forest-floor":"#3e5e3b",rock:"#76766b",marble:"#d2d1c5",rampart:"#a4a6a3"};
@@ -55,7 +55,7 @@ export function makeScene(p,id){
   for(const a of list(d.infrastructure))object(a,/tree|plant|bush|vegetation/.test(a.type)?"vegetation":/light|lamp|torch/.test(a.type)?"lighting":"infrastructure");
   for(const a of list(d.npcZones))if(a.sceneId===id)add(a,"npcZones");
  }
- for(const a of list(d.portals))for(const e of [a.a,a.b])if(e?.sceneId===id)point(a,"portals",e.trigger,{arrival:e.arrival});
+ for(const a of list(d.portals))for(const e of [a.a,a.b].flatMap(portalEndpointCells))if(e?.sceneId===id&&e.trigger)point(a,"portals",e.trigger,{arrival:e.arrival});
  for(const a of list(m.spawnPoints))if(a.sceneId===id)point(a,"stations",a,{spawn:true});
  const collision=new Set(),triggers=new Set();
  if(actual)for(let k=0;k<w*h;k++){if(actual.blocked(k%w,Math.floor(k/w)))collision.add(k);if(actual.portals.has(k))triggers.add(k);}

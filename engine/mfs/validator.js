@@ -1,8 +1,8 @@
 import {decorationIssues} from "./decorations.js?v=0.3.35";
 import {roomTopology} from "./room-topology.js?v=0.3.33.2";
 import {placementIssues} from "./furniture-placement.js?v=0.3.32.2";
-import {rasterize,compileMap,VERSION} from "./core.js?v=0.3.29";
-export const VALIDATOR_VERSION="1.3.0";
+import {rasterize,compileMap,VERSION,portalLanes} from "./core.js?v=0.3.29";
+export const VALIDATOR_VERSION="1.3.1";
 export const PROFILES=["terrain","parcels","roads","fortifications","buildings","interiors","infrastructure","final"];
 const PDS={P1:[3,4,5,6],P2:[4,5,8,10],P3:[6,8,12,14],P4:[9,11,18,20],P5:[12,14,26,30],P6:[14,16,40,48]};
 const WIDTH={R1:6,R2:5,R3:3,R4:2,R5:1};
@@ -161,7 +161,8 @@ export function validateMap(m,d,profile="final"){
   const triggers=new Set(),endpoints=[];
   for(const p of array(d.portals,"portals.json")){id(p,"portals.json");if(!["door","stairs"].includes(p.type)||p.direction!=="both")error("PORTAL_PAIR","Portal must be paired door/stairs","portals.json",p);
    const a=p.a,b=p.b;if(!a||!b||a.sceneId===b.sceneId){error("PORTAL_PAIR","Missing or invalid endpoints","portals.json",p);continue;}
-   for(const e of [a,b]){const f=fmap.get(e.sceneId),ex=e.sceneId===m.mapId,sw=ex?w:f?.width,sh=ex?h:f?.height;if(!ex&&!f){error("MFS_REF","Unknown portal scene","portals.json",p,e.trigger,e.sceneId);continue;}
+   let lanes;try{lanes=portalLanes(p);}catch(e){error("PORTAL_PAIR",e.message,"portals.json",p);continue;}
+   for(const e of [...lanes.a,...lanes.b]){const f=fmap.get(e.sceneId),ex=e.sceneId===m.mapId,sw=ex?w:f?.width,sh=ex?h:f?.height;if(!ex&&!f){error("MFS_REF","Unknown portal scene","portals.json",p,e.trigger,e.sceneId);continue;}
     const t=point(e.trigger,sw,sh),v=point(e.arrival,sw,sh);if(t===null||v===null||Math.abs(e.trigger.x-e.arrival.x)+Math.abs(e.trigger.y-e.arrival.y)!==1)error("PORTAL_PAIR","Invalid portal trigger/arrival","portals.json",p,e.trigger,e.sceneId);
     const key=e.sceneId+":"+t;if(triggers.has(key))error("PORTAL_PAIR","Duplicate portal trigger","portals.json",p,e.trigger,e.sceneId);triggers.add(key);endpoints.push({p,e,v});
    }
