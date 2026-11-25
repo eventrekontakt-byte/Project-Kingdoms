@@ -24,3 +24,9 @@ Mierzalne wskaźniki zastępcze: liczba zakończonych partii produkcyjnych w cza
 
 ### Kolejna obserwacja — 2026-11-25, czat (4), II-B10b
 10 zakończonych partii II-B (B8 i B10 po dwa checkpointy), 79 unikatowych kandydatów. Obciążenie szacunkowe wysokie, rosnące, pozostała pojemność nieustalona. Testy V8 i zapis zadziałały. Brak nowego zgłoszenia awarii. Rekomendacja: zmiana czatu przed B11, szczególnie przed integracją. Nie jest to pomiar tokenów ani progu awarii.
+
+### Zmiana rozmowy — 2026-11-25, czat (4) → (5)
+Użytkownik zgłosił przeciążenie (4) po ostatnim zapisanym II-B10b: 10 zakończonych partii II-B, 79 unikatowych kandydatów, B8 i B10 po dwa checkpointy. Nie znamy przyczyny, progu ani dokładnego momentu awarii. Czat (5) odzyskał stan z HEAD 20293c8.
+
+### Kolejna obserwacja — 2026-11-25, czat (5), II-B11a
+1 zapisany checkpoint produkcyjny (B11 WIP), 79 unikatowych kandydatów; 4 zaktualizowane modele. Obciążenie orientacyjne umiarkowane (odczyty katalogu, pamięci i kodu, jedna partia produkcyjna); brak licznika kontekstu. Próba git ls-remote nieudana z powodu DNS w kontenerze, pierwsza walidacja V8 przerwana przez składnię export async, obie przeszkody obejściowe; ponowna walidacja i zapis GitHub udane. Kontynuacja mniejszymi partiami; checkpoint aktualny.
