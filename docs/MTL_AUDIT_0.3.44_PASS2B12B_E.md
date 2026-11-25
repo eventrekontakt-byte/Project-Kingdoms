@@ -34,3 +34,36 @@
 
 ## Stan i dalsze kroki
 110 unikatowych ID nakładkowych, 163 modele ogółem. Po B12d 43 zgłoszenia wymiarowe w 35 modelach; B12e rozwiązuje 10 zgłoszeń rodzinnych domów, globalny regres wymiarów otwarty. Pozostałe: rzeczywiste ograniczenia kuchni, komnat, zapleczy publicznych; udokumentowane indywidualne wyjątki dla dużych hal i pomieszczeń produkcyjnych (§50; wymagają akceptacji, nie wymuszać sztucznego podziału), depozyt/sztab. Domknąć skończoną listę, nie ponawiać meblowania. B13 integracja i B14 QA wciąż otwarte. Pełna kontrola MFS/Node, wizualna, Android, offline, Pages, prawa dostępu, własność i większe jednostki niepotwierdzone. 
+
+## Potwierdzony regres końcowy po B12e
+Commit 8b3ff05ce03227d4e2c99f326bc0e40588dd866d. Pierwszy odczyt przerwany przez rozłączenie serwera, ponowiono w paczkach po 4 pliki. Wynik 163 modele, 110 nakładkowych, 229 kondygnacji, 609 pomieszczeń, 2585 obiektów, 5164 dekoracje, 2906 stanowisk, 916 obrotów V8; 0 błędów, izolowanych pól, zajętych granic, nierozstrzygniętych sygnałów przekrojów korytarzy w zastosowanym screeningu i sygnałów maski ścian >45%. 13 pomiarów progów wyjaśnionych. 33 rozbieżności wymiarowe 25 modeli. Lista skończona poniżej; pozostałe 138 modeli bez zgłoszeń wymiarów w zastosowanym screeningu (nie pełny odbiór IDS/MFS). Dane: ../templates/mtl/ids-regression-after-b12e.json.
+
+| Model | Kondygnacja, typ i wymiary rdzenia |
+|---|---|
+| BARRACKS_M01 | 0: barrack_hall 18×22 |
+| ARMORY_M01 | 0: armory 14×18 |
+| BREWERY_M01 | 0: workshop 14×18 |
+| TEAHOUSE_M01 | 0: kitchen 14×5 |
+| INN_M02 | 0: kitchen 16×7; 1: bedroom 16×8; 1: living 16×10 |
+| BARRACKS_L02 | 0: barrack_hall 9×22; 0: mess_hall 9×22 |
+| GUARDHOUSE_L02 | 0: office 6×14 |
+| COMMAND_M01 | 0: office 14×9 |
+| OFFICER_M01 | 0: bedroom 12×8 |
+| CIVIC_HALL_M02 | 0: office 14×9 |
+| CIVIC_COURT_M01 | 0: office 14×9 |
+| CIVIC_GUILD_M02 | 0: office 16×9 |
+| CIVIC_GUILD_L01 | 0: workshop 20×11 |
+| NOB_HOUSE_M01 | 0: kitchen 14×8 |
+| NOB_HOUSE_L01 | 0: dining_room 16×9; 1: office 16×9; 2: kitchen 16×9 |
+| RUR_HOUSE_M01 | 1: bedroom 10×14 |
+| RUR_BARN_L01 | 0: storage 16×22; 1: storage 16×22 |
+| RUR_STABLE_L01 | 0: stable 16×22; 1: storage 16×22 |
+| RUR_MILL_M01 | 1: workroom 14×18 |
+| RUR_SAWMILL_M01 | 1: storage 16×22 |
+| RUR_BREWERY_M01 | 0: workroom 16×22; 1: storage 16×22 |
+| RUR_TANNERY_M01 | 0: workroom 14×18 |
+| SP_INN_CELLAR | 0: kitchen 4×9 |
+| SP_KEEP_VAULT | 1: washroom 8×6 |
+| SP_ARENA | -1: storage 22×26 |
+
+Nie ponawiać globalnego meblowania. Pozostałe 33 rozstrzygnąć indywidualnie: naprawy zwykłych pomieszczeń, udokumentowane i zaakceptowane wyjątki dla rzeczywiście nietypowych hal/składów i obiektów specjalnych. Nie publikować r15 przed odbiorem. Brak pełnego MFS i testów przeglądarki/Node/Android/offline/Pages; nie utożsamiać screeningu przekrojów z dowodem dostępności większych jednostek.
