@@ -19,5 +19,6 @@ Nie odzyskano dosłownego końca rozmowy (3); repozytorium i raporty są podstaw
 ## Checkpoint II-B1 — najnowszy
 4 modele w nakładce `templates/mtl/pass2b1-candidates.json`, test V8 16 obrotów pozytywny; r14 bez zmian. Przeczytaj `../MTL_AUDIT_0.3.44_PASS2B1.md`. Następne: CLINIC_M01, SP_CLINIC, HALL_M01 (recepcje istnieją, układ stref do poprawy), potem SP_KEEP_VAULT. Nakładki integrować dopiero w r15 po walidacji. Nie powtarzać czterech modeli bez powodu. Test Node, wizualny, Android i pełny MFS nie wykonane.
 
+
 ## Checkpoint II-B2 — najnowszy
-2 modeli w `templates/mtl/pass2b2-candidates.json` (niezależna nakładka na r14 obok pass2b1). 24 obrotów bez zgłoszeń w V8. Raport ../MTL_AUDIT_0.3.44_PASS2B2.md. Dokończyć CLINIC_M01, HALL_M01; następnie karczmy, więzienia i duże domy (MTL-002). Nie publikować r15 przed integracją i pełną walidacją, nie zmieniać r14. Test Node, Android, Pages i odbiór wizualny otwarte.
+Wszystkie 4 modele w `templates/mtl/pass2b2-candidates.json` obok 4 z II-B1; 32 obrotów kondygnacji bez zgłoszeń w V8. Raport ../MTL_AUDIT_0.3.44_PASS2B2.md. MTL-002: karczmy, więzienia i duże domy; następnie kontrola błędnych heurystyk i integracja r15. Weryfikacja dostępu, wymiarów IDS, podziemi i odbiór wizualny pozostają otwarte. Nie nadpisywać r14; r15 po pełnej walidacji. Node, Android, Pages nie wykonane.

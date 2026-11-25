@@ -18,6 +18,6 @@ if(rotation===0)stats.push({level:f.level,rooms:rt.rooms.map(r=>({type:r.type,ar
 const api={rasterize,instantiateBuilding,placementIssues,roomTopology,decorationIssues};
 const read=async p=>JSON.parse(await readFile(new URL("../"+p,import.meta.url),"utf8"));
 const lib=await read("templates/mtl/catalog-v14.json"),patch=await read("templates/mtl/pass2b2-candidates.json");
-assert.equal(patch.buildings.length,2);
+assert.equal(patch.buildings.length,4);
 for(const t of patch.buildings){const old=lib.buildings.find(x=>x.id===t.id);assert.equal(t.version,old.version+1);for(const key of ["geometry","entry","interiorEntry","stairs"])assert.deepEqual(t[key],old[key]);assert.deepEqual(inspect(old,lib,api).issues,[]);assert.deepEqual(inspect(t,lib,api).issues,[]);}
 console.log("Pass II-B2 candidate regressions passed");

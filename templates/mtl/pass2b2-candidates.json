@@ -2798,13 +2798,1323 @@
         "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building.",
         "Pass II-B2: authored functional room divisions with open 2-cell passages and central public circulation; access metadata only, not runtime locking. Individual review remains required."
       ]
+    },
+    {
+      "id": "CLINIC_M01",
+      "type": "clinic",
+      "name": "Lecznica",
+      "version": 4,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "medical_bed",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "medical_bed",
+              "x": 11,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "healing_table",
+              "x": 11,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "medicine_cabinet",
+              "x": 11,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "alchemy",
+              "x": 12,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "washstand",
+              "x": 12,
+              "y": 18,
+              "rotation": 270
+            },
+            {
+              "type": "desk",
+              "x": 3,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 3,
+              "y": 13,
+              "rotation": 0,
+              "relatedIndex": 6
+            },
+            {
+              "type": "water_tub",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "rocking_chair",
+              "x": 1,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "reception_desk",
+              "x": 1,
+              "y": 16,
+              "rotation": 90
+            },
+            {
+              "type": "bench",
+              "rotation": 0,
+              "x": 1,
+              "y": 12
+            }
+          ],
+          "rooms": [
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "anchor": {
+                "x": 3,
+                "y": 5
+              },
+              "functions": [
+                "treat",
+                "wash"
+              ]
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "anchor": {
+                "x": 3,
+                "y": 14
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "administration"
+              ]
+            },
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "anchor": {
+                "x": 12,
+                "y": 5
+              },
+              "functions": [
+                "treat"
+              ]
+            },
+            {
+              "type": "medical_workroom",
+              "access": "Z2",
+              "anchor": {
+                "x": 12,
+                "y": 15
+              },
+              "functions": [
+                "alchemy",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "corridor",
+              "access": "Z0",
+              "anchor": {
+                "x": 8,
+                "y": 9
+              },
+              "functions": []
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 10,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 10,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 4,
+              "end": 5,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 14,
+              "end": 15,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 4,
+              "end": 5,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 14,
+              "end": 15,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "rug_long",
+              "x": 7,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "wall_clock",
+              "x": 15,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 15,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "wall_tapestry",
+              "x": 0,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "prop_medicine_bottle",
+              "x": 11,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_bandage",
+              "x": 11,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_mortar",
+              "x": 12,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_vial",
+              "x": 12,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_vial",
+              "x": 11,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_medicine_bottle",
+              "x": 11,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_bandage",
+              "x": 11,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_potion_blue",
+              "x": 12,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_mortar",
+              "x": 12,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_herbs",
+              "x": 13,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_crystal",
+              "x": 13,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_milk",
+              "x": 12,
+              "y": 18,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_jug",
+              "x": 12,
+              "y": 18,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_inkpot",
+              "x": 3,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_parchment",
+              "x": 3,
+              "y": 11,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_seal",
+              "x": 3,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 3,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "medical_bed",
+          "version": 1
+        },
+        {
+          "id": "healing_table",
+          "version": 1
+        },
+        {
+          "id": "medicine_cabinet",
+          "version": 1
+        },
+        {
+          "id": "alchemy",
+          "version": 2
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "chair",
+          "version": 2
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "rocking_chair",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Pass II-B2: functional room divisions with two-cell open passages and central public circulation; access metadata only, not runtime locking."
+      ]
+    },
+    {
+      "id": "HALL_M01",
+      "type": "hall",
+      "name": "Ratusz – sala urzędowa",
+      "version": 4,
+      "size": "M",
+      "width": 10,
+      "height": 12,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 10,
+        "h": 12
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 11
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 23
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "council_table",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 14,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 14,
+              "y": 7,
+              "rotation": 0,
+              "relatedIndex": 1
+            },
+            {
+              "type": "desk",
+              "x": 16,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "chair",
+              "x": 15,
+              "y": 6,
+              "rotation": 270,
+              "relatedIndex": 1
+            },
+            {
+              "type": "bookcase",
+              "x": 13,
+              "y": 22,
+              "rotation": 270
+            },
+            {
+              "type": "notice_board",
+              "x": 5,
+              "y": 22,
+              "rotation": 270
+            },
+            {
+              "type": "bench",
+              "x": 6,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "chest",
+              "x": 13,
+              "y": 12,
+              "rotation": 90
+            },
+            {
+              "type": "writing_desk",
+              "x": 13,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "plant_stand",
+              "x": 4,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "reception_desk",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "rotation": 0,
+              "x": 5,
+              "y": 1
+            },
+            {
+              "type": "bench",
+              "rotation": 270,
+              "x": 1,
+              "y": 22
+            }
+          ],
+          "rooms": [
+            {
+              "type": "council_hall",
+              "access": "Z1",
+              "anchor": {
+                "x": 3,
+                "y": 5
+              },
+              "functions": [
+                "meeting",
+                "sit"
+              ]
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "anchor": {
+                "x": 3,
+                "y": 17
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "read"
+              ]
+            },
+            {
+              "type": "chancery",
+              "access": "Z2",
+              "anchor": {
+                "x": 15,
+                "y": 5
+              },
+              "functions": [
+                "administration",
+                "sit"
+              ]
+            },
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 15,
+                "y": 17
+              },
+              "functions": [
+                "storage",
+                "read",
+                "administration"
+              ]
+            },
+            {
+              "type": "corridor",
+              "access": "Z0",
+              "anchor": {
+                "x": 9,
+                "y": 11
+              },
+              "functions": []
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 10,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 10,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 11,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 11,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 19,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 19,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 20,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 20,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 21,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 21,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 22,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 12,
+              "y": 22,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 5,
+              "end": 6,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 16,
+              "end": 17,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 12,
+              "start": 5,
+              "end": 6,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 12,
+              "start": 16,
+              "end": 17,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "rug_long",
+              "x": 9,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "wall_banner",
+              "x": 19,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 19,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_tapestry",
+              "x": 0,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_map_scroll",
+              "x": 2,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_seal",
+              "x": 2,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_seal",
+              "x": 14,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 14,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 14,
+              "y": 6,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_quill",
+              "x": 14,
+              "y": 6,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_ledger",
+              "x": 16,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_quill",
+              "x": 16,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_inkpot",
+              "x": 16,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_parchment",
+              "x": 16,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 13,
+              "y": 22,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_closed",
+              "x": 13,
+              "y": 22,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_scroll",
+              "x": 14,
+              "y": 22,
+              "rotation": 270,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_inkpot",
+              "x": 13,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 9,
+              "slot": 0
+            },
+            {
+              "type": "prop_ledger",
+              "x": 13,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 9,
+              "slot": 2
+            },
+            {
+              "type": "prop_book_open",
+              "x": 14,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 9,
+              "slot": 0
+            },
+            {
+              "type": "prop_quill",
+              "x": 14,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 9,
+              "slot": 2
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "chair",
+          "version": 2
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "notice_board",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "writing_desk",
+          "version": 1
+        },
+        {
+          "id": "plant_stand",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Pass II-B2: functional room divisions with two-cell open passages and central public circulation; access metadata only, not runtime locking."
+      ]
     }
   ],
   "results": [
-    {
-      "id": "CLINIC_M01",
-      "error": "TypeError: Cannot read properties of undefined (reading 'push')"
-    },
     {
       "id": "SP_CLINIC",
       "baseVersion": 2,
@@ -2939,10 +4249,6 @@
       ],
       "baselineIssues": [],
       "issues": []
-    },
-    {
-      "id": "HALL_M01",
-      "error": "TypeError: Cannot read properties of undefined (reading 'push')"
     },
     {
       "id": "SP_KEEP_VAULT",
@@ -3232,6 +4538,242 @@
           ],
           "stationCount": 5,
           "accessibleCells": 648
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "CLINIC_M01",
+      "baseVersion": 3,
+      "candidateVersion": 4,
+      "details": [
+        {
+          "level": 0,
+          "removedDecorations": [
+            "rug_large"
+          ],
+          "layout": [
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "width": 5,
+              "height": 9
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "width": 5,
+              "height": 8
+            },
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "width": 4,
+              "height": 9
+            },
+            {
+              "type": "medical_workroom",
+              "access": "Z2",
+              "width": 4,
+              "height": 8
+            },
+            {
+              "type": "corridor",
+              "access": "Z0",
+              "width": 3,
+              "height": 18
+            }
+          ]
+        }
+      ],
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "medical",
+              "area": 252,
+              "functions": [
+                "treat",
+                "storage",
+                "alchemy",
+                "wash",
+                "administration",
+                "sit",
+                "rest",
+                "reception"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 230
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "treatment",
+              "area": 47,
+              "functions": [
+                "treat",
+                "wash"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 54,
+              "functions": []
+            },
+            {
+              "type": "treatment",
+              "area": 38,
+              "functions": [
+                "treat"
+              ]
+            },
+            {
+              "type": "reception",
+              "area": 42,
+              "functions": [
+                "administration",
+                "sit",
+                "rest",
+                "reception"
+              ]
+            },
+            {
+              "type": "medical_workroom",
+              "area": 34,
+              "functions": [
+                "storage",
+                "alchemy",
+                "wash"
+              ]
+            }
+          ],
+          "stationCount": 14,
+          "accessibleCells": 190
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "HALL_M01",
+      "baseVersion": 3,
+      "candidateVersion": 4,
+      "details": [
+        {
+          "level": 0,
+          "removedDecorations": [
+            "rug_large"
+          ],
+          "layout": [
+            {
+              "type": "council_hall",
+              "access": "Z1",
+              "width": 6,
+              "height": 10
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "width": 6,
+              "height": 11
+            },
+            {
+              "type": "chancery",
+              "access": "Z2",
+              "width": 6,
+              "height": 10
+            },
+            {
+              "type": "archive",
+              "access": "Z2",
+              "width": 6,
+              "height": 11
+            },
+            {
+              "type": "corridor",
+              "access": "Z0",
+              "width": 4,
+              "height": 22
+            }
+          ]
+        }
+      ],
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "chancery",
+              "area": 396,
+              "functions": [
+                "meeting",
+                "administration",
+                "sit",
+                "read",
+                "storage",
+                "tend",
+                "reception"
+              ]
+            }
+          ],
+          "stationCount": 14,
+          "accessibleCells": 369
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "council_hall",
+              "area": 62,
+              "functions": [
+                "meeting",
+                "tend",
+                "sit"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 88,
+              "functions": []
+            },
+            {
+              "type": "chancery",
+              "area": 62,
+              "functions": [
+                "administration",
+                "sit"
+              ]
+            },
+            {
+              "type": "reception",
+              "area": 68,
+              "functions": [
+                "read",
+                "sit",
+                "reception"
+              ]
+            },
+            {
+              "type": "archive",
+              "area": 68,
+              "functions": [
+                "administration",
+                "read",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 20,
+          "accessibleCells": 316
         }
       ],
       "baselineIssues": [],
