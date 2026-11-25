@@ -46,3 +46,5 @@ Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograni
 | 2026-11-25 | II-B11c WIP, czat (5) | 7 modeli, +36 mebli, +114 dekoracji, 116→156 stanowisk, 48 obrotów V8; nowe stanowiska w pokojach obiektów; 79 unikatowych kandydatów | ../MTL_AUDIT_0.3.44_PASS2B11C.md |
 
 | 2026-11-25 | II-B11 final review, czat (5) | 163/163 modeli, 916 obrotów V8, 0 błędów w wykonanych testach, 58 modeli z sygnałami do rozstrzygnięcia; ogólne meblowanie zakończone, bez zmian modeli | ../MTL_FINAL_REVIEW_0.3.44.md |
+
+| 2026-11-25 | II-B12a WIP, czat (5) | 28 modeli skontrolowanych, 25 zmienionych; 29 przesunięć, izolowane 35→3, granice 9→1, 128 obrotów V8; 93 unikatowe ID | ../MTL_AUDIT_0.3.44_PASS2B12A.md |
