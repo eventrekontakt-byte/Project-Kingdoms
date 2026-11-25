@@ -30,3 +30,6 @@ Użytkownik zgłosił przeciążenie (4) po ostatnim zapisanym II-B10b: 10 zako�
 
 ### Kolejna obserwacja — 2026-11-25, czat (5), II-B11a
 1 zapisany checkpoint produkcyjny (B11 WIP), 79 unikatowych kandydatów; 4 zaktualizowane modele. Obciążenie orientacyjne umiarkowane (odczyty katalogu, pamięci i kodu, jedna partia produkcyjna); brak licznika kontekstu. Próba git ls-remote nieudana z powodu DNS w kontenerze, pierwsza walidacja V8 przerwana przez składnię export async, obie przeszkody obejściowe; ponowna walidacja i zapis GitHub udane. Kontynuacja mniejszymi partiami; checkpoint aktualny.
+
+### Kolejna obserwacja — 2026-11-25, czat (5), II-B11b
+2 zapisane checkpointy produkcyjne (B11 WIP), 79 unikatowych kandydatów, 15 zaktualizowanych modeli w tym czacie. II-B11b: 11 modeli, 84 obroty V8, zapis nakładki i raportu udany; bez zgłoszonej awarii aplikacji. Obciążenie orientacyjne umiarkowane, rosnące; brak pomiaru kontekstu i progu awarii. Kontynuować małymi partiami; checkpoint aktualny.
