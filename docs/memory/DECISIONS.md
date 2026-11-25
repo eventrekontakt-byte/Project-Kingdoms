@@ -16,3 +16,6 @@ Data: 2026-11-25; status: zatwierdzone, źródło: bezpośrednie polecenie użyt
 
 ## D007 — rejestr obciążenia rozmów
 Data 2026-11-25; użytkownik zatwierdził regularny zapis obciążenia. CHAT_LOAD_LOG.md przechowuje mierzalne wskaźniki zastępcze i szacunki, nie fikcyjne wartości limitu. Utrzymać D005: brak dokładnego licznika, użytkownik decyduje o zmianie czatu.
+
+## D008 — zakończenie ogólnego meblowania i ukierunkowane korekty
+Data 2026-11-25; użytkownik zaakceptował skorygowane podejście po wskazaniu powielania etapów, polecił ostatni przegląd wszystkich modeli i raport. Nie powtarzać B11d/e/f; poprawiać wyłącznie rzeczywiste braki i niezgodności. Wykonany przegląd nie zastępuje IDS/MFS ani odbioru użytkownika. Źródło: czat (5), ../MTL_FINAL_REVIEW_0.3.44.md.
