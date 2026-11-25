@@ -125,6 +125,13 @@
       "manifest": "city_001/manifest.json",
       "profile": "infrastructure",
       "name": "Miasto 1 — rewizja 1"
+    },
+    {
+      "mapId": "city_001",
+      "mapRevision": 2,
+      "manifest": "city_001_r2/manifest.json",
+      "profile": "infrastructure",
+      "name": "Miasto 1 — organiczny układ"
     }
   ]
 }
