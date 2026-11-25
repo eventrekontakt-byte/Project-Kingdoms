@@ -31,3 +31,6 @@ Data 2026-11-25; użytkownik zaakceptował skorygowane podejście po wskazaniu p
 
 ## D012 — CITY-001a.01 karta Miasta 1
 2026-11-25; użytkownik zatwierdził: średnie miasto, 192×192, 96 działek, populacja docelowa 400, specjalizacja handlowo-rzemieślnicza, F3 + twierdza; uwagi brak. MDS §17/70: 72/24 (75%); zgodność dokumentacyjna §3.1, 6, 19, 37, 43–44, 70–73. Nie oznacza odbioru mapy, pojemności ani akceptacji topografii. Polecenie przejść do 02 bez programowania i mapy. [Karta](../CITY_001a_01_CONCEPT.md).
+
+## D013 — CITY-001a.02 topografia Miasta 1
+2026-11-25; G01–G08 zatwierdzone (8/8), uwagi brak: miasto nadrzeczne w strefie umiarkowanej; rzeka E, nurt N–S, 5–8 kafli; wyniesiona platforma i wzgórze 5–6 m; twierdza NW; główne kierunki W/E/S; most E bez portu handlowego; średnia twierdza 36×44; łąki, pola, pastwiska, zadrzewienia, ograniczone przedmieścia. [Dokument](../CITY_001a_02_TOPOGRAPHY.md). Akceptacja koncepcyjna, nie odbiór mapy ani geometrii. Polecenie rozpocząć 03 bez kodu/mapy.

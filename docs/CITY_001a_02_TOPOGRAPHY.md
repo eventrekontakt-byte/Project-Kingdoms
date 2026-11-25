@@ -1,6 +1,6 @@
-# CITY-001a.02 — Topografia i geografia (WIP)
+# CITY-001a.02 — Topografia i geografia (zatwierdzone założenia)
 2026-11-25 | Alpha 0.3.44 | CMS 1.0 | baza b360ead
-Status: propozycja do akceptacji. Bez programowania, mapy, współrzędnych i parcelacji.
+Status: G01–G08 zatwierdzone przez użytkownika, bez uwag (D013, 2026-11-25). Szczegóły nieobjęte pakietem pozostają robocze. Bez programowania, mapy, współrzędnych i parcelacji.
 ## Podstawa i karta
 GDD §8–10, 18–21, 30; MDS §2–6, 11, 15–19, 26–27, 36–44, 70–74, 76; MFS §3, 10, 23, 25. D012: użytkownik zatwierdził średnie miasto, 192×192, 96 działek, 400 mieszkańców docelowo, handel/rzemiosło, F3 + twierdza, bez uwag. 72 zabudowane/24 wolne (75%). Wszystkie parametry mieszczą się w MDS; nie potwierdzono geometrii, miejsc noclegowych, przejazdów ani aktywnych NPC. 36 864 kafle (3,6864 ha w umownej skali).
 ## Warianty
@@ -14,4 +14,4 @@ Woda (rzeka/studnie), drewno (lasy regionalne), zboże (gospodarstwa), glina (wa
 ## Rezerwy P/R/I/S
 P: 96 działek (72/24), w tym atrakcyjne wolne lokalizacje. R: trakty, most, drogi, dojścia, manewry. I: rynek, place, studnie, zieleń i infrastruktura. S: mury, bramy, baszty, kompleks twierdzy. Naturalne obszary i rzeka oddzielnie, poza bilansem parceli. Proponowana rezerwa S/PS średniej twierdzy 36×44 (1584 kafle obwiedni, zakres 32×36–40×48 MDS §44), północno-zachodnie wzgórze; nie wliczać do 96. Dokładna klasa/program/granice w 06. Rezerwacje bez geometrii, bez ostatecznych ulic przed parcelacją.
 ## Kontrola i następny krok
-Sprawdzono dokumentacyjnie zakresy karty, F3 (3 kafle grubości, wysokość 5–8 m, chodnik 2), liczbę bram, klasy/szerokości R1/R2, zakres twierdzy i krok wysokości. 96 parceli, 400 mieszkańców i program MDS §73 nadal do zweryfikowania przestrzennie. Program funkcjonalny szczegółowy w 03; 02+03 łącznie przygotowują koncepcję topografii i programu MDS §11 pkt 2. Nie wykonano obowiązkowej mapy topograficznej §76 ani walidacji MFS §23, zgodnie z zakazem mapowania; te bramki pozostają otwarte do CITY-001b. Brak nowego kodu/map/katalogu/MTL/DNS i testów. Akceptacja: wariant B jako pakiet, z możliwością korekty geografii, wysokości, szlaków, rezerwy i braku portu. Następna 03 dzielnice i program funkcjonalny wyłącznie na polecenie po akceptacji.
+Sprawdzono dokumentacyjnie zakresy karty, F3 (3 kafle grubości, wysokość 5–8 m, chodnik 2), liczbę bram, klasy/szerokości R1/R2, zakres twierdzy i krok wysokości. 96 parceli, 400 mieszkańców i program MDS §73 nadal do zweryfikowania przestrzennie. Program funkcjonalny szczegółowy w 03; 02+03 łącznie przygotowują koncepcję topografii i programu MDS §11 pkt 2. Nie wykonano obowiązkowej mapy topograficznej §76 ani walidacji MFS §23, zgodnie z zakazem mapowania; te bramki pozostają otwarte do CITY-001b. Brak nowego kodu/map/katalogu/MTL/DNS i testów. Akceptacja: G01–G08 (8/8), wariant B bez korekt; [03 dzielnice i program WIP](CITY_001a_03_FUNCTIONAL_PROGRAM.md) rozpoczęte na polecenie.

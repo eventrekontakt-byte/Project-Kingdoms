@@ -76,3 +76,5 @@ Lista 33: 19 korekt, 14 uzasadnionych wyjątków proponowanych do akceptacji, 0 
 - 2026-11-25 | CITY-001a.01 WIP: zweryfikowano 64622ba=HEAD main, przygotowano kartę i podział koncepcji; propozycja średniego miasta (192×192, 96 parceli, 72/24, 400 mieszkańców docelowo, F3/twierdza). Oczekuje akceptacji, bez kodu/map/migracji/DNS i testów. Raport ../CITY_001a_01_CONCEPT.md.
 
 - 2026-11-25 | CITY-001a.01 D012 zatwierdzona, zgodność dokumentacyjna MDS; 02 WIP wariant nadrzeczny, wysokości, szlaki, zasoby i rezerwy P/R/I/S. Bez geometrii, kodu, map, MTL/DNS i testów. Raport ../CITY_001a_02_TOPOGRAPHY.md. Akceptacja przed 03.
+
+- 2026-11-25 | CITY-001a.02 D013 G01–G08 zatwierdzone, 03 WIP: 8 obszarów, 10/10 typów stref §72, 11/11 funkcji wymaganych §73 na poziomie koncepcji; F01–F09 do akceptacji. Bez mapy, kodu, modeli MTL, migracji, DNS i testów. Raport ../CITY_001a_03_FUNCTIONAL_PROGRAM.md.

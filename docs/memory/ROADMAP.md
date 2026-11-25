@@ -6,7 +6,7 @@
 - [x] B13 — r15 zintegrowana jako review.
 - [x] B14 — zapisany profil final pozytywny; 16 decyzji projektowych zatwierdzonych (D010).
 - [x] Zamknięcie prac katalogowych r15 jako zamrożona referencja / review (nie pełny odbiór produkcyjny).
-- [ ] CITY-001a — projekt koncepcyjny Miasta 1: 01 zatwierdzona (D012), 02 WIP topografia do akceptacji, 03 dzielnice/program i kolejne partie na polecenie.
+- [ ] CITY-001a — 01 zatwierdzona (D012), 02 zatwierdzona (D013), 03 program WIP do akceptacji, 04 bilans działek/zabudowy i dalsze partie na polecenie.
 - [ ] Pełny odbiór MTL wg MDS/MFS: zaległe warunki, wizualne i techniczne bramki przed produkcyjną integracją; zachować archiwum.
 - [ ] CITY-001b — osobna mapa review, migracja ID i zapisów, kolejne bramki.
 - [ ] Integracja i stabilizacja mapy referencyjnej.
