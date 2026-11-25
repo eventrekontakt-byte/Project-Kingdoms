@@ -1,0 +1,4561 @@
+[
+  {
+    "id": "mtl_gallery_001.b001",
+    "parcelId": "mtl_gallery_001.p001",
+    "type": "hut",
+    "name": "Chata mała",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 17,
+      "w": 4,
+      "h": 5
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b001.f0"
+    ],
+    "templateRef": {
+      "id": "HUT_S01",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b002",
+    "parcelId": "mtl_gallery_001.p002",
+    "type": "hut",
+    "name": "Chata standardowa",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 17,
+      "w": 5,
+      "h": 5
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b002.f0"
+    ],
+    "templateRef": {
+      "id": "HUT_M01",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b003",
+    "parcelId": "mtl_gallery_001.p003",
+    "type": "hut",
+    "name": "Chata duża",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 16,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b003.f0"
+    ],
+    "templateRef": {
+      "id": "HUT_L01",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b004",
+    "parcelId": "mtl_gallery_001.p004",
+    "type": "house",
+    "name": "Dom S – otwarty",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 16,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b004.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_S01",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b005",
+    "parcelId": "mtl_gallery_001.p005",
+    "type": "house",
+    "name": "Dom S – sypialnia boczna",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 16,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b005.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_S02",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b006",
+    "parcelId": "mtl_gallery_001.p006",
+    "type": "house",
+    "name": "Dom S – sypialnia tylna",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 16,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b006.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_S03",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b007",
+    "parcelId": "mtl_gallery_001.p007",
+    "type": "house",
+    "name": "Dom M – wspólna izba",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 41,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b007.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_M01",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b008",
+    "parcelId": "mtl_gallery_001.p008",
+    "type": "house",
+    "name": "Dom M – boczne pokoje",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 41,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b008.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_M02",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b009",
+    "parcelId": "mtl_gallery_001.p009",
+    "type": "house",
+    "name": "Dom M – izba tylna",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 41,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b009.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_M03",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b010",
+    "parcelId": "mtl_gallery_001.p010",
+    "type": "house",
+    "name": "Dom L – rodzinna sala",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 40,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b010.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_L01",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b011",
+    "parcelId": "mtl_gallery_001.p011",
+    "type": "house",
+    "name": "Dom L – skrzydło mieszkalne",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 40,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b011.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_L02",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b012",
+    "parcelId": "mtl_gallery_001.p012",
+    "type": "house",
+    "name": "Dom L – dwie strefy",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 40,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b012.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_L03",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b013",
+    "parcelId": "mtl_gallery_001.p013",
+    "type": "shop",
+    "name": "Sklep mały",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 68,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b013.f0"
+    ],
+    "templateRef": {
+      "id": "SHOP_S01",
+      "version": 5
+    },
+    "functions": [
+      "buy",
+      "sell",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b014",
+    "parcelId": "mtl_gallery_001.p014",
+    "type": "shop",
+    "name": "Sklep standardowy",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 67,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b014.f0"
+    ],
+    "templateRef": {
+      "id": "SHOP_M01",
+      "version": 5
+    },
+    "functions": [
+      "buy",
+      "sell",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b015",
+    "parcelId": "mtl_gallery_001.p015",
+    "type": "shop",
+    "name": "Sklep duży",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 66,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b015.f0"
+    ],
+    "templateRef": {
+      "id": "SHOP_L01",
+      "version": 5
+    },
+    "functions": [
+      "buy",
+      "sell",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b016",
+    "parcelId": "mtl_gallery_001.p016",
+    "type": "smithy",
+    "name": "Kuźnia mała",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 67,
+      "w": 5,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b016.f0"
+    ],
+    "templateRef": {
+      "id": "SMITHY_S01",
+      "version": 5
+    },
+    "functions": [
+      "smith",
+      "heat_metal",
+      "craft"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b017",
+    "parcelId": "mtl_gallery_001.p017",
+    "type": "smithy",
+    "name": "Kuźnia standardowa",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 66,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b017.f0"
+    ],
+    "templateRef": {
+      "id": "SMITHY_M01",
+      "version": 5
+    },
+    "functions": [
+      "smith",
+      "heat_metal",
+      "craft"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b018",
+    "parcelId": "mtl_gallery_001.p018",
+    "type": "smithy",
+    "name": "Kuźnia duża",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 65,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b018.f0"
+    ],
+    "templateRef": {
+      "id": "SMITHY_L01",
+      "version": 5
+    },
+    "functions": [
+      "smith",
+      "heat_metal",
+      "craft"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b019",
+    "parcelId": "mtl_gallery_001.p019",
+    "type": "bakery",
+    "name": "Piekarnia",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 93,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b019.f0"
+    ],
+    "templateRef": {
+      "id": "BAKERY_M01",
+      "version": 5
+    },
+    "functions": [
+      "cook",
+      "craft",
+      "buy",
+      "sell"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b020",
+    "parcelId": "mtl_gallery_001.p020",
+    "type": "apothecary",
+    "name": "Apteka",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 93,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b020.f0"
+    ],
+    "templateRef": {
+      "id": "APOTHECARY_M01",
+      "version": 5
+    },
+    "functions": [
+      "alchemy",
+      "buy",
+      "sell"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b021",
+    "parcelId": "mtl_gallery_001.p021",
+    "type": "warehouse",
+    "name": "Magazyn",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 90,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b021.f0"
+    ],
+    "templateRef": {
+      "id": "WAREHOUSE_M01",
+      "version": 5
+    },
+    "functions": [
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b022",
+    "parcelId": "mtl_gallery_001.p022",
+    "type": "inn",
+    "name": "Karczma – do adaptacji",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 90,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b022.f0"
+    ],
+    "templateRef": {
+      "id": "INN_M01",
+      "version": 5
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "serve",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b023",
+    "parcelId": "mtl_gallery_001.p023",
+    "type": "tenement",
+    "name": "Kamienica – dwie kondygnacje",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 92,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b023.f0",
+      "mtl_gallery_001.b023.f1"
+    ],
+    "templateRef": {
+      "id": "TENEMENT_S01",
+      "version": 5
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b024",
+    "parcelId": "mtl_gallery_001.p024",
+    "type": "large_house",
+    "name": "Rezydencja rodzinna",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 91,
+      "w": 8,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b024.f0",
+      "mtl_gallery_001.b024.f1"
+    ],
+    "templateRef": {
+      "id": "LARGE_HOUSE_M01",
+      "version": 2
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b025",
+    "parcelId": "mtl_gallery_001.p025",
+    "type": "merchant_house",
+    "name": "Dom kupiecki z piętrem",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 116,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b025.f0",
+      "mtl_gallery_001.b025.f1"
+    ],
+    "templateRef": {
+      "id": "MERCHANT_HOUSE_M01",
+      "version": 2
+    },
+    "functions": [
+      "buy",
+      "sell",
+      "storage",
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b026",
+    "parcelId": "mtl_gallery_001.p026",
+    "type": "tenement",
+    "name": "Kamienica trzykondygnacyjna",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 116,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b026.f0",
+      "mtl_gallery_001.b026.f1",
+      "mtl_gallery_001.b026.f2"
+    ],
+    "templateRef": {
+      "id": "TENEMENT_M01",
+      "version": 2
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b027",
+    "parcelId": "mtl_gallery_001.p027",
+    "type": "inn",
+    "name": "Karczma z noclegami",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 114,
+      "w": 10,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b027.f0",
+      "mtl_gallery_001.b027.f1"
+    ],
+    "templateRef": {
+      "id": "INN_L01",
+      "version": 2
+    },
+    "functions": [
+      "serve",
+      "eat",
+      "cook",
+      "sleep",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b028",
+    "parcelId": "mtl_gallery_001.p028",
+    "type": "workshop",
+    "name": "Warsztat stolarski",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 118,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b028.f0"
+    ],
+    "templateRef": {
+      "id": "WORKSHOP_M01",
+      "version": 2
+    },
+    "functions": [
+      "craft",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b029",
+    "parcelId": "mtl_gallery_001.p029",
+    "type": "workshop",
+    "name": "Warsztat tkacki",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 117,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b029.f0"
+    ],
+    "templateRef": {
+      "id": "WORKSHOP_L01",
+      "version": 2
+    },
+    "functions": [
+      "weave",
+      "craft"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b030",
+    "parcelId": "mtl_gallery_001.p030",
+    "type": "library",
+    "name": "Biblioteka miejska",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 116,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b030.f0"
+    ],
+    "templateRef": {
+      "id": "LIBRARY_M01",
+      "version": 2
+    },
+    "functions": [
+      "read"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b031",
+    "parcelId": "mtl_gallery_001.p031",
+    "type": "school",
+    "name": "Szkoła miejska",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 142,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b031.f0"
+    ],
+    "templateRef": {
+      "id": "SCHOOL_M01",
+      "version": 2
+    },
+    "functions": [
+      "teach",
+      "study"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b032",
+    "parcelId": "mtl_gallery_001.p032",
+    "type": "chapel",
+    "name": "Kaplica",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 144,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b032.f0"
+    ],
+    "templateRef": {
+      "id": "CHAPEL_M01",
+      "version": 2
+    },
+    "functions": [
+      "pray"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b033",
+    "parcelId": "mtl_gallery_001.p033",
+    "type": "clinic",
+    "name": "Lecznica",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 142,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b033.f0"
+    ],
+    "templateRef": {
+      "id": "CLINIC_M01",
+      "version": 2
+    },
+    "functions": [
+      "treat",
+      "alchemy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b034",
+    "parcelId": "mtl_gallery_001.p034",
+    "type": "hall",
+    "name": "Ratusz – sala urzędowa",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 140,
+      "w": 10,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b034.f0"
+    ],
+    "templateRef": {
+      "id": "HALL_M01",
+      "version": 2
+    },
+    "functions": [
+      "administration",
+      "meeting"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b035",
+    "parcelId": "mtl_gallery_001.p035",
+    "type": "barracks",
+    "name": "Koszary",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 140,
+      "w": 10,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b035.f0"
+    ],
+    "templateRef": {
+      "id": "BARRACKS_M01",
+      "version": 2
+    },
+    "functions": [
+      "sleep",
+      "equip",
+      "train"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b036",
+    "parcelId": "mtl_gallery_001.p036",
+    "type": "armory",
+    "name": "Zbrojownia",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 142,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b036.f0"
+    ],
+    "templateRef": {
+      "id": "ARMORY_M01",
+      "version": 2
+    },
+    "functions": [
+      "equip",
+      "smith"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b037",
+    "parcelId": "mtl_gallery_001.p037",
+    "type": "guardhouse",
+    "name": "Strażnica",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 171,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b037.f0"
+    ],
+    "templateRef": {
+      "id": "GUARDHOUSE_M01",
+      "version": 2
+    },
+    "functions": [
+      "equip",
+      "sleep",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b038",
+    "parcelId": "mtl_gallery_001.p038",
+    "type": "granary",
+    "name": "Spichlerz",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 170,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b038.f0"
+    ],
+    "templateRef": {
+      "id": "GRANARY_M01",
+      "version": 2
+    },
+    "functions": [
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b039",
+    "parcelId": "mtl_gallery_001.p039",
+    "type": "barn",
+    "name": "Stodoła",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 169,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b039.f0"
+    ],
+    "templateRef": {
+      "id": "BARN_M01",
+      "version": 2
+    },
+    "functions": [
+      "storage",
+      "feed"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b040",
+    "parcelId": "mtl_gallery_001.p040",
+    "type": "stable",
+    "name": "Stajnia",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 168,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b040.f0"
+    ],
+    "templateRef": {
+      "id": "STABLE_M01",
+      "version": 2
+    },
+    "functions": [
+      "stable",
+      "feed"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b041",
+    "parcelId": "mtl_gallery_001.p041",
+    "type": "brewery",
+    "name": "Browar",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 168,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b041.f0"
+    ],
+    "templateRef": {
+      "id": "BREWERY_M01",
+      "version": 2
+    },
+    "functions": [
+      "brew",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b042",
+    "parcelId": "mtl_gallery_001.p042",
+    "type": "bathhouse",
+    "name": "Łaźnia",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 168,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b042.f0"
+    ],
+    "templateRef": {
+      "id": "BATHHOUSE_M01",
+      "version": 2
+    },
+    "functions": [
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b043",
+    "parcelId": "mtl_gallery_001.p043",
+    "type": "guildhall",
+    "name": "Dom gildii",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 194,
+      "w": 9,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b043.f0"
+    ],
+    "templateRef": {
+      "id": "GUILDHALL_M01",
+      "version": 2
+    },
+    "functions": [
+      "meeting",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b044",
+    "parcelId": "mtl_gallery_001.p044",
+    "type": "shop",
+    "name": "Sklep – artykuły domowe",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 197,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b044.f0"
+    ],
+    "templateRef": {
+      "id": "SHOP_M02",
+      "version": 2
+    },
+    "functions": [
+      "buy",
+      "sell"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b045",
+    "parcelId": "mtl_gallery_001.p045",
+    "type": "bakery",
+    "name": "Duża piekarnia",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 196,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b045.f0"
+    ],
+    "templateRef": {
+      "id": "BAKERY_L01",
+      "version": 2
+    },
+    "functions": [
+      "cook",
+      "buy",
+      "sell"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b046",
+    "parcelId": "mtl_gallery_001.p046",
+    "type": "apothecary",
+    "name": "Apteka z pracownią",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 196,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b046.f0"
+    ],
+    "templateRef": {
+      "id": "APOTHECARY_L01",
+      "version": 2
+    },
+    "functions": [
+      "alchemy",
+      "sell"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b047",
+    "parcelId": "mtl_gallery_001.p047",
+    "type": "hut",
+    "name": "Chata drwala",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 199,
+      "w": 4,
+      "h": 5
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b047.f0"
+    ],
+    "templateRef": {
+      "id": "HUT_S02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b048",
+    "parcelId": "mtl_gallery_001.p048",
+    "type": "hut",
+    "name": "Chata tkaczki",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 199,
+      "w": 5,
+      "h": 5
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b048.f0"
+    ],
+    "templateRef": {
+      "id": "HUT_M02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b049",
+    "parcelId": "mtl_gallery_001.p049",
+    "type": "hut",
+    "name": "Chata zielarki",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 224,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b049.f0"
+    ],
+    "templateRef": {
+      "id": "HUT_L02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b050",
+    "parcelId": "mtl_gallery_001.p050",
+    "type": "house",
+    "name": "Dom samotnego rzemieślnika",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 224,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b050.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_S04",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b051",
+    "parcelId": "mtl_gallery_001.p051",
+    "type": "house",
+    "name": "Dom młodej rodziny",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 224,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b051.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_S05",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b052",
+    "parcelId": "mtl_gallery_001.p052",
+    "type": "house",
+    "name": "Dom starszej osoby",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 224,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b052.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_S06",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b053",
+    "parcelId": "mtl_gallery_001.p053",
+    "type": "house",
+    "name": "Dom uczonego",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 223,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b053.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_M04",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b054",
+    "parcelId": "mtl_gallery_001.p054",
+    "type": "house",
+    "name": "Dom krawca",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 223,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b054.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_M05",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b055",
+    "parcelId": "mtl_gallery_001.p055",
+    "type": "house",
+    "name": "Dom ogrodnika",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 249,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b055.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_M06",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b056",
+    "parcelId": "mtl_gallery_001.p056",
+    "type": "house",
+    "name": "Dom zamożnej rodziny",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 248,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b056.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_L04",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b057",
+    "parcelId": "mtl_gallery_001.p057",
+    "type": "house",
+    "name": "Dom kolekcjonera",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 248,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b057.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_L05",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b058",
+    "parcelId": "mtl_gallery_001.p058",
+    "type": "house",
+    "name": "Dom pisarza",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 248,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b058.f0"
+    ],
+    "templateRef": {
+      "id": "HOUSE_L06",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b059",
+    "parcelId": "mtl_gallery_001.p059",
+    "type": "large_house",
+    "name": "Rezydencja rodzinna",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 247,
+      "w": 8,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b059.f0",
+      "mtl_gallery_001.b059.f1"
+    ],
+    "templateRef": {
+      "id": "LARGE_HOUSE_M02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b060",
+    "parcelId": "mtl_gallery_001.p060",
+    "type": "merchant_house",
+    "name": "Dom kupca tekstylnego",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 246,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b060.f0",
+      "mtl_gallery_001.b060.f1"
+    ],
+    "templateRef": {
+      "id": "MERCHANT_HOUSE_M02",
+      "version": 1
+    },
+    "functions": [
+      "buy",
+      "sell",
+      "storage",
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b061",
+    "parcelId": "mtl_gallery_001.p061",
+    "type": "tenement",
+    "name": "Kamienica rzemieślnicza",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 274,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b061.f0",
+      "mtl_gallery_001.b061.f1"
+    ],
+    "templateRef": {
+      "id": "TENEMENT_S02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b062",
+    "parcelId": "mtl_gallery_001.p062",
+    "type": "tenement",
+    "name": "Kamienica mieszczańska",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 272,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b062.f0",
+      "mtl_gallery_001.b062.f1",
+      "mtl_gallery_001.b062.f2"
+    ],
+    "templateRef": {
+      "id": "TENEMENT_M02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b063",
+    "parcelId": "mtl_gallery_001.p063",
+    "type": "shop",
+    "name": "Jubiler",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 275,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b063.f0"
+    ],
+    "templateRef": {
+      "id": "JEWELRY_S01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "administration",
+      "browse",
+      "sell",
+      "buy",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b064",
+    "parcelId": "mtl_gallery_001.p064",
+    "type": "shop",
+    "name": "Sklep sukienniczy",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 274,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b064.f0"
+    ],
+    "templateRef": {
+      "id": "CLOTH_M01",
+      "version": 1
+    },
+    "functions": [
+      "craft",
+      "storage",
+      "browse",
+      "sell",
+      "buy",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b065",
+    "parcelId": "mtl_gallery_001.p065",
+    "type": "shop",
+    "name": "Sklep korzenny",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 274,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b065.f0"
+    ],
+    "templateRef": {
+      "id": "SPICE_S01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "browse",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b066",
+    "parcelId": "mtl_gallery_001.p066",
+    "type": "bakery",
+    "name": "Piekarnia z salą sprzedaży",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 275,
+      "w": 7,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b066.f0"
+    ],
+    "templateRef": {
+      "id": "BAKERY_S02",
+      "version": 1
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "browse",
+      "sell",
+      "buy",
+      "eat",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b067",
+    "parcelId": "mtl_gallery_001.p067",
+    "type": "shop",
+    "name": "Rybi targ pod dachem",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 301,
+      "w": 8,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b067.f0"
+    ],
+    "templateRef": {
+      "id": "FISHMONGER_M01",
+      "version": 1
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "wash",
+      "browse",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b068",
+    "parcelId": "mtl_gallery_001.p068",
+    "type": "shop",
+    "name": "Sklep mięsny",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 300,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b068.f0"
+    ],
+    "templateRef": {
+      "id": "BUTCHER_M01",
+      "version": 1
+    },
+    "functions": [
+      "craft",
+      "cook",
+      "storage",
+      "browse",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b069",
+    "parcelId": "mtl_gallery_001.p069",
+    "type": "shop",
+    "name": "Księgarnia z czytelnią",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 300,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b069.f0"
+    ],
+    "templateRef": {
+      "id": "BOOKSHOP_M01",
+      "version": 1
+    },
+    "functions": [
+      "write",
+      "administration",
+      "storage",
+      "read",
+      "sell",
+      "buy",
+      "rest"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b070",
+    "parcelId": "mtl_gallery_001.p070",
+    "type": "workshop",
+    "name": "Zakład balwierza",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 301,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b070.f0"
+    ],
+    "templateRef": {
+      "id": "BARBER_S01",
+      "version": 1
+    },
+    "functions": [
+      "wash",
+      "storage",
+      "groom",
+      "sit",
+      "reception"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b071",
+    "parcelId": "mtl_gallery_001.p071",
+    "type": "workshop",
+    "name": "Punkt napraw i szewc",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 300,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b071.f0"
+    ],
+    "templateRef": {
+      "id": "REPAIR_M01",
+      "version": 1
+    },
+    "functions": [
+      "repair",
+      "storage",
+      "craft",
+      "sell",
+      "buy",
+      "sit",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b072",
+    "parcelId": "mtl_gallery_001.p072",
+    "type": "workshop",
+    "name": "Kancelaria pisarza",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 300,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b072.f0"
+    ],
+    "templateRef": {
+      "id": "SCRIVENER_S01",
+      "version": 1
+    },
+    "functions": [
+      "write",
+      "read",
+      "administration",
+      "storage",
+      "reception",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b073",
+    "parcelId": "mtl_gallery_001.p073",
+    "type": "inn",
+    "name": "Herbaciarnia",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 325,
+      "w": 8,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b073.f0"
+    ],
+    "templateRef": {
+      "id": "TEAHOUSE_M01",
+      "version": 1
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "browse",
+      "serve",
+      "eat",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b074",
+    "parcelId": "mtl_gallery_001.p074",
+    "type": "bathhouse",
+    "name": "Łaźnia miejska z recepcją",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 325,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b074.f0"
+    ],
+    "templateRef": {
+      "id": "BATHHOUSE_S02",
+      "version": 1
+    },
+    "functions": [
+      "wash",
+      "privacy",
+      "storage",
+      "reception",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b075",
+    "parcelId": "mtl_gallery_001.p075",
+    "type": "clinic",
+    "name": "Gabinet medyka",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 326,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b075.f0"
+    ],
+    "templateRef": {
+      "id": "CLINIC_S02",
+      "version": 1
+    },
+    "functions": [
+      "treat",
+      "storage",
+      "wash",
+      "reception",
+      "sit",
+      "read"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b076",
+    "parcelId": "mtl_gallery_001.p076",
+    "type": "inn",
+    "name": "Zajazd podróżnych",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 324,
+      "w": 9,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b076.f0",
+      "mtl_gallery_001.b076.f1"
+    ],
+    "templateRef": {
+      "id": "INN_M02",
+      "version": 1
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "reception",
+      "serve",
+      "order",
+      "eat",
+      "sit",
+      "sleep",
+      "wash",
+      "rest"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b077",
+    "parcelId": "mtl_gallery_001.p077",
+    "type": "shop",
+    "name": "Dom depozytowy",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 326,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b077.f0"
+    ],
+    "templateRef": {
+      "id": "DEPOSIT_M01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "administration",
+      "reception",
+      "sit",
+      "read"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b078",
+    "parcelId": "mtl_gallery_001.p078",
+    "type": "apothecary",
+    "name": "Zielarnia i apteka",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 326,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b078.f0"
+    ],
+    "templateRef": {
+      "id": "APOTHECARY_M02",
+      "version": 1
+    },
+    "functions": [
+      "alchemy",
+      "storage",
+      "treat",
+      "sell",
+      "buy",
+      "browse",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b079",
+    "parcelId": "mtl_gallery_001.p079",
+    "type": "smithy",
+    "name": "Kuźnia podkuwacza",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 351,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b079.f0"
+    ],
+    "templateRef": {
+      "id": "SMITHY_X01",
+      "version": 1
+    },
+    "functions": [
+      "heat_metal",
+      "smith",
+      "blow_air",
+      "sharpen",
+      "storage",
+      "sell",
+      "buy",
+      "equip"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b080",
+    "parcelId": "mtl_gallery_001.p080",
+    "type": "smithy",
+    "name": "Kuźnia płatnerza",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 351,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b080.f0"
+    ],
+    "templateRef": {
+      "id": "SMITHY_X02",
+      "version": 1
+    },
+    "functions": [
+      "heat_metal",
+      "smith",
+      "cast",
+      "blow_air",
+      "equip",
+      "sell",
+      "buy",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b081",
+    "parcelId": "mtl_gallery_001.p081",
+    "type": "sawmill",
+    "name": "Stolarnia",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 351,
+      "w": 8,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b081.f0"
+    ],
+    "templateRef": {
+      "id": "CARPENTER_M01",
+      "version": 1
+    },
+    "functions": [
+      "saw",
+      "craft",
+      "turn_wood",
+      "storage",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b082",
+    "parcelId": "mtl_gallery_001.p082",
+    "type": "workshop",
+    "name": "Warsztat bednarza",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 352,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b082.f0"
+    ],
+    "templateRef": {
+      "id": "COOPER_M01",
+      "version": 1
+    },
+    "functions": [
+      "craft",
+      "turn_wood",
+      "storage",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b083",
+    "parcelId": "mtl_gallery_001.p083",
+    "type": "tannery",
+    "name": "Garbarnia",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 351,
+      "w": 8,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b083.f0"
+    ],
+    "templateRef": {
+      "id": "TANNER_M01",
+      "version": 1
+    },
+    "functions": [
+      "tan",
+      "dry_hide",
+      "wash",
+      "storage",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b084",
+    "parcelId": "mtl_gallery_001.p084",
+    "type": "workshop",
+    "name": "Tkalnia",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 352,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b084.f0"
+    ],
+    "templateRef": {
+      "id": "WEAVER_M01",
+      "version": 1
+    },
+    "functions": [
+      "weave",
+      "full_cloth",
+      "browse",
+      "sell",
+      "buy",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b085",
+    "parcelId": "mtl_gallery_001.p085",
+    "type": "workshop",
+    "name": "Farbiarnia",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 377,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b085.f0"
+    ],
+    "templateRef": {
+      "id": "DYER_M01",
+      "version": 1
+    },
+    "functions": [
+      "dye",
+      "full_cloth",
+      "wash",
+      "browse",
+      "storage",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b086",
+    "parcelId": "mtl_gallery_001.p086",
+    "type": "workshop",
+    "name": "Garncarnia",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 379,
+      "w": 7,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b086.f0"
+    ],
+    "templateRef": {
+      "id": "POTTER_S01",
+      "version": 1
+    },
+    "functions": [
+      "pottery",
+      "fire_clay",
+      "storage",
+      "sell",
+      "buy",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b087",
+    "parcelId": "mtl_gallery_001.p087",
+    "type": "workshop",
+    "name": "Manufaktura ceramiczna",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 377,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b087.f0"
+    ],
+    "templateRef": {
+      "id": "POTTER_L01",
+      "version": 1
+    },
+    "functions": [
+      "fire_clay",
+      "pottery",
+      "storage",
+      "sell",
+      "buy",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b088",
+    "parcelId": "mtl_gallery_001.p088",
+    "type": "workshop",
+    "name": "Warsztat kamieniarza",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 377,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b088.f0"
+    ],
+    "templateRef": {
+      "id": "MASON_M01",
+      "version": 1
+    },
+    "functions": [
+      "carve",
+      "sharpen",
+      "storage",
+      "sell",
+      "buy",
+      "craft"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b089",
+    "parcelId": "mtl_gallery_001.p089",
+    "type": "mill",
+    "name": "Młyn z magazynem",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 376,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b089.f0"
+    ],
+    "templateRef": {
+      "id": "MILL_M01",
+      "version": 1
+    },
+    "functions": [
+      "mill",
+      "storage",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b090",
+    "parcelId": "mtl_gallery_001.p090",
+    "type": "brewery",
+    "name": "Browar produkcyjny",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 376,
+      "w": 9,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b090.f0"
+    ],
+    "templateRef": {
+      "id": "BREWERY_L01",
+      "version": 1
+    },
+    "functions": [
+      "brew",
+      "storage",
+      "wash",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b091",
+    "parcelId": "mtl_gallery_001.p091",
+    "type": "workshop",
+    "name": "Warsztat świecarza",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 404,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b091.f0"
+    ],
+    "templateRef": {
+      "id": "CANDLE_M01",
+      "version": 1
+    },
+    "functions": [
+      "make_candle",
+      "cook",
+      "storage",
+      "sell",
+      "buy",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b092",
+    "parcelId": "mtl_gallery_001.p092",
+    "type": "workshop",
+    "name": "Papiernia",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 403,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b092.f0"
+    ],
+    "templateRef": {
+      "id": "PAPER_M01",
+      "version": 1
+    },
+    "functions": [
+      "press_paper",
+      "storage",
+      "wash",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b093",
+    "parcelId": "mtl_gallery_001.p093",
+    "type": "workshop",
+    "name": "Huta szkła",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 403,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b093.f0"
+    ],
+    "templateRef": {
+      "id": "GLASS_M01",
+      "version": 1
+    },
+    "functions": [
+      "make_glass",
+      "storage",
+      "craft",
+      "sell",
+      "buy",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b094",
+    "parcelId": "mtl_gallery_001.p094",
+    "type": "workshop",
+    "name": "Odlewnia metalu",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 403,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b094.f0"
+    ],
+    "templateRef": {
+      "id": "FOUNDRY_L01",
+      "version": 1
+    },
+    "functions": [
+      "cast",
+      "heat_metal",
+      "blow_air",
+      "smith",
+      "sharpen",
+      "storage",
+      "sell",
+      "buy"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b095",
+    "parcelId": "mtl_gallery_001.p095",
+    "type": "barracks",
+    "name": "Koszary małego oddziału",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 402,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b095.f0"
+    ],
+    "templateRef": {
+      "id": "BARRACKS_S02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "storage",
+      "sit",
+      "eat",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b096",
+    "parcelId": "mtl_gallery_001.p096",
+    "type": "barracks",
+    "name": "Koszary garnizonu",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 400,
+      "w": 10,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b096.f0"
+    ],
+    "templateRef": {
+      "id": "BARRACKS_L02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "storage",
+      "eat",
+      "sit",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b097",
+    "parcelId": "mtl_gallery_001.p097",
+    "type": "armory",
+    "name": "Zbrojownia straży",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 430,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b097.f0"
+    ],
+    "templateRef": {
+      "id": "ARMORY_S02",
+      "version": 1
+    },
+    "functions": [
+      "equip",
+      "craft",
+      "sharpen",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b098",
+    "parcelId": "mtl_gallery_001.p098",
+    "type": "armory",
+    "name": "Arsenał garnizonowy",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 427,
+      "w": 9,
+      "h": 11
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b098.f0"
+    ],
+    "templateRef": {
+      "id": "ARMORY_L02",
+      "version": 1
+    },
+    "functions": [
+      "equip",
+      "storage",
+      "administration",
+      "craft"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b099",
+    "parcelId": "mtl_gallery_001.p099",
+    "type": "guardhouse",
+    "name": "Posterunek dzielnicowy",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 431,
+      "w": 5,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b099.f0"
+    ],
+    "templateRef": {
+      "id": "GUARDHOUSE_S02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "storage",
+      "equip",
+      "administration",
+      "sit",
+      "read"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b100",
+    "parcelId": "mtl_gallery_001.p100",
+    "type": "guardhouse",
+    "name": "Komendantura straży",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 430,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b100.f0"
+    ],
+    "templateRef": {
+      "id": "GUARDHOUSE_L02",
+      "version": 1
+    },
+    "functions": [
+      "planning",
+      "administration",
+      "read",
+      "storage",
+      "reception",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b101",
+    "parcelId": "mtl_gallery_001.p101",
+    "type": "tower",
+    "name": "Wieża obserwacyjna",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 431,
+      "w": 5,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b101.f0",
+      "mtl_gallery_001.b101.f1"
+    ],
+    "templateRef": {
+      "id": "WATCHTOWER_S01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "storage",
+      "equip",
+      "sit",
+      "administration",
+      "observe",
+      "signal"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b102",
+    "parcelId": "mtl_gallery_001.p102",
+    "type": "tower",
+    "name": "Wieża sygnałowa",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 431,
+      "w": 6,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b102.f0",
+      "mtl_gallery_001.b102.f1"
+    ],
+    "templateRef": {
+      "id": "WATCHTOWER_M01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "storage",
+      "equip",
+      "signal",
+      "observe",
+      "administration",
+      "planning",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b103",
+    "parcelId": "mtl_gallery_001.p103",
+    "type": "arena_hall",
+    "name": "Sala ćwiczeń",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 452,
+      "w": 10,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b103.f0"
+    ],
+    "templateRef": {
+      "id": "TRAINING_M01",
+      "version": 1
+    },
+    "functions": [
+      "train",
+      "equip",
+      "sit",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b104",
+    "parcelId": "mtl_gallery_001.p104",
+    "type": "arena_hall",
+    "name": "Sala łucznicza",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 452,
+      "w": 10,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b104.f0"
+    ],
+    "templateRef": {
+      "id": "ARCHERY_M01",
+      "version": 1
+    },
+    "functions": [
+      "train",
+      "equip",
+      "sit",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b105",
+    "parcelId": "mtl_gallery_001.p105",
+    "type": "hall",
+    "name": "Sztab wojskowy",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 454,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b105.f0"
+    ],
+    "templateRef": {
+      "id": "COMMAND_M01",
+      "version": 1
+    },
+    "functions": [
+      "planning",
+      "administration",
+      "read",
+      "sit",
+      "storage",
+      "equip"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b106",
+    "parcelId": "mtl_gallery_001.p106",
+    "type": "warehouse",
+    "name": "Magazyn wojskowy",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 453,
+      "w": 9,
+      "h": 11
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b106.f0"
+    ],
+    "templateRef": {
+      "id": "SUPPLY_L01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "equip",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b107",
+    "parcelId": "mtl_gallery_001.p107",
+    "type": "clinic",
+    "name": "Lazaret garnizonowy",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 454,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b107.f0"
+    ],
+    "templateRef": {
+      "id": "INFIRMARY_M01",
+      "version": 1
+    },
+    "functions": [
+      "treat",
+      "storage",
+      "reception",
+      "sit",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b108",
+    "parcelId": "mtl_gallery_001.p108",
+    "type": "prison",
+    "name": "Areszt miejski",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 454,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b108.f0"
+    ],
+    "templateRef": {
+      "id": "PRISON_M01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "wash",
+      "sit",
+      "administration",
+      "equip",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b109",
+    "parcelId": "mtl_gallery_001.p109",
+    "type": "large_house",
+    "name": "Kwatera oficerska",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 481,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b109.f0"
+    ],
+    "templateRef": {
+      "id": "OFFICER_M01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "storage",
+      "wash",
+      "planning",
+      "administration",
+      "read",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b110",
+    "parcelId": "mtl_gallery_001.p110",
+    "type": "guardhouse",
+    "name": "Strażnica przy bramie",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 482,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b110.f0",
+      "mtl_gallery_001.b110.f1"
+    ],
+    "templateRef": {
+      "id": "GATE_GUARD_M01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "storage",
+      "equip",
+      "administration",
+      "sit",
+      "read",
+      "observe",
+      "signal"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b111",
+    "parcelId": "mtl_gallery_001.p111",
+    "type": "hall",
+    "name": "Ratusz dzielnicowy",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 506,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b111.f0"
+    ],
+    "templateRef": {
+      "id": "CIVIC_HALL_M02",
+      "version": 1
+    },
+    "functions": [
+      "administration",
+      "read",
+      "storage",
+      "reception",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b112",
+    "parcelId": "mtl_gallery_001.p112",
+    "type": "hall",
+    "name": "Urząd podatkowy",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 505,
+      "w": 9,
+      "h": 11
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b112.f0"
+    ],
+    "templateRef": {
+      "id": "CIVIC_HALL_M03",
+      "version": 1
+    },
+    "functions": [
+      "administration",
+      "read",
+      "storage",
+      "reception",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b113",
+    "parcelId": "mtl_gallery_001.p113",
+    "type": "court",
+    "name": "Sąd lokalny",
+    "geometry": {
+      "type": "rect",
+      "x": 57,
+      "y": 506,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b113.f0"
+    ],
+    "templateRef": {
+      "id": "CIVIC_COURT_M01",
+      "version": 1
+    },
+    "functions": [
+      "administration",
+      "read",
+      "storage",
+      "meeting",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b114",
+    "parcelId": "mtl_gallery_001.p114",
+    "type": "court",
+    "name": "Sąd miejski",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 503,
+      "w": 11,
+      "h": 13
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b114.f0"
+    ],
+    "templateRef": {
+      "id": "CIVIC_COURT_L01",
+      "version": 1
+    },
+    "functions": [
+      "meeting",
+      "administration",
+      "sit",
+      "reception",
+      "read"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b115",
+    "parcelId": "mtl_gallery_001.p115",
+    "type": "guildhall",
+    "name": "Siedziba cechu kupców",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 506,
+      "w": 9,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b115.f0"
+    ],
+    "templateRef": {
+      "id": "CIVIC_GUILD_M02",
+      "version": 1
+    },
+    "functions": [
+      "meeting",
+      "administration",
+      "read",
+      "reception",
+      "sit",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b116",
+    "parcelId": "mtl_gallery_001.p116",
+    "type": "guildhall",
+    "name": "Dom cechu rzemieślników",
+    "geometry": {
+      "type": "rect",
+      "x": 135,
+      "y": 504,
+      "w": 11,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b116.f0"
+    ],
+    "templateRef": {
+      "id": "CIVIC_GUILD_L01",
+      "version": 1
+    },
+    "functions": [
+      "craft",
+      "storage",
+      "administration",
+      "meeting",
+      "sit",
+      "reception"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b117",
+    "parcelId": "mtl_gallery_001.p117",
+    "type": "chapel",
+    "name": "Kaplica przydrożna",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 531,
+      "w": 4,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b117.f0"
+    ],
+    "templateRef": {
+      "id": "SAC_CHAPEL_S02",
+      "version": 1
+    },
+    "functions": [
+      "pray",
+      "teach",
+      "sit",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b118",
+    "parcelId": "mtl_gallery_001.p118",
+    "type": "chapel",
+    "name": "Kaplica słońca",
+    "geometry": {
+      "type": "rect",
+      "x": 14,
+      "y": 530,
+      "w": 5,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b118.f0"
+    ],
+    "templateRef": {
+      "id": "SAC_CHAPEL_M02",
+      "version": 1
+    },
+    "functions": [
+      "pray",
+      "teach",
+      "eat",
+      "wash",
+      "sit"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b119",
+    "parcelId": "mtl_gallery_001.p119",
+    "type": "chapel",
+    "name": "Kaplica rodowa",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 528,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b119.f0",
+      "mtl_gallery_001.b119.f1"
+    ],
+    "templateRef": {
+      "id": "SAC_CHAPEL_L01",
+      "version": 1
+    },
+    "functions": [
+      "browse",
+      "storage",
+      "eat",
+      "read",
+      "teach",
+      "pray",
+      "sit",
+      "wash",
+      "sleep",
+      "administration",
+      "rest"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b120",
+    "parcelId": "mtl_gallery_001.p120",
+    "type": "temple",
+    "name": "Świątynia pielgrzymów",
+    "geometry": {
+      "type": "rect",
+      "x": 36,
+      "y": 527,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b120.f0",
+      "mtl_gallery_001.b120.f1"
+    ],
+    "templateRef": {
+      "id": "SAC_TEMPLE_S01",
+      "version": 1
+    },
+    "functions": [
+      "browse",
+      "storage",
+      "eat",
+      "read",
+      "teach",
+      "pray",
+      "sit",
+      "wash",
+      "sleep",
+      "administration",
+      "rest"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b121",
+    "parcelId": "mtl_gallery_001.p121",
+    "type": "temple",
+    "name": "Świątynia świtu",
+    "geometry": {
+      "type": "rect",
+      "x": 49,
+      "y": 523,
+      "w": 10,
+      "h": 14
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b121.f0",
+      "mtl_gallery_001.b121.f1",
+      "mtl_gallery_001.b121.f2"
+    ],
+    "templateRef": {
+      "id": "SAC_TEMPLE_M01",
+      "version": 1
+    },
+    "functions": [
+      "browse",
+      "storage",
+      "eat",
+      "read",
+      "teach",
+      "pray",
+      "sit",
+      "wash",
+      "sleep",
+      "administration",
+      "rest"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b122",
+    "parcelId": "mtl_gallery_001.p122",
+    "type": "temple",
+    "name": "Świątynia księżyca",
+    "geometry": {
+      "type": "rect",
+      "x": 64,
+      "y": 523,
+      "w": 12,
+      "h": 14
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b122.f0",
+      "mtl_gallery_001.b122.f1",
+      "mtl_gallery_001.b122.f2"
+    ],
+    "templateRef": {
+      "id": "SAC_TEMPLE_M02",
+      "version": 1
+    },
+    "functions": [
+      "pray",
+      "teach",
+      "sit",
+      "eat",
+      "wash",
+      "browse",
+      "storage",
+      "read",
+      "sleep",
+      "administration",
+      "rest"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b123",
+    "parcelId": "mtl_gallery_001.p123",
+    "type": "temple",
+    "name": "Wielka świątynia",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 550,
+      "w": 14,
+      "h": 18
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b123.f0",
+      "mtl_gallery_001.b123.f1",
+      "mtl_gallery_001.b123.f2"
+    ],
+    "templateRef": {
+      "id": "SAC_TEMPLE_L01",
+      "version": 1
+    },
+    "functions": [
+      "browse",
+      "storage",
+      "eat",
+      "read",
+      "teach",
+      "pray",
+      "sit",
+      "wash",
+      "rest",
+      "sleep",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b124",
+    "parcelId": "mtl_gallery_001.p124",
+    "type": "large_house",
+    "name": "Dom miejskiego szlachcica",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 559,
+      "w": 8,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b124.f0",
+      "mtl_gallery_001.b124.f1",
+      "mtl_gallery_001.b124.f2"
+    ],
+    "templateRef": {
+      "id": "NOB_HOUSE_M01",
+      "version": 1
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "wash",
+      "sit",
+      "meeting",
+      "tend",
+      "sleep",
+      "rest",
+      "administration",
+      "read"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b125",
+    "parcelId": "mtl_gallery_001.p125",
+    "type": "large_house",
+    "name": "Dwór szlachecki",
+    "geometry": {
+      "type": "rect",
+      "x": 37,
+      "y": 558,
+      "w": 9,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b125.f0",
+      "mtl_gallery_001.b125.f1",
+      "mtl_gallery_001.b125.f2"
+    ],
+    "templateRef": {
+      "id": "NOB_HOUSE_L01",
+      "version": 1
+    },
+    "functions": [
+      "eat",
+      "sit",
+      "storage",
+      "meeting",
+      "tend",
+      "sleep",
+      "wash",
+      "rest",
+      "administration",
+      "read",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b126",
+    "parcelId": "mtl_gallery_001.p126",
+    "type": "keep",
+    "name": "Siedziba kasztelana",
+    "geometry": {
+      "type": "rect",
+      "x": 51,
+      "y": 552,
+      "w": 12,
+      "h": 16
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b126.f0",
+      "mtl_gallery_001.b126.f1",
+      "mtl_gallery_001.b126.f2"
+    ],
+    "templateRef": {
+      "id": "NOB_KEEP_S01",
+      "version": 1
+    },
+    "functions": [
+      "sit",
+      "meeting",
+      "storage",
+      "tend",
+      "eat",
+      "administration",
+      "read",
+      "rest",
+      "sleep",
+      "wash",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b127",
+    "parcelId": "mtl_gallery_001.p127",
+    "type": "keep",
+    "name": "Rezydencja książęca",
+    "geometry": {
+      "type": "rect",
+      "x": 68,
+      "y": 548,
+      "w": 16,
+      "h": 20
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b127.f0",
+      "mtl_gallery_001.b127.f1",
+      "mtl_gallery_001.b127.f2",
+      "mtl_gallery_001.b127.f3"
+    ],
+    "templateRef": {
+      "id": "NOB_KEEP_M01",
+      "version": 1
+    },
+    "functions": [
+      "sit",
+      "meeting",
+      "storage",
+      "tend",
+      "eat",
+      "read",
+      "rest",
+      "administration",
+      "sleep",
+      "wash",
+      "browse",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b128",
+    "parcelId": "mtl_gallery_001.p128",
+    "type": "keep",
+    "name": "Pałac warowny",
+    "geometry": {
+      "type": "rect",
+      "x": 89,
+      "y": 544,
+      "w": 20,
+      "h": 24
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b128.f0",
+      "mtl_gallery_001.b128.f1",
+      "mtl_gallery_001.b128.f2",
+      "mtl_gallery_001.b128.f3"
+    ],
+    "templateRef": {
+      "id": "NOB_KEEP_L01",
+      "version": 1
+    },
+    "functions": [
+      "sit",
+      "meeting",
+      "storage",
+      "tend",
+      "eat",
+      "administration",
+      "read",
+      "rest",
+      "sleep",
+      "wash",
+      "browse"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b129",
+    "parcelId": "mtl_gallery_001.p129",
+    "type": "hut",
+    "name": "Chałupa zagrodnika",
+    "geometry": {
+      "type": "rect",
+      "x": 7,
+      "y": 590,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b129.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_HOUSE_S01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat",
+      "sit",
+      "storage",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b130",
+    "parcelId": "mtl_gallery_001.p129",
+    "type": "coop",
+    "name": "Kurnik mały",
+    "geometry": {
+      "type": "rect",
+      "x": 26,
+      "y": 590,
+      "w": 4,
+      "h": 5
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b130.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_COOP_S01",
+      "version": 1
+    },
+    "functions": [
+      "feed",
+      "storage",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b131",
+    "parcelId": "mtl_gallery_001.p129",
+    "type": "shed",
+    "name": "Szopa narzędziowa",
+    "geometry": {
+      "type": "rect",
+      "x": 7,
+      "y": 606,
+      "w": 4,
+      "h": 5
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b131.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_SHED_S01",
+      "version": 1
+    },
+    "functions": [
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b132",
+    "parcelId": "mtl_gallery_001.p130",
+    "type": "house",
+    "name": "Dom gospodarza",
+    "geometry": {
+      "type": "rect",
+      "x": 58,
+      "y": 590,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b132.f0",
+      "mtl_gallery_001.b132.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_HOUSE_M01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat",
+      "sit",
+      "storage",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b133",
+    "parcelId": "mtl_gallery_001.p130",
+    "type": "granary",
+    "name": "Mały spichlerz",
+    "geometry": {
+      "type": "rect",
+      "x": 77,
+      "y": 590,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b133.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_GRANARY_S01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b134",
+    "parcelId": "mtl_gallery_001.p130",
+    "type": "barn",
+    "name": "Stodoła średnia",
+    "geometry": {
+      "type": "rect",
+      "x": 58,
+      "y": 606,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b134.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_BARN_M01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b135",
+    "parcelId": "mtl_gallery_001.p130",
+    "type": "byre",
+    "name": "Obora",
+    "geometry": {
+      "type": "rect",
+      "x": 77,
+      "y": 606,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b135.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_BYRE_M01",
+      "version": 1
+    },
+    "functions": [
+      "stable",
+      "feed",
+      "storage",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b136",
+    "parcelId": "mtl_gallery_001.p131",
+    "type": "stable",
+    "name": "Stajnia średnia",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 590,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b136.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_STABLE_M01",
+      "version": 1
+    },
+    "functions": [
+      "stable",
+      "feed",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b137",
+    "parcelId": "mtl_gallery_001.p131",
+    "type": "stable",
+    "name": "Stajnia z zapleczem",
+    "geometry": {
+      "type": "rect",
+      "x": 128,
+      "y": 590,
+      "w": 9,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b137.f0",
+      "mtl_gallery_001.b137.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_STABLE_L01",
+      "version": 1
+    },
+    "functions": [
+      "stable",
+      "feed",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b138",
+    "parcelId": "mtl_gallery_001.p131",
+    "type": "shed",
+    "name": "Szopa na siano",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 606,
+      "w": 5,
+      "h": 7
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b138.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_HAYSHED_S01",
+      "version": 1
+    },
+    "functions": [
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b139",
+    "parcelId": "mtl_gallery_001.p131",
+    "type": "coop",
+    "name": "Kurnik gospodarski",
+    "geometry": {
+      "type": "rect",
+      "x": 128,
+      "y": 606,
+      "w": 5,
+      "h": 6
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b139.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_COOP_M01",
+      "version": 1
+    },
+    "functions": [
+      "feed",
+      "storage",
+      "wash"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b140",
+    "parcelId": "mtl_gallery_001.p132",
+    "type": "large_house",
+    "name": "Dom zamożnego gospodarza",
+    "geometry": {
+      "type": "rect",
+      "x": 7,
+      "y": 642,
+      "w": 9,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b140.f0",
+      "mtl_gallery_001.b140.f1",
+      "mtl_gallery_001.b140.f2"
+    ],
+    "templateRef": {
+      "id": "RUR_HOUSE_L01",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat",
+      "sit",
+      "storage",
+      "wash",
+      "sharpen"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b141",
+    "parcelId": "mtl_gallery_001.p132",
+    "type": "granary",
+    "name": "Spichlerz piętrowy",
+    "geometry": {
+      "type": "rect",
+      "x": 26,
+      "y": 642,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b141.f0",
+      "mtl_gallery_001.b141.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_GRANARY_M01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b142",
+    "parcelId": "mtl_gallery_001.p132",
+    "type": "barn",
+    "name": "Stodoła z poddaszem",
+    "geometry": {
+      "type": "rect",
+      "x": 7,
+      "y": 658,
+      "w": 9,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b142.f0",
+      "mtl_gallery_001.b142.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_BARN_L01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b143",
+    "parcelId": "mtl_gallery_001.p133",
+    "type": "house",
+    "name": "Dom z izbą roboczą",
+    "geometry": {
+      "type": "rect",
+      "x": 58,
+      "y": 642,
+      "w": 7,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b143.f0",
+      "mtl_gallery_001.b143.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_HOUSE_M02",
+      "version": 1
+    },
+    "functions": [
+      "sleep",
+      "cook",
+      "eat",
+      "sit",
+      "storage",
+      "wash",
+      "sharpen"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b144",
+    "parcelId": "mtl_gallery_001.p133",
+    "type": "brewery",
+    "name": "Browar wiejski",
+    "geometry": {
+      "type": "rect",
+      "x": 77,
+      "y": 642,
+      "w": 9,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b144.f0",
+      "mtl_gallery_001.b144.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_BREWERY_M01",
+      "version": 1
+    },
+    "functions": [
+      "brew",
+      "storage",
+      "wash",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b145",
+    "parcelId": "mtl_gallery_001.p133",
+    "type": "tannery",
+    "name": "Garbarnia wiejska",
+    "geometry": {
+      "type": "rect",
+      "x": 58,
+      "y": 658,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b145.f0",
+      "mtl_gallery_001.b145.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_TANNERY_M01",
+      "version": 1
+    },
+    "functions": [
+      "tan",
+      "full_cloth",
+      "dry_hide",
+      "wash",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b146",
+    "parcelId": "mtl_gallery_001.p133",
+    "type": "annex",
+    "name": "Oficyna gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 77,
+      "y": 658,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b146.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_ANNEX_S01",
+      "version": 1
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "sharpen"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b147",
+    "parcelId": "mtl_gallery_001.p134",
+    "type": "mill",
+    "name": "Młyn mały",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 642,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b147.f0",
+      "mtl_gallery_001.b147.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_MILL_S01",
+      "version": 1
+    },
+    "functions": [
+      "mill",
+      "storage",
+      "sharpen",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b148",
+    "parcelId": "mtl_gallery_001.p134",
+    "type": "mill",
+    "name": "Młyn trzykondygnacyjny",
+    "geometry": {
+      "type": "rect",
+      "x": 128,
+      "y": 642,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b148.f0",
+      "mtl_gallery_001.b148.f1",
+      "mtl_gallery_001.b148.f2"
+    ],
+    "templateRef": {
+      "id": "RUR_MILL_M01",
+      "version": 1
+    },
+    "functions": [
+      "mill",
+      "storage",
+      "sharpen",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b149",
+    "parcelId": "mtl_gallery_001.p134",
+    "type": "warehouse",
+    "name": "Magazyn gospodarczy",
+    "geometry": {
+      "type": "rect",
+      "x": 109,
+      "y": 658,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b149.f0",
+      "mtl_gallery_001.b149.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_SHED_M01",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "cook"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b150",
+    "parcelId": "mtl_gallery_001.p135",
+    "type": "sawmill",
+    "name": "Tartak",
+    "geometry": {
+      "type": "rect",
+      "x": 7,
+      "y": 694,
+      "w": 9,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b150.f0",
+      "mtl_gallery_001.b150.f1"
+    ],
+    "templateRef": {
+      "id": "RUR_SAWMILL_M01",
+      "version": 1
+    },
+    "functions": [
+      "saw",
+      "storage",
+      "craft"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b151",
+    "parcelId": "mtl_gallery_001.p135",
+    "type": "workshop",
+    "name": "Zamknięty warsztat gospodarczy",
+    "geometry": {
+      "type": "rect",
+      "x": 26,
+      "y": 694,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b151.f0"
+    ],
+    "templateRef": {
+      "id": "RUR_WORKYARD_S01",
+      "version": 1
+    },
+    "functions": [
+      "cook",
+      "storage",
+      "sharpen"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b152",
+    "parcelId": "mtl_gallery_001.p136",
+    "type": "inn",
+    "name": "Karczma z piwnicą",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 737,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b152.f0",
+      "mtl_gallery_001.b152.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_INN_CELLAR",
+      "version": 1
+    },
+    "functions": [
+      "serve",
+      "order",
+      "eat",
+      "sit",
+      "cook",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b153",
+    "parcelId": "mtl_gallery_001.p137",
+    "type": "chapel",
+    "name": "Kaplica z kryptą",
+    "geometry": {
+      "type": "rect",
+      "x": 18,
+      "y": 739,
+      "w": 6,
+      "h": 8
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b153.f0",
+      "mtl_gallery_001.b153.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_CHAPEL_CRYPT",
+      "version": 1
+    },
+    "functions": [
+      "pray",
+      "sit",
+      "wash",
+      "inspect",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b154",
+    "parcelId": "mtl_gallery_001.p138",
+    "type": "temple",
+    "name": "Świątynia grobowa",
+    "geometry": {
+      "type": "rect",
+      "x": 29,
+      "y": 735,
+      "w": 10,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b154.f0",
+      "mtl_gallery_001.b154.f1",
+      "mtl_gallery_001.b154.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_TEMPLE_CRYPT",
+      "version": 1
+    },
+    "functions": [
+      "pray",
+      "sit",
+      "wash",
+      "read",
+      "administration",
+      "inspect",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b155",
+    "parcelId": "mtl_gallery_001.p139",
+    "type": "keep",
+    "name": "Siedziba ze skarbcem",
+    "geometry": {
+      "type": "rect",
+      "x": 44,
+      "y": 731,
+      "w": 12,
+      "h": 16
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b155.f0",
+      "mtl_gallery_001.b155.f1",
+      "mtl_gallery_001.b155.f-1",
+      "mtl_gallery_001.b155.f-2"
+    ],
+    "templateRef": {
+      "id": "SP_KEEP_VAULT",
+      "version": 1
+    },
+    "functions": [
+      "sit",
+      "observe",
+      "storage",
+      "equip",
+      "read",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b156",
+    "parcelId": "mtl_gallery_001.p140",
+    "type": "prison",
+    "name": "Więzienie z lochami",
+    "geometry": {
+      "type": "rect",
+      "x": 61,
+      "y": 735,
+      "w": 9,
+      "h": 12
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b156.f0",
+      "mtl_gallery_001.b156.f1",
+      "mtl_gallery_001.b156.f-1",
+      "mtl_gallery_001.b156.f-2"
+    ],
+    "templateRef": {
+      "id": "SP_PRISON_DEEP",
+      "version": 1
+    },
+    "functions": [
+      "sit",
+      "observe",
+      "storage",
+      "equip",
+      "sleep"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b157",
+    "parcelId": "mtl_gallery_001.p141",
+    "type": "library",
+    "name": "Archiwum chronione",
+    "geometry": {
+      "type": "rect",
+      "x": 75,
+      "y": 737,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b157.f0",
+      "mtl_gallery_001.b157.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_ARCHIVE",
+      "version": 1
+    },
+    "functions": [
+      "read",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b158",
+    "parcelId": "mtl_gallery_001.p142",
+    "type": "school",
+    "name": "Szkoła miejska",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 758,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b158.f0",
+      "mtl_gallery_001.b158.f1"
+    ],
+    "templateRef": {
+      "id": "SP_SCHOOL",
+      "version": 1
+    },
+    "functions": [
+      "study",
+      "teach",
+      "read",
+      "administration"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b159",
+    "parcelId": "mtl_gallery_001.p143",
+    "type": "clinic",
+    "name": "Lecznica z magazynem",
+    "geometry": {
+      "type": "rect",
+      "x": 18,
+      "y": 758,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b159.f0",
+      "mtl_gallery_001.b159.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_CLINIC",
+      "version": 1
+    },
+    "functions": [
+      "treat",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b160",
+    "parcelId": "mtl_gallery_001.p144",
+    "type": "bathhouse",
+    "name": "Łaźnia z zapleczem",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 758,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b160.f0",
+      "mtl_gallery_001.b160.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_BATHHOUSE",
+      "version": 1
+    },
+    "functions": [
+      "wash",
+      "sit",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b161",
+    "parcelId": "mtl_gallery_001.p145",
+    "type": "arena_hall",
+    "name": "Hala treningowa",
+    "geometry": {
+      "type": "rect",
+      "x": 44,
+      "y": 754,
+      "w": 12,
+      "h": 14
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b161.f0",
+      "mtl_gallery_001.b161.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_ARENA",
+      "version": 1
+    },
+    "functions": [
+      "train",
+      "equip",
+      "sit",
+      "storage"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b162",
+    "parcelId": "mtl_gallery_001.p146",
+    "type": "port_office",
+    "name": "Urząd portowy",
+    "geometry": {
+      "type": "rect",
+      "x": 61,
+      "y": 759,
+      "w": 7,
+      "h": 9
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b162.f0",
+      "mtl_gallery_001.b162.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_PORT",
+      "version": 1
+    },
+    "functions": [
+      "sell",
+      "buy",
+      "administration",
+      "sit",
+      "storage",
+      "read"
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.b163",
+    "parcelId": "mtl_gallery_001.p147",
+    "type": "warehouse",
+    "name": "Magazyn górniczy",
+    "geometry": {
+      "type": "rect",
+      "x": 73,
+      "y": 758,
+      "w": 8,
+      "h": 10
+    },
+    "rotation": 0,
+    "floorIds": [
+      "mtl_gallery_001.b163.f0",
+      "mtl_gallery_001.b163.f-1"
+    ],
+    "templateRef": {
+      "id": "SP_MINE_STORE",
+      "version": 1
+    },
+    "functions": [
+      "storage",
+      "craft"
+    ]
+  }
+]

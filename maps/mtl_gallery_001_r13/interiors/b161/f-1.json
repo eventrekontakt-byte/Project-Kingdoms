@@ -1,0 +1,642 @@
+{
+  "id": "mtl_gallery_001.b161.f-1",
+  "buildingId": "mtl_gallery_001.b161",
+  "level": -1,
+  "width": 24,
+  "height": 28,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 28
+  },
+  "floorTile": "stone",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b161.f-1.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 27,
+        "w": 24,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 26
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 1,
+        "w": 1,
+        "h": 26
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b161.f-1.o1",
+      "type": "cellar_rack",
+      "name": "Regał piwniczny",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "cellar_rack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b161.f-1.o1.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.o2",
+      "type": "supply_cask",
+      "name": "Beczka zapasów",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 18,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "supply_cask",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b161.f-1.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 1,
+            "y": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.o3",
+      "type": "crate",
+      "name": "Skrzynia transportowa",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 16,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "crate",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b161.f-1.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.o4",
+      "type": "grain_bin",
+      "name": "Zasobnik zbożowy",
+      "geometry": {
+        "type": "rect",
+        "x": 21,
+        "y": 8,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "grain_bin",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b161.f-1.o4.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 20,
+            "y": 8
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec1",
+      "type": "wall_mining_pick",
+      "name": "Kilof",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_mining_pick",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec2",
+      "type": "wall_chain",
+      "name": "Łańcuch",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_chain",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec3",
+      "type": "wall_damp_mark",
+      "name": "Zacieki",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_damp_mark",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec4",
+      "type": "wall_ancient_symbol",
+      "name": "Znak starożytny",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_ancient_symbol",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec5",
+      "type": "wall_memorial",
+      "name": "Tablica nagrobna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_memorial",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec6",
+      "type": "wall_crypt_lamp",
+      "name": "Lampa krypty",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_crypt_lamp",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec7",
+      "type": "wall_vault_seal",
+      "name": "Pieczęć skarbca",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_vault_seal",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec8",
+      "type": "wall_mining_pick",
+      "name": "Kilof",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_mining_pick",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec9",
+      "type": "wall_cellar_rope",
+      "name": "Lina piwniczna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_cellar_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec10",
+      "type": "wall_damp_mark",
+      "name": "Zacieki",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_damp_mark",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec11",
+      "type": "wall_chain",
+      "name": "Łańcuch",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_chain",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec12",
+      "type": "wall_memorial",
+      "name": "Tablica nagrobna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_memorial",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec13",
+      "type": "wall_ancient_symbol",
+      "name": "Znak starożytny",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_ancient_symbol",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec14",
+      "type": "wall_vault_seal",
+      "name": "Pieczęć skarbca",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_vault_seal",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec15",
+      "type": "wall_crypt_lamp",
+      "name": "Lampa krypty",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 23,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_crypt_lamp",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec16",
+      "type": "wall_cellar_rope",
+      "name": "Lina piwniczna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 23,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_cellar_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec17",
+      "type": "wall_mining_pick",
+      "name": "Kilof",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 26,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_mining_pick",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec18",
+      "type": "wall_chain",
+      "name": "Łańcuch",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 23,
+        "y": 26,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_chain",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec19",
+      "type": "prop_wine_flask",
+      "name": "Butelka wina",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_wine_flask",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b161.f-1.o1",
+      "slot": 0,
+      "allowedHosts": [
+        "counter",
+        "bar",
+        "display_case",
+        "shelf",
+        "cellar_rack",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b161.f-1.dec20",
+      "type": "prop_burial_urn",
+      "name": "Urna",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_burial_urn",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b161.f-1.o1",
+      "slot": 2,
+      "allowedHosts": [
+        "food_rack",
+        "shelf",
+        "cupboard",
+        "cellar_rack",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "storage",
+      "access": "Z2",
+      "anchor": {
+        "x": 13,
+        "y": 14
+      },
+      "functions": [
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b161.f-1.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "SP_ARENA",
+    "version": 1
+  }
+}

@@ -1,0 +1,879 @@
+{
+  "id": "mtl_gallery_001.b154.f-1",
+  "buildingId": "mtl_gallery_001.b154",
+  "level": -1,
+  "width": 20,
+  "height": 24,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 24
+  },
+  "floorTile": "stone",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b154.f-1.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 20,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 23,
+        "w": 20,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 22
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 1,
+        "w": 1,
+        "h": 22
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b154.f-1.o1",
+      "type": "stone_sarcophagus",
+      "name": "Sarkofag kamienny",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 13,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "stone_sarcophagus",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b154.f-1.o1.s1",
+          "action": "inspect",
+          "capacity": 1,
+          "approach": {
+            "x": 1,
+            "y": 12
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.o2",
+      "type": "crypt_altar",
+      "name": "Ołtarz krypty",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 5,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "crypt_altar",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b154.f-1.o2.s1",
+          "action": "pray",
+          "capacity": 1,
+          "approach": {
+            "x": 18,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.o3",
+      "type": "burial_chest",
+      "name": "Skrzynia grobowa",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "burial_chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b154.f-1.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.o4",
+      "type": "relic_pedestal",
+      "name": "Postument relikwii",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 12,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "relic_pedestal",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b154.f-1.o4.s1",
+          "action": "inspect",
+          "capacity": 1,
+          "approach": {
+            "x": 18,
+            "y": 14
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec1",
+      "type": "wall_vault_seal",
+      "name": "Pieczęć skarbca",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_vault_seal",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec2",
+      "type": "wall_cellar_rope",
+      "name": "Lina piwniczna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_cellar_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec3",
+      "type": "wall_cellar_rope",
+      "name": "Lina piwniczna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_cellar_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec4",
+      "type": "wall_chain",
+      "name": "Łańcuch",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_chain",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec5",
+      "type": "wall_chain",
+      "name": "Łańcuch",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_chain",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec6",
+      "type": "wall_ancient_symbol",
+      "name": "Znak starożytny",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_ancient_symbol",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec7",
+      "type": "wall_ancient_symbol",
+      "name": "Znak starożytny",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_ancient_symbol",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec8",
+      "type": "wall_crypt_lamp",
+      "name": "Lampa krypty",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_crypt_lamp",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec9",
+      "type": "wall_crypt_lamp",
+      "name": "Lampa krypty",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_crypt_lamp",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec10",
+      "type": "wall_mining_pick",
+      "name": "Kilof",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_mining_pick",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec11",
+      "type": "wall_mining_pick",
+      "name": "Kilof",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_mining_pick",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec12",
+      "type": "wall_damp_mark",
+      "name": "Zacieki",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_damp_mark",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec13",
+      "type": "wall_damp_mark",
+      "name": "Zacieki",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_damp_mark",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec14",
+      "type": "wall_memorial",
+      "name": "Tablica nagrobna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_memorial",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec15",
+      "type": "prop_relic_fragment",
+      "name": "Fragment relikwii",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 13,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_relic_fragment",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o1",
+      "slot": 0,
+      "allowedHosts": [
+        "alchemy",
+        "display_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec16",
+      "type": "prop_old_coin",
+      "name": "Stara moneta",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 13,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_old_coin",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o1",
+      "slot": 2,
+      "allowedHosts": [
+        "jewelry_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.29
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec17",
+      "type": "prop_ore",
+      "name": "Bryłka rudy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 13,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_ore",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o1",
+      "slot": 0,
+      "allowedHosts": [
+        "workbench",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec18",
+      "type": "prop_gemstone",
+      "name": "Kamień szlachetny",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 13,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_gemstone",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o1",
+      "slot": 2,
+      "allowedHosts": [
+        "display_case",
+        "strongbox",
+        "vault_safe",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec19",
+      "type": "prop_relic_fragment",
+      "name": "Fragment relikwii",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_relic_fragment",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o2",
+      "slot": 0,
+      "allowedHosts": [
+        "alchemy",
+        "display_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec20",
+      "type": "prop_old_coin",
+      "name": "Stara moneta",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_old_coin",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o2",
+      "slot": 2,
+      "allowedHosts": [
+        "jewelry_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.29
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec21",
+      "type": "prop_ore",
+      "name": "Bryłka rudy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 18,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_ore",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o2",
+      "slot": 0,
+      "allowedHosts": [
+        "workbench",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec22",
+      "type": "prop_gemstone",
+      "name": "Kamień szlachetny",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 18,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_gemstone",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o2",
+      "slot": 2,
+      "allowedHosts": [
+        "display_case",
+        "strongbox",
+        "vault_safe",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec23",
+      "type": "prop_relic_fragment",
+      "name": "Fragment relikwii",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 12,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_relic_fragment",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "alchemy",
+        "display_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec24",
+      "type": "prop_old_coin",
+      "name": "Stara moneta",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 12,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_old_coin",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o4",
+      "slot": 2,
+      "allowedHosts": [
+        "jewelry_case",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.29
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec25",
+      "type": "prop_ore",
+      "name": "Bryłka rudy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 18,
+        "y": 12,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_ore",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "workbench",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b154.f-1.dec26",
+      "type": "prop_gemstone",
+      "name": "Kamień szlachetny",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 18,
+        "y": 12,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_gemstone",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b154.f-1.o4",
+      "slot": 2,
+      "allowedHosts": [
+        "display_case",
+        "strongbox",
+        "vault_safe",
+        "stone_sarcophagus",
+        "crypt_altar",
+        "relic_pedestal",
+        "stone_worktable",
+        "sealing_desk",
+        "archive_shelf"
+      ],
+      "size": 0.36
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "crypt",
+      "access": "Z5",
+      "anchor": {
+        "x": 11,
+        "y": 12
+      },
+      "functions": [
+        "inspect",
+        "pray",
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b154.f-1.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "SP_TEMPLE_CRYPT",
+    "version": 1
+  }
+}

@@ -1,0 +1,564 @@
+{
+  "defaultTile": "grass",
+  "regions": [
+    {
+      "id": "mtl_gallery_001.area001",
+      "name": "Pole pszenicy",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "FIELD_GRAIN_A",
+        "kind": "crop",
+        "crop": "wheat",
+        "state": "ripe",
+        "farmId": "mtl_gallery_001.farm1",
+        "access": {
+          "x": 11,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 11,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area002",
+      "name": "Warzywnik",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 18,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "FIELD_VEGETABLE_A",
+        "kind": "crop",
+        "crop": "vegetables",
+        "state": "growing",
+        "farmId": "mtl_gallery_001.farm1",
+        "access": {
+          "x": 23,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 23,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area003",
+      "name": "Zagroda mała",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 30,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "PEN_ANIMAL_S01",
+        "kind": "pen",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm1",
+        "access": {
+          "x": 35,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 35,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area004",
+      "name": "Pole jęczmienia",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 57,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "FIELD_GRAIN_B",
+        "kind": "crop",
+        "crop": "barley",
+        "state": "growing",
+        "farmId": "mtl_gallery_001.farm2",
+        "access": {
+          "x": 62,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 62,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area005",
+      "name": "Zagroda duża",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 69,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "PEN_ANIMAL_M01",
+        "kind": "pen",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm2",
+        "access": {
+          "x": 74,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 74,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area006",
+      "name": "Podwórze robocze",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 81,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "YARD_FARM_S01",
+        "kind": "yard",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm2",
+        "access": {
+          "x": 86,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 86,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area007",
+      "name": "Pastwisko małe",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 108,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "PASTURE_S01",
+        "kind": "pasture",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm3",
+        "access": {
+          "x": 113,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 113,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area008",
+      "name": "Pastwisko duże",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 120,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "PASTURE_M01",
+        "kind": "pasture",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm3",
+        "access": {
+          "x": 125,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 125,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area009",
+      "name": "Plac siana",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 132,
+        "y": 574,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "YARD_HAY_S01",
+        "kind": "hay",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm3",
+        "access": {
+          "x": 137,
+          "y": 585
+        },
+        "approaches": [
+          {
+            "x": 137,
+            "y": 585
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area010",
+      "name": "Sad jabłoniowy",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "ORCHARD_S01",
+        "kind": "orchard",
+        "crop": "apple",
+        "state": "ripe",
+        "farmId": "mtl_gallery_001.farm4",
+        "access": {
+          "x": 11,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 11,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area011",
+      "name": "Sad gruszowy",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 18,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "ORCHARD_M01",
+        "kind": "orchard",
+        "crop": "pear",
+        "state": "growing",
+        "farmId": "mtl_gallery_001.farm4",
+        "access": {
+          "x": 23,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 23,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area012",
+      "name": "Ugór",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 30,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "FIELD_FALLOW_A",
+        "kind": "crop",
+        "crop": null,
+        "state": "fallow",
+        "farmId": "mtl_gallery_001.farm4",
+        "access": {
+          "x": 35,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 35,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area013",
+      "name": "Pole lnu",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 57,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "FIELD_FLAX_A",
+        "kind": "crop",
+        "crop": "flax",
+        "state": "growing",
+        "farmId": "mtl_gallery_001.farm5",
+        "access": {
+          "x": 62,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 62,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area014",
+      "name": "Ogród ziołowy",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 69,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "HERB_GARDEN_S01",
+        "kind": "crop",
+        "crop": "herbs",
+        "state": "growing",
+        "farmId": "mtl_gallery_001.farm5",
+        "access": {
+          "x": 74,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 74,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area015",
+      "name": "Kompostownik",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 81,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "YARD_DUNG_S01",
+        "kind": "compost",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm5",
+        "access": {
+          "x": 86,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 86,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area016",
+      "name": "Ściernisko",
+      "tile": "meadow",
+      "geometry": {
+        "type": "rect",
+        "x": 108,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "FIELD_HARVESTED_A",
+        "kind": "crop",
+        "crop": "oats",
+        "state": "harvested",
+        "farmId": "mtl_gallery_001.farm6",
+        "access": {
+          "x": 113,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 113,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area017",
+      "name": "Plac dostaw",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 120,
+        "y": 626,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "YARD_CART_S01",
+        "kind": "delivery",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm6",
+        "access": {
+          "x": 125,
+          "y": 637
+        },
+        "approaches": [
+          {
+            "x": 125,
+            "y": 637
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    },
+    {
+      "id": "mtl_gallery_001.area018",
+      "name": "Plac drewna",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 678,
+        "w": 10,
+        "h": 12
+      },
+      "rural": {
+        "templateId": "YARD_TIMBER_S01",
+        "kind": "timber",
+        "crop": null,
+        "state": "active",
+        "farmId": "mtl_gallery_001.farm7",
+        "access": {
+          "x": 11,
+          "y": 689
+        },
+        "approaches": [
+          {
+            "x": 11,
+            "y": 689
+          }
+        ],
+        "rowSpacing": 2
+      },
+      "access": "Z2"
+    }
+  ],
+  "elevations": []
+}

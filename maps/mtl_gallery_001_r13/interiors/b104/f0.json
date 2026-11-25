@@ -1,0 +1,615 @@
+{
+  "id": "mtl_gallery_001.b104.f0",
+  "buildingId": "mtl_gallery_001.b104",
+  "level": 0,
+  "width": 20,
+  "height": 24,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 24
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b104.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 20,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 23,
+        "w": 20,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 22
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 1,
+        "w": 1,
+        "h": 22
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.wall5",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 1,
+        "w": 1,
+        "h": 9
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.wall6",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 14,
+        "w": 1,
+        "h": 9
+      },
+      "kind": "partition"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b104.f0.o1",
+      "type": "archery_target",
+      "name": "Tarcza treningowa",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "archery_target",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o1.s1",
+          "action": "train",
+          "capacity": 1,
+          "approach": {
+            "x": 3,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.o2",
+      "type": "archery_target",
+      "name": "Tarcza treningowa",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "archery_target",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o2.s1",
+          "action": "train",
+          "capacity": 1,
+          "approach": {
+            "x": 1,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.o3",
+      "type": "archery_target",
+      "name": "Tarcza treningowa",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "archery_target",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o3.s1",
+          "action": "train",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.o4",
+      "type": "practice_post",
+      "name": "Słup ćwiczebny",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 16,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "practice_post",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o4.s1",
+          "action": "train",
+          "capacity": 1,
+          "approach": {
+            "x": 1,
+            "y": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.o5",
+      "type": "spear_stand",
+      "name": "Stojak na włócznie",
+      "geometry": {
+        "type": "rect",
+        "x": 18,
+        "y": 10,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "spear_stand",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o5.s1",
+          "action": "equip",
+          "capacity": 1,
+          "approach": {
+            "x": 17,
+            "y": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.o6",
+      "type": "weapon_rack",
+      "name": "Stojak na broń",
+      "geometry": {
+        "type": "rect",
+        "x": 14,
+        "y": 1,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "weapon_rack",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o6.s1",
+          "action": "equip",
+          "capacity": 1,
+          "approach": {
+            "x": 15,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.o7",
+      "type": "guard_bench",
+      "name": "Ława wartownicza",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 20,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "guard_bench",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o7.s1",
+          "action": "sit",
+          "capacity": 1,
+          "approach": {
+            "x": 10,
+            "y": 21
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.o8",
+      "type": "supply_crate",
+      "name": "Skrzynia zaopatrzenia",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "supply_crate",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b104.f0.o8.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 11,
+            "y": 2
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b104.f0.dec1",
+      "type": "prop_water_flask",
+      "name": "Bukłak",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_water_flask",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b104.f0.o7",
+      "slot": 0,
+      "allowedHosts": [
+        "supply_crate",
+        "guard_bench",
+        "military_locker"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.dec2",
+      "type": "prop_guard_shield",
+      "name": "Mała tarcza",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_guard_shield",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b104.f0.o8",
+      "slot": 0,
+      "allowedHosts": [
+        "shield_stand",
+        "supply_crate"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.dec3",
+      "type": "prop_ration",
+      "name": "Racja żywnościowa",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_ration",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b104.f0.o8",
+      "slot": 2,
+      "allowedHosts": [
+        "supply_crate",
+        "table_large",
+        "table_small"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.dec4",
+      "type": "wall_shield",
+      "name": "Tarcza ozdobna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_shield",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.dec5",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 19,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.dec6",
+      "type": "wall_banner",
+      "name": "Chorągiew",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 21,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_banner",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.dec7",
+      "type": "rug_small",
+      "name": "Dywanik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 2,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_small",
+        "version": 1
+      }
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [
+    {
+      "id": "mtl_gallery_001.b104.f0.cut1",
+      "kind": "open",
+      "a": {
+        "x": 9,
+        "y": 10
+      },
+      "b": {
+        "x": 10,
+        "y": 10
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.cut2",
+      "kind": "open",
+      "a": {
+        "x": 9,
+        "y": 11
+      },
+      "b": {
+        "x": 10,
+        "y": 11
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.cut3",
+      "kind": "open",
+      "a": {
+        "x": 9,
+        "y": 12
+      },
+      "b": {
+        "x": 10,
+        "y": 12
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b104.f0.cut4",
+      "kind": "open",
+      "a": {
+        "x": 9,
+        "y": 13
+      },
+      "b": {
+        "x": 10,
+        "y": 13
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "type": "training_hall",
+      "access": "Z3",
+      "anchor": {
+        "x": 5,
+        "y": 12
+      },
+      "functions": [
+        "train"
+      ],
+      "id": "mtl_gallery_001.b104.f0.r1"
+    },
+    {
+      "type": "armory",
+      "access": "Z3",
+      "anchor": {
+        "x": 15,
+        "y": 12
+      },
+      "functions": [
+        "equip",
+        "sit",
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b104.f0.r2"
+    }
+  ],
+  "templateRef": {
+    "id": "ARCHERY_M01",
+    "version": 1
+  }
+}
