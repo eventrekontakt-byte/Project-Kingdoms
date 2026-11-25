@@ -20,3 +20,5 @@ Aktualizacja: 2026-11-25. Wszystkie poniższe zadania pozostają otwarte, chyba 
 
 
 **Checkpoint II-B2:** wszystkie cztery modele zapisane jako kandydaty. MTL-002: karczmy, więzienia i duże domy; następnie kontrola błędnych heurystyk i integracja r15. Weryfikacja dostępu, wymiarów IDS, podziemi i odbiór wizualny pozostają otwarte. Pełny MFS/Node/Android otwarte.
+
+**Checkpoint II-B3:** SP_INN_CELLAR, PRISON_M01 zapisane. Dokończyć INN_L01, SP_PRISON_DEEP. Następnie duże domy i rezydencje kupieckie; kontrola szerokości korytarzy, klasyfikacji i dalsza integracja r15. Drzwi zamykane cel wymagają odrębnego wsparcia silnika. Pełne testy i odbiór otwarte.

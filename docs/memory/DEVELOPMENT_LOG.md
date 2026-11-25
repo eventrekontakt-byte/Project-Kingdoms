@@ -17,4 +17,6 @@ Skrócony dziennik checkpointów; pełna historia kodu w Git, szczegółowe zmia
 
 | 2026-11-25 | 0.3.44 Pass II-B2 (WIP) | 4 modele, 8 → 30 pomieszczeń, 32 obrotów V8, bez publikacji r15 | ../MTL_AUDIT_0.3.44_PASS2B2.md |
 
+| 2026-11-25 | 0.3.44 Pass II-B3 (WIP) | 2 modeli, 4 → 11 pomieszczeń, 12 obrotów V8 | ../MTL_AUDIT_0.3.44_PASS2B3.md |
+
 Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograniczenia i następny krok. Wpisy dopisywać bez usuwania historii.

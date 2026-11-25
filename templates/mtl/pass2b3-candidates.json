@@ -1,0 +1,1871 @@
+{
+  "schemaVersion": "1.0.0",
+  "baseCatalog": "templates/mtl/catalog-v14.json",
+  "baseLibraryVersion": "0.14.0",
+  "status": "review-candidates-not-integrated",
+  "stage": "0.3.44 Pass II-B3",
+  "buildings": [
+    {
+      "id": "SP_INN_CELLAR",
+      "name": "Karczma z piwnicą",
+      "type": "inn",
+      "version": 3,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "bar",
+              "x": 5,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "table_large",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 7,
+              "rotation": 90
+            },
+            {
+              "type": "stove",
+              "x": 13,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "farm_bench",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "food_rack",
+              "rotation": 0,
+              "x": 11,
+              "y": 12
+            },
+            {
+              "type": "cooking_prep",
+              "rotation": 0,
+              "x": 11,
+              "y": 9
+            }
+          ],
+          "rooms": [
+            {
+              "type": "tavern_hall",
+              "access": "Z0",
+              "anchor": {
+                "x": 3,
+                "y": 9
+              },
+              "functions": [
+                "serve",
+                "order",
+                "eat",
+                "sit"
+              ]
+            },
+            {
+              "type": "kitchen",
+              "access": "Z2",
+              "anchor": {
+                "x": 12,
+                "y": 5
+              },
+              "functions": [
+                "cook"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 12,
+                "y": 15
+              },
+              "functions": [
+                "storage"
+              ]
+            },
+            {
+              "type": "corridor",
+              "access": "Z0",
+              "anchor": {
+                "x": 8,
+                "y": 1
+              },
+              "functions": []
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 10,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 11,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 7,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 9,
+              "end": 10,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 11,
+              "start": 4,
+              "end": 5,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 11,
+              "start": 14,
+              "end": 15,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_silver_goblet",
+              "x": 5,
+              "y": 14,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_butter",
+              "x": 1,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_apple",
+              "x": 1,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "wine_cask",
+              "x": 14,
+              "y": 12,
+              "rotation": 90
+            },
+            {
+              "type": "wine_cask",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 14,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "silver_cabinet",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "bar",
+          "version": 2
+        },
+        {
+          "id": "table_large",
+          "version": 2
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "wine_cask",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_bench",
+          "version": 1
+        },
+        {
+          "id": "silver_cabinet",
+          "version": 1
+        },
+        {
+          "id": "food_rack",
+          "version": 1
+        },
+        {
+          "id": "cooking_prep",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building.",
+        "Pass II-B3: separate functional rooms, fixed furniture placements and authored open boundaries. Detention cells have geometric walls but no lock runtime; access metadata only."
+      ]
+    },
+    {
+      "id": "PRISON_M01",
+      "name": "Areszt miejski",
+      "type": "prison",
+      "version": 3,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "prison_cot",
+              "x": 1,
+              "y": 3,
+              "rotation": 90
+            },
+            {
+              "type": "prison_cot",
+              "x": 3,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "water_tub",
+              "x": 1,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "guard_bench",
+              "x": 10,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "dispatch_desk",
+              "x": 13,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "weapon_rack",
+              "x": 14,
+              "y": 4,
+              "rotation": 180
+            },
+            {
+              "type": "military_locker",
+              "x": 11,
+              "y": 3,
+              "rotation": 180
+            },
+            {
+              "type": "guard_bench",
+              "x": 12,
+              "y": 14,
+              "rotation": 90
+            },
+            {
+              "type": "prison_bench",
+              "x": 11,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "rotation": 0,
+              "x": 1,
+              "y": 1
+            },
+            {
+              "type": "chest",
+              "rotation": 0,
+              "x": 1,
+              "y": 8
+            }
+          ],
+          "rooms": [
+            {
+              "type": "detention_cell",
+              "access": "Z5",
+              "anchor": {
+                "x": 3,
+                "y": 3
+              },
+              "functions": [
+                "sleep",
+                "storage"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "access": "Z5",
+              "anchor": {
+                "x": 2,
+                "y": 10
+              },
+              "functions": [
+                "sleep",
+                "storage"
+              ]
+            },
+            {
+              "type": "washroom",
+              "access": "Z5",
+              "anchor": {
+                "x": 2,
+                "y": 16
+              },
+              "functions": [
+                "wash"
+              ]
+            },
+            {
+              "type": "guardroom",
+              "access": "Z3",
+              "anchor": {
+                "x": 12,
+                "y": 5
+              },
+              "functions": [
+                "sit",
+                "administration",
+                "equip",
+                "storage"
+              ]
+            },
+            {
+              "type": "guardroom",
+              "access": "Z3",
+              "anchor": {
+                "x": 12,
+                "y": 15
+              },
+              "functions": [
+                "sit"
+              ]
+            },
+            {
+              "type": "corridor",
+              "access": "Z3",
+              "anchor": {
+                "x": 6,
+                "y": 1
+              },
+              "functions": []
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 6,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 7,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 10,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 11,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 12,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 13,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 14,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 5,
+              "start": 3,
+              "end": 3,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 5,
+              "start": 10,
+              "end": 10,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 5,
+              "start": 16,
+              "end": 17,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 5,
+              "end": 6,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 15,
+              "end": 16,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_water_flask",
+              "x": 10,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_orders",
+              "x": 13,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_sealed_dispatch",
+              "x": 13,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_guard_badge",
+              "x": 13,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_guard_helmet",
+              "x": 11,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_water_flask",
+              "x": 11,
+              "y": 3,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_boots",
+              "x": 11,
+              "y": 4,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_water_flask",
+              "x": 12,
+              "y": 14,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "wall_shield",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 15,
+              "y": 16,
+              "rotation": 180
+            },
+            {
+              "type": "wall_banner",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "prison_cot",
+          "version": 1
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "guard_bench",
+          "version": 1
+        },
+        {
+          "id": "dispatch_desk",
+          "version": 1
+        },
+        {
+          "id": "weapon_rack",
+          "version": 2
+        },
+        {
+          "id": "military_locker",
+          "version": 1
+        },
+        {
+          "id": "prison_bench",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Fixed authored military room programmes; open internal passages, no locking or military runtime.",
+        "Pass II-B3: separate functional rooms, fixed furniture placements and authored open boundaries. Detention cells have geometric walls but no lock runtime; access metadata only."
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "INN_L01",
+      "error": "Error: portal wall 10,22"
+    },
+    {
+      "id": "SP_INN_CELLAR",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "details": [
+        {
+          "level": 0,
+          "removedDecorations": [],
+          "rooms": [
+            {
+              "type": "tavern_hall",
+              "w": 6,
+              "h": 18,
+              "access": "Z0"
+            },
+            {
+              "type": "kitchen",
+              "w": 4,
+              "h": 9,
+              "access": "Z2"
+            },
+            {
+              "type": "storage",
+              "w": 4,
+              "h": 7,
+              "access": "Z2"
+            }
+          ]
+        }
+      ],
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "dining_room",
+              "area": 252,
+              "functions": [
+                "serve",
+                "order",
+                "eat",
+                "sit",
+                "cook"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 231
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 252,
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 6,
+          "accessibleCells": 242
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "tavern_hall",
+              "area": 108,
+              "functions": [
+                "serve",
+                "order",
+                "eat",
+                "sit"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 42,
+              "functions": []
+            },
+            {
+              "type": "kitchen",
+              "area": 36,
+              "functions": [
+                "cook"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 28,
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 13,
+          "accessibleCells": 189
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 252,
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 6,
+          "accessibleCells": 242
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "PRISON_M01",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "details": [
+        {
+          "level": 0,
+          "removedDecorations": [
+            "rug_small"
+          ],
+          "rooms": [
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "washroom",
+              "w": 4,
+              "h": 4,
+              "access": "Z5"
+            },
+            {
+              "type": "guardroom",
+              "w": 5,
+              "h": 10,
+              "access": "Z3"
+            },
+            {
+              "type": "guardroom",
+              "w": 5,
+              "h": 6,
+              "access": "Z3"
+            }
+          ]
+        }
+      ],
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "detention",
+              "area": 112,
+              "functions": [
+                "sleep",
+                "wash",
+                "sit"
+              ]
+            },
+            {
+              "type": "guardroom",
+              "area": 126,
+              "functions": [
+                "administration",
+                "equip",
+                "storage",
+                "sit"
+              ]
+            }
+          ],
+          "stationCount": 11,
+          "accessibleCells": 218
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep",
+                "storage"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 62,
+              "functions": []
+            },
+            {
+              "type": "guardroom",
+              "area": 50,
+              "functions": [
+                "sit",
+                "administration",
+                "equip",
+                "storage"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep",
+                "storage"
+              ]
+            },
+            {
+              "type": "guardroom",
+              "area": 30,
+              "functions": [
+                "sit"
+              ]
+            },
+            {
+              "type": "washroom",
+              "area": 16,
+              "functions": [
+                "wash"
+              ]
+            }
+          ],
+          "stationCount": 13,
+          "accessibleCells": 176
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "SP_PRISON_DEEP",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "details": [
+        {
+          "level": -1,
+          "removedDecorations": [],
+          "rooms": [
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "guardroom",
+              "w": 6,
+              "h": 4,
+              "access": "Z3"
+            }
+          ]
+        },
+        {
+          "level": -2,
+          "removedDecorations": [],
+          "rooms": [
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "detention_cell",
+              "w": 4,
+              "h": 5,
+              "access": "Z5"
+            },
+            {
+              "type": "guardroom",
+              "w": 6,
+              "h": 4,
+              "access": "Z3"
+            }
+          ]
+        }
+      ],
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "guardroom",
+              "area": 352,
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 341
+        },
+        {
+          "level": 1,
+          "rooms": [
+            {
+              "type": "guardroom",
+              "area": 352,
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 342
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "detention",
+              "area": 352,
+              "functions": [
+                "sleep",
+                "sit",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 6,
+          "accessibleCells": 342
+        },
+        {
+          "level": -2,
+          "rooms": [
+            {
+              "type": "detention",
+              "area": 352,
+              "functions": [
+                "sleep",
+                "sit",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 6,
+          "accessibleCells": 343
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "guardroom",
+              "area": 352,
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 341
+        },
+        {
+          "level": 1,
+          "rooms": [
+            {
+              "type": "guardroom",
+              "area": 352,
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 342
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 110,
+              "functions": []
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "guardroom",
+              "area": 24,
+              "functions": [
+                "sit",
+                "storage"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 8,
+              "functions": []
+            },
+            {
+              "type": "corridor",
+              "area": 8,
+              "functions": []
+            }
+          ],
+          "stationCount": 10,
+          "accessibleCells": 236
+        },
+        {
+          "level": -2,
+          "rooms": [
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 110,
+              "functions": []
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "detention_cell",
+              "area": 20,
+              "functions": [
+                "sleep"
+              ]
+            },
+            {
+              "type": "guardroom",
+              "area": 24,
+              "functions": [
+                "sit",
+                "storage"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 8,
+              "functions": []
+            },
+            {
+              "type": "corridor",
+              "area": 8,
+              "functions": []
+            }
+          ],
+          "stationCount": 10,
+          "accessibleCells": 237
+        }
+      ],
+      "baselineIssues": [],
+      "issues": [
+        "0/-1 inaccessible room corridor",
+        "0/-1 inaccessible room corridor",
+        "0/-2 inaccessible room corridor",
+        "0/-2 inaccessible room corridor",
+        "90/-1 inaccessible room corridor",
+        "90/-1 inaccessible room corridor",
+        "90/-2 inaccessible room corridor",
+        "90/-2 inaccessible room corridor",
+        "180/-1 inaccessible room corridor",
+        "180/-1 inaccessible room corridor",
+        "180/-2 inaccessible room corridor",
+        "180/-2 inaccessible room corridor",
+        "270/-1 inaccessible room corridor",
+        "270/-1 inaccessible room corridor",
+        "270/-2 inaccessible room corridor",
+        "270/-2 inaccessible room corridor"
+      ]
+    }
+  ]
+}

@@ -30,3 +30,6 @@ Istnieje eksploracja 2D, ruch/kolizje, wnętrza i kondygnacje, kamera, zoom, aut
 
 ## Pass II-B2 (WIP)
 4 modele z wydzielonymi strefami w `templates/mtl/pass2b2-candidates.json`; 8 → 30 pomieszczeń, 55 → 93 stanowisk, 32 obrotów kondygnacji bez zgłoszeń w V8. Razem z II-B1: 8 kandydatów. r14 bez zmian, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B2.md).
+
+## Pass II-B3 (WIP)
+2 kolejnych modeli w pass2b3-candidates.json, razem 10 kandydatów. 4 → 11 pomieszczeń, 28 → 32 stanowisk, 12 obrotów V8. r14 niezmieniona, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B3.md).

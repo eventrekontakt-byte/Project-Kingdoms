@@ -22,3 +22,6 @@ Nie odzyskano dosłownego końca rozmowy (3); repozytorium i raporty są podstaw
 
 ## Checkpoint II-B2 — najnowszy
 Wszystkie 4 modele w `templates/mtl/pass2b2-candidates.json` obok 4 z II-B1; 32 obrotów kondygnacji bez zgłoszeń w V8. Raport ../MTL_AUDIT_0.3.44_PASS2B2.md. MTL-002: karczmy, więzienia i duże domy; następnie kontrola błędnych heurystyk i integracja r15. Weryfikacja dostępu, wymiarów IDS, podziemi i odbiór wizualny pozostają otwarte. Nie nadpisywać r14; r15 po pełnej walidacji. Node, Android, Pages nie wykonane.
+
+## Checkpoint II-B3 — najnowszy
+2 modeli w `templates/mtl/pass2b3-candidates.json` obok 8 z II-B1/B2. Raport ../MTL_AUDIT_0.3.44_PASS2B3.md. Dokończyć INN_L01, SP_PRISON_DEEP. Następnie duże domy i rezydencje kupieckie; kontrola szerokości korytarzy, klasyfikacji i dalsza integracja r15. Nie integrować bez pełnej walidacji. Cele otwarte, blokady i uprawnienia runtime niewdrożone. Node, Android, Pages i wizualny odbiór nadal otwarte.
