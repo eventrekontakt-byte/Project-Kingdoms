@@ -1,20 +1,11 @@
-# Zasady pracy i pamięci produkcyjnej
-Zatwierdzono system w czacie (4), 2026-11-25.
+# WORK_RULES — CMS 1.0
+Aktualizacja: 2026-11-25. [Szczegóły CMS](CMS_1.0.md).
 
-## Zasady obowiązujące
-- Po każdej zakończonej partii prac/etapie aktualizować PROJECT_STATE.md, BACKLOG.md, DEVELOPMENT_LOG.md i CHAT_HANDOVER.md. DECISIONS.md i ROADMAP.md aktualizować przy zmianach decyzji/planów.
-- Przy długich pracach zapisywać checkpoint także przed zakończeniem etapu, szczególnie przed operacjami obszernymi lub przy ryzyku utraty kontekstu. Oznaczyć WIP, stan testów i następny krok.
-- Na początku kolejnego czatu odczytać pamięć z aktualnej gałęzi main i skonfrontować z repo. GitHub jest trwałym źródłem stanu kodu; GDD/MDS/MFS pozostają źródłem wymagań projektowych.
-- Każda odpowiedź produkcyjna zawiera krótki monitor obciążenia: Niskie / Umiarkowane / Wysokie / Krytyczne. Jest to wyłącznie orientacyjna ocena długości rozmowy, objętości kodu i operacji. Nie podawać fikcyjnego procentu ani obiecywać wykrycia limitu. Przy braku podstaw wpisać „niepewne”.
-- Niskie: swobodna kontynuacja; Umiarkowane: częstsze checkpointy; Wysokie: aktualizacja handover i zalecenie nowego czatu; Krytyczne: checkpoint i rekomendacja zmiany rozmowy przed dalszym obszernym zadaniem. Użytkownik decyduje o otwarciu czatu.
-- Zapis i testy wykonywać w aktywnej rozmowie, nie obiecywać autonomicznej aktualizacji poza nią.
-- Oddzielać wykonane testy od planowanych, walidację statyczną od realnego uruchomienia i status review od akceptacji. Ujawniać blokery, niezatwierdzone decyzje i zakres zmian.
-- Zachowywać starsze rewizje i kompatybilność, gdy wymagane przez dokumentację; nie zmieniać nadrzędnych ustaleń bez uzasadnienia i akceptacji.
-- Repozytorium jest publiczne: nie zapisywać danych prywatnych, sekretów, pełnych rozmów ani niezwiązanych informacji osobistych.
-
-## Szablon monitora
-**Monitor czatu (N):** obciążenie orientacyjne — Niskie/Umiarkowane/Wysokie/Krytyczne/niepewne; checkpoint — aktualny/WIP/do aktualizacji; zmiana czatu — nie/zalecana.
-
-- Polecenie użytkownika (2026-11-25): przy dalszej produkcji systematycznie uzupełniać meble, dekoracje, narzędzia i przedmioty zgodnie z funkcją pomieszczenia. Nie zwiększać liczby kosztem przejść i stanowisk; sprawdzać dopasowanie tematyczne i wizualne. Przed odbiorem wrócić także do wcześniej przebudowanych wnętrz.
-
-- Dodatkowe polecenie użytkownika (2026-11-25): po każdym checkpointcie aktualizować CHAT_LOAD_LOG.md. Zapisywać obserwowalną liczbę partii, kandydatów, objawy, ocenę jakościową i rekomendację kolejnego kroku. Brak telemetrii kontekstu oraz progu awarii, nie przewidywać liczby pozostałych wiadomości ani procentu. Nowe czaty odczytują ten rejestr.
+- Start: tylko CHAT_HANDOVER.md i ten plik z main; sprawdź HEAD i wskazany checkpoint (bez pełnego diffu). Nie wczytuj automatycznie całej pamięci, historii czatów ani dokumentacji. Odczytuj właściwe sekcje GDD/MDS/MFS i potrzebne pliki na żądanie.
+- GitHub jest trwałym źródłem kodu i stanu; GDD/MDS/MFS źródłem wymagań. W razie konfliktu wyjaśnij go, nie zmieniaj zatwierdzonych standardów. Produkcja hybrydowa, Android priorytetem, zachowuj starsze rewizje i kompatybilność; bez usuwania funkcji bez zgody. Najpierw błędy.
+- Jedno polecenie = jedna zamknięta partia lub checkpoint WIP; duże prace dziel, nie uruchamiaj automatycznie kolejnych partii. Przetwarzaj duże dane w narzędziu, zwracaj liczniki, wybrane ID i błędy; porcjuj odczyty, nie wklejaj pełnych katalogów/logów.
+- Po każdej partii (także WIP przed ryzykowną operacją) zapisz i zweryfikuj checkpoint: CHAT_HANDOVER i PROJECT_STATE nadpisuj aktualnym stanem, BACKLOG aktualizuj aktywne pozycje; DEVELOPMENT_LOG i CHAT_LOAD_LOG uzupełniaj krótkim wpisem, bez czytania całych rejestrów do kontekstu. DECISIONS/ROADMAP tylko przy zmianach. Historia w Git i raportach. Cele: handover <=3000, reguły <=4000, stan i backlog <=5000 znaków każdy.
+- Każda odpowiedź produkcyjna: monitor Niskie/Umiarkowane/Wysokie/Krytyczne/niepewne, stan checkpointu, rekomendacja zmiany czatu. Ocena orientacyjna, bez fikcyjnych procentów, limitu i pozostałych wiadomości. Wysokie/krytyczne: checkpoint i zalecenie nowej rozmowy przed dużą partią. Użytkownik decyduje. CHAT_LOAD_LOG: zapisuj rzeczywiście wykonane partie, obserwowane odczyty/kandydatów, przerwania i ocenę.
+- Testy odróżniaj od planów, V8/statyczne od rzeczywistego Node, przeglądarki, Android i offline; review od akceptacji. Ujawniaj blokery i decyzje wymagające zgody. Nie obiecuj pracy w tle.
+- Uzupełniaj funkcjonalne wyposażenie, meble, narzędzia, dekoracje zgodnie z przeznaczeniem, bez blokowania przejść; kontroluj wizualnie. Ogólny przegląd II-B11 zakończony, nie powtarzaj masowego meblowania; tylko uzasadnione braki.
+- Repo publiczne: bez sekretów, danych osobistych i pełnych rozmów.
