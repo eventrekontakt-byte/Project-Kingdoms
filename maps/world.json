@@ -7,6 +7,15 @@
       "manifest": "mfs_test_001/manifest.json",
       "kind": "test",
       "connections": []
+    },
+    {
+      "mapId": "city_001",
+      "mapRevision": 2,
+      "manifest": "city_001_r2/manifest.json",
+      "kind": "medium_city",
+      "profile": "infrastructure",
+      "name": "Miasto 1 — organiczny układ",
+      "connections": []
     }
   ]
 }
