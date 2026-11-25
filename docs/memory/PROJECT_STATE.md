@@ -1,10 +1,10 @@
 # Stan produkcji — Project Kingdoms
-Aktualizacja: 2026-11-25, czat (4).
-Ostatni commit funkcjonalny: ac670f9f5fc2cd78efb86e107e3133c850627117 (Alpha 0.3.44).
+Aktualizacja: 2026-11-25, czat (5).
+Ostatni commit wydania mapy r14: ac670f9f5fc2cd78efb86e107e3133c850627117 (Alpha 0.3.44).
 Gałąź: main. Gra offline 2D fantasy RPG + symulacja królestwa, rozwijana hybrydowo, oddzielnie od Universal Engine.
 
 ## Aktualny etap
-MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii do wykonania. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
+MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B11a zapisany. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
 - 163 szablony, 229 kondygnacji, 230 scen galerii wraz z zewnętrzną, 2491 stanowisk interakcji.
 - 161 zmienionych modeli, 191 dodanych mebli, 218 dodanych i 224 zastąpione dekoracje.
 - 67 modeli do indywidualnej kontroli; 8 modeli z heurystycznymi brakami funkcji (nie są to automatycznie błędy MDS).
@@ -61,3 +61,6 @@ II-B10a: sąd i trzy świątynie, 4 modele, 20→49 pomieszczeń, 172→218 stan
 
 ## Pass II-B10b (review)
 II-B10b: 5 modeli (trzy zamki, krypta, skarbiec), 39→110 pomieszczeń, 242→350 stanowisk, +80 mebli, +70 dekoracji, 0 usuniętych, 72 obroty V8. B10 łącznie 9 modeli, +100 pomieszczeń, +110 mebli, +114 dekoracji, +154 stanowiska. 79 unikatowych kandydatów, r14 bez zmian. B10 zakończony w zakresie kandydatów. [Raport](../MTL_AUDIT_0.3.44_PASS2B10B.md).
+
+## Pass II-B11a (WIP)
+Czat (5). Cztery modele wojskowe i mieszkalne w templates/mtl/pass2b11a-candidates.json; +13 mebli, +33 dekoracje, 50→63 stanowiska, 16 obrotów V8 bez zgłoszeń. 79 unikatowych kandydatów; r14 bez zmian; r15 nieopublikowana. II-B11 nadal WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B11A.md).
