@@ -34,3 +34,6 @@ Data 2026-11-25; użytkownik zaakceptował skorygowane podejście po wskazaniu p
 
 ## D013 — CITY-001a.02 topografia Miasta 1
 2026-11-25; G01–G08 zatwierdzone (8/8), uwagi brak: miasto nadrzeczne w strefie umiarkowanej; rzeka E, nurt N–S, 5–8 kafli; wyniesiona platforma i wzgórze 5–6 m; twierdza NW; główne kierunki W/E/S; most E bez portu handlowego; średnia twierdza 36×44; łąki, pola, pastwiska, zadrzewienia, ograniczone przedmieścia. [Dokument](../CITY_001a_02_TOPOGRAPHY.md). Akceptacja koncepcyjna, nie odbiór mapy ani geometrii. Polecenie rozpocząć 03 bez kodu/mapy.
+
+## D014 — CITY-001a.03 program funkcjonalny
+2026-11-25; F01–F09 zatwierdzone 9/9, uwagi brak: osiem przenikających się obszarów, rynek i osobna twierdza, luźniejsze zachodnie i gęstsze północne mieszkania, rzemiosło SE z warunkowym młynem/garbarnią, logistyka E/S z ograniczeniem ciężkiego ruchu przez rynek, wymagane instytucje + szkoła/apteka/łaźnia/cech i łączone funkcje biblioteki/sądu, twierdza poza 96, przedmieścia bez osobnej wsi, priorytet mieszkalnictwa i 72/24. [Program](../CITY_001a_03_FUNCTIONAL_PROGRAM.md). Polecenie 04 bez kodu/mapy. Nie zatwierdzono konkretnych modeli, pojemności ani obwiedni.

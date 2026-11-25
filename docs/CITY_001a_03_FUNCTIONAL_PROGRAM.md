@@ -1,6 +1,6 @@
-# CITY-001a.03 — Dzielnice i program funkcjonalny (WIP)
+# CITY-001a.03 — Dzielnice i program funkcjonalny (zatwierdzony program)
 2026-11-25 | Alpha 0.3.44 | CMS 1.0 | baza f0eba34
-Status: propozycja do akceptacji. Bez mapy, granic, współrzędnych, liczebności konkretnych parceli i programowania.
+Status: F01–F09 zatwierdzone przez użytkownika, bez uwag (D014, 2026-11-25). Bez mapy, granic, współrzędnych, liczebności konkretnych parceli i programowania.
 ## Podstawa
 Odczyt zamontowanych GDD §18–25, 38, 49; MDS §4–9, 11, 17, 21–22, 36, 44–45, 70–76; MFS §10–11, 23, 25. D012 karta 192×192, 96 działek standardowych (72 zabudowane/24 wolne), 400 mieszkańców docelowo, handel/rzemiosło, F3 + twierdza. D013: G01–G08 zatwierdzone, bez uwag. Rzeka wschodnia N→S, 5–8 kafli, platforma miejska/wzgórze 5–6 m NW, kierunki W/E/S, most E, brak portu, średnia twierdza 36×44, łąki/pola/pastwiska/zadrzewienia/ograniczone przedmieścia. Nie przypisano nazw sąsiednich osad, państwa ani religii.
 ## Proponowane obszary (robocze etykiety D01–D08, nie trwałe ID)
@@ -24,4 +24,4 @@ MDS §71 wzorzec średniego miasta: mieszkalne 55%, handlowe 12%, produkcyjne 12
 ## Pakiet do akceptacji
 F01 osiem obszarów D01–D08 i mieszane funkcje; F02 rynek główny i oddzielne centrum władzy; F03 zachodnie luźniejsze i północne gęstsze mieszkania; F04 SE rzemiosło oraz odseparowana produkcja uciążliwa, młyn/garbarnia warunkowo; F05 zaplecze logistyczne E/S, z pominięciem zatłoczonego rynku; F06 instytucje obowiązkowe oraz szkoła/apteka/łaźnia/cech, biblioteka i sąd funkcjonalnie łączone jeśli potrzeba, więzienie rozpatrzyć w 06; F07 twierdza poza 96, funkcje FDS; F08 przedmieścia, rozproszona rekreacja i zaplecze bez nowej wsi; F09 bilans w 04 zgodnie z §71, dominujące funkcje i priorytet mieszkań, 72/24 bez zmian.
 ## Kontrola
-Dokumentacyjnie pokryto 10/10 rodzajów stref §72 oraz 11/11 wymaganych funkcji §73, bez zmiany zatwierdzonej topografii. Nie jest to walidacja MFS ani odbiór budynków; geometria, realne miejsca noclegowe, przejazdy, zgodność modeli MTL i dostęp otwarte. R15 zamrożona review-only, DNS wstrzymany, bez kodu/map/testów. CITY-001a.04 dopiero po akceptacji i poleceniu.
+Dokumentacyjnie pokryto 10/10 rodzajów stref §72 oraz 11/11 wymaganych funkcji §73, bez zmiany zatwierdzonej topografii. Nie jest to walidacja MFS ani odbiór budynków; geometria, realne miejsca noclegowe, przejazdy, zgodność modeli MTL i dostęp otwarte. R15 zamrożona review-only, DNS wstrzymany, bez kodu/map/testów. CITY-001a.04 rozpoczęta na polecenie po akceptacji; [bilans WIP](CITY_001a_04_PARCEL_BUDGET.md).

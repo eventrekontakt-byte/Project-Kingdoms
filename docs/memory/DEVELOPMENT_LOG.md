@@ -78,3 +78,5 @@ Lista 33: 19 korekt, 14 uzasadnionych wyjątków proponowanych do akceptacji, 0 
 - 2026-11-25 | CITY-001a.01 D012 zatwierdzona, zgodność dokumentacyjna MDS; 02 WIP wariant nadrzeczny, wysokości, szlaki, zasoby i rezerwy P/R/I/S. Bez geometrii, kodu, map, MTL/DNS i testów. Raport ../CITY_001a_02_TOPOGRAPHY.md. Akceptacja przed 03.
 
 - 2026-11-25 | CITY-001a.02 D013 G01–G08 zatwierdzone, 03 WIP: 8 obszarów, 10/10 typów stref §72, 11/11 funkcji wymaganych §73 na poziomie koncepcji; F01–F09 do akceptacji. Bez mapy, kodu, modeli MTL, migracji, DNS i testów. Raport ../CITY_001a_03_FUNCTIONAL_PROGRAM.md.
+
+- 2026-11-25 | CITY-001a.03 D014 F01–F09 zatwierdzone; 04 WIP bilans 72/24, 40 mieszkalnych, 18 616 kafli parceli, rezerwa 16 664. Statyczny odczyt 10 modeli mieszkalnych r15/23 poziomów: scenariusz 238 miejsc, luka 162, cele 400 niepotwierdzone. B01–B07 do akceptacji. Bez kodu/map/MTL/DNS/migracji/runtime. Raport ../CITY_001a_04_PARCEL_BUDGET.md.
