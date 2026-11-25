@@ -17,3 +17,5 @@ Aktualizacja: 2026-11-25. Wszystkie poniższe zadania pozostają otwarte, chyba 
 Źródło szczegółowe: [Pass I](../MTL_AUDIT_0.3.44_PASS1.md), [67 modeli](../../templates/mtl/audit-candidates-0.3.44.json). Nie powielać całego katalogu danych w pamięci.
 
 **Checkpoint II-B1:** cztery kandydaty w nakładce pass2b1-candidates.json; testy V8 pozytywne, pełny MFS/Node i architektura otwarte. Następne: CLINIC_M01, SP_CLINIC, HALL_M01 (istniejące reception_desk, wydzielenie stref), SP_KEEP_VAULT. Integracja dopiero w r15 po walidacji.
+
+**Checkpoint II-B2:** SP_CLINIC, SP_KEEP_VAULT zapisane jako kandydaty. Dokończyć CLINIC_M01, HALL_M01; następnie karczmy, więzienia i duże domy (MTL-002). Pełny MFS/Node/Android i odbiór wizualny nadal otwarte.

@@ -1,0 +1,3241 @@
+{
+  "schemaVersion": "1.0.0",
+  "baseCatalog": "templates/mtl/catalog-v14.json",
+  "baseLibraryVersion": "0.14.0",
+  "status": "review-candidates-not-integrated",
+  "stage": "0.3.44 Pass II-B2",
+  "buildings": [
+    {
+      "id": "SP_CLINIC",
+      "name": "Lecznica z magazynem",
+      "type": "clinic",
+      "version": 3,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "medical_bed",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "medical_bed",
+              "x": 14,
+              "y": 8,
+              "rotation": 180
+            },
+            {
+              "type": "medicine_cabinet",
+              "x": 11,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "healing_table",
+              "x": 13,
+              "y": 6,
+              "rotation": 270
+            },
+            {
+              "type": "reception_desk",
+              "x": 1,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "rotation": 0,
+              "x": 4,
+              "y": 11
+            },
+            {
+              "type": "washstand",
+              "rotation": 0,
+              "x": 11,
+              "y": 11
+            }
+          ],
+          "rooms": [
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "anchor": {
+                "x": 3,
+                "y": 5
+              },
+              "functions": [
+                "treat"
+              ]
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "anchor": {
+                "x": 3,
+                "y": 14
+              },
+              "functions": [
+                "reception",
+                "sit"
+              ]
+            },
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "anchor": {
+                "x": 12,
+                "y": 5
+              },
+              "functions": [
+                "treat"
+              ]
+            },
+            {
+              "type": "medical_workroom",
+              "access": "Z2",
+              "anchor": {
+                "x": 12,
+                "y": 14
+              },
+              "functions": [
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "corridor",
+              "access": "Z1",
+              "anchor": {
+                "x": 8,
+                "y": 9
+              },
+              "functions": []
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 10,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 10,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 4,
+              "end": 5,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 14,
+              "end": 15,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 4,
+              "end": 5,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 14,
+              "end": 15,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_herbs",
+              "x": 13,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 3,
+              "slot": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 14,
+              "y": 8,
+              "rotation": 90
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "grain_bin",
+              "x": 1,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "medical_supply",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 10
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 15,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "medical_bed",
+          "version": 1
+        },
+        {
+          "id": "medicine_cabinet",
+          "version": 1
+        },
+        {
+          "id": "healing_table",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "grain_bin",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "medical_supply",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building.",
+        "Pass II-B2: authored functional room divisions with open 2-cell passages and central public circulation; access metadata only, not runtime locking. Individual review remains required."
+      ]
+    },
+    {
+      "id": "SP_KEEP_VAULT",
+      "name": "Siedziba ze skarbcem",
+      "type": "keep",
+      "version": 3,
+      "size": "M",
+      "width": 12,
+      "height": 16,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 16
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 6,
+        "y": 15
+      },
+      "interiorEntry": {
+        "x": 12,
+        "y": 31
+      },
+      "floors": [
+        {
+          "level": 0,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "guard_bench",
+              "x": 1,
+              "y": 6,
+              "rotation": 90
+            },
+            {
+              "type": "watch_desk",
+              "x": 1,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "supply_crate",
+              "x": 15,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "weapon_rack",
+              "x": 1,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "military_locker",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "reception_desk",
+              "rotation": 0,
+              "x": 1,
+              "y": 15
+            },
+            {
+              "type": "bench",
+              "rotation": 0,
+              "x": 7,
+              "y": 15
+            },
+            {
+              "type": "chest",
+              "rotation": 0,
+              "x": 15,
+              "y": 1
+            },
+            {
+              "type": "audience_throne",
+              "rotation": 0,
+              "x": 15,
+              "y": 10
+            },
+            {
+              "type": "council_table",
+              "rotation": 0,
+              "x": 16,
+              "y": 10
+            },
+            {
+              "type": "bench",
+              "rotation": 0,
+              "x": 21,
+              "y": 10
+            },
+            {
+              "type": "bench",
+              "rotation": 270,
+              "x": 15,
+              "y": 30
+            }
+          ],
+          "rooms": [
+            {
+              "type": "guardroom",
+              "access": "Z3",
+              "anchor": {
+                "x": 4,
+                "y": 7
+              },
+              "functions": [
+                "observe",
+                "sit",
+                "equip",
+                "storage"
+              ]
+            },
+            {
+              "type": "waiting",
+              "access": "Z1",
+              "anchor": {
+                "x": 4,
+                "y": 22
+              },
+              "functions": [
+                "sit",
+                "reception"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 18,
+                "y": 4
+              },
+              "functions": [
+                "storage"
+              ]
+            },
+            {
+              "type": "audience_hall",
+              "access": "Z1",
+              "anchor": {
+                "x": 18,
+                "y": 20
+              },
+              "functions": [
+                "sit",
+                "meeting"
+              ]
+            },
+            {
+              "type": "corridor",
+              "access": "Z1",
+              "anchor": {
+                "x": 11,
+                "y": 15
+              },
+              "functions": []
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 9,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 10,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 10,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 14,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 19,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 20,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 21,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 21,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 22,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 23,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 24,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 24,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 25,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 25,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 26,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 26,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 27,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 27,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 28,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 28,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 29,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 29,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 30,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 30,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 6,
+              "end": 7,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 22,
+              "end": 23,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 14,
+              "start": 4,
+              "end": 5,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 14,
+              "start": 19,
+              "end": 20,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 3,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "floorTile": "wood",
+          "objects": [
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 1,
+              "y": 12,
+              "rotation": 270
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 1,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "noble_writing_desk",
+              "x": 3,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "rotation": 0,
+              "x": 1,
+              "y": 23
+            },
+            {
+              "type": "noble_canopy_bed",
+              "rotation": 0,
+              "x": 15,
+              "y": 1
+            },
+            {
+              "type": "noble_wardrobe",
+              "rotation": 0,
+              "x": 15,
+              "y": 11
+            },
+            {
+              "type": "washstand",
+              "rotation": 90,
+              "x": 22,
+              "y": 1
+            },
+            {
+              "type": "armchair",
+              "rotation": 0,
+              "x": 15,
+              "y": 23
+            },
+            {
+              "type": "noble_bookcase",
+              "rotation": 0,
+              "x": 15,
+              "y": 14
+            },
+            {
+              "type": "bench",
+              "rotation": 0,
+              "x": 21,
+              "y": 14
+            },
+            {
+              "type": "water_tub",
+              "rotation": 0,
+              "x": 15,
+              "y": 25
+            },
+            {
+              "type": "washstand",
+              "rotation": 0,
+              "x": 15,
+              "y": 30
+            },
+            {
+              "type": "chest",
+              "rotation": 0,
+              "x": 15,
+              "y": 26
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 4,
+                "y": 6
+              },
+              "functions": [
+                "read",
+                "administration"
+              ]
+            },
+            {
+              "type": "office",
+              "access": "Z4",
+              "anchor": {
+                "x": 4,
+                "y": 17
+              },
+              "functions": [
+                "administration",
+                "read"
+              ]
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 4,
+                "y": 26
+              },
+              "functions": [
+                "storage"
+              ]
+            },
+            {
+              "type": "bedroom",
+              "access": "Z4",
+              "anchor": {
+                "x": 18,
+                "y": 6
+              },
+              "functions": [
+                "sleep",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "living_room",
+              "access": "Z4",
+              "anchor": {
+                "x": 18,
+                "y": 18
+              },
+              "functions": [
+                "rest",
+                "sit",
+                "read"
+              ]
+            },
+            {
+              "type": "washroom",
+              "access": "Z4",
+              "anchor": {
+                "x": 18,
+                "y": 27
+              },
+              "functions": [
+                "wash",
+                "storage"
+              ]
+            },
+            {
+              "type": "corridor",
+              "access": "Z1",
+              "anchor": {
+                "x": 11,
+                "y": 15
+              },
+              "functions": []
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 9,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 10,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 10,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 13,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 13,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 19,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 20,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 20,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 21,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 21,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 22,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 22,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 23,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 23,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 24,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 24,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 25,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 25,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 26,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 28,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 29,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 29,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 9,
+              "y": 30,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 14,
+              "y": 30,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 6,
+              "end": 7,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 17,
+              "end": 18,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 10,
+              "start": 26,
+              "end": 27,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 14,
+              "start": 6,
+              "end": 7,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 14,
+              "start": 18,
+              "end": 19,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 14,
+              "start": 27,
+              "end": 28,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 12,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 12,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 12,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 1
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 12,
+              "rotation": 270,
+              "hostIndex": 1,
+              "slot": 3
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 14,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 14,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 15,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 15,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 1,
+              "y": 20,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 3,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -1,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "vault_safe",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "vault_safe",
+              "x": 1,
+              "y": 22,
+              "rotation": 0
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "archive_shelf",
+              "x": 22,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "noble_writing_desk",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "treasury",
+              "access": "Z5",
+              "anchor": {
+                "x": 13,
+                "y": 16
+              },
+              "functions": [
+                "storage",
+                "administration",
+                "read"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 22,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 1,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_old_coin",
+              "x": 22,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_ore",
+              "x": 22,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "prop_gemstone",
+              "x": 22,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 22,
+              "y": 8,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 2
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 3,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "level": -2,
+          "floorTile": "stone",
+          "objects": [
+            {
+              "type": "cellar_rack",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "supply_cask",
+              "x": 1,
+              "y": 22,
+              "rotation": 0
+            },
+            {
+              "type": "crate",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "grain_bin",
+              "x": 1,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "silver_cabinet",
+              "x": 1,
+              "y": 10,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "storage",
+              "access": "Z2",
+              "anchor": {
+                "x": 13,
+                "y": 16
+              },
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [],
+          "roomSplits": [],
+          "decorations": [
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 23,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 23,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 23,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_mining_pick",
+              "x": 23,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 0,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_damp_mark",
+              "x": 23,
+              "y": 20,
+              "rotation": 0
+            },
+            {
+              "type": "wall_chain",
+              "x": 0,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 23,
+              "y": 23,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancient_symbol",
+              "x": 0,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_vault_seal",
+              "x": 23,
+              "y": 26,
+              "rotation": 0
+            },
+            {
+              "type": "wall_crypt_lamp",
+              "x": 0,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "wall_cellar_rope",
+              "x": 23,
+              "y": 29,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_burial_urn",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 2
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 3,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": -2,
+          "to": -1,
+          "a": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          }
+        },
+        {
+          "from": -1,
+          "to": 0,
+          "a": {
+            "trigger": {
+              "x": 12,
+              "y": 5
+            },
+            "arrival": {
+              "x": 12,
+              "y": 6
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 12,
+              "y": 5
+            },
+            "arrival": {
+              "x": 12,
+              "y": 6
+            }
+          }
+        },
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 12,
+              "y": 2
+            },
+            "arrival": {
+              "x": 12,
+              "y": 3
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "guard_bench",
+          "version": 1
+        },
+        {
+          "id": "watch_desk",
+          "version": 1
+        },
+        {
+          "id": "supply_crate",
+          "version": 1
+        },
+        {
+          "id": "weapon_rack",
+          "version": 2
+        },
+        {
+          "id": "archive_shelf",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "vault_safe",
+          "version": 1
+        },
+        {
+          "id": "cellar_rack",
+          "version": 1
+        },
+        {
+          "id": "supply_cask",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "grain_bin",
+          "version": 1
+        },
+        {
+          "id": "military_locker",
+          "version": 1
+        },
+        {
+          "id": "noble_writing_desk",
+          "version": 1
+        },
+        {
+          "id": "silver_cabinet",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "audience_throne",
+          "version": 1
+        },
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "noble_canopy_bed",
+          "version": 1
+        },
+        {
+          "id": "noble_wardrobe",
+          "version": 1
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "armchair",
+          "version": 2
+        },
+        {
+          "id": "noble_bookcase",
+          "version": 1
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed review prototype, no runtime locks or detention. Basement footprint matches above-ground building.",
+        "Pass II-B2: authored functional room divisions with open 2-cell passages and central public circulation; access metadata only, not runtime locking. Individual review remains required."
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "CLINIC_M01",
+      "error": "TypeError: Cannot read properties of undefined (reading 'push')"
+    },
+    {
+      "id": "SP_CLINIC",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "details": [
+        {
+          "level": 0,
+          "removedDecorations": [],
+          "layout": [
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "width": 5,
+              "height": 9
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "width": 5,
+              "height": 8
+            },
+            {
+              "type": "treatment",
+              "access": "Z1",
+              "width": 4,
+              "height": 9
+            },
+            {
+              "type": "medical_workroom",
+              "access": "Z2",
+              "width": 4,
+              "height": 8
+            },
+            {
+              "type": "corridor",
+              "access": "Z1",
+              "width": 3,
+              "height": 18
+            }
+          ]
+        }
+      ],
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "treatment",
+              "area": 252,
+              "functions": [
+                "treat",
+                "storage",
+                "reception"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 239
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 252,
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 240
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "treatment",
+              "area": 47,
+              "functions": [
+                "treat"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 54,
+              "functions": []
+            },
+            {
+              "type": "treatment",
+              "area": 38,
+              "functions": [
+                "treat"
+              ]
+            },
+            {
+              "type": "reception",
+              "area": 42,
+              "functions": [
+                "reception",
+                "sit"
+              ]
+            },
+            {
+              "type": "medical_workroom",
+              "area": 34,
+              "functions": [
+                "storage",
+                "wash"
+              ]
+            }
+          ],
+          "stationCount": 9,
+          "accessibleCells": 198
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 252,
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 240
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    },
+    {
+      "id": "HALL_M01",
+      "error": "TypeError: Cannot read properties of undefined (reading 'push')"
+    },
+    {
+      "id": "SP_KEEP_VAULT",
+      "baseVersion": 2,
+      "candidateVersion": 3,
+      "details": [
+        {
+          "level": 0,
+          "removedDecorations": [],
+          "layout": [
+            {
+              "type": "guardroom",
+              "access": "Z3",
+              "width": 8,
+              "height": 13
+            },
+            {
+              "type": "waiting",
+              "access": "Z1",
+              "width": 8,
+              "height": 16
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "width": 8,
+              "height": 8
+            },
+            {
+              "type": "audience_hall",
+              "access": "Z1",
+              "width": 8,
+              "height": 21
+            },
+            {
+              "type": "corridor",
+              "access": "Z1",
+              "width": 4,
+              "height": 30
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "removedDecorations": [],
+          "layout": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "width": 8,
+              "height": 12
+            },
+            {
+              "type": "office",
+              "access": "Z4",
+              "width": 8,
+              "height": 8
+            },
+            {
+              "type": "storage",
+              "access": "Z2",
+              "width": 8,
+              "height": 8
+            },
+            {
+              "type": "bedroom",
+              "access": "Z4",
+              "width": 8,
+              "height": 12
+            },
+            {
+              "type": "living_room",
+              "access": "Z4",
+              "width": 8,
+              "height": 10
+            },
+            {
+              "type": "washroom",
+              "access": "Z4",
+              "width": 8,
+              "height": 6
+            },
+            {
+              "type": "corridor",
+              "access": "Z1",
+              "width": 4,
+              "height": 30
+            }
+          ]
+        }
+      ],
+      "before": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "guardroom",
+              "area": 660,
+              "functions": [
+                "sit",
+                "observe",
+                "storage",
+                "equip"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 649
+        },
+        {
+          "level": 1,
+          "rooms": [
+            {
+              "type": "archive",
+              "area": 660,
+              "functions": [
+                "read",
+                "administration"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 647
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "treasury",
+              "area": 660,
+              "functions": [
+                "storage",
+                "administration",
+                "read"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 649
+        },
+        {
+          "level": -2,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 660,
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 648
+        }
+      ],
+      "after": [
+        {
+          "level": 0,
+          "rooms": [
+            {
+              "type": "guardroom",
+              "area": 106,
+              "functions": [
+                "sit",
+                "observe",
+                "equip",
+                "storage"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 120,
+              "functions": []
+            },
+            {
+              "type": "storage",
+              "area": 66,
+              "functions": [
+                "storage"
+              ]
+            },
+            {
+              "type": "audience_hall",
+              "area": 170,
+              "functions": [
+                "sit",
+                "meeting"
+              ]
+            },
+            {
+              "type": "waiting",
+              "area": 130,
+              "functions": [
+                "reception",
+                "sit"
+              ]
+            }
+          ],
+          "stationCount": 18,
+          "accessibleCells": 562
+        },
+        {
+          "level": 1,
+          "rooms": [
+            {
+              "type": "archive",
+              "area": 98,
+              "functions": [
+                "read"
+              ]
+            },
+            {
+              "type": "corridor",
+              "area": 120,
+              "functions": []
+            },
+            {
+              "type": "bedroom",
+              "area": 98,
+              "functions": [
+                "sleep",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "office",
+              "area": 66,
+              "functions": [
+                "administration"
+              ]
+            },
+            {
+              "type": "living_room",
+              "area": 82,
+              "functions": [
+                "rest",
+                "read",
+                "sit"
+              ]
+            },
+            {
+              "type": "storage",
+              "area": 66,
+              "functions": [
+                "storage"
+              ]
+            },
+            {
+              "type": "washroom",
+              "area": 50,
+              "functions": [
+                "wash",
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 17,
+          "accessibleCells": 549
+        },
+        {
+          "level": -1,
+          "rooms": [
+            {
+              "type": "treasury",
+              "area": 660,
+              "functions": [
+                "storage",
+                "administration",
+                "read"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 649
+        },
+        {
+          "level": -2,
+          "rooms": [
+            {
+              "type": "storage",
+              "area": 660,
+              "functions": [
+                "storage"
+              ]
+            }
+          ],
+          "stationCount": 5,
+          "accessibleCells": 648
+        }
+      ],
+      "baselineIssues": [],
+      "issues": []
+    }
+  ]
+}
