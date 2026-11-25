@@ -63,3 +63,5 @@ Obciążenie orientacyjne wysokie: 6 zapisanych partii (B12f/g/h, katalog, kotwi
 
 ## CMS 1.0 — audyt po czacie (6), 2026-11-25
 Użytkownik zgłosił wyczerpanie pamięci po jednym poleceniu. Zapis czatu (6) wykazuje 6 partii i dwie przerwane próby narzędzia; przyczyna limitu niepotwierdzona. Przed migracją handover 19095 znaków, stan 13367, backlog 16022, reguły 2630. Wdrożono odczyt warstwowy i ograniczenie partii; odczyty dokumentów oraz aktualizacje wyłącznie dokumentacyjne. Obciążenie audytu orientacyjnie wysokie, brak telemetrii; zalecany nowy czat i test A/B/C z CMS_1.0.md. Nie wykonano testów gry.
+
+- 2026-11-25 | MTL-006 decyzje r15 | Odczyt: handover/reguły, metadata HEAD i checkpointu, B12h/B9, selekcja results 14/33 z JSON (~252 kB przetworzone w narzędziu; powtórny odczyt do selekcji), właściwe sekcje MDS/FDS, checkpoint plików pamięci; pełne logi nieprzekazane do kontekstu. 16 propozycji, brak testów i zmian map. Obciążenie orientacyjne: umiarkowane; brak przerwań, początkowa ścieżka WORK_RULES 404 skorygowana; checkpoint pakietu. Nowy czat niewymagany do decyzji.
