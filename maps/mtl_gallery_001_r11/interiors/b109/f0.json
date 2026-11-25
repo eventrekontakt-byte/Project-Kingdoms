@@ -1,0 +1,945 @@
+{
+  "id": "mtl_gallery_001.b109.f0",
+  "buildingId": "mtl_gallery_001.b109",
+  "level": 0,
+  "width": 14,
+  "height": 18,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 14,
+    "h": 18
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b109.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 17,
+        "w": 14,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 16
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 1,
+        "w": 1,
+        "h": 16
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.wall5",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 8,
+        "w": 4,
+        "h": 1
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.wall6",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 8,
+        "w": 4,
+        "h": 1
+      },
+      "kind": "partition"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b109.f0.o1",
+      "type": "bed_double",
+      "name": "Łóżko dwuosobowe",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 5,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "back": 0,
+        "mode": "head"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bed_double",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o1.s1",
+          "action": "sleep",
+          "capacity": 2,
+          "approach": {
+            "x": 1,
+            "y": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.o2",
+      "type": "wardrobe",
+      "name": "Szafa",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "wardrobe",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 12,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.o3",
+      "type": "dresser",
+      "name": "Komoda",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 1,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "dresser",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 4,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.o4",
+      "type": "washstand",
+      "name": "Umywalka z misą",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "washstand",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o4.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 8,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.o5",
+      "type": "tactical_table",
+      "name": "Stół strategiczny",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 2,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "tactical_table",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o5.s1",
+          "action": "planning",
+          "capacity": 1,
+          "approach": {
+            "x": 3,
+            "y": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.o6",
+      "type": "dispatch_desk",
+      "name": "Biurko meldunkowe",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 14,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "dispatch_desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o6.s1",
+          "action": "administration",
+          "capacity": 1,
+          "approach": {
+            "x": 1,
+            "y": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.o7",
+      "type": "bookcase",
+      "name": "Regał z książkami",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 9,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bookcase",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o7.s1",
+          "action": "read",
+          "capacity": 1,
+          "approach": {
+            "x": 11,
+            "y": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.o8",
+      "type": "guard_bench",
+      "name": "Ława wartownicza",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 14,
+        "w": 1,
+        "h": 3
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "guard_bench",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b109.f0.o8.s1",
+          "action": "sit",
+          "capacity": 1,
+          "approach": {
+            "x": 12,
+            "y": 15
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b109.f0.dec1",
+      "type": "prop_candle",
+      "name": "Świeca",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_candle",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o3",
+      "slot": 0,
+      "allowedHosts": [
+        "table_small",
+        "table_large",
+        "side_table",
+        "reading_desk",
+        "dresser",
+        "altar"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec2",
+      "type": "prop_flower_vase",
+      "name": "Wazon z kwiatami",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 4,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_flower_vase",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o3",
+      "slot": 2,
+      "allowedHosts": [
+        "side_table",
+        "dresser",
+        "altar"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec3",
+      "type": "prop_comb",
+      "name": "Grzebień",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_comb",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o3",
+      "slot": 0,
+      "allowedHosts": [
+        "dresser"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec4",
+      "type": "prop_jug",
+      "name": "Dzbanek",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_jug",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "side_table",
+        "washstand",
+        "water_jug_stand"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec5",
+      "type": "prop_folded_cloth",
+      "name": "Złożona tkanina",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 8,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_folded_cloth",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o4",
+      "slot": 2,
+      "allowedHosts": [
+        "dresser",
+        "washstand",
+        "linen_cabinet",
+        "crate"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec6",
+      "type": "prop_orders",
+      "name": "Rozkazy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_orders",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o5",
+      "slot": 0,
+      "allowedHosts": [
+        "dispatch_desk",
+        "tactical_table",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec7",
+      "type": "prop_tactical_map",
+      "name": "Mapa taktyczna",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_tactical_map",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o5",
+      "slot": 2,
+      "allowedHosts": [
+        "tactical_table"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec8",
+      "type": "prop_map_marker",
+      "name": "Znacznik mapy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_map_marker",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o5",
+      "slot": 0,
+      "allowedHosts": [
+        "tactical_table"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec9",
+      "type": "prop_orders",
+      "name": "Rozkazy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_orders",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o6",
+      "slot": 0,
+      "allowedHosts": [
+        "dispatch_desk",
+        "tactical_table",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec10",
+      "type": "prop_sealed_dispatch",
+      "name": "Zapieczętowany meldunek",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_sealed_dispatch",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o6",
+      "slot": 2,
+      "allowedHosts": [
+        "dispatch_desk",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec11",
+      "type": "prop_guard_badge",
+      "name": "Odznaka straży",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_guard_badge",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o6",
+      "slot": 0,
+      "allowedHosts": [
+        "dispatch_desk",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec12",
+      "type": "prop_book_closed",
+      "name": "Zamknięta książka",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_book_closed",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o7",
+      "slot": 0,
+      "allowedHosts": [
+        "side_table",
+        "school_desk",
+        "shelf",
+        "bookcase"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec13",
+      "type": "prop_book_open",
+      "name": "Otwarta książka",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_book_open",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o7",
+      "slot": 2,
+      "allowedHosts": [
+        "desk",
+        "reading_desk",
+        "alchemy",
+        "lectern",
+        "bookcase",
+        "writing_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec14",
+      "type": "prop_scroll",
+      "name": "Zwój",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 10,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_scroll",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o7",
+      "slot": 0,
+      "allowedHosts": [
+        "bookcase"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec15",
+      "type": "prop_water_flask",
+      "name": "Bukłak",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_water_flask",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b109.f0.o8",
+      "slot": 0,
+      "allowedHosts": [
+        "supply_crate",
+        "guard_bench",
+        "military_locker"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec16",
+      "type": "wall_shield",
+      "name": "Tarcza ozdobna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_shield",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec17",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec18",
+      "type": "wall_banner",
+      "name": "Chorągiew",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 15,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_banner",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.dec19",
+      "type": "rug_small",
+      "name": "Dywanik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 2,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_small",
+        "version": 1
+      }
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [
+    {
+      "id": "mtl_gallery_001.b109.f0.cut1",
+      "kind": "open",
+      "a": {
+        "x": 5,
+        "y": 8
+      },
+      "b": {
+        "x": 5,
+        "y": 9
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.cut2",
+      "kind": "open",
+      "a": {
+        "x": 6,
+        "y": 8
+      },
+      "b": {
+        "x": 6,
+        "y": 9
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.cut3",
+      "kind": "open",
+      "a": {
+        "x": 7,
+        "y": 8
+      },
+      "b": {
+        "x": 7,
+        "y": 9
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b109.f0.cut4",
+      "kind": "open",
+      "a": {
+        "x": 8,
+        "y": 8
+      },
+      "b": {
+        "x": 8,
+        "y": 9
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "type": "bedroom",
+      "access": "Z4",
+      "anchor": {
+        "x": 7,
+        "y": 4
+      },
+      "functions": [
+        "sleep",
+        "storage",
+        "wash"
+      ],
+      "id": "mtl_gallery_001.b109.f0.r1"
+    },
+    {
+      "type": "office",
+      "access": "Z3",
+      "anchor": {
+        "x": 7,
+        "y": 13
+      },
+      "functions": [
+        "planning",
+        "administration",
+        "read",
+        "sit"
+      ],
+      "id": "mtl_gallery_001.b109.f0.r2"
+    }
+  ],
+  "templateRef": {
+    "id": "OFFICER_M01",
+    "version": 1
+  }
+}
