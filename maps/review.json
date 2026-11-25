@@ -118,6 +118,13 @@
       "mapRevision": 15,
       "manifest": "mtl_gallery_001_r15/manifest.json",
       "profile": "final"
+    },
+    {
+      "mapId": "city_001",
+      "mapRevision": 1,
+      "manifest": "city_001/manifest.json",
+      "profile": "infrastructure",
+      "name": "Miasto 1 — rewizja 1"
     }
   ]
 }

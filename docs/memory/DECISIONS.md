@@ -40,3 +40,6 @@ Data 2026-11-25; użytkownik zaakceptował skorygowane podejście po wskazaniu p
 
 ## D015 — CITY-001a.04 bilans Miasta 1 i NPC tła
 2026-11-25; B01–B07 zatwierdzone 7/7: struktura 40/8/10/4/4/5/1, podział dzielnicowy 96, wykaz nieruchomości i specjalizacje, klasy i obwiednie P1–P6, 24 wolne w tym 4 w centrum, cele pojemności 5/8/16/5 z późniejszym dostosowaniem/odbiorem wnętrz, rezerwa 16 664 kafle z obowiązkiem późniejszej kontroli geometrii. Uwaga: część NPC będzie tylko tłem. Rozróżnić populację docelową i pełnoprawną/uprośczoną symulację; proporcje, zasady i powiązanie z miejscami snu w 08; nie uznawać za zmianę zatwierdzonych celów ani zgodę na implementację. [Bilans](../CITY_001a_04_PARCEL_BUDGET.md). STOP użytkownika, 05 nie rozpoczynać; nowy czat, bez programowania i mapy.
+
+## D016 — delegowanie realizacji miasta
+2026-11-25; użytkownik polecił zakończyć mikroakceptacje i stworzyć mapę w pełni na bazie MTL i zatwierdzonych ustaleń. Realizować większe partie samodzielnie, zapisywać checkpointy bez przymusowej zmiany czatu; zgłaszać rzeczywiste blokery. D012–D015 pozostają. CITY-001 r1 zapisane w review; wybór modeli/położenia i konkretne korekty asystenta opisane w [raporcie](../CITY_001_R1_BUILD_REPORT.md). Nie jest to akceptacja nieprzeprowadzonych testów, zmiana MDS/MFS, automatyczna migracja ani publikacja produkcyjna.
