@@ -1,0 +1,5602 @@
+[
+  {
+    "id": "mtl_gallery_001.b001.portal1",
+    "name": "Wejście — Chata mała",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 7,
+        "y": 21
+      },
+      "arrival": {
+        "x": 7,
+        "y": 22
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b001.f0",
+      "trigger": {
+        "x": 4,
+        "y": 9
+      },
+      "arrival": {
+        "x": 4,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b002.portal1",
+    "name": "Wejście — Chata standardowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 33,
+        "y": 21
+      },
+      "arrival": {
+        "x": 33,
+        "y": 22
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b002.f0",
+      "trigger": {
+        "x": 5,
+        "y": 9
+      },
+      "arrival": {
+        "x": 5,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b003.portal1",
+    "name": "Wejście — Chata duża",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 59,
+        "y": 21
+      },
+      "arrival": {
+        "x": 59,
+        "y": 22
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b003.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b004.portal1",
+    "name": "Wejście — Dom S – otwarty",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 85,
+        "y": 21
+      },
+      "arrival": {
+        "x": 85,
+        "y": 22
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b004.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b005.portal1",
+    "name": "Wejście — Dom S – sypialnia boczna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 111,
+        "y": 21
+      },
+      "arrival": {
+        "x": 111,
+        "y": 22
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b005.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b006.portal1",
+    "name": "Wejście — Dom S – sypialnia tylna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 137,
+        "y": 21
+      },
+      "arrival": {
+        "x": 137,
+        "y": 22
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b006.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b007.portal1",
+    "name": "Wejście — Dom M – wspólna izba",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 47
+      },
+      "arrival": {
+        "x": 8,
+        "y": 48
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b007.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b008.portal1",
+    "name": "Wejście — Dom M – boczne pokoje",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 47
+      },
+      "arrival": {
+        "x": 34,
+        "y": 48
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b008.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b009.portal1",
+    "name": "Wejście — Dom M – izba tylna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 47
+      },
+      "arrival": {
+        "x": 60,
+        "y": 48
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b009.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b010.portal1",
+    "name": "Wejście — Dom L – rodzinna sala",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 86,
+        "y": 47
+      },
+      "arrival": {
+        "x": 86,
+        "y": 48
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b010.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b011.portal1",
+    "name": "Wejście — Dom L – skrzydło mieszkalne",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 47
+      },
+      "arrival": {
+        "x": 112,
+        "y": 48
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b011.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b012.portal1",
+    "name": "Wejście — Dom L – dwie strefy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 138,
+        "y": 47
+      },
+      "arrival": {
+        "x": 138,
+        "y": 48
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b012.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b013.portal1",
+    "name": "Wejście — Sklep mały",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 7,
+        "y": 73
+      },
+      "arrival": {
+        "x": 7,
+        "y": 74
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b013.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b014.portal1",
+    "name": "Wejście — Sklep standardowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 73
+      },
+      "arrival": {
+        "x": 34,
+        "y": 74
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b014.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b015.portal1",
+    "name": "Wejście — Sklep duży",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 73
+      },
+      "arrival": {
+        "x": 60,
+        "y": 74
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b015.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b016.portal1",
+    "name": "Wejście — Kuźnia mała",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 85,
+        "y": 73
+      },
+      "arrival": {
+        "x": 85,
+        "y": 74
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b016.f0",
+      "trigger": {
+        "x": 5,
+        "y": 13
+      },
+      "arrival": {
+        "x": 5,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b017.portal1",
+    "name": "Wejście — Kuźnia standardowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 73
+      },
+      "arrival": {
+        "x": 112,
+        "y": 74
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b017.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b018.portal1",
+    "name": "Wejście — Kuźnia duża",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 138,
+        "y": 73
+      },
+      "arrival": {
+        "x": 138,
+        "y": 74
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b018.f0",
+      "trigger": {
+        "x": 7,
+        "y": 17
+      },
+      "arrival": {
+        "x": 7,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b019.portal1",
+    "name": "Wejście — Piekarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 99
+      },
+      "arrival": {
+        "x": 8,
+        "y": 100
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b019.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b020.portal1",
+    "name": "Wejście — Apteka",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 99
+      },
+      "arrival": {
+        "x": 34,
+        "y": 100
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b020.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b021.portal1",
+    "name": "Wejście — Magazyn",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 99
+      },
+      "arrival": {
+        "x": 61,
+        "y": 100
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b021.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b022.portal1",
+    "name": "Wejście — Karczma – do adaptacji",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 87,
+        "y": 99
+      },
+      "arrival": {
+        "x": 87,
+        "y": 100
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b022.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b023.portal1",
+    "name": "Wejście — Kamienica – dwie kondygnacje",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 99
+      },
+      "arrival": {
+        "x": 112,
+        "y": 100
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b023.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b023.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b023.f0",
+      "trigger": {
+        "x": 9,
+        "y": 12
+      },
+      "arrival": {
+        "x": 9,
+        "y": 13
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b023.f1",
+      "trigger": {
+        "x": 9,
+        "y": 12
+      },
+      "arrival": {
+        "x": 9,
+        "y": 13
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b024.portal1",
+    "name": "Wejście — Rezydencja rodzinna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 139,
+        "y": 99
+      },
+      "arrival": {
+        "x": 139,
+        "y": 100
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b024.f0",
+      "trigger": {
+        "x": 8,
+        "y": 17
+      },
+      "arrival": {
+        "x": 8,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b024.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b024.f0",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b024.f1",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b025.portal1",
+    "name": "Wejście — Dom kupiecki z piętrem",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 125
+      },
+      "arrival": {
+        "x": 9,
+        "y": 126
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b025.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b025.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b025.f0",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b025.f1",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b026.portal1",
+    "name": "Wejście — Kamienica trzykondygnacyjna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 35,
+        "y": 125
+      },
+      "arrival": {
+        "x": 35,
+        "y": 126
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b026.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b026.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b026.f0",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b026.f1",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b026.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b026.f1",
+      "trigger": {
+        "x": 5,
+        "y": 2
+      },
+      "arrival": {
+        "x": 5,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b026.f2",
+      "trigger": {
+        "x": 5,
+        "y": 2
+      },
+      "arrival": {
+        "x": 5,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b027.portal1",
+    "name": "Wejście — Karczma z noclegami",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 62,
+        "y": 125
+      },
+      "arrival": {
+        "x": 62,
+        "y": 126
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b027.f0",
+      "trigger": {
+        "x": 10,
+        "y": 23
+      },
+      "arrival": {
+        "x": 10,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b027.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b027.f0",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b027.f1",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b028.portal1",
+    "name": "Wejście — Warsztat stolarski",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 86,
+        "y": 125
+      },
+      "arrival": {
+        "x": 86,
+        "y": 126
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b028.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b029.portal1",
+    "name": "Wejście — Warsztat tkacki",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 125
+      },
+      "arrival": {
+        "x": 112,
+        "y": 126
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b029.f0",
+      "trigger": {
+        "x": 7,
+        "y": 17
+      },
+      "arrival": {
+        "x": 7,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b030.portal1",
+    "name": "Wejście — Biblioteka miejska",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 139,
+        "y": 125
+      },
+      "arrival": {
+        "x": 139,
+        "y": 126
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b030.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b031.portal1",
+    "name": "Wejście — Szkoła miejska",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 151
+      },
+      "arrival": {
+        "x": 9,
+        "y": 152
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b031.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b032.portal1",
+    "name": "Wejście — Kaplica",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 151
+      },
+      "arrival": {
+        "x": 34,
+        "y": 152
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b032.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b033.portal1",
+    "name": "Wejście — Lecznica",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 151
+      },
+      "arrival": {
+        "x": 61,
+        "y": 152
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b033.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b034.portal1",
+    "name": "Wejście — Ratusz – sala urzędowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 151
+      },
+      "arrival": {
+        "x": 88,
+        "y": 152
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b034.f0",
+      "trigger": {
+        "x": 10,
+        "y": 23
+      },
+      "arrival": {
+        "x": 10,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b035.portal1",
+    "name": "Wejście — Koszary",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 114,
+        "y": 151
+      },
+      "arrival": {
+        "x": 114,
+        "y": 152
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b035.f0",
+      "trigger": {
+        "x": 10,
+        "y": 23
+      },
+      "arrival": {
+        "x": 10,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b036.portal1",
+    "name": "Wejście — Zbrojownia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 139,
+        "y": 151
+      },
+      "arrival": {
+        "x": 139,
+        "y": 152
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b036.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b037.portal1",
+    "name": "Wejście — Strażnica",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 177
+      },
+      "arrival": {
+        "x": 8,
+        "y": 178
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b037.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b038.portal1",
+    "name": "Wejście — Spichlerz",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 177
+      },
+      "arrival": {
+        "x": 34,
+        "y": 178
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b038.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b039.portal1",
+    "name": "Wejście — Stodoła",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 177
+      },
+      "arrival": {
+        "x": 60,
+        "y": 178
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b039.f0",
+      "trigger": {
+        "x": 7,
+        "y": 17
+      },
+      "arrival": {
+        "x": 7,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b040.portal1",
+    "name": "Wejście — Stajnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 87,
+        "y": 177
+      },
+      "arrival": {
+        "x": 87,
+        "y": 178
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b040.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b041.portal1",
+    "name": "Wejście — Browar",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 113,
+        "y": 177
+      },
+      "arrival": {
+        "x": 113,
+        "y": 178
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b041.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b042.portal1",
+    "name": "Wejście — Łaźnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 139,
+        "y": 177
+      },
+      "arrival": {
+        "x": 139,
+        "y": 178
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b042.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b043.portal1",
+    "name": "Wejście — Dom gildii",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 203
+      },
+      "arrival": {
+        "x": 9,
+        "y": 204
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b043.f0",
+      "trigger": {
+        "x": 9,
+        "y": 19
+      },
+      "arrival": {
+        "x": 9,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b044.portal1",
+    "name": "Wejście — Sklep – artykuły domowe",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 203
+      },
+      "arrival": {
+        "x": 34,
+        "y": 204
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b044.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b045.portal1",
+    "name": "Wejście — Duża piekarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 203
+      },
+      "arrival": {
+        "x": 60,
+        "y": 204
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b045.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b046.portal1",
+    "name": "Wejście — Apteka z pracownią",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 86,
+        "y": 203
+      },
+      "arrival": {
+        "x": 86,
+        "y": 204
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b046.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b047.portal1",
+    "name": "Wejście — Chata drwala",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 111,
+        "y": 203
+      },
+      "arrival": {
+        "x": 111,
+        "y": 204
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b047.f0",
+      "trigger": {
+        "x": 4,
+        "y": 9
+      },
+      "arrival": {
+        "x": 4,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b048.portal1",
+    "name": "Wejście — Chata tkaczki",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 137,
+        "y": 203
+      },
+      "arrival": {
+        "x": 137,
+        "y": 204
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b048.f0",
+      "trigger": {
+        "x": 5,
+        "y": 9
+      },
+      "arrival": {
+        "x": 5,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b049.portal1",
+    "name": "Wejście — Chata zielarki",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 7,
+        "y": 229
+      },
+      "arrival": {
+        "x": 7,
+        "y": 230
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b049.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b050.portal1",
+    "name": "Wejście — Dom samotnego rzemieślnika",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 33,
+        "y": 229
+      },
+      "arrival": {
+        "x": 33,
+        "y": 230
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b050.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b051.portal1",
+    "name": "Wejście — Dom młodej rodziny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 59,
+        "y": 229
+      },
+      "arrival": {
+        "x": 59,
+        "y": 230
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b051.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b052.portal1",
+    "name": "Wejście — Dom starszej osoby",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 85,
+        "y": 229
+      },
+      "arrival": {
+        "x": 85,
+        "y": 230
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b052.f0",
+      "trigger": {
+        "x": 5,
+        "y": 11
+      },
+      "arrival": {
+        "x": 5,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b053.portal1",
+    "name": "Wejście — Dom uczonego",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 229
+      },
+      "arrival": {
+        "x": 112,
+        "y": 230
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b053.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b054.portal1",
+    "name": "Wejście — Dom krawca",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 138,
+        "y": 229
+      },
+      "arrival": {
+        "x": 138,
+        "y": 230
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b054.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b055.portal1",
+    "name": "Wejście — Dom ogrodnika",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 255
+      },
+      "arrival": {
+        "x": 8,
+        "y": 256
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b055.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b056.portal1",
+    "name": "Wejście — Dom zamożnej rodziny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 255
+      },
+      "arrival": {
+        "x": 34,
+        "y": 256
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b056.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b057.portal1",
+    "name": "Wejście — Dom kolekcjonera",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 255
+      },
+      "arrival": {
+        "x": 60,
+        "y": 256
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b057.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b058.portal1",
+    "name": "Wejście — Dom pisarza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 86,
+        "y": 255
+      },
+      "arrival": {
+        "x": 86,
+        "y": 256
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b058.f0",
+      "trigger": {
+        "x": 7,
+        "y": 15
+      },
+      "arrival": {
+        "x": 7,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b059.portal1",
+    "name": "Wejście — Rezydencja rodzinna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 113,
+        "y": 255
+      },
+      "arrival": {
+        "x": 113,
+        "y": 256
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b059.f0",
+      "trigger": {
+        "x": 8,
+        "y": 17
+      },
+      "arrival": {
+        "x": 8,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b059.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b059.f0",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b059.f1",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b060.portal1",
+    "name": "Wejście — Dom kupca tekstylnego",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 139,
+        "y": 255
+      },
+      "arrival": {
+        "x": 139,
+        "y": 256
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b060.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b060.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b060.f0",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b060.f1",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b061.portal1",
+    "name": "Wejście — Kamienica rzemieślnicza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 281
+      },
+      "arrival": {
+        "x": 8,
+        "y": 282
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b061.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b061.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b061.f0",
+      "trigger": {
+        "x": 9,
+        "y": 12
+      },
+      "arrival": {
+        "x": 9,
+        "y": 13
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b061.f1",
+      "trigger": {
+        "x": 9,
+        "y": 12
+      },
+      "arrival": {
+        "x": 9,
+        "y": 13
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b062.portal1",
+    "name": "Wejście — Kamienica mieszczańska",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 35,
+        "y": 281
+      },
+      "arrival": {
+        "x": 35,
+        "y": 282
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b062.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b062.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b062.f0",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b062.f1",
+      "trigger": {
+        "x": 2,
+        "y": 2
+      },
+      "arrival": {
+        "x": 2,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b062.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b062.f1",
+      "trigger": {
+        "x": 5,
+        "y": 2
+      },
+      "arrival": {
+        "x": 5,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b062.f2",
+      "trigger": {
+        "x": 5,
+        "y": 2
+      },
+      "arrival": {
+        "x": 5,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b063.portal1",
+    "name": "Wejście — Jubiler",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 281
+      },
+      "arrival": {
+        "x": 60,
+        "y": 282
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b063.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b064.portal1",
+    "name": "Wejście — Sklep sukienniczy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 86,
+        "y": 281
+      },
+      "arrival": {
+        "x": 86,
+        "y": 282
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b064.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b065.portal1",
+    "name": "Wejście — Sklep korzenny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 281
+      },
+      "arrival": {
+        "x": 112,
+        "y": 282
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b065.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b066.portal1",
+    "name": "Wejście — Piekarnia z salą sprzedaży",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 138,
+        "y": 281
+      },
+      "arrival": {
+        "x": 138,
+        "y": 282
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b066.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b067.portal1",
+    "name": "Wejście — Rybi targ pod dachem",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 307
+      },
+      "arrival": {
+        "x": 9,
+        "y": 308
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b067.f0",
+      "trigger": {
+        "x": 8,
+        "y": 13
+      },
+      "arrival": {
+        "x": 8,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b068.portal1",
+    "name": "Wejście — Sklep mięsny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 307
+      },
+      "arrival": {
+        "x": 34,
+        "y": 308
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b068.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b069.portal1",
+    "name": "Wejście — Księgarnia z czytelnią",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 307
+      },
+      "arrival": {
+        "x": 60,
+        "y": 308
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b069.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b070.portal1",
+    "name": "Wejście — Zakład balwierza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 86,
+        "y": 307
+      },
+      "arrival": {
+        "x": 86,
+        "y": 308
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b070.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b071.portal1",
+    "name": "Wejście — Punkt napraw i szewc",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 307
+      },
+      "arrival": {
+        "x": 112,
+        "y": 308
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b071.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b072.portal1",
+    "name": "Wejście — Kancelaria pisarza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 138,
+        "y": 307
+      },
+      "arrival": {
+        "x": 138,
+        "y": 308
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b072.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b073.portal1",
+    "name": "Wejście — Herbaciarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 333
+      },
+      "arrival": {
+        "x": 9,
+        "y": 334
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b073.f0",
+      "trigger": {
+        "x": 8,
+        "y": 17
+      },
+      "arrival": {
+        "x": 8,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b074.portal1",
+    "name": "Wejście — Łaźnia miejska z recepcją",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 333
+      },
+      "arrival": {
+        "x": 34,
+        "y": 334
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b074.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b075.portal1",
+    "name": "Wejście — Gabinet medyka",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 333
+      },
+      "arrival": {
+        "x": 60,
+        "y": 334
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b075.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b076.portal1",
+    "name": "Wejście — Zajazd podróżnych",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 87,
+        "y": 333
+      },
+      "arrival": {
+        "x": 87,
+        "y": 334
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b076.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b076.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b076.f0",
+      "trigger": {
+        "x": 15,
+        "y": 16
+      },
+      "arrival": {
+        "x": 15,
+        "y": 17
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b076.f1",
+      "trigger": {
+        "x": 15,
+        "y": 16
+      },
+      "arrival": {
+        "x": 15,
+        "y": 17
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b077.portal1",
+    "name": "Wejście — Dom depozytowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 333
+      },
+      "arrival": {
+        "x": 112,
+        "y": 334
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b077.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b078.portal1",
+    "name": "Wejście — Zielarnia i apteka",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 138,
+        "y": 333
+      },
+      "arrival": {
+        "x": 138,
+        "y": 334
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b078.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b079.portal1",
+    "name": "Wejście — Kuźnia podkuwacza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 359
+      },
+      "arrival": {
+        "x": 8,
+        "y": 360
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b079.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b080.portal1",
+    "name": "Wejście — Kuźnia płatnerza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 36,
+        "y": 359
+      },
+      "arrival": {
+        "x": 36,
+        "y": 360
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b080.f0",
+      "trigger": {
+        "x": 10,
+        "y": 17
+      },
+      "arrival": {
+        "x": 10,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b081.portal1",
+    "name": "Wejście — Stolarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 359
+      },
+      "arrival": {
+        "x": 61,
+        "y": 360
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b081.f0",
+      "trigger": {
+        "x": 8,
+        "y": 17
+      },
+      "arrival": {
+        "x": 8,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b082.portal1",
+    "name": "Wejście — Warsztat bednarza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 359
+      },
+      "arrival": {
+        "x": 88,
+        "y": 360
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b082.f0",
+      "trigger": {
+        "x": 10,
+        "y": 15
+      },
+      "arrival": {
+        "x": 10,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b083.portal1",
+    "name": "Wejście — Garbarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 113,
+        "y": 359
+      },
+      "arrival": {
+        "x": 113,
+        "y": 360
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b083.f0",
+      "trigger": {
+        "x": 8,
+        "y": 17
+      },
+      "arrival": {
+        "x": 8,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b084.portal1",
+    "name": "Wejście — Tkalnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 140,
+        "y": 359
+      },
+      "arrival": {
+        "x": 140,
+        "y": 360
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b084.f0",
+      "trigger": {
+        "x": 10,
+        "y": 15
+      },
+      "arrival": {
+        "x": 10,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b085.portal1",
+    "name": "Wejście — Farbiarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 385
+      },
+      "arrival": {
+        "x": 8,
+        "y": 386
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b085.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b086.portal1",
+    "name": "Wejście — Garncarnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 34,
+        "y": 385
+      },
+      "arrival": {
+        "x": 34,
+        "y": 386
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b086.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b087.portal1",
+    "name": "Wejście — Manufaktura ceramiczna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 62,
+        "y": 385
+      },
+      "arrival": {
+        "x": 62,
+        "y": 386
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b087.f0",
+      "trigger": {
+        "x": 10,
+        "y": 17
+      },
+      "arrival": {
+        "x": 10,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b088.portal1",
+    "name": "Wejście — Warsztat kamieniarza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 86,
+        "y": 385
+      },
+      "arrival": {
+        "x": 86,
+        "y": 386
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b088.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b089.portal1",
+    "name": "Wejście — Młyn z magazynem",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 113,
+        "y": 385
+      },
+      "arrival": {
+        "x": 113,
+        "y": 386
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b089.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b090.portal1",
+    "name": "Wejście — Browar produkcyjny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 141,
+        "y": 385
+      },
+      "arrival": {
+        "x": 141,
+        "y": 386
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b090.f0",
+      "trigger": {
+        "x": 12,
+        "y": 19
+      },
+      "arrival": {
+        "x": 12,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b091.portal1",
+    "name": "Wejście — Warsztat świecarza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 411
+      },
+      "arrival": {
+        "x": 8,
+        "y": 412
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b091.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b092.portal1",
+    "name": "Wejście — Papiernia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 36,
+        "y": 411
+      },
+      "arrival": {
+        "x": 36,
+        "y": 412
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b092.f0",
+      "trigger": {
+        "x": 10,
+        "y": 17
+      },
+      "arrival": {
+        "x": 10,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b093.portal1",
+    "name": "Wejście — Huta szkła",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 411
+      },
+      "arrival": {
+        "x": 60,
+        "y": 412
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b093.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b094.portal1",
+    "name": "Wejście — Odlewnia metalu",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 411
+      },
+      "arrival": {
+        "x": 88,
+        "y": 412
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b094.f0",
+      "trigger": {
+        "x": 10,
+        "y": 17
+      },
+      "arrival": {
+        "x": 10,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b095.portal1",
+    "name": "Wejście — Koszary małego oddziału",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 113,
+        "y": 411
+      },
+      "arrival": {
+        "x": 113,
+        "y": 412
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b095.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b096.portal1",
+    "name": "Wejście — Koszary garnizonu",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 140,
+        "y": 411
+      },
+      "arrival": {
+        "x": 140,
+        "y": 412
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b096.f0",
+      "trigger": {
+        "x": 10,
+        "y": 23
+      },
+      "arrival": {
+        "x": 10,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b097.portal1",
+    "name": "Wejście — Zbrojownia straży",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 8,
+        "y": 437
+      },
+      "arrival": {
+        "x": 8,
+        "y": 438
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b097.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b098.portal1",
+    "name": "Wejście — Arsenał garnizonowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 36,
+        "y": 437
+      },
+      "arrival": {
+        "x": 36,
+        "y": 438
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b098.f0",
+      "trigger": {
+        "x": 10,
+        "y": 21
+      },
+      "arrival": {
+        "x": 10,
+        "y": 20
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b099.portal1",
+    "name": "Wejście — Posterunek dzielnicowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 60,
+        "y": 437
+      },
+      "arrival": {
+        "x": 60,
+        "y": 438
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b099.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b100.portal1",
+    "name": "Wejście — Komendantura straży",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 87,
+        "y": 437
+      },
+      "arrival": {
+        "x": 87,
+        "y": 438
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b100.f0",
+      "trigger": {
+        "x": 8,
+        "y": 15
+      },
+      "arrival": {
+        "x": 8,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b101.portal1",
+    "name": "Wejście — Wieża obserwacyjna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 437
+      },
+      "arrival": {
+        "x": 112,
+        "y": 438
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b101.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b101.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b101.f0",
+      "trigger": {
+        "x": 7,
+        "y": 10
+      },
+      "arrival": {
+        "x": 7,
+        "y": 11
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b101.f1",
+      "trigger": {
+        "x": 7,
+        "y": 10
+      },
+      "arrival": {
+        "x": 7,
+        "y": 11
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b102.portal1",
+    "name": "Wejście — Wieża sygnałowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 138,
+        "y": 437
+      },
+      "arrival": {
+        "x": 138,
+        "y": 438
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b102.f0",
+      "trigger": {
+        "x": 6,
+        "y": 13
+      },
+      "arrival": {
+        "x": 6,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b102.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b102.f0",
+      "trigger": {
+        "x": 9,
+        "y": 10
+      },
+      "arrival": {
+        "x": 9,
+        "y": 11
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b102.f1",
+      "trigger": {
+        "x": 9,
+        "y": 10
+      },
+      "arrival": {
+        "x": 9,
+        "y": 11
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b103.portal1",
+    "name": "Wejście — Sala ćwiczeń",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 10,
+        "y": 463
+      },
+      "arrival": {
+        "x": 10,
+        "y": 464
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b103.f0",
+      "trigger": {
+        "x": 10,
+        "y": 23
+      },
+      "arrival": {
+        "x": 10,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b104.portal1",
+    "name": "Wejście — Sala łucznicza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 36,
+        "y": 463
+      },
+      "arrival": {
+        "x": 36,
+        "y": 464
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b104.f0",
+      "trigger": {
+        "x": 10,
+        "y": 23
+      },
+      "arrival": {
+        "x": 10,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b105.portal1",
+    "name": "Wejście — Sztab wojskowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 463
+      },
+      "arrival": {
+        "x": 61,
+        "y": 464
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b105.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b106.portal1",
+    "name": "Wejście — Magazyn wojskowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 463
+      },
+      "arrival": {
+        "x": 88,
+        "y": 464
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b106.f0",
+      "trigger": {
+        "x": 10,
+        "y": 21
+      },
+      "arrival": {
+        "x": 10,
+        "y": 20
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b107.portal1",
+    "name": "Wejście — Lazaret garnizonowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 113,
+        "y": 463
+      },
+      "arrival": {
+        "x": 113,
+        "y": 464
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b107.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b108.portal1",
+    "name": "Wejście — Areszt miejski",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 139,
+        "y": 463
+      },
+      "arrival": {
+        "x": 139,
+        "y": 464
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b108.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b109.portal1",
+    "name": "Wejście — Kwatera oficerska",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 489
+      },
+      "arrival": {
+        "x": 9,
+        "y": 490
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b109.f0",
+      "trigger": {
+        "x": 8,
+        "y": 17
+      },
+      "arrival": {
+        "x": 8,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b110.portal1",
+    "name": "Wejście — Strażnica przy bramie",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 35,
+        "y": 489
+      },
+      "arrival": {
+        "x": 35,
+        "y": 490
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b110.f0",
+      "trigger": {
+        "x": 8,
+        "y": 15
+      },
+      "arrival": {
+        "x": 8,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b110.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b110.f0",
+      "trigger": {
+        "x": 11,
+        "y": 12
+      },
+      "arrival": {
+        "x": 11,
+        "y": 13
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b110.f1",
+      "trigger": {
+        "x": 11,
+        "y": 12
+      },
+      "arrival": {
+        "x": 11,
+        "y": 13
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b111.portal1",
+    "name": "Wejście — Ratusz dzielnicowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 515
+      },
+      "arrival": {
+        "x": 9,
+        "y": 516
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b111.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b112.portal1",
+    "name": "Wejście — Urząd podatkowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 35,
+        "y": 515
+      },
+      "arrival": {
+        "x": 35,
+        "y": 516
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b112.f0",
+      "trigger": {
+        "x": 8,
+        "y": 21
+      },
+      "arrival": {
+        "x": 8,
+        "y": 20
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b113.portal1",
+    "name": "Wejście — Sąd lokalny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 515
+      },
+      "arrival": {
+        "x": 61,
+        "y": 516
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b113.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b114.portal1",
+    "name": "Wejście — Sąd miejski",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 88,
+        "y": 515
+      },
+      "arrival": {
+        "x": 88,
+        "y": 516
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b114.f0",
+      "trigger": {
+        "x": 10,
+        "y": 25
+      },
+      "arrival": {
+        "x": 10,
+        "y": 24
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b115.portal1",
+    "name": "Wejście — Siedziba cechu kupców",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 113,
+        "y": 515
+      },
+      "arrival": {
+        "x": 113,
+        "y": 516
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b115.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b116.portal1",
+    "name": "Wejście — Dom cechu rzemieślników",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 140,
+        "y": 515
+      },
+      "arrival": {
+        "x": 140,
+        "y": 516
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b116.f0",
+      "trigger": {
+        "x": 10,
+        "y": 23
+      },
+      "arrival": {
+        "x": 10,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b117.portal1",
+    "name": "Wejście — Kaplica przydrożna",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 7,
+        "y": 536
+      },
+      "arrival": {
+        "x": 7,
+        "y": 537
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b117.f0",
+      "trigger": {
+        "x": 4,
+        "y": 11
+      },
+      "arrival": {
+        "x": 4,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b118.portal1",
+    "name": "Wejście — Kaplica słońca",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 16,
+        "y": 536
+      },
+      "arrival": {
+        "x": 16,
+        "y": 537
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b118.f0",
+      "trigger": {
+        "x": 4,
+        "y": 13
+      },
+      "arrival": {
+        "x": 4,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b119.portal1",
+    "name": "Wejście — Kaplica rodowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 27,
+        "y": 536
+      },
+      "arrival": {
+        "x": 27,
+        "y": 537
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b119.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b119.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b119.f0",
+      "trigger": {
+        "x": 7,
+        "y": 2
+      },
+      "arrival": {
+        "x": 7,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b119.f1",
+      "trigger": {
+        "x": 7,
+        "y": 2
+      },
+      "arrival": {
+        "x": 7,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b120.portal1",
+    "name": "Wejście — Świątynia pielgrzymów",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 40,
+        "y": 536
+      },
+      "arrival": {
+        "x": 40,
+        "y": 537
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b120.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b120.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b120.f0",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b120.f1",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b121.portal1",
+    "name": "Wejście — Świątynia świtu",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 54,
+        "y": 536
+      },
+      "arrival": {
+        "x": 54,
+        "y": 537
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b121.f0",
+      "trigger": {
+        "x": 10,
+        "y": 27
+      },
+      "arrival": {
+        "x": 10,
+        "y": 26
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b121.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b121.f0",
+      "trigger": {
+        "x": 10,
+        "y": 2
+      },
+      "arrival": {
+        "x": 10,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b121.f1",
+      "trigger": {
+        "x": 10,
+        "y": 2
+      },
+      "arrival": {
+        "x": 10,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b121.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b121.f1",
+      "trigger": {
+        "x": 10,
+        "y": 5
+      },
+      "arrival": {
+        "x": 10,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b121.f2",
+      "trigger": {
+        "x": 10,
+        "y": 5
+      },
+      "arrival": {
+        "x": 10,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b122.portal1",
+    "name": "Wejście — Świątynia księżyca",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 70,
+        "y": 536
+      },
+      "arrival": {
+        "x": 70,
+        "y": 537
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b122.f0",
+      "trigger": {
+        "x": 12,
+        "y": 27
+      },
+      "arrival": {
+        "x": 12,
+        "y": 26
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b122.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b122.f0",
+      "trigger": {
+        "x": 12,
+        "y": 2
+      },
+      "arrival": {
+        "x": 12,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b122.f1",
+      "trigger": {
+        "x": 12,
+        "y": 2
+      },
+      "arrival": {
+        "x": 12,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b122.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b122.f1",
+      "trigger": {
+        "x": 12,
+        "y": 5
+      },
+      "arrival": {
+        "x": 12,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b122.f2",
+      "trigger": {
+        "x": 12,
+        "y": 5
+      },
+      "arrival": {
+        "x": 12,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b123.portal1",
+    "name": "Wejście — Wielka świątynia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 12,
+        "y": 567
+      },
+      "arrival": {
+        "x": 12,
+        "y": 568
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b123.f0",
+      "trigger": {
+        "x": 14,
+        "y": 35
+      },
+      "arrival": {
+        "x": 14,
+        "y": 34
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b123.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b123.f0",
+      "trigger": {
+        "x": 14,
+        "y": 2
+      },
+      "arrival": {
+        "x": 14,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b123.f1",
+      "trigger": {
+        "x": 14,
+        "y": 2
+      },
+      "arrival": {
+        "x": 14,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b123.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b123.f1",
+      "trigger": {
+        "x": 14,
+        "y": 5
+      },
+      "arrival": {
+        "x": 14,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b123.f2",
+      "trigger": {
+        "x": 14,
+        "y": 5
+      },
+      "arrival": {
+        "x": 14,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b124.portal1",
+    "name": "Wejście — Dom miejskiego szlachcica",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 28,
+        "y": 567
+      },
+      "arrival": {
+        "x": 28,
+        "y": 568
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b124.f0",
+      "trigger": {
+        "x": 8,
+        "y": 17
+      },
+      "arrival": {
+        "x": 8,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b124.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b124.f0",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b124.f1",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b124.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b124.f1",
+      "trigger": {
+        "x": 8,
+        "y": 5
+      },
+      "arrival": {
+        "x": 8,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b124.f2",
+      "trigger": {
+        "x": 8,
+        "y": 5
+      },
+      "arrival": {
+        "x": 8,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b125.portal1",
+    "name": "Wejście — Dwór szlachecki",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 41,
+        "y": 567
+      },
+      "arrival": {
+        "x": 41,
+        "y": 568
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b125.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b125.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b125.f0",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b125.f1",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b125.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b125.f1",
+      "trigger": {
+        "x": 9,
+        "y": 5
+      },
+      "arrival": {
+        "x": 9,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b125.f2",
+      "trigger": {
+        "x": 9,
+        "y": 5
+      },
+      "arrival": {
+        "x": 9,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b126.portal1",
+    "name": "Wejście — Siedziba kasztelana",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 57,
+        "y": 567
+      },
+      "arrival": {
+        "x": 57,
+        "y": 568
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b126.f0",
+      "trigger": {
+        "x": 12,
+        "y": 31
+      },
+      "arrival": {
+        "x": 12,
+        "y": 30
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b126.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b126.f0",
+      "trigger": {
+        "x": 12,
+        "y": 2
+      },
+      "arrival": {
+        "x": 12,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b126.f1",
+      "trigger": {
+        "x": 12,
+        "y": 2
+      },
+      "arrival": {
+        "x": 12,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b126.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b126.f1",
+      "trigger": {
+        "x": 12,
+        "y": 5
+      },
+      "arrival": {
+        "x": 12,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b126.f2",
+      "trigger": {
+        "x": 12,
+        "y": 5
+      },
+      "arrival": {
+        "x": 12,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b127.portal1",
+    "name": "Wejście — Rezydencja książęca",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 76,
+        "y": 567
+      },
+      "arrival": {
+        "x": 76,
+        "y": 568
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b127.f0",
+      "trigger": {
+        "x": 16,
+        "y": 39
+      },
+      "arrival": {
+        "x": 16,
+        "y": 38
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b127.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b127.f0",
+      "trigger": {
+        "x": 16,
+        "y": 2
+      },
+      "arrival": {
+        "x": 16,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b127.f1",
+      "trigger": {
+        "x": 16,
+        "y": 2
+      },
+      "arrival": {
+        "x": 16,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b127.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b127.f1",
+      "trigger": {
+        "x": 16,
+        "y": 5
+      },
+      "arrival": {
+        "x": 16,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b127.f2",
+      "trigger": {
+        "x": 16,
+        "y": 5
+      },
+      "arrival": {
+        "x": 16,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b127.portal4",
+    "name": "Schody 2 ↔ 3",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b127.f2",
+      "trigger": {
+        "x": 16,
+        "y": 2
+      },
+      "arrival": {
+        "x": 16,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b127.f3",
+      "trigger": {
+        "x": 16,
+        "y": 2
+      },
+      "arrival": {
+        "x": 16,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b128.portal1",
+    "name": "Wejście — Pałac warowny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 99,
+        "y": 567
+      },
+      "arrival": {
+        "x": 99,
+        "y": 568
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b128.f0",
+      "trigger": {
+        "x": 20,
+        "y": 47
+      },
+      "arrival": {
+        "x": 20,
+        "y": 46
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b128.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b128.f0",
+      "trigger": {
+        "x": 20,
+        "y": 2
+      },
+      "arrival": {
+        "x": 20,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b128.f1",
+      "trigger": {
+        "x": 20,
+        "y": 2
+      },
+      "arrival": {
+        "x": 20,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b128.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b128.f1",
+      "trigger": {
+        "x": 20,
+        "y": 5
+      },
+      "arrival": {
+        "x": 20,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b128.f2",
+      "trigger": {
+        "x": 20,
+        "y": 5
+      },
+      "arrival": {
+        "x": 20,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b128.portal4",
+    "name": "Schody 2 ↔ 3",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b128.f2",
+      "trigger": {
+        "x": 20,
+        "y": 2
+      },
+      "arrival": {
+        "x": 20,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b128.f3",
+      "trigger": {
+        "x": 20,
+        "y": 2
+      },
+      "arrival": {
+        "x": 20,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b129.portal1",
+    "name": "Wejście — Chałupa zagrodnika",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 595
+      },
+      "arrival": {
+        "x": 9,
+        "y": 596
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b129.f0",
+      "trigger": {
+        "x": 4,
+        "y": 11
+      },
+      "arrival": {
+        "x": 4,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b130.portal1",
+    "name": "Wejście — Kurnik mały",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 28,
+        "y": 594
+      },
+      "arrival": {
+        "x": 28,
+        "y": 595
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b130.f0",
+      "trigger": {
+        "x": 4,
+        "y": 9
+      },
+      "arrival": {
+        "x": 4,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b131.portal1",
+    "name": "Wejście — Szopa narzędziowa",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 9,
+        "y": 610
+      },
+      "arrival": {
+        "x": 9,
+        "y": 611
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b131.f0",
+      "trigger": {
+        "x": 4,
+        "y": 9
+      },
+      "arrival": {
+        "x": 4,
+        "y": 8
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b132.portal1",
+    "name": "Wejście — Dom gospodarza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 597
+      },
+      "arrival": {
+        "x": 61,
+        "y": 598
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b132.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b132.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b132.f0",
+      "trigger": {
+        "x": 6,
+        "y": 2
+      },
+      "arrival": {
+        "x": 6,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b132.f1",
+      "trigger": {
+        "x": 6,
+        "y": 2
+      },
+      "arrival": {
+        "x": 6,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b133.portal1",
+    "name": "Wejście — Mały spichlerz",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 79,
+        "y": 595
+      },
+      "arrival": {
+        "x": 79,
+        "y": 596
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b133.f0",
+      "trigger": {
+        "x": 4,
+        "y": 11
+      },
+      "arrival": {
+        "x": 4,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b134.portal1",
+    "name": "Wejście — Stodoła średnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 614
+      },
+      "arrival": {
+        "x": 61,
+        "y": 615
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b134.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b135.portal1",
+    "name": "Wejście — Obora",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 81,
+        "y": 615
+      },
+      "arrival": {
+        "x": 81,
+        "y": 616
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b135.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b136.portal1",
+    "name": "Wejście — Stajnia średnia",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 598
+      },
+      "arrival": {
+        "x": 112,
+        "y": 599
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b136.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b137.portal1",
+    "name": "Wejście — Stajnia z zapleczem",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 132,
+        "y": 601
+      },
+      "arrival": {
+        "x": 132,
+        "y": 602
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b137.f0",
+      "trigger": {
+        "x": 8,
+        "y": 23
+      },
+      "arrival": {
+        "x": 8,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b137.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b137.f0",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b137.f1",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b138.portal1",
+    "name": "Wejście — Szopa na siano",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 111,
+        "y": 612
+      },
+      "arrival": {
+        "x": 111,
+        "y": 613
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b138.f0",
+      "trigger": {
+        "x": 4,
+        "y": 13
+      },
+      "arrival": {
+        "x": 4,
+        "y": 12
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b139.portal1",
+    "name": "Wejście — Kurnik gospodarski",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 130,
+        "y": 611
+      },
+      "arrival": {
+        "x": 130,
+        "y": 612
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b139.f0",
+      "trigger": {
+        "x": 4,
+        "y": 11
+      },
+      "arrival": {
+        "x": 4,
+        "y": 10
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b140.portal1",
+    "name": "Wejście — Dom zamożnego gospodarza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 11,
+        "y": 651
+      },
+      "arrival": {
+        "x": 11,
+        "y": 652
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b140.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b140.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b140.f0",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b140.f1",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b140.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b140.f1",
+      "trigger": {
+        "x": 9,
+        "y": 5
+      },
+      "arrival": {
+        "x": 9,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b140.f2",
+      "trigger": {
+        "x": 9,
+        "y": 5
+      },
+      "arrival": {
+        "x": 9,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b141.portal1",
+    "name": "Wejście — Spichlerz piętrowy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 30,
+        "y": 651
+      },
+      "arrival": {
+        "x": 30,
+        "y": 652
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b141.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b141.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b141.f0",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b141.f1",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b142.portal1",
+    "name": "Wejście — Stodoła z poddaszem",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 11,
+        "y": 669
+      },
+      "arrival": {
+        "x": 11,
+        "y": 670
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b142.f0",
+      "trigger": {
+        "x": 8,
+        "y": 23
+      },
+      "arrival": {
+        "x": 8,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b142.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b142.f0",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b142.f1",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b143.portal1",
+    "name": "Wejście — Dom z izbą roboczą",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 61,
+        "y": 649
+      },
+      "arrival": {
+        "x": 61,
+        "y": 650
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b143.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b143.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b143.f0",
+      "trigger": {
+        "x": 7,
+        "y": 2
+      },
+      "arrival": {
+        "x": 7,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b143.f1",
+      "trigger": {
+        "x": 7,
+        "y": 2
+      },
+      "arrival": {
+        "x": 7,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b144.portal1",
+    "name": "Wejście — Browar wiejski",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 81,
+        "y": 653
+      },
+      "arrival": {
+        "x": 81,
+        "y": 654
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b144.f0",
+      "trigger": {
+        "x": 8,
+        "y": 23
+      },
+      "arrival": {
+        "x": 8,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b144.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b144.f0",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b144.f1",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b145.portal1",
+    "name": "Wejście — Garbarnia wiejska",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 62,
+        "y": 667
+      },
+      "arrival": {
+        "x": 62,
+        "y": 668
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b145.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b145.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b145.f0",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b145.f1",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b146.portal1",
+    "name": "Wejście — Oficyna gospodarcza",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 80,
+        "y": 665
+      },
+      "arrival": {
+        "x": 80,
+        "y": 666
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b146.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b147.portal1",
+    "name": "Wejście — Młyn mały",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 649
+      },
+      "arrival": {
+        "x": 112,
+        "y": 650
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b147.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b147.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b147.f0",
+      "trigger": {
+        "x": 6,
+        "y": 2
+      },
+      "arrival": {
+        "x": 6,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b147.f1",
+      "trigger": {
+        "x": 6,
+        "y": 2
+      },
+      "arrival": {
+        "x": 6,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b148.portal1",
+    "name": "Wejście — Młyn trzykondygnacyjny",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 132,
+        "y": 651
+      },
+      "arrival": {
+        "x": 132,
+        "y": 652
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b148.f0",
+      "trigger": {
+        "x": 8,
+        "y": 19
+      },
+      "arrival": {
+        "x": 8,
+        "y": 18
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b148.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b148.f0",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b148.f1",
+      "trigger": {
+        "x": 8,
+        "y": 2
+      },
+      "arrival": {
+        "x": 8,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b148.portal3",
+    "name": "Schody 1 ↔ 2",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b148.f1",
+      "trigger": {
+        "x": 8,
+        "y": 5
+      },
+      "arrival": {
+        "x": 8,
+        "y": 6
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b148.f2",
+      "trigger": {
+        "x": 8,
+        "y": 5
+      },
+      "arrival": {
+        "x": 8,
+        "y": 6
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b149.portal1",
+    "name": "Wejście — Magazyn gospodarczy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 112,
+        "y": 666
+      },
+      "arrival": {
+        "x": 112,
+        "y": 667
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b149.f0",
+      "trigger": {
+        "x": 6,
+        "y": 17
+      },
+      "arrival": {
+        "x": 6,
+        "y": 16
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b149.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b149.f0",
+      "trigger": {
+        "x": 7,
+        "y": 2
+      },
+      "arrival": {
+        "x": 7,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b149.f1",
+      "trigger": {
+        "x": 7,
+        "y": 2
+      },
+      "arrival": {
+        "x": 7,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b150.portal1",
+    "name": "Wejście — Tartak",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 11,
+        "y": 705
+      },
+      "arrival": {
+        "x": 11,
+        "y": 706
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b150.f0",
+      "trigger": {
+        "x": 8,
+        "y": 23
+      },
+      "arrival": {
+        "x": 8,
+        "y": 22
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b150.portal2",
+    "name": "Schody 0 ↔ 1",
+    "type": "stairs",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001.b150.f0",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b150.f1",
+      "trigger": {
+        "x": 9,
+        "y": 2
+      },
+      "arrival": {
+        "x": 9,
+        "y": 3
+      }
+    }
+  },
+  {
+    "id": "mtl_gallery_001.b151.portal1",
+    "name": "Wejście — Zamknięty warsztat gospodarczy",
+    "type": "door",
+    "direction": "both",
+    "a": {
+      "sceneId": "mtl_gallery_001",
+      "trigger": {
+        "x": 29,
+        "y": 701
+      },
+      "arrival": {
+        "x": 29,
+        "y": 702
+      }
+    },
+    "b": {
+      "sceneId": "mtl_gallery_001.b151.f0",
+      "trigger": {
+        "x": 6,
+        "y": 15
+      },
+      "arrival": {
+        "x": 6,
+        "y": 14
+      }
+    }
+  }
+]

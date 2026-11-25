@@ -1,0 +1,718 @@
+{
+  "id": "mtl_gallery_001.b140.f1",
+  "buildingId": "mtl_gallery_001.b140",
+  "level": 1,
+  "width": 18,
+  "height": 20,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 18,
+    "h": 20
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b140.f1.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 18,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 19,
+        "w": 18,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 1,
+        "w": 1,
+        "h": 18
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b140.f1.o1",
+      "type": "bed_double",
+      "name": "Łóżko dwuosobowe",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 6,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "back": 0,
+        "mode": "head"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bed_double",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b140.f1.o1.s1",
+          "action": "sleep",
+          "capacity": 2,
+          "approach": {
+            "x": 1,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.o2",
+      "type": "bed_single",
+      "name": "Łóżko jednoosobowe",
+      "geometry": {
+        "type": "rect",
+        "x": 15,
+        "y": 15,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "back": 0,
+        "mode": "head"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "bed_single",
+        "version": 2
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b140.f1.o2.s1",
+          "action": "sleep",
+          "capacity": 1,
+          "approach": {
+            "x": 16,
+            "y": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.o3",
+      "type": "farm_cupboard",
+      "name": "Kredens wiejski",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 8,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "farm_cupboard",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b140.f1.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.o4",
+      "type": "farm_table",
+      "name": "Stół gospodarski",
+      "geometry": {
+        "type": "rect",
+        "x": 16,
+        "y": 6,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "farm_table",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b140.f1.o4.s1",
+          "action": "eat",
+          "capacity": 1,
+          "approach": {
+            "x": 15,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.o5",
+      "type": "washstand",
+      "name": "Umywalka z misą",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "washstand",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b140.f1.o5.s1",
+          "action": "wash",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 17
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b140.f1.dec1",
+      "type": "wall_farm_rope",
+      "name": "Zwinięta lina",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_farm_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec2",
+      "type": "wall_horse_shoe",
+      "name": "Podkowa",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_horse_shoe",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec3",
+      "type": "wall_rake",
+      "name": "Grabie",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_rake",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec4",
+      "type": "wall_pitchfork",
+      "name": "Widły",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_pitchfork",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec5",
+      "type": "wall_harness",
+      "name": "Uprząż",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_harness",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec6",
+      "type": "wall_dried_onions",
+      "name": "Warkocz cebuli",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_dried_onions",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec7",
+      "type": "wall_horse_shoe",
+      "name": "Podkowa",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_horse_shoe",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec8",
+      "type": "wall_grain_sheaf",
+      "name": "Snop na ścianie",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_grain_sheaf",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec9",
+      "type": "wall_pitchfork",
+      "name": "Widły",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_pitchfork",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec10",
+      "type": "wall_sickle",
+      "name": "Sierp",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_sickle",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec11",
+      "type": "wall_dried_onions",
+      "name": "Warkocz cebuli",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_dried_onions",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec12",
+      "type": "wall_farm_rope",
+      "name": "Zwinięta lina",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 17,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_farm_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec13",
+      "type": "farm_mat",
+      "name": "Mata słomiana",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "farm_mat",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec14",
+      "type": "hay_mat",
+      "name": "Ściółka",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "hay_mat",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec15",
+      "type": "prop_egg",
+      "name": "Jajo",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_egg",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b140.f1.o3",
+      "slot": 0,
+      "allowedHosts": [
+        "table_small",
+        "side_table",
+        "cupboard",
+        "farm_table",
+        "farm_cupboard",
+        "harvest_sorting_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec16",
+      "type": "prop_flax",
+      "name": "Len",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 16,
+        "y": 6,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_flax",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b140.f1.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "repair_bench",
+        "fabric_rack",
+        "farm_table",
+        "harvest_sorting_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.32
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec17",
+      "type": "prop_cabbage",
+      "name": "Kapusta",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 16,
+        "y": 6,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_cabbage",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b140.f1.o4",
+      "slot": 2,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec18",
+      "type": "prop_onion",
+      "name": "Cebula",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 16,
+        "y": 7,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_onion",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b140.f1.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec19",
+      "type": "prop_carrot",
+      "name": "Marchew",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 16,
+        "y": 7,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_carrot",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b140.f1.o4",
+      "slot": 2,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b140.f1.dec20",
+      "type": "prop_milk",
+      "name": "Dzban mleka",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 17,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_milk",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b140.f1.o5",
+      "slot": 0,
+      "allowedHosts": [
+        "side_table",
+        "washstand",
+        "water_jug_stand",
+        "farm_table",
+        "harvest_sorting_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "bedroom",
+      "access": "Z4",
+      "anchor": {
+        "x": 10,
+        "y": 10
+      },
+      "functions": [
+        "sleep",
+        "storage",
+        "eat",
+        "wash"
+      ],
+      "id": "mtl_gallery_001.b140.f1.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "RUR_HOUSE_L01",
+    "version": 1
+  }
+}

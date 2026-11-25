@@ -1,0 +1,802 @@
+{
+  "id": "mtl_gallery_001.b147.f1",
+  "buildingId": "mtl_gallery_001.b147",
+  "level": 1,
+  "width": 12,
+  "height": 16,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 12,
+    "h": 16
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b147.f1.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 15,
+        "w": 12,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b147.f1.o1",
+      "type": "grain_chest",
+      "name": "Skrzynia zbożowa",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "grain_chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b147.f1.o1.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.o2",
+      "type": "grain_chest",
+      "name": "Skrzynia zbożowa",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "grain_chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b147.f1.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.o3",
+      "type": "grain_sack",
+      "name": "Worek z ziarnem",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "grain_sack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b147.f1.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.o4",
+      "type": "grain_sack",
+      "name": "Worek z ziarnem",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "grain_sack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b147.f1.o4.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.o5",
+      "type": "grain_sack",
+      "name": "Worek z ziarnem",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "grain_sack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b147.f1.o5.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 1,
+            "y": 12
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.o6",
+      "type": "harvest_sorting_table",
+      "name": "Stół sortowania plonów",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 7,
+        "w": 2,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "harvest_sorting_table",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b147.f1.o6.s1",
+          "action": "cook",
+          "capacity": 1,
+          "approach": {
+            "x": 3,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.o7",
+      "type": "farm_ladder",
+      "name": "Drabina gospodarcza",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 4,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "farm_ladder",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b147.f1.o7.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 9,
+            "y": 4
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b147.f1.dec1",
+      "type": "wall_pitchfork",
+      "name": "Widły",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_pitchfork",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec2",
+      "type": "wall_dried_onions",
+      "name": "Warkocz cebuli",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_dried_onions",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec3",
+      "type": "wall_dried_onions",
+      "name": "Warkocz cebuli",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_dried_onions",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec4",
+      "type": "wall_grain_sheaf",
+      "name": "Snop na ścianie",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_grain_sheaf",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec5",
+      "type": "wall_grain_sheaf",
+      "name": "Snop na ścianie",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_grain_sheaf",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec6",
+      "type": "wall_sickle",
+      "name": "Sierp",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_sickle",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec7",
+      "type": "wall_sickle",
+      "name": "Sierp",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_sickle",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec8",
+      "type": "wall_farm_rope",
+      "name": "Zwinięta lina",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 11,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_farm_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec9",
+      "type": "wall_farm_rope",
+      "name": "Zwinięta lina",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_farm_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec10",
+      "type": "wall_rake",
+      "name": "Grabie",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 11,
+        "y": 14,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_rake",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec11",
+      "type": "farm_mat",
+      "name": "Mata słomiana",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "farm_mat",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec12",
+      "type": "hay_mat",
+      "name": "Ściółka",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "hay_mat",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec13",
+      "type": "prop_grain_bowl",
+      "name": "Miska ziarna",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_grain_bowl",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o1",
+      "slot": 0,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec14",
+      "type": "prop_malt",
+      "name": "Słód",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_malt",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o1",
+      "slot": 2,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec15",
+      "type": "prop_grain_bowl",
+      "name": "Miska ziarna",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_grain_bowl",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o2",
+      "slot": 0,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec16",
+      "type": "prop_malt",
+      "name": "Słód",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_malt",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o2",
+      "slot": 2,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec17",
+      "type": "prop_grain_bowl",
+      "name": "Miska ziarna",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 7,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_grain_bowl",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o6",
+      "slot": 0,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec18",
+      "type": "prop_malt",
+      "name": "Słód",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 7,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_malt",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o6",
+      "slot": 2,
+      "allowedHosts": [
+        "cooking_prep",
+        "harvest_sorting_table",
+        "farm_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec19",
+      "type": "prop_hops",
+      "name": "Chmiel",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 7,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_hops",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o6",
+      "slot": 0,
+      "allowedHosts": [
+        "alchemy",
+        "healing_table",
+        "farm_table",
+        "harvest_sorting_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b147.f1.dec20",
+      "type": "prop_wood_wedge",
+      "name": "Klin drewniany",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 7,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_wood_wedge",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b147.f1.o6",
+      "slot": 2,
+      "allowedHosts": [
+        "carpentry_bench",
+        "farm_table",
+        "harvest_sorting_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "storage",
+      "access": "Z2",
+      "anchor": {
+        "x": 7,
+        "y": 8
+      },
+      "functions": [
+        "storage",
+        "cook"
+      ],
+      "id": "mtl_gallery_001.b147.f1.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "RUR_MILL_S01",
+    "version": 1
+  }
+}

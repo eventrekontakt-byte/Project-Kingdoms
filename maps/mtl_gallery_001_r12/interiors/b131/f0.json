@@ -1,0 +1,517 @@
+{
+  "id": "mtl_gallery_001.b131.f0",
+  "buildingId": "mtl_gallery_001.b131",
+  "level": 0,
+  "width": 8,
+  "height": 10,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 8,
+    "h": 10
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b131.f0.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 9,
+        "w": 8,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 8
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 1,
+        "w": 1,
+        "h": 8
+      },
+      "kind": "exterior"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b131.f0.o1",
+      "type": "farm_tool_rack",
+      "name": "Stojak narzędzi rolnych",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 7,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "farm_tool_rack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b131.f0.o1.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.o2",
+      "type": "farm_ladder",
+      "name": "Drabina gospodarcza",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 4,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "farm_ladder",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b131.f0.o2.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.o3",
+      "type": "farm_cart",
+      "name": "Wózek ręczny",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 1,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "farm_cart",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b131.f0.o3.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.o4",
+      "type": "grain_chest",
+      "name": "Skrzynia zbożowa",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": true,
+      "placement": {
+        "back": 3,
+        "mode": "wall"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "grain_chest",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b131.f0.o4.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.o5",
+      "type": "log_stack",
+      "name": "Stos bali",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 6,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "wall",
+        "back": 3
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "log_stack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b131.f0.o5.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.o6",
+      "type": "feed_barrel",
+      "name": "Beczka z paszą",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 4,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 90,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "feed_barrel",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b131.f0.o6.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 5
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b131.f0.dec1",
+      "type": "wall_farm_rope",
+      "name": "Zwinięta lina",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_farm_rope",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec2",
+      "type": "wall_dried_onions",
+      "name": "Warkocz cebuli",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_dried_onions",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec3",
+      "type": "wall_rake",
+      "name": "Grabie",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_rake",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec4",
+      "type": "wall_grain_sheaf",
+      "name": "Snop na ścianie",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 5,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_grain_sheaf",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec5",
+      "type": "wall_harness",
+      "name": "Uprząż",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_harness",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec6",
+      "type": "wall_sickle",
+      "name": "Sierp",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 7,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_sickle",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec7",
+      "type": "farm_mat",
+      "name": "Mata słomiana",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "farm_mat",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec8",
+      "type": "hay_mat",
+      "name": "Ściółka",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 2,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "hay_mat",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec9",
+      "type": "prop_peg",
+      "name": "Kołek",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_peg",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b131.f0.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "carpentry_bench",
+        "farm_table",
+        "harvest_sorting_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b131.f0.dec10",
+      "type": "prop_harness",
+      "name": "Uprząż",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 8,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 270,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_harness",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b131.f0.o4",
+      "slot": 2,
+      "allowedHosts": [
+        "crate",
+        "hay_bale",
+        "farm_table",
+        "harvest_sorting_table",
+        "grain_chest",
+        "root_bin"
+      ],
+      "size": 0.36
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [],
+  "rooms": [
+    {
+      "type": "storage",
+      "access": "Z2",
+      "anchor": {
+        "x": 5,
+        "y": 5
+      },
+      "functions": [
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b131.f0.r1"
+    }
+  ],
+  "templateRef": {
+    "id": "RUR_SHED_S01",
+    "version": 1
+  }
+}

@@ -1,0 +1,961 @@
+[
+  {
+    "id": "mtl_gallery_001.ruralobj001",
+    "type": "farm_well",
+    "name": "Studnia gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 22,
+      "y": 602,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm1",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj001.s1",
+        "action": "draw_water",
+        "capacity": 1,
+        "approach": {
+          "x": 22,
+          "y": 604
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj002",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Pole pszenicy",
+    "geometry": {
+      "type": "rect",
+      "x": 11,
+      "y": 585,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area001",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj002.s1",
+        "action": "cultivate",
+        "capacity": 1,
+        "approach": {
+          "x": 11,
+          "y": 584
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj003",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Warzywnik",
+    "geometry": {
+      "type": "rect",
+      "x": 23,
+      "y": 585,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area002",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj003.s1",
+        "action": "cultivate",
+        "capacity": 1,
+        "approach": {
+          "x": 23,
+          "y": 584
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj004",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 30,
+      "y": 574,
+      "w": 10,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area003"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj005",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 30,
+      "y": 575,
+      "w": 1,
+      "h": 10
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area003"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj006",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 39,
+      "y": 575,
+      "w": 1,
+      "h": 10
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area003"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj007",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 30,
+      "y": 585,
+      "w": 4,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area003"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj008",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 36,
+      "y": 585,
+      "w": 4,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area003"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj009",
+    "type": "outdoor_trough",
+    "name": "Poidło",
+    "geometry": {
+      "type": "rect",
+      "x": 32,
+      "y": 576,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm1",
+    "areaId": "mtl_gallery_001.area003",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj009.s1",
+        "action": "feed",
+        "capacity": 1,
+        "approach": {
+          "x": 32,
+          "y": 577
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj010",
+    "type": "farm_well",
+    "name": "Studnia gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 73,
+      "y": 602,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm2",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj010.s1",
+        "action": "draw_water",
+        "capacity": 1,
+        "approach": {
+          "x": 73,
+          "y": 604
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj011",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Pole jęczmienia",
+    "geometry": {
+      "type": "rect",
+      "x": 62,
+      "y": 585,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm2",
+    "areaId": "mtl_gallery_001.area004",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj011.s1",
+        "action": "cultivate",
+        "capacity": 1,
+        "approach": {
+          "x": 62,
+          "y": 584
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj012",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 69,
+      "y": 574,
+      "w": 10,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm2",
+    "areaId": "mtl_gallery_001.area005"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj013",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 69,
+      "y": 575,
+      "w": 1,
+      "h": 10
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm2",
+    "areaId": "mtl_gallery_001.area005"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj014",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 78,
+      "y": 575,
+      "w": 1,
+      "h": 10
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm2",
+    "areaId": "mtl_gallery_001.area005"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj015",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 69,
+      "y": 585,
+      "w": 4,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm2",
+    "areaId": "mtl_gallery_001.area005"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj016",
+    "type": "farm_fence",
+    "name": "Płot zagrody",
+    "geometry": {
+      "type": "rect",
+      "x": 75,
+      "y": 585,
+      "w": 4,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm2",
+    "areaId": "mtl_gallery_001.area005"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj017",
+    "type": "outdoor_trough",
+    "name": "Poidło",
+    "geometry": {
+      "type": "rect",
+      "x": 71,
+      "y": 576,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm2",
+    "areaId": "mtl_gallery_001.area005",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj017.s1",
+        "action": "feed",
+        "capacity": 1,
+        "approach": {
+          "x": 71,
+          "y": 577
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj018",
+    "type": "farm_well",
+    "name": "Studnia gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 124,
+      "y": 602,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm3",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj018.s1",
+        "action": "draw_water",
+        "capacity": 1,
+        "approach": {
+          "x": 124,
+          "y": 604
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj019",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Pastwisko małe",
+    "geometry": {
+      "type": "rect",
+      "x": 113,
+      "y": 585,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm3",
+    "areaId": "mtl_gallery_001.area007",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj019.s1",
+        "action": "graze",
+        "capacity": 1,
+        "approach": {
+          "x": 113,
+          "y": 584
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj020",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Pastwisko duże",
+    "geometry": {
+      "type": "rect",
+      "x": 125,
+      "y": 585,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm3",
+    "areaId": "mtl_gallery_001.area008",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj020.s1",
+        "action": "graze",
+        "capacity": 1,
+        "approach": {
+          "x": 125,
+          "y": 584
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj021",
+    "type": "outdoor_hay",
+    "name": "Plac siana — wyposażenie",
+    "geometry": {
+      "type": "rect",
+      "x": 134,
+      "y": 576,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm3",
+    "areaId": "mtl_gallery_001.area009",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj021.s1",
+        "action": "storage",
+        "capacity": 1,
+        "approach": {
+          "x": 134,
+          "y": 578
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj022",
+    "type": "farm_well",
+    "name": "Studnia gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 22,
+      "y": 654,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj022.s1",
+        "action": "draw_water",
+        "capacity": 1,
+        "approach": {
+          "x": 22,
+          "y": 656
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj023",
+    "type": "orchard_tree",
+    "name": "Jabłoń",
+    "geometry": {
+      "type": "rect",
+      "x": 8,
+      "y": 628,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area010",
+    "crop": "apple"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj024",
+    "type": "orchard_tree",
+    "name": "Jabłoń",
+    "geometry": {
+      "type": "rect",
+      "x": 11,
+      "y": 628,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area010",
+    "crop": "apple"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj025",
+    "type": "orchard_tree",
+    "name": "Jabłoń",
+    "geometry": {
+      "type": "rect",
+      "x": 14,
+      "y": 628,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area010",
+    "crop": "apple"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj026",
+    "type": "orchard_tree",
+    "name": "Jabłoń",
+    "geometry": {
+      "type": "rect",
+      "x": 8,
+      "y": 632,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area010",
+    "crop": "apple"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj027",
+    "type": "orchard_tree",
+    "name": "Jabłoń",
+    "geometry": {
+      "type": "rect",
+      "x": 11,
+      "y": 632,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area010",
+    "crop": "apple"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj028",
+    "type": "orchard_tree",
+    "name": "Jabłoń",
+    "geometry": {
+      "type": "rect",
+      "x": 14,
+      "y": 632,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area010",
+    "crop": "apple"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj029",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Sad jabłoniowy",
+    "geometry": {
+      "type": "rect",
+      "x": 11,
+      "y": 637,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area010",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj029.s1",
+        "action": "tend",
+        "capacity": 1,
+        "approach": {
+          "x": 11,
+          "y": 636
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj030",
+    "type": "orchard_tree",
+    "name": "Grusza",
+    "geometry": {
+      "type": "rect",
+      "x": 20,
+      "y": 628,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area011",
+    "crop": "pear"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj031",
+    "type": "orchard_tree",
+    "name": "Grusza",
+    "geometry": {
+      "type": "rect",
+      "x": 23,
+      "y": 628,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area011",
+    "crop": "pear"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj032",
+    "type": "orchard_tree",
+    "name": "Grusza",
+    "geometry": {
+      "type": "rect",
+      "x": 26,
+      "y": 628,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area011",
+    "crop": "pear"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj033",
+    "type": "orchard_tree",
+    "name": "Grusza",
+    "geometry": {
+      "type": "rect",
+      "x": 20,
+      "y": 632,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area011",
+    "crop": "pear"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj034",
+    "type": "orchard_tree",
+    "name": "Grusza",
+    "geometry": {
+      "type": "rect",
+      "x": 23,
+      "y": 632,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area011",
+    "crop": "pear"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj035",
+    "type": "orchard_tree",
+    "name": "Grusza",
+    "geometry": {
+      "type": "rect",
+      "x": 26,
+      "y": 632,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area011",
+    "crop": "pear"
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj036",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Sad gruszowy",
+    "geometry": {
+      "type": "rect",
+      "x": 23,
+      "y": 637,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area011",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj036.s1",
+        "action": "tend",
+        "capacity": 1,
+        "approach": {
+          "x": 23,
+          "y": 636
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj037",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Ugór",
+    "geometry": {
+      "type": "rect",
+      "x": 35,
+      "y": 637,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm4",
+    "areaId": "mtl_gallery_001.area012",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj037.s1",
+        "action": "cultivate",
+        "capacity": 1,
+        "approach": {
+          "x": 35,
+          "y": 636
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj038",
+    "type": "farm_well",
+    "name": "Studnia gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 73,
+      "y": 654,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm5",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj038.s1",
+        "action": "draw_water",
+        "capacity": 1,
+        "approach": {
+          "x": 73,
+          "y": 656
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj039",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Pole lnu",
+    "geometry": {
+      "type": "rect",
+      "x": 62,
+      "y": 637,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm5",
+    "areaId": "mtl_gallery_001.area013",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj039.s1",
+        "action": "cultivate",
+        "capacity": 1,
+        "approach": {
+          "x": 62,
+          "y": 636
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj040",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Ogród ziołowy",
+    "geometry": {
+      "type": "rect",
+      "x": 74,
+      "y": 637,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm5",
+    "areaId": "mtl_gallery_001.area014",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj040.s1",
+        "action": "cultivate",
+        "capacity": 1,
+        "approach": {
+          "x": 74,
+          "y": 636
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj041",
+    "type": "outdoor_compost",
+    "name": "Kompostownik — wyposażenie",
+    "geometry": {
+      "type": "rect",
+      "x": 83,
+      "y": 628,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm5",
+    "areaId": "mtl_gallery_001.area015",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj041.s1",
+        "action": "storage",
+        "capacity": 1,
+        "approach": {
+          "x": 83,
+          "y": 630
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj042",
+    "type": "farm_well",
+    "name": "Studnia gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 124,
+      "y": 654,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm6",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj042.s1",
+        "action": "draw_water",
+        "capacity": 1,
+        "approach": {
+          "x": 124,
+          "y": 656
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj043",
+    "type": "rural_work_marker",
+    "name": "Punkt pracy — Ściernisko",
+    "geometry": {
+      "type": "rect",
+      "x": 113,
+      "y": 637,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": false,
+    "farmId": "mtl_gallery_001.farm6",
+    "areaId": "mtl_gallery_001.area016",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj043.s1",
+        "action": "cultivate",
+        "capacity": 1,
+        "approach": {
+          "x": 113,
+          "y": 636
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj044",
+    "type": "outdoor_delivery",
+    "name": "Plac dostaw — wyposażenie",
+    "geometry": {
+      "type": "rect",
+      "x": 122,
+      "y": 628,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm6",
+    "areaId": "mtl_gallery_001.area017",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj044.s1",
+        "action": "load",
+        "capacity": 1,
+        "approach": {
+          "x": 122,
+          "y": 630
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj045",
+    "type": "farm_well",
+    "name": "Studnia gospodarcza",
+    "geometry": {
+      "type": "rect",
+      "x": 22,
+      "y": 706,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm7",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj045.s1",
+        "action": "draw_water",
+        "capacity": 1,
+        "approach": {
+          "x": 22,
+          "y": 708
+        }
+      }
+    ]
+  },
+  {
+    "id": "mtl_gallery_001.ruralobj046",
+    "type": "outdoor_timber",
+    "name": "Plac drewna — wyposażenie",
+    "geometry": {
+      "type": "rect",
+      "x": 8,
+      "y": 680,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "farmId": "mtl_gallery_001.farm7",
+    "areaId": "mtl_gallery_001.area018",
+    "stations": [
+      {
+        "id": "mtl_gallery_001.ruralobj046.s1",
+        "action": "storage",
+        "capacity": 1,
+        "approach": {
+          "x": 8,
+          "y": 682
+        }
+      }
+    ]
+  }
+]
