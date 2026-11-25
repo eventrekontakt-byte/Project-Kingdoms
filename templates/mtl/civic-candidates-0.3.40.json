@@ -1,0 +1,1274 @@
+{
+  "schemaVersion": "1.0.0",
+  "mdsVersion": "1.0",
+  "baseLibraryVersion": "0.9.0",
+  "status": "review",
+  "buildings": [
+    {
+      "id": "CIVIC_HALL_M02",
+      "name": "Ratusz dzielnicowy",
+      "type": "hall",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "desk",
+              "x": 3,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 11,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 14,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "reception_desk",
+              "x": 4,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 14,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "notice_board",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "office",
+              "access": "Z2",
+              "anchor": {
+                "x": 8,
+                "y": 4
+              },
+              "functions": [
+                "administration",
+                "read",
+                "storage"
+              ]
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "anchor": {
+                "x": 8,
+                "y": 13
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "read"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 9,
+              "w": 5,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 15,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "prop_book_open",
+              "x": 3,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 11,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "notice_board",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented."
+      ]
+    },
+    {
+      "id": "CIVIC_HALL_M03",
+      "name": "Urząd podatkowy",
+      "type": "hall",
+      "version": 1,
+      "size": "M",
+      "width": 9,
+      "height": 11,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 9,
+        "h": 11
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 10
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 21
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "desk",
+              "x": 4,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "writing_desk",
+              "x": 1,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 16,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "chest",
+              "x": 16,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "reception_desk",
+              "x": 4,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 12,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 16,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "notice_board",
+              "x": 1,
+              "y": 14,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "archive",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 5
+              },
+              "functions": [
+                "administration",
+                "read",
+                "storage"
+              ]
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "anchor": {
+                "x": 9,
+                "y": 14
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 10,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 11,
+              "y": 10,
+              "w": 6,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 11,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 17,
+              "y": 17,
+              "rotation": 180
+            },
+            {
+              "type": "prop_book_open",
+              "x": 4,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 1,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 16,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 12,
+              "y": 15,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "writing_desk",
+          "version": 1
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "notice_board",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented."
+      ]
+    },
+    {
+      "id": "CIVIC_COURT_M01",
+      "name": "Sąd lokalny",
+      "type": "court",
+      "version": 1,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "desk",
+              "x": 4,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 14,
+              "y": 4,
+              "rotation": 180
+            },
+            {
+              "type": "writing_desk",
+              "x": 14,
+              "y": 6,
+              "rotation": 180
+            },
+            {
+              "type": "council_table",
+              "x": 4,
+              "y": 12,
+              "rotation": 90
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 14,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "desk",
+              "x": 11,
+              "y": 16,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "office",
+              "access": "Z2",
+              "anchor": {
+                "x": 8,
+                "y": 4
+              },
+              "functions": [
+                "administration",
+                "read",
+                "storage"
+              ]
+            },
+            {
+              "type": "hearing",
+              "access": "Z0",
+              "anchor": {
+                "x": 8,
+                "y": 13
+              },
+              "functions": [
+                "meeting",
+                "sit",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 9,
+              "w": 5,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 15,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "prop_book_open",
+              "x": 4,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 14,
+              "y": 6,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 11,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "writing_desk",
+          "version": 1
+        },
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented."
+      ]
+    },
+    {
+      "id": "CIVIC_COURT_L01",
+      "name": "Sąd miejski",
+      "type": "court",
+      "version": 1,
+      "size": "L",
+      "width": 11,
+      "height": 13,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 11,
+        "h": 13
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 12
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 25
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "council_table",
+              "x": 8,
+              "y": 3,
+              "rotation": 90
+            },
+            {
+              "type": "desk",
+              "x": 3,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 17,
+              "y": 5,
+              "rotation": 180
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 20,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "reception_desk",
+              "x": 5,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 20,
+              "y": 17,
+              "rotation": 180
+            },
+            {
+              "type": "notice_board",
+              "x": 1,
+              "y": 21,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 20,
+              "y": 21,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "hearing",
+              "access": "Z1",
+              "anchor": {
+                "x": 11,
+                "y": 6
+              },
+              "functions": [
+                "meeting",
+                "administration",
+                "sit"
+              ]
+            },
+            {
+              "type": "waiting",
+              "access": "Z0",
+              "anchor": {
+                "x": 11,
+                "y": 16
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "read"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 12,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 13,
+              "y": 12,
+              "w": 8,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 13,
+              "start": 1,
+              "end": 20,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 21,
+              "y": 21,
+              "rotation": 180
+            },
+            {
+              "type": "prop_book_open",
+              "x": 3,
+              "y": 5,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 17,
+              "y": 5,
+              "rotation": 180,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 20,
+              "y": 21,
+              "rotation": 180,
+              "hostIndex": 9,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "notice_board",
+          "version": 1
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented."
+      ]
+    },
+    {
+      "id": "CIVIC_GUILD_M02",
+      "name": "Siedziba cechu kupców",
+      "type": "guildhall",
+      "version": 1,
+      "size": "M",
+      "width": 9,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 9,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "council_table",
+              "x": 5,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 12,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "writing_desk",
+              "x": 16,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "reception_desk",
+              "x": 5,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 16,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "display_case",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "office",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 4
+              },
+              "functions": [
+                "meeting",
+                "administration",
+                "read"
+              ]
+            },
+            {
+              "type": "audience",
+              "access": "Z0",
+              "anchor": {
+                "x": 9,
+                "y": 13
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "browse"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 11,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 17,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "prop_book_open",
+              "x": 12,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 16,
+              "y": 2,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "writing_desk",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "display_case",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented."
+      ]
+    },
+    {
+      "id": "CIVIC_GUILD_L01",
+      "name": "Dom cechu rzemieślników",
+      "type": "guildhall",
+      "version": 1,
+      "size": "L",
+      "width": 11,
+      "height": 12,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 11,
+        "h": 12
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 5,
+        "y": 11
+      },
+      "interiorEntry": {
+        "x": 10,
+        "y": 23
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "workbench",
+              "x": 5,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "workbench",
+              "x": 15,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "shelf",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 10,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "type": "council_table",
+              "x": 5,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "reception_desk",
+              "x": 16,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 20,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "notice_board",
+              "x": 20,
+              "y": 19,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "workshop",
+              "access": "Z2",
+              "anchor": {
+                "x": 11,
+                "y": 5
+              },
+              "functions": [
+                "craft",
+                "storage",
+                "administration"
+              ]
+            },
+            {
+              "type": "audience",
+              "access": "Z0",
+              "anchor": {
+                "x": 11,
+                "y": 15
+              },
+              "functions": [
+                "meeting",
+                "sit",
+                "reception"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 11,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 13,
+              "y": 11,
+              "w": 8,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 12,
+              "start": 1,
+              "end": 20,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 21,
+              "y": 19,
+              "rotation": 180
+            },
+            {
+              "type": "prop_book_open",
+              "x": 10,
+              "y": 6,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "workbench",
+          "version": 2
+        },
+        {
+          "id": "shelf",
+          "version": 2
+        },
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "notice_board",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented."
+      ]
+    }
+  ]
+}
