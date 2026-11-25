@@ -4,7 +4,7 @@ Ostatni commit wydania mapy r14: ac670f9f5fc2cd78efb86e107e3133c850627117 (Alpha
 Gałąź: main. Gra offline 2D fantasy RPG + symulacja królestwa, rozwijana hybrydowo, oddzielnie od Universal Engine.
 
 ## Aktualny etap
-MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B11b zapisany. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
+MTL Audit Pass II-A — triage 67/67 modeli zakończony; II-B — przebudowa i kontrola geometrii w toku; II-B11c zapisany. R14 (Pass I) pozostaje review-only, nie jest zatwierdzoną mapą ani gotową do gry.
 - 163 szablony, 229 kondygnacji, 230 scen galerii wraz z zewnętrzną, 2491 stanowisk interakcji.
 - 161 zmienionych modeli, 191 dodanych mebli, 218 dodanych i 224 zastąpione dekoracje.
 - 67 modeli do indywidualnej kontroli; 8 modeli z heurystycznymi brakami funkcji (nie są to automatycznie błędy MDS).
@@ -67,3 +67,6 @@ Czat (5). Cztery modele wojskowe i mieszkalne w templates/mtl/pass2b11a-candidat
 
 ## Pass II-B11b (WIP)
 II-B11b: 11 modeli z B2–B4, +51 mebli, +165 dekoracji, 246→301 stanowisk, 84 obroty V8 bez zgłoszeń. 79 unikatowych kandydatów; B11a+B11b: 15 modeli, +64 meble, +198 dekoracji, +68 stanowisk, 100 obrotów. Jedna cela PRISON_M01 bez dodatkowej ławy (brak bezpiecznej pozycji). r14 bez zmian, r15 nieopublikowana. B11 nadal WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B11B.md).
+
+## Pass II-B11c (WIP)
+II-B11c: 7 modeli B5 (RUR_HOUSE_L01 z B9), +36 mebli, +114 dekoracji, 116→156 stanowisk, 48 obrotów V8 bez zgłoszeń. Nowe meble nie zajmują końców roomCuts; nowe stanowiska w pokoju obiektu. Jedna przebieralnia BATHHOUSE_M01 bez dodatkowego mebla. B11a–c: 22 modele, +100 mebli, +312 dekoracji, +108 stanowisk, 148 obrotów; 79 unikatowych kandydatów. r14 bez zmian, r15 nieopublikowana, B11 WIP. [Raport](../MTL_AUDIT_0.3.44_PASS2B11C.md).
