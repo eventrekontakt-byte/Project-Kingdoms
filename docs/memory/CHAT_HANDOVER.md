@@ -1,5 +1,5 @@
 # Przekazanie do następnego czatu
-Aktualizacja: 2026-11-25, czat (5). Punkt startowy: Alpha 0.3.44 / MTL r14 / II-B11b zapisany; II-B11c następny. Najnowszy checkpoint na końcu pliku.
+Aktualizacja: 2026-11-25, czat (5). Punkt startowy: Alpha 0.3.44 / MTL r14 / II-B11c zapisany; II-B11d następny. Najnowszy checkpoint na końcu pliku.
 
 ## Procedura wznawiania
 1. Połącz się z GitHub eventrekontakt-byte/Project-Kingdoms i sprawdź aktualny HEAD main. Nie ufaj wyłącznie numerowi w README ani streszczeniu rozmowy.
@@ -59,3 +59,6 @@ Czat (5), wznowiono od HEAD 20293c8. II-B11a: BARRACKS_S02, BARRACKS_L02, OFFICE
 
 ## Checkpoint II-B11b — najnowszy
 II-B11b: 11 modeli z B2–B4, +51 mebli, +165 dekoracji, 246→301 stanowisk, 84 obroty V8 bez zgłoszeń. 79 unikatowych kandydatów; B11a+B11b: 15 modeli, +64 meble, +198 dekoracji, +68 stanowisk, 100 obrotów. Jedna cela PRISON_M01 bez dodatkowej ławy (brak bezpiecznej pozycji). r14 bez zmian, r15 nieopublikowana. B11 nadal WIP. Nakładka templates/mtl/pass2b11b-candidates.json po B11a; raport ../MTL_AUDIT_0.3.44_PASS2B11B.md. II-B11c: LIBRARY_M01, SCHOOL_M01, SP_SCHOOL, BATHHOUSE_M01, SP_BATHHOUSE, SP_ARCHIVE, RUR_HOUSE_L01 (wersja B9 i definicje v2), potem pozostałe wcześniejsze przebudowy. B12 IDS (w tym przekroje przejść, wyrównanie wyposażenia cel, pojemność i proporcje ścian), B13 integracja, B14 QA. Node, pełny MFS, Android, offline, Pages i odbiór wizualny otwarte. Pamiętać o CHAT_LOAD_LOG.md i zachowaniu najnowszych wersji nakładek.
+
+## Checkpoint II-B11c — najnowszy
+II-B11c: 7 modeli B5 (RUR_HOUSE_L01 z B9), +36 mebli, +114 dekoracji, 116→156 stanowisk, 48 obrotów V8 bez zgłoszeń. Nowe meble nie zajmują końców roomCuts; nowe stanowiska w pokoju obiektu. Jedna przebieralnia BATHHOUSE_M01 bez dodatkowego mebla. B11a–c: 22 modele, +100 mebli, +312 dekoracji, +108 stanowisk, 148 obrotów; 79 unikatowych kandydatów. r14 bez zmian, r15 nieopublikowana, B11 WIP. Nakładka templates/mtl/pass2b11c-candidates.json po B11b (wymaga definicji B9). Raport ../MTL_AUDIT_0.3.44_PASS2B11C.md. II-B11d: warsztaty B6, potem gospodarcze B7/B8b/B9, sakralne, monumentalne i pozostałe wcześniejsze modele; zawsze najnowsze nakładki. B12 IDS: także kontrola dodatków B11a/b względem roomCuts i pokoi, pełne szerokości i pojemność, klasyfikacja, proporcje ścian i odbiór wizualny. B13 integracja, B14 QA. Pełny MFS, Node, Android, offline, Pages nadal otwarte. Aktualizować CHAT_LOAD_LOG.md.
