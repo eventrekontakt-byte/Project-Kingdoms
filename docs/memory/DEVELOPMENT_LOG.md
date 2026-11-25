@@ -13,4 +13,6 @@ Skrócony dziennik checkpointów; pełna historia kodu w Git, szczegółowe zmia
 
 | 2026-11-25 | 0.3.44 Pass II-A | Triage 67/67 modeli według MDS; brak zmian w mapach, test kompletności ID; brak nowych testów runtime | ../MTL_AUDIT_0.3.44_PASS2A.md |
 
+| 2026-11-25 | 0.3.44 Pass II-B1 (WIP) | Cztery modele kandydujące, 8 nowych stanowisk, 16 obrotów sprawdzonych w V8; bez publikacji r15 | ../MTL_AUDIT_0.3.44_PASS2B1.md |
+
 Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograniczenia i następny krok. Wpisy dopisywać bez usuwania historii.

@@ -15,3 +15,6 @@ Nie odzyskano dosłownego końca rozmowy (3); repozytorium i raporty są podstaw
 
 ## Polecenie startowe
 „Kontynuuj produkcję Project Kingdoms. Odczytaj docs/memory/CHAT_HANDOVER.md i WORK_RULES.md z gałęzi main, a następnie wznow pracę.”
+
+## Checkpoint II-B1 — najnowszy
+4 modele w nakładce `templates/mtl/pass2b1-candidates.json`, test V8 16 obrotów pozytywny; r14 bez zmian. Przeczytaj `../MTL_AUDIT_0.3.44_PASS2B1.md`. Następne: CLINIC_M01, SP_CLINIC, HALL_M01 (recepcje istnieją, układ stref do poprawy), potem SP_KEEP_VAULT. Nakładki integrować dopiero w r15 po walidacji. Nie powtarzać czterech modeli bez powodu. Test Node, wizualny, Android i pełny MFS nie wykonane.

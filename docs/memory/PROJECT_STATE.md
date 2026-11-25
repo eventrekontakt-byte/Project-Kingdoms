@@ -23,3 +23,6 @@ Istnieje eksploracja 2D, ruch/kolizje, wnętrza i kondygnacje, kamera, zoom, aut
 - [Przekazanie](CHAT_HANDOVER.md), [Backlog](BACKLOG.md), [Zasady](WORK_RULES.md).
 
 - [Pass II-A — indywidualne rozstrzygnięcia](../MTL_AUDIT_0.3.44_PASS2A.md). Brak zmian map/runtime; r14 pozostaje ostatnią rewizją. Klasyfikacja nie oznacza naprawy ani odbioru.
+
+## Pass II-B1 (WIP)
+4 modele przygotowane w `templates/mtl/pass2b1-candidates.json`: BARRACKS_S02, BARRACKS_L02, GUARDHOUSE_L02, OFFICER_M01. 8 nowych stanowisk, 16 obrotów kandydatów przeszło test V8. Nie zintegrowano z r14, nie wydano r15. [Raport](../MTL_AUDIT_0.3.44_PASS2B1.md).

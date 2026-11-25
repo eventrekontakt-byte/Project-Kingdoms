@@ -15,3 +15,5 @@ Aktualizacja: 2026-11-25. Wszystkie poniższe zadania pozostają otwarte, chyba 
 | DNS-001 | wstrzymane | Dalszy rozwój DNS | Wznowić po odbiorze i stabilizacji mapy |
 
 Źródło szczegółowe: [Pass I](../MTL_AUDIT_0.3.44_PASS1.md), [67 modeli](../../templates/mtl/audit-candidates-0.3.44.json). Nie powielać całego katalogu danych w pamięci.
+
+**Checkpoint II-B1:** cztery kandydaty w nakładce pass2b1-candidates.json; testy V8 pozytywne, pełny MFS/Node i architektura otwarte. Następne: CLINIC_M01, SP_CLINIC, HALL_M01 (istniejące reception_desk, wydzielenie stref), SP_KEEP_VAULT. Integracja dopiero w r15 po walidacji.
