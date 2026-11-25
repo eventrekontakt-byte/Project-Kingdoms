@@ -42,3 +42,6 @@ Użytkownik zgłosił przeciążenie (4) po ostatnim zapisanym II-B10b: 10 zako�
 
 ### Kolejna obserwacja — 2026-11-25, czat (5), II-B12a
 5 zapisanych checkpointów (3 partie B11, pełny przegląd, B12a). 93 unikatowe ID nakładkowe; 28 modeli skontrolowanych i 25 zmienionych w B12a. Pierwsza próba przerwana przez brak notes w starszych modelach, poprawiona i wykonana ponownie. Obciążenie orientacyjne wysokie; brak telemetrii i progu awarii. Zapis i testy zakończone, brak nowego zgłoszenia awarii. Zalecana zmiana czatu przed rozbudowanym B12b lub integracją.
+
+### Kolejna obserwacja — 2026-11-25, czat (5), II-B12b–e
+6 checkpointów rozmowy (B12b–e skonsolidowany). 110 unikatowych ID nakładkowych. Kilka prób dużej korekty zamków odrzucono przez walidację; zapisano wyłącznie poprawne indywidualne aneksy. Pełny audyt po B12c i korekty B12d/e zapisane. Obciążenie orientacyjne bardzo wysokie, brak telemetrii i progu awarii; przed dalszą rozbudowaną pracą zalecany nowy czat, bez ponawiania B11.
