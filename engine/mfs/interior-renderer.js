@@ -11,7 +11,7 @@ export function drawInteriorTile(c,t,x,y,floor="wood"){
  if(t.startsWith("stairs")){box(c,x,y,1,1,"#6f5d4b");for(let i=1;i<5;i++)line(c,x+.12,y+i*.16,x+.88,y+i*.16,"#d4b792");c.fillStyle="#fff1c9";c.font=".55px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(t.includes("up")?"↑":"↓",x+.5,y+.5);return;}
  box(c,x,y,1,1,t==="stone"?"#9b9a91":t==="marble"?"#d1c9b8":"#8d806d","#756c5d",.015);
 }
-export function drawInteriorFurniture(c,o){
+function drawBaseFurniture(c,o){
  const g=o.geometry;if(g?.type!=="rect")return;const r=o.rotation||0,swap=r%180!==0,w=swap?g.h:g.w,h=swap?g.w:g.h,t=o.type;
  c.save();c.translate(g.x+g.w/2,g.y+g.h/2);c.rotate(r*Math.PI/180);c.translate(-w/2,-h/2);box(c,.09,.12,w-.1,h-.12,"#40302455",null);
  if(t.startsWith("bed_")){box(c,.06,.06,w-.12,h-.12,"#74492e");box(c,.14,.2,w-.28,h-.35,"#d8d2bb");box(c,.14,.65,w-.28,h-.8,"#66899a");box(c,.19,.22,w-.38,.32,"#eee6ce","#b6ad97",.025);if(w>1)line(c,w/2,.22,w/2,.54,"#b6ad97");}
@@ -41,7 +41,7 @@ export function drawInteriorFurniture(c,o){
  c.restore();
 }
 
-export function drawDecoration(c,o){
+function drawBaseDecoration(c,o){
  const g=o.geometry;if(g?.type!=="rect")return;const r=o.rotation||0,swap=r%180!==0,w=swap?g.h:g.w,h=swap?g.w:g.h;c.save();c.translate(g.x+g.w/2,g.y+g.h/2);c.rotate(r*Math.PI/180);c.translate(-w/2,-h/2);
  if(o.type==="hide_rug"){const pts=[[.13,.22],[.42,.14],[.58,.14],[.88,.22],[.72,.47],[.88,.79],[.66,.88],[.5,.76],[.34,.88],[.12,.79],[.28,.47]];c.fillStyle="#ae9674";c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x*w,y*h):c.moveTo(x*w,y*h));c.closePath();c.fill();c.strokeStyle="#6d5741";c.lineWidth=.04;c.stroke();}
  else if(o.type==="wall_mirror"){dot(c,.5,.5,.35,"#9a7946");dot(c,.5,.5,.27,"#bcd4d9");line(c,.35,.6,.65,.3,"#e7eeeb",.06);}
@@ -57,7 +57,7 @@ export function drawDecoration(c,o){
 
 
 // A prop occupies a quarter-tile slot on its supporting furniture. Artwork uses local normalized coordinates.
-export function drawSurfaceProp(c,o){
+function drawBaseSurfaceProp(c,o){
  const g=o.geometry,slots=[[.27,.27],[.73,.27],[.73,.73],[.27,.73]],s=slots[o.slot];if(!g||!s)return;
  const t=o.type.replace(/^prop_/,""),z=o.size||.36;
  c.save();c.translate(g.x+s[0],g.y+s[1]);c.rotate((o.rotation||0)*Math.PI/180);c.scale(z,z);c.translate(-.5,-.5);
@@ -99,3 +99,10 @@ export function drawMfsInterior(c,scene,range={l:0,r:scene.width-1,t:0,b:scene.h
  if(!layers||layers.has("surfaceProps"))for(const a of scene.decorations||[])if(a.mount==="surface")drawSurfaceProp(c,a);
  if(!layers||layers.has("decorations"))for(const a of scene.decorations||[])if(a.mount==="wall")drawDecoration(c,a);
 }
+
+// Sacred/noble variants reuse base silhouettes, with distinct visual accents.
+const sacredNobleArt={"stone_altar":"altar","gilded_altar":"altar","ritual_bench":"bench","prayer_stool":"kneeler","reliquary_cabinet":"display_case","offering_table":"table_small","holy_water_basin":"water_tub","ritual_lectern":"lectern","vestment_chest":"chest","noble_canopy_bed":"bed_double","noble_settee":"bench","noble_writing_desk":"desk","noble_wardrobe":"wardrobe","banquet_table":"table_large","audience_throne":"throne","treasury_chest":"strongbox","noble_bookcase":"bookcase","silver_cabinet":"cupboard","ritual_carpet":"rug_large","procession_runner":"rug_long","noble_carpet":"rug_large","silk_runner":"rug_long","wall_sun_emblem":"wall_cross","wall_moon_emblem":"wall_picture","wall_family_crest":"wall_shield","wall_dynasty_tapestry":"wall_tapestry","wall_ancestor_portrait":"wall_picture","wall_gilded_lamp":"wall_lantern","prop_ritual_cup":"prop_goblet","prop_prayer_book":"prop_book_open","prop_relic":"prop_crystal","prop_sacred_oil":"prop_bottle","prop_incense_burner":"prop_incense","prop_wax_seal":"prop_seal","prop_signet_ring":"prop_ring","prop_silver_goblet":"prop_goblet","prop_crown":"prop_jewels","prop_illuminated_book":"prop_book_closed","prop_pearl_necklace":"prop_necklace","prop_silk_fold":"prop_folded_cloth"};
+const variantColor=t=>t.includes("noble")||t.includes("dynasty")?"#75508c":t.includes("stone")||t.includes("silver")||t.includes("moon")?"#b8ccd2":"#e0bb6a";
+export function drawInteriorFurniture(c,o){const base=sacredNobleArt[o.type];drawBaseFurniture(c,base?{...o,type:base}:o);if(!base)return;const g=o.geometry,r=o.rotation||0,w=r%180?g.h:g.w,h=r%180?g.w:g.h,color=variantColor(o.type);c.save();c.translate(g.x+g.w/2,g.y+g.h/2);c.rotate(r*Math.PI/180);c.translate(-w/2,-h/2);if(o.type==="noble_canopy_bed"){for(const x of [.16,w-.16])for(const y of [.16,h-.16])dot(c,x,y,.12,color);line(c,.16,.16,w-.16,.16,color,.1);}else if(o.type.includes("altar")){box(c,w*.24,h*.22,w*.52,h*.12,color,null);dot(c,w*.5,h*.54,.12,color);}else{line(c,.18,.18,w-.18,.18,color,.09);dot(c,w*.5,h*.48,.09,color);}c.restore();}
+export function drawDecoration(c,o){const base=sacredNobleArt[o.type];drawBaseDecoration(c,base?{...o,type:base}:o);if(!base)return;const g=o.geometry,color=variantColor(o.type);c.save();if(o.type==="wall_sun_emblem"||o.type==="wall_moon_emblem"){dot(c,g.x+.5,g.y+.5,.31,color);if(o.type==="wall_moon_emblem")dot(c,g.x+.62,g.y+.39,.23,"#504f57");else for(let i=0;i<8;i++){const a=i*Math.PI/4;line(c,g.x+.5+Math.cos(a)*.32,g.y+.5+Math.sin(a)*.32,g.x+.5+Math.cos(a)*.44,g.y+.5+Math.sin(a)*.44,color,.045);}}else if(o.mount==="floor"){c.strokeStyle=color;c.lineWidth=.06;c.strokeRect(g.x+.22,g.y+.22,g.w-.44,g.h-.44);}else{dot(c,g.x+g.w*.5,g.y+g.h*.5,.1,color);}c.restore();}
+export function drawSurfaceProp(c,o){const base=sacredNobleArt[o.type];drawBaseSurfaceProp(c,base?{...o,type:base}:o);if(!base)return;const g=o.geometry,slot=[[.27,.27],[.73,.27],[.73,.73],[.27,.73]][o.slot];if(!slot)return;const x=g.x+slot[0],y=g.y+slot[1],z=o.size||.36,color=variantColor(o.type);if(o.type==="prop_crown"){box(c,x-z*.36,y-z*.12,z*.72,z*.36,color,null);for(const i of [-1,0,1])line(c,x+i*z*.26,y+z*.04,x+i*z*.26,y-z*.29,color,.05);}else dot(c,x+z*.21,y-z*.21,z*.09,color);}

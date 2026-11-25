@@ -60,6 +60,12 @@
       "mapRevision": 10,
       "manifest": "mtl_gallery_001_r10/manifest.json",
       "profile": "final"
+    },
+    {
+      "mapId": "mtl_gallery_001",
+      "mapRevision": 11,
+      "manifest": "mtl_gallery_001_r11/manifest.json",
+      "profile": "final"
     }
   ]
 }
