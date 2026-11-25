@@ -1,0 +1,20 @@
+name: City r2 runtime tests
+on:
+  push:
+    branches: [city-r2-runtime-ci, main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/city-r2-runtime.mjs
+      - run: node tests/mfs-core.mjs
+      - run: node tests/mfs-validator.mjs
+      - run: node --check engine/game.js
