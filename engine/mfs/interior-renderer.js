@@ -27,6 +27,12 @@ export function drawInteriorFurniture(c,o){
  else if(t==="spinning_wheel"){box(c,.14,.12,.72,.76,"#9a6d42");dot(c,.5,.5,.34,"#d2ae79");dot(c,.5,.5,.23,"#6f513a");for(let a=0;a<6;a++)line(c,.5,.5,.5+Math.cos(a*Math.PI/3)*.32,.5+Math.sin(a*Math.PI/3)*.32,"#d2ae79",.045);}
  else if(t==="wood_pile"){for(let x=.24;x<.9;x+=.25)for(let y=.25;y<.9;y+=.25){dot(c,x,y,.16,"#72513a");dot(c,x,y,.11,"#c59a65");}}
  else if(["tool_chest","strongbox","shoe_rack","cupboard","writing_desk","sewing_table","butcher_block","cheese_press","oil_press"].includes(t)){box(c,.08,.08,w-.16,h-.16,"#805638");box(c,.15,.15,w-.3,h-.3,t==="strongbox"?"#777b78":"#b78e61");for(let y=.48;y<h-.1;y+=.48)line(c,.17,y,w-.17,y,"#6c4b34",.05);if(t==="strongbox"||t==="tool_chest")box(c,w*.38,h*.4,.24,.17,"#ceba73");if(t==="shoe_rack"){box(c,.19,.22,.22,.46,"#5c4333");box(c,.58,.22,.22,.46,"#5c4333");}if(t.endsWith("press")){box(c,.25,.24,w-.5,h-.48,"#948779");dot(c,w/2,h/2,.15,"#d0bb8d");}}
+ else if(["jewelry_case","fabric_rack","spice_rack","bread_display","fish_display","butcher_display","lockbox_rack"].includes(t)){box(c,.06,.06,w-.12,h-.12,"#684b35");box(c,.13,.13,w-.26,h-.26,t==="jewelry_case"?"#88a3ac":t==="fish_display"?"#a3b6b3":t==="butcher_display"?"#ab7970":"#bd9866");for(let y=.47;y<h-.1;y+=.65)line(c,.14,y,w-.14,y,"#654a35",.06);}
+ else if(t==="hairdresser_chair"){box(c,.12,.12,w-.24,h-.24,"#583b2f");box(c,.24,.22,w-.48,h-.43,"#ae6653");box(c,.12,h-.25,w-.24,.17,"#6d4935");}
+ else if(t==="service_mirror"){box(c,.07,.07,w-.14,h-.14,"#795738");box(c,.22,.16,w-.44,.65,"#b1ced2");line(c,.25,.65,w-.26,.25,"#eef1df",.045);}
+ else if(t==="screen_divider"){box(c,.32,.05,.36,h-.1,"#765238");box(c,.38,.12,.24,h-.24,"#c5b198");}
+ else if(t==="travel_luggage"){box(c,.12,.08,w-.24,h-.16,"#806344");for(let y=.24;y<h-.15;y+=.6){box(c,.22,y,.56,.44,"#a07b51");box(c,.45,y+.1,.12,.2,"#d7b97e");}}
+ else if(["repair_bench","reception_desk","tea_station","tasting_table","scribe_station"].includes(t)){box(c,.07,.07,w-.14,h-.14,"#755032");box(c,.15,.15,w-.3,h-.3,t==="tea_station"?"#a8ad7d":"#b28a5d");for(let y=.45;y<h-.1;y+=.5)line(c,.16,y,w-.16,y,"#806044",.035);}
  else if(t==="anvil"){box(c,.22,.22,.56,.56,"#805d3a");box(c,.12,.33,.76,.34,"#899298","#343e42");box(c,.34,.22,.36,.56,"#b0b7b8","#343e42");}
  else if(t==="altar"||t==="bath"){box(c,.08,.08,w-.16,h-.16,"#a5a19a");box(c,.22,.2,w-.44,h-.4,t==="bath"?"#74a9bd":"#dbd2b9");}
  else{box(c,.07,.07,w-.14,h-.14,"#80532f");box(c,.14,.14,w-.28,h-.28,"#b58452");for(let y=.42;y<h-.1;y+=.4)line(c,.15,y,w-.15,y,"#8c603a",.025);if(t==="chest"){line(c,.15,h*.45,w-.15,h*.45,"#4d3828",.07);box(c,w*.42,h*.4,.16,.18,"#d6b56f");}if(t==="workbench"||t==="alchemy"){box(c,.24,.24,.25,.5,"#787f80");dot(c,w-.4,.5,.16,"#7098a3");}}
@@ -65,6 +71,17 @@ export function drawSurfaceProp(c,o){
  else if(t==="flower_vase"){D(.5,.6,.29,"#7e9da7");L(.5,.6,.5,.15,"#5b844b");D(.32,.25,.13,"#ba6967");D(.65,.2,.14,"#e3b96b");}
  else if(["crystal","jewels","mirror_small"].includes(t)){B(.24,.18,.52,.64,t==="mirror_small"?"#b8d1d6":"#8bb4c7");L(.3,.67,.67,.27,"#e1f0e8",.1);if(t==="jewels")D(.67,.6,.13,"#cf6371");}
  else if(t==="scale"){L(.5,.12,.5,.85,"#c8ad69",.12);L(.12,.34,.88,.34,"#c8ad69");D(.19,.59,.18,"#ac905f");D(.81,.59,.18,"#ac905f");}
+ else if(t==="ring"){D(.5,.5,.33,"#c6a761");D(.5,.5,.21,"#8a7457");D(.5,.22,.12,"#86c3bc");}
+ else if(t==="necklace"){for(let i=0;i<9;i++){const a=i*Math.PI/8;D(.5+.33*Math.cos(a),.29+.45*Math.sin(a),.065,"#d3b36c");}D(.5,.78,.13,"#a76a83");}
+ else if(t==="spice_bag"||t==="fabric_stack"){B(.15,.18,.7,.65,t==="spice_bag"?"#c2a574":"#888eae");L(.22,.42,.78,.42,"#e4cda4",.08);}
+ else if(t==="fish"){B(.16,.34,.58,.32,"#92a9af");L(.69,.5,.9,.23,"#92a9af",.18);L(.69,.5,.9,.77,"#92a9af",.18);D(.26,.46,.055,"#39484b");}
+ else if(t==="meat"){D(.5,.5,.38,"#ab665c");D(.45,.5,.14,"#dfcbb1");}
+ else if(t==="pastry"){D(.5,.5,.39,"#c68e48");for(const x of [.34,.5,.66])L(x,.29,x+.08,.69,"#e0b86e",.07);}
+ else if(t==="razor"||t==="scissors"){L(.18,.8,.83,.19,"#b8c3c4",.13);L(.18,.2,.83,.81,"#825f46",.11);if(t==="scissors"){D(.2,.8,.12,"#a88c6c");D(.2,.2,.12,"#a88c6c");}}
+ else if(t==="tea_cup"){D(.5,.5,.4,"#c2d0bf");D(.5,.5,.28,"#9b794d");}
+ else if(t==="key"){D(.29,.32,.2,"#bcab71");D(.29,.32,.1,"#735f40");L(.4,.44,.81,.8,"#bcab71",.14);L(.65,.68,.8,.5,"#bcab71",.12);}
+ else if(t==="letter"||t==="ticket"){B(.13,.19,.74,.62,"#e0cc9d");L(.17,.25,.5,.56,"#9b845c",.07);L(.83,.25,.5,.56,"#9b845c",.07);D(.5,.56,.08,"#aa5648");}
+ else if(t==="thread"){B(.25,.18,.5,.64,"#b88d66");for(let y=.3;y<.75;y+=.11)L(.25,y,.75,y,"#73969e",.07);}
  else if(t==="seal"){D(.5,.52,.31,"#9b4438");D(.5,.52,.17,"#c17753");}
  else if(t==="rope_coil"||t==="basket_small"||t==="coin_purse"||t==="wood_shavings"){D(.5,.5,.39,"#b49b64");D(.5,.5,.26,"#8b6f46");D(.5,.5,.13,"#c5a675");if(t==="coin_purse")L(.34,.23,.66,.23,"#76583d",.11);}
  else B(.17,.18,.66,.64,"#b8a37f");
