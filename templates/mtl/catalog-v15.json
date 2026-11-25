@@ -40287,7 +40287,7 @@
       "id": "INN_M02",
       "type": "inn",
       "name": "Zajazd podróżnych",
-      "version": 5,
+      "version": 6,
       "size": "L",
       "width": 9,
       "height": 10,
@@ -40822,7 +40822,7 @@
               "type": "bedroom",
               "access": "Z4",
               "anchor": {
-                "x": 3,
+                "x": 2,
                 "y": 2
               },
               "functions": [
@@ -40847,7 +40847,7 @@
               "type": "dining_room",
               "access": "Z1",
               "anchor": {
-                "x": 1,
+                "x": 3,
                 "y": 9
               },
               "functions": [
@@ -48988,7 +48988,7 @@
       "id": "GUARDHOUSE_L02",
       "name": "Komendantura straży",
       "type": "guardhouse",
-      "version": 5,
+      "version": 6,
       "size": "M",
       "width": 7,
       "height": 8,
@@ -49120,7 +49120,7 @@
               "access": "Z3",
               "anchor": {
                 "x": 3,
-                "y": 8
+                "y": 7
               },
               "functions": [
                 "read",
@@ -51056,7 +51056,7 @@
       "id": "COMMAND_M01",
       "name": "Sztab wojskowy",
       "type": "hall",
-      "version": 4,
+      "version": 5,
       "size": "M",
       "width": 8,
       "height": 10,
@@ -51145,7 +51145,7 @@
               "type": "chancery",
               "access": "Z3",
               "anchor": {
-                "x": 1,
+                "x": 2,
                 "y": 1
               },
               "functions": [
@@ -65195,7 +65195,7 @@
       "id": "NOB_HOUSE_M01",
       "name": "Dom miejskiego szlachcica",
       "type": "large_house",
-      "version": 5,
+      "version": 6,
       "size": "M",
       "width": 8,
       "height": 9,
@@ -65314,7 +65314,7 @@
               "type": "kitchen",
               "access": "Z2",
               "anchor": {
-                "x": 1,
+                "x": 2,
                 "y": 1
               },
               "functions": [
@@ -66376,7 +66376,7 @@
       "id": "NOB_HOUSE_L01",
       "name": "Dwór szlachecki",
       "type": "large_house",
-      "version": 6,
+      "version": 7,
       "size": "L",
       "width": 9,
       "height": 10,
@@ -66489,7 +66489,7 @@
               "type": "dining_room",
               "access": "Z4",
               "anchor": {
-                "x": 1,
+                "x": 2,
                 "y": 1
               },
               "functions": [
@@ -67305,7 +67305,7 @@
               "type": "kitchen",
               "access": "Z2",
               "anchor": {
-                "x": 1,
+                "x": 3,
                 "y": 10
               },
               "functions": [

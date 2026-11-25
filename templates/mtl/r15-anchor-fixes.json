@@ -1,0 +1,96 @@
+{
+  "sourceCommit": "73c0eaf564f89c84b7911c3debf6982f388919cf",
+  "fixes": [
+    {
+      "id": "INN_M02",
+      "level": 1,
+      "room": "audit.b1.f1.r1",
+      "old": {
+        "x": 3,
+        "y": 2
+      },
+      "next": {
+        "x": 2,
+        "y": 2
+      }
+    },
+    {
+      "id": "INN_M02",
+      "level": 1,
+      "room": "audit.b1.f1.r3",
+      "old": {
+        "x": 1,
+        "y": 9
+      },
+      "next": {
+        "x": 3,
+        "y": 9
+      }
+    },
+    {
+      "id": "GUARDHOUSE_L02",
+      "level": 0,
+      "room": "audit.b1.f0.r2",
+      "old": {
+        "x": 3,
+        "y": 8
+      },
+      "next": {
+        "x": 3,
+        "y": 7
+      }
+    },
+    {
+      "id": "COMMAND_M01",
+      "level": 0,
+      "room": "audit.b1.f0.r1",
+      "old": {
+        "x": 1,
+        "y": 1
+      },
+      "next": {
+        "x": 2,
+        "y": 1
+      }
+    },
+    {
+      "id": "NOB_HOUSE_M01",
+      "level": 0,
+      "room": "audit.b1.f0.r1",
+      "old": {
+        "x": 1,
+        "y": 1
+      },
+      "next": {
+        "x": 2,
+        "y": 1
+      }
+    },
+    {
+      "id": "NOB_HOUSE_L01",
+      "level": 0,
+      "room": "audit.b1.f0.r1",
+      "old": {
+        "x": 1,
+        "y": 1
+      },
+      "next": {
+        "x": 2,
+        "y": 1
+      }
+    },
+    {
+      "id": "NOB_HOUSE_L01",
+      "level": 2,
+      "room": "audit.b1.f2.r2",
+      "old": {
+        "x": 1,
+        "y": 10
+      },
+      "next": {
+        "x": 3,
+        "y": 10
+      }
+    }
+  ]
+}
