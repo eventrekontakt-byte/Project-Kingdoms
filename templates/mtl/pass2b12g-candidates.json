@@ -1,0 +1,5805 @@
+{
+  "schemaVersion": "1.0.0",
+  "baseCatalog": "catalog-v14.json",
+  "sourceCommit": "171856d876f47533e8cc56d13188095c3cce74cc",
+  "status": "WIP; no acceptance",
+  "stage": "II-B12g",
+  "stats": {
+    "total": 33,
+    "corrected": 11,
+    "exceptionProposed": 14,
+    "pending": 8,
+    "models": 5,
+    "rotations": 40
+  },
+  "buildings": [
+    {
+      "id": "INN_M02",
+      "type": "inn",
+      "name": "Zajazd podróżnych",
+      "version": 4,
+      "size": "L",
+      "width": 9,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 9,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "stove",
+              "x": 15,
+              "y": 1,
+              "rotation": 270
+            },
+            {
+              "type": "cooking_prep",
+              "x": 2,
+              "y": 1,
+              "rotation": 180
+            },
+            {
+              "type": "food_rack",
+              "x": 8,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "barrel",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "cupboard",
+              "x": 14,
+              "y": 6,
+              "rotation": 270
+            },
+            {
+              "type": "reception_desk",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "bar",
+              "x": 13,
+              "y": 11,
+              "rotation": 270
+            },
+            {
+              "type": "table_large",
+              "x": 1,
+              "y": 14,
+              "rotation": 270
+            },
+            {
+              "type": "table_large",
+              "x": 11,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 17,
+              "rotation": 90
+            },
+            {
+              "type": "travel_luggage",
+              "x": 16,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "root_bin",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "kitchen",
+              "access": "Z2",
+              "anchor": {
+                "x": 1,
+                "y": 1
+              },
+              "functions": [
+                "cook",
+                "storage"
+              ]
+            },
+            {
+              "type": "tavern_hall",
+              "access": "Z0",
+              "anchor": {
+                "x": 9,
+                "y": 16
+              },
+              "functions": [
+                "reception",
+                "serve",
+                "order",
+                "eat",
+                "sit",
+                "storage"
+              ]
+            },
+            {
+              "type": "kitchen",
+              "access": "Z2",
+              "anchor": {
+                "x": 6,
+                "y": 1
+              },
+              "functions": [
+                "cook",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 7,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 11,
+              "y": 7,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 8,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 6,
+              "start": 1,
+              "end": 7,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_cabbage",
+              "x": 2,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_onion",
+              "x": 2,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_grain_bowl",
+              "x": 3,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_flour_bowl",
+              "x": 3,
+              "y": 1,
+              "rotation": 180,
+              "hostIndex": 1,
+              "slot": 2
+            },
+            {
+              "type": "prop_cheese",
+              "x": 8,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_fruit_bowl",
+              "x": 8,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_jar",
+              "x": 9,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_bread",
+              "x": 9,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 2
+            },
+            {
+              "type": "prop_bowl",
+              "x": 14,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_jar",
+              "x": 14,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 2
+            },
+            {
+              "type": "prop_plate",
+              "x": 15,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_letter",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_ticket",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_key",
+              "x": 1,
+              "y": 10,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_goblet",
+              "x": 13,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_bottle",
+              "x": 13,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_plate",
+              "x": 14,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_mug",
+              "x": 14,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_cheese",
+              "x": 1,
+              "y": 14,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_fruit_bowl",
+              "x": 1,
+              "y": 14,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_pitcher",
+              "x": 2,
+              "y": 14,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_plate",
+              "x": 2,
+              "y": 14,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_cheese",
+              "x": 11,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_fruit_bowl",
+              "x": 11,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "prop_pitcher",
+              "x": 12,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_plate",
+              "x": 12,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_picture",
+              "x": 17,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "rug_small",
+              "x": 4,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "floor_mat",
+              "x": 6,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "prop_wine_flask",
+              "x": 15,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_butter",
+              "x": 3,
+              "y": 14,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "objects": [
+            {
+              "type": "bed_double",
+              "x": 14,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "bed_single",
+              "x": 15,
+              "y": 4,
+              "rotation": 90
+            },
+            {
+              "type": "bed_single",
+              "x": 4,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "wardrobe",
+              "x": 8,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "chest",
+              "x": 16,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "washstand",
+              "x": 7,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "table_large",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 14,
+              "y": 9,
+              "rotation": 90
+            },
+            {
+              "type": "travel_luggage",
+              "x": 4,
+              "y": 18,
+              "rotation": 270
+            },
+            {
+              "type": "armchair",
+              "x": 16,
+              "y": 15,
+              "rotation": 270
+            },
+            {
+              "type": "farm_cupboard",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "access": "Z4",
+              "anchor": {
+                "x": 9,
+                "y": 3
+              },
+              "functions": [
+                "sleep",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "dining_room",
+              "access": "Z1",
+              "anchor": {
+                "x": 1,
+                "y": 9
+              },
+              "functions": [
+                "eat",
+                "storage"
+              ]
+            },
+            {
+              "type": "living",
+              "access": "Z1",
+              "anchor": {
+                "x": 7,
+                "y": 9
+              },
+              "functions": [
+                "sit",
+                "rest"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 8,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 11,
+              "y": 8,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 11,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 12,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 13,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 14,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 15,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 16,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 17,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 18,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 9,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 9,
+              "end": 18,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "prop_milk",
+              "x": 7,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_soap",
+              "x": 7,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 5,
+              "slot": 2
+            },
+            {
+              "type": "prop_butter",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_fruit_bowl",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_pitcher",
+              "x": 2,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_plate",
+              "x": 2,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_picture",
+              "x": 17,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "rug_small",
+              "x": 2,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "floor_mat",
+              "x": 4,
+              "y": 15,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 15,
+              "y": 16
+            },
+            "arrival": {
+              "x": 15,
+              "y": 17
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 15,
+              "y": 16
+            },
+            "arrival": {
+              "x": 15,
+              "y": 17
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "cooking_prep",
+          "version": 1
+        },
+        {
+          "id": "food_rack",
+          "version": 1
+        },
+        {
+          "id": "barrel",
+          "version": 1
+        },
+        {
+          "id": "cupboard",
+          "version": 1
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bar",
+          "version": 2
+        },
+        {
+          "id": "table_large",
+          "version": 2
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "travel_luggage",
+          "version": 1
+        },
+        {
+          "id": "bed_double",
+          "version": 2
+        },
+        {
+          "id": "bed_single",
+          "version": 2
+        },
+        {
+          "id": "wardrobe",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "armchair",
+          "version": 2
+        },
+        {
+          "id": "root_bin",
+          "version": 1
+        },
+        {
+          "id": "farm_cupboard",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "New authored plan: public and service zones, open passage.",
+        "II-B12f: targeted IDS correction; no mass furnishing; review only.",
+        "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes."
+      ]
+    },
+    {
+      "id": "CIVIC_HALL_M02",
+      "name": "Ratusz dzielnicowy",
+      "type": "hall",
+      "version": 4,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "desk",
+              "x": 3,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "desk",
+              "x": 11,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 14,
+              "y": 2,
+              "rotation": 180
+            },
+            {
+              "type": "reception_desk",
+              "x": 4,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 14,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "notice_board",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 8,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "chancery",
+              "access": "Z2",
+              "anchor": {
+                "x": 1,
+                "y": 1
+              },
+              "functions": [
+                "administration",
+                "read"
+              ]
+            },
+            {
+              "type": "reception",
+              "access": "Z0",
+              "anchor": {
+                "x": 8,
+                "y": 13
+              },
+              "functions": [
+                "reception",
+                "sit",
+                "read"
+              ]
+            },
+            {
+              "type": "chancery",
+              "access": "Z2",
+              "anchor": {
+                "x": 5,
+                "y": 1
+              },
+              "functions": [
+                "administration",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 9,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 4,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 5,
+              "start": 1,
+              "end": 9,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 15,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 3,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 11,
+              "y": 4,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "reception_desk",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "notice_board",
+          "version": 1
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented.",
+        "II-B12f: targeted IDS correction; no mass furnishing; review only.",
+        "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes."
+      ]
+    },
+    {
+      "id": "CIVIC_COURT_M01",
+      "name": "Sąd lokalny",
+      "type": "court",
+      "version": 4,
+      "size": "M",
+      "width": 8,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "desk",
+              "x": 4,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "bookcase",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "chest",
+              "x": 14,
+              "y": 4,
+              "rotation": 180
+            },
+            {
+              "type": "writing_desk",
+              "x": 14,
+              "y": 6,
+              "rotation": 180
+            },
+            {
+              "type": "council_table",
+              "x": 4,
+              "y": 12,
+              "rotation": 90
+            },
+            {
+              "type": "bench",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "bench",
+              "x": 14,
+              "y": 13,
+              "rotation": 180
+            },
+            {
+              "type": "desk",
+              "x": 11,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "sealing_desk",
+              "x": 1,
+              "y": 8,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "chancery",
+              "access": "Z2",
+              "anchor": {
+                "x": 1,
+                "y": 1
+              },
+              "functions": [
+                "administration",
+                "read"
+              ]
+            },
+            {
+              "type": "hearing",
+              "access": "Z0",
+              "anchor": {
+                "x": 8,
+                "y": 13
+              },
+              "functions": [
+                "meeting",
+                "sit",
+                "administration"
+              ]
+            },
+            {
+              "type": "chancery",
+              "access": "Z2",
+              "anchor": {
+                "x": 6,
+                "y": 1
+              },
+              "functions": [
+                "storage",
+                "administration"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 9,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 5,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 6,
+              "start": 1,
+              "end": 9,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_lantern",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_lantern",
+              "x": 15,
+              "y": 15,
+              "rotation": 180
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 4,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 0,
+              "slot": 0
+            },
+            {
+              "type": "prop_old_scroll",
+              "x": 1,
+              "y": 2,
+              "rotation": 0,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 14,
+              "y": 6,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_book_open",
+              "x": 11,
+              "y": 16,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "wall_memorial",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [],
+      "dependencies": [
+        {
+          "id": "desk",
+          "version": 2
+        },
+        {
+          "id": "bookcase",
+          "version": 1
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "writing_desk",
+          "version": 1
+        },
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "bench",
+          "version": 2
+        },
+        {
+          "id": "sealing_desk",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed civic plan. Access is metadata; runtime civic actions not implemented.",
+        "II-B12f: targeted IDS correction; no mass furnishing; review only.",
+        "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes."
+      ]
+    },
+    {
+      "id": "NOB_HOUSE_M01",
+      "name": "Dom miejskiego szlachcica",
+      "type": "large_house",
+      "version": 5,
+      "size": "M",
+      "width": 8,
+      "height": 9,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 9
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 8
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 17
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "stove",
+              "x": 13,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "cooking_prep",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "food_rack",
+              "x": 13,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "cupboard",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "water_tub",
+              "x": 14,
+              "y": 3,
+              "rotation": 180
+            },
+            {
+              "type": "barrel",
+              "x": 1,
+              "y": 7,
+              "rotation": 270
+            },
+            {
+              "type": "crate",
+              "x": 14,
+              "y": 7,
+              "rotation": 270
+            },
+            {
+              "type": "audience_throne",
+              "x": 1,
+              "y": 11,
+              "rotation": 270
+            },
+            {
+              "type": "council_table",
+              "x": 12,
+              "y": 10,
+              "rotation": 270
+            },
+            {
+              "type": "noble_settee",
+              "x": 1,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "noble_settee",
+              "x": 14,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "side_table",
+              "x": 14,
+              "y": 16,
+              "rotation": 180
+            },
+            {
+              "type": "plant_stand",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "root_bin",
+              "x": 6,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "kitchen",
+              "access": "Z2",
+              "anchor": {
+                "x": 1,
+                "y": 1
+              },
+              "functions": [
+                "cook",
+                "storage"
+              ]
+            },
+            {
+              "type": "audience_hall",
+              "access": "Z1",
+              "anchor": {
+                "x": 8,
+                "y": 13
+              },
+              "functions": [
+                "sit",
+                "meeting",
+                "storage",
+                "tend"
+              ]
+            },
+            {
+              "type": "kitchen",
+              "access": "Z2",
+              "anchor": {
+                "x": 9,
+                "y": 1
+              },
+              "functions": [
+                "cook",
+                "storage",
+                "wash"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 8,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 8,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 8,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 9,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 9,
+              "start": 1,
+              "end": 8,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 2,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "prop_silk_fold",
+              "x": 14,
+              "y": 7,
+              "rotation": 270,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 12,
+              "y": 10,
+              "rotation": 270,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_silver_goblet",
+              "x": 12,
+              "y": 10,
+              "rotation": 270,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "prop_ritual_cup",
+              "x": 13,
+              "y": 10,
+              "rotation": 270,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 14,
+              "y": 16,
+              "rotation": 180,
+              "hostIndex": 11,
+              "slot": 0
+            },
+            {
+              "type": "prop_onion",
+              "x": 1,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 1,
+              "slot": 0
+            },
+            {
+              "type": "prop_butter",
+              "x": 13,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "wall_dried_onions",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "objects": [
+            {
+              "type": "noble_canopy_bed",
+              "x": 13,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "noble_wardrobe",
+              "x": 14,
+              "y": 5,
+              "rotation": 180
+            },
+            {
+              "type": "dresser",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "washstand",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "side_table",
+              "x": 1,
+              "y": 6,
+              "rotation": 270
+            },
+            {
+              "type": "armchair",
+              "x": 14,
+              "y": 4,
+              "rotation": 270
+            },
+            {
+              "type": "plant_stand",
+              "x": 14,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "noble_writing_desk",
+              "x": 1,
+              "y": 11,
+              "rotation": 270
+            },
+            {
+              "type": "noble_bookcase",
+              "x": 14,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "noble_bookcase",
+              "x": 1,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "armchair",
+              "x": 1,
+              "y": 16,
+              "rotation": 90
+            },
+            {
+              "type": "side_table",
+              "x": 14,
+              "y": 10,
+              "rotation": 270
+            },
+            {
+              "type": "treasury_chest",
+              "x": 1,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "farm_cupboard",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "access": "Z4",
+              "anchor": {
+                "x": 8,
+                "y": 4
+              },
+              "functions": [
+                "sleep",
+                "storage",
+                "rest",
+                "tend"
+              ]
+            },
+            {
+              "type": "office",
+              "access": "Z4",
+              "anchor": {
+                "x": 4,
+                "y": 12
+              },
+              "functions": [
+                "administration",
+                "read",
+                "rest",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 4,
+                "y": 4
+              },
+              "access": "Z4",
+              "functions": [
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 11,
+                "y": 12
+              },
+              "access": "Z4",
+              "functions": [
+                "read",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 8,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 8,
+              "w": 5,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 9,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 1,
+              "end": 8,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 9,
+              "end": 16,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "prop_silk_fold",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_milk",
+              "x": 1,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 1,
+              "y": 6,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 1,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 1,
+              "y": 11,
+              "rotation": 270,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 14,
+              "y": 12,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 14,
+              "y": 12,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 1,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 9,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 1,
+              "y": 13,
+              "rotation": 0,
+              "hostIndex": 9,
+              "slot": 2
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 14,
+              "y": 10,
+              "rotation": 270,
+              "hostIndex": 11,
+              "slot": 0
+            },
+            {
+              "type": "prop_crown",
+              "x": 1,
+              "y": 9,
+              "rotation": 0,
+              "hostIndex": 12,
+              "slot": 0
+            }
+          ]
+        },
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 13,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "bed_single",
+              "x": 13,
+              "y": 5,
+              "rotation": 90
+            },
+            {
+              "type": "chest",
+              "x": 14,
+              "y": 3,
+              "rotation": 180
+            },
+            {
+              "type": "linen_cabinet",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "washstand",
+              "x": 14,
+              "y": 4,
+              "rotation": 180
+            },
+            {
+              "type": "stool",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "type": "noble_bookcase",
+              "x": 14,
+              "y": 11,
+              "rotation": 180
+            },
+            {
+              "type": "noble_bookcase",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "reading_desk",
+              "x": 13,
+              "y": 10,
+              "rotation": 180
+            },
+            {
+              "type": "reading_desk",
+              "x": 13,
+              "y": 14,
+              "rotation": 180
+            },
+            {
+              "type": "armchair",
+              "x": 1,
+              "y": 9,
+              "rotation": 180
+            },
+            {
+              "type": "side_table",
+              "x": 14,
+              "y": 16,
+              "rotation": 270
+            },
+            {
+              "type": "noble_wardrobe",
+              "x": 1,
+              "y": 7,
+              "rotation": 270
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "access": "Z2",
+              "anchor": {
+                "x": 8,
+                "y": 4
+              },
+              "functions": [
+                "sleep",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "library",
+              "access": "Z4",
+              "anchor": {
+                "x": 8,
+                "y": 13
+              },
+              "functions": [
+                "read",
+                "rest",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 4,
+                "y": 4
+              },
+              "access": "Z2",
+              "functions": [
+                "storage",
+                "sit"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 8,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 10,
+              "y": 8,
+              "w": 5,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 9,
+              "start": 1,
+              "end": 14,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 8,
+              "start": 1,
+              "end": 8,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 15,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 15,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 15,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 15,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 15,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 2,
+              "y": 9,
+              "rotation": 0
+            },
+            {
+              "type": "prop_silk_fold",
+              "x": 1,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_milk",
+              "x": 14,
+              "y": 4,
+              "rotation": 180,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 14,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 0
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 14,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 6,
+              "slot": 2
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 13,
+              "y": 10,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 13,
+              "y": 14,
+              "rotation": 180,
+              "hostIndex": 9,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 14,
+              "y": 16,
+              "rotation": 270,
+              "hostIndex": 11,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 2
+            },
+            "arrival": {
+              "x": 8,
+              "y": 3
+            }
+          }
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "a": {
+            "trigger": {
+              "x": 8,
+              "y": 5
+            },
+            "arrival": {
+              "x": 8,
+              "y": 6
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 8,
+              "y": 5
+            },
+            "arrival": {
+              "x": 8,
+              "y": 6
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "cooking_prep",
+          "version": 1
+        },
+        {
+          "id": "food_rack",
+          "version": 1
+        },
+        {
+          "id": "cupboard",
+          "version": 1
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "barrel",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "audience_throne",
+          "version": 1
+        },
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "noble_settee",
+          "version": 1
+        },
+        {
+          "id": "side_table",
+          "version": 1
+        },
+        {
+          "id": "plant_stand",
+          "version": 1
+        },
+        {
+          "id": "noble_canopy_bed",
+          "version": 1
+        },
+        {
+          "id": "noble_wardrobe",
+          "version": 1
+        },
+        {
+          "id": "dresser",
+          "version": 1
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "armchair",
+          "version": 2
+        },
+        {
+          "id": "noble_writing_desk",
+          "version": 1
+        },
+        {
+          "id": "noble_bookcase",
+          "version": 1
+        },
+        {
+          "id": "treasury_chest",
+          "version": 1
+        },
+        {
+          "id": "bed_single",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "linen_cabinet",
+          "version": 1
+        },
+        {
+          "id": "stool",
+          "version": 1
+        },
+        {
+          "id": "reading_desk",
+          "version": 1
+        },
+        {
+          "id": "root_bin",
+          "version": 1
+        },
+        {
+          "id": "farm_cupboard",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed design-time review template; large structures require individual MDS review.",
+        "II-B12d: evidence-based functional room clarification / open zoning; no furniture, partitions or portals moved.",
+        "II-B12f: targeted IDS correction; no mass furnishing; review only.",
+        "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes."
+      ]
+    },
+    {
+      "id": "NOB_HOUSE_L01",
+      "name": "Dwór szlachecki",
+      "type": "large_house",
+      "version": 5,
+      "size": "L",
+      "width": 9,
+      "height": 10,
+      "shape": "R",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 9,
+        "h": 10
+      },
+      "orientations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "entry": {
+        "x": 4,
+        "y": 9
+      },
+      "interiorEntry": {
+        "x": 8,
+        "y": 19
+      },
+      "floors": [
+        {
+          "objects": [
+            {
+              "type": "banquet_table",
+              "x": 14,
+              "y": 4,
+              "rotation": 270
+            },
+            {
+              "type": "banquet_table",
+              "x": 1,
+              "y": 6,
+              "rotation": 270
+            },
+            {
+              "type": "ritual_bench",
+              "x": 16,
+              "y": 6,
+              "rotation": 180
+            },
+            {
+              "type": "noble_settee",
+              "x": 14,
+              "y": 2,
+              "rotation": 270
+            },
+            {
+              "type": "silver_cabinet",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "type": "side_table",
+              "x": 1,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "audience_throne",
+              "x": 16,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "council_table",
+              "x": 1,
+              "y": 15,
+              "rotation": 90
+            },
+            {
+              "type": "noble_settee",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "noble_settee",
+              "x": 14,
+              "y": 15,
+              "rotation": 270
+            },
+            {
+              "type": "side_table",
+              "x": 16,
+              "y": 16,
+              "rotation": 180
+            },
+            {
+              "type": "plant_stand",
+              "x": 16,
+              "y": 12,
+              "rotation": 180
+            },
+            {
+              "type": "farm_bench",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "dining_room",
+              "access": "Z4",
+              "anchor": {
+                "x": 1,
+                "y": 1
+              },
+              "functions": [
+                "eat",
+                "storage",
+                "sit"
+              ]
+            },
+            {
+              "type": "audience_hall",
+              "access": "Z1",
+              "anchor": {
+                "x": 9,
+                "y": 15
+              },
+              "functions": [
+                "sit",
+                "meeting",
+                "storage",
+                "tend"
+              ]
+            },
+            {
+              "type": "dining_room",
+              "access": "Z4",
+              "anchor": {
+                "x": 7,
+                "y": 1
+              },
+              "functions": [
+                "eat",
+                "sit"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 11,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 6,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 7,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 6,
+              "y": 8,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 7,
+              "start": 1,
+              "end": 9,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 17,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 17,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 17,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 17,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 17,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 2,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 1,
+              "y": 8,
+              "rotation": 0,
+              "hostIndex": 5,
+              "slot": 0
+            },
+            {
+              "type": "prop_silver_goblet",
+              "x": 1,
+              "y": 15,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_ritual_cup",
+              "x": 1,
+              "y": 15,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 2,
+              "y": 15,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 16,
+              "y": 16,
+              "rotation": 180,
+              "hostIndex": 10,
+              "slot": 0
+            }
+          ]
+        },
+        {
+          "objects": [
+            {
+              "type": "noble_canopy_bed",
+              "x": 15,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "noble_wardrobe",
+              "x": 16,
+              "y": 5,
+              "rotation": 180
+            },
+            {
+              "type": "dresser",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "washstand",
+              "x": 16,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "side_table",
+              "x": 1,
+              "y": 7,
+              "rotation": 270
+            },
+            {
+              "type": "armchair",
+              "x": 1,
+              "y": 4,
+              "rotation": 180
+            },
+            {
+              "type": "plant_stand",
+              "x": 16,
+              "y": 8,
+              "rotation": 180
+            },
+            {
+              "type": "noble_writing_desk",
+              "x": 1,
+              "y": 12,
+              "rotation": 0
+            },
+            {
+              "type": "noble_bookcase",
+              "x": 1,
+              "y": 10,
+              "rotation": 90
+            },
+            {
+              "type": "noble_bookcase",
+              "x": 16,
+              "y": 11,
+              "rotation": 180
+            },
+            {
+              "type": "armchair",
+              "x": 16,
+              "y": 16,
+              "rotation": 0
+            },
+            {
+              "type": "side_table",
+              "x": 1,
+              "y": 16,
+              "rotation": 90
+            },
+            {
+              "type": "treasury_chest",
+              "x": 16,
+              "y": 17,
+              "rotation": 180
+            },
+            {
+              "type": "farm_cupboard",
+              "x": 3,
+              "y": 1,
+              "rotation": 90
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "access": "Z4",
+              "anchor": {
+                "x": 13,
+                "y": 4
+              },
+              "functions": [
+                "sleep",
+                "storage",
+                "wash",
+                "tend"
+              ]
+            },
+            {
+              "type": "office",
+              "access": "Z4",
+              "anchor": {
+                "x": 9,
+                "y": 15
+              },
+              "functions": [
+                "administration",
+                "read",
+                "rest",
+                "storage"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 5,
+                "y": 5
+              },
+              "access": "Z4",
+              "functions": [
+                "storage",
+                "rest"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 11,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 11,
+              "start": 1,
+              "end": 8,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 17,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 17,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 17,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 17,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 17,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 4,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "prop_silk_fold",
+              "x": 1,
+              "y": 1,
+              "rotation": 90,
+              "hostIndex": 2,
+              "slot": 0
+            },
+            {
+              "type": "prop_milk",
+              "x": 16,
+              "y": 7,
+              "rotation": 180,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 1,
+              "y": 7,
+              "rotation": 270,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_wax_seal",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 1,
+              "y": 12,
+              "rotation": 0,
+              "hostIndex": 7,
+              "slot": 2
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 1,
+              "y": 10,
+              "rotation": 90,
+              "hostIndex": 8,
+              "slot": 0
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 1,
+              "y": 10,
+              "rotation": 90,
+              "hostIndex": 8,
+              "slot": 2
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 16,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 9,
+              "slot": 0
+            },
+            {
+              "type": "prop_prayer_book",
+              "x": 16,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 9,
+              "slot": 2
+            },
+            {
+              "type": "prop_illuminated_book",
+              "x": 1,
+              "y": 16,
+              "rotation": 90,
+              "hostIndex": 11,
+              "slot": 0
+            },
+            {
+              "type": "prop_crown",
+              "x": 16,
+              "y": 17,
+              "rotation": 180,
+              "hostIndex": 12,
+              "slot": 0
+            }
+          ]
+        },
+        {
+          "objects": [
+            {
+              "type": "bed_single",
+              "x": 15,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "bed_single",
+              "x": 15,
+              "y": 5,
+              "rotation": 90
+            },
+            {
+              "type": "chest",
+              "x": 1,
+              "y": 1,
+              "rotation": 90
+            },
+            {
+              "type": "linen_cabinet",
+              "x": 1,
+              "y": 3,
+              "rotation": 0
+            },
+            {
+              "type": "washstand",
+              "x": 1,
+              "y": 7,
+              "rotation": 0
+            },
+            {
+              "type": "stool",
+              "x": 16,
+              "y": 7,
+              "rotation": 180
+            },
+            {
+              "type": "stove",
+              "x": 1,
+              "y": 10,
+              "rotation": 270
+            },
+            {
+              "type": "cooking_prep",
+              "x": 16,
+              "y": 13,
+              "rotation": 90
+            },
+            {
+              "type": "food_rack",
+              "x": 16,
+              "y": 11,
+              "rotation": 180
+            },
+            {
+              "type": "cupboard",
+              "x": 1,
+              "y": 13,
+              "rotation": 0
+            },
+            {
+              "type": "water_tub",
+              "x": 1,
+              "y": 16,
+              "rotation": 90
+            },
+            {
+              "type": "barrel",
+              "x": 16,
+              "y": 17,
+              "rotation": 180
+            },
+            {
+              "type": "crate",
+              "x": 16,
+              "y": 16,
+              "rotation": 180
+            },
+            {
+              "type": "noble_wardrobe",
+              "x": 16,
+              "y": 3,
+              "rotation": 180
+            }
+          ],
+          "rooms": [
+            {
+              "type": "bedroom",
+              "access": "Z2",
+              "anchor": {
+                "x": 13,
+                "y": 4
+              },
+              "functions": [
+                "sleep",
+                "storage",
+                "sit"
+              ]
+            },
+            {
+              "type": "kitchen",
+              "access": "Z2",
+              "anchor": {
+                "x": 1,
+                "y": 10
+              },
+              "functions": [
+                "cook",
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "storage",
+              "anchor": {
+                "x": 5,
+                "y": 5
+              },
+              "access": "Z2",
+              "functions": [
+                "storage",
+                "wash"
+              ]
+            },
+            {
+              "type": "kitchen",
+              "access": "Z2",
+              "anchor": {
+                "x": 6,
+                "y": 10
+              },
+              "functions": [
+                "cook",
+                "storage"
+              ]
+            }
+          ],
+          "partitions": [
+            {
+              "type": "rect",
+              "x": 1,
+              "y": 9,
+              "w": 7,
+              "h": 1
+            },
+            {
+              "type": "rect",
+              "x": 11,
+              "y": 9,
+              "w": 6,
+              "h": 1
+            }
+          ],
+          "roomSplits": [
+            {
+              "axis": "y",
+              "at": 10,
+              "start": 1,
+              "end": 16,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 11,
+              "start": 1,
+              "end": 8,
+              "kind": "open"
+            },
+            {
+              "axis": "x",
+              "at": 6,
+              "start": 10,
+              "end": 18,
+              "kind": "open"
+            }
+          ],
+          "decorations": [
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 17,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 17,
+              "y": 5,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 0,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 17,
+              "y": 8,
+              "rotation": 0
+            },
+            {
+              "type": "wall_gilded_lamp",
+              "x": 0,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 17,
+              "y": 11,
+              "rotation": 0
+            },
+            {
+              "type": "wall_family_crest",
+              "x": 0,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 17,
+              "y": 14,
+              "rotation": 0
+            },
+            {
+              "type": "wall_dynasty_tapestry",
+              "x": 0,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "wall_ancestor_portrait",
+              "x": 17,
+              "y": 17,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "type": "noble_carpet",
+              "x": 3,
+              "y": 10,
+              "rotation": 0
+            },
+            {
+              "type": "prop_silk_fold",
+              "x": 1,
+              "y": 3,
+              "rotation": 0,
+              "hostIndex": 3,
+              "slot": 0
+            },
+            {
+              "type": "prop_milk",
+              "x": 1,
+              "y": 7,
+              "rotation": 0,
+              "hostIndex": 4,
+              "slot": 0
+            },
+            {
+              "type": "prop_silk_fold",
+              "x": 16,
+              "y": 16,
+              "rotation": 180,
+              "hostIndex": 12,
+              "slot": 0
+            },
+            {
+              "type": "prop_onion",
+              "x": 16,
+              "y": 13,
+              "rotation": 90,
+              "hostIndex": 7,
+              "slot": 0
+            },
+            {
+              "type": "prop_butter",
+              "x": 16,
+              "y": 11,
+              "rotation": 180,
+              "hostIndex": 8,
+              "slot": 0
+            }
+          ]
+        }
+      ],
+      "stairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "a": {
+            "trigger": {
+              "x": 9,
+              "y": 2
+            },
+            "arrival": {
+              "x": 9,
+              "y": 3
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 9,
+              "y": 2
+            },
+            "arrival": {
+              "x": 9,
+              "y": 3
+            }
+          }
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "a": {
+            "trigger": {
+              "x": 9,
+              "y": 5
+            },
+            "arrival": {
+              "x": 9,
+              "y": 6
+            }
+          },
+          "b": {
+            "trigger": {
+              "x": 9,
+              "y": 5
+            },
+            "arrival": {
+              "x": 9,
+              "y": 6
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "banquet_table",
+          "version": 1
+        },
+        {
+          "id": "ritual_bench",
+          "version": 1
+        },
+        {
+          "id": "noble_settee",
+          "version": 1
+        },
+        {
+          "id": "silver_cabinet",
+          "version": 1
+        },
+        {
+          "id": "side_table",
+          "version": 1
+        },
+        {
+          "id": "audience_throne",
+          "version": 1
+        },
+        {
+          "id": "council_table",
+          "version": 1
+        },
+        {
+          "id": "plant_stand",
+          "version": 1
+        },
+        {
+          "id": "noble_canopy_bed",
+          "version": 1
+        },
+        {
+          "id": "noble_wardrobe",
+          "version": 1
+        },
+        {
+          "id": "dresser",
+          "version": 1
+        },
+        {
+          "id": "washstand",
+          "version": 1
+        },
+        {
+          "id": "armchair",
+          "version": 2
+        },
+        {
+          "id": "noble_writing_desk",
+          "version": 1
+        },
+        {
+          "id": "noble_bookcase",
+          "version": 1
+        },
+        {
+          "id": "treasury_chest",
+          "version": 1
+        },
+        {
+          "id": "bed_single",
+          "version": 2
+        },
+        {
+          "id": "chest",
+          "version": 2
+        },
+        {
+          "id": "linen_cabinet",
+          "version": 1
+        },
+        {
+          "id": "stool",
+          "version": 1
+        },
+        {
+          "id": "stove",
+          "version": 2
+        },
+        {
+          "id": "cooking_prep",
+          "version": 1
+        },
+        {
+          "id": "food_rack",
+          "version": 1
+        },
+        {
+          "id": "cupboard",
+          "version": 1
+        },
+        {
+          "id": "water_tub",
+          "version": 1
+        },
+        {
+          "id": "barrel",
+          "version": 1
+        },
+        {
+          "id": "crate",
+          "version": 1
+        },
+        {
+          "id": "farm_bench",
+          "version": 1
+        },
+        {
+          "id": "farm_cupboard",
+          "version": 1
+        }
+      ],
+      "notes": [
+        "Fixed design-time review template; large structures require individual MDS review.",
+        "II-B12d: evidence-based functional room clarification / open zoning; no furniture, partitions or portals moved.",
+        "II-B12f: targeted IDS correction; no mass furnishing; review only.",
+        "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes."
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "BARRACKS_M01",
+      "level": 0,
+      "type": "barrack_hall",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z3",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 18,
+        "h": 22,
+        "area": 396
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 18,
+        "h": 22,
+        "area": 396
+      },
+      "limits": [
+        [
+          5,
+          6,
+          14,
+          18
+        ]
+      ],
+      "objects": [
+        "bed_single",
+        "bed_single",
+        "bed_single",
+        "bed_single",
+        "bed_single",
+        "bed_single",
+        "weapon_rack",
+        "armor_rack",
+        "chest",
+        "table_large",
+        "chair",
+        "training_dummy",
+        "plant_stand",
+        "spinning_wheel",
+        "military_locker"
+      ],
+      "actions": [
+        "sleep",
+        "equip",
+        "storage",
+        "eat",
+        "sit",
+        "train",
+        "tend",
+        "weave"
+      ],
+      "status": "exception_proposed",
+      "reason": "Wspólna sala zakwaterowania i ćwiczeń: sześć łóżek, wyposażenie żołnierskie oraz manekin treningowy; rozdzielenie ogranicza wspólną przestrzeń zbiórki. Wyjątek proponowany, sprawdzić adekwatność kołowrotka i rośliny w odbiorze."
+    },
+    {
+      "id": "ARMORY_M01",
+      "level": 0,
+      "type": "armory",
+      "anchor": {
+        "x": 8,
+        "y": 10
+      },
+      "access": "Z3",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "limits": [
+        [
+          4,
+          4,
+          12,
+          16
+        ]
+      ],
+      "objects": [
+        "weapon_rack",
+        "weapon_rack",
+        "armor_rack",
+        "armor_rack",
+        "tool_rack",
+        "chest",
+        "workbench",
+        "anvil",
+        "wood_pile",
+        "tool_chest",
+        "ore_crate"
+      ],
+      "actions": [
+        "equip",
+        "storage",
+        "craft",
+        "smith"
+      ],
+      "status": "exception_proposed",
+      "reason": "Wspólna zbrojownia z wydawaniem i naprawą sprzętu (stojaki, warsztat, kowadło). Szeroka wspólna przestrzeń operacyjna zamiast rozdzielania procesu."
+    },
+    {
+      "id": "BREWERY_M01",
+      "level": 0,
+      "type": "workshop",
+      "anchor": {
+        "x": 8,
+        "y": 10
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "limits": [
+        [
+          4,
+          4,
+          12,
+          16
+        ]
+      ],
+      "objects": [
+        "brewing_vat",
+        "brewing_vat",
+        "barrel",
+        "barrel",
+        "sack",
+        "workbench",
+        "stove",
+        "food_rack",
+        "wood_pile",
+        "cupboard",
+        "malt_bin"
+      ],
+      "actions": [
+        "brew",
+        "storage",
+        "craft",
+        "cook"
+      ],
+      "status": "exception_proposed",
+      "reason": "Hala warzelni z dwiema kadziami, beczkami, piecem i przygotowaniem surowców; nie dzielić ciągu produkcyjnego ścianą."
+    },
+    {
+      "id": "TEAHOUSE_M01",
+      "level": 0,
+      "type": "kitchen",
+      "anchor": {
+        "x": 8,
+        "y": 2
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 5,
+        "area": 60
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 5,
+        "area": 60
+      },
+      "limits": [
+        [
+          5,
+          6,
+          10,
+          12
+        ]
+      ],
+      "objects": [
+        "stove",
+        "cooking_prep",
+        "food_rack",
+        "spice_rack",
+        "root_bin"
+      ],
+      "actions": [
+        "cook",
+        "storage",
+        "browse"
+      ],
+      "status": "pending",
+      "reason": "B12f rozdzielił funkcje, ale strefa 5×4 ma aktywne przygotowanie potraw i nie spełnia wymiaru kuchni zbiorowej; nie zaliczać do poprawionych. Potrzebny ukierunkowany układ.",
+      "after": [
+        {
+          "type": "kitchen",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 9,
+            "h": 5
+          },
+          "functions": [
+            "cook",
+            "browse",
+            "storage"
+          ]
+        },
+        {
+          "type": "storage",
+          "bounds": {
+            "x": 10,
+            "y": 1,
+            "w": 5,
+            "h": 4
+          },
+          "functions": [
+            "cook",
+            "storage"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 10,
+        "gap": 1
+      }
+    },
+    {
+      "id": "INN_M02",
+      "level": 0,
+      "type": "kitchen",
+      "anchor": {
+        "x": 9,
+        "y": 2
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 7,
+        "area": 99
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 7,
+        "area": 99
+      },
+      "limits": [
+        [
+          5,
+          6,
+          10,
+          12
+        ]
+      ],
+      "objects": [
+        "stove",
+        "cooking_prep",
+        "food_rack",
+        "barrel",
+        "cupboard",
+        "root_bin"
+      ],
+      "actions": [
+        "cook",
+        "storage"
+      ],
+      "status": "corrected",
+      "reason": "Dwa rzeczywiste pomieszczenia o odrębnych stanowiskach tej samej funkcji, nie magazyn; kuchnia przygotowania i kuchnia obróbki cieplnej.",
+      "after": [
+        {
+          "type": "kitchen",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 5,
+            "h": 6
+          },
+          "functions": [
+            "cook",
+            "storage"
+          ]
+        },
+        {
+          "type": "kitchen",
+          "bounds": {
+            "x": 6,
+            "y": 1,
+            "w": 11,
+            "h": 7
+          },
+          "functions": [
+            "cook",
+            "storage"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 6,
+        "gap": 1
+      }
+    },
+    {
+      "id": "INN_M02",
+      "level": 1,
+      "type": "bedroom",
+      "anchor": {
+        "x": 9,
+        "y": 3
+      },
+      "access": "Z4",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 8,
+        "area": 115
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 8,
+        "area": 115
+      },
+      "limits": [
+        [
+          4,
+          4,
+          7,
+          8
+        ]
+      ],
+      "objects": [
+        "bed_double",
+        "bed_single",
+        "bed_single",
+        "wardrobe",
+        "chest",
+        "washstand",
+        "farm_cupboard"
+      ],
+      "actions": [
+        "sleep",
+        "storage",
+        "wash"
+      ],
+      "status": "pending",
+      "reason": "Bez przesunięć wyposażenia nie znaleziono bezpiecznego podziału spełniającego wymiary, funkcje i komunikację; nie wymuszono sztucznego podziału."
+    },
+    {
+      "id": "INN_M02",
+      "level": 1,
+      "type": "living",
+      "anchor": {
+        "x": 9,
+        "y": 16
+      },
+      "access": "Z1",
+      "raw": {
+        "x": 1,
+        "y": 9,
+        "w": 16,
+        "h": 10,
+        "area": 160
+      },
+      "core": {
+        "x": 1,
+        "y": 9,
+        "w": 16,
+        "h": 10,
+        "area": 160
+      },
+      "limits": [
+        [
+          4,
+          4,
+          10,
+          12
+        ]
+      ],
+      "objects": [
+        "table_large",
+        "bench",
+        "travel_luggage",
+        "armchair"
+      ],
+      "actions": [
+        "eat",
+        "sit",
+        "storage",
+        "rest"
+      ],
+      "status": "corrected",
+      "reason": "Funkcjonalnie odrębne pomieszczenia; zachowano wszystkie obiekty i stanowiska. wall",
+      "after": [
+        {
+          "type": "dining_room",
+          "bounds": {
+            "x": 1,
+            "y": 9,
+            "w": 6,
+            "h": 10
+          },
+          "functions": [
+            "eat",
+            "storage"
+          ]
+        },
+        {
+          "type": "living",
+          "bounds": {
+            "x": 7,
+            "y": 9,
+            "w": 10,
+            "h": 10
+          },
+          "functions": [
+            "sit",
+            "rest"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 7,
+        "gap": 9
+      }
+    },
+    {
+      "id": "BARRACKS_L02",
+      "level": 0,
+      "type": "barrack_hall",
+      "anchor": {
+        "x": 5,
+        "y": 12
+      },
+      "access": "Z3",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 9,
+        "h": 22,
+        "area": 180
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 9,
+        "h": 22,
+        "area": 180
+      },
+      "limits": [
+        [
+          5,
+          6,
+          14,
+          18
+        ]
+      ],
+      "objects": [
+        "bunk_bed",
+        "bunk_bed",
+        "bunk_bed",
+        "bunk_bed",
+        "military_locker",
+        "military_locker",
+        "supply_cask",
+        "weapon_rack",
+        "armor_rack",
+        "bunk_bed",
+        "military_locker"
+      ],
+      "actions": [
+        "sleep",
+        "storage",
+        "equip"
+      ],
+      "status": "exception_proposed",
+      "reason": "Podłużna wspólna sala koszarowa: pięć łóżek piętrowych i szafki wojskowe, zachować ciąg dostępu do miejsc zakwaterowania."
+    },
+    {
+      "id": "BARRACKS_L02",
+      "level": 0,
+      "type": "mess_hall",
+      "anchor": {
+        "x": 15,
+        "y": 12
+      },
+      "access": "Z3",
+      "raw": {
+        "x": 10,
+        "y": 1,
+        "w": 9,
+        "h": 22,
+        "area": 198
+      },
+      "core": {
+        "x": 10,
+        "y": 1,
+        "w": 9,
+        "h": 22,
+        "area": 198
+      },
+      "limits": [
+        [
+          4,
+          4,
+          10,
+          14
+        ]
+      ],
+      "objects": [
+        "table_large",
+        "table_large",
+        "guard_bench",
+        "stove",
+        "food_rack",
+        "supply_crate",
+        "table_small",
+        "guard_bench"
+      ],
+      "actions": [
+        "eat",
+        "sit",
+        "cook",
+        "storage"
+      ],
+      "status": "exception_proposed",
+      "reason": "Podłużna wspólna stołówka koszarowa z trzema stołami, ławami i wydawaniem posiłków; wspólna przestrzeń zbiorowego żywienia."
+    },
+    {
+      "id": "GUARDHOUSE_L02",
+      "level": 0,
+      "type": "office",
+      "anchor": {
+        "x": 3,
+        "y": 8
+      },
+      "access": "Z3",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 6,
+        "h": 14,
+        "area": 74
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 6,
+        "h": 14,
+        "area": 74
+      },
+      "limits": [
+        [
+          3,
+          3,
+          8,
+          8
+        ]
+      ],
+      "objects": [
+        "tactical_table",
+        "dispatch_desk",
+        "bookcase",
+        "military_locker",
+        "sealing_desk",
+        "armor_rack",
+        "military_locker"
+      ],
+      "actions": [
+        "planning",
+        "administration",
+        "read",
+        "storage",
+        "equip"
+      ],
+      "status": "pending",
+      "reason": "Bez przesunięć wyposażenia nie znaleziono bezpiecznego podziału spełniającego wymiary, funkcje i komunikację; nie wymuszono sztucznego podziału."
+    },
+    {
+      "id": "COMMAND_M01",
+      "level": 0,
+      "type": "office",
+      "anchor": {
+        "x": 8,
+        "y": 5
+      },
+      "access": "Z3",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 9,
+        "area": 116
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 9,
+        "area": 116
+      },
+      "limits": [
+        [
+          3,
+          3,
+          8,
+          8
+        ]
+      ],
+      "objects": [
+        "tactical_table",
+        "dispatch_desk",
+        "dispatch_desk",
+        "bookcase",
+        "reception_desk"
+      ],
+      "actions": [
+        "planning",
+        "administration",
+        "read",
+        "reception"
+      ],
+      "status": "corrected",
+      "reason": "Funkcjonalnie odrębne pomieszczenia; zachowano wszystkie obiekty i stanowiska. wall",
+      "after": [
+        {
+          "type": "chancery",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 9,
+            "h": 9
+          },
+          "functions": [
+            "planning",
+            "administration",
+            "reception"
+          ]
+        },
+        {
+          "type": "office",
+          "bounds": {
+            "x": 10,
+            "y": 1,
+            "w": 5,
+            "h": 8
+          },
+          "functions": [
+            "administration",
+            "read"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 10,
+        "gap": 1
+      }
+    },
+    {
+      "id": "OFFICER_M01",
+      "level": 0,
+      "type": "bedroom",
+      "anchor": {
+        "x": 7,
+        "y": 4
+      },
+      "access": "Z4",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 12,
+        "h": 8,
+        "area": 88
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 12,
+        "h": 8,
+        "area": 88
+      },
+      "limits": [
+        [
+          4,
+          4,
+          7,
+          8
+        ]
+      ],
+      "objects": [
+        "bed_double",
+        "wardrobe",
+        "dresser",
+        "washstand",
+        "noble_wardrobe",
+        "chest"
+      ],
+      "actions": [
+        "sleep",
+        "storage",
+        "wash"
+      ],
+      "status": "corrected",
+      "reason": "Komnata oficerska z łóżkiem dwuosobowym, garderobą, toaletką i umywalnią, 12×8 zgodne z komnatą 10×12; bez pozornego podziału.",
+      "after": [
+        {
+          "type": "chamber",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 12,
+            "h": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "CIVIC_HALL_M02",
+      "level": 0,
+      "type": "office",
+      "anchor": {
+        "x": 8,
+        "y": 4
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 9,
+        "area": 115
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 9,
+        "area": 115
+      },
+      "limits": [
+        [
+          3,
+          3,
+          8,
+          8
+        ]
+      ],
+      "objects": [
+        "desk",
+        "desk",
+        "bookcase",
+        "chest",
+        "sealing_desk"
+      ],
+      "actions": [
+        "administration",
+        "read",
+        "storage"
+      ],
+      "status": "corrected",
+      "reason": "Dwa rzeczywiste pomieszczenia o odrębnych stanowiskach tej samej funkcji, nie magazyn; dwie kancelarie z niezależnymi stanowiskami.",
+      "after": [
+        {
+          "type": "chancery",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 4,
+            "h": 8
+          },
+          "functions": [
+            "administration",
+            "read"
+          ]
+        },
+        {
+          "type": "chancery",
+          "bounds": {
+            "x": 5,
+            "y": 1,
+            "w": 10,
+            "h": 9
+          },
+          "functions": [
+            "administration",
+            "storage"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 5,
+        "gap": 2
+      }
+    },
+    {
+      "id": "CIVIC_COURT_M01",
+      "level": 0,
+      "type": "office",
+      "anchor": {
+        "x": 8,
+        "y": 4
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 9,
+        "area": 115
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 9,
+        "area": 115
+      },
+      "limits": [
+        [
+          3,
+          3,
+          8,
+          8
+        ]
+      ],
+      "objects": [
+        "desk",
+        "bookcase",
+        "chest",
+        "writing_desk",
+        "sealing_desk"
+      ],
+      "actions": [
+        "administration",
+        "read",
+        "storage"
+      ],
+      "status": "corrected",
+      "reason": "Dwa rzeczywiste pomieszczenia o odrębnych stanowiskach tej samej funkcji, nie magazyn; dwie kancelarie z niezależnymi stanowiskami.",
+      "after": [
+        {
+          "type": "chancery",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 5,
+            "h": 8
+          },
+          "functions": [
+            "administration",
+            "read"
+          ]
+        },
+        {
+          "type": "chancery",
+          "bounds": {
+            "x": 6,
+            "y": 1,
+            "w": 9,
+            "h": 9
+          },
+          "functions": [
+            "storage",
+            "administration"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 6,
+        "gap": 1
+      }
+    },
+    {
+      "id": "CIVIC_GUILD_M02",
+      "level": 0,
+      "type": "office",
+      "anchor": {
+        "x": 9,
+        "y": 4
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 9,
+        "area": 131
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 9,
+        "area": 131
+      },
+      "limits": [
+        [
+          3,
+          3,
+          8,
+          8
+        ]
+      ],
+      "objects": [
+        "council_table",
+        "desk",
+        "bookcase",
+        "writing_desk",
+        "sealing_desk"
+      ],
+      "actions": [
+        "meeting",
+        "administration",
+        "read"
+      ],
+      "status": "corrected",
+      "reason": "Funkcjonalnie odrębne pomieszczenia; zachowano wszystkie obiekty i stanowiska. wall",
+      "after": [
+        {
+          "type": "office",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 4,
+            "h": 8
+          },
+          "functions": [
+            "read",
+            "administration"
+          ]
+        },
+        {
+          "type": "chancery",
+          "bounds": {
+            "x": 5,
+            "y": 1,
+            "w": 12,
+            "h": 9
+          },
+          "functions": [
+            "meeting",
+            "administration"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 5,
+        "gap": 1
+      }
+    },
+    {
+      "id": "CIVIC_GUILD_L01",
+      "level": 0,
+      "type": "workshop",
+      "anchor": {
+        "x": 11,
+        "y": 5
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 20,
+        "h": 11,
+        "area": 203
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 20,
+        "h": 11,
+        "area": 203
+      },
+      "limits": [
+        [
+          4,
+          4,
+          12,
+          16
+        ]
+      ],
+      "objects": [
+        "workbench",
+        "workbench",
+        "shelf",
+        "desk",
+        "sealing_desk"
+      ],
+      "actions": [
+        "craft",
+        "storage",
+        "administration"
+      ],
+      "status": "corrected",
+      "reason": "Funkcjonalnie odrębne pomieszczenia; zachowano wszystkie obiekty i stanowiska. wall",
+      "after": [
+        {
+          "type": "workshop",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 7,
+            "h": 10
+          },
+          "functions": [
+            "craft",
+            "storage",
+            "administration"
+          ]
+        },
+        {
+          "type": "workshop",
+          "bounds": {
+            "x": 8,
+            "y": 1,
+            "w": 13,
+            "h": 11
+          },
+          "functions": [
+            "craft",
+            "administration"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 8,
+        "gap": 1
+      }
+    },
+    {
+      "id": "NOB_HOUSE_M01",
+      "level": 0,
+      "type": "kitchen",
+      "anchor": {
+        "x": 8,
+        "y": 4
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 8,
+        "area": 101
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 8,
+        "area": 101
+      },
+      "limits": [
+        [
+          3,
+          3,
+          6,
+          8
+        ],
+        [
+          5,
+          6,
+          10,
+          12
+        ]
+      ],
+      "objects": [
+        "stove",
+        "cooking_prep",
+        "food_rack",
+        "cupboard",
+        "water_tub",
+        "barrel",
+        "crate",
+        "root_bin"
+      ],
+      "actions": [
+        "cook",
+        "storage",
+        "wash"
+      ],
+      "status": "corrected",
+      "reason": "Dwa rzeczywiste pomieszczenia o odrębnych stanowiskach tej samej funkcji, nie magazyn; kuchnia przygotowania i kuchnia obróbki cieplnej.",
+      "after": [
+        {
+          "type": "kitchen",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 8,
+            "h": 8
+          },
+          "functions": [
+            "cook",
+            "storage"
+          ]
+        },
+        {
+          "type": "kitchen",
+          "bounds": {
+            "x": 9,
+            "y": 1,
+            "w": 6,
+            "h": 8
+          },
+          "functions": [
+            "cook",
+            "storage",
+            "wash"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 9,
+        "gap": 2
+      }
+    },
+    {
+      "id": "NOB_HOUSE_L01",
+      "level": 0,
+      "type": "dining_room",
+      "anchor": {
+        "x": 10,
+        "y": 5
+      },
+      "access": "Z4",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 9,
+        "area": 131
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 9,
+        "area": 131
+      },
+      "limits": [
+        [
+          4,
+          4,
+          10,
+          14
+        ]
+      ],
+      "objects": [
+        "banquet_table",
+        "banquet_table",
+        "ritual_bench",
+        "noble_settee",
+        "silver_cabinet",
+        "side_table",
+        "farm_bench"
+      ],
+      "actions": [
+        "eat",
+        "sit",
+        "storage"
+      ],
+      "status": "corrected",
+      "reason": "Dwa rzeczywiste pomieszczenia o odrębnych stanowiskach tej samej funkcji, nie magazyn; dwie jadalnie ze stołami i miejscami siedzącymi.",
+      "after": [
+        {
+          "type": "dining_room",
+          "bounds": {
+            "x": 1,
+            "y": 1,
+            "w": 6,
+            "h": 8
+          },
+          "functions": [
+            "eat",
+            "storage",
+            "sit"
+          ]
+        },
+        {
+          "type": "dining_room",
+          "bounds": {
+            "x": 7,
+            "y": 1,
+            "w": 10,
+            "h": 9
+          },
+          "functions": [
+            "eat",
+            "sit"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 7,
+        "gap": 1
+      }
+    },
+    {
+      "id": "NOB_HOUSE_L01",
+      "level": 1,
+      "type": "office",
+      "anchor": {
+        "x": 9,
+        "y": 15
+      },
+      "access": "Z4",
+      "raw": {
+        "x": 1,
+        "y": 10,
+        "w": 16,
+        "h": 9,
+        "area": 144
+      },
+      "core": {
+        "x": 1,
+        "y": 10,
+        "w": 16,
+        "h": 9,
+        "area": 144
+      },
+      "limits": [
+        [
+          3,
+          3,
+          8,
+          8
+        ]
+      ],
+      "objects": [
+        "noble_writing_desk",
+        "noble_bookcase",
+        "noble_bookcase",
+        "armchair",
+        "side_table",
+        "treasury_chest"
+      ],
+      "actions": [
+        "administration",
+        "read",
+        "rest",
+        "storage"
+      ],
+      "status": "pending",
+      "reason": "Bez przesunięć wyposażenia nie znaleziono bezpiecznego podziału spełniającego wymiary, funkcje i komunikację; nie wymuszono sztucznego podziału."
+    },
+    {
+      "id": "NOB_HOUSE_L01",
+      "level": 2,
+      "type": "kitchen",
+      "anchor": {
+        "x": 9,
+        "y": 15
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 10,
+        "w": 16,
+        "h": 9,
+        "area": 144
+      },
+      "core": {
+        "x": 1,
+        "y": 10,
+        "w": 16,
+        "h": 9,
+        "area": 144
+      },
+      "limits": [
+        [
+          3,
+          3,
+          6,
+          8
+        ],
+        [
+          5,
+          6,
+          10,
+          12
+        ]
+      ],
+      "objects": [
+        "stove",
+        "cooking_prep",
+        "food_rack",
+        "cupboard",
+        "water_tub",
+        "barrel",
+        "crate"
+      ],
+      "actions": [
+        "cook",
+        "storage",
+        "wash"
+      ],
+      "status": "corrected",
+      "reason": "Dwa rzeczywiste pomieszczenia o odrębnych stanowiskach tej samej funkcji, nie magazyn; kuchnia przygotowania i kuchnia obróbki cieplnej.",
+      "after": [
+        {
+          "type": "kitchen",
+          "bounds": {
+            "x": 1,
+            "y": 10,
+            "w": 5,
+            "h": 9
+          },
+          "functions": [
+            "cook",
+            "storage",
+            "wash"
+          ]
+        },
+        {
+          "type": "kitchen",
+          "bounds": {
+            "x": 6,
+            "y": 10,
+            "w": 11,
+            "h": 9
+          },
+          "functions": [
+            "cook",
+            "storage"
+          ]
+        }
+      ],
+      "split": {
+        "axis": "x",
+        "at": 6,
+        "gap": null
+      }
+    },
+    {
+      "id": "RUR_HOUSE_M01",
+      "level": 1,
+      "type": "bedroom",
+      "anchor": {
+        "x": 7,
+        "y": 8
+      },
+      "access": "Z4",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 10,
+        "h": 14,
+        "area": 140
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 10,
+        "h": 14,
+        "area": 140
+      },
+      "limits": [
+        [
+          4,
+          4,
+          7,
+          8
+        ]
+      ],
+      "objects": [
+        "bed_double",
+        "bed_single",
+        "farm_cupboard",
+        "farm_table",
+        "washstand",
+        "root_bin"
+      ],
+      "actions": [
+        "sleep",
+        "storage",
+        "eat",
+        "wash"
+      ],
+      "status": "pending",
+      "reason": "Bez przesunięć wyposażenia nie znaleziono bezpiecznego podziału spełniającego wymiary, funkcje i komunikację; nie wymuszono sztucznego podziału."
+    },
+    {
+      "id": "RUR_BARN_L01",
+      "level": 0,
+      "type": "storage",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "limits": [
+        [
+          3,
+          4,
+          16,
+          20
+        ]
+      ],
+      "objects": [
+        "hay_stack",
+        "grain_sack",
+        "grain_chest",
+        "hay_bale",
+        "farm_cart",
+        "farm_tool_rack",
+        "harvest_sorting_table",
+        "farm_ladder",
+        "cellar_rack",
+        "hay_bale",
+        "grain_chest"
+      ],
+      "actions": [
+        "storage",
+        "sort_harvest"
+      ],
+      "status": "exception_proposed",
+      "reason": "Stodoła przeładunkowa z wozem, narzędziami i miejscem sortowania zbiorów; wymiar 22 zapewnia miejsce wspólnego składowania, bez sztucznych przegród."
+    },
+    {
+      "id": "RUR_BARN_L01",
+      "level": 1,
+      "type": "storage",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "limits": [
+        [
+          3,
+          4,
+          16,
+          20
+        ]
+      ],
+      "objects": [
+        "hay_stack",
+        "hay_bale",
+        "hay_bale",
+        "feed_barrel",
+        "farm_tool_rack",
+        "farm_cart",
+        "grain_sack",
+        "hay_bale",
+        "grain_sack"
+      ],
+      "actions": [
+        "storage"
+      ],
+      "status": "exception_proposed",
+      "reason": "Strych stodoły, wspólna przestrzeń składowania siana i pasz; zachować układ i drogę podawania ładunków."
+    },
+    {
+      "id": "RUR_STABLE_L01",
+      "level": 0,
+      "type": "stable",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "limits": [
+        [
+          5,
+          6,
+          16,
+          20
+        ]
+      ],
+      "objects": [
+        "horse_stall",
+        "horse_stall",
+        "horse_trough",
+        "feed_rack",
+        "saddle_rack",
+        "harness_rack",
+        "feed_barrel",
+        "horse_stall",
+        "hay_bale"
+      ],
+      "actions": [
+        "stable",
+        "feed",
+        "storage"
+      ],
+      "status": "exception_proposed",
+      "reason": "Wspólna stajnia 16×22, trzy stanowiska koni, poidło, pasze i osprzęt; proponowany wyjątek 2 pól długości dla wspólnej komunikacji obsługi. Konie wymagają oddzielnego testu manewrów."
+    },
+    {
+      "id": "RUR_STABLE_L01",
+      "level": 1,
+      "type": "storage",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "limits": [
+        [
+          3,
+          4,
+          16,
+          20
+        ]
+      ],
+      "objects": [
+        "hay_stack",
+        "hay_bale",
+        "hay_bale",
+        "feed_barrel",
+        "farm_tool_rack",
+        "farm_cart",
+        "saddle_rack",
+        "feed_rack",
+        "hay_bale"
+      ],
+      "actions": [
+        "storage"
+      ],
+      "status": "exception_proposed",
+      "reason": "Strych stajni 16×22, składowanie siana, pasz i osprzętu, zachować wspólną przestrzeń logistyczną; proponowany wyjątek 2 pól długości. Nie potwierdza dostaw ani obsługi zwierząt."
+    },
+    {
+      "id": "RUR_MILL_M01",
+      "level": 1,
+      "type": "workroom",
+      "anchor": {
+        "x": 9,
+        "y": 10
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "limits": [
+        [
+          4,
+          4,
+          12,
+          16
+        ]
+      ],
+      "objects": [
+        "millstone",
+        "flour_chute",
+        "hand_quern",
+        "grain_sack",
+        "grain_chest",
+        "harvest_sorting_table"
+      ],
+      "actions": [
+        "mill",
+        "storage",
+        "sort_harvest"
+      ],
+      "status": "exception_proposed",
+      "reason": "Hala kamienia młyńskiego, zsypu i żaren wraz z sortowaniem ziarna; zachować wspólny proces technologiczny."
+    },
+    {
+      "id": "RUR_SAWMILL_M01",
+      "level": 1,
+      "type": "storage",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "limits": [
+        [
+          3,
+          4,
+          16,
+          20
+        ]
+      ],
+      "objects": [
+        "farm_tool_rack",
+        "farm_ladder",
+        "farm_cart",
+        "grain_chest",
+        "log_stack",
+        "feed_barrel",
+        "plank_stack",
+        "plank_stack",
+        "tool_chest"
+      ],
+      "actions": [
+        "storage"
+      ],
+      "status": "exception_proposed",
+      "reason": "Skład kłód, desek i narzędzi przy tartaku; długie elementy potrzebują wspólnej przestrzeni manewrowej."
+    },
+    {
+      "id": "RUR_BREWERY_M01",
+      "level": 0,
+      "type": "workroom",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "limits": [
+        [
+          4,
+          4,
+          12,
+          16
+        ]
+      ],
+      "objects": [
+        "rural_brew_vat",
+        "rural_brew_vat",
+        "malt_bin",
+        "barrel",
+        "water_tub",
+        "harvest_sorting_table",
+        "wine_cask"
+      ],
+      "actions": [
+        "brew",
+        "storage",
+        "wash",
+        "sort_harvest"
+      ],
+      "status": "exception_proposed",
+      "reason": "Hala dwóch kadzi, wody, słodu i sortowania; ciąg produkcyjny wymaga nieprzerwanej przestrzeni."
+    },
+    {
+      "id": "RUR_BREWERY_M01",
+      "level": 1,
+      "type": "storage",
+      "anchor": {
+        "x": 10,
+        "y": 12
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 16,
+        "h": 22,
+        "area": 352
+      },
+      "limits": [
+        [
+          3,
+          4,
+          16,
+          20
+        ]
+      ],
+      "objects": [
+        "grain_chest",
+        "grain_chest",
+        "grain_sack",
+        "grain_sack",
+        "grain_sack",
+        "harvest_sorting_table",
+        "farm_ladder",
+        "malt_bin"
+      ],
+      "actions": [
+        "storage",
+        "sort_harvest"
+      ],
+      "status": "exception_proposed",
+      "reason": "Zbiorczy skład ziarna i słodu z sortowaniem; wspólna przestrzeń przepływu materiału."
+    },
+    {
+      "id": "RUR_TANNERY_M01",
+      "level": 0,
+      "type": "workroom",
+      "anchor": {
+        "x": 9,
+        "y": 10
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 14,
+        "h": 18,
+        "area": 252
+      },
+      "limits": [
+        [
+          4,
+          4,
+          12,
+          16
+        ]
+      ],
+      "objects": [
+        "tanning_vat",
+        "tanning_worktable",
+        "hide_drying_frame",
+        "water_tub",
+        "farm_tool_rack",
+        "barrel"
+      ],
+      "actions": [
+        "tan",
+        "dry_hide",
+        "wash",
+        "storage"
+      ],
+      "status": "exception_proposed",
+      "reason": "Hala garbarni, kadź, stół i rama suszenia, wspólny ciąg mokrych i suchych czynności; wydzielenie przestrzeni wymaga projektu technologicznego."
+    },
+    {
+      "id": "SP_INN_CELLAR",
+      "level": 0,
+      "type": "kitchen",
+      "anchor": {
+        "x": 12,
+        "y": 5
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 11,
+        "y": 1,
+        "w": 4,
+        "h": 9,
+        "area": 36
+      },
+      "core": {
+        "x": 11,
+        "y": 1,
+        "w": 4,
+        "h": 9,
+        "area": 36
+      },
+      "limits": [
+        [
+          5,
+          6,
+          10,
+          12
+        ]
+      ],
+      "objects": [
+        "stove",
+        "cooking_prep",
+        "food_rack"
+      ],
+      "actions": [
+        "cook",
+        "storage"
+      ],
+      "status": "pending",
+      "reason": "Wymaga indywidualnej zmiany geometrii lub wyposażenia."
+    },
+    {
+      "id": "SP_KEEP_VAULT",
+      "level": 1,
+      "type": "washroom",
+      "anchor": {
+        "x": 18,
+        "y": 27
+      },
+      "access": "Z4",
+      "raw": {
+        "x": 14,
+        "y": 25,
+        "w": 9,
+        "h": 6,
+        "area": 50
+      },
+      "core": {
+        "x": 15,
+        "y": 25,
+        "w": 8,
+        "h": 6,
+        "area": 48
+      },
+      "limits": [
+        [
+          2,
+          2,
+          5,
+          6
+        ]
+      ],
+      "objects": [
+        "water_tub",
+        "washstand",
+        "chest"
+      ],
+      "actions": [
+        "wash",
+        "storage"
+      ],
+      "status": "pending",
+      "reason": "Bez przesunięć wyposażenia nie znaleziono bezpiecznego podziału spełniającego wymiary, funkcje i komunikację; nie wymuszono sztucznego podziału."
+    },
+    {
+      "id": "SP_ARENA",
+      "level": -1,
+      "type": "storage",
+      "anchor": {
+        "x": 13,
+        "y": 14
+      },
+      "access": "Z2",
+      "raw": {
+        "x": 1,
+        "y": 1,
+        "w": 22,
+        "h": 26,
+        "area": 572
+      },
+      "core": {
+        "x": 1,
+        "y": 1,
+        "w": 22,
+        "h": 26,
+        "area": 572
+      },
+      "limits": [
+        [
+          3,
+          4,
+          16,
+          20
+        ]
+      ],
+      "objects": [
+        "cellar_rack",
+        "supply_cask",
+        "crate",
+        "grain_bin"
+      ],
+      "actions": [
+        "storage"
+      ],
+      "status": "pending",
+      "reason": "Specjalne zaplecze areny o większej rozpiętości; tylko cztery obiekty składowe w 572 polach. Nie zatwierdzać bez kontroli realnego programu/pojemności; kandydat do indywidualnej przebudowy, nie automatyczny wyjątek."
+    }
+  ],
+  "edits": [
+    {
+      "id": "INN_M02",
+      "reason": "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes.",
+      "errors": []
+    },
+    {
+      "id": "CIVIC_HALL_M02",
+      "reason": "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes.",
+      "errors": []
+    },
+    {
+      "id": "CIVIC_COURT_M01",
+      "reason": "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes.",
+      "errors": []
+    },
+    {
+      "id": "NOB_HOUSE_M01",
+      "reason": "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes.",
+      "errors": []
+    },
+    {
+      "id": "NOB_HOUSE_L01",
+      "reason": "II-B12g: actual functional labels for distinct physically separated work/service rooms; no equipment changes.",
+      "errors": []
+    }
+  ]
+}

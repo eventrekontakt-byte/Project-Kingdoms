@@ -51,3 +51,7 @@ Użytkownik zgłosił przeciążenie (4) po ostatnim zapisanym II-B10b: 10 zako�
 
 ## Checkpoint II-B12f — WIP (czat 6)
 II-B12f WIP: 33 pozycji zamkniętej listy; 12 korekt w 10 modelach, 12 indywidualnych propozycji wyjątków do akceptacji, 9 nadal wymagających korekty; 60 obrotów kondygnacji sprawdzonych w V8 dla zmienionych modeli (FPS, RTS, dekoracje, kolizje, dojścia, izolacja i granice). Nie uruchamiano Node, przeglądarki, Android ani pełnego MFS. r14 bez zmian; r15 nieopublikowana. Nie powtarzać II-B11. Szczegóły w templates/mtl/pass2b12f-candidates.json. Obciążenie wysokie (duży odczyt źródeł i operacja zbiorcza); brak telemetrii; checkpoint, kontynuacja od nierozstrzygniętych pozycji.
+
+
+## Checkpoint II-B12g — WIP (czat 6)
+II-B12g WIP: kontrola semantyczna B12f; 11/33 korekt kandydackich, 14 indywidualnych wyjątków proponowanych do akceptacji, 8 nadal otwartych. 5 modeli zmieniono w B12g, 40 obrotów w V8; urealniono etykiety kuchni, kancelarii i jadalni, rozstrzygnięto źródło RUR_STABLE_L01 B8b. Nie uznawać strefy niespełniającej §50 za magazyn, gdy ma funkcję kuchni. Brak pełnego odbioru, r15 nieopublikowana. Obciążenie wysokie; druga partia, 5 odczytanych modeli wymagających korekty semantycznej, bez znanych objawów awarii; brak telemetrii.
