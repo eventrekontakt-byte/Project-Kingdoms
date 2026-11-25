@@ -1,0 +1,123 @@
+{
+  "validatorVersion": "1.3.0",
+  "schemaVersion": "1.0.0",
+  "mapId": "underground_mine_001",
+  "mapRevision": 1,
+  "profile": "final",
+  "entries": [
+    {
+      "code": "MAP_STATS",
+      "severity": "INFO",
+      "mapId": "underground_mine_001",
+      "sceneId": "underground_mine_001",
+      "objectId": null,
+      "coordinates": null,
+      "file": "manifest.json",
+      "rule": "MFS §22",
+      "message": "Map statistics recorded"
+    }
+  ],
+  "checks": [
+    {
+      "code": "MFS_SCHEMA",
+      "status": "passed"
+    },
+    {
+      "code": "GEO_TERRAIN",
+      "status": "passed"
+    },
+    {
+      "code": "PDS_OVERLAP",
+      "status": "passed"
+    },
+    {
+      "code": "RDS_NETWORK",
+      "status": "passed"
+    },
+    {
+      "code": "PDS_ACCESS",
+      "status": "passed"
+    },
+    {
+      "code": "FDS_GATE",
+      "status": "passed"
+    },
+    {
+      "code": "BDS_CONTAIN",
+      "status": "passed"
+    },
+    {
+      "code": "PROGRAM_TARGET",
+      "status": "passed"
+    },
+    {
+      "code": "ISS_SCALE",
+      "status": "passed"
+    },
+    {
+      "code": "FPS_PLACEMENT",
+      "status": "skipped",
+      "reason": "No FPS metadata (legacy map)"
+    },
+    {
+      "code": "RTS_TOPOLOGY",
+      "status": "skipped",
+      "reason": "Legacy room anchors, no RTS data"
+    },
+    {
+      "code": "IDS_DECORATIONS",
+      "status": "skipped",
+      "reason": "Legacy map, no decoration data"
+    },
+    {
+      "code": "PORTAL_PAIR",
+      "status": "passed"
+    },
+    {
+      "code": "NPC_ZONE",
+      "status": "passed"
+    },
+    {
+      "code": "MFS_COMPILE",
+      "status": "passed"
+    },
+    {
+      "code": "RDS_VEHICLES",
+      "status": "skipped",
+      "reason": "Vehicle turning/2×2 navigation requires future movement model"
+    },
+    {
+      "code": "IDS_PROGRAM",
+      "status": "skipped",
+      "reason": "Full room programme, access rights and automatic RRS classification require future catalogues/runtime"
+    },
+    {
+      "code": "NPC_RUNTIME",
+      "status": "skipped",
+      "reason": "NPC simulation in MFS scenes not enabled"
+    },
+    {
+      "code": "MDS_MANUAL",
+      "status": "skipped",
+      "reason": "Manual design review, functional programme and warning resolutions required"
+    }
+  ],
+  "counts": {
+    "ERROR": 0,
+    "WARNING": 0,
+    "INFO": 1
+  },
+  "stats": {
+    "parcels": 0,
+    "standardParcels": 0,
+    "builtParcels": 0,
+    "vacantParcels": 0,
+    "buildings": 0,
+    "roadTiles": 0,
+    "builtPercent": 0,
+    "scenes": 1,
+    "stations": 4
+  },
+  "readyForPublication": false,
+  "playable": false
+}

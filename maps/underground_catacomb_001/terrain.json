@@ -1,0 +1,150 @@
+{
+  "defaultTile": "wall",
+  "regions": [
+    {
+      "id": "underground_catacomb_001.floor1",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 23,
+        "w": 9,
+        "h": 6
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor2",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 3,
+        "y": 12,
+        "w": 9,
+        "h": 8
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor3",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 16,
+        "y": 12,
+        "w": 10,
+        "h": 8
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor4",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 29,
+        "y": 12,
+        "w": 10,
+        "h": 8
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor5",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 16,
+        "y": 3,
+        "w": 10,
+        "h": 6
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor6",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 29,
+        "y": 3,
+        "w": 10,
+        "h": 6
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor7",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 6,
+        "y": 19,
+        "w": 3,
+        "h": 6
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor8",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 10,
+        "y": 14,
+        "w": 8,
+        "h": 3
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor9",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 24,
+        "y": 14,
+        "w": 7,
+        "h": 3
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor10",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 20,
+        "y": 7,
+        "w": 3,
+        "h": 7
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor11",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 32,
+        "y": 7,
+        "w": 3,
+        "h": 7
+      }
+    },
+    {
+      "id": "underground_catacomb_001.floor12",
+      "name": "Kamienne podłoże",
+      "tile": "stone",
+      "geometry": {
+        "type": "rect",
+        "x": 24,
+        "y": 5,
+        "w": 7,
+        "h": 3
+      }
+    }
+  ],
+  "elevations": []
+}

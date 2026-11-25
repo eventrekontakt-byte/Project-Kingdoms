@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "review",
+  "locations": [
+    {
+      "mapId": "underground_cave_001",
+      "mapRevision": 1,
+      "manifest": "underground_cave_001/manifest.json",
+      "profile": "final",
+      "name": "Jaskinia Źródeł"
+    },
+    {
+      "mapId": "underground_mine_001",
+      "mapRevision": 1,
+      "manifest": "underground_mine_001/manifest.json",
+      "profile": "final",
+      "name": "Kopalnia Żelaznego Grzbietu"
+    },
+    {
+      "mapId": "underground_catacomb_001",
+      "mapRevision": 1,
+      "manifest": "underground_catacomb_001/manifest.json",
+      "profile": "final",
+      "name": "Katakumby Zapomnianych"
+    },
+    {
+      "mapId": "underground_hideout_001",
+      "mapRevision": 1,
+      "manifest": "underground_hideout_001/manifest.json",
+      "profile": "final",
+      "name": "Podziemna kryjówka"
+    }
+  ],
+  "plans": [
+    {
+      "id": "underground_cave_001",
+      "kind": "cave",
+      "scale": 1,
+      "width": 38,
+      "height": 28,
+      "rooms": [
+        [
+          2,
+          19,
+          8,
+          7
+        ],
+        [
+          8,
+          15,
+          10,
+          9
+        ],
+        [
+          17,
+          10,
+          12,
+          12
+        ],
+        [
+          25,
+          4,
+          10,
+          10
+        ],
+        [
+          4,
+          3,
+          10,
+          8
+        ]
+      ],
+      "passages": [
+        [
+          5,
+          18,
+          4,
+          4
+        ],
+        [
+          13,
+          10,
+          5,
+          8
+        ],
+        [
+          24,
+          10,
+          6,
+          4
+        ],
+        [
+          10,
+          8,
+          5,
+          9
+        ]
+      ],
+      "water": [
+        [
+          20,
+          13,
+          5,
+          5
+        ],
+        [
+          29,
+          6,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "id": "underground_mine_001",
+      "kind": "mine",
+      "scale": 1,
+      "width": 46,
+      "height": 32,
+      "rooms": [
+        [
+          2,
+          22,
+          10,
+          8
+        ],
+        [
+          13,
+          20,
+          12,
+          9
+        ],
+        [
+          28,
+          19,
+          14,
+          10
+        ],
+        [
+          4,
+          4,
+          11,
+          10
+        ],
+        [
+          21,
+          4,
+          11,
+          10
+        ],
+        [
+          35,
+          4,
+          8,
+          10
+        ]
+      ],
+      "passages": [
+        [
+          10,
+          24,
+          6,
+          3
+        ],
+        [
+          24,
+          23,
+          6,
+          3
+        ],
+        [
+          7,
+          12,
+          3,
+          12
+        ],
+        [
+          10,
+          9,
+          13,
+          3
+        ],
+        [
+          26,
+          12,
+          3,
+          11
+        ],
+        [
+          30,
+          9,
+          7,
+          3
+        ],
+        [
+          37,
+          12,
+          3,
+          10
+        ]
+      ],
+      "water": []
+    },
+    {
+      "id": "underground_catacomb_001",
+      "kind": "catacomb",
+      "scale": 1,
+      "width": 42,
+      "height": 32,
+      "rooms": [
+        [
+          3,
+          23,
+          9,
+          6
+        ],
+        [
+          3,
+          12,
+          9,
+          8
+        ],
+        [
+          16,
+          12,
+          10,
+          8
+        ],
+        [
+          29,
+          12,
+          10,
+          8
+        ],
+        [
+          16,
+          3,
+          10,
+          6
+        ],
+        [
+          29,
+          3,
+          10,
+          6
+        ]
+      ],
+      "passages": [
+        [
+          6,
+          19,
+          3,
+          6
+        ],
+        [
+          10,
+          14,
+          8,
+          3
+        ],
+        [
+          24,
+          14,
+          7,
+          3
+        ],
+        [
+          20,
+          7,
+          3,
+          7
+        ],
+        [
+          32,
+          7,
+          3,
+          7
+        ],
+        [
+          24,
+          5,
+          7,
+          3
+        ]
+      ],
+      "water": []
+    },
+    {
+      "id": "underground_hideout_001",
+      "kind": "hideout",
+      "scale": 1,
+      "width": 30,
+      "height": 24,
+      "rooms": [
+        [
+          2,
+          16,
+          8,
+          6
+        ],
+        [
+          12,
+          14,
+          15,
+          8
+        ],
+        [
+          3,
+          3,
+          9,
+          8
+        ],
+        [
+          16,
+          3,
+          11,
+          8
+        ]
+      ],
+      "passages": [
+        [
+          8,
+          17,
+          6,
+          3
+        ],
+        [
+          6,
+          9,
+          3,
+          9
+        ],
+        [
+          10,
+          6,
+          8,
+          3
+        ],
+        [
+          20,
+          9,
+          3,
+          7
+        ]
+      ],
+      "water": []
+    }
+  ]
+}

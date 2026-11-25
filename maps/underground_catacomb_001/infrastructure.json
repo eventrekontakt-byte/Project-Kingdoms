@@ -1,0 +1,141 @@
+[
+  {
+    "id": "underground_catacomb_001.o1",
+    "type": "crypt_sarcophagus",
+    "name": "Sarkofag",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 13,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_catacomb_001.o1.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 5,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_catacomb_001.o2",
+    "type": "crypt_sarcophagus",
+    "name": "Sarkofag",
+    "geometry": {
+      "type": "rect",
+      "x": 18,
+      "y": 13,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_catacomb_001.o2.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 18,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_catacomb_001.o3",
+    "type": "crypt_sarcophagus",
+    "name": "Sarkofag",
+    "geometry": {
+      "type": "rect",
+      "x": 31,
+      "y": 13,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_catacomb_001.o3.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 31,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_catacomb_001.o4",
+    "type": "crypt_relic",
+    "name": "Relikwiarz",
+    "geometry": {
+      "type": "rect",
+      "x": 18,
+      "y": 4,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_catacomb_001.o4.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 18,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_catacomb_001.o5",
+    "type": "crypt_urn",
+    "name": "Urna",
+    "geometry": {
+      "type": "rect",
+      "x": 35,
+      "y": 4,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_catacomb_001.o5.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 35,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_catacomb_001.o6",
+    "type": "underground_lamp",
+    "name": "Lampa",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 24,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true
+  }
+]

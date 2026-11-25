@@ -1,0 +1,116 @@
+[
+  {
+    "id": "underground_hideout_001.o1",
+    "type": "hideout_bed",
+    "name": "Posłanie",
+    "geometry": {
+      "type": "rect",
+      "x": 14,
+      "y": 16,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_hideout_001.o1.s1",
+        "action": "rest",
+        "capacity": 1,
+        "approach": {
+          "x": 14,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_hideout_001.o2",
+    "type": "hideout_supply",
+    "name": "Zapasy",
+    "geometry": {
+      "type": "rect",
+      "x": 24,
+      "y": 15,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_hideout_001.o2.s1",
+        "action": "storage",
+        "capacity": 1,
+        "approach": {
+          "x": 24,
+          "y": 16
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_hideout_001.o3",
+    "type": "hideout_table",
+    "name": "Stół",
+    "geometry": {
+      "type": "rect",
+      "x": 18,
+      "y": 5,
+      "w": 2,
+      "h": 2
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_hideout_001.o3.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 18,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_hideout_001.o4",
+    "type": "underground_lamp",
+    "name": "Lampa",
+    "geometry": {
+      "type": "rect",
+      "x": 4,
+      "y": 4,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true
+  },
+  {
+    "id": "underground_hideout_001.o5",
+    "type": "hideout_supply",
+    "name": "Skrytka",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 5,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_hideout_001.o5.s1",
+        "action": "storage",
+        "capacity": 1,
+        "approach": {
+          "x": 5,
+          "y": 6
+        }
+      }
+    ]
+  }
+]

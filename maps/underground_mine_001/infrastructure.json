@@ -1,0 +1,144 @@
+[
+  {
+    "id": "underground_mine_001.o1",
+    "type": "mine_ore",
+    "name": "Żyła żelaza",
+    "geometry": {
+      "type": "rect",
+      "x": 8,
+      "y": 5,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_mine_001.o1.s1",
+        "action": "mine",
+        "capacity": 1,
+        "approach": {
+          "x": 8,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_mine_001.o2",
+    "type": "mine_ore",
+    "name": "Żyła miedzi",
+    "geometry": {
+      "type": "rect",
+      "x": 25,
+      "y": 5,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_mine_001.o2.s1",
+        "action": "mine",
+        "capacity": 1,
+        "approach": {
+          "x": 25,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_mine_001.o3",
+    "type": "mine_ore",
+    "name": "Żyła srebra",
+    "geometry": {
+      "type": "rect",
+      "x": 38,
+      "y": 5,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_mine_001.o3.s1",
+        "action": "mine",
+        "capacity": 1,
+        "approach": {
+          "x": 38,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_mine_001.o4",
+    "type": "mine_cart",
+    "name": "Wózek górniczy",
+    "geometry": {
+      "type": "rect",
+      "x": 15,
+      "y": 24,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_mine_001.o4.s1",
+        "action": "load",
+        "capacity": 1,
+        "approach": {
+          "x": 15,
+          "y": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_mine_001.o5",
+    "type": "mine_support",
+    "name": "Podpora",
+    "geometry": {
+      "type": "rect",
+      "x": 29,
+      "y": 21,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true
+  },
+  {
+    "id": "underground_mine_001.o6",
+    "type": "mine_support",
+    "name": "Podpora",
+    "geometry": {
+      "type": "rect",
+      "x": 40,
+      "y": 27,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true
+  },
+  {
+    "id": "underground_mine_001.o7",
+    "type": "underground_lamp",
+    "name": "Lampa",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 23,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true
+  }
+]

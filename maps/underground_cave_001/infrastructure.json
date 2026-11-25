@@ -1,0 +1,91 @@
+[
+  {
+    "id": "underground_cave_001.o1",
+    "type": "cave_crystal",
+    "name": "Kryształy",
+    "geometry": {
+      "type": "rect",
+      "x": 28,
+      "y": 5,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_cave_001.o1.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 28,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_cave_001.o2",
+    "type": "cave_cache",
+    "name": "Skrytka",
+    "geometry": {
+      "type": "rect",
+      "x": 7,
+      "y": 5,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_cave_001.o2.s1",
+        "action": "inspect",
+        "capacity": 1,
+        "approach": {
+          "x": 7,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_cave_001.o3",
+    "type": "cave_boulder",
+    "name": "Głaz",
+    "geometry": {
+      "type": "rect",
+      "x": 12,
+      "y": 18,
+      "w": 2,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true
+  },
+  {
+    "id": "underground_cave_001.o4",
+    "type": "underground_lamp",
+    "name": "Ognisko obozowe",
+    "geometry": {
+      "type": "rect",
+      "x": 5,
+      "y": 21,
+      "w": 1,
+      "h": 1
+    },
+    "blocking": true,
+    "underground": true,
+    "stations": [
+      {
+        "id": "underground_cave_001.o4.s1",
+        "action": "rest",
+        "capacity": 1,
+        "approach": {
+          "x": 6,
+          "y": 21
+        }
+      }
+    ]
+  }
+]

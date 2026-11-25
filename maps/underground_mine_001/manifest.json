@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "mdsVersion": "1.0",
+  "mapId": "underground_mine_001",
+  "mapRevision": 1,
+  "kind": "test",
+  "name": "Kopalnia Żelaznego Grzbietu",
+  "sourceType": "manual",
+  "status": "review",
+  "width": 46,
+  "height": 32,
+  "tileMeters": 1,
+  "baseTilePixels": 32,
+  "elevationStepMeters": 0.5,
+  "interiorScale": 2,
+  "sectorSize": 16,
+  "files": {
+    "terrain": "terrain.json",
+    "parcels": "parcels.json",
+    "roads": "roads.json",
+    "fortifications": "fortifications.json",
+    "buildings": "buildings.json",
+    "infrastructure": "infrastructure.json",
+    "npcZones": "npc_zones.json",
+    "portals": "portals.json"
+  },
+  "interiors": [],
+  "spawnPoints": [
+    {
+      "id": "underground_mine_001.spawn001",
+      "sceneId": "underground_mine_001",
+      "x": 4,
+      "y": 26,
+      "role": "default"
+    }
+  ],
+  "underground": {
+    "kind": "mine",
+    "level": -1,
+    "scale": 1,
+    "independent": true,
+    "entryMode": "review-spawn",
+    "ambientSpawn": false
+  }
+}
