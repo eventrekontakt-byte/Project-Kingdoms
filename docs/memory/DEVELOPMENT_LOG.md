@@ -30,3 +30,5 @@ Skrócony dziennik checkpointów; pełna historia kodu w Git, szczegółowe zmia
 Dalsze wpisy: data, zakres, wersja, commit, rzeczywiście wykonane testy, ograniczenia i następny krok. Wpisy dopisywać bez usuwania historii.
 
 | 2026-11-25 | II-B8a WIP | Wielopolowy portal, MTL/FPS/RTS/IDS/viewer; regresja V8 poligonu, 12 nowych i 652 zgodne stare orientacje | ../MFS_WIDE_PORTALS_0.3.44.md |
+
+| 2026-11-25 | II-B8b review | 16 szerokich wejść, 64 kompilacje, 372 pola przejścia, 88 obrotów kondygnacji; 56 unikatowych kandydatów | ../MTL_AUDIT_0.3.44_PASS2B8B.md |

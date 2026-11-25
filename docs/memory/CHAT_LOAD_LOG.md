@@ -12,3 +12,6 @@ Mierzalne wskaźniki zastępcze: liczba zakończonych partii produkcyjnych w cza
 
 ### Kolejna obserwacja — 2026-11-25, czat (4), II-B8a
 7 zakończonych partii II-B i 1 techniczny checkpoint II-B8a; 56 kandydatów. Obciążenie wysokie, rosnące; dostępna pojemność nieustalona. Pierwsza zbiorcza operacja przekroczyła limit wywołań narzędzi w jednym skrypcie (nie oznacza to przekroczenia limitu czatu); wykonana w mniejszych partiach. Brak nowego zgłoszenia awarii. Zalecana zmiana rozmowy przed kolejną obszerną operacją. Rejestr nie jest licznikiem tokenów.
+
+### Kolejna obserwacja — 2026-11-25, czat (4), II-B8b
+8 zakończonych partii II-B (II-B8 podzielony na 2 checkpointy), 56 unikatowych kandydatów. W tej partii 16 modeli zastąpiono nowszymi, nie dodawano ID. Obciążenie szacunkowe wysokie, rosnące; pojemność pozostała nieustalona. Zapis i kompilacje V8 zadziałały; brak nowego zgłoszenia awarii aplikacji. Zalecany nowy czat przed kolejnym dużym etapem. Brak pomiaru limitu czatu.

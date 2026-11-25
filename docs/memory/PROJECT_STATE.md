@@ -49,3 +49,6 @@ Istnieje eksploracja 2D, ruch/kolizje, wnętrza i kondygnacje, kamera, zoom, aut
 
 ## Pass II-B8a (WIP)
 II-B8a: kod wielopolowych progów, MTL, walidacja i viewer; pozytywna regresja V8. II-B8b: wdrożyć entrySpan w 16 kandydatach gospodarczych II-B7, dopasować dojścia, wystrój i wyposażenie; sprawdzić wszystkie pasy, skale i obroty. 56 kandydatów bez zmian, r14 niezmieniona, r15 nieopublikowana. Node, Android, offline, UI, większe jednostki i pełna walidacja nadal otwarte. [Raport](../MFS_WIDE_PORTALS_0.3.44.md).
+
+## Pass II-B8b (review)
+II-B8 zakończony w zakresie mechanizmu i migracji kandydatów: 16 modeli II-B7 zastąpiono nowszymi z II-B8b; 15 wejść 2/4 i 1 wejście 1/2, 64 kompilacje instancji i 372 pola przejścia sprawdzone, 88 obrotów kondygnacji, wszystkie meble i dekoracje zachowane. 56 unikatowych kandydatów. r14 niezmieniona, r15 nieopublikowana. [Raport](../MTL_AUDIT_0.3.44_PASS2B8B.md).
