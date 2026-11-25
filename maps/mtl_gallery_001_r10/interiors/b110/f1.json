@@ -1,0 +1,675 @@
+{
+  "id": "mtl_gallery_001.b110.f1",
+  "buildingId": "mtl_gallery_001.b110",
+  "level": 1,
+  "width": 14,
+  "height": 16,
+  "geometry": {
+    "type": "rect",
+    "x": 0,
+    "y": 0,
+    "w": 14,
+    "h": 16
+  },
+  "floorTile": "wood",
+  "walls": [
+    {
+      "id": "mtl_gallery_001.b110.f1.wall1",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.wall2",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 15,
+        "w": 14,
+        "h": 1
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.wall3",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.wall4",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 1,
+        "w": 1,
+        "h": 14
+      },
+      "kind": "exterior"
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.wall5",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 7,
+        "w": 4,
+        "h": 1
+      },
+      "kind": "partition"
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.wall6",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 7,
+        "w": 4,
+        "h": 1
+      },
+      "kind": "partition"
+    }
+  ],
+  "objects": [
+    {
+      "id": "mtl_gallery_001.b110.f1.o1",
+      "type": "watch_desk",
+      "name": "Pulpit obserwacyjny",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "watch_desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b110.f1.o1.s1",
+          "action": "observe",
+          "capacity": 1,
+          "approach": {
+            "x": 6,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.o2",
+      "type": "signal_brazier",
+      "name": "Palenisko sygnałowe",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "signal_brazier",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b110.f1.o2.s1",
+          "action": "signal",
+          "capacity": 1,
+          "approach": {
+            "x": 11,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.o3",
+      "type": "watch_desk",
+      "name": "Pulpit obserwacyjny",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "watch_desk",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b110.f1.o3.s1",
+          "action": "observe",
+          "capacity": 1,
+          "approach": {
+            "x": 3,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.o4",
+      "type": "armor_mannequin",
+      "name": "Manekin zbroi",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "armor_mannequin",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b110.f1.o4.s1",
+          "action": "equip",
+          "capacity": 1,
+          "approach": {
+            "x": 2,
+            "y": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.o5",
+      "type": "helmet_rack",
+      "name": "Półka na hełmy",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 13,
+        "w": 1,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "helmet_rack",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b110.f1.o5.s1",
+          "action": "equip",
+          "capacity": 1,
+          "approach": {
+            "x": 10,
+            "y": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.o6",
+      "type": "supply_crate",
+      "name": "Skrzynia zaopatrzenia",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": true,
+      "placement": {
+        "mode": "free"
+      },
+      "playerInteraction": {
+        "mode": "orthogonal_adjacent",
+        "requiresAvailableStation": true
+      },
+      "templateRef": {
+        "id": "supply_crate",
+        "version": 1
+      },
+      "stations": [
+        {
+          "id": "mtl_gallery_001.b110.f1.o6.s1",
+          "action": "storage",
+          "capacity": 1,
+          "approach": {
+            "x": 11,
+            "y": 9
+          }
+        }
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "id": "mtl_gallery_001.b110.f1.dec1",
+      "type": "prop_orders",
+      "name": "Rozkazy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_orders",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o1",
+      "slot": 0,
+      "allowedHosts": [
+        "dispatch_desk",
+        "tactical_table",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec2",
+      "type": "prop_sealed_dispatch",
+      "name": "Zapieczętowany meldunek",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 5,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_sealed_dispatch",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o1",
+      "slot": 2,
+      "allowedHosts": [
+        "dispatch_desk",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec3",
+      "type": "prop_orders",
+      "name": "Rozkazy",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_orders",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o3",
+      "slot": 0,
+      "allowedHosts": [
+        "dispatch_desk",
+        "tactical_table",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec4",
+      "type": "prop_sealed_dispatch",
+      "name": "Zapieczętowany meldunek",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 1,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_sealed_dispatch",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o3",
+      "slot": 2,
+      "allowedHosts": [
+        "dispatch_desk",
+        "watch_desk"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec5",
+      "type": "prop_guard_helmet",
+      "name": "Hełm",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 1,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_guard_helmet",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o4",
+      "slot": 0,
+      "allowedHosts": [
+        "helmet_rack",
+        "armor_mannequin",
+        "military_locker"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec6",
+      "type": "prop_guard_helmet",
+      "name": "Hełm",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 9,
+        "y": 13,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_guard_helmet",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o5",
+      "slot": 0,
+      "allowedHosts": [
+        "helmet_rack",
+        "armor_mannequin",
+        "military_locker"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec7",
+      "type": "prop_guard_shield",
+      "name": "Mała tarcza",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_guard_shield",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o6",
+      "slot": 0,
+      "allowedHosts": [
+        "shield_stand",
+        "supply_crate"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec8",
+      "type": "prop_ration",
+      "name": "Racja żywnościowa",
+      "mount": "surface",
+      "geometry": {
+        "type": "rect",
+        "x": 12,
+        "y": 9,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "prop_ration",
+        "version": 1
+      },
+      "hostId": "mtl_gallery_001.b110.f1.o6",
+      "slot": 2,
+      "allowedHosts": [
+        "supply_crate",
+        "table_large",
+        "table_small"
+      ],
+      "size": 0.36
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec9",
+      "type": "wall_shield",
+      "name": "Tarcza ozdobna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_shield",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec10",
+      "type": "wall_lantern",
+      "name": "Latarnia ścienna",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 13,
+        "y": 12,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 180,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_lantern",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec11",
+      "type": "wall_banner",
+      "name": "Chorągiew",
+      "mount": "wall",
+      "geometry": {
+        "type": "rect",
+        "x": 0,
+        "y": 13,
+        "w": 1,
+        "h": 1
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "wall_banner",
+        "version": 1
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.dec12",
+      "type": "rug_small",
+      "name": "Dywanik",
+      "mount": "floor",
+      "geometry": {
+        "type": "rect",
+        "x": 2,
+        "y": 2,
+        "w": 2,
+        "h": 2
+      },
+      "rotation": 0,
+      "blocking": false,
+      "templateRef": {
+        "id": "rug_small",
+        "version": 1
+      }
+    }
+  ],
+  "roomTopologyVersion": 1,
+  "roomCuts": [
+    {
+      "id": "mtl_gallery_001.b110.f1.cut1",
+      "kind": "open",
+      "a": {
+        "x": 5,
+        "y": 7
+      },
+      "b": {
+        "x": 5,
+        "y": 8
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.cut2",
+      "kind": "open",
+      "a": {
+        "x": 6,
+        "y": 7
+      },
+      "b": {
+        "x": 6,
+        "y": 8
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.cut3",
+      "kind": "open",
+      "a": {
+        "x": 7,
+        "y": 7
+      },
+      "b": {
+        "x": 7,
+        "y": 8
+      }
+    },
+    {
+      "id": "mtl_gallery_001.b110.f1.cut4",
+      "kind": "open",
+      "a": {
+        "x": 8,
+        "y": 7
+      },
+      "b": {
+        "x": 8,
+        "y": 8
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "type": "watchroom",
+      "access": "Z3",
+      "anchor": {
+        "x": 7,
+        "y": 4
+      },
+      "functions": [
+        "observe",
+        "signal"
+      ],
+      "id": "mtl_gallery_001.b110.f1.r1"
+    },
+    {
+      "type": "armory",
+      "access": "Z3",
+      "anchor": {
+        "x": 7,
+        "y": 12
+      },
+      "functions": [
+        "equip",
+        "storage"
+      ],
+      "id": "mtl_gallery_001.b110.f1.r2"
+    }
+  ],
+  "templateRef": {
+    "id": "GATE_GUARD_M01",
+    "version": 1
+  }
+}
